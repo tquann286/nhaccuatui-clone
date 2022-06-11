@@ -15,11 +15,13 @@ const ShowcaseSlider = ({ showcase }) => {
 		centerMode: true,
 		infinite: true,
 		slidesToShow: 1,
+		centerPadding: '60px',
 		// autoplay: true,
 		speed: 1000,
 		lazyLoad: true,
 		autoplaySpeed: 3000,
 		pauseOnHover: true,
+    focusOnSelect: true,
 	}
 
 	return (
@@ -27,11 +29,7 @@ const ShowcaseSlider = ({ showcase }) => {
 			<Slider {...settings}>
 				{showcase.map((sc) => {
 					return (
-						<div
-							key={sc.key}
-							title={sc.title}
-							className='sc-img-container'
-						>
+						<div key={sc.key} title={sc.title} className='sc-img-container'>
 							<img className='sc-img-slider' src={sc.imageUrl} alt={sc.title} />
 						</div>
 					)
