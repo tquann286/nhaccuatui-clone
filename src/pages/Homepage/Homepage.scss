@@ -2,30 +2,5 @@ $left-sidebar-width: 200px;
 $right-sidebar-width: 320px;
 
 .hp-container {
-  
-  .hp-left-sidebar {
-    height: 100vh;
-    width: $left-sidebar-width;
-    background-color: #999;
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
-  .hp-main {
-    height: 1500px;
-    width: calc(100% - #{$left-sidebar-width} - #{$right-sidebar-width});
-    margin-left: $left-sidebar-width;
-    margin-right: $right-sidebar-width;
-    background-color: #555;
-  }
-
-  .hp-right-sidebar {
-    height: 100vh;
-    width: $right-sidebar-width;
-    background-color: #777;
-    position: fixed;
-    top: 0;
-    right: 0;
-  }
 
 }

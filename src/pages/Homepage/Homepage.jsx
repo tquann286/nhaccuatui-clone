@@ -1,12 +1,14 @@
 import React from 'react'
+
 import './Homepage.scss'
+import { MainHomepage, LeftSidebar, RightSidebar } from 'components'
 
 const Homepage = () => {
 	return (
 		<div className='hp-container'>
-			<div className='hp-left-sidebar'>left-sidebar</div>
-			<div className='hp-main'>main</div>
-			<div className='hp-right-sidebar'>right-sidebar</div>
+			<LeftSidebar />
+			<MainHomepage />
+			<RightSidebar />
 		</div>
 	)
 }
