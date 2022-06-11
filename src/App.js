@@ -1,21 +1,17 @@
 import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import './App.scss'
-
-import {
-  getHome,
-  getSong,
-  getPlaylists,
-  //... and many other services
-} from "nhaccuatui-api-full";
+import { Homepage } from 'pages'
 
 const App = () => {
-  getSong("SoaMoVlAX7lW").then((data) => console.log(data))
-  return (
-    <div>
-      <h1>App</h1>
-    </div>
-  )
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route index element={<Homepage />} />
+			</Routes>
+		</BrowserRouter>
+	)
 }
 
 export default App
