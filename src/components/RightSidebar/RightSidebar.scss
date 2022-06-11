@@ -1,9 +1,9 @@
-@import 'pages/Homepage/Homepage.scss';
+@import '_setting.scss';
 
 .hp-right-sidebar {
 	height: 100vh;
 	width: $right-sidebar-width;
-	background-color: #777;
+	background-color: #FAFAFA;
 	position: fixed;
 	top: 0;
 	right: 0;

@@ -1,9 +1,9 @@
-@import 'pages/Homepage/Homepage.scss';
+@import '_setting.scss';
 
 .hp-left-sidebar {
 	height: 100vh;
 	width: $left-sidebar-width;
-	background-color: #999;
+	background-color: $homepage-bg-color;
 	position: fixed;
 	top: 0;
 	left: 0;

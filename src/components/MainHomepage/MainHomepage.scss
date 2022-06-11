@@ -1,9 +1,9 @@
-@import 'pages/Homepage/Homepage.scss';
+@import '_setting.scss';
 
 .hp-main {
 	height: 1500px;
 	width: calc(100% - #{$left-sidebar-width} - #{$right-sidebar-width});
 	margin-left: $left-sidebar-width;
 	margin-right: $right-sidebar-width;
-	background-color: #555;
+	background-color: $homepage-bg-color;
 }
