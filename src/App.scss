@@ -1,10 +1,12 @@
 @import '_setting.scss';
 
-body {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 14px;
-	line-height: 1.3em;
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	color: $dark-text-color;
 }
