@@ -6,6 +6,10 @@
 	box-sizing: border-box;
 }
 
+a, div, span {
+	outline: none;
+}
+
 body {
 	font-family: 'Montserrat', sans-serif;
 	color: $dark-text-color;

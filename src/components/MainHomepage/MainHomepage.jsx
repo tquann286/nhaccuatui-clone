@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
+
 import './MainHomepage.scss'
+
 import { getHome } from 'nhaccuatui-api-full'
 import { ShowcaseSlider } from 'components'
 
