@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 
 import './MainHomepage.scss'
 
-import { getHome } from 'nhaccuatui-api-full'
+import { getHome, getPlaylistDetail } from 'nhaccuatui-api-full'
 import { ShowcaseSlider, Loading } from 'components'
 
 const MainHomepage = () => {
 	const [homeContent, setHomeContent] = useState({})
-	// console.log('homeContent: ', homeContent)
+	// console.log(homeContent)
 	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
@@ -16,6 +16,7 @@ const MainHomepage = () => {
 				setHomeContent(data)
 				setIsLoading(false)
 			})
+			getPlaylistDetail("5g5PBUwBWvrj").then(data => console.log(data))
 		} catch (error) {
 			console.log(error)
 		}
