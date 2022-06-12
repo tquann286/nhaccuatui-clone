@@ -6,24 +6,10 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
-import { CustomPrevArrow, CustomNextArrow } from './CustomArrow/CustomArrow'
+import { settings } from 'services/ShowcaseSlider'
 
 const ShowcaseSlider = ({ showcase }) => {
 	console.log(showcase)
-
-	const settings = {
-		dots: true,
-		className: 'center',
-		infinite: true,
-		slidesToShow: 1,
-		autoplay: true,
-		speed: 800,
-		lazyLoad: true,
-		autoplaySpeed: 3000,
-		pauseOnHover: true,
-		nextArrow: <CustomNextArrow />,
-		prevArrow: <CustomPrevArrow />,
-	}
 
 	return (
 		<div className='sc-container'>
