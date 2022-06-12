@@ -4,7 +4,7 @@ import './LeftSidebar.scss'
 
 const LeftSidebar = () => {
 	return (
-		<div className='hp-left-sidebar'>left-sidebar</div>
+		<div className='left-sidebar'>left-sidebar</div>
 	)
 }
 
