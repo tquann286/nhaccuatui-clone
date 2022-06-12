@@ -19,26 +19,9 @@
 	}
 
 	.slick-dots {
+		bottom: -30px;
 		li {
-			margin: 0 2px;
-
-			button {
-				&:before {
-					font-size: 8px;
-					will-change: width, background-color;
-					transition: all 0.2s ease;
-				}
-				&:hover:before, &:focus:before {
-					opacity: 1;
-					color: $main-text-color;
-				}
-			}
-
-			&.slick-active {
-				button:before {
-					color: $main-text-color;
-				}
-			}
+			margin: unset;
 		}
 	}
 }
