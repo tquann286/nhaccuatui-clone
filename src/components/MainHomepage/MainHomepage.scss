@@ -6,4 +6,11 @@
 	margin-left: $left-sidebar-width;
 	margin-right: $right-sidebar-width;
 	background-color: $homepage-bg-color;
+
+	.loading-container {
+		display: flex;
+		height: 100vh;
+		justify-content: center;
+		align-items: center;
+	}
 }

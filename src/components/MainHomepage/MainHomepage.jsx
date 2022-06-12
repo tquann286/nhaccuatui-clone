@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import './MainHomepage.scss'
 
 import { getHome } from 'nhaccuatui-api-full'
-import { ShowcaseSlider } from 'components'
+import { ShowcaseSlider, Loading } from 'components'
 
 const MainHomepage = () => {
 	const [homeContent, setHomeContent] = useState({})
@@ -11,21 +11,23 @@ const MainHomepage = () => {
 
 	useEffect(() => {
 		try {
-			getHome().then(data => {
+			getHome().then((data) => {
 				setHomeContent(data)
 				setIsLoading(false)
 			})
-			
 		} catch (error) {
 			console.log(error)
 		}
 	}, [])
 
-	if (isLoading) return (
-		<div className="hp-main">
-			<h4>Loading...</h4>
-		</div>
-	)
+	if (isLoading)
+		return (
+			<div className='hp-main'>
+				<div className='loading-container'>
+					<Loading />
+				</div>
+			</div>
+		)
 
 	return (
 		<div className='hp-main'>
