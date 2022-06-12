@@ -15,4 +15,28 @@
 	&:hover .customArr {
 		opacity: 1;
 	}
+
+	.slick-dots {
+		li {
+			margin: 0 2px;
+
+			button {
+				&:before {
+					font-size: 8px;
+					will-change: width, background-color;
+					transition: all 0.2s ease;
+				}
+				&:hover:before, &:focus:before {
+					opacity: 1;
+					color: #2daaed;
+				}
+			}
+
+			&.slick-active {
+				button:before {
+					color: #2daaed;
+				}
+			}
+		}
+	}
 }

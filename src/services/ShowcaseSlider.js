@@ -5,7 +5,7 @@ export const settings = {
   className: 'center',
   infinite: true,
   slidesToShow: 1,
-  autoplay: true,
+  // autoplay: true,
   speed: 800,
   lazyLoad: true,
   pauseOnHover: true,
