@@ -1,0 +1,15 @@
+.customArr {
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.25s ease;
+  &.prevArr {
+    left: 2px;
+  }
+  &::before {
+    font-size: 40px;
+    border-radius: 50%;
+  }
+  &.nextArr {
+    right: 22px;
+  }
+}

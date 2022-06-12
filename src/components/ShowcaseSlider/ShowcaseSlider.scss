@@ -1,15 +1,18 @@
 .sc-container {
 	width: 100%;
 	height: calc(calc(100vw - 45rem) * 2 / 5 + 3.8rem);
-	margin-top: 24px;
+	padding-top: 24px;
 
 	.sc-img-container {
 		.sc-img-slider {
 			width: 100%;
-			border-radius: 0.4rem;
 			background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
 		}
+	}
+
+	&:hover .customArr {
+		opacity: 1;
 	}
 }
