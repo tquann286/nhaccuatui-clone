@@ -1,3 +1,5 @@
+@import '_setting.scss';
+
 .sc-container {
 	width: 100%;
 	height: calc(calc(100vw - 45rem) * 2 / 5 + 3.8rem);
@@ -28,13 +30,13 @@
 				}
 				&:hover:before, &:focus:before {
 					opacity: 1;
-					color: #2daaed;
+					color: $main-text-color;
 				}
 			}
 
 			&.slick-active {
 				button:before {
-					color: #2daaed;
+					color: $main-text-color;
 				}
 			}
 		}
