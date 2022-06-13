@@ -13,6 +13,7 @@ export const settings = {
 	speed: 800,
 	lazyLoad: true,
 	pauseOnHover: true,
+	swipeToSlide: true,
 	nextArrow: <CustomNextArrow />,
 	prevArrow: <CustomPrevArrow />,
 	customPaging: (i) => (
