@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react'
 import './MainHomepage.scss'
 
 import { getHome } from 'nhaccuatui-api-full'
-import { ShowcaseSlider, Loading } from 'components'
+import { Loading, ShowcaseSlider, TopicEvent } from 'components'
 
 const MainHomepage = () => {
 	const [homeContent, setHomeContent] = useState({})
+	console.log('homeContent: ', homeContent)
 	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
@@ -32,6 +33,7 @@ const MainHomepage = () => {
 	return (
 		<div className='hp-main'>
 			<ShowcaseSlider showcase={homeContent.showcase} />
+			<TopicEvent topicEvent={homeContent.topicEvent} />
 		</div>
 	)
 }

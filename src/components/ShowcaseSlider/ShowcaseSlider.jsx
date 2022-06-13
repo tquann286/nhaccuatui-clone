@@ -11,7 +11,6 @@ import { settings } from 'services/ShowcaseSlider'
 import { getPlaylistUrl } from 'share/utilities'
 
 const ShowcaseSlider = ({ showcase = [] }) => {
-	console.log(showcase)
 
 	return (
 		<div className='sc-container'>
