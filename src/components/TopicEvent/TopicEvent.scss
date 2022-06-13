@@ -1,41 +1,60 @@
 @import '_settings.scss';
 
 .te-container {
-  width: 100%;
-  height: 855px;
-  background-color: #ccc;
-  padding: 32px;
+	width: 100%;
+	height: 855px;
+	background-color: #ccc;
+	padding: 32px;
 
-  .tp-container {
-    height: 285px;
+	.tp-container {
+		height: 285px;
 
-    .tp-title {
-      width: -webkit-fit-content;
-      width: -moz-fit-content;
-      width: fit-content;
-      height: 30px;
-      line-height: 30px;
-      font-size: 21px;
-      font-weight: 700;
-      color: $dark-text-color;
-    }
+		.tp-header {
+			.tp-title {
+				width: -webkit-fit-content;
+				width: -moz-fit-content;
+				width: fit-content;
+				height: 30px;
+				line-height: 30px;
+				font-size: 21px;
+				font-weight: 700;
+				color: $dark-text-color;
+			}
 
-    .tp-main {
-      margin: 16px 0;
+			.tp-nav {
+			}
+		}
 
-      .pl-container {
-        
-        .pl-img {
-          width: 193px;
-          height: 193px;
+		.tp-main {
+			margin-top: 16px;
 
-          img {
-            width: inherit;
-            height: inherit;
-            border-radius: 4px;
-          }
-        }
-      }
-    }
-  }
+			.pl-container {
+				width: 195px;
+				height: 223px;
+				padding: 0 8px;
+				img {
+					width: 100%;
+					border-radius: 4px;
+					-webkit-box-shadow: $box-shadow-effect;
+					-moz-box-shadow: $box-shadow-effect;
+					box-shadow: $box-shadow-effect;
+				}
+
+				.pl-title {
+          width: -webkit-fit-content;
+          width: -moz-fit-content;
+          width: fit-content;
+          max-width: 100%;
+          margin-top: 8px;
+          font-size: 14px;
+          line-height: 20px;
+          font-weight: 500;
+          color: $dark-text-color;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+				}
+			}
+		}
+	}
 }
