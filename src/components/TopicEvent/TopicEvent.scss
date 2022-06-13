@@ -7,6 +7,7 @@
   padding: 32px;
 
   .tp-container {
+    height: 285px;
 
     .tp-title {
       width: -webkit-fit-content;
@@ -20,7 +21,21 @@
     }
 
     .tp-main {
-      margin: 16px 32px 0 32px;
+      margin: 16px 0;
+
+      .pl-container {
+        
+        .pl-img {
+          width: 193px;
+          height: 193px;
+
+          img {
+            width: inherit;
+            height: inherit;
+            border-radius: 4px;
+          }
+        }
+      }
     }
   }
 }
