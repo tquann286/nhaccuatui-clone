@@ -7,7 +7,6 @@ import { Loading, ShowcaseSlider, TopicEvent } from 'components'
 
 const MainHomepage = () => {
 	const [homeContent, setHomeContent] = useState({})
-	console.log('homeContent: ', homeContent)
 	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
