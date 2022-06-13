@@ -16,7 +16,7 @@ const ShowcaseSlider = ({ showcase }) => {
 	return (
 		<div className='sc-container'>
 			<Slider {...settings}>
-				{showcase.map((sc) => {
+				{showcase?.map((sc) => {
 					return (
 						<Link to={`/playlist/${getPlaylistKey(sc.url)}`} key={sc.key} title={sc.title} className='sc-img-container'>
 							<img className='sc-img-slider' src={sc.imageUrl} alt={sc.title} />
