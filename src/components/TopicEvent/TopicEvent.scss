@@ -7,6 +7,7 @@
 	padding: 32px;
 
 	.tp-container {
+		position: relative;
 		height: 285px;
 
 		.tp-header {
@@ -27,6 +28,15 @@
 
 		.tp-main {
 			margin-top: 16px;
+
+			.swiper {
+				position: unset;
+
+				button {
+					position: absolute;
+					top: 0;
+				}
+			}
 
 			.pl-container {
 				width: 195px;
