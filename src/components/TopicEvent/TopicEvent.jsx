@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 
 const TopicEvent = ({ topicEvent = [] }) => {
+
 	return (
 		<div className='te-container'>
 			{topicEvent.map((topic) => {
@@ -18,8 +19,9 @@ const TopicEvent = ({ topicEvent = [] }) => {
 							<div className="tp-nav"></div>
 						</div>
 						<div className='tp-main'>
-							<Swiper slidesPerView={4} spaceBetween={8}>
+						<Swiper slidesPerView={4} spaceBetween={8}>
 								{topic.listPlaylist.map((playlist) => {
+
 									return (
 										<SwiperSlide key={playlist.key}>
 											<div className='pl-container'>
@@ -29,7 +31,7 @@ const TopicEvent = ({ topicEvent = [] }) => {
 										</SwiperSlide>
 									)
 								})}
-							</Swiper>
+								</Swiper>
 						</div>
 					</div>
 				)
