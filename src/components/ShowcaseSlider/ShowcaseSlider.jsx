@@ -8,17 +8,17 @@ import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
 import { settings } from 'services/ShowcaseSlider'
-import { getPlaylistKey } from 'share/utilities'
+import { getPlaylistUrl } from 'share/utilities'
 
-const ShowcaseSlider = ({ showcase }) => {
-	// console.log(showcase)
+const ShowcaseSlider = ({ showcase = [] }) => {
+	console.log(showcase)
 
 	return (
 		<div className='sc-container'>
 			<Slider {...settings}>
 				{showcase?.map((sc) => {
 					return (
-						<Link to={`/playlist/${getPlaylistKey(sc.url)}`} key={sc.key} title={sc.title} className='sc-img-container'>
+						<Link to={`/playlist/${getPlaylistUrl(sc.url)}`} key={sc.key} title={sc.title} className='sc-img-container'>
 							<img className='sc-img-slider' src={sc.imageUrl} alt={sc.title} />
 						</Link>
 					)
