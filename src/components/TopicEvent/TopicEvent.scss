@@ -1,7 +1,9 @@
 @import '_settings.scss';
 
+$tp-title-height: 30px;
+
 .te-container {
-	width: 100%;
+	width: 101%;
 	height: 855px;
 	background-color: #ccc;
 	padding: 0 32px;
@@ -16,7 +18,7 @@
 				width: -webkit-fit-content;
 				width: -moz-fit-content;
 				width: fit-content;
-				height: 30px;
+				height: $tp-title-height;
 				line-height: 30px;
 				font-size: 21px;
 				font-weight: 700;
@@ -32,9 +34,38 @@
 
 				.tp-nav {
 					display: flex;
+					height: 30px;
+					align-items: center;
 					position: absolute;
 					top: 0;
 					right: 0;
+					font-size: 18px;
+					color: rgba(28, 30, 32, 0.5);
+					.cusArrow {
+						cursor: pointer;
+						transition: all 0.1s ease;
+
+						&:hover {
+							color: $main-text-color;
+						}
+
+						&.prevArr {
+							margin: 0 8px;
+
+							&.disabled {
+								cursor: default;
+								color: rgba(28, 30, 32, 0.2);
+							}
+						}
+
+						&.nextArr {
+
+							&.disabled {
+								cursor: default;
+								color: rgba(28, 30, 32, 0.2);
+							}
+						}
+					}
 				}
 			}
 
@@ -51,18 +82,18 @@
 				}
 
 				.pl-title {
-          width: -webkit-fit-content;
-          width: -moz-fit-content;
-          width: fit-content;
-          max-width: 100%;
-          margin-top: 8px;
-          font-size: 14px;
-          line-height: 20px;
-          font-weight: 500;
-          color: $dark-text-color;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+					width: -webkit-fit-content;
+					width: -moz-fit-content;
+					width: fit-content;
+					max-width: 100%;
+					margin-top: 8px;
+					font-size: 14px;
+					line-height: 20px;
+					font-weight: 500;
+					color: $dark-text-color;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
 				}
 			}
 		}
