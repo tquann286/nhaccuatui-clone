@@ -8,3 +8,7 @@ export const getTopicEventTitle = (topicName) => {
     })
   }
 }
+
+export const handleOnCopyClick = (e) => {
+  e.stopPropagation()
+}
