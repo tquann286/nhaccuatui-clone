@@ -16,11 +16,13 @@ const TopicEvent = ({ topicEvent = [] }) => {
 					<div key={vieTitle} className='tp-container'>
 						<div className='tp-header'>
 							<div className='tp-title'>{vieTitle}</div>
-							<div className='tp-nav'></div>
 						</div>
 						<div className='tp-main'>
 							<Swiper slidesPerView={4} spaceBetween={8}>
-							<SlideNextButton />
+								<div className='tp-nav'>
+								<SlidePrevButton />
+								<SlideNextButton />
+								</div>
 								{topic.listPlaylist.map((playlist) => {
 									const { key, thumbnail, title } = playlist
 
@@ -28,7 +30,9 @@ const TopicEvent = ({ topicEvent = [] }) => {
 										<SwiperSlide key={key}>
 											<div className='pl-container'>
 												<img src={thumbnail} alt={title} />
-												<div className='pl-title' title={title}>{title}</div>
+												<div className='pl-title' title={title}>
+													{title}
+												</div>
 											</div>
 										</SwiperSlide>
 									)

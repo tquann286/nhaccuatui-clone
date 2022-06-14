@@ -22,9 +22,6 @@
 				font-weight: 700;
 				color: $dark-text-color;
 			}
-
-			.tp-nav {
-			}
 		}
 
 		.tp-main {
@@ -33,9 +30,11 @@
 			.swiper {
 				position: unset;
 
-				button {
+				.tp-nav {
+					display: flex;
 					position: absolute;
 					top: 0;
+					right: 0;
 				}
 			}
 
