@@ -14,6 +14,7 @@ export const settings = {
 	lazyLoad: true,
 	pauseOnHover: true,
 	swipeToSlide: true,
+	draggable: false,
 	nextArrow: <CustomNextArrow />,
 	prevArrow: <CustomPrevArrow />,
 	customPaging: (i) => (
