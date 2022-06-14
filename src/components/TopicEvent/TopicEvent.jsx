@@ -20,8 +20,8 @@ const TopicEvent = ({ topicEvent = [] }) => {
 						<div className='tp-main'>
 							<Swiper slidesPerView={4} spaceBetween={8}>
 								<div className='tp-nav'>
-								<SlidePrevButton />
-								<SlideNextButton />
+									<SlidePrevButton />
+									<SlideNextButton />
 								</div>
 								{topic.listPlaylist.map((playlist) => {
 									const { key, thumbnail, title } = playlist
