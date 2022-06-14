@@ -5,7 +5,6 @@ $tp-title-height: 30px;
 .te-container {
 	width: 101%;
 	height: 855px;
-	background-color: #ccc;
 	padding: 0 32px;
 	margin-top: 28px;
 
@@ -54,15 +53,14 @@ $tp-title-height: 30px;
 
 							&.disabled {
 								cursor: default;
-								color: rgba(28, 30, 32, 0.2);
+								color: $disabled-color;
 							}
 						}
 
 						&.nextArr {
-
 							&.disabled {
 								cursor: default;
-								color: rgba(28, 30, 32, 0.2);
+								color: $disabled-color;
 							}
 						}
 					}
@@ -70,15 +68,95 @@ $tp-title-height: 30px;
 			}
 
 			.pl-container {
-				width: 195px;
-				height: 223px;
 				padding: 0 8px;
-				img {
+
+				.pl-img-container {
+					position: relative;
 					width: 100%;
+					border: 1px solid rgba(28, 30, 32, 0.05);
 					border-radius: 4px;
+					overflow: hidden;
+					box-shadow: $box-shadow-effect;
 					-webkit-box-shadow: $box-shadow-effect;
 					-moz-box-shadow: $box-shadow-effect;
-					box-shadow: $box-shadow-effect;
+					cursor: pointer;
+
+					&::after {
+						content: '';
+						display: block;
+						padding-bottom: 100%;
+					}
+
+					img {
+						position: absolute;
+						width: 100%;
+						height: 100%;
+						transition: all 0.25s ease;
+					}
+
+					.pl-extensions {
+						position: absolute;
+						top: 0;
+						width: 100%;
+						height: 100%;
+						background-color: rgba(0, 0, 0, 0.5);
+						opacity: 0;
+						-webkit-transition: opacity 0.25s linear;
+						transition: opacity 0.25s linear;
+						will-change: opacity;
+						.pl-play-btn {
+							text-align: center;
+							height: 100%;
+							display: -webkit-box;
+							display: -webkit-flex;
+							display: -ms-flexbox;
+							display: flex;
+							-webkit-align-items: center;
+							-webkit-box-align: center;
+							-ms-flex-align: center;
+							align-items: center;
+							-webkit-box-pack: center;
+							-webkit-justify-content: center;
+							-ms-flex-pack: center;
+							justify-content: center;
+
+							svg {
+								font-size: 36px;
+								color: rgba(255, 255, 255, 0.88);
+								-webkit-transition: $transition-effect,
+									-webkit-transform 100ms linear;
+								-webkit-transition: $transition-effect, transform 100ms linear;
+								transition: $transition-effect, transform 100ms linear;
+								will-change: opacity, transform;
+
+								&:hover {
+									-webkit-transform: scale(1.1);
+									-ms-transform: scale(1.1);
+									transform: scale(1.1);
+								}
+							}
+						}
+
+						.pl-copy {
+							position: absolute;
+							top: 0px;
+							right: 0px;
+
+							svg {
+								color: #fff;
+								font-size: 26px;
+								margin-top: 3px;
+							}
+						}
+					}
+
+					&:hover img {
+						transform: scale(1.15);
+					}
+
+					&:hover .pl-extensions {
+						opacity: 1;
+					}
 				}
 
 				.pl-title {
@@ -94,6 +172,7 @@ $tp-title-height: 30px;
 					overflow: hidden;
 					text-overflow: ellipsis;
 					white-space: nowrap;
+					cursor: pointer;
 				}
 			}
 		}

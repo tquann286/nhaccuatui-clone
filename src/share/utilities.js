@@ -10,11 +10,17 @@ export const getPlaylistUrl = (url) => {
 
 export const getPlaylistKeyId = (url) => {
 	const startIndex = url.indexOf('va.') + 3
-	const stopIndex = url.lastIndexOf('.html')
+	const keyIdLength = 12
 
-	if (startIndex && stopIndex) {
-		return url.substring(startIndex, stopIndex)
+	if (startIndex) {
+		return url.substring(startIndex, keyIdLength)
 	} else {
 		return null
 	}
+}
+
+export const createPlaylistUrl = (title, keyId) => {
+	const playlistTitle = title.replace(' ', '-')
+
+	return `/playlist/${playlistTitle}va.${keyId}`
 }

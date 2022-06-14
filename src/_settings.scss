@@ -8,7 +8,11 @@ $right-sidebar-width: 320px;
 $homepage-bg-color: #f6f6f6;
 $dark-text-color: rgba(28, 30, 32, 0.88);
 $main-text-color: #2daaed;
-$box-shadow-effect: 1px 2px 5px 1px rgba(181, 134, 181, 0.75);
+$box-shadow-effect: 0 4px 8px rgba(0,0,0,0.2);
+$disabled-color: rgba(28, 30, 32, 0.2);
+
+// Effect
+$transition-effect: all 0.25s ease;
 
 // Screen
 $screen-lg: 1201px;
