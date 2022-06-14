@@ -1,5 +1,5 @@
-export const getPlaylistUrl = (url) => {
-	const startIndex = url.indexOf('/playlist/') + 10
+export const getNavigateUrl = (url) => {
+	const startIndex = url.indexOf('nhaccuatui.com/') + 15
 
 	if (startIndex) {
 		return url.substring(startIndex)
@@ -20,7 +20,7 @@ export const getPlaylistKeyId = (url) => {
 }
 
 export const createPlaylistUrl = (title, keyId) => {
-	const playlistTitle = title.replace(' ', '-')
+	const playlistTitle = title.replaceAll(' ', '-')
 
-	return `/playlist/${playlistTitle}va.${keyId}`
+	return `/playlist/${playlistTitle}.va.${keyId}`
 }
