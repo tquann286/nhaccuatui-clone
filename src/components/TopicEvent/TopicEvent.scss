@@ -173,6 +173,12 @@ $tp-title-height: 30px;
 					text-overflow: ellipsis;
 					white-space: nowrap;
 					cursor: pointer;
+					transition: $transition-effect;
+					transition-duration: 0.1s;
+
+					&:hover {
+						color: $main-text-color;
+					}
 				}
 			}
 		}
