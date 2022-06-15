@@ -3,9 +3,9 @@ import './NewRelease.scss'
 
 const NewRelease = () => {
   return (
-    <div className="ne-container">
-      <div className="ne-title">Mới phát hành</div>
-      <div className="ne-main">
+    <div className="nr-container">
+      <div className="nr-title">Mới phát hành</div>
+      <div className="nr-main">
       
       </div>
     </div>

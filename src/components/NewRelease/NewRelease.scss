@@ -1,13 +1,17 @@
 @import '_settings.scss';
 
-.ne-container {
-  .ne-title {
+.nr-container {
+  .nr-title {
     @include display-flex;
     @include align-item(center);
     
     margin-left: 32px;
+    font-size: 24px;
+    color: $dark-text-color;
+    font-weight: 700;
+    text-transform: capitalize;
   }
-  .ne-main {
+  .nr-main {
 
   }
 }
