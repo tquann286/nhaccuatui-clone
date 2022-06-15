@@ -1,13 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
 import './TopicEvent.scss'
 
 import { BsFillPlayCircleFill } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 
 import { createPlaylistUrl } from 'share/utilities'
-
 import { getTopicEventTitle, handleOnCopyClick } from 'services/TopicEvent'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -39,7 +37,7 @@ const TopicEvent = ({ topicEvent = [] }) => {
 								</div>
 								{topic.listPlaylist.map((playlist) => {
 									const { key, thumbnail, title } = playlist
-
+									
 									return (
 										<SwiperSlide key={key}>
 											<div className='pl-container'>
