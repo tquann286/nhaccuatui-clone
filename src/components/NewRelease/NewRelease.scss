@@ -1,0 +1,13 @@
+@import '_settings.scss';
+
+.ne-container {
+  .ne-title {
+    @include display-flex;
+    @include align-item(center);
+    
+    margin-left: 32px;
+  }
+  .ne-main {
+
+  }
+}

@@ -1,5 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+// Mixin
+@mixin transition-effect($time) {
+  transition: all $time ease;
+  -webkit-transition: all $time ease;
+  -moz-transition: all $time ease;
+}
+
+@mixin display-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin align-item($value) {
+  -webkit-align-items: $value;
+  -webkit-box-align: $value;
+  -ms-flex-align: $value;
+  align-items: $value;
+}
+
 // Size
 $left-sidebar-width: 200px;
 $right-sidebar-width: 320px;
@@ -11,13 +32,6 @@ $dark-text-color: rgba(28, 30, 32, 0.88);
 $main-text-color: #2daaed;
 $box-shadow-effect: 0 4px 8px rgba(0,0,0,0.2);
 $disabled-color: rgba(28, 30, 32, 0.2);
-
-// Effect
-@mixin transition-effect($time) {
-  transition: all $time ease;
-  -webkit-transition: all $time ease;
-  -moz-transition: all $time ease;
-}
 
 // Screen
 $screen-lg: 1201px;
