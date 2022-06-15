@@ -1,18 +1,10 @@
-import { useState } from 'react'
-
 import { BsFillPlayCircleFill } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 
 const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist}) => {
-  const [showMoreOption, setShowMoreOption] = useState(false)
 
-  const toggleShowMoreOption = () => {
-    setShowMoreOption(!showMoreOption)
-  }
-
-  const handleMoreOption = (e) => {
+  const handleCopyBtn = (e) => {
     e.stopPropagation()
-		toggleShowMoreOption()
   }
 
 	return (
@@ -26,7 +18,7 @@ const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist}) => {
 						<div className='pl-play-btn'>
 							<BsFillPlayCircleFill />
 						</div>
-						<div className='pl-more' onClick={(e) => handleMoreOption(e)}>
+						<div className='pl-more' onClick={(e) => handleCopyBtn(e)}>
 							<IoMdMore />
 						</div>
 					</div>
