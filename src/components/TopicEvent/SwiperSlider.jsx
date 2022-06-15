@@ -1,11 +1,9 @@
 import { BsFillPlayCircleFill } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 
-const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist}) => {
+import { handleCopyBtn } from 'services/SwiperSlider'
 
-  const handleCopyBtn = (e) => {
-    e.stopPropagation()
-  }
+const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist}) => {
 
 	return (
 			<div className='pl-container'>
@@ -18,7 +16,7 @@ const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist}) => {
 						<div className='pl-play-btn'>
 							<BsFillPlayCircleFill />
 						</div>
-						<div className='pl-more' onClick={(e) => handleCopyBtn(e)}>
+						<div title='Sao chép link' className='pl-more' onClick={(e) => handleCopyBtn(e, title, keyId)}>
 							<IoMdMore />
 						</div>
 					</div>
