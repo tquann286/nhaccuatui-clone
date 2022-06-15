@@ -121,12 +121,10 @@ $tp-title-height: 30px;
 							justify-content: center;
 
 							svg {
+								@include transition-effect(0.1s);
+
 								font-size: 36px;
 								color: rgba(255, 255, 255, 0.88);
-								-webkit-transition: $transition-effect,
-									-webkit-transform 100ms linear;
-								-webkit-transition: $transition-effect, transform 100ms linear;
-								transition: $transition-effect, transform 100ms linear;
 								will-change: opacity, transform;
 
 								&:hover {
@@ -160,6 +158,8 @@ $tp-title-height: 30px;
 				}
 
 				.pl-title {
+					@include transition-effect(0.1s);
+
 					width: -webkit-fit-content;
 					width: -moz-fit-content;
 					width: fit-content;
@@ -173,7 +173,6 @@ $tp-title-height: 30px;
 					text-overflow: ellipsis;
 					white-space: nowrap;
 					cursor: pointer;
-					transition: $transition-effect;
 					transition-duration: 0.1s;
 
 					&:hover {

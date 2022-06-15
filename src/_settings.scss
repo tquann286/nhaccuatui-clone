@@ -13,7 +13,11 @@ $box-shadow-effect: 0 4px 8px rgba(0,0,0,0.2);
 $disabled-color: rgba(28, 30, 32, 0.2);
 
 // Effect
-$transition-effect: all 0.25s ease;
+@mixin transition-effect($time) {
+  transition: all $time ease;
+  -webkit-transition: all $time ease;
+  -moz-transition: all $time ease;
+}
 
 // Screen
 $screen-lg: 1201px;
