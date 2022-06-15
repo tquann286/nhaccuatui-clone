@@ -1,17 +1,42 @@
 @import '_settings.scss';
 
 .nr-container {
-  .nr-title {
-    @include display-flex;
-    @include align-item(center);
-    
-    margin-left: 32px;
-    font-size: 24px;
-    color: $dark-text-color;
-    font-weight: 700;
-    text-transform: capitalize;
-  }
-  .nr-main {
+	.nr-title {
+		@include display-flex;
+		@include align-item(center);
 
-  }
+		margin-left: 32px;
+		font-size: 24px;
+		color: $dark-text-color;
+		font-weight: 700;
+		text-transform: capitalize;
+	}
+	.nr-main {
+		margin-top: 16px;
+
+		.nr-active-slide {
+			@include display-flex;
+			position: relative;
+			height: 200px;
+			padding: 20px 40px;
+			background-color: rgba(28, 30, 32, 0.02);
+			margin-bottom: 24px;
+
+			.nr-active-img {
+				position: relative;
+				overflow: hidden;
+				width: 160px;
+				height: 160px;
+				margin-right: 40px;
+				border-radius: 4px;
+
+				img {
+					vertical-align: middle;
+					width: 100%;
+					height: auto;
+					border-radius: 4px;
+				}
+			}
+		}
+	}
 }
