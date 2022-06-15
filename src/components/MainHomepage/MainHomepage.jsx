@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 
 import './MainHomepage.scss'
 
-import { getHome } from 'nhaccuatui-api-full'
-import { Loading, ShowcaseSlider, TopicEvent } from 'components'
+import { getHome, getArtistDetail } from 'nhaccuatui-api-full'
+import { Loading, ShowcaseSlider, TopicEvent, NewRelease } from 'components'
 
 const MainHomepage = () => {
 	const [homeContent, setHomeContent] = useState({})
+	console.log(homeContent)
 	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
@@ -28,11 +29,14 @@ const MainHomepage = () => {
 				</div>
 			</div>
 		)
+	const {showcase, topicEvent, newRelease } = homeContent 	
+	
 
 	return (
 		<div className='hp-main'>
-			<ShowcaseSlider showcase={homeContent.showcase} />
-			<TopicEvent topicEvent={homeContent.topicEvent} />
+			<ShowcaseSlider showcase={showcase} />
+			<TopicEvent topicEvent={topicEvent} />
+			<NewRelease newRelease={newRelease} />
 		</div>
 	)
 }
