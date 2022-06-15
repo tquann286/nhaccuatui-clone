@@ -1,5 +1,7 @@
 @import '_settings.scss';
 
+$active-img-width: 160px;
+
 .nr-container {
 	.nr-title {
 		@include display-flex;
@@ -22,19 +24,52 @@
 			background-color: rgba(28, 30, 32, 0.02);
 			margin-bottom: 24px;
 
-			.nr-active-img {
-				position: relative;
-				overflow: hidden;
-				width: 160px;
-				height: 160px;
-				margin-right: 40px;
-				border-radius: 4px;
-
-				img {
-					vertical-align: middle;
-					width: 100%;
-					height: auto;
+			.nr-active-container {
+				display: flex;
+				.nr-active-img {
+					position: relative;
+					overflow: hidden;
+					width: $active-img-width;
+					height: $active-img-width;
+					margin-right: 40px;
 					border-radius: 4px;
+
+					img {
+						vertical-align: middle;
+						width: 100%;
+						height: auto;
+						border-radius: 4px;
+					}
+				}
+
+				.nr-active-detail {
+					width: calc(100% - #{$active-img-width});
+
+					h4 {
+						font-size: 14px;
+						line-height: 18px;
+						color: rgba(28, 30, 32, 0.88);
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						vertical-align: text-bottom;
+					}
+
+					.nr-artist-container {
+						.nr-artist-container {
+							.nr-artist-main {
+								.nr-artist-img {
+									img {
+									}
+								}
+
+								.nr-artist-name {
+									span {
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}
