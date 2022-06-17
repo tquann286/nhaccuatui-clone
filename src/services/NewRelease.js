@@ -9,12 +9,12 @@ export const createArtistUrl = (artistName, artistId) => {
   return `nghe-si/${artistName}&k=${artistId}`
 }
 
-export const settings = {
+export const activeSlideSettings = {
   fade: true,
   infinite: true,
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
   arrows: false,
-  autoplay: false,
+  autoplay: true,
 }

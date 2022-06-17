@@ -2,35 +2,42 @@
 
 // Mixin
 @mixin transition-effect($time) {
-  transition: all $time ease;
-  -webkit-transition: all $time ease;
-  -moz-transition: all $time ease;
+	transition: all $time ease;
+	-webkit-transition: all $time ease;
+	-moz-transition: all $time ease;
 }
 
 @mixin display-flex {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
 }
 
 @mixin align-items($value) {
-  -webkit-align-items: $value;
-  -webkit-box-align: $value;
-  -ms-flex-align: $value;
-  align-items: $value;
+	-webkit-align-items: $value;
+	-webkit-box-align: $value;
+	-ms-flex-align: $value;
+	align-items: $value;
+}
+
+@mixin justify-content($value) {
+	-webkit-box-pack: $value;
+	-webkit-justify-content: $value;
+	-ms-flex-pack: $value;
+	justify-content: $value;
 }
 
 // Size
 $left-sidebar-width: 200px;
 $right-sidebar-width: 320px;
 
-// Color 
+// Color
 $light-color: #fafafa;
 $homepage-bg-color: #f6f6f6;
 $dark-text-color: rgba(28, 30, 32, 0.88);
 $main-text-color: #2daaed;
-$box-shadow-effect: 0 4px 8px rgba(0,0,0,0.2);
+$box-shadow-effect: 0 4px 8px rgba(0, 0, 0, 0.2);
 $disabled-color: rgba(28, 30, 32, 0.2);
 
 // Screen

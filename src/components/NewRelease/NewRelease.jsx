@@ -10,7 +10,7 @@ import Slider from 'react-slick'
 import { GoCalendar } from 'react-icons/go'
 
 import { covertTimestamp } from 'share/utilities'
-import { createSongUrl, createArtistUrl, settings } from 'services/NewRelease'
+import { createSongUrl, createArtistUrl, activeSlideSettings } from 'services/NewRelease'
 
 const NewRelease = ({ newRelease: { song: newSong } }) => {
 	console.log(newSong)
@@ -20,7 +20,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 			<div className='nr-title'>Mới phát hành</div>
 			<div className='nr-main'>
 				<div className='nr-active-slide'>
-					<Slider {...settings}>
+					<Slider {...activeSlideSettings}>
 						{newSong.map((song) => {
 							const { key, artists, dateRelease, thumbnail, title } = song
 
@@ -76,13 +76,12 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 											</div>
 										</div>
 										<div className='nr-date-release'>
-											<div className='dr-icon'>
 												<GoCalendar />
-											</div>
 											<span>
 												Ngày phát hành: {covertTimestamp(dateRelease)}
 											</span>
 										</div>
+										<div className="line-throught"></div>
 									</div>
 								</div>
 							)

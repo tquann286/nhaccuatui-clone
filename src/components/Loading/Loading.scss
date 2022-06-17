@@ -1,3 +1,5 @@
+@import '_settings.scss';
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -15,7 +17,8 @@
 
 div {
   &.loading-spin {
-    display: flex;
+		@include display-flex;
+    
     width: 3.5em;
     height: 3.5em;
     border: 3px solid transparent;
