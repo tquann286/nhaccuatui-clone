@@ -28,3 +28,9 @@ export const createPlaylistUrl = (title, keyId) => {
 
 	return `/playlist/${playlistTitle}.va.${keyId}`
 }
+
+export const covertTimestamp = (time) => {
+	const date = new Date(time)
+	
+	return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+}

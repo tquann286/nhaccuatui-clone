@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
+
 import './NewRelease.scss'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
-import { Link } from 'react-router-dom'
 
-import removeVietnameseTones from 'share/removeVietnameseTones'
+import { GoCalendar } from 'react-icons/go'
 
-import { replaceDashUrl } from 'share/utilities'
+import { covertTimestamp } from 'share/utilities'
+import { createSongUrl, createArtistUrl } from 'services/NewRelease'
 
 const NewRelease = ({ newRelease: { song: newSong } }) => {
 	console.log(newSong)
@@ -21,16 +23,6 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 		slidesToScroll: 1,
 		arrows: false,
 		autoplay: false,
-	}
-
-	const createSongUrl = (title, keyId) => {
-		return `bai-hat/${replaceDashUrl(
-			removeVietnameseTones(title)
-		)}&k=${keyId}`
-	}
-
-	const createArtistUrl = (artistName, artistId) => {
-		return `nghe-si/${artistName}&k=${artistId}`
 	}
 
 	return (
@@ -92,6 +84,14 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 													})}
 												</div>
 											</div>
+										</div>
+										<div className='nr-date-release'>
+											<div className='dr-icon'>
+												<GoCalendar />
+											</div>
+											<span>
+												Ngày phát hành: {covertTimestamp(dateRelease)}
+											</span>
 										</div>
 									</div>
 								</div>
