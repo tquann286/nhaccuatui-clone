@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 import './NewRelease.scss'
@@ -15,15 +15,27 @@ import { createSongUrl, createArtistUrl, activeSlideSettings, thumbSlideSettings
 
 const NewRelease = ({ newRelease: { song: newSong } }) => {
 	console.log(newSong)
-	const activeSliderRef = useRef(null)
-	const thumbSliderRef = useRef(null)
+	const [slide, setSlide] = useState({
+		activeSlide: null,
+		thumbSlide: null
+	})
+
+	const activeSlideRef = useRef(null)
+	const thumbSlideRef = useRef(null)
+
+	useEffect(() => {
+		setSlide({
+			activeSlide: activeSlideRef.current,
+			thumbSlide: thumbSlideRef.current
+		})
+	}, [])
 
 	return (
 		<div className='nr-container'>
 			<div className='nr-title'>Mới phát hành</div>
 			<div className='nr-main'>
 				<div className='nr-active-slide'>
-					<Slider {...activeSlideSettings}>
+					<Slider {...activeSlideSettings} asNavFor={slide.thumbSlide} ref={activeSlideRef}>
 						{newSong.map((song) => {
 							const { key, artists, dateRelease, thumbnail, title } = song
 
@@ -94,7 +106,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 
 			</div>
 			<div className="nr-thumb-slider">
-				<Slider { ... thumbSlideSettings }>
+				<Slider { ... thumbSlideSettings } asNavFor={slide.activeSlide} ref={thumbSlideRef}>
 					{newSong.map(song => {
 						const { key, thumbnail, title } = song
 
