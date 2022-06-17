@@ -19,8 +19,12 @@ export const getPlaylistKeyId = (url) => {
 	}
 }
 
+export const replaceDashUrl = (url) => {
+	return url.replaceAll(' ', '-')
+}
+
 export const createPlaylistUrl = (title, keyId) => {
-	const playlistTitle = title.replaceAll(' ', '-')
+	const playlistTitle = replaceDashUrl(title)
 
 	return `/playlist/${playlistTitle}.va.${keyId}`
 }

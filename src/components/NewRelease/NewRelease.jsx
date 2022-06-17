@@ -6,6 +6,10 @@ import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 import { Link } from 'react-router-dom'
 
+import removeVietnameseTones from 'share/removeVietnameseTones'
+
+import { replaceDashUrl } from 'share/utilities'
+
 const NewRelease = ({ newRelease: { song: newSong } }) => {
 	console.log(newSong)
 
@@ -19,6 +23,10 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 		autoplay: false,
 	}
 
+	const createSongUrl = (url) => {
+		return `bai-hat/${removeVietnameseTones(replaceDashUrl(url))}`
+	}
+
 	return (
 		<div className='nr-container'>
 			<div className='nr-title'>Mới phát hành</div>
@@ -30,11 +38,11 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 
 							return (
 								<div key={key} className='nr-active-container'>
-									<Link to={`bai-hat/${title}`} className='nr-active-img' title={title}>
+									<Link to={createSongUrl(title)} className='nr-active-img' title={title}>
 										<img src={thumbnail} alt={title} />
 									</Link>
 									<div className='nr-active-detail'>
-										<Link to={`bai-hat/${title}`} >
+										<Link to={createSongUrl(title)} >
 											<h4>{title}</h4>
 										</Link>
 										<div className='nr-artist-container'>
