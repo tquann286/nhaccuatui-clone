@@ -17,15 +17,22 @@ $active-img-width: 160px;
 		margin-top: 16px;
 
 		.nr-active-slide {
-			@include display-flex;
 			position: relative;
 			height: 200px;
 			padding: 20px 40px;
 			background-color: rgba(28, 30, 32, 0.02);
 			margin-bottom: 24px;
 
+			.slick-slide {
+				visibility: hidden;
+
+				&.slick-active {
+					visibility: visible;
+				}
+			}
+
 			.nr-active-container {
-				display: flex;
+				display: flex !important;
 				.nr-active-img {
 					position: relative;
 					overflow: hidden;
@@ -56,16 +63,26 @@ $active-img-width: 160px;
 					}
 
 					.nr-artist-container {
-						.nr-artist-container {
-							.nr-artist-main {
+						.nr-artist-main {
+							.nr-artist-img-container {
+								display: inline-block;
 								.nr-artist-img {
+									display: inline-block;
+									width: 24px;
+									height: 24px;
+									border: 1px solid rgba(255, 255, 255, 1);
+									border-radius: 50%;
+									background-repeat: no-repeat;
+									background-size: cover;
 									img {
+										width: 100%;
+										border-radius: 50%;
 									}
 								}
+							}
 
-								.nr-artist-name {
-									span {
-									}
+							.nr-artist-name {
+								span {
 								}
 							}
 						}
