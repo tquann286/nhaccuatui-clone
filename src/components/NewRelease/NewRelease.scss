@@ -53,6 +53,7 @@ $active-img-width: 160px;
 					width: calc(100% - #{$active-img-width});
 
 					h4 {
+						@include transition-effect(0.1s);
 						font-size: 14px;
 						line-height: 18px;
 						color: rgba(28, 30, 32, 0.88);
@@ -60,12 +61,17 @@ $active-img-width: 160px;
 						overflow: hidden;
 						text-overflow: ellipsis;
 						vertical-align: text-bottom;
+						
+						&:hover {
+							color: $main-text-color;
+						}
 					}
 
 					.nr-artist-container {
 						.nr-artist-main {
 							display: flex;
 							align-items: center;
+							margin-top: 10px;
 							.nr-artist-img-container {
 								display: inline-block;
 								.nr-artist-img {
@@ -86,8 +92,23 @@ $active-img-width: 160px;
 							}
 
 							.nr-artist-name {
-								span {
+								line-height: inherit;
+								white-space: nowrap;
+								text-overflow: ellipsis;
+								overflow: hidden;
+								font-size: 13px;
+								margin-left: 12px;
+								a {
+									color: rgba(28, 30, 32, 0.5);
+									span {
+										@include transition-effect(0.1s);
+
+										&:hover {
+											color: $main-text-color;
+										}
+									}
 								}
+								
 							}
 						}
 					}

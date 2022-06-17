@@ -24,7 +24,9 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 	}
 
 	const createSongUrl = (title, keyId) => {
-		return `bai-hat/${replaceDashUrl(removeVietnameseTones(title))}&keyId=${keyId}`
+		return `bai-hat/${replaceDashUrl(
+			removeVietnameseTones(title)
+		)}&k=${keyId}`
 	}
 
 	const createArtistUrl = (artistName, artistId) => {
@@ -42,11 +44,15 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 
 							return (
 								<div key={key} className='nr-active-container'>
-									<Link to={createSongUrl(title, key)} className='nr-active-img' title={title}>
+									<Link
+										to={createSongUrl(title, key)}
+										className='nr-active-img'
+										title={title}
+									>
 										<img src={thumbnail} alt={title} />
 									</Link>
 									<div className='nr-active-detail'>
-										<Link to={createSongUrl(title, key)} >
+										<Link to={createSongUrl(title, key)}>
 											<h4>{title}</h4>
 										</Link>
 										<div className='nr-artist-container'>
@@ -58,7 +64,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 
 														return (
 															<Link
-															to={createArtistUrl(shortLink, artistId)}
+																to={createArtistUrl(shortLink, artistId)}
 																key={artistId}
 																className='nr-artist-img'
 															>
@@ -73,10 +79,15 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 														const { artistId, name, shortLink } = artist
 
 														return (
-															<Link to={createArtistUrl(shortLink, artistId)} key={artistId}>
-																<span>{name}</span>
+															<React.Fragment>
+																<Link
+																	to={createArtistUrl(shortLink, artistId)}
+																	key={artistId}
+																>
+																	<span>{name}</span>
+																</Link>
 																{index + 1 === artists.length ? '' : ', '}
-															</Link>
+															</React.Fragment>
 														)
 													})}
 												</div>
