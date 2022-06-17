@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 import './NewRelease.scss'
@@ -8,12 +8,15 @@ import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
 import { GoCalendar } from 'react-icons/go'
+import { BsPlayCircleFill } from 'react-icons/bs'
 
 import { covertTimestamp } from 'share/utilities'
-import { createSongUrl, createArtistUrl, activeSlideSettings } from 'services/NewRelease'
+import { createSongUrl, createArtistUrl, activeSlideSettings, thumbSlideSettings } from 'services/NewRelease'
 
 const NewRelease = ({ newRelease: { song: newSong } }) => {
 	console.log(newSong)
+	const activeSliderRef = useRef(null)
+	const thumbSliderRef = useRef(null)
 
 	return (
 		<div className='nr-container'>
@@ -88,6 +91,23 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 						})}
 					</Slider>
 				</div>
+
+			</div>
+			<div className="nr-thumb-slider">
+				<Slider { ... thumbSlideSettings }>
+					{newSong.map(song => {
+						const { key, thumbnail, title } = song
+
+						return (
+							<Link key={key} to={createSongUrl(title, key)} className="nr-thumb-img" title={title}>
+								<img src={thumbnail} alt={title} />
+								<div className="blur">
+									<BsPlayCircleFill />
+								</div>
+							</Link>
+						)
+					})}
+				</Slider>
 			</div>
 		</div>
 	)

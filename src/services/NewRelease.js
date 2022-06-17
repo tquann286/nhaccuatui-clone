@@ -17,4 +17,14 @@ export const activeSlideSettings = {
   slidesToScroll: 1,
   arrows: false,
   autoplay: true,
+  pauseOnHover: true,
+}
+
+export const thumbSlideSettings = {
+  infinite: true,
+  speed: 500,
+  slidesToShow: 6,
+  arrows: false,
+  pauseOnHover: true,
+  autoplay: true,
 }
