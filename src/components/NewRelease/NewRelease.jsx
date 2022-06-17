@@ -23,8 +23,12 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 		autoplay: false,
 	}
 
-	const createSongUrl = (url) => {
-		return `bai-hat/${removeVietnameseTones(replaceDashUrl(url))}`
+	const createSongUrl = (title, keyId) => {
+		return `bai-hat/${replaceDashUrl(removeVietnameseTones(title))}&keyId=${keyId}`
+	}
+
+	const createArtistUrl = (artistName, artistId) => {
+		return `nghe-si/${artistName}&k=${artistId}`
 	}
 
 	return (
@@ -38,11 +42,11 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 
 							return (
 								<div key={key} className='nr-active-container'>
-									<Link to={createSongUrl(title)} className='nr-active-img' title={title}>
+									<Link to={createSongUrl(title, key)} className='nr-active-img' title={title}>
 										<img src={thumbnail} alt={title} />
 									</Link>
 									<div className='nr-active-detail'>
-										<Link to={createSongUrl(title)} >
+										<Link to={createSongUrl(title, key)} >
 											<h4>{title}</h4>
 										</Link>
 										<div className='nr-artist-container'>
@@ -54,7 +58,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 
 														return (
 															<Link
-															to={`/${shortLink}`}
+															to={createArtistUrl(shortLink, artistId)}
 																key={artistId}
 																className='nr-artist-img'
 															>
@@ -69,7 +73,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 														const { artistId, name, shortLink } = artist
 
 														return (
-															<Link to={`/${shortLink}`} key={artistId}>
+															<Link to={createArtistUrl(shortLink, artistId)} key={artistId}>
 																<span>{name}</span>
 																{index + 1 === artists.length ? '' : ', '}
 															</Link>
