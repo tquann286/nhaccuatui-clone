@@ -1,72 +1,80 @@
 import React, { useState } from 'react'
 import './NewRelease.scss'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Thumbs, EffectFade } from 'swiper'
-import 'swiper/scss/effect-fade'
-import 'swiper/scss/thumbs'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import Slider from 'react-slick'
+import { Link } from 'react-router-dom'
 
 const NewRelease = ({ newRelease: { song: newSong } }) => {
 	console.log(newSong)
-	const [thumbsSwiper, setThumbsSwiper] = useState(null)
+
+	const settings = {
+		fade: true,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: false,
+		autoplay: false,
+	}
 
 	return (
 		<div className='nr-container'>
 			<div className='nr-title'>Mới phát hành</div>
 			<div className='nr-main'>
 				<div className='nr-active-slide'>
-					<Swiper
-						modules={[Autoplay, Thumbs, EffectFade]}
-						thumbs={{ swiper: thumbsSwiper }}
-						autoplay={{
-							delay: 4000,
-							disableOnInteraction: true,
-						}}
-						centeredSlides={true}
-						loop={true}
-						slidesPerView={1}
-						effect={'fade'}
-					>
+					<Slider {...settings}>
 						{newSong.map((song) => {
 							const { key, artists, dateRelease, thumbnail, title } = song
 
 							return (
-								<SwiperSlide key={key}>
-									{({isActive}) => isActive && (
-										<div className='nr-active-container'>
-											<div className='nr-active-img' title={title}>
-												<img src={thumbnail} alt={title} />
-											</div>
-											<div className='nr-active-detail'>
-												<h4>{title}</h4>
-												<div className='nr-artist-container'>
-													<div className='nr-artist-main'>
-														{artists.map((artist) => {
-															const { artistId, imageUrl, name, shortLink } =
-																artist
-	
-															return (
-																<div key={artistId} className='nr-artist-img'>
-																	<img src={imageUrl} alt={name} />
-																</div>
-															)
-														})}
-														<div className='nr-artist-name'>
-															{artists.map((artist) => {
-																const { artistId, name, shortLink } = artist
-	
-																return <span key={artistId}>{name}</span>
-															})}
-														</div>
-													</div>
+								<div key={key} className='nr-active-container'>
+									<Link to={`bai-hat/${title}`} className='nr-active-img' title={title}>
+										<img src={thumbnail} alt={title} />
+									</Link>
+									<div className='nr-active-detail'>
+										<Link to={`bai-hat/${title}`} >
+											<h4>{title}</h4>
+										</Link>
+										<div className='nr-artist-container'>
+											<div className='nr-artist-main'>
+												<div className='nr-artist-img-container'>
+													{artists.map((artist) => {
+														const { artistId, imageUrl, name, shortLink } =
+															artist
+
+														return (
+															<Link
+															to={`/${shortLink}`}
+																key={artistId}
+																className='nr-artist-img'
+															>
+																<img src={imageUrl} alt={name} />
+															</Link>
+														)
+													})}
+												</div>
+
+												<div className='nr-artist-name'>
+													{artists.map((artist, index) => {
+														const { artistId, name, shortLink } = artist
+
+														return (
+															<Link to={`/${shortLink}`} key={artistId}>
+																<span>{name}</span>
+																{index + 1 === artists.length ? '' : ', '}
+															</Link>
+														)
+													})}
 												</div>
 											</div>
 										</div>
-									)}
-								</SwiperSlide>
+									</div>
+								</div>
 							)
 						})}
-					</Swiper>
+					</Slider>
 				</div>
 			</div>
 		</div>
