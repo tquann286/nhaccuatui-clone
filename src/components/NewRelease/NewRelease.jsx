@@ -14,7 +14,6 @@ import { covertTimestamp } from 'share/utilities'
 import { createSongUrl, createArtistUrl, activeSlideSettings, thumbSlideSettings } from 'services/NewRelease'
 
 const NewRelease = ({ newRelease: { song: newSong } }) => {
-	console.log(newSong)
 	const [slide, setSlide] = useState({
 		activeSlide: null,
 		thumbSlide: null
