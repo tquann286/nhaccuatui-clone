@@ -14,7 +14,7 @@
   display: flex;
 }
 
-@mixin align-item($value) {
+@mixin align-items($value) {
   -webkit-align-items: $value;
   -webkit-box-align: $value;
   -ms-flex-align: $value;

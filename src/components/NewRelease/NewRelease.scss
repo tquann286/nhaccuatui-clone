@@ -5,7 +5,7 @@ $active-img-width: 160px;
 .nr-container {
 	.nr-title {
 		@include display-flex;
-		@include align-item(center);
+		@include align-items(center);
 
 		margin-left: 32px;
 		font-size: 24px;
@@ -111,6 +111,15 @@ $active-img-width: 160px;
 								
 							}
 						}
+					}
+
+					.nr-date-release {
+						@include display-flex;
+						@include align-items(center);
+
+
+						margin-top: 5px;font-size: 13px;
+						color: rgba(28,30,32,0.5);
 					}
 				}
 			}

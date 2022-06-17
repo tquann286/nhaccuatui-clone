@@ -10,20 +10,10 @@ import Slider from 'react-slick'
 import { GoCalendar } from 'react-icons/go'
 
 import { covertTimestamp } from 'share/utilities'
-import { createSongUrl, createArtistUrl } from 'services/NewRelease'
+import { createSongUrl, createArtistUrl, settings } from 'services/NewRelease'
 
 const NewRelease = ({ newRelease: { song: newSong } }) => {
 	console.log(newSong)
-
-	const settings = {
-		fade: true,
-		infinite: true,
-		speed: 500,
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		arrows: false,
-		autoplay: false,
-	}
 
 	return (
 		<div className='nr-container'>
