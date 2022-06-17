@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import './MainHomepage.scss'
 
-import { getHome, getArtistDetail } from 'nhaccuatui-api-full'
+import { getHome } from 'nhaccuatui-api-full'
 import { Loading, ShowcaseSlider, TopicEvent, NewRelease } from 'components'
 
 const MainHomepage = () => {
