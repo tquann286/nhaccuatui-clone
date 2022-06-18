@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-
 import './MainHomepage.scss'
 
-import { getHome, getChart } from 'nhaccuatui-api-full'
+import { fetchHomeData } from 'services/HomeContent'
+
 import {
 	Loading,
 	ShowcaseSlider,
@@ -17,16 +17,10 @@ const MainHomepage = () => {
 
 	useEffect(() => {
 		try {
-			const fetchHomeData = async () => {
-				const homeData = await getHome()
-				const { ranking: usukRanking } = await getChart({ category: 'au-my' })
-				const { ranking: kpopRanking } = await getChart({ category: 'nhac-han' })
-
-				setHomeContent({ ...homeData, usukRanking, kpopRanking })
+			fetchHomeData().then(res => {
+				setHomeContent(res)
 				setIsLoading(false)
-			}
-
-			fetchHomeData()
+			})
 		} catch (error) {
 			console.log(error)
 		}
