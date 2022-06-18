@@ -1,0 +1,22 @@
+@import '_settings.scss';
+
+.mr-container {
+
+	.mr-title {
+    @include transition-effect(0.1s);
+    
+    margin-top: 40px;
+		margin-left: 32px;
+		font-size: 24px;
+		color: $dark-text-color;
+		font-weight: 700;
+		text-transform: capitalize;
+		
+		&:hover {
+			color: $main-text-color;
+		}
+	}
+
+	.mr-main {
+	}
+}

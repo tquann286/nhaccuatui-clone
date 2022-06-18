@@ -31,7 +31,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 
 	return (
 		<div className='nr-container'>
-			<div className='nr-title'>Mới phát hành</div>
+			<Link to='/' className='nr-title'>Mới phát hành</Link>
 			<div className='nr-main'>
 				<div className='nr-active-slide'>
 					<Slider {...activeSlideSettings} asNavFor={slide.thumbSlide} ref={activeSlideRef}>
