@@ -1,9 +1,13 @@
 import { getHome, getChart } from 'nhaccuatui-api-full'
 
 export const fetchHomeData = async () => {
-  const homeData = await getHome()
-  const { ranking: usukRanking } = await getChart({ category: 'au-my' })
-  const { ranking: kpopRanking } = await getChart({ category: 'nhac-han' })
+  let homeData = await getHome()
+  let { ranking: usukRanking } = await getChart({ category: 'au-my' })
+  let { ranking: kpopRanking } = await getChart({ category: 'nhac-han' })
+
+  homeData.ranking.region = 'Tiếng Việt'
+  usukRanking.region = 'Âu Mỹ'
+  kpopRanking.region= 'Hàn Quốc'
 
   return { ...homeData, usukRanking, kpopRanking }
 }

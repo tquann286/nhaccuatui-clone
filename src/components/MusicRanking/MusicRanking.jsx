@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './MusicRanking.scss'
 
-const MusicRanking = (ranking) => {
+const MusicRanking = ({ ranking }) => {
 	console.log(ranking)
 
   // useEffect(() => {
