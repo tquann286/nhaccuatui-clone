@@ -4,8 +4,7 @@ const MusicCard = ({ index, keyId, region, song, bgImage }) => {
   
 	return (
 		<div className='mr-card-container'>
-			<div className='mr-card-bg-img'>
-        <img src={bgImage} alt={region} />
+			<div className='mr-card-bg-img' style={{ backgroundImage: `url(${bgImage})` }} title={region}>
       </div>
 		</div>
 	)

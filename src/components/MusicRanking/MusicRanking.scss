@@ -34,14 +34,12 @@ $card-border-radius: 4px 4px 0 0;
 			border-radius: $card-border-radius;
 
 			.mr-card-bg-img {
+				width: 100%;
 				height: 50%;
 				border-radius: $card-border-radius;
-
-				img {
-					width: 100%;
-					height: 100%;
-					border-radius: $card-border-radius;
-				}
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center center;
 			}
 		}
 	}
