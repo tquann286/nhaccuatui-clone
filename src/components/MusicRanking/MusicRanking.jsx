@@ -5,11 +5,11 @@ import MusicCard from './MusicCard'
 import './MusicRanking.scss'
 
 const MusicRanking = ({ ranking }) => {
-	console.log(ranking)
+	// console.log(ranking)
 
 	return (
 		<div className='mr-container'>
-			<Link to ='/' className='mr-title'>BXH Bài Hát</Link>
+			<Link to ='/' className='mr-title'>BXH bài hát</Link>
       <div className="mr-main">
         {ranking.map((rankItem, index) => (
           <MusicCard index={index} { ... rankItem } keyId={rankItem.key} />

@@ -1,19 +1,29 @@
 @import '_settings.scss';
 
+@mixin playBlur {
+	@include transition-effect(0.1s);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	opacity: 0;
+}
+
 $card-border-radius: 4px 4px 0 0;
 
 .mr-container {
-
 	.mr-title {
-    @include transition-effect(0.1s);
-    
-    margin-top: 40px;
+		@include transition-effect(0.1s);
+
+		margin-top: 40px;
 		margin-left: 32px;
 		font-size: 24px;
 		color: $dark-text-color;
 		font-weight: 700;
 		text-transform: capitalize;
-		
+
 		&:hover {
 			color: $main-text-color;
 		}
@@ -21,25 +31,79 @@ $card-border-radius: 4px 4px 0 0;
 
 	.mr-main {
 		display: flex;
-    margin: 16px 32px 0 32px;
-		background-color: #ccc;
+		margin: 16px 32px 0 32px;
 
-		.mr-card-container {
+		.ma-container {
+			position: relative;
 			width: 33.3333333%;
 			height: 320px;
-			background-color: #888;
+			background-color: rgba(28, 30, 32, 0.02);
 			&:not(:last-child) {
 				margin-right: 16px;
 			}
 			border-radius: $card-border-radius;
 
-			.mr-card-bg-img {
+			.ma-bg-img {
 				width: 100%;
 				height: 50%;
 				border-radius: $card-border-radius;
 				background-repeat: no-repeat;
 				background-size: cover;
 				background-position: center center;
+			}
+
+			.ma-title {
+				position: absolute;
+				top: 36px;
+				left: 24px;
+				font-size: 28px;
+				text-transform: uppercase;
+				color: $light-color;
+				text-shadow: 2px 2px 2px #543b54;
+			}
+
+			.ma-t3-img {
+				display: flex;
+				margin-top: -65px;
+				margin-left: 24px;
+
+				.ma-thumb-container {
+					position: relative;
+					width: 80px;
+					height: 80px;
+					border-radius: 4px;
+					background-repeat: no-repeat;
+					background-size: cover;
+
+					&:not(:first-child) {
+						margin-left: -35px;
+					}
+
+					&:hover {
+						z-index: 4 !important;
+					}
+					.ma-thumb-icon {
+						@include playBlur;
+						font-size: 22px;
+						line-height: 80px;
+						text-align: center;
+						color: $light-color;
+						z-index: 2;
+					}
+
+					.ma-blur {
+						@include playBlur;
+						border-radius: 4px;
+						background-color: rgba(0, 0, 0, 0.5);
+						z-index: 1;
+					}
+
+					&:hover .ma-thumb-icon,
+					&:hover .ma-blur {
+						visibility: visible;
+						opacity: 1;
+					}
+				}
 			}
 		}
 	}
