@@ -5,9 +5,17 @@ export const fetchHomeData = async () => {
   let { ranking: usukRanking } = await getChart({ category: 'au-my' })
   let { ranking: kpopRanking } = await getChart({ category: 'nhac-han' })
 
-  homeData.ranking.region = 'Tiếng Việt'
-  usukRanking.region = 'Âu Mỹ'
-  kpopRanking.region= 'Hàn Quốc'
+  if (homeData) {
+    homeData.ranking.region = 'Tiếng Việt'
+  }
+
+  if (usukRanking) {
+    usukRanking.region = 'Âu Mỹ'
+  }
+  
+  if (kpopRanking) {
+    kpopRanking.region= 'Hàn Quốc'
+  }
 
   return { ...homeData, usukRanking, kpopRanking }
 }
