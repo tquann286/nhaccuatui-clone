@@ -75,6 +75,9 @@ const MusicCard = ({ keyId, region, song, bgImage }) => {
 			</div>
       )}
       <div className="ma-active-position">#{activeSong.position}</div>
+      <Link to='/'>
+        <div className="ma-watch-all">Xem tất cả</div>
+      </Link>
 		</div>
 	)
 }
