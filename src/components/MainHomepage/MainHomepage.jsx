@@ -50,7 +50,7 @@ const MainHomepage = () => {
 			<ShowcaseSlider showcase={showcase} />
 			<TopicEvent topicEvent={topicEvent} />
 			<NewRelease newRelease={newRelease} />
-			<MusicRanking ranking={{ ranking, usukRanking, kpopRanking }} />
+			<MusicRanking ranking={[ ranking, usukRanking, kpopRanking]} />
 		</div>
 	)
 }
