@@ -5,7 +5,7 @@ import { BsPlayCircleFill } from 'react-icons/bs'
 
 import { detectZ } from 'services/MusicCard'
 
-const MusicCard = ({ index, keyId, region, song, bgImage }) => {
+const MusicCard = ({ keyId, region, song, bgImage }) => {
 	const [topThreeSong, setTopThreeSong] = useState([])
 	console.log(topThreeSong)
 	const [activeSong, setActiveSong] = useState({})
@@ -34,8 +34,9 @@ const MusicCard = ({ index, keyId, region, song, bgImage }) => {
 					const { artists, position, songKey, thumbnail, title } = song
 
 					return (
-						<div
+						<Link
 							key={songKey}
+              to='/'
 							className='ma-thumb-container'
 							style={{
 								backgroundImage: `url(${thumbnail})`,
@@ -49,11 +50,14 @@ const MusicCard = ({ index, keyId, region, song, bgImage }) => {
 								<BsPlayCircleFill />
 							</div>
 							<div className='ma-blur'></div>
-						</div>
+						</Link>
 					)
 				})}
 			</div>
-			<div className='ma-active-title'>{activeSong.title}</div>
+      <div className="ma-active-title">
+      <Link to='/'>{activeSong.title}</Link>  
+      </div>
+			
 			{activeSong.artists && (
         <div className='ma-active-artists'>
 				{activeSong.artists.map((artist, index) => {

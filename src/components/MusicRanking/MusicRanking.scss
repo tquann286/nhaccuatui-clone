@@ -60,9 +60,8 @@ $card-border-radius: 4px 4px 0 0;
 			}
 
 			.ma-t3-img {
-				display: flex;
-				margin-top: -65px;
-				margin-left: 24px;
+				@include display-flex;
+				margin: -65px 0 18px 24px;
 
 				.ma-thumb-container {
 					position: relative;
@@ -104,7 +103,6 @@ $card-border-radius: 4px 4px 0 0;
 			}
 
 			.ma-active-title {
-				margin-top: 20px;
 				padding: 0 24px;
 				font-size: 16px;
 				font-weight: 450;
