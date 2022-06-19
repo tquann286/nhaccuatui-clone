@@ -12,7 +12,7 @@ const MusicRanking = ({ ranking }) => {
 			<Link to ='/' className='mr-title'>BXH Bài Hát</Link>
       <div className="mr-main">
         {ranking.map((rankItem, index) => (
-          <MusicCard index={index} { ... rankItem } />
+          <MusicCard index={index} { ... rankItem } keyId={rankItem.key} />
         ))}
       </div>
 		</div>
