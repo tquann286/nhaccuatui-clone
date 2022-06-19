@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { cloneDeep } from 'lodash'
 import { BsPlayCircleFill } from 'react-icons/bs'
 
+import { detectZ } from 'services/MusicCard'
+
 const MusicCard = ({ index, keyId, region, song, bgImage }) => {
 	const [topThreeSong, setTopThreeSong] = useState([])
 	console.log(topThreeSong)
@@ -15,16 +17,6 @@ const MusicCard = ({ index, keyId, region, song, bgImage }) => {
 			setActiveSong(topSong[0])
 		}
 	}, [])
-
-	const detectZ = (index) => {
-		if (index === 0) {
-			return 3
-		} else if (index === 1) {
-			return 2
-		} else {
-			return 1
-		}
-	}
 
 	const handleChangeActiveSong = (index) => {
 		setActiveSong(topThreeSong[index])
@@ -62,8 +54,9 @@ const MusicCard = ({ index, keyId, region, song, bgImage }) => {
 				})}
 			</div>
 			<div className='ma-active-title'>{activeSong.title}</div>
-			<div className='ma-active-artists'>
-				{activeSong.artists?.map((artist, index) => {
+			{activeSong.artists && (
+        <div className='ma-active-artists'>
+				{activeSong.artists.map((artist, index) => {
 					const { artistId, name, shortLink } = artist
 
 					return (
@@ -76,6 +69,8 @@ const MusicCard = ({ index, keyId, region, song, bgImage }) => {
 					)
 				})}
 			</div>
+      )}
+      <div className="ma-active-position">#{activeSong.position}</div>
 		</div>
 	)
 }

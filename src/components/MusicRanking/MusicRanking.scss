@@ -133,6 +133,15 @@ $card-border-radius: 4px 4px 0 0;
 					}
 				}
 			}
+
+			.ma-active-position {
+				position: absolute;
+				top: 192px;
+				right: 33px;
+				font-size: 56px;
+				font-weight: 700;
+				color: rgba(28,30,32,0.05);
+			}
 		}
 	}
 }
