@@ -25,6 +25,10 @@ const MusicCard = ({ index, keyId, region, song, bgImage }) => {
     }
   }
 
+  const handleChangeActiveSong = (index) => {
+    setActiveSong(topThreeSong[index])
+  }
+
 	return (
 		<div className='ma-container'>
 			<div
@@ -41,6 +45,7 @@ const MusicCard = ({ index, keyId, region, song, bgImage }) => {
 							key={songKey}
 							className='ma-thumb-container'
 							style={{ backgroundImage: `url(${thumbnail})`, zIndex: detectZ(index) }}
+              onMouseEnter={() => {handleChangeActiveSong(index)}}
 						>
 							<div className='ma-thumb-icon'>
 								<BsPlayCircleFill />
@@ -50,6 +55,7 @@ const MusicCard = ({ index, keyId, region, song, bgImage }) => {
 					)
 				})}
 			</div>
+      <div className="ma-active-title">{activeSong.title}</div>
 		</div>
 	)
 }

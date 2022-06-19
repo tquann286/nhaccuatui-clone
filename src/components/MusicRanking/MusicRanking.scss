@@ -105,6 +105,17 @@ $card-border-radius: 4px 4px 0 0;
 					}
 				}
 			}
+
+			.ma-active-title {    
+				margin-top: 20px;
+				padding: 0 24px;
+				font-size: 16px;
+				font-weight: 450;
+				color: rgba(28, 30, 32, 0.88);
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
 		}
 	}
 }
