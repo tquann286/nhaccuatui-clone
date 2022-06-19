@@ -1,4 +1,5 @@
 import { getHome, getChart } from 'nhaccuatui-api-full'
+import { bg_1, bg_2, bg_3 } from 'images'
 
 export const fetchHomeData = async () => {
   let homeData = await getHome()
@@ -7,14 +8,17 @@ export const fetchHomeData = async () => {
 
   if (homeData) {
     homeData.ranking.region = 'Tiếng Việt'
+    homeData.ranking.bgImage = bg_1
   }
 
   if (usukRanking) {
     usukRanking.region = 'Âu Mỹ'
+    usukRanking.bgImage = bg_2
   }
   
   if (kpopRanking) {
-    kpopRanking.region= 'Hàn Quốc'
+    kpopRanking.region = 'Hàn Quốc'
+    kpopRanking.bgImage= bg_3
   }
 
   return { ...homeData, usukRanking, kpopRanking }
