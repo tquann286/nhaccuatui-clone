@@ -42,12 +42,9 @@ $tp-title-height: 30px;
 					font-size: 18px;
 					color: rgba(28, 30, 32, 0.5);
 					.cusArrow {
+						@include hoverMainColor;
 						cursor: pointer;
 						transition: all 0.1s ease;
-
-						&:hover {
-							color: $main-text-color;
-						}
 
 						&.prevArr {
 							margin: 0 8px;
@@ -152,10 +149,9 @@ $tp-title-height: 30px;
 
 				.pl-title {
 					@include transition-effect(0.1s);
+					@include hoverMainColor;
+					@include fitContentWidth;
 
-					width: -webkit-fit-content;
-					width: -moz-fit-content;
-					width: fit-content;
 					max-width: 100%;
 					margin-top: 8px;
 					font-size: 14px;
@@ -167,10 +163,6 @@ $tp-title-height: 30px;
 					white-space: nowrap;
 					cursor: pointer;
 					transition-duration: 0.1s;
-
-					&:hover {
-						color: $main-text-color;
-					}
 				}
 			}
 		}

@@ -16,6 +16,7 @@ $card-border-radius: 4px 4px 0 0;
 .mr-container {
 	.mr-title {
 		@include transition-effect(0.1s);
+		@include hoverMainColor;
 
 		margin-top: 40px;
 		margin-left: 32px;
@@ -23,10 +24,6 @@ $card-border-radius: 4px 4px 0 0;
 		color: $dark-text-color;
 		font-weight: 700;
 		text-transform: capitalize;
-
-		&:hover {
-			color: $main-text-color;
-		}
 	}
 
 	.mr-main {
@@ -106,7 +103,7 @@ $card-border-radius: 4px 4px 0 0;
 				}
 			}
 
-			.ma-active-title {    
+			.ma-active-title {
 				margin-top: 20px;
 				padding: 0 24px;
 				font-size: 16px;
@@ -115,6 +112,26 @@ $card-border-radius: 4px 4px 0 0;
 				overflow: hidden;
 				text-overflow: ellipsis;
 				white-space: nowrap;
+			}
+
+			.ma-active-artists {
+				@include transition-effect(0.1s);
+				@include fitContentWidth;
+				max-width: 100%;
+				margin-top: 6px;
+				padding: 0 24px;
+				font-size: 13px;
+				line-height: 18px;
+				color: rgba(28, 30, 32, 0.5);
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				a.ma-active-artist-name {
+					span {
+						@include transition-effect(0.1s);
+						@include hoverMainColor;
+					}
+				}
 			}
 		}
 	}

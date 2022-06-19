@@ -5,15 +5,12 @@ $active-img-width: 160px;
 .nr-container {
 	.nr-title {
 		@include transition-effect(0.1s);
+		@include hoverMainColor;
 		margin-left: 32px;
 		font-size: 24px;
 		color: $dark-text-color;
 		font-weight: 700;
 		text-transform: capitalize;
-		
-		&:hover {
-			color: $main-text-color;
-		}
 	}
 	.nr-main {
 		margin-top: 16px;
@@ -56,6 +53,7 @@ $active-img-width: 160px;
 
 					h4 {
 						@include transition-effect(0.1s);
+						@include hoverMainColor;
 						font-size: 14px;
 						line-height: 18px;
 						color: rgba(28, 30, 32, 0.88);
@@ -63,10 +61,6 @@ $active-img-width: 160px;
 						overflow: hidden;
 						text-overflow: ellipsis;
 						vertical-align: text-bottom;
-
-						&:hover {
-							color: $main-text-color;
-						}
 					}
 
 					.nr-artist-container {
@@ -105,10 +99,7 @@ $active-img-width: 160px;
 									color: rgba(28, 30, 32, 0.5);
 									span {
 										@include transition-effect(0.1s);
-
-										&:hover {
-											color: $main-text-color;
-										}
+										@include hoverMainColor;
 									}
 								}
 							}

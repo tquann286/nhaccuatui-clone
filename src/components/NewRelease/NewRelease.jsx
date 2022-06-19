@@ -75,7 +75,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 														const { artistId, name, shortLink } = artist
 
 														return (
-															<React.Fragment>
+															<React.Fragment key={artistId}>
 																<Link
 																	to={createArtistUrl(shortLink, artistId)}
 																	key={artistId}

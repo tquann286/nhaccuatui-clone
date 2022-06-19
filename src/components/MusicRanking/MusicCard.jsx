@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { cloneDeep } from 'lodash'
 import { BsPlayCircleFill } from 'react-icons/bs'
 
@@ -15,19 +16,19 @@ const MusicCard = ({ index, keyId, region, song, bgImage }) => {
 		}
 	}, [])
 
-  const detectZ = (index) => {
-    if (index === 0) {
-      return 3
-    } else if (index === 1) {
-      return 2
-    } else {
-      return 1
-    }
-  }
+	const detectZ = (index) => {
+		if (index === 0) {
+			return 3
+		} else if (index === 1) {
+			return 2
+		} else {
+			return 1
+		}
+	}
 
-  const handleChangeActiveSong = (index) => {
-    setActiveSong(topThreeSong[index])
-  }
+	const handleChangeActiveSong = (index) => {
+		setActiveSong(topThreeSong[index])
+	}
 
 	return (
 		<div className='ma-container'>
@@ -44,8 +45,13 @@ const MusicCard = ({ index, keyId, region, song, bgImage }) => {
 						<div
 							key={songKey}
 							className='ma-thumb-container'
-							style={{ backgroundImage: `url(${thumbnail})`, zIndex: detectZ(index) }}
-              onMouseEnter={() => {handleChangeActiveSong(index)}}
+							style={{
+								backgroundImage: `url(${thumbnail})`,
+								zIndex: detectZ(index),
+							}}
+							onMouseEnter={() => {
+								handleChangeActiveSong(index)
+							}}
 						>
 							<div className='ma-thumb-icon'>
 								<BsPlayCircleFill />
@@ -55,7 +61,21 @@ const MusicCard = ({ index, keyId, region, song, bgImage }) => {
 					)
 				})}
 			</div>
-      <div className="ma-active-title">{activeSong.title}</div>
+			<div className='ma-active-title'>{activeSong.title}</div>
+			<div className='ma-active-artists'>
+				{activeSong.artists?.map((artist, index) => {
+					const { artistId, name, shortLink } = artist
+
+					return (
+						<React.Fragment key={artistId}>
+							<Link to='/' className='ma-active-artist-name'>
+								<span>{name}</span>
+							</Link>
+							{index + 1 === activeSong.artists.length ? '' : ', '}
+						</React.Fragment>
+					)
+				})}
+			</div>
 		</div>
 	)
 }
