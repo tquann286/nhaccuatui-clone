@@ -60,6 +60,10 @@ $disabled-color: rgba(28, 30, 32, 0.2);
 	transform: $value;
 }
 
+@mixin dark-color-text($value) {
+	color: rgba(28, 30, 32, $value);
+}
+
 // Size
 $left-sidebar-width: 200px;
 $right-sidebar-width: 320px;
