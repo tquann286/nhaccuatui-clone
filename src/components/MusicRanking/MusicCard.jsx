@@ -7,7 +7,6 @@ import { detectZ } from 'services/MusicCard'
 
 const MusicCard = ({ keyId, region, song, bgImage }) => {
 	const [topThreeSong, setTopThreeSong] = useState([])
-	console.log(topThreeSong)
 	const [activeSong, setActiveSong] = useState({})
 
 	useEffect(() => {

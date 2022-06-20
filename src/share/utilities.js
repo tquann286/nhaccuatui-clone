@@ -1,10 +1,10 @@
 export const getNavigateUrl = (url) => {
 	const startIndex = url.indexOf('nhaccuatui.com/') + 15
-
-	if (startIndex) {
+	
+	if (startIndex !== 14) {
 		return url.substring(startIndex)
 	} else {
-		return null
+		return '/'
 	}
 }
 
