@@ -16,15 +16,20 @@ const VideoDetail = ({
 	refMapping,
 }) => {
 	const [showMoreOptions, setShowMoreOptions] = useState(false)
-	const [showMorePosition, setShowMorePosition] = useState({ transform: `translate(${0}px, ${0}px)` })
+	const [showMorePosition, setShowMorePosition] = useState({
+		transform: `translate(${0}px, ${0}px)`,
+	})
 	const videoRef = useRef(null)
 
   useEffect(() => {
     if (videoRef) {
-      console.log(videoRef.current.getBoundingClientRect())
-      setShowMorePosition()
-    }
-  })
+			const { right } = videoRef.current.getBoundingClientRect()
+      const top = videoRef.current.offsetTop
+			setShowMorePosition({
+				transform: `translate(${right}px, ${top}px)`,
+			})
+		}
+  }, [showMoreOptions]);
 
 	const toggleShowMore = () => {
 		setShowMoreOptions(!showMoreOptions)
@@ -55,20 +60,22 @@ const VideoDetail = ({
 					</div>
 				</div>
 			</div>
-			<div className='vd-more-options-box' style={showMorePosition}>
-				<ul>
-					{!isEmpty(refMapping) && (
-						<li>
-							<SiApplemusic />
-							<span>Nghe audio</span>
-						</li>
-					)}
-					<li>
-						<BsLink45Deg />
-						<span>Sao chép link</span>
-					</li>
-				</ul>
-			</div>
+      {showMoreOptions &&(
+        <div className='vd-more-options-box' style={showMorePosition}>
+          <ul>
+            {!isEmpty(refMapping) && (
+              <li>
+                <SiApplemusic />
+                <span>Nghe audio</span>
+              </li>
+            )}
+            <li>
+              <BsLink45Deg />
+              <span>Sao chép link</span>
+            </li>
+          </ul>
+        </div>
+      )}
 		</React.Fragment>
 	)
 }
