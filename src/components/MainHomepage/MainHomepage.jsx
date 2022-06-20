@@ -9,6 +9,7 @@ import {
 	TopicEvent,
 	NewRelease,
 	MusicRanking,
+	NewVideo,
 } from 'components'
 
 const MainHomepage = () => {
@@ -17,7 +18,7 @@ const MainHomepage = () => {
 
 	useEffect(() => {
 		try {
-			fetchHomeData().then(res => {
+			fetchHomeData().then((res) => {
 				setHomeContent(res)
 				setIsLoading(false)
 			})
@@ -43,6 +44,7 @@ const MainHomepage = () => {
 		ranking,
 		usukRanking,
 		kpopRanking,
+		video,
 	} = homeContent
 
 	return (
@@ -50,7 +52,8 @@ const MainHomepage = () => {
 			<ShowcaseSlider showcase={showcase} />
 			<TopicEvent topicEvent={topicEvent} />
 			<NewRelease newRelease={newRelease} />
-			<MusicRanking ranking={[ ranking, usukRanking, kpopRanking]} />
+			<MusicRanking ranking={[ranking, usukRanking, kpopRanking]} />
+			<NewVideo videos={video} />
 		</div>
 	)
 }
