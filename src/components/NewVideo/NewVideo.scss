@@ -26,6 +26,7 @@
 				position: relative;
 				width: calc(50% - 8px);
 				height: inherit;
+				user-select: none;
 
 				.vd-video {
 					position: relative;
@@ -114,6 +115,7 @@
 				box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 				z-index: 1;
 				will-change: transform;
+				user-select: none;
 
 				ul {
 					background-color: rgba(0, 0, 0, 0.05);
