@@ -8,6 +8,7 @@ import { isEmpty } from 'lodash'
 import { Animated } from 'react-animated-css'
 
 import { animationConfig, handleCopyLink } from 'services/VideoDetail'
+import useOnClickOutside from 'hooks/useOnClickOutside'
 
 const VideoDetail = ({
 	keyId,
@@ -23,6 +24,8 @@ const VideoDetail = ({
 		transform: `translate(${0}px, ${0}px)`,
 	})
 	const videoRef = useRef(null)
+	const moreOptionsRef = useRef(null)
+
 
 	useEffect(() => {
 		if (videoRef) {
@@ -38,6 +41,7 @@ const VideoDetail = ({
 		setShowMoreOptions(!showMoreOptions)
 	}
 
+
 	const handleMoreOptions = (e) => {
 		e.stopPropagation()
 		toggleShowMore()
@@ -47,6 +51,8 @@ const VideoDetail = ({
 		handleCopyLink(e, keyId, title, artists)
 		toggleShowMore()
 	}
+
+  useOnClickOutside(moreOptionsRef, () => setShowMoreOptions(false))
 
 	return (
 		<React.Fragment>
@@ -69,7 +75,7 @@ const VideoDetail = ({
 				</div>
 			</div>
 			<Animated { ...animationConfig } isVisible={showMoreOptions}>
-				<div className='vd-more-options-box' style={showMorePosition}>
+				<div className='vd-more-options-box' style={showMorePosition} ref={moreOptionsRef}>
 					<ul>
 						{!isEmpty(refMapping) && (
 							<li>
