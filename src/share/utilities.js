@@ -1,3 +1,5 @@
+import removeVietnameseTones from 'share/removeVietnameseTones'
+
 export const getNavigateUrl = (url) => {
 	const startIndex = url.indexOf('nhaccuatui.com/') + 15
 	
@@ -35,6 +37,11 @@ export const covertTimestamp = (time) => {
 	return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
 }
 
+export const createSongUrl = (title, keyId) => {
+  return `bai-hat/${replaceDashUrl(removeVietnameseTones(title))}&k=${keyId}`
+}
+
 export const createArtistUrl = (artistName, artistId) => {
   return `nghe-si/${artistName}&k=${artistId}`
 }
+

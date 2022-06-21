@@ -10,8 +10,8 @@ import Slider from 'react-slick'
 import { GoCalendar } from 'react-icons/go'
 import { BsPlayCircleFill } from 'react-icons/bs'
 
-import { covertTimestamp, createArtistUrl } from 'share/utilities'
-import { createSongUrl, activeSlideSettings, thumbSlideSettings } from 'services/NewRelease'
+import { covertTimestamp, createArtistUrl, createSongUrl } from 'share/utilities'
+import { activeSlideSettings, thumbSlideSettings } from 'services/NewRelease'
 
 const NewRelease = ({ newRelease: { song: newSong } }) => {
 	const [slide, setSlide] = useState({
