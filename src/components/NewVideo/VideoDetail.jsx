@@ -7,7 +7,7 @@ import { SiApplemusic } from 'react-icons/si'
 import { isEmpty } from 'lodash'
 import { Animated } from 'react-animated-css'
 
-import { animationConfig } from 'services/VideoDetail'
+import { animationConfig, handleCopyLink } from 'services/VideoDetail'
 
 const VideoDetail = ({
 	keyId,
@@ -43,6 +43,11 @@ const VideoDetail = ({
 		toggleShowMore()
 	}
 
+	const handleCopyAndToggle = (e) => {
+		handleCopyLink(e, keyId, title, artists)
+		toggleShowMore()
+	}
+
 	return (
 		<React.Fragment>
 			<div className='vd-container' ref={videoRef}>
@@ -72,7 +77,7 @@ const VideoDetail = ({
 								<span>Nghe audio</span>
 							</li>
 						)}
-						<li>
+						<li onClick={(e) => handleCopyAndToggle(e)}>
 							<BsLink45Deg />
 							<span>Sao chép link</span>
 						</li>

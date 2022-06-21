@@ -2,14 +2,16 @@
 
 .nv-container {
 	.nv-title {
-		@include transition-effect(0.05s);
 		@include dark-color-text(0.88);
-		@include hoverMainColor;
 		margin-top: 40px;
 		margin-left: 32px;
 		font-size: 24px;
 		font-weight: 700;
 		text-transform: capitalize;
+		a {
+			@include transition-effect(0.05s);
+			@include hoverMainColor;
+		}
 	}
 
 	.nv-main {
@@ -42,7 +44,11 @@
 						width: 100%;
 						height: 100%;
 						cursor: pointer;
-						border-radius: 0.4rem;
+						border-radius: 4px;
+					}
+
+					&:hover img.vd-img {
+						transform: scale(1.1);
 					}
 
 					.vd-duration {
@@ -70,8 +76,8 @@
 						height: 100%;
 						background-color: rgba(0, 0, 0, 0.5);
 						border-radius: 4px;
-						opacity: 1;
-						visibility: visible;
+						opacity: 0;
+						visibility: hidden;
 
 						.vd-play-icon {
 							@include flexCenter;
@@ -100,6 +106,10 @@
 						}
 					}
 
+					&:hover .vd-blur-layer {
+						opacity: 1;
+						visibility: visible;
+					}
 					
 				}
 			}
@@ -121,6 +131,7 @@
 					li {
 						@include display-flex;
 						@include align-items(center);
+						@include transition-effect(0.1s);
 						border-radius: 4px 4px 0 0;
 						height: 32px;
 						font-size: 12px;
