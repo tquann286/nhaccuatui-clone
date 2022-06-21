@@ -95,7 +95,7 @@ const VideoDetail = ({
 						const { artistId, name, shortLink } = artist
 
 						return (
-							<React.Fragment>
+							<React.Fragment key={artistId}>
 								<Link to={createArtistUrl(shortLink, artistId)}><span>{name}</span></Link>
 								{i + 1 === artists.length ? '' : ', '}
 							</React.Fragment>

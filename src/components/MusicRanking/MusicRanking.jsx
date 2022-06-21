@@ -5,7 +5,6 @@ import MusicCard from './MusicCard'
 import './MusicRanking.scss'
 
 const MusicRanking = ({ ranking }) => {
-	// console.log(ranking)
 
 	return (
 		<div className='mr-container'>

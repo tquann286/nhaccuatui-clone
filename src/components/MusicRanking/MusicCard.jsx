@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom'
 import { cloneDeep } from 'lodash'
 import { BsPlayCircleFill } from 'react-icons/bs'
 
-import { detectZ } from 'services/MusicCard'
-import { createSongUrl } from 'share/utilities'
+import { detectZ, createTop20Url } from 'services/MusicCard'
+import { createSongUrl, createArtistUrl } from 'share/utilities'
 
-const MusicCard = ({ keyId, region, song, bgImage }) => {
+const MusicCard = ({ keyId, region, song, bgImage, category }) => {
 	const [topThreeSong, setTopThreeSong] = useState([])
 	const [activeSong, setActiveSong] = useState({})
 
+	const { position, title, songKey, artists } = activeSong
+	
 	useEffect(() => {
 		if (song) {
 			const topSong = cloneDeep(song)
@@ -55,29 +57,29 @@ const MusicCard = ({ keyId, region, song, bgImage }) => {
 					)
 				})}
 			</div>
-			<div className='ma-active-position'>#{activeSong.position}</div>
+			<div className='ma-active-position'>#{position}</div>
 			<div className='ma-active-title'>
-				<Link to={createSongUrl(activeSong.title, activeSong.songKey)}>{activeSong.title}</Link>
+				<Link to={createSongUrl(title, songKey)}>{title}</Link>
 			</div>
 
-			{activeSong.artists && (
+			{artists && (
 				<div className='ma-active-artists'>
-					{activeSong.artists.map((artist, index) => {
+					{artists.map((artist, index) => {
 						const { artistId, name, shortLink } = artist
 
 						return (
 							<React.Fragment key={artistId}>
-								<Link to='/' className='ma-active-artist-name'>
+								<Link to={createArtistUrl(shortLink, artistId)} className='ma-active-artist-name'>
 									<span>{name}</span>
 								</Link>
-								{index + 1 === activeSong.artists.length ? '' : ', '}
+								{index + 1 === artists.length ? '' : ', '}
 							</React.Fragment>
 						)
 					})}
 				</div>
 			)}
 			<div className='ma-watch-all'>
-				<Link to='/'>Xem tất cả</Link>
+				<Link to={createTop20Url(category)}>Xem tất cả</Link>
 			</div>
 		</div>
 	)

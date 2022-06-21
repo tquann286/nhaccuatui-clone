@@ -9,16 +9,19 @@ export const fetchHomeData = async () => {
   if (homeData) {
     homeData.ranking.region = 'Việt Nam'
     homeData.ranking.bgImage = bg_1
+    homeData.ranking.category = 'nhac-viet'
   }
 
   if (usukRanking) {
     usukRanking.region = 'Âu Mỹ'
     usukRanking.bgImage = bg_2
+    usukRanking.category = 'au-my'
   }
   
   if (kpopRanking) {
     kpopRanking.region = 'Hàn Quốc'
     kpopRanking.bgImage= bg_3
+    kpopRanking.category= 'nhac-han'
   }
 
   return { ...homeData, usukRanking, kpopRanking }
