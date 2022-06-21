@@ -103,24 +103,30 @@ $card-border-radius: 4px 4px 0 0;
 			}
 
 			.ma-active-title {
+				@include dark-color-text(0.88);
+				position: relative;
+				z-index: 1;
 				padding: 0 24px;
 				font-size: 16px;
 				font-weight: 450;
-				color: rgba(28, 30, 32, 0.88);
 				overflow: hidden;
 				text-overflow: ellipsis;
 				white-space: nowrap;
+				a {
+					@include transition-effect(0.1s);
+					@include hoverMainColor;
+				}
 			}
 
 			.ma-active-artists {
 				@include transition-effect(0.1s);
 				@include fitContentWidth;
+				@include dark-color-text(0.5);
 				max-width: 100%;
 				margin-top: 6px;
 				padding: 0 24px;
 				font-size: 13px;
 				line-height: 18px;
-				color: rgba(28, 30, 32, 0.5);
 				overflow: hidden;
 				text-overflow: ellipsis;
 				white-space: nowrap;

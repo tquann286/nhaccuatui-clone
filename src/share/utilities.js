@@ -38,7 +38,11 @@ export const covertTimestamp = (time) => {
 }
 
 export const createSongUrl = (title, keyId) => {
-  return `bai-hat/${replaceDashUrl(removeVietnameseTones(title))}&k=${keyId}`
+	if (title && keyId) {
+		return `bai-hat/${replaceDashUrl(removeVietnameseTones(title))}&k=${keyId}`
+	} else {
+		return '/'
+	}
 }
 
 export const createArtistUrl = (artistName, artistId) => {

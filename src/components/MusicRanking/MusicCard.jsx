@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, memo } from 'react'
 import { Link } from 'react-router-dom'
 import { cloneDeep } from 'lodash'
 import { BsPlayCircleFill } from 'react-icons/bs'
 
 import { detectZ } from 'services/MusicCard'
+import { createSongUrl } from 'share/utilities'
 
 const MusicCard = ({ keyId, region, song, bgImage }) => {
 	const [topThreeSong, setTopThreeSong] = useState([])
@@ -30,12 +31,12 @@ const MusicCard = ({ keyId, region, song, bgImage }) => {
 			<div className='ma-title'>{region}</div>
 			<div className='ma-t3-img'>
 				{topThreeSong.map((song, index) => {
-					const { artists, position, songKey, thumbnail, title } = song
+					const { songKey, thumbnail, title } = song
 
 					return (
 						<Link
 							key={songKey}
-              to='/'
+							to='/'
 							className='ma-thumb-container'
 							style={{
 								backgroundImage: `url(${thumbnail})`,
@@ -44,6 +45,7 @@ const MusicCard = ({ keyId, region, song, bgImage }) => {
 							onMouseEnter={() => {
 								handleChangeActiveSong(index)
 							}}
+							title={title}
 						>
 							<div className='ma-thumb-icon'>
 								<BsPlayCircleFill />
@@ -53,32 +55,32 @@ const MusicCard = ({ keyId, region, song, bgImage }) => {
 					)
 				})}
 			</div>
-      <div className="ma-active-title">
-      <Link to='/'>{activeSong.title}</Link>
-      <div className="ma-active-position">#{activeSong.position}</div>
-      </div>
-			
-			{activeSong.artists && (
-        <div className='ma-active-artists'>
-				{activeSong.artists.map((artist, index) => {
-					const { artistId, name, shortLink } = artist
-
-					return (
-						<React.Fragment key={artistId}>
-							<Link to='/' className='ma-active-artist-name'>
-								<span>{name}</span>
-							</Link>
-							{index + 1 === activeSong.artists.length ? '' : ', '}
-						</React.Fragment>
-					)
-				})}
+			<div className='ma-active-position'>#{activeSong.position}</div>
+			<div className='ma-active-title'>
+				<Link to={createSongUrl(activeSong.title, activeSong.songKey)}>{activeSong.title}</Link>
 			</div>
-      )}
-      <Link to='/'>
-        <div className="ma-watch-all">Xem tất cả</div>
-      </Link>
+
+			{activeSong.artists && (
+				<div className='ma-active-artists'>
+					{activeSong.artists.map((artist, index) => {
+						const { artistId, name, shortLink } = artist
+
+						return (
+							<React.Fragment key={artistId}>
+								<Link to='/' className='ma-active-artist-name'>
+									<span>{name}</span>
+								</Link>
+								{index + 1 === activeSong.artists.length ? '' : ', '}
+							</React.Fragment>
+						)
+					})}
+				</div>
+			)}
+			<div className='ma-watch-all'>
+				<Link to='/'>Xem tất cả</Link>
+			</div>
 		</div>
 	)
 }
 
-export default MusicCard
+export default memo(MusicCard)
