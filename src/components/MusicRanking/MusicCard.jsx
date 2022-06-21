@@ -54,7 +54,8 @@ const MusicCard = ({ keyId, region, song, bgImage }) => {
 				})}
 			</div>
       <div className="ma-active-title">
-      <Link to='/'>{activeSong.title}</Link>  
+      <Link to='/'>{activeSong.title}</Link>
+      <div className="ma-active-position">#{activeSong.position}</div>
       </div>
 			
 			{activeSong.artists && (
@@ -73,7 +74,6 @@ const MusicCard = ({ keyId, region, song, bgImage }) => {
 				})}
 			</div>
       )}
-      <div className="ma-active-position">#{activeSong.position}</div>
       <Link to='/'>
         <div className="ma-watch-all">Xem tất cả</div>
       </Link>

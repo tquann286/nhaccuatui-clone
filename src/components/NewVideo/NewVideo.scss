@@ -114,7 +114,6 @@
 				}
 
 				.vd-title {
-					@include fitContentWidth;
 					@include dark-color-text(0.88);
 					max-width: 100%;
 					line-height: 20px;
@@ -124,6 +123,23 @@
 					overflow: hidden;
 					text-overflow: ellipsis;
 					white-space: nowrap;
+				}
+
+				.vd-artists {
+					@include dark-color-text(0.5);
+					max-width: 100%;
+					margin-top: 6px;
+					margin-bottom: 4px;
+					font-size: 13px;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+				
+				.vd-title, .vd-artists span {
+					@include transition-effect(0.1s);
+					@include fitContentWidth;
+					@include hoverMainColor;
 				}
 			}
 
