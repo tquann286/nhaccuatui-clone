@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 import MusicCard from './MusicCard'
 import './MusicRanking.scss'
@@ -8,7 +7,7 @@ const MusicRanking = ({ ranking }) => {
 
 	return (
 		<div className='mr-container'>
-			<Link to ='/' className='mr-title'>BXH bài hát</Link>
+			<div className='mr-title'>BXH bài hát</div>
       <div className="mr-main">
         {ranking.map((rankItem) => (
           <MusicCard { ... rankItem } keyId={rankItem.key} />
