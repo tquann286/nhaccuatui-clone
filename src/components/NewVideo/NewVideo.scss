@@ -109,12 +109,9 @@
 				top: 0px;
 				left: 0px;
 				border-radius: 4px;
-				opacity: 1;
-				visibility: visible;
 				background-color: $light-color;
 				box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 				z-index: 1;
-				will-change: transform;
 				user-select: none;
 
 				ul {

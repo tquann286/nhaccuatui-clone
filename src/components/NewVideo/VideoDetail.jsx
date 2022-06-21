@@ -5,6 +5,9 @@ import { IoMdMore } from 'react-icons/io'
 import { SiApplemusic } from 'react-icons/si'
 
 import { isEmpty } from 'lodash'
+import { Animated } from 'react-animated-css'
+
+import { animationConfig } from 'services/VideoDetail'
 
 const VideoDetail = ({
 	keyId,
@@ -21,15 +24,15 @@ const VideoDetail = ({
 	})
 	const videoRef = useRef(null)
 
-  useEffect(() => {
-    if (videoRef) {
+	useEffect(() => {
+		if (videoRef) {
 			const { right } = videoRef.current.getBoundingClientRect()
-      const top = videoRef.current.offsetTop
+			const top = videoRef.current.offsetTop
 			setShowMorePosition({
 				transform: `translate(${right}px, ${top}px)`,
 			})
 		}
-  }, [showMoreOptions]);
+	}, [showMoreOptions])
 
 	const toggleShowMore = () => {
 		setShowMoreOptions(!showMoreOptions)
@@ -60,22 +63,22 @@ const VideoDetail = ({
 					</div>
 				</div>
 			</div>
-      {showMoreOptions &&(
-        <div className='vd-more-options-box' style={showMorePosition}>
-          <ul>
-            {!isEmpty(refMapping) && (
-              <li>
-                <SiApplemusic />
-                <span>Nghe audio</span>
-              </li>
-            )}
-            <li>
-              <BsLink45Deg />
-              <span>Sao chép link</span>
-            </li>
-          </ul>
-        </div>
-      )}
+			<Animated { ...animationConfig } isVisible={showMoreOptions}>
+				<div className='vd-more-options-box' style={showMorePosition}>
+					<ul>
+						{!isEmpty(refMapping) && (
+							<li>
+								<SiApplemusic />
+								<span>Nghe audio</span>
+							</li>
+						)}
+						<li>
+							<BsLink45Deg />
+							<span>Sao chép link</span>
+						</li>
+					</ul>
+				</div>
+			</Animated>
 		</React.Fragment>
 	)
 }
