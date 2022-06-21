@@ -7,7 +7,11 @@ import { SiApplemusic } from 'react-icons/si'
 import { isEmpty } from 'lodash'
 import { Animated } from 'react-animated-css'
 
-import { animationConfig, handleCopyLink, toastConfig } from 'services/VideoDetail'
+import {
+	animationConfig,
+	handleCopyLink,
+	toastConfig,
+} from 'services/VideoDetail'
 import useOnClickOutside from 'hooks/useOnClickOutside'
 
 import { ToastContainer } from 'react-toastify'
@@ -49,7 +53,7 @@ const VideoDetail = ({
 		toggleShowMore()
 	}
 
-	const handleCopyAndToggle = (e) => {
+	const handleCopyClick = (e) => {
 		handleCopyLink(e, keyId, title, artists)
 		toggleShowMore()
 		notify()
@@ -90,16 +94,14 @@ const VideoDetail = ({
 								<span>Nghe audio</span>
 							</li>
 						)}
-						<li onClick={(e) => handleCopyAndToggle(e)}>
+						<li onClick={(e) => handleCopyClick(e)}>
 							<BsLink45Deg />
 							<span>Sao chép link</span>
 						</li>
 					</ul>
 				</div>
 			</Animated>
-			<ToastContainer
-				{ ... toastConfig }
-			/>
+			<ToastContainer {...toastConfig} />
 		</React.Fragment>
 	)
 }
