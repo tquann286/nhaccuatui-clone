@@ -7,8 +7,12 @@ import { SiApplemusic } from 'react-icons/si'
 import { isEmpty } from 'lodash'
 import { Animated } from 'react-animated-css'
 
-import { animationConfig, handleCopyLink } from 'services/VideoDetail'
+import { animationConfig, handleCopyLink, toastConfig } from 'services/VideoDetail'
 import useOnClickOutside from 'hooks/useOnClickOutside'
+
+import { ToastContainer } from 'react-toastify'
+import { notify } from 'services/VideoDetail'
+import 'react-toastify/dist/ReactToastify.css'
 
 const VideoDetail = ({
 	keyId,
@@ -26,7 +30,6 @@ const VideoDetail = ({
 	const videoRef = useRef(null)
 	const moreOptionsRef = useRef(null)
 
-
 	useEffect(() => {
 		if (videoRef) {
 			const { right } = videoRef.current.getBoundingClientRect()
@@ -41,7 +44,6 @@ const VideoDetail = ({
 		setShowMoreOptions(!showMoreOptions)
 	}
 
-
 	const handleMoreOptions = (e) => {
 		e.stopPropagation()
 		toggleShowMore()
@@ -50,9 +52,10 @@ const VideoDetail = ({
 	const handleCopyAndToggle = (e) => {
 		handleCopyLink(e, keyId, title, artists)
 		toggleShowMore()
+		notify()
 	}
 
-  useOnClickOutside(moreOptionsRef, () => setShowMoreOptions(false))
+	useOnClickOutside(moreOptionsRef, () => setShowMoreOptions(false))
 
 	return (
 		<React.Fragment>
@@ -74,8 +77,12 @@ const VideoDetail = ({
 					</div>
 				</div>
 			</div>
-			<Animated { ...animationConfig } isVisible={showMoreOptions}>
-				<div className='vd-more-options-box' style={showMorePosition} ref={moreOptionsRef}>
+			<Animated {...animationConfig} isVisible={showMoreOptions}>
+				<div
+					className='vd-more-options-box'
+					style={showMorePosition}
+					ref={moreOptionsRef}
+				>
 					<ul>
 						{!isEmpty(refMapping) && (
 							<li>
@@ -90,6 +97,9 @@ const VideoDetail = ({
 					</ul>
 				</div>
 			</Animated>
+			<ToastContainer
+				{ ... toastConfig }
+			/>
 		</React.Fragment>
 	)
 }
