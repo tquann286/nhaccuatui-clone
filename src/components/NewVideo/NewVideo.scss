@@ -112,6 +112,19 @@
 					}
 					
 				}
+
+				.vd-title {
+					@include fitContentWidth;
+					@include dark-color-text(0.88);
+					max-width: 100%;
+					line-height: 20px;
+					margin-top: 8px;
+					font-size: 14px;
+					font-weight: 500;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
 			}
 
 			.vd-more-options-box {

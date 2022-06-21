@@ -1,4 +1,3 @@
-import { PROXY } from 'share/constants'
 import { replaceDashUrl } from 'share/utilities'
 import removeVietnameseTones from 'share/removeVietnameseTones'
 
@@ -12,20 +11,20 @@ export const animationConfig = {
 	style: { zIndex: 1 },
 }
 
-export const handleCopyLink = (e, keyId, title, artists) => {
-	e.stopPropagation()
-	const artistLink = artists.reduce((acc, cur, i, arr) => {
+export const handleVideoLink = (keyId, title, artists) => {
+	const artistLink = artists.reduce((acc, cur, i) => {
 		if (acc) {
 			return `${acc}${i > 0 ? '-ft-' : '-'}${cur.shortLink}`
 		}
 		return `${cur.shortLink}`
 	}, '')
 	const videoLink =
-		`${PROXY}/video/${replaceDashUrl(
+		`video/${replaceDashUrl(
 			removeVietnameseTones(title)
 		)}-${artistLink}`.toLocaleLowerCase() + `&k=${keyId}`
 
-	navigator.clipboard.writeText(videoLink)
+
+	return videoLink
 }
 
 export const notify = () =>

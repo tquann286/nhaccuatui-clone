@@ -14,9 +14,7 @@ $tp-title-height: 30px;
 
 		.tp-header {
 			.tp-title {
-				width: -webkit-fit-content;
-				width: -moz-fit-content;
-				width: fit-content;
+				@include fitContentWidth;
 				height: $tp-title-height;
 				line-height: 30px;
 				font-size: 21px;

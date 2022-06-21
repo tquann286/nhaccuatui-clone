@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, memo } from 'react'
 
 import { BsLink45Deg, BsPlayCircleFill } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
@@ -7,16 +7,19 @@ import { SiApplemusic } from 'react-icons/si'
 import { isEmpty } from 'lodash'
 import { Animated } from 'react-animated-css'
 
+import useOnClickOutside from 'hooks/useOnClickOutside'
 import {
 	animationConfig,
-	handleCopyLink,
+	handleVideoLink,
 	toastConfig,
 } from 'services/VideoDetail'
-import useOnClickOutside from 'hooks/useOnClickOutside'
+import { PROXY } from 'share/constants'
+import { createArtistUrl } from 'share/utilities'
 
 import { ToastContainer } from 'react-toastify'
 import { notify } from 'services/VideoDetail'
 import 'react-toastify/dist/ReactToastify.css'
+import { Link } from 'react-router-dom'
 
 const VideoDetail = ({
 	keyId,
@@ -54,7 +57,11 @@ const VideoDetail = ({
 	}
 
 	const handleCopyClick = (e) => {
-		handleCopyLink(e, keyId, title, artists)
+		e.stopPropagation()
+
+		const videoLink = `${PROXY}/${handleVideoLink(keyId, title, artists)}`
+
+		navigator.clipboard.writeText(videoLink)
 		toggleShowMore()
 		notify()
 	}
@@ -79,6 +86,21 @@ const VideoDetail = ({
 							<IoMdMore />
 						</div>
 					</div>
+				</div>
+				<div className="vd-title">
+					<Link to={handleVideoLink(keyId, title, artists)}>{title}</Link>
+				</div>
+				<div className="vd-artists">
+					{artists.map((artist, i) => {
+						const { artistId, name, shortLink } = artist
+
+						return (
+							<React.Fragment>
+								<Link to={createArtistUrl(shortLink, artistId)}>{name}</Link>
+								{i + 1 === artists.length ? '' : ', '}
+							</React.Fragment>
+						)
+					})}
 				</div>
 			</div>
 			<Animated {...animationConfig} isVisible={showMoreOptions}>
@@ -106,4 +128,4 @@ const VideoDetail = ({
 	)
 }
 
-export default VideoDetail
+export default memo(VideoDetail)
