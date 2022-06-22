@@ -1,7 +1,7 @@
 @import '_settings.scss';
 
 .hp-main {
-	height: 2500px;
+	height: 3000px;
 	width: calc(100% - #{$left-sidebar-width} - #{$right-sidebar-width});
 	margin-left: $left-sidebar-width;
 	margin-right: $right-sidebar-width;

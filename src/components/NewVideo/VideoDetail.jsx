@@ -19,7 +19,7 @@ import { createArtistUrl } from 'share/utilities'
 import { ToastContainer } from 'react-toastify'
 import { notify } from 'services/VideoDetail'
 import 'react-toastify/dist/ReactToastify.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const VideoDetail = ({
 	keyId,
@@ -36,6 +36,8 @@ const VideoDetail = ({
 	})
 	const videoRef = useRef(null)
 	const moreOptionsRef = useRef(null)
+
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		if (videoRef) {
@@ -66,12 +68,16 @@ const VideoDetail = ({
 		notify()
 	}
 
+	const handleVideoClick = () => {
+		navigate(handleVideoLink(keyId, title, artists))
+	}
+
 	useOnClickOutside(moreOptionsRef, () => setShowMoreOptions(false))
 
 	return (
 		<React.Fragment>
 			<div className='vd-container' ref={videoRef}>
-				<div className='vd-video' title={title} style={{ height }}>
+				<div className='vd-video' title={title} style={{ height }} onClick={() => handleVideoClick()}>
 					<img className='vd-img' src={thumbnail} alt={title} />
 					<div className='vd-duration'>{duration}</div>
 					<div className='vd-blur-layer'>
