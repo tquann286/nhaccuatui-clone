@@ -1,4 +1,5 @@
 import removeVietnameseTones from 'share/removeVietnameseTones'
+import { toast } from 'react-toastify'
 
 export const getNavigateUrl = (url) => {
 	const startIndex = url.indexOf('nhaccuatui.com/') + 15
@@ -51,4 +52,16 @@ export const createArtistUrl = (name, shortLink, artistId) => {
 	} else {
 		return `tim-kiem/q=${replaceDashUrl(name)}`
 	}
+}
+
+export const copyNotify = () =>
+	toast('🦄 Đã sao chép link.', {
+		position: 'bottom-left',
+		autoClose: 3000,
+	})
+
+export const toastConfig = {
+	position: 'bottom-left',
+	autoClose: 3000,
+	newestOnTop: true,
 }

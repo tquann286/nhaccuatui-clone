@@ -11,13 +11,11 @@ import useOnClickOutside from 'hooks/useOnClickOutside'
 import {
 	animationConfig,
 	handleVideoLink,
-	toastConfig,
 } from 'services/VideoDetail'
 import { PROXY } from 'share/constants'
-import { createArtistUrl } from 'share/utilities'
+import { createArtistUrl, toastConfig, copyNotify } from 'share/utilities'
 
 import { ToastContainer } from 'react-toastify'
-import { notify } from 'services/VideoDetail'
 import 'react-toastify/dist/ReactToastify.css'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -66,7 +64,7 @@ const VideoDetail = ({
 
 		navigator.clipboard.writeText(videoLink)
 		toggleShowMore()
-		notify()
+		copyNotify()
 	}
 
 	const handleVideoClick = () => {

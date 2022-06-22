@@ -1,8 +1,6 @@
 import { replaceDashUrl } from 'share/utilities'
 import removeVietnameseTones from 'share/removeVietnameseTones'
 
-import { toast } from 'react-toastify'
-
 export const animationConfig = {
 	animationIn: 'fadeIn',
 	animationOut: 'fadeOut',
@@ -28,16 +26,4 @@ export const handleVideoLink = (keyId, title, artists) => {
 
 
 	return videoLink
-}
-
-export const notify = () =>
-	toast('🦄 Đã sao chép link.', {
-		position: 'bottom-left',
-		autoClose: 3000,
-	})
-
-export const toastConfig = {
-	position: 'bottom-left',
-	autoClose: 3000,
-	newestOnTop: true,
 }
