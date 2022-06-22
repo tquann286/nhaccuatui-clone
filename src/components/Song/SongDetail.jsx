@@ -1,18 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-import { createArtistUrl } from 'share/utilities'
+import { createSongUrl, createArtistUrl } from 'share/utilities'
 
 const SongDetail = ({ artists, songId, thumbnail, title }) => {
+
+  
 	return (
 		<div className='sd-container'>
 			<div className='sd-main'>
-        <div className="sd-thumbnail" title={title}>
+        <Link to={createSongUrl(title, songId)} className="sd-thumbnail" title={title}>
           <div className='sd-thumb-img' style={{ backgroundImage: `url(${thumbnail})` }}></div>
-        </div>
+        </Link>
         <div className="sd-song-details">
           <div className="sd-song-title">
-            <Link to='/'>{title}</Link>
+            <Link to={createSongUrl(title, songId)}>{title}</Link>
           </div>
           <div className="sd-artists">
           {artists.map((artist, i) => {
