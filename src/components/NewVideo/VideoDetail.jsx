@@ -35,6 +35,7 @@ const VideoDetail = ({
 		transform: `translate(${0}px, ${0}px)`,
 	})
 	const videoRef = useRef(null)
+	const moreDivRef = useRef(null)
 	const moreOptionsRef = useRef(null)
 
 	const navigate = useNavigate()
@@ -72,7 +73,7 @@ const VideoDetail = ({
 		navigate(handleVideoLink(keyId, title, artists))
 	}
 
-	useOnClickOutside(moreOptionsRef, () => setShowMoreOptions(false))
+	useOnClickOutside(moreOptionsRef, moreDivRef, () => setShowMoreOptions(false))
 
 	return (
 		<React.Fragment>
@@ -88,6 +89,7 @@ const VideoDetail = ({
 							title='Thêm'
 							className='vd-more-options'
 							onClick={(e) => handleMoreOptions(e)}
+							ref={moreDivRef}
 						>
 							<IoMdMore />
 						</div>
