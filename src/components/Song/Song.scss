@@ -33,7 +33,7 @@
 				border-radius: 4px;
 				background-color: rgba(28, 30, 32, 0.02);
 
-				&:hover {
+				&:hover, &.focus {
 					background-color: rgba(28, 30, 32, 0.05);
 				}
 
@@ -109,7 +109,7 @@
           }
 				}
 
-        &:hover {
+        &:hover, &.focus {
           .sd-view-count {
             display: none;
           }

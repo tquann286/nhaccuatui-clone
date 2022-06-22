@@ -61,7 +61,7 @@ const SongDetail = ({ artists, songId, thumbnail, title }) => {
 	return (
 		<React.Fragment>
 			<div className='sd-container' ref={songContainerRef}>
-				<div className='sd-main'>
+				<div className={`sd-main ${showMoreOptions ? 'focus' : 'non-focus'}`}>
 					<Link
 						to={createSongUrl(title, songId)}
 						className='sd-thumbnail'
