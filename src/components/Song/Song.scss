@@ -33,6 +33,10 @@
 				border-radius: 4px;
 				background-color: rgba(28, 30, 32, 0.02);
 
+				&:hover {
+					background-color: rgba(28, 30, 32, 0.05);
+				}
+
 				.sd-thumbnail {
 					width: 56px;
 					height: 56px;
@@ -51,6 +55,70 @@
 						background-size: cover;
 					}
 				}
+
+				.sd-more {
+					@include fitContentWidth;
+					position: relative;
+					height: 100%;
+					margin-right: 16px;
+					float: right;
+
+					.sd-view-count {
+						position: relative;
+						visibility: visible;
+
+						svg, .sc-view-number {
+              @include fitContentWidth;
+              @include dark-color-text(0.5);
+              font-size: 12px;
+              margin-top: 41px;
+						}
+
+            svg {
+              margin-right: 4px;
+            }
+
+            .sc-view-number {
+              float: right;
+            }
+					}
+
+          .sd-more-options {
+            position: absolute;
+            top: 18px;
+            right: 0;
+            visibility: hidden;
+            opacity: 0;
+
+            .sd-three-dots {
+              @include transition-effect(0.1s);
+              @include display-flex;
+              @include dark-color-text(0.55);
+              padding: 8px;
+              border-radius: 50%;
+              cursor: pointer;
+
+              &:hover {
+                background-color: rgba(0, 0, 0, 0.04);
+              }
+
+              svg {
+                font-size: 22px;
+              }
+            }
+          }
+				}
+
+        &:hover {
+          .sd-view-count {
+            display: none;
+          }
+
+          .sd-more-options {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
 
 				.sd-song-details {
 					overflow: hidden;
@@ -75,7 +143,6 @@
 
 					.sd-artists {
 						@include dark-color-text(0.5);
-						@include fitContentWidth;
 
 						margin-top: 8px;
 						font-size: 13px;
