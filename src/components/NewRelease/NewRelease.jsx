@@ -64,7 +64,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 																key={artistId}
 																className='nr-artist-img'
 															>
-																<img src={imageUrl} alt={name} />
+																<img src={imageUrl} />
 															</Link>
 														)
 													})}
