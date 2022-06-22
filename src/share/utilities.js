@@ -2,7 +2,7 @@ import removeVietnameseTones from 'share/removeVietnameseTones'
 
 export const getNavigateUrl = (url) => {
 	const startIndex = url.indexOf('nhaccuatui.com/') + 15
-	
+
 	if (startIndex !== 14) {
 		return url.substring(startIndex)
 	} else {
@@ -33,7 +33,7 @@ export const createPlaylistUrl = (title, keyId) => {
 
 export const covertTimestamp = (time) => {
 	const date = new Date(time)
-	
+
 	return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
 }
 
@@ -45,7 +45,10 @@ export const createSongUrl = (title, keyId) => {
 	}
 }
 
-export const createArtistUrl = (artistName, artistId) => {
-  return `nghe-si/${artistName}&k=${artistId}`
+export const createArtistUrl = (name, shortLink, artistId) => {
+	if (name && shortLink && artistId) {
+		return `nghe-si/${shortLink}&k=${artistId}`
+	} else {
+		return `tim-kiem/q=${replaceDashUrl(name)}`
+	}
 }
-

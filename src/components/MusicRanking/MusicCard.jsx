@@ -69,7 +69,7 @@ const MusicCard = ({ keyId, region, song, bgImage, category }) => {
 
 						return (
 							<React.Fragment key={artistId}>
-								<Link to={createArtistUrl(shortLink, artistId)} className='ma-active-artist-name'>
+								<Link to={createArtistUrl(name, shortLink, artistId)} className='ma-active-artist-name'>
 									<span>{name}</span>
 								</Link>
 								{index + 1 === artists.length ? '' : ', '}

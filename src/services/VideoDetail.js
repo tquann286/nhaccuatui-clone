@@ -14,7 +14,7 @@ export const animationConfig = {
 export const handleVideoLink = (keyId, title, artists) => {
 	const artistLink = artists.reduce((acc, cur, i) => {
 		if (!cur.shortLink) {
-			return `${acc}`
+			return `${acc}${i > 0 ? '-ft-' : ''}${replaceDashUrl(removeVietnameseTones(cur.name))}`
 		} 
 		if (acc) {
 			return `${acc}${i > 0 ? '-ft-' : ''}${cur.shortLink}`
