@@ -1,0 +1,16 @@
+@import '_settings.scss';
+
+.so-container {
+  .so-title {
+    @include dark-color-text(0.88);
+    margin-top: 40px;
+    margin-left: 32px;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: capitalize;
+    a {
+    @include transition-effect(0.1s);
+    @include hoverMainColor;
+    }
+  }
+}
