@@ -1,8 +1,100 @@
 @import '_settings.scss';
 
 .ht-container {
+  position: relative;
 
   .ht-title {
     @include main-title-scss;
+  }
+
+  .ht-main {
+    margin: 16px 32px 0;
+
+    .swiper {
+      position: unset;
+
+      .ht-nav {
+        @include display-flex;
+        @include align-items(center);
+        @include dark-color-text(0.5);
+        
+        height: 30px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 18px;
+        margin-right: 38px;
+        .cusArrow {
+          @include transition-effect(0.1s);
+          @include hoverMainColor;
+          cursor: pointer;
+
+          &.prevArr {
+            margin: 0 8px;
+
+            &.disabled {
+              cursor: default;
+              color: $disabled-color;
+            }
+          }
+
+          &.nextArr {
+            &.disabled {
+              cursor: default;
+              color: $disabled-color;
+            }
+          }
+        }
+      }
+    }
+
+    .ht-container {
+      padding: 0 8px;
+
+      .ht-img-container {
+        position: relative;
+        width: 100%;
+        border: 1px solid rgba(28, 30, 32, 0.05);
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: $box-shadow-effect;
+        -webkit-box-shadow: $box-shadow-effect;
+        -moz-box-shadow: $box-shadow-effect;
+        cursor: pointer;
+
+        &::after {
+          content: '';
+          display: block;
+          padding-bottom: 100%;
+        }
+
+        img {
+          @include transition-effect(0.3s);
+          position: absolute;
+          width: 100%;
+          height: 100%;
+        }
+
+        .ht-blur-layer {
+          @include transition-effect(0.3s);
+          position: absolute;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.3);
+          opacity: 0;
+          visibility: hidden;
+        }
+  
+        &:hover .ht-blur-layer {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        &:hover img {
+          transform: scale(1.15);
+        }
+      }
+    }
   }
 }

@@ -54,6 +54,14 @@ export const createArtistUrl = (name, shortLink, artistId) => {
 	}
 }
 
+export const createTopicUrl = (title, keyId) => {
+	if (title && keyId) {
+		return `chu-de/${replaceDashUrl(removeVietnameseTones(title))}&k=${keyId}`
+	} else {
+		return '/'
+	}
+}
+
 export const copyNotify = () =>
 	toast('🦄 Đã sao chép link.', {
 		position: 'bottom-left',
