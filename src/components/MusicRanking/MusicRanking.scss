@@ -15,16 +15,7 @@ $card-border-radius: 4px 4px 0 0;
 
 .mr-container {
 	.mr-title {
-		@include transition-effect(0.1s);
-		@include hoverMainColor;
-
-		margin-top: 40px;
-		margin-left: 32px;
-		font-size: 24px;
-		color: $dark-text-color;
-		font-weight: 700;
-		text-transform: capitalize;
-		cursor: default;
+		@include main-title-scss;
 	}
 
 	.mr-main {

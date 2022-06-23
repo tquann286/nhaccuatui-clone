@@ -10,7 +10,8 @@ import {
 	NewRelease,
 	MusicRanking,
 	NewVideo,
-	Song
+	Song,
+	HotTopic
 } from 'components'
 
 const MainHomepage = () => {
@@ -46,7 +47,8 @@ const MainHomepage = () => {
 		usukRanking,
 		kpopRanking,
 		video,
-		song
+		song,
+		topic
 	} = homeContent
 
 	return (
@@ -57,6 +59,7 @@ const MainHomepage = () => {
 			<MusicRanking ranking={[ranking, usukRanking, kpopRanking]} />
 			<NewVideo videos={video} />
 			<Song song={song} />
+			<HotTopic hotTopic={topic} />
 		</div>
 	)
 }

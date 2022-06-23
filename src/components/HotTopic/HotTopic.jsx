@@ -1,9 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './HotTopic.scss'
 
-const HotTopic = () => {
+const HotTopic = ({ hotTopic }) => {
   return (
-    <div>HotTopic</div>
+    <div className="ht-container">
+      <div className="ht-title">
+        <Link to='/chu-de'>Chủ đề hot</Link>
+      </div>
+      <div className="ht-main">
+      
+      </div>
+    </div>
   )
 }
 

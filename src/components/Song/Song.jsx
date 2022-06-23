@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import SongDetail from './SongDetail'
 
 const Song = ({ song: songList }) => {
-	console.log(songList)
 
 	return (
 		<div className='so-container'>
