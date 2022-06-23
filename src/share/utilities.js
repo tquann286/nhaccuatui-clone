@@ -62,6 +62,14 @@ export const createTopicUrl = (title, keyId) => {
 	}
 }
 
+export const createTop100Url = (title, keyId) => {
+	if (title && keyId) {
+		return `top-100/${replaceDashUrl(removeVietnameseTones(title))}&k=${keyId}`
+	} else {
+		return '/'
+	}
+}
+
 export const copyNotify = () =>
 	toast('🦄 Đã sao chép link.', {
 		position: 'bottom-left',

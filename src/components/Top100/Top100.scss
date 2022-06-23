@@ -1,0 +1,13 @@
+@import '_settings.scss';
+
+.t1-container {
+  position: relative;
+  
+  .t1-title {
+    @include main-title-scss;
+  }
+
+  .t1-main {
+
+  }
+}
