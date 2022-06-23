@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { PROXY } from 'share/constants'
 import useOnClickOutside from 'hooks/useOnClickOutside'
 
-import { BsHeadphones, BsLink45Deg } from 'react-icons/bs'
+import { BsHeadphones, BsLink45Deg, BsMusicNote } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
+import { SiYoutubemusic } from 'react-icons/si'
 
 import { createSongUrl, createArtistUrl, toastConfig, copyNotify } from 'share/utilities'
 import { animationConfig, createRandomSongView } from 'services/SongDetail'
@@ -22,6 +23,8 @@ const SongDetail = ({ artists, songId, thumbnail, title }) => {
   const songContainerRef = useRef(null)
 	const moreDivRef = useRef(null)
 	const moreOptionsRef = useRef(null)
+
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		if (songContainerRef) {
@@ -112,9 +115,17 @@ const SongDetail = ({ artists, songId, thumbnail, title }) => {
 					ref={moreOptionsRef}
 				>
 					<ul>
+					<li>
+							<SiYoutubemusic />
+							<span>Thêm vào chờ phát</span>
+						</li>
 						<li onClick={(e) => handleCopyClick(e)}>
 							<BsLink45Deg />
 							<span>Sao chép link</span>
+						</li>
+						<li onClick={() => navigate(createSongUrl(title, songId))}>
+							<BsMusicNote />
+							<span>Đi đến bài hát</span>
 						</li>
 					</ul>
 				</div>

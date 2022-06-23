@@ -186,18 +186,17 @@
 					@include transition-effect(0.1s);
 					border-radius: 4px 4px 0 0;
 					height: 32px;
-					font-size: 12px;
 					padding-left: 8px;
 					padding: 6px;
 
 					svg {
 						@include dark-color-text(0.5);
-						font-size: 18px;
+						font-size: 17px;
 					}
 
 					span {
 						@include dark-color-text(0.88);
-						font-size: 13px;
+						font-size: 12px;
 						margin-left: 8px;
 					}
 
