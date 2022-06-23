@@ -9,7 +9,7 @@ import { getTopicEventTitle } from 'services/TopicEvent'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/scss'
-import { SlidePrevButton, SlideNextButton } from './CustomNav'
+import { SlidePrevButton, SlideNextButton } from 'components/CustomNav/CustomNav'
 
 const TopicEvent = ({ topicEvent = [] }) => {
 	const navigate = useNavigate()
