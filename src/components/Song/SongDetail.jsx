@@ -8,8 +8,8 @@ import { BsHeadphones, BsLink45Deg, BsMusicNote } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { SiYoutubemusic } from 'react-icons/si'
 
-import { createSongUrl, createArtistUrl, toastConfig, copyNotify } from 'share/utilities'
-import { animationConfig, createRandomSongView } from 'services/SongDetail'
+import { animationConfig, createSongUrl, createArtistUrl, toastConfig, copyNotify } from 'share/utilities'
+import { createRandomSongView } from 'services/SongDetail'
 import { Animated } from 'react-animated-css'
 import { ToastContainer } from 'react-toastify'
 

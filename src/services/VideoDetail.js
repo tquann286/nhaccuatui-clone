@@ -1,14 +1,6 @@
 import { replaceDashUrl } from 'share/utilities'
 import removeVietnameseTones from 'share/removeVietnameseTones'
 
-export const animationConfig = {
-	animationIn: 'fadeIn',
-	animationOut: 'fadeOut',
-	animationInDuration: 100,
-	animationOutDuration: 100,
-	style: { zIndex: 1 },
-}
-
 export const handleVideoLink = (keyId, title, artists) => {
 	const artistLink = artists.reduce((acc, cur, i) => {
 		if (!cur.shortLink) {

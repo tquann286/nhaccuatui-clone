@@ -9,11 +9,11 @@ import { Animated } from 'react-animated-css'
 
 import useOnClickOutside from 'hooks/useOnClickOutside'
 import {
-	animationConfig,
+	
 	handleVideoLink,
 } from 'services/VideoDetail'
 import { PROXY } from 'share/constants'
-import { createArtistUrl, toastConfig, copyNotify } from 'share/utilities'
+import { animationConfig, createArtistUrl, toastConfig, copyNotify } from 'share/utilities'
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'

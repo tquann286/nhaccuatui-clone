@@ -12,6 +12,16 @@
 
     .swiper {
       position: unset;
+			width: calc(100% + 16px );
+			margin: -8px;
+
+			.swiper-wrapper {
+				position: unset;
+
+				.swiper-slide {
+					position: unset;
+				}
+			}
 
       .t1-nav {
         @include display-flex;
@@ -23,7 +33,7 @@
         top: 0;
         right: 0;
         font-size: 18px;
-        margin-right: 38px;
+        margin-right: 32px;
         .cusArrow {
           @include transition-effect(0.1s);
           @include hoverMainColor;
@@ -72,11 +82,11 @@
 						position: absolute;
 						width: 100%;
 						height: 100%;
-						transition: all 0.25s ease;
+						transition: all 0.3s ease;
 					}
 
 					.pl-extensions {
-						@include transition-effect(0.25s);
+						@include transition-effect(0.3s);
 						position: absolute;
 						top: 0;
 						width: 100%;
@@ -125,6 +135,47 @@
 
 					&:hover .pl-extensions {
 						opacity: 1;
+					}
+				}
+			}
+
+			.t1-more-options-box {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				border-radius: 4px;
+				background-color: $light-color;
+				box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+				z-index: 1;
+				user-select: none;
+	
+				ul {
+					background-color: rgba(0, 0, 0, 0.05);
+					border-radius: 4px;
+					cursor: pointer;
+					li {
+						@include display-flex;
+						@include align-items(center);
+						@include transition-effect(0.1s);
+						border-radius: 4px 4px 0 0;
+						height: 32px;
+						padding-left: 8px;
+						padding: 6px;
+	
+						svg {
+							@include dark-color-text(0.5);
+							font-size: 17px;
+						}
+	
+						span {
+							@include dark-color-text(0.88);
+							font-size: 12px;
+							margin-left: 8px;
+						}
+	
+						&:hover {
+							background-color: rgba(28, 30, 32, 0.1);
+						}
 					}
 				}
 			}
