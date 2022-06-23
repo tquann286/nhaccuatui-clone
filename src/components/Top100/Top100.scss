@@ -2,12 +2,131 @@
 
 .t1-container {
   position: relative;
-  
+
   .t1-title {
     @include main-title-scss;
   }
 
   .t1-main {
+    margin: 16px 32px 0;
 
-  }
+    .swiper {
+      position: unset;
+
+      .t1-nav {
+        @include display-flex;
+        @include align-items(center);
+        @include dark-color-text(0.5);
+        
+        height: 30px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 18px;
+        margin-right: 38px;
+        .cusArrow {
+          @include transition-effect(0.1s);
+          @include hoverMainColor;
+          cursor: pointer;
+
+          &.prevArr {
+            margin: 0 8px;
+
+            &.disabled {
+              cursor: default;
+              color: $disabled-color;
+            }
+          }
+
+          &.nextArr {
+            &.disabled {
+              cursor: default;
+              color: $disabled-color;
+            }
+          }
+        }
+      }
+    }
+
+			.pl-container {
+				padding: 0 8px;
+
+				.pl-img-container {
+					position: relative;
+					width: 100%;
+					border: 1px solid rgba(28, 30, 32, 0.05);
+					border-radius: 4px;
+					overflow: hidden;
+					box-shadow: $box-shadow-effect;
+					-webkit-box-shadow: $box-shadow-effect;
+					-moz-box-shadow: $box-shadow-effect;
+					cursor: pointer;
+
+					&::after {
+						content: '';
+						display: block;
+						padding-bottom: 100%;
+					}
+
+					img {
+						position: absolute;
+						width: 100%;
+						height: 100%;
+						transition: all 0.25s ease;
+					}
+
+					.pl-extensions {
+						@include transition-effect(0.25s);
+						position: absolute;
+						top: 0;
+						width: 100%;
+						height: 100%;
+						background-color: rgba(0, 0, 0, 0.5);
+						opacity: 0;
+						.pl-play-btn {
+							@include display-flex;
+							@include align-items(center);
+							@include justify-content(center);
+
+							text-align: center;
+							height: 100%;
+
+							svg {
+								@include transition-effect(0.1s);
+
+								font-size: 36px;
+								color: rgba(255, 255, 255, 0.88);
+								will-change: opacity, transform;
+
+								&:hover {
+									-webkit-transform: scale(1.1);
+									-ms-transform: scale(1.1);
+									transform: scale(1.1);
+								}
+							}
+						}
+
+						.pl-more {
+							position: absolute;
+							top: 0px;
+							right: 0px;
+
+							svg {
+								color: #fff;
+								font-size: 26px;
+								margin-top: 3px;
+							}
+						}
+					}
+
+					&:hover img {
+						transform: scale(1.15);
+					}
+
+					&:hover .pl-extensions {
+						opacity: 1;
+					}
+				}
+			}
+		}
 }
