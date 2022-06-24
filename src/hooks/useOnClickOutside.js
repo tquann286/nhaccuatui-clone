@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 
-function useOnClickOutside(ref, parentRef, handler) {
+const useOnClickOutside = (ref, parentRef, handler) => {
 	useEffect(
 		() => {
 			const listener = (event) => {

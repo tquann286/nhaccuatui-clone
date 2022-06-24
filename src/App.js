@@ -1,4 +1,5 @@
 import React from 'react'
+import { useStore } from 'hooks'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -6,6 +7,10 @@ import './App.scss'
 import { Homepage, NotFound } from 'pages'
 
 const App = () => {
+	const [state, dispatch] = useStore()
+
+	console.log(state)
+
 	return (
 		<BrowserRouter>
 			<Routes>

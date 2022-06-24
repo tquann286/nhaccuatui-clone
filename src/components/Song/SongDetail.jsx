@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { PROXY } from 'share/constants'
-import useOnClickOutside from 'hooks/useOnClickOutside'
+import {useOnClickOutside} from 'hooks'
 
 import { BsHeadphones, BsLink45Deg, BsMusicNote } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'

@@ -8,7 +8,6 @@ import SwiperSlider from './SwiperSlider'
 import { SlidePrevButton, SlideNextButton } from 'components/CustomNav/CustomNav'
 
 const Top100 = ({ top100List }) => {
-  console.log(top100List)
 
   return (
     <div className="t1-container">

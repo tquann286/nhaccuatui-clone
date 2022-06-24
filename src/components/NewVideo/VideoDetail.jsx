@@ -7,7 +7,7 @@ import { SiApplemusic } from 'react-icons/si'
 import { isEmpty } from 'lodash'
 import { Animated } from 'react-animated-css'
 
-import useOnClickOutside from 'hooks/useOnClickOutside'
+import {useOnClickOutside} from 'hooks'
 import {
 	
 	handleVideoLink,
