@@ -9,7 +9,7 @@ const reducer = (state, action) => {
     case TOGGLE_SHOW_MORE:
       return {
         ...state,
-        showMoreOptions: action.payload
+        showMoreOptions: !state.showMoreOptions
       }
     default:
       throw new Error('Invalid action.')
