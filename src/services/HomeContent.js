@@ -5,7 +5,7 @@ export const fetchHomeData = async () => {
   let homeData = await getHome()
   let { ranking: usukRanking } = await getChart({ category: 'au-my' })
   let { ranking: kpopRanking } = await getChart({ category: 'nhac-han' })
-
+  
   if (homeData) {
     homeData.ranking.region = 'Việt Nam'
     homeData.ranking.bgImage = bg_1
