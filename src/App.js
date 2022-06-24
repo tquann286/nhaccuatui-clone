@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStore } from 'hooks'
+import { useStore, actions } from 'store'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
