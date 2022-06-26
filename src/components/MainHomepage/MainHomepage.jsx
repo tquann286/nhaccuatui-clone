@@ -3,7 +3,7 @@ import './MainHomepage.scss'
 
 import { fetchHomeData } from 'services/HomeContent'
 
-import { Loading, ShowcaseSlider, TopicEvent, NewRelease, MusicRanking, NewVideo, Song, HotTopic, Top100 } from 'components'
+import { Loading, ShowcaseSlider, TopicEvent, NewRelease, MusicRanking, NewVideo, Song, HotTopic, Top100, Footer } from 'components'
 
 const MainHomepage = () => {
 	const [homeContent, setHomeContent] = useState({})
@@ -42,6 +42,7 @@ const MainHomepage = () => {
 			<Song song={song} />
 			<HotTopic hotTopic={topic} />
 			<Top100 top100List={top100} />
+			<Footer />
 		</div>
 	)
 }
