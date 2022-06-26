@@ -3,17 +3,7 @@ import './MainHomepage.scss'
 
 import { fetchHomeData } from 'services/HomeContent'
 
-import {
-	Loading,
-	ShowcaseSlider,
-	TopicEvent,
-	NewRelease,
-	MusicRanking,
-	NewVideo,
-	Song,
-	HotTopic,
-	Top100
-} from 'components'
+import { Loading, ShowcaseSlider, TopicEvent, NewRelease, MusicRanking, NewVideo, Song, HotTopic, Top100 } from 'components'
 
 const MainHomepage = () => {
 	const [homeContent, setHomeContent] = useState({})
@@ -40,18 +30,7 @@ const MainHomepage = () => {
 		)
 	}
 
-	const {
-		showcase,
-		topicEvent,
-		newRelease,
-		ranking,
-		usukRanking,
-		kpopRanking,
-		video,
-		song,
-		topic,
-		top100
-	} = homeContent
+	const {showcase, topicEvent, newRelease, ranking, usukRanking, kpopRanking, video, song, topic, top100} = homeContent
 
 	return (
 		<div className='hp-main'>
