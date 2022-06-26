@@ -1,1 +1,36 @@
 @import '_settings.scss';
+
+.ft-container {
+	margin-top: 80px;
+	border-top: $border-light;
+
+	.ft-main {
+		@include display-flex;
+		@include align-items(center);
+		@include justify-content(space-between);
+		height: 5.6rem;
+		margin: 0 3.2rem;
+		border-bottom: $border-light;
+
+		.ft-owner {
+			color: rgba(28, 30, 32, 0.5);
+			font-size: 13px;
+			display: inline-block;
+			border-right: 2px solid rgba(28, 30, 32, 0.05);
+			padding-right: 10px;
+      
+      .ft-tel {
+        @include display-flex;
+
+        svg {
+          margin-right: 8px;
+        }
+      }
+		}
+
+    .ft-related-link {
+      @include display-flex;
+      @include align-items(center);
+    }
+	}
+}

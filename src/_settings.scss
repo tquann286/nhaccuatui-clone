@@ -7,6 +7,7 @@ $dark-text-color: rgba(28, 30, 32, 0.88);
 $main-text-color: #2daaed;
 $box-shadow-effect: 0 4px 8px rgba(0, 0, 0, 0.2);
 $disabled-color: rgba(28, 30, 32, 0.2);
+$border-light: 1px solid rgba(28,30,32,0.05);
 
 // Mixin
 @mixin transition-effect($time) {
