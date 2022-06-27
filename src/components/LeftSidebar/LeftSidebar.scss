@@ -1,5 +1,7 @@
 @import '_settings.scss';
 
+$scale: 50px;
+
 .left-sidebar {
 	height: 100vh;
 	width: $left-sidebar-width;
@@ -15,14 +17,33 @@
 	.ls-logo-theme {
 		@include flexCenter;
 		width: inherit;
-    height: 64px;
-    margin: 0 auto;
-    position: relative;
+		height: 64px;
+		margin: 0 auto;
+		position: relative;
 
 		a.ls-logo {
 			width: 48px;
 			height: 24px;
 			margin-left: 16px;
+		}
+	}
+
+	.theme-container {
+		input[type='checkbox'] {
+			display: none;
+		}
+
+		.box {
+			@include common(row, null, center, $scale, $scale/2, #000);
+			border-radius: $scale/4;
+			cursor: pointer;
+
+			.ball {
+				@include common(null, null, null, $scale/2, $scale/2, grey);
+				position: absolute;
+				border-radius: 50%;
+				border: 3px solid black;
+			}
 		}
 	}
 }

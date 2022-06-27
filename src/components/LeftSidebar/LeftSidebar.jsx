@@ -1,13 +1,14 @@
 import React from 'react'
 import './LeftSidebar.scss'
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom'
+
 import nctLogo from 'images/nct-logo.png'
 
-import { useStore, actions } from 'store';
+import {useStore, actions} from 'store'
 
 const LeftSidebar = () => {
 	const [state, dispatch] = useStore()
-	const { theme } = state
+	const {theme} = state
 	console.log(theme)
 
 	const handleChangeTheme = () => {
@@ -22,9 +23,19 @@ const LeftSidebar = () => {
 
 	return (
 		<div className='left-sidebar'>
-			<div className="ls-logo-theme">
-				<Link className='ls-logo' to='/'><img src={nctLogo} alt="NCT" /></Link>
-				<button onClick={handleChangeTheme}>Theme</button>
+			<div className='ls-logo-theme'>
+				<Link className='ls-logo' to='/'>
+					<img src={nctLogo} alt='NCT' />
+				</Link>
+				<div className='theme-container'>
+					<input type='checkbox' name='theme' id='theme' />
+					<label htmlFor='check'>
+						<div className='box'>
+							<div className='ball'>
+							</div>
+						</div>
+					</label>
+				</div>
 			</div>
 		</div>
 	)

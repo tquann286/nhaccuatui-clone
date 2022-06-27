@@ -14,7 +14,7 @@ const App = () => {
 		if (localTheme) {
 			dispatch(actions.setTheme(localTheme))
 		} else {
-			localStorage.setItem('theme', 'dark')
+			localStorage.setItem('theme', 'light')
 		}
 
 		console.log(localTheme)

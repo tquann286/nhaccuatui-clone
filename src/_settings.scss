@@ -7,7 +7,7 @@ $dark-text-color: rgba(28, 30, 32, 0.88);
 $main-text-color: #2daaed;
 $box-shadow-effect: 0 4px 8px rgba(0, 0, 0, 0.2);
 $disabled-color: rgba(28, 30, 32, 0.2);
-$border-light: 1px solid rgba(28,30,32,0.05);
+$border-light: 1px solid rgba(28, 30, 32, 0.05);
 
 // Mixin
 @mixin transition-effect($time) {
@@ -67,21 +67,32 @@ $border-light: 1px solid rgba(28,30,32,0.05);
 
 @mixin main-title-scss {
 	@include dark-color-text(0.88);
-		margin-top: 40px;
-		margin-left: 32px;
-		font-size: 24px;
-		font-weight: 700;
-		text-transform: capitalize;
-		a {
-			@include transition-effect(0.1s);
-			@include hoverMainColor;
-		}
+	margin-top: 40px;
+	margin-left: 32px;
+	font-size: 24px;
+	font-weight: 700;
+	text-transform: capitalize;
+	a {
+		@include transition-effect(0.1s);
+		@include hoverMainColor;
+	}
 }
 
 @mixin hoverSvgColor($value) {
 	svg:hover {
 		color: $value;
 	}
+}
+
+@mixin common($fd, $jc, $ai, $w, $h, $bc) {
+	@include display-flex;
+	@include justify-content($jc);
+	@include align-items($ai);
+	flex-direction: $fd;
+	width: $w;
+	height: $h;
+	background-color: $bc;
+	transition: all 0.75s ease;
 }
 
 // Size
