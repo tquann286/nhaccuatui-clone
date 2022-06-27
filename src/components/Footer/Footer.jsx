@@ -2,15 +2,14 @@ import React from 'react'
 import './Footer.scss'
 
 import {FaPhoneAlt} from 'react-icons/fa'
-import {BsInstagram} from 'react-icons/bs'
-import {AiOutlineFacebook, AiFillGithub} from 'react-icons/ai'
+import {AiOutlineFacebook, AiFillGithub, AiOutlineInstagram} from 'react-icons/ai'
 
 const Footer = () => {
 	return (
 		<div className='ft-container'>
 			<div className='ft-main'>
 				<div className='ft-owner'>
-					Website cloned by: tquann286_
+					Cloned by: tquann286_
 					<a href='tel:0935802747'>
 						<div className='ft-tel'>
 							<FaPhoneAlt />
@@ -23,7 +22,7 @@ const Footer = () => {
 						<AiOutlineFacebook />
 					</a>
 					<a href='https://www.instagram.com/tquann286_/' target='_blank' rel='noopener' className='insta-icon'>
-						<BsInstagram />
+						<AiOutlineInstagram />
 					</a>
 					<a href='https://github.com/tquann286' target='_blank' rel='noopener' className='git-icon'>
 						<AiFillGithub />

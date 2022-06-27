@@ -78,6 +78,12 @@ $border-light: 1px solid rgba(28,30,32,0.05);
 		}
 }
 
+@mixin hoverSvgColor($value) {
+	svg:hover {
+		color: $value;
+	}
+}
+
 // Size
 $left-sidebar-width: 200px;
 $right-sidebar-width: 320px;

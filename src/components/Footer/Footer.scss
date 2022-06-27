@@ -2,35 +2,54 @@
 
 .ft-container {
 	margin-top: 80px;
-	border-top: $border-light;
+	border: $border-light ;
 
 	.ft-main {
 		@include display-flex;
 		@include align-items(center);
 		@include justify-content(space-between);
-		height: 5.6rem;
-		margin: 0 3.2rem;
-		border-bottom: $border-light;
+		height: 56px;
+		margin: 0 32px;
 
 		.ft-owner {
-			color: rgba(28, 30, 32, 0.5);
+			@include dark-color-text(0.5);
 			font-size: 13px;
 			display: inline-block;
 			border-right: 2px solid rgba(28, 30, 32, 0.05);
 			padding-right: 10px;
-      
-      .ft-tel {
-        @include display-flex;
 
-        svg {
-          margin-right: 8px;
-        }
-      }
+			.ft-tel {
+				@include display-flex;
+				@include align-items(center);
+
+				svg {
+					margin-right: 8px;
+				}
+			}
 		}
 
-    .ft-related-link {
-      @include display-flex;
-      @include align-items(center);
-    }
+		.ft-related-link {
+			@include display-flex;
+			@include align-items(center);
+
+			& a:not(:last-child) {
+				margin-right: 4px;
+			}
+
+			svg {
+				@include dark-color-text(0.5);
+				font-size: 26px;
+			}
+			@include transition-effect(0.2s);
+			.fb-icon {
+				@include hoverSvgColor(#4267b2);
+			}
+			.insta-icon {
+				@include hoverSvgColor(#ff5038c9);
+			}
+			.git-icon {
+				@include hoverSvgColor(#24292f);
+			}
+		}
 	}
 }
