@@ -20,7 +20,7 @@ const MainHomepage = () => {
 		}
 	}, [])
 
-	if (isLoading) {
+	if (!isLoading) {
 		return (
 			<div className='hp-main'>
 				<div className='loading-container'>
@@ -34,15 +34,16 @@ const MainHomepage = () => {
 
 	return (
 		<div className='hp-main'>
-			<ShowcaseSlider showcase={showcase} />
-			<TopicEvent topicEvent={topicEvent} />
-			<NewRelease newRelease={newRelease} />
-			<MusicRanking ranking={[ranking, usukRanking, kpopRanking]} />
-			<NewVideo videos={video} />
-			<Song song={song} />
-			<HotTopic hotTopic={topic} />
-			<Top100 top100List={top100} />
-			<Footer />
+			{// <ShowcaseSlider showcase={showcase} />
+			// <TopicEvent topicEvent={topicEvent} />
+			// <NewRelease newRelease={newRelease} />
+			// <MusicRanking ranking={[ranking, usukRanking, kpopRanking]} />
+			// <NewVideo videos={video} />
+			// <Song song={song} />
+			// <HotTopic hotTopic={topic} />
+			// <Top100 top100List={top100} />
+			// <Footer />
+		}
 		</div>
 	)
 }
