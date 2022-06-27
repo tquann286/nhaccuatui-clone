@@ -6,5 +6,23 @@
 	background-color: $main-bg-color;
 	position: fixed;
 	top: 0;
-	left: 0;
+	left: 1px;
+	overflow: hidden auto;
+	overscroll-behavior-y: contain;
+	border: $border-light;
+	z-index: 1;
+
+	.ls-logo-theme {
+		@include flexCenter;
+		width: inherit;
+    height: 64px;
+    margin: 0 auto;
+    position: relative;
+
+		a.ls-logo {
+			width: 48px;
+			height: 24px;
+			margin-left: 16px;
+		}
+	}
 }

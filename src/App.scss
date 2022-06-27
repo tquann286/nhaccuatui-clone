@@ -54,3 +54,15 @@ a {
 ul {
 	list-style: none;
 }
+
+img {
+	vertical-align: middle;
+}
+
+img {
+	border-style: none;
+}
+
+img, object, embed {
+	max-width: 100%;
+}
