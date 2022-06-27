@@ -4,7 +4,8 @@
 	width: calc(100% - #{$left-sidebar-width} - #{$right-sidebar-width});
 	margin-left: $left-sidebar-width;
 	margin-right: $right-sidebar-width;
-	background-color: $homepage-bg-color;
+	background-color: $main-bg-color;
+	padding-bottom: 10px;
 
 	.loading-container {
 		@include display-flex;
