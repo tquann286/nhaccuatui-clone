@@ -1,7 +1,7 @@
-import {TOGGLE_SHOW_MORE, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME} from 'share/constants'
+import { SET_THEME, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME} from 'share/constants'
 
-export const toggleShowMore = (payload) => ({
-	type: TOGGLE_SHOW_MORE,
+export const setTheme = (payload) => ({
+	type: SET_THEME,
 	payload,
 })
 

@@ -13,8 +13,10 @@ const LeftSidebar = () => {
 	const handleChangeTheme = () => {
 		if (theme === 'light') {
 			dispatch(actions.changeDarkTheme())
+			localStorage.setItem('theme', 'dark')
 		} else if (theme === 'dark') {
 			dispatch(actions.changeLightTheme())
+			localStorage.setItem('theme', 'light')
 		}
 	}
 

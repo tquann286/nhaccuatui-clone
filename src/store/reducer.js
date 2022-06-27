@@ -1,4 +1,4 @@
-import {TOGGLE_SHOW_MORE, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME} from 'share/constants'
+import {TOGGLE_SHOW_MORE, SET_THEME, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME} from 'share/constants'
 
 export const initState = {
 	showMoreOptions: false,
@@ -7,10 +7,10 @@ export const initState = {
 
 const reducer = (state, action) => {
 	switch (action.type) {
-		case TOGGLE_SHOW_MORE:
+		case SET_THEME:
 			return {
 				...state,
-				showMoreOptions: !state.showMoreOptions,
+				theme: action.payload,
 			}
 		case CHANGE_LIGHT_THEME:
 			return {

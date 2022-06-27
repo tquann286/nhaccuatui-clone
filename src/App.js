@@ -1,11 +1,24 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useStore, actions } from 'store';
 
 import './App.scss'
-import { Homepage, NotFound } from 'pages'
+import {Homepage, NotFound} from 'pages'
 
 const App = () => {
+	const [state, dispatch] = useStore()
+
+	useEffect(() => {
+		const localTheme = localStorage.getItem('theme')
+		if (localTheme) {
+			dispatch(actions.setTheme(localTheme))
+		} else {
+			localStorage.setItem('theme', 'dark')
+		}
+
+		console.log(localTheme)
+	}, [])
 
 	return (
 		<BrowserRouter>
