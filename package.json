@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "lodash": "^4.17.21",
     "millify": "^4.0.0",
+    "nhaccuatui-api": "^1.0.0",
     "nhaccuatui-api-full": "^1.1.0",
     "node-sass": "^7.0.1",
     "react": "^18.1.0",
