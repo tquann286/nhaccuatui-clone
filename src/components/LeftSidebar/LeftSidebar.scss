@@ -15,7 +15,9 @@ $scale: 50px;
 	z-index: 1;
 
 	.ls-logo-theme {
-		@include flexCenter;
+		@include display-flex;
+		@include justify-content(space-between);
+		@include align-items(center);
 		width: inherit;
 		height: 64px;
 		margin: 0 auto;
@@ -26,24 +28,35 @@ $scale: 50px;
 			height: 24px;
 			margin-left: 16px;
 		}
-	}
 
-	.theme-container {
-		input[type='checkbox'] {
-			display: none;
-		}
-
-		.box {
-			@include common(row, null, center, $scale, $scale/2, #000);
-			border-radius: $scale/4;
-			cursor: pointer;
-
-			.ball {
-				@include common(null, null, null, $scale/2, $scale/2, grey);
-				position: absolute;
-				border-radius: 50%;
-				border: 3px solid black;
+		.theme-container {
+			margin-right: 16px;
+			
+			.box {
+				@include common(column, center, null, $scale, $scale/2, #000);
+				border-radius: $scale/4;
+				cursor: pointer;
+	
+				.ball {
+					@include common(null, null, null, $scale/2, $scale/2, grey);
+					position: absolute;
+					border-radius: 50%;
+					border: 3px solid black;
+				}
+	
+				.scenary {
+					display: flex;
+					flex-direction: row;
+					justify-content: space-between;
+					padding: 4px 4px 0px 4px;
+					svg {
+						width: $scale/3;
+						color: #FFD347;
+					}
+				}
 			}
 		}
 	}
+
+	
 }
