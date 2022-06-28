@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import nctLogo from 'images/nct-logo.png'
 
 import {useStore, actions} from 'store'
+import {BsMoonStarsFill, BsSunFill} from 'react-icons/bs'
 
 const LeftSidebar = () => {
 	const [state, dispatch] = useStore()
@@ -32,6 +33,14 @@ const LeftSidebar = () => {
 					<label htmlFor='check'>
 						<div className='box'>
 							<div className='ball'>
+								<div className='scenary'>
+									<div className='moon'>
+										<BsMoonStarsFill />
+									</div>
+									<div className='sun'>
+										<BsSunFill />
+									</div>
+								</div>
 							</div>
 						</div>
 					</label>
