@@ -1,7 +1,8 @@
 @import '_settings.scss';
 
-$scale: 50px;
 $ball-color: #BFBFBF;
+
+$scale: 50px;
 
 .left-sidebar {
 	height: 100vh;
@@ -43,6 +44,7 @@ $ball-color: #BFBFBF;
 					@include common(null, null, null, $scale/2, $scale/2, $ball-color);
 					position: absolute;
 					border-radius: 50%;
+					z-index: 1;
 				}
 	
 				.scenary {
@@ -53,6 +55,7 @@ $ball-color: #BFBFBF;
 					svg {
 						width: $scale/3;
 						color: #FFD347;
+						filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.2));
 					}
 				}
 			}
