@@ -1,6 +1,7 @@
 @import '_settings.scss';
 
 $scale: 50px;
+$ball-color: #BFBFBF;
 
 .left-sidebar {
 	height: 100vh;
@@ -33,15 +34,15 @@ $scale: 50px;
 			margin-right: 16px;
 			
 			.box {
-				@include common(column, center, null, $scale, $scale/2, #000);
+				@include common(column, center, null, $scale, $scale/2, #fff);
 				border-radius: $scale/4;
 				cursor: pointer;
+				border: 1px solid #CFCECF;
 	
 				.ball {
-					@include common(null, null, null, $scale/2, $scale/2, grey);
+					@include common(null, null, null, $scale/2, $scale/2, $ball-color);
 					position: absolute;
 					border-radius: 50%;
-					border: 3px solid black;
 				}
 	
 				.scenary {
