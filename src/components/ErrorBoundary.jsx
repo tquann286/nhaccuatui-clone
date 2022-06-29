@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import { NotFound } from 'pages'
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class ErrorBoundary extends Component {
   }
   render() {
     if (this.state.hasError) {
-      return <h4>Something went wrong</h4>
+      return <NotFound />
     }
     return this.props.children
   }
