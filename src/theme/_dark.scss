@@ -1,5 +1,10 @@
 $main-bg-color-dark: #1D2631;
 $border-dark: 1px solid rgba(244,246,248,0.05);
+$dark-color: #1e1e1e;
+
+// Left sidebar
+$box-border-dark: 1px solid #303130;
+$ball-color-dark: #404040;
 
 body[data-theme='dark'] {
   .hp-container {
@@ -8,5 +13,17 @@ body[data-theme='dark'] {
 
   .left-sidebar, .right-sidebar {
     border: $border-dark;
+  }
+
+  .left-sidebar {
+
+    .box {
+      background-color: $dark-color !important;
+      border: $box-border-dark !important;
+
+      .ball {
+        background-color: $ball-color-dark !important;
+      }
+    }
   }
 }

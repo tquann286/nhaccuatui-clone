@@ -1,6 +1,8 @@
 @import 'settings';
 
+$box-border: 1px solid #CFCECF;
 $ball-color: #BFBFBF;
+
 
 $scale: 50px;
 
@@ -35,10 +37,10 @@ $scale: 50px;
 			margin-right: 16px;
 			
 			.box {
-				@include common(column, center, null, $scale, $scale/2, #fff);
+				@include common(column, center, null, $scale, $scale/2, $light-color);
 				border-radius: $scale/4;
 				cursor: pointer;
-				border: 1px solid #CFCECF;
+				border: $box-border;
 	
 				.ball {
 					@include common(null, null, null, $scale/2, $scale/2, $ball-color);
