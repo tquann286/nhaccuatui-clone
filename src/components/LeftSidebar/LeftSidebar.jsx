@@ -10,7 +10,6 @@ import { BsMoonStarsFill, BsSunFill } from 'react-icons/bs'
 const LeftSidebar = () => {
   const [state, dispatch] = useStore()
   const { theme } = state
-  console.log(theme)
 
   const handleChangeTheme = () => {
     if (theme === 'light') {
