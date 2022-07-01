@@ -2,6 +2,15 @@
 
 @import 'theme/dark';
 
+@import 'sass/abstracts/functions';
+@import 'sass/abstracts/mixins';
+@import 'sass/abstracts/variables';
+
+@import 'sass/base/animations';
+@import 'sass/base/base';
+@import 'sass/base/typography';
+@import 'sass/base/utilities';
+
 // Color
 $light-color: #fafafa;
 $main-bg-color: #f6f6f6;
