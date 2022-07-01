@@ -1,8 +1,9 @@
 @import 'settings';
 
 .ft-container {
+	@include dark-color-text(0.5);
 	margin-top: 80px;
-	border: $border-light ;
+	border: $border-light;
 
 	.ft-main {
 		@include display-flex;
@@ -12,7 +13,6 @@
 		margin: 0 32px;
 
 		.ft-owner {
-			@include dark-color-text(0.5);
 			font-size: 13px;
 			display: inline-block;
 			border-right: 2px solid rgba(28, 30, 32, 0.05);
@@ -37,7 +37,6 @@
 			}
 
 			svg {
-				@include dark-color-text(0.5);
 				font-size: 26px;
 			}
 			@include transition-effect(0.2s);
