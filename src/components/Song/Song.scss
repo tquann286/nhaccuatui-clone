@@ -115,7 +115,7 @@
 					overflow: hidden;
 
 					.sd-song-title {
-						@include dark-color-text(0.88);
+						
 						@include fitContentWidth;
 						font-size: 13px;
 						font-weight: 500;
@@ -186,7 +186,7 @@
 					}
 
 					span {
-						@include dark-color-text(0.88);
+						
 						font-size: 12px;
 						margin-left: 8px;
 					}
