@@ -1,0 +1,86 @@
+// Mixin
+@mixin transition-effect($time) {
+  transition: all $time ease;
+  -webkit-transition: all $time ease;
+  -moz-transition: all $time ease;
+}
+
+@mixin display-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin align-items($value) {
+  -webkit-align-items: $value;
+  -webkit-box-align: $value;
+  -ms-flex-align: $value;
+  align-items: $value;
+}
+
+@mixin justify-content($value) {
+  -webkit-box-pack: $value;
+  -webkit-justify-content: $value;
+  -ms-flex-pack: $value;
+  justify-content: $value;
+}
+
+@mixin flexCenter {
+  @include display-flex;
+  @include align-items(center);
+  @include justify-content(center);
+}
+
+@mixin hoverMainColor {
+  &:hover {
+    color: $main-text-color;
+  }
+}
+
+@mixin fitContentWidth {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+@mixin transform-effect($value) {
+  -webkit-transform: $value;
+  -ms-transform: $value;
+  transform: $value;
+}
+
+@mixin dark-color-text($value) {
+  color: rgba(28, 30, 32, $value);
+}
+
+@mixin main-title-scss {
+  @include dark-color-text(0.88);
+  margin-top: 40px;
+  margin-left: 32px;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: capitalize;
+  a {
+    @include transition-effect(0.1s);
+    @include hoverMainColor;
+  }
+}
+
+@mixin hoverSvgColor($value) {
+  svg:hover {
+    color: $value;
+  }
+}
+
+@mixin common($fd, $jc, $ai, $w, $h, $bc) {
+  @include display-flex;
+  @include justify-content($jc);
+  @include align-items($ai);
+  flex-direction: $fd;
+  width: $w;
+  height: $h;
+  background-color: $bc;
+  transition: all 0.75s ease;
+}
+
