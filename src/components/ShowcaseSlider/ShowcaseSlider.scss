@@ -1,9 +1,9 @@
-@import '_settings.scss';
+@import 'settings';
 
 .sc-container {
 	width: 100%;
 	height: calc(calc(100vw - 35rem) * 2 / 5 + 3.8rem);
-	padding-top: 24px;
+	padding: 24px;
 
 	.sc-img-container {
 		.sc-img-slider {
@@ -11,6 +11,7 @@
 			background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
+			border-radius: 8px;
 		}
 	}
 

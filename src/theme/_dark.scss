@@ -6,7 +6,7 @@ body[data-theme='dark'] {
     background-color: $main-bg-color-dark;
   }
 
-  .left-sidebar {
+  .left-sidebar, .right-sidebar {
     border: $border-dark;
   }
 }
