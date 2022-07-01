@@ -6,6 +6,7 @@ import nctLogo from 'images/nct-logo.png'
 
 import { useStore, actions } from 'store'
 import { BsMoonStarsFill, BsSunFill } from 'react-icons/bs'
+import { AiOutlineSetting } from 'react-icons/ai'
 
 const LeftSidebar = () => {
   const [state, dispatch] = useStore()
@@ -38,6 +39,18 @@ const LeftSidebar = () => {
                 <BsSunFill />
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="ls-auth-setting">
+        <div className="ls-auth">
+          <div className="ls-auth-main">
+            <p>Đăng nhập</p>
+          </div>
+        </div>
+        <div className="ls-setting">
+          <div className="ls-setting-icon">
+            <AiOutlineSetting />
           </div>
         </div>
       </div>

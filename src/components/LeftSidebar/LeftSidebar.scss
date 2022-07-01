@@ -1,68 +1,109 @@
 @import 'settings';
 
-$box-border: 1px solid #CFCECF;
-$ball-color: #BFBFBF;
-
+$box-border: 1px solid #cfcecf;
+$ball-color: #bfbfbf;
 
 $scale: 50px;
 
 .left-sidebar {
-	@include transition-effect(0.75s);
-	height: 100vh;
-	width: $left-sidebar-width;
-	position: fixed;
-	top: 0;
-	left: 1px;
-	overflow: hidden auto;
-	overscroll-behavior-y: contain;
-	border-right: $border-light;
-	z-index: 1;
+  @include transition-effect(0.75s);
+  height: 100vh;
+  width: $left-sidebar-width;
+  position: fixed;
+  top: 0;
+  left: 1px;
+  overflow: hidden auto;
+  overscroll-behavior-y: contain;
+  border-right: $border-light;
+  z-index: 1;
 
-	.ls-logo-theme {
-		@include display-flex;
-		@include justify-content(space-between);
-		@include align-items(center);
-		width: inherit;
-		height: 64px;
-		margin: 0 auto;
-		position: relative;
+  .ls-logo-theme {
+    @include display-flex;
+    @include justify-content(space-between);
+    @include align-items(center);
+    width: inherit;
+    height: 64px;
+    margin: 0 auto;
+    position: relative;
 
-		a.ls-logo {
-			width: 48px;
-			height: 24px;
-			margin-left: 16px;
-		}
+    a.ls-logo {
+      width: 48px;
+      height: 24px;
+      margin-left: 16px;
+    }
 
-		.theme-container {
-			margin-right: 16px;
-			
-			.box {
-				@include common(column, center, null, $scale, $scale/2, $light-color);
-				border-radius: $scale/4;
-				cursor: pointer;
-				border: $box-border;
-	
-				.ball {
-					@include common(null, null, null, $scale/2, $scale/2, $ball-color);
-					position: absolute;
-					border-radius: 50%;
-					z-index: 1;
-				}
-	
-				.scenary {
-					display: flex;
-					flex-direction: row;
-					justify-content: space-between;
-					padding: 4px 4px 0px 4px;
-					svg {
-						width: $scale/3;
-						color: #FFD347;
-						filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.2));
-					}
-				}
+    .theme-container {
+      margin-right: 16px;
+
+      .box {
+        @include common(column, center, null, $scale, $scale/2, $light-color);
+        border-radius: $scale/4;
+        cursor: pointer;
+        border: $box-border;
+
+        .ball {
+          @include common(null, null, null, $scale/2, $scale/2, $ball-color);
+          position: absolute;
+          border-radius: 50%;
+          z-index: 1;
+        }
+
+        .scenary {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 4px 4px 0px 4px;
+          svg {
+            width: $scale/3;
+            color: #ffd347;
+            filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.2));
+          }
+        }
+      }
+    }
+  }
+
+  .ls-auth-setting {
+    @include flexCenter;
+    @include justify-content(space-between);
+    width: inherit;
+    height: 56px;
+    background-color: $light-gray-bg-color;
+    color: $dark-text-color;
+
+    .ls-auth {
+      @include display-flex;
+      @include align-items(center);
+			@include transition-effect(0.1s);
+			@include hoverMainColor;
+      max-width: calc(100% - 38px);
+      margin-right: 8px;
+
+      &-main {
+        @include fitContentHeight;
+        @include fitContentWidth;
+        margin-left: 16px;
+        margin-right: 6px;
+        cursor: pointer;
+
+        p {
+          font-size: 12.8px;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .ls-setting {
+      @include fitContentWidth;
+			@include transition-effect(0.1s);
+			@include hoverMainColor;
+      margin-right: 18px;
+    
+			&-icon {
+				font-size: 16px;
+				opacity: 0.8;
+        cursor: pointer;
 			}
 		}
-	}
-
-	
+  }
 }

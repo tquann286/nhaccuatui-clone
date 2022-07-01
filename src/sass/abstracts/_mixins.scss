@@ -38,12 +38,6 @@
   }
 }
 
-@mixin fitContentWidth {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
 @mixin transform-effect($value) {
   -webkit-transform: $value;
   -ms-transform: $value;
@@ -84,3 +78,14 @@
   transition: all 0.75s ease;
 }
 
+@mixin fitContentHeight {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+@mixin fitContentWidth {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
