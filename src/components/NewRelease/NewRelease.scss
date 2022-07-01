@@ -55,7 +55,6 @@ $active-img-width: 160px;
 						@include hoverMainColor;
 						font-size: 14px;
 						line-height: 18px;
-						color: rgba(28, 30, 32, 0.88);
 						white-space: nowrap;
 						overflow: hidden;
 						text-overflow: ellipsis;
@@ -94,8 +93,8 @@ $active-img-width: 160px;
 								overflow: hidden;
 								font-size: 13px;
 								margin-left: 12px;
+								color: rgba(28, 30, 32, 0.5);
 								a {
-									color: rgba(28, 30, 32, 0.5);
 									span {
 										@include transition-effect(0.1s);
 										@include hoverMainColor;

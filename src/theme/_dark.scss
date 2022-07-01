@@ -1,7 +1,7 @@
-$main-bg-color-dark: #1D2631;
-$border-dark: 1px solid rgba(244,246,248,0.05);
+$main-bg-color-dark: #1d2631;
+$border-dark: 1px solid rgba(244, 246, 248, 0.05);
 $dark-color: #1e1e1e;
-$darkmode-text-color:  rgba(244,246,248,0.88);
+$darkmode-text-color: rgba(244, 246, 248, 0.88);
 
 // Left sidebar
 $box-border-dark: 1px solid #303130;
@@ -13,12 +13,12 @@ body[data-theme='dark'] {
     background-color: $main-bg-color-dark;
   }
 
-  .left-sidebar, .right-sidebar {
+  .left-sidebar,
+  .right-sidebar {
     border: $border-dark;
   }
 
   .left-sidebar {
-
     .box {
       background-color: $dark-color !important;
       border: $box-border-dark !important;
@@ -26,6 +26,54 @@ body[data-theme='dark'] {
       .ball {
         background-color: $ball-color-dark !important;
       }
+    }
+
+    @mixin dark-color-text($value) {
+      color: rgba(244, 246, 248, $value);
+    }
+  }
+
+  .hp-main {
+  }
+
+  .nr-artist-name,
+  .nr-date-release,
+  .ma-active-artists,
+  .ma-watch-all,
+  .vd-artists,
+  .sd-artists span,
+  .sd-view-count svg,
+  .sc-view-number {
+    color: rgba(244, 246, 248, 0.5) !important;
+  }
+
+  .nr-active-slide,
+  .sd-main {
+    background-color: rgba(244, 246, 248, 0.02) !important;
+  }
+
+  .ma-watch-all {
+    border: 1px solid rgba(244, 246, 248, 0.1) !important;
+  }
+
+  .ma-active-position {
+    color: rgba(244, 246, 248, 0.05) !important;
+  }
+
+  .sd-three-dots {
+    color: rgba(244, 246, 248, 0.55) !important;
+  }
+
+  .so-more-options-box, .vd-more-options-box {
+    background-color: rgb(24, 34, 45) !important;
+
+    ul li svg {
+      color: rgba(244, 246, 248, 0.5) !important;
+    }
+  }
+  li:not(.slick-active) {
+    .customDots {
+      background-color: rgba(244, 246, 248, 0.1) !important;
     }
   }
 }
