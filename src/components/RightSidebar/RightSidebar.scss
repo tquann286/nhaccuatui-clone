@@ -1,10 +1,9 @@
 @import '_settings.scss';
 
 .right-sidebar {
+	@include transition-effect(0.75s);
 	height: 100vh;
 	width: $right-sidebar-width;
-	// background-color: #FAFAFA;
-	background-color: #555;
 	position: fixed;
 	top: 0;
 	right: 0;

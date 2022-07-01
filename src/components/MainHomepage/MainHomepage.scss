@@ -1,10 +1,10 @@
 @import '_settings.scss';
 
 .hp-main {
+	@include transition-effect(0.75s);
 	width: calc(100% - #{$left-sidebar-width} - #{$right-sidebar-width});
 	margin-left: $left-sidebar-width;
 	margin-right: $right-sidebar-width;
-	background-color: $main-bg-color;
 	padding-bottom: 8px;
 
 	.loading-container {

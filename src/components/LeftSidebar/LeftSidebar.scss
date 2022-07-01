@@ -5,9 +5,9 @@ $ball-color: #BFBFBF;
 $scale: 50px;
 
 .left-sidebar {
+	@include transition-effect(0.75s);
 	height: 100vh;
 	width: $left-sidebar-width;
-	background-color: $main-bg-color;
 	position: fixed;
 	top: 0;
 	left: 1px;

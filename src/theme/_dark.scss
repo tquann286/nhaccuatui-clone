@@ -1,0 +1,12 @@
+$main-bg-color-dark: #1D2631;
+$border-dark: 1px solid rgba(244,246,248,0.05);
+
+body[data-theme='dark'] {
+  .hp-container {
+    background-color: $main-bg-color-dark;
+  }
+
+  .left-sidebar {
+    border: $border-dark;
+  }
+}
