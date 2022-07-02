@@ -7,7 +7,7 @@ const useGetPosition = (ref, handle) => {
 			const top = ref.current.offsetTop
       handle(right, top)
     }
-  }, [ref, handle])
+  }, [])
 }
 
 export default useGetPosition
