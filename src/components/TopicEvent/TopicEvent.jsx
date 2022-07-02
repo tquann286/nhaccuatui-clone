@@ -4,6 +4,7 @@ import './TopicEvent.scss'
 
 import SwiperSlider from './SwiperSlider'
 
+import { removeDuplicate } from 'share'
 import { createPlaylistUrl } from 'share/utilities'
 import { getTopicEventTitle } from 'services/TopicEvent'
 
@@ -22,6 +23,8 @@ const TopicEvent = ({ topicEvent = [] }) => {
 		<div className='te-container'>
 			{topicEvent.map((topic) => {
 				const { vieTitle } = getTopicEventTitle(topic.groupName)
+				const listPlaylist = removeDuplicate(topic.listPlaylist, 'key')
+
 				return (
 					<div key={vieTitle} className='tp-container'>
 						<div className='tp-header'>
@@ -33,7 +36,7 @@ const TopicEvent = ({ topicEvent = [] }) => {
 									<SlidePrevButton />
 									<SlideNextButton />
 								</div>
-								{topic.listPlaylist.map((playlist) => {
+								{listPlaylist.map((playlist) => {
 									const { key, thumbnail, title } = playlist
 
 									return (
