@@ -2,11 +2,11 @@
 
 li {
   .customDots {
-    @include dark-color-text(0.1);
     width: 7px;
     height: 7px;
     border-radius: 5px;
     transition: all 0.25s ease;
+    background-color: rgba(28, 30, 32, 0.1);
   }
 
   &.slick-active {
