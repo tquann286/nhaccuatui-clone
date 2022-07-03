@@ -16,8 +16,6 @@ const App = () => {
     } else {
       localStorage.setItem('theme', 'light')
     }
-
-    console.log(localTheme)
   }, [])
 
   useEffect(() => {
