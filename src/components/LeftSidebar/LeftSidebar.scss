@@ -74,8 +74,8 @@ $scale: 50px;
     .ls-auth {
       @include display-flex;
       @include align-items(center);
-			@include transition-effect(0.1s);
-			@include hoverMainColor;
+      @include transition-effect(0.1s);
+      @include hoverMainColor;
       max-width: calc(100% - 38px);
       margin-right: 8px;
 
@@ -95,15 +95,18 @@ $scale: 50px;
 
     .ls-setting {
       @include fitContentWidth;
-			@include transition-effect(0.1s);
-			@include hoverMainColor;
+      @include transition-effect(0.1s);
+      @include hoverMainColor;
       margin-right: 18px;
-    
-			&-icon {
-				font-size: 16px;
-				opacity: 0.8;
+
+      &-icon {
+        font-size: 16px;
+        opacity: 0.8;
         cursor: pointer;
-			}
-		}
+        & svg {
+          @include transition-effect(0.5s);
+        }
+      }
+    }
   }
 }

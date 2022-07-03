@@ -1,16 +1,28 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import './LeftSidebar.scss'
 import { Link } from 'react-router-dom'
+
+import { PopupModal } from 'components'
+import SettingsModal from './SettingsModal'
 
 import nctLogo from 'images/nct-logo.png'
 
 import { useStore, actions } from 'store'
 import { BsMoonStarsFill, BsSunFill } from 'react-icons/bs'
 import { AiOutlineSetting } from 'react-icons/ai'
+import { useGetPosition } from 'hooks'
 
 const LeftSidebar = () => {
   const [state, dispatch] = useStore()
   const { theme } = state
+
+  const [showSettingsModal, setShowSettingsModal] = useState(false)
+  const [settingsModalPosition, setSettingsModalPosition] = useState({
+    top: 0,
+    left: 0,
+  })
+
+  const settingsBtnRef = useRef(null)
 
   const handleChangeTheme = () => {
     if (theme === 'light') {
@@ -21,6 +33,18 @@ const LeftSidebar = () => {
       localStorage.setItem('theme', 'light')
     }
   }
+
+  const toggleShowSettings = () => {
+    console.log('clicked')
+    setShowSettingsModal(!showSettingsModal)
+  }
+
+  useGetPosition(settingsBtnRef, (right, top) =>
+    setSettingsModalPosition({
+      top: top,
+      left: right
+    })
+  )
 
   return (
     <div className='left-sidebar'>
@@ -42,16 +66,19 @@ const LeftSidebar = () => {
           </div>
         </div>
       </div>
-      <div className="ls-auth-setting">
-        <div className="ls-auth">
-          <div className="ls-auth-main">
+      <div className='ls-auth-setting'>
+        <div className='ls-auth'>
+          <div className='ls-auth-main'>
             <p>Đăng nhập</p>
           </div>
         </div>
-        <div className="ls-setting">
-          <div className="ls-setting-icon">
-            <AiOutlineSetting />
+        <div className='ls-setting'>
+          <div className='ls-setting-icon' ref={settingsBtnRef} onClick={toggleShowSettings}>
+            <AiOutlineSetting style={showSettingsModal && { transform: 'rotate(60deg)' }} />
           </div>
+          <PopupModal showModal={showSettingsModal} modalPosition={settingsModalPosition} toggleModal={toggleShowSettings}>
+            <SettingsModal />
+          </PopupModal>
         </div>
       </div>
     </div>

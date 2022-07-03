@@ -19,7 +19,8 @@ import { Link, useNavigate } from 'react-router-dom'
 const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMapping }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
   const [showMorePosition, setShowMorePosition] = useState({
-    transform: `translate(${0}px, ${0}px)`,
+    top: 0,
+    left: 0
   })
   const videoRef = useRef(null)
   const moreDivRef = useRef(null)
@@ -29,7 +30,8 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
 
   useGetPosition(videoRef, (right, top) =>
     setShowMorePosition({
-      transform: `translate(${right}px, ${top}px)`,
+      top: top,
+      left: right
     })
   )
 
