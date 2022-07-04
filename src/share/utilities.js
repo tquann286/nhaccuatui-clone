@@ -1,14 +1,10 @@
 import { removeVietnameseTones } from 'share'
 import { toast } from 'react-toastify'
 
-export const getNavigateUrl = (url) => {
-  const startIndex = url.indexOf('nhaccuatui.com/') + 15
+export const covertTimestamp = (time) => {
+  const date = new Date(time)
 
-  if (startIndex !== 14) {
-    return url.substring(startIndex)
-  } else {
-    return '/'
-  }
+  return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
 }
 
 export const getPlaylistKeyId = (url) => {
@@ -30,12 +26,6 @@ export const createPlaylistUrl = (title, keyId) => {
   const playlistTitle = replaceDashUrl(title)
 
   return `/playlist/${playlistTitle}.&k=${keyId}`
-}
-
-export const covertTimestamp = (time) => {
-  const date = new Date(time)
-
-  return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
 }
 
 export const createSongUrl = (title, keyId) => {
@@ -65,6 +55,30 @@ export const createTopicUrl = (title, keyId) => {
 export const createTop100Url = (title, keyId) => {
   if (title && keyId) {
     return `top-100/${replaceDashUrl(removeVietnameseTones(title))}&k=${keyId}`
+  } else {
+    return '/'
+  }
+}
+
+export const getNavigateUrl = (url) => {
+  const linkStartIndex = url.indexOf('nhaccuatui.com/') + 15
+  const keyStartIndex = url.indexOf('.html') -12
+  const keyEndIndex = url.indexOf('.html')
+
+  const keyId = url.substring(keyStartIndex, keyEndIndex)
+
+  if (url.includes('/bai-hat/')) {
+    const songStartIndex = linkStartIndex + 8
+    const songEndIndex = keyStartIndex
+    
+    const songUrl = url.substring(songStartIndex, songEndIndex)
+    return `/bai-hat/${songUrl}&k=${keyId}`
+  } else if (url.includes('/playlist/')) {
+    const playlistStartIndex = linkStartIndex + 9
+    const playlistEndIndex = keyStartIndex
+
+    const playlistUrl = url.substring(playlistStartIndex, playlistEndIndex)
+    return `/playlist/${playlistUrl}&k=${keyId}`
   } else {
     return '/'
   }
