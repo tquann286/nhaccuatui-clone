@@ -31,6 +31,14 @@ const SettingsModal = ({ isShow, theme, dispatch }) => {
         {theme === 'light' ? <MdWbSunny className='sm-icon' /> : <BsFillMoonStarsFill className='sm-icon' />}
         <span className='sm-title'>Chủ đề</span>
         <MdArrowForwardIos className='ar-icon' />
+        <div className='sm-sub-items sm-theme-items'>
+          <div className='sm-sub-item sm-theme-light'>
+            <span className='sm-title'>Nền sáng</span>
+          </div>
+          <div className='sm-sub-item sm-theme-dark'>
+            <span className='sm-title'>Nền tối</span>
+          </div>
+        </div>
       </div>
     </div>
   )

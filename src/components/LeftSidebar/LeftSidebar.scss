@@ -173,7 +173,7 @@ $scale: 50px;
 
     
 
-    .sm-languages:hover .sm-lang-items {
+    .sm-languages:hover .sm-lang-items, .sm-themes:hover .sm-theme-items {
       opacity: 1;
       visibility: visible;
       transform: scale(1);
