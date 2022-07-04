@@ -22,7 +22,13 @@
 	.slick-dots {
 		bottom: -30px;
 		li {
-			margin: unset;
+			@include transition-effect(0.25s);
+			margin: 0 -2px;
+
+
+			&.slick-active {
+				margin-right: 5px;
+			}
 		}
 	}
 }
