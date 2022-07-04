@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import './LeftSidebar.scss'
 import { Link } from 'react-router-dom'
 
@@ -44,6 +44,12 @@ const LeftSidebar = () => {
       left: right,
     })
   )
+
+  useEffect(() => {
+    if (settingsBtnRef) {
+      console.log(settingsBtnRef.current.offsetTop)
+    }
+  }, [])
 
   return (
     <div className='left-sidebar'>
