@@ -113,22 +113,30 @@ $scale: 50px;
 
 .pm-container {
   .sm-container {
-    @include dark-color-text(0.8);
+    @include dark-color-text(0.55);
     box-shadow: $box-shadow-effect;
     margin-left: 16px;
     border-radius: 4px;
     background-color: $light-color;
     font-size: 14px;
     cursor: pointer;
+    overflow: hidden;
+    font-weight: 400;
 
     .sm-item {
-      padding: 7px 18px;
-      padding-left: 5px;
+      @include transition-effect(0.1s);
+      padding: 10px 48px;
+      padding-left: 12px;
       display: flex;
       align-items: center;
 
       .sm-icon {
         margin-right: 4px;
+        font-size: 15px;
+      }
+
+      span {
+        font-weight: 600;
       }
 
       &:not(:last-child) {
@@ -137,6 +145,12 @@ $scale: 50px;
 
       &:hover {
         background-color: darken($light-color, 5);
+      }
+
+      .ar-icon {
+        position: absolute;
+        right: 0;
+        margin-right: 8px;
       }
     }
   }
