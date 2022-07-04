@@ -9,7 +9,7 @@ import { MdArrowForwardIos } from 'react-icons/md'
 
 import { actions } from 'store'
 
-const SettingsModal = ({ isShow, theme, dispatch }) => {
+const SettingsModal = ({ theme, lang, dispatch }) => {
 
   const onChangeViLang = () => {
     dispatch(actions.changeViLang())
@@ -31,31 +31,31 @@ const SettingsModal = ({ isShow, theme, dispatch }) => {
     <div className='sm-container'>
       <div className='sm-item sm-languages'>
         <MdLanguage className='sm-icon' />
-        <span className='sm-title'>Ngôn ngữ</span>
+        <span className='sm-title'>{lang === 'vi' ? 'Ngôn ngữ' : 'Language'}</span>
         <MdArrowForwardIos className='ar-icon' />
         <div className='sm-sub-items sm-lang-items'>
           <div className='sm-sub-item sm-lang-vi' onClick={onChangeViLang}>
-            <span className='sm-title'>Tiếng Việt</span>
+            <span className='sm-title'>{lang === 'vi' ? 'Tiếng Việt' : 'Vietnamese'}</span>
           </div>
           <div className='sm-sub-item sm-lang-en' onClick={onChangeEnLang}>
-            <span className='sm-title'>Tiếng Anh</span>
+            <span className='sm-title'>{lang === 'vi' ? 'Tiếng Anh' : 'English'}</span>
           </div>
         </div>
       </div>
       <div className='sm-item sm-support' onClick={onClickSupport}>
         <BiSupport className='sm-icon' />
-        <span className='sm-title'>Hỗ trợ</span>
+        <span className='sm-title'>{lang === 'vi' ? 'Hỗ trợ' : 'Support'}</span>
       </div>
       <div className='sm-item sm-themes'>
         {theme === 'light' ? <MdWbSunny className='sm-icon' /> : <BsFillMoonStarsFill className='sm-icon' />}
-        <span className='sm-title'>Chủ đề</span>
+        <span className='sm-title'>{lang === 'vi' ? 'Chủ đề' : 'Theme'}</span>
         <MdArrowForwardIos className='ar-icon' />
         <div className='sm-sub-items sm-theme-items'>
           <div className='sm-sub-item sm-theme-light' onClick={onChangeLightTheme}>
-            <span className='sm-title'>Nền sáng</span>
+            <span className='sm-title'>{lang === 'vi' ? 'Nền sáng' : 'Light mode'}</span>
           </div>
           <div className='sm-sub-item sm-theme-dark' onClick={onChangeDarkTheme}>
-            <span className='sm-title'>Nền tối</span>
+            <span className='sm-title'>{lang === 'vi' ? 'Nền tối' : 'Dark mode'}</span>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { IoMdMore } from 'react-icons/io'
 
 import { handleCopyBtn } from 'services/SwiperSlider'
 
-const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist}) => {
+const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist, lang}) => {
 
 	return (
 			<div className='pl-container'>
@@ -16,7 +16,7 @@ const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist}) => {
 						<div className='pl-play-btn'>
 							<BsFillPlayCircleFill />
 						</div>
-						<div title='Sao chép link' className='pl-more' onClick={(e) => handleCopyBtn(e, title, keyId)}>
+						<div title={lang === 'vi' ? 'Sao chép link' : 'Copy link'} className='pl-more' onClick={(e) => handleCopyBtn(e, title, keyId)}>
 							<IoMdMore />
 						</div>
 					</div>

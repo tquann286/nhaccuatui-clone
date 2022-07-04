@@ -8,7 +8,7 @@ const NewVideo = ({ videos }) => {
   return (
     <div className="nv-container">
       <div className="nv-title">
-        <Link to='video-hot'>Video hot</Link>
+        <Link to='video-hot'>Hot video</Link>
       </div>
       <div className="nv-main">
         <div className="nv-large-videos">

@@ -10,12 +10,16 @@ import {
 	SlideNextButton,
 } from 'components/CustomNav/CustomNav'
 
+import { useStore } from 'store'
+
 const HotTopic = ({ hotTopic }) => {
+  const [state] = useStore()
+  const { lang } = state
 
 	return (
 		<div className='ht-container'>
 			<div className='ht-title'>
-				<Link to='/chu-de'>Chủ đề hot</Link>
+				<Link to='/chu-de'>{lang === 'vi' ? 'Chủ đề hot' : 'Hot topic'}</Link>
 			</div>
 			<div className='ht-main'>
 				<Swiper slidesPerView={4} spaceBetween={8}>

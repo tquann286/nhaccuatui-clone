@@ -12,7 +12,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/scss'
 import { SlidePrevButton, SlideNextButton } from 'components/CustomNav/CustomNav'
 
+import { useStore } from 'store'
+
 const TopicEvent = ({ topicEvent = [] }) => {
+  const [state] = useStore()
+  const { lang } = state
 	const navigate = useNavigate()
 
 	const onNavigatePlaylist = (title, keyId) => {
@@ -22,13 +26,13 @@ const TopicEvent = ({ topicEvent = [] }) => {
 	return (
 		<div className='te-container'>
 			{topicEvent.map((topic) => {
-				const { vieTitle } = getTopicEventTitle(topic.groupName)
+				const { vieTitle, enTitle } = getTopicEventTitle(topic.groupName)
 				const listPlaylist = removeDuplicate(topic.listPlaylist, 'key')
 
 				return (
 					<div key={vieTitle} className='tp-container'>
 						<div className='tp-header'>
-							<div className='tp-title'>{vieTitle}</div>
+							<div className='tp-title'>{lang === 'vi' ? vieTitle : enTitle}</div>
 						</div>
 						<div className='tp-main'>
 							<Swiper slidesPerView={4} spaceBetween={8}>
@@ -46,6 +50,7 @@ const TopicEvent = ({ topicEvent = [] }) => {
 												thumbnail={thumbnail}
 												title={title}
 												onNavigatePlaylist={onNavigatePlaylist}
+												lang={lang}
 											/>
 										</SwiperSlide>
 									)

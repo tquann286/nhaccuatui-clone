@@ -6,7 +6,7 @@ import { BsPlayCircleFill } from 'react-icons/bs'
 import { detectZ, createTop20Url } from 'services/MusicCard'
 import { createSongUrl, createArtistUrl } from 'share/utilities'
 
-const MusicCard = ({ keyId, region, song, bgImage, category }) => {
+const MusicCard = ({ keyId, region, song, bgImage, category, lang }) => {
 	const [topThreeSong, setTopThreeSong] = useState([])
 	const [activeSong, setActiveSong] = useState({})
 
@@ -30,7 +30,7 @@ const MusicCard = ({ keyId, region, song, bgImage, category }) => {
 				className='ma-bg-img'
 				style={{ backgroundImage: `url(${bgImage})` }}
 			></div>
-			<div className='ma-title'>{region}</div>
+			<div className='ma-title'>{lang === 'vi' ? region.vi : region.en}</div>
 			<div className='ma-t3-img'>
 				{topThreeSong.map((song, index) => {
 					const { songKey, thumbnail, title } = song
@@ -79,7 +79,7 @@ const MusicCard = ({ keyId, region, song, bgImage, category }) => {
 				</div>
 			)}
 			<div className='ma-watch-all'>
-				<Link to={createTop20Url(category)}>Xem tất cả</Link>
+				<Link to={createTop20Url(category)}>{lang === 'vi' ? 'Xem tất cả' : 'Full Chart'}</Link>
 			</div>
 		</div>
 	)

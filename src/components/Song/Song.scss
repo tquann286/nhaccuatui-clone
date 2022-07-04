@@ -173,9 +173,10 @@
 				cursor: pointer;
 				li {
 					@include display-flex;
+					@include commonModal;
 					@include align-items(center);
 					@include transition-effect(0.1s);
-					border-radius: 4px 4px 0 0;
+					border-bottom: unset !important;
 					height: 32px;
 					padding-left: 8px;
 					padding: 6px;

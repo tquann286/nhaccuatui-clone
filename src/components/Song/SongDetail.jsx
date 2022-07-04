@@ -13,7 +13,7 @@ import { createRandomSongView } from 'services/SongDetail'
 import { Animated } from 'react-animated-css'
 import { ToastContainer } from 'react-toastify'
 
-const SongDetail = ({ artists, songId, thumbnail, title }) => {
+const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
   const [songView, setSongView] = useState(0)
   const [showMoreOptions, setShowMoreOptions] = useState(false)
   const [showMorePosition, setShowMorePosition] = useState({
@@ -101,15 +101,15 @@ const SongDetail = ({ artists, songId, thumbnail, title }) => {
           <ul>
             <li>
               <SiYoutubemusic />
-              <span>Thêm vào chờ phát</span>
+              <span>{lang === 'vi' ? 'Thêm vào chờ phát' : 'Add to queue'}</span>
             </li>
             <li onClick={(e) => handleCopyClick(e)}>
               <BsLink45Deg />
-              <span>Sao chép link</span>
+              <span>{lang === 'vi' ? 'Sao chép link' : 'Copy link'}</span>
             </li>
             <li onClick={() => navigate(createSongUrl(title, songId))}>
               <BsMusicNote />
-              <span>Đi đến bài hát</span>
+              <span>{lang === 'vi' ? 'Đi đến bài hát' : 'Go to song'}</span>
             </li>
           </ul>
         </div>

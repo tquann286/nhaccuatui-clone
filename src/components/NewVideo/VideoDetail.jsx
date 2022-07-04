@@ -16,7 +16,12 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { Link, useNavigate } from 'react-router-dom'
 
+import { useStore } from 'store'
+
 const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMapping }) => {
+  const [state] = useStore()
+  const { lang } = state
+
   const [showMoreOptions, setShowMoreOptions] = useState(false)
   const [showMorePosition, setShowMorePosition] = useState({
     top: 0,
@@ -70,7 +75,7 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
             <div className='vd-play-icon'>
               <BsPlayCircleFill />
             </div>
-            <div title='Thêm' className='vd-more-options' onClick={(e) => handleMoreOptions(e)} ref={moreDivRef}>
+            <div title={lang === 'vi' ? 'Thêm' : 'More'} className='vd-more-options' onClick={(e) => handleMoreOptions(e)} ref={moreDivRef}>
               <IoMdMore />
             </div>
           </div>
@@ -99,12 +104,12 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
             {!isEmpty(refMapping) && (
               <li>
                 <SiApplemusic />
-                <span>Nghe audio</span>
+                <span>{lang === 'vi' ? 'Nghe audio' : 'Listen audio'}</span>
               </li>
             )}
             <li onClick={(e) => handleCopyClick(e)}>
               <BsLink45Deg />
-              <span>Sao chép link</span>
+              <span>{lang === 'vi' ? 'Sao chép link' : 'Copy link'}</span>
             </li>
           </ul>
         </div>

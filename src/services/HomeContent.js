@@ -7,19 +7,28 @@ export const fetchHomeData = async () => {
   let { ranking: kpopRanking } = await getChart({ category: 'nhac-han' })
   
   if (homeData) {
-    homeData.ranking.region = 'Việt Nam'
+    homeData.ranking.region = {
+      vi: 'Việt Nam',
+      en: 'V-POP'
+    }
     homeData.ranking.bgImage = bg_1
     homeData.ranking.category = 'nhac-viet'
   }
 
   if (usukRanking) {
-    usukRanking.region = 'Âu Mỹ'
+    usukRanking.region = {
+      vi: 'Âu Mỹ',
+      en: 'US-UK'
+    }
     usukRanking.bgImage = bg_2
     usukRanking.category = 'au-my'
   }
   
   if (kpopRanking) {
-    kpopRanking.region = 'Hàn Quốc'
+    kpopRanking.region = {
+      vi: 'Hàn Quốc',
+      en: 'K-POP'
+    }
     kpopRanking.bgImage= bg_3
     kpopRanking.category= 'nhac-han'
   }

@@ -66,7 +66,7 @@ const LeftSidebar = () => {
       <div className='ls-auth-setting'>
         <div className='ls-auth'>
           <div className='ls-auth-main'>
-            <p>Đăng nhập</p>
+            <p>{lang === 'vi' ? 'Đăng nhập' : 'Sign in'}</p>
           </div>
         </div>
         <div className='ls-setting'>
@@ -74,7 +74,7 @@ const LeftSidebar = () => {
             <AiOutlineSetting style={showSettingsModal && { transform: 'rotate(60deg)' }} />
           </div>
           <PopupModal showModal={showSettingsModal} modalPosition={settingsModalPosition} toggleModal={toggleShowSettings}>
-            <SettingsModal theme={theme} dispatch={dispatch} isShow={showSettingsModal} />
+            <SettingsModal theme={theme} lang={lang} dispatch={dispatch} />
           </PopupModal>
         </div>
       </div>
