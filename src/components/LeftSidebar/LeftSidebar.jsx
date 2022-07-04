@@ -14,7 +14,7 @@ import { useGetPosition } from 'hooks'
 
 const LeftSidebar = () => {
   const [state, dispatch] = useStore()
-  const { theme } = state
+  const { theme, lang } = state
 
   const [showSettingsModal, setShowSettingsModal] = useState(false)
   const [settingsModalPosition, setSettingsModalPosition] = useState({
@@ -27,10 +27,8 @@ const LeftSidebar = () => {
   const handleChangeTheme = () => {
     if (theme === 'light') {
       dispatch(actions.changeDarkTheme())
-      localStorage.setItem('theme', 'dark')
     } else if (theme === 'dark') {
       dispatch(actions.changeLightTheme())
-      localStorage.setItem('theme', 'light')
     }
   }
 

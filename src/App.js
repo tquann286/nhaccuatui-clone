@@ -11,10 +11,16 @@ const App = () => {
 
   useEffect(() => {
     const localTheme = localStorage.getItem('theme')
+    const localLanguage = localStorage.getItem('lang')
     if (localTheme) {
       dispatch(actions.setTheme(localTheme))
     } else {
       localStorage.setItem('theme', 'light')
+    }
+    if (localLanguage) {
+      dispatch(actions.setLang(localLanguage))
+    } else {
+      localStorage.setItem('lang', 'vi')
     }
   }, [])
 

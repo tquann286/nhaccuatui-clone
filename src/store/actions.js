@@ -5,23 +5,39 @@ export const setTheme = (payload) => ({
   payload,
 })
 
-export const changeLightTheme = () => ({
-  type: CHANGE_LIGHT_THEME,
-})
+export const changeLightTheme = () => {
+  localStorage.setItem('theme', 'light')
 
-export const changeDarkTheme = () => ({
-  type: CHANGE_DARK_THEME,
-})
+  return ({
+    type: CHANGE_LIGHT_THEME,
+  })
+}
+
+export const changeDarkTheme = () => {
+  localStorage.setItem('theme', 'dark')
+
+  return ({
+    type: CHANGE_DARK_THEME,
+  })
+} 
 
 export const setLang = (payload) => ({
   type: SET_LANG,
   payload,
 })
 
-export const changeViLang = () => ({
-  type: CHANGE_VI_LANG,
-})
+export const changeViLang = () => {
+  localStorage.setItem('lang', 'vi')
 
-export const changeEnLang = () => ({
-  type: CHANGE_EN_LANG,
-})
+  return ({
+    type: CHANGE_VI_LANG,
+  })
+}
+
+export const changeEnLang = () => {
+  localStorage.setItem('lang', 'en')
+
+  return ({
+    type: CHANGE_EN_LANG,
+  })
+}
