@@ -4,12 +4,8 @@ $active-img-width: 160px;
 
 .nr-container {
 	.nr-title {
-		@include transition-effect(0.1s);
-		@include hoverMainColor;
-		margin-left: 32px;
-		font-size: 24px;
-		font-weight: 700;
-		text-transform: capitalize;
+    @include main-title-scss;
+		user-select: none;
 	}
 	.nr-main {
 		margin-top: 16px;

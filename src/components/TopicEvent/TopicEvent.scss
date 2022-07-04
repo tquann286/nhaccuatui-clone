@@ -19,6 +19,7 @@ $tp-title-height: 30px;
 				line-height: 30px;
 				font-size: 21px;
 				font-weight: 700;
+				user-select: none;
 			}
 		}
 
@@ -64,6 +65,7 @@ $tp-title-height: 30px;
 
 			.pl-container {
 				padding: 0 8px;
+				user-select: none;
 
 				.pl-img-container {
 					position: relative;

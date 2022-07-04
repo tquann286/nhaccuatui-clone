@@ -5,6 +5,7 @@
 
   .t1-title {
     @include main-title-scss;
+		user-select: none;
   }
 
   .t1-main {
