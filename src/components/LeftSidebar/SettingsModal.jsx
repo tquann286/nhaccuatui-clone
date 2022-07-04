@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { motion } from 'framer-motion'
+import { FB_LINK } from 'share/constants'
 
 import { MdLanguage, MdWbSunny } from 'react-icons/md'
 import { BiSupport } from 'react-icons/bi'
@@ -8,6 +8,11 @@ import { BsFillMoonStarsFill } from 'react-icons/bs'
 import { MdArrowForwardIos } from 'react-icons/md'
 
 const SettingsModal = ({ isShow, theme, dispatch }) => {
+
+  const handleSupport = () =>  {
+    window.open(FB_LINK)
+  }
+
   return (
     <div className='sm-container'>
       <div className='sm-item sm-languages'>
@@ -23,7 +28,7 @@ const SettingsModal = ({ isShow, theme, dispatch }) => {
           </div>
         </div>
       </div>
-      <div className='sm-item sm-support'>
+      <div className='sm-item sm-support' onClick={handleSupport}>
         <BiSupport className='sm-icon' />
         <span className='sm-title'>Hỗ trợ</span>
       </div>

@@ -29,7 +29,7 @@ export const replaceDashUrl = (url) => {
 export const createPlaylistUrl = (title, keyId) => {
   const playlistTitle = replaceDashUrl(title)
 
-  return `/playlist/${playlistTitle}.va.${keyId}`
+  return `/playlist/${playlistTitle}.&k=${keyId}`
 }
 
 export const covertTimestamp = (time) => {
