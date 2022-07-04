@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
 import { createPortal } from 'react-dom'
-import { motion } from 'framer-motion'
 import './PopupModal.scss'
 
 const PopupModal = ({ showModal, modalPosition, toggleModal, children }) => {

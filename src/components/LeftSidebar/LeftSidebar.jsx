@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import './LeftSidebar.scss'
 import { Link } from 'react-router-dom'
 
@@ -45,12 +45,6 @@ const LeftSidebar = () => {
     })
   )
 
-  useEffect(() => {
-    if (settingsBtnRef) {
-      console.log(settingsBtnRef.current.offsetTop)
-    }
-  }, [])
-
   return (
     <div className='left-sidebar'>
       <div className='ls-logo-theme'>
@@ -82,7 +76,7 @@ const LeftSidebar = () => {
             <AiOutlineSetting style={showSettingsModal && { transform: 'rotate(60deg)' }} />
           </div>
           <PopupModal showModal={showSettingsModal} modalPosition={settingsModalPosition} toggleModal={toggleShowSettings}>
-            <SettingsModal theme={theme} dispatch={dispatch} />
+            <SettingsModal theme={theme} dispatch={dispatch} isShow={showSettingsModal} />
           </PopupModal>
         </div>
       </div>
