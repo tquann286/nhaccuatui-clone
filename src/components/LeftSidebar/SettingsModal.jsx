@@ -14,6 +14,14 @@ const SettingsModal = ({ isShow, theme, dispatch }) => {
         <MdLanguage className='sm-icon' />
         <span className='sm-title'>Ngôn ngữ</span>
         <MdArrowForwardIos className='ar-icon' />
+        <div className='sm-sub-items sm-lang-items'>
+          <div className='sm-sub-item sm-lang-vi'>
+            <span className='sm-title'>Tiếng Việt</span>
+          </div>
+          <div className='sm-sub-item sm-lang-en'>
+            <span className='sm-title'>Tiếng Anh</span>
+          </div>
+        </div>
       </div>
       <div className='sm-item sm-support'>
         <BiSupport className='sm-icon' />
