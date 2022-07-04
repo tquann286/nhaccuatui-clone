@@ -35,14 +35,13 @@ const LeftSidebar = () => {
   }
 
   const toggleShowSettings = () => {
-    console.log('clicked')
     setShowSettingsModal(!showSettingsModal)
   }
 
   useGetPosition(settingsBtnRef, (right, top) =>
     setSettingsModalPosition({
       top: top,
-      left: right
+      left: right,
     })
   )
 
@@ -77,7 +76,7 @@ const LeftSidebar = () => {
             <AiOutlineSetting style={showSettingsModal && { transform: 'rotate(60deg)' }} />
           </div>
           <PopupModal showModal={showSettingsModal} modalPosition={settingsModalPosition} toggleModal={toggleShowSettings}>
-            <SettingsModal />
+            <SettingsModal theme={theme} dispatch={dispatch} />
           </PopupModal>
         </div>
       </div>
