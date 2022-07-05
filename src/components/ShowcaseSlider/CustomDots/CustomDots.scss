@@ -2,16 +2,16 @@
 
 li {
   .customDots {
-    width: 7px;
-    height: 7px;
-    border-radius: 5px;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 0.5rem;
     transition: all 0.25s ease;
     background-color: rgba(28, 30, 32, 0.1);
   }
 
   &.slick-active {
     .customDots {
-      width: 15px;
+      width: 1.5rem;
       background-color: $main-text-color;
     }
   }

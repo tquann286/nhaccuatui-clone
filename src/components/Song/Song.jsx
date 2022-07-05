@@ -16,7 +16,7 @@ const Song = ({ song: songList }) => {
 			</div>
 			<div
 				style={{
-					margin: '16px 32px 0px',
+					margin: '1.6rem 3.2rem 0',
 				}}
 			>
 				<div className='so-main'>

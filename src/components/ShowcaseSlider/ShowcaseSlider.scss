@@ -2,8 +2,7 @@
 
 .sc-container {
 	width: 100%;
-	height: calc(calc(100vw - 35rem) * 2 / 5 + 3.8rem);
-	padding: 24px;
+	padding: 2.4rem;
 
 	.sc-img-container {
 		.sc-img-slider {
@@ -11,7 +10,7 @@
 			background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
-			border-radius: 8px;
+			border-radius: 0.8rem;
 		}
 	}
 
@@ -20,14 +19,14 @@
 	}
 
 	.slick-dots {
-		bottom: -30px;
+		bottom: -3rem;
 		li {
 			@include transition-effect(0.25s);
-			margin: 0 -2px;
+			margin: 0 -0.2rem;
 
 
 			&.slick-active {
-				margin-right: 5px;
+				margin-right: 0.5rem;
 			}
 		}
 	}

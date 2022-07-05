@@ -21,7 +21,7 @@ div {
     
     width: 3.5em;
     height: 3.5em;
-    border: 3px solid transparent;
+    border: 0.3rem solid transparent;
     border-top-color: #3cefff;
     border-bottom-color: #3cefff;
     border-radius: 50%;
@@ -32,7 +32,7 @@ div {
       margin: auto;
       width: 0.75em;
       height: 0.75em;
-      border: 3px solid #3cefff;
+      border: 0.3rem solid #3cefff;
       border-radius: 50%;
       animation: pulse 1s alternate ease-in-out infinite;
     }

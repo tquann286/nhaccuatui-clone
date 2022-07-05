@@ -1,9 +1,9 @@
 @import 'settings';
 
-$box-border: 1px solid #cfcecf;
+$box-border: 0.1rem solid #cfcecf;
 $ball-color: #bfbfbf;
 
-$scale: 50px;
+$scale: 5rem;
 
 .left-sidebar {
   @include transition-effect(0.75s);
@@ -11,7 +11,7 @@ $scale: 50px;
   width: $left-sidebar-width;
   position: fixed;
   top: 0;
-  left: 1px;
+  left: 0.1rem;
   overflow: hidden auto;
   overscroll-behavior-y: contain;
   border-right: $border-light;
@@ -22,18 +22,18 @@ $scale: 50px;
     @include justify-content(space-between);
     @include align-items(center);
     width: inherit;
-    height: 64px;
+    height: 6.4rem;
     margin: 0 auto;
     position: relative;
 
     a.ls-logo {
-      width: 48px;
-      height: 24px;
-      margin-left: 16px;
+      width: 4.8rem;
+      height: 2.4rem;
+      margin-left: 1.6rem;
     }
 
     .theme-container {
-      margin-right: 16px;
+      margin-right: 1.6rem;
 
       .box {
         @include common(column, center, null, $scale, $scale/2, $light-color);
@@ -52,11 +52,12 @@ $scale: 50px;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
-          padding: 4px 4px 0px 4px;
+          padding: 0.4rem 0.4rem 0 0.4rem;
           svg {
             width: $scale/3;
+            font-size: 1.4rem;
             color: #ffd347;
-            filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.2));
+            filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0.2));
           }
         }
       }
@@ -67,7 +68,7 @@ $scale: 50px;
     @include flexCenter;
     @include justify-content(space-between);
     width: inherit;
-    height: 56px;
+    height: 5.6rem;
     background-color: $light-gray-bg-color;
     color: $dark-text-color;
 
@@ -76,18 +77,18 @@ $scale: 50px;
       @include align-items(center);
       @include transition-effect(0.1s);
       @include hoverMainColor;
-      max-width: calc(100% - 38px);
-      margin-right: 8px;
+      max-width: calc(100% - 3.8rem);
+      margin-right: 0.8rem;
 
       &-main {
         @include fitContentHeight;
         @include fitContentWidth;
-        margin-left: 16px;
-        margin-right: 6px;
+        margin-left: 1.6rem;
+        margin-right: 0.6rem;
         cursor: pointer;
 
         p {
-          font-size: 12.8px;
+          font-size: 1.28rem;
           font-weight: 500;
         }
       }
@@ -97,10 +98,10 @@ $scale: 50px;
       @include fitContentWidth;
       @include transition-effect(0.1s);
       @include hoverMainColor;
-      margin-right: 18px;
+      margin-right: 1.8rem;
 
       &-icon {
-        font-size: 16px;
+        font-size: 1.6rem;
         opacity: 0.8;
         cursor: pointer;
         & svg {
@@ -114,14 +115,14 @@ $scale: 50px;
     width: inherit;
     overflow: hidden;
     .ls-navbar {
-      padding: 16px 0;
-      margin-bottom: 50px;
+      padding: 1.6rem 0;
+      margin-bottom: 5rem;
 
       ul.nav-menu {
         cursor: pointer;
 
         li {
-          margin-bottom: 4px;
+          margin-bottom: 0.4rem;
 
           a.active {
 
@@ -130,7 +131,7 @@ $scale: 50px;
             }
 
             .nav-active-item {
-              background-size: 2px 100%;
+              background-size: 0.2rem 100%;
             }
           }
 
@@ -139,8 +140,8 @@ $scale: 50px;
             @include align-items(center);
             position: relative;
             width: $left-sidebar-width;
-            height: 32px;
-            padding: 5px 0;
+            height: 3.2rem;
+            padding: 0.5rem 0;
             background-color: transparent;
 
             .nav-active-item {
@@ -148,21 +149,21 @@ $scale: 50px;
               position: absolute;
               top: 0;
               left: 0;
-              height: 32px;
-              width: 2px;
-              border-radius: 2px;
+              height: 3.2rem;
+              width: 0.2rem;
+              border-radius: 0.2rem;
               background: linear-gradient(to right, #2daaed 0%, #2daaed 100%) no-repeat;
-              background-size: 2px 0;
+              background-size: 0.2rem 0;
               background-position: 50% 50%;
               overflow: hidden;
 
               &.isActive {
-                background-size: 2px 100%;
+                background-size: 0.2rem 100%;
               }
             }
 
             &:hover .nav-active-item {
-              background-size: 2px 100%;
+              background-size: 0.2rem 100%;
             }
 
             .nav-content {
@@ -170,17 +171,17 @@ $scale: 50px;
               @include align-items(center);
               @include transition-effect(0.5s);
               @include dark-color-text(0.5);
-              width: 178px;
-              height: 24px;
-              margin-left: 8px;
-              background-size: 0 20px;
+              width: 17.8rem;
+              height: 2.4rem;
+              margin-left: 0.8rem;
+              background-size: 0 2rem;
               background-position: 0% 50%;
 
               svg {
                 @include transition-effect(0.3s);
-                font-size: 16px; 
+                font-size: 1.6rem; 
                 position: absolute;
-                right: 10px;
+                right: 1rem;
               }
 
               svg.show-detail {
@@ -188,8 +189,8 @@ $scale: 50px;
               }
 
               i {
-                font-size: 22px;
-                margin: 0 6px;
+                font-size: 2.2rem;
+                margin: 0 0.6rem;
               }
 
               i.search {
@@ -219,11 +220,11 @@ $scale: 50px;
               p.nav-name {
                 @include dark-color-text(0.88);
                 @include userSelect(none);
-                font-size: 13px;
-                margin-left: 8px;
-                margin-top: 1px;
+                font-size: 1.3rem;
+                margin-left: 0.8rem;
+                margin-top: 0.1rem;
                 text-transform: capitalize;
-                line-height: 20px;
+                line-height: 2rem;
               }
             }
           }
@@ -241,15 +242,15 @@ $scale: 50px;
               @include align-items(center);
               @include userSelect(none);
               width: $left-sidebar-width;
-              height: 32px;
+              height: 3.2rem;
               position: relative;
               text-transform: capitalize;
               &-hover {
                 @include transition-effect(0.3s);
-                top: 14px;
-                left: 48px;
-                width: 4px;
-                height: 4px;
+                top: 1.4rem;
+                left: 4.8rem;
+                width: 0.4rem;
+                height: 0.4rem;
                 position: absolute;
                 border-radius: 100%;
                 background-color: transparent;
@@ -261,22 +262,22 @@ $scale: 50px;
 
               span {
                 @include dark-color-text(0.5);
-                font-size: 13px;
-                padding-left: 66px;
+                font-size: 1.3rem;
+                padding-left: 6.6rem;
               }
             }
 
             &.show-detail {
               visibility: visible;
               opacity: 1;
-              height: 128px;
+              height: 12.8rem;
             }
           }
 
           .nav-item-detail.today-selection-detail.show-detail {
             visibility: visible;
             opacity: 1;
-            height: 96px;
+            height: 9.6rem;
           }
         }
       }
@@ -288,10 +289,10 @@ $scale: 50px;
   .sm-container {
     @include dark-color-text(0.55);
     box-shadow: $box-shadow-effect;
-    margin-left: 12px;
-    border-radius: 4px;
+    margin-left: 1.2rem;
+    border-radius: 0.4rem;
     background-color: $light-color;
-    font-size: 14px;
+    font-size: 1.4rem;
     cursor: pointer;
     font-weight: 400;
 
@@ -300,14 +301,14 @@ $scale: 50px;
       @include transition-effect(0.1s);
       @include display-flex;
       @include align-items(center);
-      padding: 10px 48px;
-      padding-left: 12px;
+      padding: 1rem 4.8rem;
+      padding-left: 1.2rem;
       user-select: none;
       position: relative;
 
       .sm-icon {
-        margin-right: 4px;
-        font-size: 15px;
+        margin-right: 0.4rem;
+        font-size: 1.5rem;
       }
 
       span {
@@ -317,7 +318,7 @@ $scale: 50px;
       .ar-icon {
         position: absolute;
         right: 0;
-        margin-right: 8px;
+        margin-right: 0.8rem;
       }
 
       .sm-sub-items {
@@ -326,7 +327,7 @@ $scale: 50px;
         top: 0;
         left: 100%;
         background-color: $light-color;
-        border-radius: 4px;
+        border-radius: 0.4rem;
         box-shadow: $box-shadow-effect;
 
         opacity: 0;
@@ -337,9 +338,9 @@ $scale: 50px;
           @include commonModal;
           display: flex;
           align-items: center;
-          width: 150px;
-          height: 39px;
-          padding: 7px 8px;
+          width: 15rem;
+          height: 3.9rem;
+          padding: 0.7rem 0.8rem;
         }
       }
     }
