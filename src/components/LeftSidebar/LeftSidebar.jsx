@@ -8,8 +8,14 @@ import SettingsModal from './SettingsModal'
 import nctLogo from 'images/nct-logo.png'
 
 import { useStore, actions } from 'store'
+
 import { BsMoonStarsFill, BsSunFill } from 'react-icons/bs'
-import { AiOutlineSetting } from 'react-icons/ai'
+import { AiFillCompass, AiFillHome, AiOutlineSetting } from 'react-icons/ai'
+import { BiSearchAlt } from 'react-icons/bi'
+import { TiHeadphones } from 'react-icons/ti'
+import { TbHandLittleFinger } from 'react-icons/tb'
+import { MdOutlineBarChart } from 'react-icons/md'
+
 import { useGetPosition } from 'hooks'
 
 const LeftSidebar = () => {
@@ -76,6 +82,78 @@ const LeftSidebar = () => {
           <PopupModal showModal={showSettingsModal} modalPosition={settingsModalPosition} toggleModal={toggleShowSettings}>
             <SettingsModal theme={theme} lang={lang} dispatch={dispatch} />
           </PopupModal>
+        </div>
+      </div>
+      <div className="ls-main">
+        <div className="ls-navbar">
+          <ul className='nav-menu'>
+            <li>
+              <Link to='/tim-kiem'>
+                <div className="nav-item nav-search">
+                  <div className="nav-active-item"></div>
+                  <div className="nav-content">
+                    <BiSearchAlt className='search' />
+                    <p className='nav-name'>{lang === 'vi' ? 'Tìm kiếm' : 'Search'}</p>
+                  </div>
+                </div>
+              </Link>
+            </li>
+            <li>
+              <Link to='/'>
+                <div className="nav-item nav-home">
+                  <div className="nav-active-item"></div>
+                  <div className="nav-content">
+                    <AiFillHome className='home' />
+                    <p className='nav-name'>{lang === 'vi' ? 'Trang chủ' : 'Home'}</p>
+                  </div>
+                </div>
+              </Link>
+            </li>
+            <li>
+              <Link to='/tim-kiem'>
+                <div className="nav-item nav-discovery">
+                  <div className="nav-active-item"></div>
+                  <div className="nav-content">
+                    <AiFillCompass className='discovery'/>
+                    <p className='nav-name'>{lang === 'vi' ? 'Khám phá' : 'Discovery'}</p>
+                  </div>
+                </div>
+              </Link>
+            </li>
+            <li>
+              <Link to='/tim-kiem'>
+                <div className="nav-item nav-today-selection">
+                  <div className="nav-active-item"></div>
+                  <div className="nav-content">
+                    <TiHeadphones  className='today-selection'/>
+                    <p className='nav-name'>{lang === 'vi' ? 'Nghe gì hôm nay' : 'Today selection'}</p>
+                  </div>
+                </div>
+              </Link>
+            </li>
+            <li>
+              <Link to='/tim-kiem'>
+                <div className="nav-item nav-chart">
+                  <div className="nav-active-item"></div>
+                  <div className="nav-content">
+                    <MdOutlineBarChart  className='chart'/>
+                    <p className='nav-name'>{lang === 'vi' ? 'BXH NCT' : 'NCT chart'}</p>
+                  </div>
+                </div>
+              </Link>
+            </li>
+            <li>
+              <Link to='/tim-kiem'>
+                <div className="nav-item nav-music-4u">
+                  <div className="nav-active-item"></div>
+                  <div className="nav-content">
+                    <TbHandLittleFinger  className='music-4u'/>
+                    <p className='nav-name'>Music 4U</p>
+                  </div>
+                </div>
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
