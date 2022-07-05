@@ -114,3 +114,9 @@
   -ms-user-select: $value;
   user-select: $value;
 }
+
+@mixin transparentIcon($col1, $col2) {
+  background: linear-gradient(to top right,$col1,$col2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

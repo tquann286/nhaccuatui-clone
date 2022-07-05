@@ -123,87 +123,85 @@ $scale: 50px;
         li {
           margin-bottom: 4px;
 
-          a {
-            .nav-item {
-              @include display-flex;
-              @include align-items(center);
-              position: relative;
-              width: $left-sidebar-width;
+          .nav-item {
+            @include display-flex;
+            @include align-items(center);
+            position: relative;
+            width: $left-sidebar-width;
+            height: 32px;
+            padding: 5px 0;
+            background-color: transparent;
+
+            .nav-active-item {
+              @include transition-effect(0.16s);
+              position: absolute;
+              top: 0;
+              left: 0;
               height: 32px;
-              padding: 5px 0;
-              background-color: transparent;
+              width: 2px;
+              border-radius: 2px;
+              background: linear-gradient(to right, #2daaed 0%, #2daaed 100%) no-repeat;
+              background-size: 2px 0;
+              background-position: 50% 50%;
+              overflow: hidden;
 
-              .nav-active-item {
-                @include transition-effect(0.16s);
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 32px;
-                width: 2px;
-                border-radius: 2px;
-                background: linear-gradient(to right, #2daaed 0%, #2daaed 100%) no-repeat;
-                background-size: 2px 0;
-                background-position: 50% 50%;
-                overflow: hidden;
-
-                &.isActive {
-                  background-size: 2px 100%;
-                }
-              }
-
-              &:hover .nav-active-item {
+              &.isActive {
                 background-size: 2px 100%;
               }
+            }
 
-              .nav-content {
-                @include display-flex;
-                @include align-items(center);
-                @include transition-effect(0.5s);
-                width: 178px;
-                height: 24px;
+            &:hover .nav-active-item {
+              background-size: 2px 100%;
+            }
+
+            .nav-content {
+              @include display-flex;
+              @include align-items(center);
+              @include transition-effect(0.5s);
+              width: 178px;
+              height: 24px;
+              margin-left: 8px;
+              background-size: 0 20px;
+              background-position: 0% 50%;
+
+              i {
+                @include dark-color-text(0.5);
+                font-size: 22px;
+                margin: 0 6px;
+              }
+
+              i.search {
+                @include transparentIcon(#00b509, #77e254);
+              }
+
+              i.home {
+                @include transparentIcon(#287BE5, #29D7FF);
+              }
+
+              i.discovery {
+                @include transparentIcon(#FF9B2D, #FFE443);
+              }
+
+              i.today-selection {
+                @include transparentIcon(#1A82E5, #DF22F2);
+              }
+
+              i.chart {
+                @include transparentIcon(#F44336, #FFB353);
+              }
+
+              i.music-4u {
+                @include transparentIcon(#27B3E2, #13F8E5);
+              }
+
+              p.nav-name {
+                @include dark-color-text(0.88);
+                @include userSelect(none);
+                font-size: 13px;
                 margin-left: 8px;
-                background-size: 0 20px;
-                background-position: 0% 50%;
-
-                svg {
-                  @include dark-color-text(0.5);
-                  font-size: 22px;
-                  margin: 0 6px;
-                }
-
-                svg.search {
-                  color: #54d53e;
-                }
-
-                svg.home {
-                  color: #ffbe38;
-                }
-
-                svg.discovery {
-                  color: #54d53e;
-                }
-
-                svg.today-selection {
-                  color: #854dec;
-                }
-
-                svg.chart {
-                  color: #f86b40;
-                }
-
-                svg.music-4u {
-                  color: #13f8e5;
-                }
-
-                p.nav-name {
-                  @include dark-color-text(0.88);
-                  @include userSelect(none);
-                  font-size: 13.5px;
-                  margin-left: 8px;
-                  margin-top: 1px;
-                  text-transform: capitalize;
-                  line-height: 20px;
-                }
+                margin-top: 1px;
+                text-transform: capitalize;
+                line-height: 20px;
               }
             }
           }

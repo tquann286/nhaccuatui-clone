@@ -19,6 +19,8 @@ import { TiHeadphones } from 'react-icons/ti'
 import { TbHandLittleFinger } from 'react-icons/tb'
 import { MdOutlineBarChart } from 'react-icons/md'
 
+import { UilSearch } from '@iconscout/react-unicons'
+
 import { useGetPosition } from 'hooks'
 
 const LeftSidebar = () => {
@@ -96,7 +98,7 @@ const LeftSidebar = () => {
                   <div className='nav-item nav-search'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
-                      <BiSearchAlt className='search' />
+                      <i class="uil uil-search search"></i>
                       <p className='nav-name'>{lang === 'vi' ? 'Tìm kiếm' : 'Search'}</p>
                     </div>
                   </div>
@@ -107,51 +109,47 @@ const LeftSidebar = () => {
                   <div className='nav-item nav-home'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
-                      <AiFillHome className='home' />
+                    <i class="uil uil-estate home"></i>
                       <p className='nav-name'>{lang === 'vi' ? 'Trang chủ' : 'Home'}</p>
                     </div>
                   </div>
                 </Link>
               </li>
               <li>
-                <Link to='/tim-kiem'>
                   <div className='nav-item nav-discovery'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
-                      <AiFillCompass className='discovery' />
+                    <i class="uil uil-compass discovery"></i>
                       <p className='nav-name'>{lang === 'vi' ? 'Khám phá' : 'Discovery'}</p>
                     </div>
                   </div>
-                </Link>
               </li>
               <li>
-                <Link to='/tim-kiem'>
                   <div className='nav-item nav-today-selection'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
-                      <TiHeadphones className='today-selection' />
+                      <i class="uil uil-headphones today-selection"></i>
                       <p className='nav-name'>{lang === 'vi' ? 'Nghe gì hôm nay' : 'Today selection'}</p>
                     </div>
                   </div>
-                </Link>
               </li>
               <li>
-                <Link to='/tim-kiem'>
+                <Link to='/bang-xep-hang/top-20&k=nhac-viet'>
                   <div className='nav-item nav-chart'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
-                      <MdOutlineBarChart className='chart' />
+                      <i class="uil uil-chart-bar chart"></i>
                       <p className='nav-name'>{lang === 'vi' ? 'BXH NCT' : 'NCT chart'}</p>
                     </div>
                   </div>
                 </Link>
               </li>
               <li>
-                <Link to='/tim-kiem'>
+                <Link to='/kham-pha'>
                   <div className='nav-item nav-music-4u'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
-                      <TbHandLittleFinger className='music-4u' />
+                      <i class="uil uil-music music-4u"></i>
                       <p className='nav-name'>Music 4U</p>
                     </div>
                   </div>
