@@ -123,6 +123,17 @@ $scale: 50px;
         li {
           margin-bottom: 4px;
 
+          a.active {
+
+            .nav-item {
+              background-color: rgba(28,30,32,0.05);
+            }
+
+            .nav-active-item {
+              background-size: 2px 100%;
+            }
+          }
+
           .nav-item {
             @include display-flex;
             @include align-items(center);

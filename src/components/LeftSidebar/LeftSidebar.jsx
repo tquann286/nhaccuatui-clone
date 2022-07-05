@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import './LeftSidebar.scss'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 import { PopupModal } from 'components'
 import SettingsModal from './SettingsModal'
@@ -100,7 +100,7 @@ const LeftSidebar = () => {
           <div className='ls-navbar'>
             <ul className='nav-menu'>
               <li>
-                <Link to='/tim-kiem'>
+                <NavLink to='/tim-kiem'>
                   <div className='nav-item nav-search'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
@@ -108,10 +108,10 @@ const LeftSidebar = () => {
                       <p className='nav-name'>{lang === 'vi' ? 'Tìm kiếm' : 'Search'}</p>
                     </div>
                   </div>
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to='/'>
+                <NavLink to='/'>
                   <div className='nav-item nav-home'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
@@ -119,7 +119,7 @@ const LeftSidebar = () => {
                       <p className='nav-name'>{lang === 'vi' ? 'Trang chủ' : 'Home'}</p>
                     </div>
                   </div>
-                </Link>
+                </NavLink>
               </li>
               <li>
                 <div className='nav-item nav-discovery' onClick={toggleDiscoveryMenu}>
@@ -131,30 +131,30 @@ const LeftSidebar = () => {
                   </div>
                 </div>
                 <div className={`${showDiscoveryMenu && 'show-detail'} nav-item-detail discovery-detail`}>
-                  <Link to='/bai-hat'>
+                  <NavLink to='/bai-hat'>
                     <div className="nav-item-detail-main">
                       <div className="nav-item-detail-main-hover"></div>
                       <span>{lang === 'vi' ? 'bài hát' : 'song'}</span>
                     </div>
-                  </Link>
-                  <Link to='/playlist'>
+                  </NavLink>
+                  <NavLink to='/playlist'>
                     <div className="nav-item-detail-main">
                       <div className="nav-item-detail-main-hover"></div>
                       <span>playlist</span>
                     </div>
-                  </Link>
-                  <Link to='/video'>
+                  </NavLink>
+                  <NavLink to='/video'>
                     <div className="nav-item-detail-main">
                       <div className="nav-item-detail-main-hover"></div>
                       <span>video</span>
                     </div>
-                  </Link>
-                  <Link to='/artist'>
+                  </NavLink>
+                  <NavLink to='/artist'>
                     <div className="nav-item-detail-main">
                       <div className="nav-item-detail-main-hover"></div>
                       <span>{lang === 'vi' ? 'nghệ sỹ' : 'artist'}</span>
                     </div>
-                  </Link>
+                  </NavLink>
                 </div>
               </li>
               <li>
@@ -167,28 +167,28 @@ const LeftSidebar = () => {
                   </div>
                 </div>
                 <div className={`${showTodaySelection && 'show-detail'} nav-item-detail today-selection-detail`}>
-                  <Link to='/chu-de'>
+                  <NavLink to='/chu-de'>
                     <div className="nav-item-detail-main">
                       <div className="nav-item-detail-main-hover"></div>
                       <span>{lang === 'vi' ? 'chủ đề' : 'topic'}</span>
                     </div>
-                  </Link>
-                  <Link to='/playlist'>
+                  </NavLink>
+                  <NavLink to='/playlist'>
                     <div className="nav-item-detail-main">
                       <div className="nav-item-detail-main-hover"></div>
                       <span>{lang === 'vi' ? 'tuyển tập' : 'collection'}</span>
                     </div>
-                  </Link>
-                  <Link to='/top-100'>
+                  </NavLink>
+                  <NavLink to='/top-100'>
                     <div className="nav-item-detail-main">
                       <div className="nav-item-detail-main-hover"></div>
                       <span>top 100</span>
                     </div>
-                  </Link>
+                  </NavLink>
                 </div>
               </li>
               <li>
-                <Link to='/bang-xep-hang/top-20&k=nhac-viet'>
+                <NavLink to='/bang-xep-hang/top-20&k=nhac-viet'>
                   <div className='nav-item nav-chart'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
@@ -196,10 +196,10 @@ const LeftSidebar = () => {
                       <p className='nav-name'>{lang === 'vi' ? 'BXH NCT' : 'NCT chart'}</p>
                     </div>
                   </div>
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to='/kham-pha'>
+                <NavLink to='/kham-pha'>
                   <div className='nav-item nav-music-4u'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
@@ -207,7 +207,7 @@ const LeftSidebar = () => {
                       <p className='nav-name'>Music 4U</p>
                     </div>
                   </div>
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>
