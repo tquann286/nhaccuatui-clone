@@ -28,6 +28,9 @@ const LeftSidebar = () => {
     left: 0,
   })
 
+  const [showDiscoveryMenu, setShowDiscoveryMenu] = useState(false)
+  const [showTodaySelection, setShowTodaySelection] = useState(false)
+
   const settingsBtnRef = useRef(null)
 
   const handleChangeTheme = () => {
@@ -40,6 +43,14 @@ const LeftSidebar = () => {
 
   const toggleShowSettings = () => {
     setShowSettingsModal(!showSettingsModal)
+  }
+
+  const toggleDiscoveryMenu = () => {
+    setShowDiscoveryMenu(!showDiscoveryMenu)
+  }
+
+  const toggleTodaySelection = () => {
+    setShowTodaySelection(!showTodaySelection)
   }
 
   useGetPosition(settingsBtnRef, (right, top) =>
@@ -111,22 +122,22 @@ const LeftSidebar = () => {
                 </Link>
               </li>
               <li>
-                <div className='nav-item nav-discovery'>
+                <div className='nav-item nav-discovery' onClick={toggleDiscoveryMenu}>
                   <div className='nav-active-item'></div>
                   <div className='nav-content'>
                     <i class='uil uil-compass discovery'></i>
                     <p className='nav-name'>{lang === 'vi' ? 'Khám phá' : 'Discovery'}</p>
-                    <MdOutlineKeyboardArrowDown />
+                    <MdOutlineKeyboardArrowDown className={`${showDiscoveryMenu && 'show-detail'}`} />
                   </div>
                 </div>
               </li>
               <li>
-                <div className='nav-item nav-today-selection'>
+                <div className='nav-item nav-today-selection' onClick={toggleTodaySelection}>
                   <div className='nav-active-item'></div>
                   <div className='nav-content'>
                     <i class='uil uil-headphones today-selection'></i>
                     <p className='nav-name'>{lang === 'vi' ? 'Nghe gì hôm nay' : 'Today selection'}</p>
-                    <MdOutlineKeyboardArrowDown />
+                    <MdOutlineKeyboardArrowDown className={`${showTodaySelection && 'show-detail'}`} />
                   </div>
                 </div>
               </li>
