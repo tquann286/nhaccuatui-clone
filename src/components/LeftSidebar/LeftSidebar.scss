@@ -216,6 +216,57 @@ $scale: 50px;
               }
             }
           }
+
+          .nav-item-detail {
+            @include transition-effect(0.3s);
+            overflow: hidden;
+            visibility: hidden;
+            opacity: 0;
+            height: 0;
+
+
+            &-main {
+              @include display-flex;
+              @include align-items(center);
+              @include userSelect(none);
+              width: $left-sidebar-width;
+              height: 32px;
+              position: relative;
+              text-transform: capitalize;
+              &-hover {
+                @include transition-effect(0.3s);
+                top: 14px;
+                left: 48px;
+                width: 4px;
+                height: 4px;
+                position: absolute;
+                border-radius: 100%;
+                background-color: transparent;
+              }
+
+              &:hover .nav-item-detail-main-hover {
+                background-color: #2DAAED;
+              }
+
+              span {
+                @include dark-color-text(0.5);
+                font-size: 13px;
+                padding-left: 66px;
+              }
+            }
+
+            &.show-detail {
+              visibility: visible;
+              opacity: 1;
+              height: 128px;
+            }
+          }
+
+          .nav-item-detail.today-selection-detail.show-detail {
+            visibility: visible;
+            opacity: 1;
+            height: 96px;
+          }
         }
       }
     }

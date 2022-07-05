@@ -130,6 +130,32 @@ const LeftSidebar = () => {
                     <MdOutlineKeyboardArrowDown className={`${showDiscoveryMenu && 'show-detail'}`} />
                   </div>
                 </div>
+                <div className={`${showDiscoveryMenu && 'show-detail'} nav-item-detail discovery-detail`}>
+                  <Link to='/bai-hat'>
+                    <div className="nav-item-detail-main">
+                      <div className="nav-item-detail-main-hover"></div>
+                      <span>{lang === 'vi' ? 'bài hát' : 'song'}</span>
+                    </div>
+                  </Link>
+                  <Link to='/playlist'>
+                    <div className="nav-item-detail-main">
+                      <div className="nav-item-detail-main-hover"></div>
+                      <span>playlist</span>
+                    </div>
+                  </Link>
+                  <Link to='/video'>
+                    <div className="nav-item-detail-main">
+                      <div className="nav-item-detail-main-hover"></div>
+                      <span>video</span>
+                    </div>
+                  </Link>
+                  <Link to='/artist'>
+                    <div className="nav-item-detail-main">
+                      <div className="nav-item-detail-main-hover"></div>
+                      <span>{lang === 'vi' ? 'nghệ sỹ' : 'artist'}</span>
+                    </div>
+                  </Link>
+                </div>
               </li>
               <li>
                 <div className='nav-item nav-today-selection' onClick={toggleTodaySelection}>
@@ -139,6 +165,26 @@ const LeftSidebar = () => {
                     <p className='nav-name'>{lang === 'vi' ? 'Nghe gì hôm nay' : 'Today selection'}</p>
                     <MdOutlineKeyboardArrowDown className={`${showTodaySelection && 'show-detail'}`} />
                   </div>
+                </div>
+                <div className={`${showTodaySelection && 'show-detail'} nav-item-detail today-selection-detail`}>
+                  <Link to='/chu-de'>
+                    <div className="nav-item-detail-main">
+                      <div className="nav-item-detail-main-hover"></div>
+                      <span>{lang === 'vi' ? 'chủ đề' : 'topic'}</span>
+                    </div>
+                  </Link>
+                  <Link to='/playlist'>
+                    <div className="nav-item-detail-main">
+                      <div className="nav-item-detail-main-hover"></div>
+                      <span>{lang === 'vi' ? 'tuyển tập' : 'collection'}</span>
+                    </div>
+                  </Link>
+                  <Link to='/top-100'>
+                    <div className="nav-item-detail-main">
+                      <div className="nav-item-detail-main-hover"></div>
+                      <span>top 100</span>
+                    </div>
+                  </Link>
                 </div>
               </li>
               <li>
