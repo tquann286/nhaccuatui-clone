@@ -13,13 +13,8 @@ import { scrollBarStyles } from 'services/LeftSidebar'
 import { useStore, actions } from 'store'
 
 import { BsMoonStarsFill, BsSunFill } from 'react-icons/bs'
-import { AiFillCompass, AiFillHome, AiOutlineSetting } from 'react-icons/ai'
-import { BiSearchAlt } from 'react-icons/bi'
-import { TiHeadphones } from 'react-icons/ti'
-import { TbHandLittleFinger } from 'react-icons/tb'
-import { MdOutlineBarChart } from 'react-icons/md'
-
-import { UilSearch } from '@iconscout/react-unicons'
+import { AiOutlineSetting } from 'react-icons/ai'
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
 import { useGetPosition } from 'hooks'
 
@@ -55,7 +50,7 @@ const LeftSidebar = () => {
   )
 
   return (
-      <div className='left-sidebar'>
+    <div className='left-sidebar'>
       <Scrollbars {...scrollBarStyles}>
         <div className='ls-logo-theme'>
           <Link className='ls-logo' to='/'>
@@ -98,7 +93,7 @@ const LeftSidebar = () => {
                   <div className='nav-item nav-search'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
-                      <i class="uil uil-search search"></i>
+                      <i class='uil uil-search search'></i>
                       <p className='nav-name'>{lang === 'vi' ? 'Tìm kiếm' : 'Search'}</p>
                     </div>
                   </div>
@@ -109,36 +104,38 @@ const LeftSidebar = () => {
                   <div className='nav-item nav-home'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
-                    <i class="uil uil-estate home"></i>
+                      <i class='uil uil-estate home'></i>
                       <p className='nav-name'>{lang === 'vi' ? 'Trang chủ' : 'Home'}</p>
                     </div>
                   </div>
                 </Link>
               </li>
               <li>
-                  <div className='nav-item nav-discovery'>
-                    <div className='nav-active-item'></div>
-                    <div className='nav-content'>
-                    <i class="uil uil-compass discovery"></i>
-                      <p className='nav-name'>{lang === 'vi' ? 'Khám phá' : 'Discovery'}</p>
-                    </div>
+                <div className='nav-item nav-discovery'>
+                  <div className='nav-active-item'></div>
+                  <div className='nav-content'>
+                    <i class='uil uil-compass discovery'></i>
+                    <p className='nav-name'>{lang === 'vi' ? 'Khám phá' : 'Discovery'}</p>
+                    <MdOutlineKeyboardArrowDown />
                   </div>
+                </div>
               </li>
               <li>
-                  <div className='nav-item nav-today-selection'>
-                    <div className='nav-active-item'></div>
-                    <div className='nav-content'>
-                      <i class="uil uil-headphones today-selection"></i>
-                      <p className='nav-name'>{lang === 'vi' ? 'Nghe gì hôm nay' : 'Today selection'}</p>
-                    </div>
+                <div className='nav-item nav-today-selection'>
+                  <div className='nav-active-item'></div>
+                  <div className='nav-content'>
+                    <i class='uil uil-headphones today-selection'></i>
+                    <p className='nav-name'>{lang === 'vi' ? 'Nghe gì hôm nay' : 'Today selection'}</p>
+                    <MdOutlineKeyboardArrowDown />
                   </div>
+                </div>
               </li>
               <li>
                 <Link to='/bang-xep-hang/top-20&k=nhac-viet'>
                   <div className='nav-item nav-chart'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
-                      <i class="uil uil-chart-bar chart"></i>
+                      <i class='uil uil-chart-bar chart'></i>
                       <p className='nav-name'>{lang === 'vi' ? 'BXH NCT' : 'NCT chart'}</p>
                     </div>
                   </div>
@@ -149,7 +146,7 @@ const LeftSidebar = () => {
                   <div className='nav-item nav-music-4u'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
-                      <i class="uil uil-music music-4u"></i>
+                      <i class='uil uil-music music-4u'></i>
                       <p className='nav-name'>Music 4U</p>
                     </div>
                   </div>
@@ -158,8 +155,8 @@ const LeftSidebar = () => {
             </ul>
           </div>
         </div>
-        </Scrollbars>
-      </div>
+      </Scrollbars>
+    </div>
   )
 }
 
