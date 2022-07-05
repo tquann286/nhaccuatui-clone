@@ -2,28 +2,28 @@
 
 .ft-container {
 	@include dark-color-text(0.5);
-	margin-top: 80px;
+	margin-top: 8rem;
 	border: $border-light;
 
 	.ft-main {
 		@include display-flex;
 		@include align-items(center);
 		@include justify-content(space-between);
-		height: 56px;
-		margin: 0 32px;
+		height: 5.6rem;
+		margin: 0 3.2rem;
 
 		.ft-owner {
-			font-size: 13px;
+			font-size: 1.3rem;
 			display: inline-block;
-			border-right: 2px solid rgba(28, 30, 32, 0.05);
-			padding-right: 10px;
+			border-right: 0.2rem solid rgba(28, 30, 32, 0.05);
+			padding-right: 1rem;
 
 			.ft-tel {
 				@include display-flex;
 				@include align-items(center);
 
 				svg {
-					margin-right: 8px;
+					margin-right: 0.8rem;
 				}
 			}
 		}
@@ -33,11 +33,11 @@
 			@include align-items(center);
 
 			& a:not(:last-child) {
-				margin-right: 4px;
+				margin-right: 0.4rem;
 			}
 
 			svg {
-				font-size: 26px;
+				font-size: 2.6rem;
 			}
 			@include transition-effect(0.2s);
 			.fb-icon {

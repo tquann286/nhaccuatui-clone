@@ -11,7 +11,7 @@
 	opacity: 0;
 }
 
-$card-border-radius: 4px 4px 0 0;
+$card-border-radius: 0.4rem 0.4rem 0 0;
 
 .mr-container {
 	.mr-title {
@@ -20,15 +20,15 @@ $card-border-radius: 4px 4px 0 0;
 
 	.mr-main {
 		display: flex;
-		margin: 16px 32px 0 32px;
+		margin: 1.6rem 3.2rem 0 3.2rem;
 
 		.ma-container {
 			position: relative;
 			width: 33.3333333%;
-			height: 320px;
+			height: 32rem;
 			background-color: rgba(28, 30, 32, 0.02);
 			&:not(:last-child) {
-				margin-right: 16px;
+				margin-right: 1.6rem;
 			}
 			border-radius: $card-border-radius;
 
@@ -43,28 +43,28 @@ $card-border-radius: 4px 4px 0 0;
 
 			.ma-title {
 				position: absolute;
-				top: 36px;
-				left: 24px;
-				font-size: 28px;
+				top: 3.6rem;
+				left: 2.4rem;
+				font-size: 2.8rem;
 				text-transform: uppercase;
 				color: $light-color;
-				text-shadow: 2px 2px 2px #543b54;
+				text-shadow: 0.2rem 0.2rem 0.2rem #543b54;
 			}
 
 			.ma-t3-img {
 				@include display-flex;
-				margin: -65px 0 18px 24px;
+				margin: -6.5rem 0 1.8rem 2.4rem;
 
 				.ma-thumb-container {
 					position: relative;
-					width: 80px;
-					height: 80px;
-					border-radius: 4px;
+					width: 8rem;
+					height: 8rem;
+					border-radius: 0.4rem;
 					background-repeat: no-repeat;
 					background-size: cover;
 
 					&:not(:first-child) {
-						margin-left: -35px;
+						margin-left: -3.5rem;
 					}
 
 					&:hover {
@@ -72,8 +72,8 @@ $card-border-radius: 4px 4px 0 0;
 					}
 					.ma-thumb-icon {
 						@include playBlur;
-						font-size: 22px;
-						line-height: 80px;
+						font-size: 2.2rem;
+						line-height: 8.0rem;
 						text-align: center;
 						color: $light-color;
 						z-index: 2;
@@ -81,7 +81,7 @@ $card-border-radius: 4px 4px 0 0;
 
 					.ma-blur {
 						@include playBlur;
-						border-radius: 4px;
+						border-radius: 0.4rem;
 						background-color: rgba(0, 0, 0, 0.5);
 						z-index: 1;
 					}
@@ -98,8 +98,8 @@ $card-border-radius: 4px 4px 0 0;
 				
 				position: relative;
 				z-index: 1;
-				padding: 0 24px;
-				font-size: 16px;
+				padding: 0 2.4rem;
+				font-size: 1.6rem;
 				font-weight: 450;
 				overflow: hidden;
 				text-overflow: ellipsis;
@@ -115,10 +115,10 @@ $card-border-radius: 4px 4px 0 0;
 				@include fitContentWidth;
 				@include dark-color-text(0.5);
 				max-width: 100%;
-				margin-top: 6px;
-				padding: 0 24px;
-				font-size: 13px;
-				line-height: 18px;
+				margin-top: 0.6rem;
+				padding: 0 2.4rem;
+				font-size: 1.3rem;
+				line-height: 1.8rem;
 				overflow: hidden;
 				text-overflow: ellipsis;
 				white-space: nowrap;
@@ -135,9 +135,9 @@ $card-border-radius: 4px 4px 0 0;
 			.ma-active-position {
 				@include dark-color-text(0.05);
 				position: absolute;
-				top: 192px;
-				right: 33px;
-				font-size: 56px;
+				top: 19.2rem;
+				right: 3.3rem;
+				font-size: 5.6rem;
 				font-weight: 700;
 				user-select: none;
 			}
@@ -146,16 +146,16 @@ $card-border-radius: 4px 4px 0 0;
 				@include transition-effect(0.1s);
 				@include hoverMainColor;
 				@include dark-color-text(0.5);
-				width: 120px;
-				height: 32px;
-				line-height: 32px;
-				font-size: 13px;
+				width: 12rem;
+				height: 3.2rem;
+				line-height: 3.2rem;
+				font-size: 1.3rem;
 				font-weight: 500;
-				border: 1px solid rgba(28,30,32,0.1);
+				border: 0.1rem solid rgba(28,30,32,0.1);
 				text-align: center;
-				border-radius: 4px;
-				margin-left: 24px;
-				margin-top: 20px;
+				border-radius: 0.4rem;
+				margin-left: 2.4rem;
+				margin-top: 2rem;
 
 				&:hover {
 					border-color: $main-text-color;

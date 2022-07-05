@@ -14,7 +14,7 @@
 }
 
 .notfound {
-  max-width: 767px;
+  max-width: 76.7rem;
   width: 100%;
   line-height: 1.4;
   text-align: center;
@@ -22,8 +22,8 @@
 
 .notfound .notfound-404 {
   position: relative;
-  height: 180px;
-  margin-bottom: 20px;
+  height: 18rem;
+  margin-bottom: 2rem;
   z-index: -1;
 }
 
@@ -35,15 +35,15 @@
   -webkit-transform: translate(-50% , -50%);
       -ms-transform: translate(-50% , -50%);
           transform: translate(-50% , -50%);
-  font-size: 224px;
+  font-size: 22.4rem;
   font-weight: 900;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: -12px;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  margin-left: -1.2rem;
   color: #030005;
   text-transform: uppercase;
-  text-shadow: -1px -1px 0px #8400ff, 1px 1px 0px #ff005a;
-  letter-spacing: -20px;
+  text-shadow: -0.1rem -0.1rem 0rem #8400ff, 0.1rem 0.1rem 0rem #ff005a;
+  letter-spacing: -2rem;
 }
 
 
@@ -52,13 +52,13 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 110px;
-  font-size: 42px;
+  top: 11rem;
+  font-size: 42rem;
   font-weight: 700;
   color: #fff;
   text-transform: uppercase;
-  text-shadow: 0px 2px 0px #8400ff;
-  letter-spacing: 13px;
+  text-shadow: 0rem 0.2rem 0rem #8400ff;
+  letter-spacing: 1.3rem;
   margin: 0;
 }
 
@@ -68,10 +68,10 @@
   text-transform: uppercase;
   color: #ff005a;
   text-decoration: none;
-  border: 2px solid;
+  border: 0.2rem solid;
   background: transparent;
-  padding: 10px 40px;
-  font-size: 14px;
+  padding: 1rem 4rem;
+  font-size: 1.4rem;
   font-weight: 700;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
@@ -81,14 +81,14 @@
   color: #8400ff;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 76.7rem) {
     .notfound .notfound-404 h2 {
-        font-size: 24px;
+        font-size: 2.4rem;
     }
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 48rem) {
   .notfound .notfound-404 h1 {
-      font-size: 182px;
+      font-size: 18.2rem;
   }
 }

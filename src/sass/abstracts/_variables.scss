@@ -3,21 +3,21 @@ $light-color: #fafafa;
 $main-bg-color: #f6f6f6;
 $dark-text-color: rgba(28, 30, 32, 0.88);
 $main-text-color: #2daaed;
-$box-shadow-effect: 0 4px 8px rgba(0, 0, 0, 0.2);
+$box-shadow-effect: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
 $disabled-color: rgba(28, 30, 32, 0.2);
-$border-light: 1px solid rgba(28, 30, 32, 0.05);
+$border-light: 0.1rem solid rgba(28, 30, 32, 0.05);
 
 $light-gray-bg-color: rgba(28,30,32,0.02);
 
 // Size
-$left-sidebar-width: 200px;
-$right-sidebar-width: 320px;
+$left-sidebar-width: 20rem;
+$right-sidebar-width: 32rem;
 
 // Screen
-$screen-lg: 1201px;
-$screen-md: 992px;
-$screen-sm: 768px;
-$screen-phone: 480px;
-$screen-ip6-down: '(max-width: 375px)';
+$screen-lg: 120.1rem;
+$screen-md: 99.2rem;
+$screen-sm: 76.8rem;
+$screen-phone: 48rem;
+$screen-ip6-down: '(max-width: 37.5rem)';
 
 

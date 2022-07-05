@@ -6,7 +6,7 @@ $dark-color: #1e1e1e;
 $darkmode-text-color: rgba(244, 246, 248, 0.88);
 
 // Left sidebar
-$box-border-dark: 1px solid #303130;
+$box-border-dark: 0.1rem solid #303130;
 $ball-color-dark: #404040;
 
 body[data-theme='dark'] {
@@ -67,7 +67,7 @@ body[data-theme='dark'] {
   }
 
   .ma-watch-all {
-    border: 1px solid rgba(244, 246, 248, 0.1) !important;
+    border: 0.1rem solid rgba(244, 246, 248, 0.1) !important;
   }
 
   .nr-active-slide,

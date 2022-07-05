@@ -1,6 +1,6 @@
 @import 'settings';
 
-$active-img-width: 160px;
+$active-img-width: 16rem;
 
 .nr-container {
 	.nr-title {
@@ -8,14 +8,14 @@ $active-img-width: 160px;
 		user-select: none;
 	}
 	.nr-main {
-		margin-top: 16px;
+		margin-top: 1.6rem;
 
 		.nr-active-slide {
 			position: relative;
-			height: 200px;
-			padding: 20px 40px;
+			height: 20rem;
+			padding: 2rem 4rem;
 			background-color: rgba(28, 30, 32, 0.02);
-			margin-bottom: 24px;
+			margin-bottom: 2.4rem;
 
 			.slick-slide {
 				visibility: hidden;
@@ -32,14 +32,14 @@ $active-img-width: 160px;
 					overflow: hidden;
 					width: $active-img-width;
 					height: $active-img-width;
-					margin-right: 40px;
-					border-radius: 4px;
+					margin-right: 4rem;
+					border-radius: 0.4rem;
 
 					img {
 						vertical-align: middle;
 						width: 100%;
 						height: auto;
-						border-radius: 4px;
+						border-radius: 0.4rem;
 					}
 				}
 
@@ -49,8 +49,8 @@ $active-img-width: 160px;
 					h4 {
 						@include transition-effect(0.1s);
 						@include hoverMainColor;
-						font-size: 14px;
-						line-height: 18px;
+						font-size: 1.4rem;
+						line-height: 1.8rem;
 						white-space: nowrap;
 						overflow: hidden;
 						text-overflow: ellipsis;
@@ -62,18 +62,18 @@ $active-img-width: 160px;
 							@include display-flex;
 							@include align-items(center);
 
-							margin-top: 10px;
+							margin-top: 1rem;
 							.nr-artist-img-container {
 								display: inline-block;
 								.nr-artist-img {
 									display: inline-block;
-									width: 24px;
-									height: 24px;
-									border: 1px solid rgba(255, 255, 255, 1);
+									width: 2.4rem;
+									height: 2.4rem;
+									border: 0.1rem solid rgba(255, 255, 255, 1);
 									border-radius: 50%;
 									background-repeat: no-repeat;
 									background-size: cover;
-									margin-right: -8px;
+									margin-right: -0.8rem;
 
 									img {
 										width: 100%;
@@ -87,8 +87,8 @@ $active-img-width: 160px;
 								white-space: nowrap;
 								text-overflow: ellipsis;
 								overflow: hidden;
-								font-size: 13px;
-								margin-left: 12px;
+								font-size: 1.3rem;
+								margin-left: 1.2rem;
 								color: rgba(28, 30, 32, 0.5);
 								a {
 									span {
@@ -104,8 +104,8 @@ $active-img-width: 160px;
 						@include display-flex;
 						@include align-items(center);
 
-						margin-top: 5px;
-						font-size: 14px;
+						margin-top: 0.5rem;
+						font-size: 1.4rem;
 						color: rgba(28, 30, 32, 0.5);
 						user-select: text;
 						svg {
@@ -114,9 +114,9 @@ $active-img-width: 160px;
 					}
 
 					.line-throught {
-						height: 1px;
+						height: 0.1rem;
 						background-color: rgba(28, 30, 32, 0.05);
-						margin-top: 12px;
+						margin-top: 1.2rem;
 					}
 				}
 			}
@@ -125,17 +125,17 @@ $active-img-width: 160px;
 
 	.nr-thumb-slider {
 		@include flexCenter;
-    margin-bottom: 40px;
+    margin-bottom: 4rem;
 
 		.nr-thumb-img {
 			position: relative;
-			border-radius: 4px;
-			margin: 0 6px;
+			border-radius: 0.4rem;
+			margin: 0 0.6rem;
 			width: unset !important;
 			img {
 				vertical-align: middle;
-				border-radius: 4px;
-				width: 80px;
+				border-radius: 0.4rem;
+				width: 8rem;
 			}
 
 			.blur {
@@ -143,13 +143,13 @@ $active-img-width: 160px;
 				@include transition-effect(0.2s);
 				position: absolute;
 				top: 0;
-				width: 80px;
+				width: 8rem;
 				height: 100%;
 				background-color: rgba(0, 0, 0, 0.3);
 				color: #fafafa;
 				overflow: hidden;
-				border-radius: 4px;
-				font-size: 20px;
+				border-radius: 0.4rem;
+				font-size: 2rem;
 				visibility: hidden;
 				opacity: 0;
 			}
