@@ -36,7 +36,13 @@ body[data-theme='dark'] {
     }
   }
 
-  .hp-main {
+  .ls-auth-setting,
+  .nav-name {
+    color: rgba(244, 246, 248, 0.88) !important;
+  }
+
+  .sd-three-dots {
+    color: rgba(244, 246, 248, 0.55) !important;
   }
 
   .nr-artist-name,
@@ -50,8 +56,18 @@ body[data-theme='dark'] {
   .tp-nav,
   .ht-nav,
   .t1-nav,
-  .ft-container {
+  .ft-container,
+  .nav-content,
+  .nav-item-detail-main span {
     color: rgba(244, 246, 248, 0.5) !important;
+  }
+
+  .disabled {
+    color: rgba(244,246,248,0.2) !important;
+  }
+
+  .ma-watch-all {
+    border: 1px solid rgba(244, 246, 248, 0.1) !important;
   }
 
   .nr-active-slide,
@@ -59,16 +75,8 @@ body[data-theme='dark'] {
     background-color: rgba(244, 246, 248, 0.02) !important;
   }
 
-  .ma-watch-all {
-    border: 1px solid rgba(244, 246, 248, 0.1) !important;
-  }
-
   .ma-active-position {
     color: rgba(244, 246, 248, 0.05) !important;
-  }
-
-  .sd-three-dots {
-    color: rgba(244, 246, 248, 0.55) !important;
   }
 
   .so-more-options-box, .vd-more-options-box {
@@ -82,9 +90,5 @@ body[data-theme='dark'] {
     .customDots {
       background-color: rgba(244, 246, 248, 0.1) !important;
     }
-  }
-
-  .disabled {
-    color: rgba(244,246,248,0.2) !important;
   }
 }
