@@ -1,5 +1,7 @@
+import { env } from 'config/environment'
+
 // Link
-export const PROXY = 'http://localhost:3000'
+export const PROXY = env.DOMAIN_URL
 export const FB_LINK = 'https://www.facebook.com/trung.quann.2806'
 export const INSTA_LINK = 'https://www.instagram.com/tquann286_'
 export const GIT_LINK = 'https://github.com/tquann286'
