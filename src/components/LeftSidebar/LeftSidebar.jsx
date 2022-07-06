@@ -2,13 +2,15 @@ import React, { useState, useRef } from 'react'
 import './LeftSidebar.scss'
 import { Link, NavLink } from 'react-router-dom'
 
-import { PopupModal } from 'components'
+import { PopupModal, LoginForm } from 'components'
 import SettingsModal from './SettingsModal'
 
 import nctLogo from 'images/nct-logo.png'
 
 import { Scrollbars } from 'react-custom-scrollbars'
 import { scrollBarStyles } from 'services/LeftSidebar'
+
+import { overlayStyles } from 'services/LoginForm'
 
 import { useStore, actions } from 'store'
 
@@ -20,7 +22,7 @@ import { useGetPosition } from 'hooks'
 
 const LeftSidebar = () => {
   const [state, dispatch] = useStore()
-  const { theme, lang } = state
+  const { theme, lang, showLogin } = state
 
   const [showSettingsModal, setShowSettingsModal] = useState(false)
   const [settingsModalPosition, setSettingsModalPosition] = useState({
@@ -51,6 +53,10 @@ const LeftSidebar = () => {
 
   const toggleTodaySelection = () => {
     setShowTodaySelection(!showTodaySelection)
+  }
+
+  const toggleShowLogin = () => {
+    dispatch(actions.toggleShowLogin())
   }
 
   useGetPosition(settingsBtnRef, (right, top) =>
@@ -84,7 +90,10 @@ const LeftSidebar = () => {
         <div className='ls-auth-setting'>
           <div className='ls-auth'>
             <div className='ls-auth-main'>
-              <p>{lang === 'vi' ? 'Đăng nhập' : 'Sign in'}</p>
+              <p onClick={toggleShowLogin}>{lang === 'vi' ? 'Đăng nhập' : 'Sign in'}</p>
+              <PopupModal showModal={showLogin} toggleModal={toggleShowLogin} overlayStyles={overlayStyles}>
+                <LoginForm />
+              </PopupModal>
             </div>
           </div>
           <div className='ls-setting'>
