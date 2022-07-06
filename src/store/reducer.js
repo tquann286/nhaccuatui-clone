@@ -1,9 +1,10 @@
-import { SET_THEME, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME, SET_LANG, CHANGE_VI_LANG, CHANGE_EN_LANG } from 'share/constants'
+import { SET_THEME, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME, SET_LANG, CHANGE_VI_LANG, CHANGE_EN_LANG, TOGGLE_SHOW_LOGIN } from 'share/constants'
 
 export const initState = {
   showMoreOptions: false,
   theme: 'light',
   lang: 'vi',
+  showLogin: false,
 }
 
 const reducer = (state, action) => {
@@ -38,6 +39,11 @@ const reducer = (state, action) => {
         ...state,
         lang: 'en',
       }
+      case TOGGLE_SHOW_LOGIN:
+        return {
+          ...state,
+          showLogin: !state.showLogin,
+        }
     default:
       throw new Error('Invalid action.')
   }

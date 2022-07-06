@@ -14,3 +14,6 @@ export const CHANGE_VI_LANG = 'change_vi_lang'
 export const CHANGE_EN_LANG = 'change_en_lang'
 export const SET_LANG = 'set_lang'
 
+// Login Form
+export const TOGGLE_SHOW_LOGIN = 'toggle_show_login'
+
