@@ -120,3 +120,14 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+@mixin flexDirection($value) {
+  -webkit-flex-direction: $value;
+  -ms-flex-direction: $value;
+  flex-direction: $value;
+}
+
+@mixin animation($name, $duration, $timing-function, $fill-mode) {
+  -webkit-animation: $name $duration $timing-function $fill-mode;
+  animation: $name $duration $timing-function $fill-mode;
+}

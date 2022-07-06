@@ -85,7 +85,8 @@ summary {
 
 a,
 div,
-span {
+span,
+button {
   outline: none;
 }
 
@@ -141,4 +142,30 @@ img,
 object,
 embed {
   max-width: 100%;
+}
+
+[type=button], [type=reset], [type=submit], button {
+  -webkit-appearance: button;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button, input {
+  overflow: visible;
+}
+
+button, input, optgroup, select, textarea {
+  font: inherit;
+  margin: 0;
+}
+
+button, input[type=button] {
+  width: auto;
+  overflow: visible;
+}
+
+.clickable, label, input[type=button], input[type=submit], input[type=file], button {
+  cursor: pointer;
 }

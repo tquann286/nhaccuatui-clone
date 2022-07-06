@@ -1,0 +1,23 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleAndFadeIn {
+  0% {
+    width: 34rem;
+    height: 40rem;
+    opacity: 0.5;
+  }
+
+  100% {
+    width: 42rem;
+    height: 48rem;
+    opacity: 1;
+  }
+}
