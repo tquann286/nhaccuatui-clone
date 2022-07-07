@@ -25,16 +25,16 @@ const AuthForm = () => {
   }
   
   return (
-    <div className='lf-container' onClick={(e) => e.stopPropagation()}>
-      <div className='lf-main'>
-        <div className="lf-header">
+    <div className='af-container' onClick={(e) => e.stopPropagation()}>
+      <div className='af-main'>
+        <div className="af-header">
           <h4>{lang === 'vi' ? handleAuthFunc('Đăng nhập', 'Đăng ký') : handleAuthFunc('Sign in', 'Sign up')}</h4>
           <button className='close-btn' onClick={handleAuthFunc(toggleShowLogin, toggleShowSignUp)}>
             <IoMdClose />
           </button>
         </div>
-        <div className="lf-content">
-          <div className="lf-login-form">
+        <div className="af-content">
+          <div className="af-login-form">
             <Formik initialValues={{ email: '', password: '' }} validate={validateLogin} onSubmit={onSubmitLogin}>
             {({
               values,
