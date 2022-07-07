@@ -75,8 +75,6 @@ $scale: 5rem;
     .ls-auth {
       @include display-flex;
       @include align-items(center);
-      @include transition-effect(0.1s);
-      @include hoverMainColor;
       max-width: calc(100% - 3.8rem);
       margin-right: 0.8rem;
 
@@ -88,8 +86,13 @@ $scale: 5rem;
         cursor: pointer;
 
         p {
-          font-size: 1.28rem;
+          font-size: 1.25rem;
           font-weight: 500;
+
+          span {
+            @include transition-effect(0.1s);
+            @include hoverMainColor;
+          }
         }
       }
     }
@@ -101,11 +104,12 @@ $scale: 5rem;
       margin-right: 1.8rem;
 
       &-icon {
+        @include display-flex;
         font-size: 1.6rem;
         opacity: 0.8;
         cursor: pointer;
         & svg {
-          @include transition-effect(0.5s);
+          @include transition-effect(0.35s);
         }
       }
     }

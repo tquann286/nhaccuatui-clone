@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import './LeftSidebar.scss'
 import { Link, NavLink } from 'react-router-dom'
 
-import { PopupModal, LoginForm } from 'components'
+import { PopupModal, AuthForm } from 'components'
 import SettingsModal from './SettingsModal'
 
 import nctLogo from 'images/nct-logo.png'
@@ -10,7 +10,7 @@ import nctLogo from 'images/nct-logo.png'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { scrollBarStyles } from 'services/LeftSidebar'
 
-import { overlayStyles } from 'services/LoginForm'
+import { overlayAuthStyles } from 'services/PopupModal'
 
 import { useStore, actions } from 'store'
 
@@ -22,7 +22,7 @@ import { useGetPosition } from 'hooks'
 
 const LeftSidebar = () => {
   const [state, dispatch] = useStore()
-  const { theme, lang, showLogin } = state
+  const { theme, lang, showLogin, showSignUp } = state
 
   const [showSettingsModal, setShowSettingsModal] = useState(false)
   const [settingsModalPosition, setSettingsModalPosition] = useState({
@@ -59,6 +59,10 @@ const LeftSidebar = () => {
     dispatch(actions.toggleShowLogin())
   }
 
+  const toggleShowSignUp = () => {
+    dispatch(actions.toggleShowSignUp())
+  }
+
   useGetPosition(settingsBtnRef, (right, top) =>
     setSettingsModalPosition({
       top: top,
@@ -90,9 +94,13 @@ const LeftSidebar = () => {
         <div className='ls-auth-setting'>
           <div className='ls-auth'>
             <div className='ls-auth-main'>
-              <p onClick={toggleShowLogin}>{lang === 'vi' ? 'Đăng nhập' : 'Sign in'}</p>
-              <PopupModal showModal={showLogin} toggleModal={toggleShowLogin} overlayStyles={overlayStyles}>
-                <LoginForm />
+              <p>
+                <span onClick={toggleShowLogin}>{lang === 'vi' ? 'Đăng nhập' : 'Sign in'}</span>
+                {" | "}
+                <span onClick={toggleShowSignUp}>{lang === 'vi' ? 'Đăng ký' : 'Sign up'}</span>
+              </p>
+              <PopupModal showModal={showLogin || showSignUp} toggleModal={(showLogin && toggleShowLogin) || (showSignUp && toggleShowSignUp)} overlayStyles={overlayAuthStyles}>
+                {(showLogin || showSignUp) && <AuthForm />}
               </PopupModal>
             </div>
           </div>

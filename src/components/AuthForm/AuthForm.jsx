@@ -1,28 +1,35 @@
 import React from 'react'
-import './LoginForm.scss'
-
+import './AuthForm.scss'
 
 import { Formik } from 'formik'
-import { validateLogin, onSubmitLogin } from 'services/LoginForm'
+import { validateLogin, onSubmitLogin } from 'services/AuthForm'
 
 import { useStore, actions } from 'store'
 
 import { IoMdClose } from 'react-icons/io'
 
-const LoginForm = () => {
+const AuthForm = () => {
   const [state, dispatch] = useStore()
-  const { lang, showLogin } = state
+  const { lang, showLogin, showSignUp } = state
+
+  const handleAuthFunc = (loginFunc, signUpFunc) => {
+    return (showLogin && loginFunc) || (showSignUp && signUpFunc)
+  }
 
   const toggleShowLogin = () => {
     dispatch(actions.toggleShowLogin())
   }
 
+  const toggleShowSignUp = () => {
+    dispatch(actions.toggleShowSignUp())
+  }
+  
   return (
     <div className='lf-container' onClick={(e) => e.stopPropagation()}>
       <div className='lf-main'>
         <div className="lf-header">
-          <h4>{lang === 'vi' ? 'Đăng nhập' : 'Sign in'}</h4>
-          <button className='close-btn' onClick={toggleShowLogin}>
+          <h4>{lang === 'vi' ? handleAuthFunc('Đăng nhập', 'Đăng ký') : handleAuthFunc('Sign in', 'Sign up')}</h4>
+          <button className='close-btn' onClick={handleAuthFunc(toggleShowLogin, toggleShowSignUp)}>
             <IoMdClose />
           </button>
         </div>
@@ -49,4 +56,4 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+export default AuthForm
