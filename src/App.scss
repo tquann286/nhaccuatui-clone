@@ -169,3 +169,8 @@ button, input[type=button] {
 .clickable, label, input[type=button], input[type=submit], input[type=file], button {
   cursor: pointer;
 }
+
+// Override toastify css
+.Toastify__toast-body {
+  font-size: 1.4rem;
+}
