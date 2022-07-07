@@ -6,7 +6,11 @@ import { handleCopyBtn } from 'services/SwiperSlider'
 import { useNavigate } from 'react-router-dom'
 import { createPlaylistUrl } from 'share/utilities'
 
+import { useStore } from 'store'
+
 const SwiperSlider = ({keyId, title, thumbnail}) => {
+  const [state, dispatch] = useStore()
+  const { lang } = state
 	const navigate = useNavigate()
 
 	const onNavigatePlaylist = (title, keyId) => {
@@ -24,7 +28,7 @@ const SwiperSlider = ({keyId, title, thumbnail}) => {
 						<div className='pl-play-btn'>
 							<BsFillPlayCircleFill />
 						</div>
-						<div title='Sao chép link' className='pl-more' onClick={(e) => handleCopyBtn(e, title, keyId)}>
+						<div title='Sao chép link' className='pl-more' onClick={(e) => handleCopyBtn(e, title, keyId, lang)}>
 							<IoMdMore />
 						</div>
 					</div>

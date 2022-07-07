@@ -16,7 +16,7 @@ const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist, lang}) => {
 						<div className='pl-play-btn'>
 							<BsFillPlayCircleFill />
 						</div>
-						<div title={lang === 'vi' ? 'Sao chép link' : 'Copy link'} className='pl-more' onClick={(e) => handleCopyBtn(e, title, keyId)}>
+						<div title={lang === 'vi' ? 'Sao chép link' : 'Copy link'} className='pl-more' onClick={(e) => handleCopyBtn(e, title, keyId, lang)}>
 							<IoMdMore />
 						</div>
 					</div>
