@@ -6,6 +6,8 @@ export const FB_LINK = 'https://www.facebook.com/trung.quann.2806'
 export const INSTA_LINK = 'https://www.instagram.com/tquann286_'
 export const GIT_LINK = 'https://github.com/tquann286'
 
+export const TERM_LINK = 'https://www.nhaccuatui.com/thoa-thuan-su-dung'
+
 // Theme
 export const CHANGE_LIGHT_THEME = 'change_light_theme'
 export const CHANGE_DARK_THEME = 'change_dark_theme'

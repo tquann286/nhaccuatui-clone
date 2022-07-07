@@ -52,7 +52,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
 
     navigator.clipboard.writeText(songLink)
     toggleShowMore()
-    copyNotify()
+    copyNotify(lang)
   }
 
   useOnClickOutside(moreOptionsRef, moreDivRef, () => setShowMoreOptions(false))

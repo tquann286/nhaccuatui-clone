@@ -56,7 +56,7 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
 
     navigator.clipboard.writeText(videoLink)
     toggleShowMore()
-    copyNotify()
+    copyNotify(lang)
   }
 
   const handleVideoClick = () => {

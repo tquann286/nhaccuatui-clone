@@ -62,7 +62,7 @@ export const createTop100Url = (title, keyId) => {
 
 export const getNavigateUrl = (url) => {
   const linkStartIndex = url.indexOf('nhaccuatui.com/') + 15
-  const keyStartIndex = url.indexOf('.html') -12
+  const keyStartIndex = url.indexOf('.html') - 12
   const keyEndIndex = url.indexOf('.html')
 
   const keyId = url.substring(keyStartIndex, keyEndIndex)
@@ -70,7 +70,7 @@ export const getNavigateUrl = (url) => {
   if (url.includes('/bai-hat/')) {
     const songStartIndex = linkStartIndex + 8
     const songEndIndex = keyStartIndex
-    
+
     const songUrl = url.substring(songStartIndex, songEndIndex)
     return `/bai-hat/${songUrl}&k=${keyId}`
   } else if (url.includes('/playlist/')) {
@@ -84,8 +84,8 @@ export const getNavigateUrl = (url) => {
   }
 }
 
-export const copyNotify = () =>
-  toast('🦄 Đã sao chép link.', {
+export const copyNotify = (lang) =>
+  toast(lang === 'vi' ? '🦄 Đã sao chép link.' : '🦄 Copied link successfully.', {
     position: 'bottom-left',
     autoClose: 3000,
   })
@@ -93,7 +93,11 @@ export const copyNotify = () =>
 export const toastConfig = {
   position: 'bottom-left',
   autoClose: 3000,
-  newestOnTop: true,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
 }
 
 export const animationConfig = {
