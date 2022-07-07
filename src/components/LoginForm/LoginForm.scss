@@ -46,7 +46,14 @@ $login-header-hight: 6.4rem;
 
       .lf-content {
         @include flexCenter;
+        @include flexDirection(column);
         height: calc(100% - $login-header-hight);
+        margin-top: 4rem;
+
+        .lf-login-form {
+          @include flexCenter;
+          width: 75%;
+        }
       }
     }
   }
