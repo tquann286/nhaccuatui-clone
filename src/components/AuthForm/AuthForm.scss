@@ -1,6 +1,6 @@
 @import 'settings';
 
-$login-header-hight: 6.4rem;
+$login-header-hight: 6rem;
 
 .overlay {
   @include animation(fadeIn, 0.2s, linear, forwards);
