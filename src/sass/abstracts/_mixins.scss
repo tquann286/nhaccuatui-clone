@@ -109,10 +109,13 @@
 }
 
 @mixin userSelect($value) {
-  -webkit-user-select: $value;
-  -moz-user-select: $value;
-  -ms-user-select: $value;
-  user-select: $value;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 @mixin transparentIcon($col1, $col2) {
