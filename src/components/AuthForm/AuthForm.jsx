@@ -1,19 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './AuthForm.scss'
 
-import { Formik, Form, Field } from 'formik'
-import { onSubmitLogin, validationAuthSchema } from 'services/AuthForm'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
 
 import { TERM_LINK } from 'share/constants'
+import { handleFocus, handleBlur, authSchema } from 'services/AuthForm'
 
 import { useStore, actions } from 'store'
 
 import { IoMdClose } from 'react-icons/io'
+import { AiOutlineUser } from 'react-icons/ai'
+import { BsKeyboard, BsInfoCircle } from 'react-icons/bs'
+import { HiOutlineMail } from 'react-icons/hi'
 
 const AuthForm = () => {
   const [state, dispatch] = useStore()
   const { lang, showLogin, showSignUp } = state
+
+  const [agreeTerm, setAgreeTerm] = useState(false || showLogin)
+
+  const defineLang = (vie, eng) => {
+    return lang === 'vi' ? vie : eng
+  }
+
+  const handleAuthFunc = (loginFunc, signUpFunc) => {
+    return (showLogin && loginFunc) || (showSignUp && signUpFunc)
+  }
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ mode: 'onBlur', reValidateMode: 'onBlur', resolver: yupResolver(authSchema(defineLang, handleAuthFunc)) })
+  console.log(errors)
 
   const toggleShowLogin = () => {
     dispatch(actions.toggleShowLogin())
@@ -23,36 +44,13 @@ const AuthForm = () => {
     dispatch(actions.toggleShowSignUp())
   }
 
-  const handleAuthFunc = (loginFunc, signUpFunc) => {
-    return (showLogin && loginFunc) || (showSignUp && signUpFunc)
+  const onLoginSubmit = (data) => {
+    console.log(data)
   }
 
-  const initialAuthValues = handleAuthFunc({ email: '', password: '' }, { userName: '', email: '', password: '', confirmPassword: '' })
-
-
-  const onSubmitSinUp = (values, alo) => {
-    console.log(alo)
+  const onSignUpSubmit = (data) => {
+    console.log(data)
   }
-
-  
-  const validationAuthSchema = () => {
-  const emailSchema = Yup.string().email(handleAuthFunc('Email không hợp lệ.', 'Invalid email.')).required(handleAuthFunc('Vui lòng điền vào trường này.', 'Email is required.')).trim(handleAuthFunc('Email không hợp lệ.', 'Invalid email'))
-  const passwordSchema = Yup.string().required().trim(handleAuthFunc('Mật khẩu không hợp lệ.', 'Invalid password'))
-
-  const loginSchema = Yup.object().shape({
-    email: emailSchema,
-    password: passwordSchema,
-  })
-
-  const signUpSchema = Yup.object().shape({
-    userName: Yup.string().required(handleAuthFunc('Vui lòng điền vào trường này.', 'Username is required.')).max(50, handleAuthFunc('Tên người dùng phải ít hơn 50 ký tự.', 'Username is must less than 50 characters.')),
-    email: emailSchema,
-    password: passwordSchema,
-    confirmPassword: Yup.string().required().trim(handleAuthFunc('Mật khẩu không hợp lệ.', 'Invalid password')).oneOf([Yup.ref('password'), null], handleAuthFunc('Mật khẩu nhập lại không đúng.', 'Incorrect re-enter password.'))
-  })
-
-  return handleAuthFunc(loginSchema, signUpSchema)
-}
 
   return (
     <div className='af-container' onClick={(e) => e.stopPropagation()}>
@@ -64,31 +62,83 @@ const AuthForm = () => {
           </button>
         </div>
         <div className='af-content'>
-          <div className='af-login-form'>
-            <Formik initialValues={initialAuthValues} validationSchema={validationAuthSchema()} onSubmit={handleAuthFunc(onSubmitLogin, onSubmitSinUp)}>
-              {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => {
-                return (
-                  <Form>
-                    {showSignUp && <Field type='text' name='userName' placeholder={lang === 'vi' ? 'Tên người dùng' : 'Username'} />}
-                    <Field  name='email' placeholder='Email' />
-                    <Field type='password' name='password' placeholder={lang === 'vi' ? 'Nhập mật khẩu' : 'Password'} />
-                    {showSignUp && <Field name='confirmPassword' placeholder={lang === 'vi' ? 'Nhập lại mật khẩu' : 'Re-enter Password'} />}
+          <div className='form-container'>
+            <form onSubmit={handleSubmit(handleAuthFunc(onLoginSubmit, onSignUpSubmit))}>
+              {showSignUp && (
+                <div className='input-container username'>
+                  <div className='input-main'>
+                    <AiOutlineUser className='input-icon' />
+                    <input type='text' {...register('username')} placeholder={defineLang('Tên hiển thị', 'Username')} onFocus={(e) => handleFocus(e)} onBlur={(e) => handleBlur(e)} />
                     {showSignUp && (
-                      <div className='auth-term'>
-                        <label htmlFor='term'>
-                          <input id='term' name='term' type='checkbox' />
-                          {lang === 'vi' ? 'Tôi đã đọc và đồng ý với các' : 'I have read and agree to the'}
-                        </label>
-                        <a className='auth-term' href={TERM_LINK} target='_blank' rel='noopener'>
-                          {lang === 'vi' ? 'Điều khoản' : 'Terms'}
-                        </a>
+                      <div className='more-info username'>
+                        <BsInfoCircle className='more-info-icon' />
+                        <div className='more-info-description'>
+                          <p>{defineLang('Bạn có thể sử dụng chữ cái, chữ số, gạch dưới và dấu chấm. Chiều dài tối đa 30 kí tự', 'You can use letters, numbers, underscores and dots. Length from 6-30 characters')}</p>
+                        </div>
                       </div>
                     )}
-                    <button type='submit'>{lang === 'vi' ? handleAuthFunc('Đăng nhập', 'Đăng kí') : handleAuthFunc('Sign in', 'Sign up')}</button>
-                  </Form>
-                )
-              }}
-            </Formik>
+                  </div>
+                </div>
+              )}
+              <div className='input-container email'>
+                <div className='input-main'>
+                  <HiOutlineMail className='input-icon' />
+                  <input type='email' {...register('email')} placeholder='Email' onFocus={(e) => handleFocus(e)} onBlur={(e) => handleBlur(e)} />
+                  {showSignUp && (
+                    <div className='more-info email'>
+                      <BsInfoCircle className='more-info-icon' />
+                      <div className='more-info-description'>
+                        <p>{defineLang('Điền vào Email bạn muốn sử dụng cho tài khoản này', 'Fill in the Email you want to use for this account')}</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className='input-container password'>
+                <div className='input-main'>
+                  <BsKeyboard className='input-icon' />
+                  <input type='password' {...register('password')} placeholder={defineLang('Mật khẩu', 'Password')} onFocus={(e) => handleFocus(e)} onBlur={(e) => handleBlur(e)} />
+                  {showSignUp && (
+                    <div className='more-info password'>
+                      <BsInfoCircle className='more-info-icon' />
+                      <div className='more-info-description'>
+                        <p>{defineLang('Chiều dài từ 6-30 kí tự. Không sử dụng tiếng Việt có dấu', 'Length from 6-30 characters. Do not use accented Vietnamese')}</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              {showSignUp && (
+                <div className='input-container confirmedPassword'>
+                  <div className='input-main'>
+                    <BsKeyboard className='input-icon' />
+                    <input type='password' {...register('confirmedPassword')} placeholder={defineLang('Nhập lại mật khẩu', 'Re-enter Password')} onFocus={(e) => handleFocus(e)} onBlur={(e) => handleBlur(e)} />
+                    {showSignUp && (
+                      <div className='more-info confirmedPassword'>
+                        <BsInfoCircle className='more-info-icon' />
+                        <div className='more-info-description'>
+                          <p>{defineLang('Nhập lại mật khẩu giống như bên trên một lần nữa', 'Re-enter the same password as above again')}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+              {showSignUp && (
+                <div className='term-container'>
+                  <input id='term-confirm' type='checkbox' className='term-checkbox' checked={agreeTerm} onChange={() => setAgreeTerm(!agreeTerm)} />
+                  <label htmlFor='term-confirm' className='term-content'>
+                    {defineLang('Tôi đã đọc và đồng ý với các ', 'I have read and agree to the ')}
+                  </label>
+                  <a href={TERM_LINK} className='link-term' target='_blank' rel='noopener'>
+                    {defineLang('Điều khoản', 'Terms')}
+                  </a>
+                </div>
+              )}
+              <button type='submit' className={`submit-btn ${showSignUp && 'sign-up'} ${agreeTerm || 'disabled'}`} disabled={!agreeTerm}>
+                {handleAuthFunc(defineLang('Đăng nhập', 'Sign in'), defineLang('Đăng ký', 'Sign up'))}
+              </button>
+            </form>
           </div>
         </div>
       </div>
