@@ -29,30 +29,31 @@ const AuthForm = () => {
 
   const initialAuthValues = handleAuthFunc({ email: '', password: '' }, { userName: '', email: '', password: '', confirmPassword: '' })
 
-
   const onSubmitSinUp = (values, alo) => {
     console.log(alo)
   }
 
-  
   const validationAuthSchema = () => {
-  const emailSchema = Yup.string().email(handleAuthFunc('Email không hợp lệ.', 'Invalid email.')).required(handleAuthFunc('Vui lòng điền vào trường này.', 'Email is required.')).trim(handleAuthFunc('Email không hợp lệ.', 'Invalid email'))
-  const passwordSchema = Yup.string().required().trim(handleAuthFunc('Mật khẩu không hợp lệ.', 'Invalid password'))
+    const emailSchema = Yup.string().email(handleAuthFunc('Email không hợp lệ.', 'Invalid email.')).required(handleAuthFunc('Vui lòng điền vào trường này.', 'Email is required.')).trim(handleAuthFunc('Email không hợp lệ.', 'Invalid email'))
+    const passwordSchema = Yup.string().required().trim(handleAuthFunc('Mật khẩu không hợp lệ.', 'Invalid password'))
 
-  const loginSchema = Yup.object().shape({
-    email: emailSchema,
-    password: passwordSchema,
-  })
+    const loginSchema = Yup.object().shape({
+      email: emailSchema,
+      password: passwordSchema,
+    })
 
-  const signUpSchema = Yup.object().shape({
-    userName: Yup.string().required(handleAuthFunc('Vui lòng điền vào trường này.', 'Username is required.')).max(50, handleAuthFunc('Tên người dùng phải ít hơn 50 ký tự.', 'Username is must less than 50 characters.')),
-    email: emailSchema,
-    password: passwordSchema,
-    confirmPassword: Yup.string().required().trim(handleAuthFunc('Mật khẩu không hợp lệ.', 'Invalid password')).oneOf([Yup.ref('password'), null], handleAuthFunc('Mật khẩu nhập lại không đúng.', 'Incorrect re-enter password.'))
-  })
+    const signUpSchema = Yup.object().shape({
+      userName: Yup.string().required(handleAuthFunc('Vui lòng điền vào trường này.', 'Username is required.')).max(50, handleAuthFunc('Tên người dùng phải ít hơn 50 ký tự.', 'Username is must less than 50 characters.')),
+      email: emailSchema,
+      password: passwordSchema,
+      confirmPassword: Yup.string()
+        .required()
+        .trim(handleAuthFunc('Mật khẩu không hợp lệ.', 'Invalid password'))
+        .oneOf([Yup.ref('password'), null], handleAuthFunc('Mật khẩu nhập lại không đúng.', 'Incorrect re-enter password.')),
+    })
 
-  return handleAuthFunc(loginSchema, signUpSchema)
-}
+    return handleAuthFunc(loginSchema, signUpSchema)
+  }
 
   return (
     <div className='af-container' onClick={(e) => e.stopPropagation()}>
@@ -70,7 +71,7 @@ const AuthForm = () => {
                 return (
                   <Form>
                     {showSignUp && <Field type='text' name='userName' placeholder={lang === 'vi' ? 'Tên người dùng' : 'Username'} />}
-                    <Field  name='email' placeholder='Email' />
+                    <Field name='email' placeholder='Email' />
                     <Field type='password' name='password' placeholder={lang === 'vi' ? 'Nhập mật khẩu' : 'Password'} />
                     {showSignUp && <Field name='confirmPassword' placeholder={lang === 'vi' ? 'Nhập lại mật khẩu' : 'Re-enter Password'} />}
                     {showSignUp && (

@@ -26,3 +26,12 @@ export const validationAuthSchema = (handleAuthFunc) => {
 
   return handleAuthFunc(loginSchema, signUpSchema)
 }
+
+export const handleFocus = (e) => {
+  e.target.parentElement.classList.add('focus')
+}
+
+export const handleBlur = (e) => {
+  e.target.parentElement.classList.remove('focus')
+}
+
