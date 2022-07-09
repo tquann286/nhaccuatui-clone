@@ -33,7 +33,7 @@ const AuthForm = () => {
     console.log(alo)
   }
 
-  const validationAuthSchema = () => {
+  const authSchema = () => {
     const emailSchema = Yup.string().email(handleAuthFunc('Email không hợp lệ.', 'Invalid email.')).required(handleAuthFunc('Vui lòng điền vào trường này.', 'Email is required.')).trim(handleAuthFunc('Email không hợp lệ.', 'Invalid email'))
     const passwordSchema = Yup.string().required().trim(handleAuthFunc('Mật khẩu không hợp lệ.', 'Invalid password'))
 

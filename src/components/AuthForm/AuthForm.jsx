@@ -3,10 +3,10 @@ import './AuthForm.scss'
 
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
+import * as Yup from 'yup'
 
 import { TERM_LINK } from 'share/constants'
-import { handleFocus, handleBlur } from 'services/AuthForm'
+import { handleFocus, handleBlur, authSchema } from 'services/AuthForm'
 
 import { useStore, actions } from 'store'
 
@@ -25,13 +25,16 @@ const AuthForm = () => {
     return lang === 'vi' ? vie : eng
   }
 
-  const authSchema = {}
+  const handleAuthFunc = (loginFunc, signUpFunc) => {
+    return (showLogin && loginFunc) || (showSignUp && signUpFunc)
+  }
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ mode: 'onBlur', reValidateMode: 'onBlur' })
+  } = useForm({ mode: 'onBlur', reValidateMode: 'onBlur', resolver: yupResolver(authSchema(defineLang, handleAuthFunc)) })
+  console.log(errors)
 
   const toggleShowLogin = () => {
     dispatch(actions.toggleShowLogin())
@@ -39,10 +42,6 @@ const AuthForm = () => {
 
   const toggleShowSignUp = () => {
     dispatch(actions.toggleShowSignUp())
-  }
-
-  const handleAuthFunc = (loginFunc, signUpFunc) => {
-    return (showLogin && loginFunc) || (showSignUp && signUpFunc)
   }
 
   const onLoginSubmit = (data) => {
@@ -110,12 +109,12 @@ const AuthForm = () => {
                 </div>
               </div>
               {showSignUp && (
-                <div className='input-container comfirmedPassword'>
+                <div className='input-container confirmedPassword'>
                   <div className='input-main'>
                     <BsKeyboard className='input-icon' />
-                    <input type='password' {...register('comfirmedPassword')} placeholder={defineLang('Nhập lại mật khẩu', 'Re-enter Password')} onFocus={(e) => handleFocus(e)} onBlur={(e) => handleBlur(e)} />
+                    <input type='password' {...register('confirmedPassword')} placeholder={defineLang('Nhập lại mật khẩu', 'Re-enter Password')} onFocus={(e) => handleFocus(e)} onBlur={(e) => handleBlur(e)} />
                     {showSignUp && (
-                      <div className='more-info comfirmedPassword'>
+                      <div className='more-info confirmedPassword'>
                         <BsInfoCircle className='more-info-icon' />
                         <div className='more-info-description'>
                           <p>{defineLang('Nhập lại mật khẩu giống như bên trên một lần nữa', 'Re-enter the same password as above again')}</p>
