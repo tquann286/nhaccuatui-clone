@@ -4,6 +4,7 @@ $login-header-hight: 6rem;
 
 .overlay {
   @include animation(fadeIn, 0.2s, linear, forwards);
+
   .af-container {
     .af-main {
       @include display-flex;
