@@ -19,7 +19,7 @@ const AuthForm = () => {
   const [state, dispatch] = useStore()
   const { lang, showLogin, showSignUp } = state
 
-  const [agreeTerm, setAgreeTerm] = useState(false)
+  const [agreeTerm, setAgreeTerm] = useState(false || showLogin)
 
   const defineLang = (vie, eng) => {
     return lang === 'vi' ? vie : eng
