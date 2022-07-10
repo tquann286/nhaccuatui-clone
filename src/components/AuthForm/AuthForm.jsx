@@ -4,7 +4,7 @@ import './AuthForm.scss'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { TERM_LINK } from 'share/constants'
+import { TERM_LINK, DEFAULT_IMAGE } from 'share/constants'
 import { handleFocus, handleBlur, authSchema } from 'services/AuthForm'
 
 import { useStore, actions } from 'store'
@@ -14,6 +14,10 @@ import { AiOutlineUser } from 'react-icons/ai'
 import { BsKeyboard, BsInfoCircle } from 'react-icons/bs'
 import { HiOutlineMail } from 'react-icons/hi'
 import { IoWarningOutline } from 'react-icons/io5'
+
+import { auth, db } from 'config/firebase'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { collection, addDoc } from 'firebase/firestore'
 
 const AuthForm = () => {
   const [state, dispatch] = useStore()
@@ -33,7 +37,7 @@ const AuthForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ mode: 'onBlur', reValidateMode: 'onBlur', resolver: yupResolver(authSchema(defineLang, handleAuthFunc)) })
+  } = useForm({ mode: 'onBlur', reValidateMode: 'onChange', resolver: yupResolver(authSchema(defineLang, handleAuthFunc)) })
 
   const toggleShowLogin = () => {
     dispatch(actions.toggleShowLogin())
@@ -43,12 +47,30 @@ const AuthForm = () => {
     dispatch(actions.toggleShowSignUp())
   }
 
-  const onLoginSubmit = (data) => {
-    console.log(data)
+  const onLoginSubmit = async ({ email, password }) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password)
+      console.log(userCredential)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
-  const onSignUpSubmit = (data) => {
-    console.log(data)
+  const onSignUpSubmit = async ({ username, email, password, confirmedPassword }) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+      
+      addDoc(collection(db, 'users'), {
+        username,
+        email,
+        photoUrl: DEFAULT_IMAGE,
+        songHistory: '',
+        userId: userCredential.user.uid,
+      })
+
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (

@@ -7,6 +7,7 @@ export const INSTA_LINK = 'https://www.instagram.com/tquann286_'
 export const GIT_LINK = 'https://github.com/tquann286'
 
 export const TERM_LINK = 'https://www.nhaccuatui.com/thoa-thuan-su-dung'
+export const DEFAULT_IMAGE = 'https://stc-id.nixcdn.com/v12/static/media/default_avatar.fb823ac2.png'
 
 // Theme
 export const CHANGE_LIGHT_THEME = 'change_light_theme'

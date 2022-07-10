@@ -8,7 +8,6 @@ import {
 } from 'firebase/auth'
 import { getFirestore } from "firebase/firestore"
 
-
 const app = initializeApp(env.FIREBASE_CONFIG)
 const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider()
