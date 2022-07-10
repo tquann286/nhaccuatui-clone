@@ -146,6 +146,18 @@ $login-header-hight: 6rem;
               }
             }
 
+            p.error {
+              @include display-flex;
+              @include align-items(center);
+              font-size: 1.3rem;
+              color: $warning-color;
+              margin-top: 0.5rem;
+
+              svg {
+                margin-right: 0.5rem;
+              }
+            }
+
             .term-container {
               @include display-flex;
               @include align-items(center);

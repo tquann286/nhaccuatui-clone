@@ -3,7 +3,6 @@ import './AuthForm.scss'
 
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as Yup from 'yup'
 
 import { TERM_LINK } from 'share/constants'
 import { handleFocus, handleBlur, authSchema } from 'services/AuthForm'
@@ -14,6 +13,7 @@ import { IoMdClose } from 'react-icons/io'
 import { AiOutlineUser } from 'react-icons/ai'
 import { BsKeyboard, BsInfoCircle } from 'react-icons/bs'
 import { HiOutlineMail } from 'react-icons/hi'
+import { IoWarningOutline } from 'react-icons/io5'
 
 const AuthForm = () => {
   const [state, dispatch] = useStore()
@@ -34,7 +34,6 @@ const AuthForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: 'onBlur', reValidateMode: 'onBlur', resolver: yupResolver(authSchema(defineLang, handleAuthFunc)) })
-  console.log(errors)
 
   const toggleShowLogin = () => {
     dispatch(actions.toggleShowLogin())
@@ -65,20 +64,27 @@ const AuthForm = () => {
           <div className='form-container'>
             <form onSubmit={handleSubmit(handleAuthFunc(onLoginSubmit, onSignUpSubmit))}>
               {showSignUp && (
-                <div className='input-container username'>
-                  <div className='input-main'>
-                    <AiOutlineUser className='input-icon' />
-                    <input type='text' {...register('username')} placeholder={defineLang('Tên hiển thị', 'Username')} onFocus={(e) => handleFocus(e)} onBlur={(e) => handleBlur(e)} />
-                    {showSignUp && (
-                      <div className='more-info username'>
-                        <BsInfoCircle className='more-info-icon' />
-                        <div className='more-info-description'>
-                          <p>{defineLang('Bạn có thể sử dụng chữ cái, chữ số, gạch dưới và dấu chấm. Chiều dài tối đa 30 kí tự', 'You can use letters, numbers, underscores and dots. Length from 6-30 characters')}</p>
+                <React.Fragment>
+                  <div className='input-container username'>
+                    <div className='input-main'>
+                      <AiOutlineUser className='input-icon' />
+                      <input type='text' {...register('username')} placeholder={defineLang('Tên hiển thị', 'Username')} onFocus={(e) => handleFocus(e)} onBlur={(e) => handleBlur(e)} />
+                      {showSignUp && (
+                        <div className='more-info username'>
+                          <BsInfoCircle className='more-info-icon' />
+                          <div className='more-info-description'>
+                            <p>{defineLang('Bạn có thể sử dụng chữ cái, chữ số, gạch dưới và dấu chấm. Chiều dài tối đa 30 kí tự', 'You can use letters, numbers, underscores and dots. Length from 30 characters')}</p>
+                          </div>
                         </div>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
-                </div>
+                  {errors.username && (
+                    <p className='error'>
+                      <IoWarningOutline /> {errors.username.message}
+                    </p>
+                  )}
+                </React.Fragment>
               )}
               <div className='input-container email'>
                 <div className='input-main'>
@@ -94,6 +100,11 @@ const AuthForm = () => {
                   )}
                 </div>
               </div>
+              {errors.email && (
+                <p className='error'>
+                  <IoWarningOutline /> {errors.email.message}
+                </p>
+              )}
               <div className='input-container password'>
                 <div className='input-main'>
                   <BsKeyboard className='input-icon' />
@@ -102,27 +113,39 @@ const AuthForm = () => {
                     <div className='more-info password'>
                       <BsInfoCircle className='more-info-icon' />
                       <div className='more-info-description'>
-                        <p>{defineLang('Chiều dài từ 6-30 kí tự. Không sử dụng tiếng Việt có dấu', 'Length from 6-30 characters. Do not use accented Vietnamese')}</p>
+                        <p>{defineLang('Chiều dài ít nhất 6 kí tự. Không sử dụng tiếng Việt có dấu', 'Length is must more than 6 characters. Do not use accented Vietnamese')}</p>
                       </div>
                     </div>
                   )}
                 </div>
               </div>
+              {errors.password && (
+                <p className='error'>
+                  <IoWarningOutline /> {errors.password.message}
+                </p>
+              )}
               {showSignUp && (
-                <div className='input-container confirmedPassword'>
-                  <div className='input-main'>
-                    <BsKeyboard className='input-icon' />
-                    <input type='password' {...register('confirmedPassword')} placeholder={defineLang('Nhập lại mật khẩu', 'Re-enter Password')} onFocus={(e) => handleFocus(e)} onBlur={(e) => handleBlur(e)} />
-                    {showSignUp && (
-                      <div className='more-info confirmedPassword'>
-                        <BsInfoCircle className='more-info-icon' />
-                        <div className='more-info-description'>
-                          <p>{defineLang('Nhập lại mật khẩu giống như bên trên một lần nữa', 'Re-enter the same password as above again')}</p>
+                <React.Fragment>
+                  <div className='input-container confirmedPassword'>
+                    <div className='input-main'>
+                      <BsKeyboard className='input-icon' />
+                      <input type='password' {...register('confirmedPassword')} placeholder={defineLang('Nhập lại mật khẩu', 'Re-enter Password')} onFocus={(e) => handleFocus(e)} onBlur={(e) => handleBlur(e)} />
+                      {showSignUp && (
+                        <div className='more-info confirmedPassword'>
+                          <BsInfoCircle className='more-info-icon' />
+                          <div className='more-info-description'>
+                            <p>{defineLang('Nhập lại mật khẩu giống như bên trên một lần nữa', 'Re-enter the same password as above again')}</p>
+                          </div>
                         </div>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
-                </div>
+                  {errors.confirmedPassword && (
+                    <p className='error'>
+                      <IoWarningOutline /> {errors.confirmedPassword.message}
+                    </p>
+                  )}
+                </React.Fragment>
               )}
               {showSignUp && (
                 <div className='term-container'>
