@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { TERM_LINK, DEFAULT_IMAGE } from 'share/constants'
-import { handleFocus, handleBlur, authSchema } from 'services/AuthForm'
+import { handleFocus, handleBlur, authSchema, onSignUpSubmit } from 'services/AuthForm'
 
 import { useStore, actions } from 'store'
 
@@ -51,15 +51,16 @@ const AuthForm = () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password)
       console.log(userCredential)
+      console.log('loggin')
     } catch (error) {
-      console.log(error)
+      console.log({ ... error })
     }
   }
 
-  const onSignUpSubmit = async ({ username, email, password, confirmedPassword }) => {
+  const onSignUpSubmit = async ({ username, email, password }) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-      
+
       addDoc(collection(db, 'users'), {
         username,
         email,
@@ -67,9 +68,9 @@ const AuthForm = () => {
         songHistory: '',
         userId: userCredential.user.uid,
       })
-
+      console.log('sign up')
     } catch (error) {
-      console.log(error)
+      console.log({ ... error })
     }
   }
 

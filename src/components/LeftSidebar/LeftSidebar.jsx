@@ -5,7 +5,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { PopupModal, AuthForm } from 'components'
 import SettingsModal from './SettingsModal'
 
-import nctLogo from 'images/nct-logo.png'
+import nctLogo from 'images/nct-logo-v2.png'
 
 import { Scrollbars } from 'react-custom-scrollbars'
 import { scrollBarStyles } from 'services/LeftSidebar'
