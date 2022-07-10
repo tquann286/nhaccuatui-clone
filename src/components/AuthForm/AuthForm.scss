@@ -149,24 +149,69 @@ $login-header-hight: 6rem;
             .term-container {
               @include display-flex;
               @include align-items(center);
+              @include dark-color-text(0.6);
               width: 100%;
+              font-size: 1.3rem;
               margin-top: 1.6rem;
 
-              input.term-checkbox { 
-              cursor: pointer;
-              }
-              
-              label.term-content {
+              label.container {
                 @include userSelect(none);
-                font-size: 1.4rem;
-                margin-left: 1rem;
+                display: block;
+                position: relative;
+                padding-left: 2.4rem;
+                cursor: pointer;
+
+                /* Hide the browser's default checkbox */
+                input {
+                  position: absolute;
+                  opacity: 0;
+                  cursor: pointer;
+                  height: 0;
+                  width: 0;
+
+                  &:checked ~ .checkmark {
+                    background-color: #2196f3 !important;
+
+                    &::after {
+                      display: block;
+                    }
+                  }
+                }
+
+                /* Create a custom checkbox */
+                .checkmark {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  height: 1.6rem;
+                  width: 1.6rem;
+                  background-color: #eee;
+                  border-radius: 0.4rem;
+
+                  /* Create the checkmark/indicator (hidden when not checked) */
+                  &:after {
+                    @include transform-effect(rotate(45deg));
+                    content: '';
+                    position: absolute;
+                    display: none;
+                    left: 0.5rem;
+                    top: 0.3rem;
+                    width: 0.5rem;
+                    height: 1rem;
+                    border: solid white;
+                    border-width: 0 0.2rem 0.2rem 0;
+                  }
+                }
+
+                &:hover input ~ .checkmark {
+                  background-color: #ccc;
+                }
               }
 
               a.link-term {
                 color: $main-text-color;
                 text-transform: uppercase;
                 cursor: pointer;
-                font-size: 1.3rem;
                 margin-left: 0.3rem;
               }
             }

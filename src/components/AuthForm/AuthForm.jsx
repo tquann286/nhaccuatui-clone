@@ -126,9 +126,10 @@ const AuthForm = () => {
               )}
               {showSignUp && (
                 <div className='term-container'>
-                  <input id='term-confirm' type='checkbox' className='term-checkbox' checked={agreeTerm} onChange={() => setAgreeTerm(!agreeTerm)} />
-                  <label htmlFor='term-confirm' className='term-content'>
-                    {defineLang('Tôi đã đọc và đồng ý với các ', 'I have read and agree to the ')}
+                  <label className='container'>
+                    {defineLang(`Tôi đã đọc và đồng ý với các `, `I have read and agree to the `)}
+                    <input type='checkbox' checked={agreeTerm} onChange={() => setAgreeTerm(!agreeTerm)} />
+                    <span className='checkmark'></span>
                   </label>
                   <a href={TERM_LINK} className='link-term' target='_blank' rel='noopener'>
                     {defineLang('Điều khoản', 'Terms')}
