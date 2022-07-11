@@ -18,6 +18,9 @@ import { AiOutlineUser } from 'react-icons/ai'
 import { BsKeyboard, BsInfoCircle } from 'react-icons/bs'
 import { HiOutlineMail } from 'react-icons/hi'
 import { IoWarningOutline } from 'react-icons/io5'
+import { FaFacebookF } from 'react-icons/fa'
+import { FcGoogle } from 'react-icons/fc'
+import loginLogo from 'images/login-logo.png'
 
 import { auth } from 'config/firebase'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
@@ -75,7 +78,7 @@ const AuthForm = () => {
       await addUser(username, email, userCredential.user.uid)
 
       authToastNotify(defineLang('Đăng ký thành công.', 'Sign up successfully.'), 'success')
-      console.log('sign up')
+      
       setIsVerifying(false)
     } catch (error) {
       handleSignUpError(error.code, defineLang)
@@ -196,6 +199,19 @@ const AuthForm = () => {
               </button>
               <ToastContainer {...authToastProps} />
             </form>
+          </div>
+          <div className="af-plugin">
+            <p>{defineLang('Đăng nhập với NCT ID:', 'Sign in with NCT ID:')}</p>
+            <div className="af-plugin-img af-nct-login">
+              <img src={loginLogo} alt="NCT logo" />
+            </div>
+            <p>{defineLang('Hoặc', 'Or')}</p>
+            <div className="af-plugin-img af-fb">
+              <FaFacebookF />
+            </div>
+            <div className="af-plugin-img af-gg">
+              <FcGoogle />
+            </div>
           </div>
         </div>
       </div>

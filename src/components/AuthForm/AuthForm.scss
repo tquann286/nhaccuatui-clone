@@ -47,6 +47,7 @@ $login-header-hight: 6rem;
 
       .af-content {
         @include flexCenter;
+        @include flexDirection(column);
         margin-top: 2.4rem;
 
         .form-container {
@@ -249,6 +250,49 @@ $login-header-hight: 6rem;
                 opacity: 0.5;
                 cursor: default;
               }
+            }
+          }
+        }
+
+        .af-plugin {
+          @include flexCenter;
+          width: 100%;
+          padding-top: 1.7rem;
+          padding-bottom: 1.7rem;
+          background-color: rgba(28,30,32,0.02);
+          margin-top: 2.4rem;
+          font-size: 1.4rem;
+
+          p {
+            color: $dark-text-color;
+          }
+
+          .af-nct-login {
+            margin: 0 1.2rem;
+          }
+
+          .af-plugin-img {
+            @include flexCenter;
+            background-color: rgba(28, 30, 32, 0.05);
+            border: beige;
+            border-radius: 5rem;
+            width: 5rem;
+            height: 4.2rem;
+            font-size: 1.4em;
+            cursor: pointer;
+
+            &.af-fb {
+              color: $fb-color;
+              margin: 0 1.2rem;
+            }
+
+            img {
+              height: 2.5rem;
+              width: 2.5rem;
+            }
+
+            svg {
+
             }
           }
         }
