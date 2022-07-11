@@ -22,8 +22,8 @@ import { FaFacebookF } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import loginLogo from 'images/login-logo.png'
 
-import { auth } from 'config/firebase'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { auth, googleProvider } from 'config/firebase'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { addUser } from 'services/firebase/firestore'
 
 const AuthForm = () => {
@@ -88,6 +88,17 @@ const AuthForm = () => {
     } catch (error) {
       handleSignUpError(error.code, defineLang)
       setIsVerifying(false)
+    }
+  }
+
+  const onSignInWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider)
+      console.log('result: ', result)
+      
+      
+    } catch (error) {
+      authToastNotify(defineLang('Đăng nhập không thành công.', 'Sign in unsuccessful.'), 'error')
     }
   }
 
@@ -218,7 +229,7 @@ const AuthForm = () => {
             <div className='af-plugin-img af-fb'>
               <FaFacebookF />
             </div>
-            <div className='af-plugin-img af-gg'>
+            <div className='af-plugin-img af-gg' onClick={onSignInWithGoogle}>
               <FcGoogle />
             </div>
           </div>
