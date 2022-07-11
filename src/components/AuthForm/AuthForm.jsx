@@ -8,7 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { ToastContainer } from 'react-toastify'
 
 import { TERM_LINK } from 'share/constants'
-import { errorToastProps, successToastProps, successToastNotify } from 'share/toast'
+import { authToastProps, authToastNotify } from 'share/toast'
 import { handleFocus, handleBlur, authSchema, handleLoginError, handleSignUpError } from 'services/AuthForm'
 
 import { useStore, actions } from 'store'
@@ -58,7 +58,7 @@ const AuthForm = () => {
 
       const userCredential = await signInWithEmailAndPassword(auth, email, password)
       console.log(userCredential)
-      successToastNotify(defineLang('Đăng nhập thành công.', 'Sign in successfully.'))
+      authToastNotify(defineLang('Đăng nhập thành công.', 'Sign in successfully.'), 'success')
 
       setIsVerifying(false)
     } catch (error) {
@@ -74,8 +74,8 @@ const AuthForm = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
       await addUser(username, email, userCredential.user.uid)
 
-      successToastNotify(defineLang('Đăng ký thành công.', 'Sign up successfully.'))
-
+      authToastNotify(defineLang('Đăng ký thành công.', 'Sign up successfully.'), 'success')
+      console.log('sign up')
       setIsVerifying(false)
     } catch (error) {
       handleSignUpError(error.code, defineLang)
@@ -194,8 +194,7 @@ const AuthForm = () => {
               <button type='submit' className={`submit-btn ${showSignUp && 'sign-up'} ${agreeTerm || 'disabled'} ${isVerifying && 'disabled'}`} disabled={!agreeTerm || isVerifying}>
                 {isVerifying ? <LoadingV2 /> : handleAuthFunc(defineLang('Đăng nhập', 'Sign in'), defineLang('Đăng ký', 'Sign up'))}
               </button>
-              <ToastContainer {...errorToastProps} />
-              <ToastContainer {...successToastProps} />
+              <ToastContainer {...authToastProps} />
             </form>
           </div>
         </div>

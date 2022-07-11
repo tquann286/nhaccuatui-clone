@@ -1,7 +1,7 @@
 import { toast, Slide } from 'react-toastify'
 
-// Error Toast
-export const errorToastProps = {
+// Auth Toast
+export const authToastProps = {
   position: 'top-right',
   autoClose: 3000,
   hideProgressBar: true,
@@ -14,8 +14,8 @@ export const errorToastProps = {
   transition: Slide,
 }
 
-export const errorToastNotify = (message) =>
-  toast.error(message, {
+export const authToastNotify = (message, status) =>
+  toast[status](message, {
     position: 'top-right',
     autoClose: 3000,
     hideProgressBar: true,
@@ -25,30 +25,3 @@ export const errorToastNotify = (message) =>
     progress: undefined,
     transition: Slide,
   })
-
-// Success Toast
-export const successToastProps = {
-  position: 'top-right',
-  autoClose: 3000,
-  hideProgressBar: true,
-  newestOnTop: false,
-  closeOnClick: true,
-  rtl: false,
-  pauseOnFocusLoss: true,
-  draggable: true,
-  pauseOnHover: true,
-  transition: Slide,
-}
-
-export const successToastNotify = (message) =>
-  toast.success(message, {
-    position: 'top-right',
-    autoClose: 3000,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    transition: Slide,
-  })
-
