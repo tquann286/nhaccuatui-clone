@@ -259,7 +259,7 @@ $login-header-hight: 6rem;
           width: 100%;
           padding-top: 1.7rem;
           padding-bottom: 1.7rem;
-          background-color: rgba(28,30,32,0.02);
+          background-color: rgba(28, 30, 32, 0.02);
           margin-top: 2.4rem;
           font-size: 1.4rem;
 
@@ -290,10 +290,19 @@ $login-header-hight: 6rem;
               height: 2.5rem;
               width: 2.5rem;
             }
+          }
+        }
 
-            svg {
+        .signup-now {
+          @include flexCenter;
+          margin-top: 3.6rem;
+          color: rgba(28, 30, 32, 0.5);
+          line-height: 16px;
+          font-size: 1.4em;
 
-            }
+          span {
+            color: #2daaed;
+            cursor: pointer;
           }
         }
       }

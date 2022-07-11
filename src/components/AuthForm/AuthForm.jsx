@@ -55,6 +55,11 @@ const AuthForm = () => {
     dispatch(actions.toggleShowSignUp())
   }
 
+  const changeAuthForm = () => {
+    toggleShowLogin()
+    toggleShowSignUp()
+  }
+
   const onLoginSubmit = async ({ email, password }) => {
     try {
       setIsVerifying(true)
@@ -78,7 +83,7 @@ const AuthForm = () => {
       await addUser(username, email, userCredential.user.uid)
 
       authToastNotify(defineLang('Đăng ký thành công.', 'Sign up successfully.'), 'success')
-      
+
       setIsVerifying(false)
     } catch (error) {
       handleSignUpError(error.code, defineLang)
@@ -95,7 +100,7 @@ const AuthForm = () => {
             <IoMdClose />
           </button>
         </div>
-        <div className='af-content'>
+        <div className='af-content' style={showLogin ? { marginTop: '3.6rem' } : {}}>
           <div className='form-container'>
             <form onSubmit={handleSubmit(handleAuthFunc(onLoginSubmit, onSignUpSubmit))}>
               {showSignUp && (
@@ -189,7 +194,7 @@ const AuthForm = () => {
                     <input type='checkbox' checked={agreeTerm} onChange={() => setAgreeTerm(!agreeTerm)} />
                     <span className='checkmark'></span>
                   </label>
-                  <a href={TERM_LINK} className='link-term' target='_blank' rel="noreferrer">
+                  <a href={TERM_LINK} className='link-term' target='_blank' rel='noreferrer'>
                     {defineLang('Điều khoản', 'Terms')}
                   </a>
                 </div>
@@ -200,19 +205,31 @@ const AuthForm = () => {
               <ToastContainer {...authToastProps} />
             </form>
           </div>
-          <div className="af-plugin">
-            <p>{defineLang('Đăng nhập với NCT ID:', 'Sign in with NCT ID:')}</p>
-            <div className="af-plugin-img af-nct-login">
-              <img src={loginLogo} alt="NCT logo" />
-            </div>
-            <p>{defineLang('Hoặc', 'Or')}</p>
-            <div className="af-plugin-img af-fb">
+          <div className='af-plugin'>
+            <p>{handleAuthFunc(defineLang('Hoặc đăng nhập bằng:', 'Or sign in via:'), defineLang('Đăng nhập NCT ID:', 'Sign in with NCT ID:'))}</p>
+            {showSignUp && (
+              <React.Fragment>
+                <div className='af-plugin-img af-nct-login' onClick={changeAuthForm}>
+                  <img src={loginLogo} alt='NCT logo' />
+                </div>
+                <p>{defineLang('Hoặc', 'Or')}</p>
+              </React.Fragment>
+            )}
+            <div className='af-plugin-img af-fb'>
               <FaFacebookF />
             </div>
-            <div className="af-plugin-img af-gg">
+            <div className='af-plugin-img af-gg'>
               <FcGoogle />
             </div>
           </div>
+          {showLogin && (
+            <div className='signup-now'>
+              <p>
+                {defineLang('Bạn chưa có tài khoản NCT ID?', "Don't have NCT ID account?")}
+                <span onClick={changeAuthForm}>{defineLang(` Đăng ký ngay`, ` Sign up now`)}</span>
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
