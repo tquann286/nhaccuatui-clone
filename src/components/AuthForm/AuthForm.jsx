@@ -4,8 +4,11 @@ import './AuthForm.scss'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
+import { ToastContainer } from 'react-toastify'
+
 import { TERM_LINK, DEFAULT_IMAGE } from 'share/constants'
-import { handleFocus, handleBlur, authSchema, onSignUpSubmit } from 'services/AuthForm'
+import { errorToastProps } from 'share/toast'
+import { handleFocus, handleBlur, authSchema, handleLoginError, handleSignUpError } from 'services/AuthForm'
 
 import { useStore, actions } from 'store'
 
@@ -24,6 +27,7 @@ const AuthForm = () => {
   const { lang, showLogin, showSignUp } = state
 
   const [agreeTerm, setAgreeTerm] = useState(false || showLogin)
+  const [isVerifying, setIsVerifying] = useState(false)
 
   const defineLang = (vie, eng) => {
     return lang === 'vi' ? vie : eng
@@ -49,16 +53,22 @@ const AuthForm = () => {
 
   const onLoginSubmit = async ({ email, password }) => {
     try {
+      setIsVerifying(true)
+
       const userCredential = await signInWithEmailAndPassword(auth, email, password)
       console.log(userCredential)
-      console.log('loggin')
+
+      setIsVerifying(false)
     } catch (error) {
-      console.log({ ... error })
+      handleLoginError(error.code, defineLang)
+      setIsVerifying(false)
     }
   }
 
   const onSignUpSubmit = async ({ username, email, password }) => {
     try {
+      setIsVerifying(true)
+
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
 
       addDoc(collection(db, 'users'), {
@@ -68,9 +78,11 @@ const AuthForm = () => {
         songHistory: '',
         userId: userCredential.user.uid,
       })
-      console.log('sign up')
+
+      setIsVerifying(false)
     } catch (error) {
-      console.log({ ... error })
+      handleSignUpError(error.code, defineLang)
+      setIsVerifying(false)
     }
   }
 
@@ -183,8 +195,9 @@ const AuthForm = () => {
                 </div>
               )}
               <button type='submit' className={`submit-btn ${showSignUp && 'sign-up'} ${agreeTerm || 'disabled'}`} disabled={!agreeTerm}>
-                {handleAuthFunc(defineLang('Đăng nhập', 'Sign in'), defineLang('Đăng ký', 'Sign up'))}
+                {isVerifying ? 'Đang xác thực' : handleAuthFunc(defineLang('Đăng nhập', 'Sign in'), defineLang('Đăng ký', 'Sign up'))}
               </button>
+              <ToastContainer {...errorToastProps} />
             </form>
           </div>
         </div>

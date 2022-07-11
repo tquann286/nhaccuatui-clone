@@ -22,6 +22,9 @@ export const SET_LANG = 'set_lang'
 // Authencation Form
 export const TOGGLE_SHOW_LOGIN = 'toggle_show_login'
 export const TOGGLE_SHOW_SIGN_UP = 'toggle_show_sign_up'
+export const EXISTED_EMAIL = 'auth/email-already-in-use'
+export const USER_NOT_FOUND = 'auth/user-not-found'
+export const WRONG_PASSWORD = 'auth/wrong-password'
 
 // Firebase
 export const FIREBASE_CONFIG = { apiKey: 'AIzaSyAr7zMUtmuoFotHbkd13twUk-fUCbDfSDo', authDomain: 'nhaccuatui-clone.firebaseapp.com', projectId: 'nhaccuatui-clone', storageBucket: 'nhaccuatui-clone.appspot.com', messagingSenderId: '645600209991', appId: '1:645600209991:web:0dbaf70a8b4618591c1562', measurementId: 'G-S647PTTVG4' }
