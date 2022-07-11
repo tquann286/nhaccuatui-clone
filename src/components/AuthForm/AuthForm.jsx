@@ -7,8 +7,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 import { ToastContainer } from 'react-toastify'
 
-import { TERM_LINK, DEFAULT_IMAGE } from 'share/constants'
-import { errorToastProps } from 'share/toast'
+import { TERM_LINK } from 'share/constants'
+import { errorToastProps, successToastProps, successToastNotify } from 'share/toast'
 import { handleFocus, handleBlur, authSchema, handleLoginError, handleSignUpError } from 'services/AuthForm'
 
 import { useStore, actions } from 'store'
@@ -19,9 +19,9 @@ import { BsKeyboard, BsInfoCircle } from 'react-icons/bs'
 import { HiOutlineMail } from 'react-icons/hi'
 import { IoWarningOutline } from 'react-icons/io5'
 
-import { auth, db } from 'config/firebase'
+import { auth } from 'config/firebase'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
-import { collection, addDoc } from 'firebase/firestore'
+import { addUser } from 'services/firebase/firestore'
 
 const AuthForm = () => {
   const [state, dispatch] = useStore()
@@ -58,6 +58,7 @@ const AuthForm = () => {
 
       const userCredential = await signInWithEmailAndPassword(auth, email, password)
       console.log(userCredential)
+      successToastNotify(defineLang('Đăng nhập thành công.', 'Sign in successfully.'))
 
       setIsVerifying(false)
     } catch (error) {
@@ -71,14 +72,9 @@ const AuthForm = () => {
       setIsVerifying(true)
 
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+      await addUser(username, email, userCredential.user.uid)
 
-      addDoc(collection(db, 'users'), {
-        username,
-        email,
-        photoUrl: DEFAULT_IMAGE,
-        songHistory: '',
-        userId: userCredential.user.uid,
-      })
+      successToastNotify(defineLang('Đăng ký thành công.', 'Sign up successfully.'))
 
       setIsVerifying(false)
     } catch (error) {
@@ -190,7 +186,7 @@ const AuthForm = () => {
                     <input type='checkbox' checked={agreeTerm} onChange={() => setAgreeTerm(!agreeTerm)} />
                     <span className='checkmark'></span>
                   </label>
-                  <a href={TERM_LINK} className='link-term' target='_blank' rel='noopener'>
+                  <a href={TERM_LINK} className='link-term' target='_blank' rel="noreferrer">
                     {defineLang('Điều khoản', 'Terms')}
                   </a>
                 </div>
@@ -199,6 +195,7 @@ const AuthForm = () => {
                 {isVerifying ? <LoadingV2 /> : handleAuthFunc(defineLang('Đăng nhập', 'Sign in'), defineLang('Đăng ký', 'Sign up'))}
               </button>
               <ToastContainer {...errorToastProps} />
+              <ToastContainer {...successToastProps} />
             </form>
           </div>
         </div>
