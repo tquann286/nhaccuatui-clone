@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './AuthForm.scss'
+import { LoadingV2 } from 'components'
 
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -194,8 +195,8 @@ const AuthForm = () => {
                   </a>
                 </div>
               )}
-              <button type='submit' className={`submit-btn ${showSignUp && 'sign-up'} ${agreeTerm || 'disabled'}`} disabled={!agreeTerm}>
-                {isVerifying ? 'Đang xác thực' : handleAuthFunc(defineLang('Đăng nhập', 'Sign in'), defineLang('Đăng ký', 'Sign up'))}
+              <button type='submit' className={`submit-btn ${showSignUp && 'sign-up'} ${agreeTerm || 'disabled'} ${isVerifying && 'disabled'}`} disabled={!agreeTerm || isVerifying}>
+                {isVerifying ? <LoadingV2 /> : handleAuthFunc(defineLang('Đăng nhập', 'Sign in'), defineLang('Đăng ký', 'Sign up'))}
               </button>
               <ToastContainer {...errorToastProps} />
             </form>

@@ -230,6 +230,8 @@ $login-header-hight: 6rem;
 
             button.submit-btn {
               @include transition-effect(0.15s);
+              @include display-flex;
+              @include justify-content(center);
               margin-top: 2.4rem;
               text-align: center;
               width: 100%;
