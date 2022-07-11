@@ -22,9 +22,10 @@ import { FaFacebookF } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import loginLogo from 'images/login-logo.png'
 
-import { auth, googleProvider } from 'config/firebase'
+import { auth, db, googleProvider } from 'config/firebase'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
-import { addUser } from 'services/firebase/firestore'
+import { addUser, setUser } from 'services/firebase/firestore'
+import { doc, getDoc } from 'firebase/firestore'
 
 const AuthForm = () => {
   const [state, dispatch] = useStore()
@@ -64,8 +65,7 @@ const AuthForm = () => {
     try {
       setIsVerifying(true)
 
-      const userCredential = await signInWithEmailAndPassword(auth, email, password)
-      console.log(userCredential)
+      signInWithEmailAndPassword(auth, email, password)
       authToastNotify(defineLang('Đăng nhập thành công.', 'Sign in successfully.'), 'success')
 
       setIsVerifying(false)
@@ -80,7 +80,7 @@ const AuthForm = () => {
       setIsVerifying(true)
 
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-      await addUser(username, email, userCredential.user.uid)
+      addUser(username, email, userCredential.user.uid)
 
       authToastNotify(defineLang('Đăng ký thành công.', 'Sign up successfully.'), 'success')
 
@@ -93,9 +93,16 @@ const AuthForm = () => {
 
   const onSignInWithGoogle = async () => {
     try {
-      const result = await signInWithPopup(auth, googleProvider)
-      console.log('result: ', result)
-      
+      const userCredential = await signInWithPopup(auth, googleProvider)
+      const docRef = doc(db, 'users', userCredential.user.uid)
+      const docSnap = await getDoc(docRef)
+
+      const { displayName, email, photoURL, uid } = userCredential.user
+
+      if (!docSnap.exists()) {
+        // User is not exists in firestore
+        await setUser(docRef, displayName, email, photoURL, uid)
+      }
       
     } catch (error) {
       authToastNotify(defineLang('Đăng nhập không thành công.', 'Sign in unsuccessful.'), 'error')

@@ -1,5 +1,5 @@
 import { db } from 'config/firebase'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, setDoc } from 'firebase/firestore'
 import { DEFAULT_IMAGE } from 'share/constants'
 
 export const addUser = (username, email, userId) => {
@@ -7,6 +7,16 @@ export const addUser = (username, email, userId) => {
     username,
     email,
     photoUrl: DEFAULT_IMAGE,
+    songHistory: '',
+    userId,
+  })
+}
+
+export const setUser = (docRef, username, email, photoUrl, userId) => {
+  setDoc(docRef, {
+    username,
+    email,
+    photoUrl,
     songHistory: '',
     userId,
   })
