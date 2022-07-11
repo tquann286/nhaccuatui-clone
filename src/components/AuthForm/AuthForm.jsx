@@ -22,7 +22,7 @@ import { FaFacebookF } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import loginLogo from 'images/login-logo.png'
 
-import { auth, db, googleProvider } from 'config/firebase'
+import { auth, db, facebookProvider, googleProvider } from 'config/firebase'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { addUser, setUser } from 'services/firebase/firestore'
 import { doc, getDoc } from 'firebase/firestore'
@@ -94,6 +94,24 @@ const AuthForm = () => {
   const onSignInWithGoogle = async () => {
     try {
       const userCredential = await signInWithPopup(auth, googleProvider)
+      const docRef = doc(db, 'users', userCredential.user.uid)
+      const docSnap = await getDoc(docRef)
+
+      const { displayName, email, photoURL, uid } = userCredential.user
+
+      if (!docSnap.exists()) {
+        // User is not exists in firestore
+        await setUser(docRef, displayName, email, photoURL, uid)
+      }
+      
+    } catch (error) {
+      authToastNotify(defineLang('Đăng nhập không thành công.', 'Sign in unsuccessful.'), 'error')
+    }
+  }
+
+  const onSignInWithFacebook = async () => {
+    try {
+      const userCredential = await signInWithPopup(auth, facebookProvider)
       const docRef = doc(db, 'users', userCredential.user.uid)
       const docSnap = await getDoc(docRef)
 
@@ -233,7 +251,7 @@ const AuthForm = () => {
                 <p>{defineLang('Hoặc', 'Or')}</p>
               </React.Fragment>
             )}
-            <div className='af-plugin-img af-fb'>
+            <div className='af-plugin-img af-fb' onClick={onSignInWithFacebook}>
               <FaFacebookF />
             </div>
             <div className='af-plugin-img af-gg' onClick={onSignInWithGoogle}>
