@@ -27,9 +27,15 @@ $scale: 5rem;
     position: relative;
 
     a.ls-logo {
+      @include display-flex;
+      @include align-items(center);
       width: 4.8rem;
       height: 2.4rem;
       margin-left: 1.6rem;
+
+      img {
+        transform: scale(1.2);
+      }
     }
 
     .theme-container {

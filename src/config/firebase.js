@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { env } from './environment'
+import { FIREBASE_CONFIG } from 'share/constants'
 
 import {
 	getAuth,
@@ -8,7 +8,7 @@ import {
 } from 'firebase/auth'
 import { getFirestore } from "firebase/firestore"
 
-const app = initializeApp(env.FIREBASE_CONFIG)
+const app = initializeApp(FIREBASE_CONFIG)
 const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider()
 const facebookProvider = new FacebookAuthProvider()
