@@ -25,7 +25,7 @@ import { auth } from 'config/firebase'
 const LeftSidebar = () => {
   const [state, dispatch] = useStore()
   const { theme, lang, showLogin, showSignUp } = state
-  console.log(auth.currentUser)
+
   const [showSettingsModal, setShowSettingsModal] = useState(false)
   const [settingsModalPosition, setSettingsModalPosition] = useState({
     top: 0,
@@ -249,8 +249,17 @@ const LeftSidebar = () => {
             {auth.currentUser && (
               <React.Fragment>
                 <div className='ls-library'>{lang === 'vi' ? 'Thư viện' : 'Library'}</div>
-                <ul className='library-menu'>
-                  <div className='library-item'></div>
+                <ul className='nav-menu'>
+                  <li>
+                    <NavLink to='user/history/bai-hat'>
+                      <div className='nav-item nav-history'>
+                        <div className='nav-active-item'></div>
+                        <div className='nav-content'>
+                          <p className='nav-name'>{lang === 'vi' ? 'Lịch sử' : 'History'}</p>
+                        </div>
+                      </div>
+                    </NavLink>
+                  </li>
                 </ul>
               </React.Fragment>
             )}
