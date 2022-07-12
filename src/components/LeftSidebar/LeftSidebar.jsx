@@ -20,10 +20,12 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
 import { useGetPosition } from 'hooks'
 
+import { isEmpty } from 'lodash'
+
 const LeftSidebar = () => {
   const [state, dispatch] = useStore()
   const { theme, lang, showLogin, showSignUp, user } = state
-
+  console.log(user ? 'true' : 'false')
   const [showSettingsModal, setShowSettingsModal] = useState(false)
   const [settingsModalPosition, setSettingsModalPosition] = useState({
     top: 0,
@@ -93,7 +95,18 @@ const LeftSidebar = () => {
         </div>
         <div className='ls-auth-setting'>
           <div className='ls-auth'>
-            {user ? (
+            {isEmpty(user) ? (
+              <div className='ls-auth-main'>
+                <p>
+                  <span onClick={toggleShowLogin}>{lang === 'vi' ? 'Đăng nhập' : 'Sign in'}</span>
+                  {' | '}
+                  <span onClick={toggleShowSignUp}>{lang === 'vi' ? 'Đăng ký' : 'Sign up'}</span>
+                </p>
+                <PopupModal showModal={showLogin || showSignUp} toggleModal={(showLogin && toggleShowLogin) || (showSignUp && toggleShowSignUp)} overlayStyles={overlayAuthStyles}>
+                  {(showLogin || showSignUp) && <AuthForm />}
+                </PopupModal>
+              </div>
+            ) : (
               <React.Fragment>
                 <div className='ls-user-thumb'>
                   <Link to='user'>
@@ -108,17 +121,6 @@ const LeftSidebar = () => {
                   </Link>
                 </div>
               </React.Fragment>
-            ) : (
-              <div className='ls-auth-main'>
-                <p>
-                  <span onClick={toggleShowLogin}>{lang === 'vi' ? 'Đăng nhập' : 'Sign in'}</span>
-                  {' | '}
-                  <span onClick={toggleShowSignUp}>{lang === 'vi' ? 'Đăng ký' : 'Sign up'}</span>
-                </p>
-                <PopupModal showModal={showLogin || showSignUp} toggleModal={(showLogin && toggleShowLogin) || (showSignUp && toggleShowSignUp)} overlayStyles={overlayAuthStyles}>
-                  {(showLogin || showSignUp) && <AuthForm />}
-                </PopupModal>
-              </div>
             )}
           </div>
           <div className='ls-setting'>
@@ -126,7 +128,7 @@ const LeftSidebar = () => {
               <AiOutlineSetting style={showSettingsModal && { transform: 'rotate(60deg)' }} />
             </div>
             <PopupModal showModal={showSettingsModal} modalPosition={settingsModalPosition} toggleModal={toggleShowSettings}>
-              <SettingsModal theme={theme} lang={lang} dispatch={dispatch} />
+              <SettingsModal user={user} theme={theme} lang={lang} dispatch={dispatch} />
             </PopupModal>
           </div>
         </div>

@@ -6,10 +6,15 @@ import { MdLanguage, MdWbSunny } from 'react-icons/md'
 import { BiSupport } from 'react-icons/bi'
 import { BsFillMoonStarsFill } from 'react-icons/bs'
 import { MdArrowForwardIos } from 'react-icons/md'
+import { AiOutlineLogout } from 'react-icons/ai'
 
 import { actions } from 'store'
 
-const SettingsModal = ({ theme, lang, dispatch }) => {
+import { signOut } from 'firebase/auth'
+import { auth } from 'config/firebase'
+import { isEmpty } from 'lodash'
+
+const SettingsModal = ({ user, theme, lang, dispatch }) => {
 
   const onChangeViLang = () => {
     dispatch(actions.changeViLang())
@@ -25,6 +30,10 @@ const SettingsModal = ({ theme, lang, dispatch }) => {
 
   const onChangeDarkTheme = () => {
     dispatch(actions.changeDarkTheme())
+  }
+
+  const onLogout = () => {
+    signOut(auth)
   }
 
   return (
@@ -59,6 +68,12 @@ const SettingsModal = ({ theme, lang, dispatch }) => {
           </div>
         </div>
       </div>
+      {!isEmpty(user) && (
+        <div className='sm-item sm-logout' onClick={onLogout}>
+          <AiOutlineLogout className='sm-icon' />
+          <span className='sm-title'>{lang === 'vi' ? 'Đăng xuất' : 'Logout'}</span>
+        </div>
+      )}
     </div>
   )
 }

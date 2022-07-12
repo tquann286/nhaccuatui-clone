@@ -30,7 +30,6 @@ const App = () => {
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(user)
         const { displayName, email, photoURL, uid } = user
   
         dispatch(actions.setUserInfo('displayName', displayName))
