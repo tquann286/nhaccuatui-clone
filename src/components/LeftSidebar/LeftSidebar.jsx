@@ -19,11 +19,10 @@ import { AiOutlineSetting } from 'react-icons/ai'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
 import { useGetPosition } from 'hooks'
-import { auth } from 'config/firebase'
 
 const LeftSidebar = () => {
   const [state, dispatch] = useStore()
-  const { theme, lang, showLogin, showSignUp } = state
+  const { theme, lang, showLogin, showSignUp, user } = state
 
   const [showSettingsModal, setShowSettingsModal] = useState(false)
   const [settingsModalPosition, setSettingsModalPosition] = useState({
@@ -94,16 +93,33 @@ const LeftSidebar = () => {
         </div>
         <div className='ls-auth-setting'>
           <div className='ls-auth'>
-            <div className='ls-auth-main'>
-              <p>
-                <span onClick={toggleShowLogin}>{lang === 'vi' ? 'Đăng nhập' : 'Sign in'}</span>
-                {' | '}
-                <span onClick={toggleShowSignUp}>{lang === 'vi' ? 'Đăng ký' : 'Sign up'}</span>
-              </p>
-              <PopupModal showModal={showLogin || showSignUp} toggleModal={(showLogin && toggleShowLogin) || (showSignUp && toggleShowSignUp)} overlayStyles={overlayAuthStyles}>
-                {(showLogin || showSignUp) && <AuthForm />}
-              </PopupModal>
-            </div>
+            {user ? (
+              <React.Fragment>
+                <div className='ls-user-thumb'>
+                  <Link to='user'>
+                    <img src={user.photoUrl} />
+                  </Link>
+                </div>
+                <div className='ls-user-name'>
+                  <Link to='user'>
+                    <div className='ls-user-name-content' title={user.displayName}>
+                      {user.displayName}
+                    </div>
+                  </Link>
+                </div>
+              </React.Fragment>
+            ) : (
+              <div className='ls-auth-main'>
+                <p>
+                  <span onClick={toggleShowLogin}>{lang === 'vi' ? 'Đăng nhập' : 'Sign in'}</span>
+                  {' | '}
+                  <span onClick={toggleShowSignUp}>{lang === 'vi' ? 'Đăng ký' : 'Sign up'}</span>
+                </p>
+                <PopupModal showModal={showLogin || showSignUp} toggleModal={(showLogin && toggleShowLogin) || (showSignUp && toggleShowSignUp)} overlayStyles={overlayAuthStyles}>
+                  {(showLogin || showSignUp) && <AuthForm />}
+                </PopupModal>
+              </div>
+            )}
           </div>
           <div className='ls-setting'>
             <div className='ls-setting-icon' ref={settingsBtnRef} onClick={toggleShowSettings}>

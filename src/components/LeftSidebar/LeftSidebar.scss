@@ -101,6 +101,41 @@ $scale: 5rem;
           }
         }
       }
+
+      .ls-user-thumb {
+        @include fitContentHeight;
+        @include fitContentWidth;
+        display: inline-block;
+        margin-left: 1.6rem;
+        margin-right: 0.6rem;
+        cursor: pointer;
+        height: 2.3rem;
+        width: 2.3rem;
+
+        img {
+          width: 100%;
+          border-radius: 50%;
+        }
+      }
+
+      .ls-user-name {
+        @include fitContentWidth;
+        display: inline-block;
+        max-width: 11.5rem;
+
+        &-content {
+          display: inline-block;
+          width: 100%;
+          max-width: 11.5rem;
+          font-size: 1.2rem;
+          line-height: 2rem;
+          font-weight: 500;
+          color: rgba(28,30,32,0.88);
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
     }
 
     .ls-setting {
