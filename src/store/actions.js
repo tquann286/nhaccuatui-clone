@@ -62,7 +62,11 @@ export const onSignedOut = () => ({
 })
 
 // Play
-export const setLastPlayedSong = (songId) => ({
-  type: SET_LAST_PLAYED_SONG,
-  songId
-})
+export const setLastPlayedSongId = (songId) => {
+  localStorage.setItem('lastPlayedSongId', songId)
+
+  return ({
+    type: SET_LAST_PLAYED_SONG,
+    songId
+  })
+}

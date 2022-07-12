@@ -1,6 +1,6 @@
 @import 'settings';
 
-.right-sidebar {
+.rb-container {
 	@include transition-effect(0.75s);
 	height: 100vh;
 	width: $right-sidebar-width;

@@ -27,6 +27,12 @@ const App = () => {
     } else {
       localStorage.setItem('lang', 'vi')
     }
+    
+		// Get last played song
+    const lastPlayedSongId = localStorage.getItem('lastPlayedSongId')
+    if (lastPlayedSongId) {
+      dispatch(actions.setLastPlayedSongId(lastPlayedSongId))
+    }
   }, [])
 
   useEffect(() => {
