@@ -90,11 +90,13 @@
   width: fit-content;
 }
 
-@mixin commonModal {
+@mixin borderBottom {
   &:not(:last-child) {
     border-bottom: $border-light;
   }
+}
 
+@mixin commonModal {
   &:first-child {
     border-radius: 0.4rem 0.4rem 0 0;
   }
@@ -104,7 +106,7 @@
   }
 
   &:hover {
-    background-color: darken($light-color, 5);
+    background-color: darken($light-color, 4);
   }
 }
 
