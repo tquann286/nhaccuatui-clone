@@ -35,13 +35,10 @@ const App = () => {
 	}, [state.theme])
 
   useEffect(() => {
-    console.log('vo')
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log('sign in')
         dispatch(actions.onSignedIn())
       } else {
-        console.log('sign out')
         dispatch(actions.onSignedOut())
       }
     })
