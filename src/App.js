@@ -12,15 +12,16 @@ const App = () => {
   const [state, dispatch] = useStore()
 
   useEffect(() => {
+    // Theme
     const localTheme = localStorage.getItem('theme')
-    const localLanguage = localStorage.getItem('lang')
-
     if (localTheme) {
       dispatch(actions.setTheme(localTheme))
     } else {
       localStorage.setItem('theme', 'light')
     }
 
+    // Language
+    const localLanguage = localStorage.getItem('lang')
     if (localLanguage) {
       dispatch(actions.setLang(localLanguage))
     } else {
