@@ -5,6 +5,8 @@ import { useStore, actions } from 'store'
 
 import './App.scss'
 import { Homepage, NotFound } from 'pages'
+import { auth } from 'config/firebase'
+import { onAuthStateChanged } from 'firebase/auth'
 
 const App = () => {
   const [state, dispatch] = useStore()
@@ -31,6 +33,19 @@ const App = () => {
 			document.body.setAttribute('data-theme', state.theme)
 		}
 	}, [state.theme])
+
+  useEffect(() => {
+    console.log('vo')
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log('sign in')
+        dispatch(actions.onSignedIn())
+      } else {
+        console.log('sign out')
+        dispatch(actions.onSignedOut())
+      }
+    })
+	}, [auth.currentUser])
 
   return (
     <BrowserRouter>

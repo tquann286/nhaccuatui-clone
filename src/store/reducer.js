@@ -1,4 +1,4 @@
-import { SET_THEME, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME, SET_LANG, CHANGE_VI_LANG, CHANGE_EN_LANG, TOGGLE_SHOW_LOGIN, TOGGLE_SHOW_SIGN_UP } from 'share/constants'
+import { SET_THEME, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME, SET_LANG, CHANGE_VI_LANG, CHANGE_EN_LANG, TOGGLE_SHOW_LOGIN, TOGGLE_SHOW_SIGN_UP, SIGNED_IN, SIGNED_OUT } from 'share/constants'
 
 export const initState = {
   showMoreOptions: false,
@@ -6,7 +6,7 @@ export const initState = {
   lang: 'vi',
   showLogin: false,
   showSignUp: false,
-  user: {},
+  isSignedIn: false,
 }
 
 const reducer = (state, action) => {
@@ -50,6 +50,16 @@ const reducer = (state, action) => {
       return {
         ...state,
         showSignUp: !state.showSignUp,
+      }
+    case SIGNED_IN:
+      return {
+        ...state,
+        isSignedIn: true,
+      }
+    case SIGNED_OUT:
+      return {
+        ...state,
+        isSignedIn: false,
       }
     default:
       throw new Error('Invalid action.')

@@ -29,6 +29,9 @@ export const WRONG_PASSWORD = 'auth/wrong-password'
 // Firebase
 export const FIREBASE_CONFIG = { apiKey: 'AIzaSyAr7zMUtmuoFotHbkd13twUk-fUCbDfSDo', authDomain: 'nhaccuatui-clone.firebaseapp.com', projectId: 'nhaccuatui-clone', storageBucket: 'nhaccuatui-clone.appspot.com', messagingSenderId: '645600209991', appId: '1:645600209991:web:0dbaf70a8b4618591c1562', measurementId: 'G-S647PTTVG4' }
 
+export const SIGNED_IN = 'signed_in'
+export const SIGNED_OUT = 'signed_out'
+
 // Regex
 export const REGEX_VIETNAMESE = /^(?!.*[àáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ]).*$/
 export const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/

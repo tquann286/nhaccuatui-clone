@@ -1,4 +1,4 @@
-import { SET_THEME, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME, CHANGE_VI_LANG, CHANGE_EN_LANG, SET_LANG, TOGGLE_SHOW_LOGIN, TOGGLE_SHOW_SIGN_UP } from 'share/constants'
+import { SET_THEME, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME, CHANGE_VI_LANG, CHANGE_EN_LANG, SET_LANG, TOGGLE_SHOW_LOGIN, TOGGLE_SHOW_SIGN_UP, SIGNED_IN, SIGNED_OUT } from 'share/constants'
 
 // Theme
 export const setTheme = (payload) => ({
@@ -51,4 +51,12 @@ export const toggleShowLogin = () => ({
 
 export const toggleShowSignUp = () => ({
   type: TOGGLE_SHOW_SIGN_UP,
+})
+
+export const onSignedIn = () => ({
+  type: SIGNED_IN
+})
+
+export const onSignedOut = () => ({
+  type: SIGNED_OUT
 })
