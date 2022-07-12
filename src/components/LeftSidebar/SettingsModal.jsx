@@ -12,7 +12,6 @@ import { actions } from 'store'
 
 import { signOut } from 'firebase/auth'
 import { auth } from 'config/firebase'
-import { isEmpty } from 'lodash'
 
 const SettingsModal = ({ user, theme, lang, dispatch }) => {
 
@@ -68,7 +67,7 @@ const SettingsModal = ({ user, theme, lang, dispatch }) => {
           </div>
         </div>
       </div>
-      {!isEmpty(user) && (
+      {user && (
         <div className='sm-item sm-logout' onClick={onLogout}>
           <AiOutlineLogout className='sm-icon' />
           <span className='sm-title'>{lang === 'vi' ? 'Đăng xuất' : 'Logout'}</span>

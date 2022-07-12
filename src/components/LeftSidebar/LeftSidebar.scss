@@ -122,18 +122,21 @@ $scale: 5rem;
         @include fitContentWidth;
         display: inline-block;
         max-width: 11.5rem;
-
-        &-content {
-          display: inline-block;
-          width: 100%;
-          max-width: 11.5rem;
-          font-size: 1.2rem;
-          line-height: 2rem;
-          font-weight: 500;
-          color: rgba(28,30,32,0.88);
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
+        a {
+          @include display-flex;
+          .ls-user-name-content {
+            @include transition-effect(0.08s);
+            @include hoverMainColor;
+            display: inline-block;
+            width: 100%;
+            max-width: 11.5rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: rgba(28, 30, 32, 0.88);
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
         }
       }
     }
@@ -146,7 +149,7 @@ $scale: 5rem;
 
       &-icon {
         @include display-flex;
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         opacity: 0.8;
         cursor: pointer;
         & svg {
@@ -170,9 +173,8 @@ $scale: 5rem;
           margin-bottom: 0.4rem;
 
           a.active {
-
             .nav-item {
-              background-color: rgba(28,30,32,0.05);
+              background-color: rgba(28, 30, 32, 0.05);
             }
 
             .nav-active-item {
@@ -224,7 +226,7 @@ $scale: 5rem;
 
               svg {
                 @include transition-effect(0.3s);
-                font-size: 1.6rem; 
+                font-size: 1.6rem;
                 position: absolute;
                 right: 1rem;
               }
@@ -243,23 +245,23 @@ $scale: 5rem;
               }
 
               i.home {
-                @include transparentIcon(#287BE5, #29D7FF);
+                @include transparentIcon(#287be5, #29d7ff);
               }
 
               i.discovery {
-                @include transparentIcon(#FF9B2D, #FFE443);
+                @include transparentIcon(#ff9b2d, #ffe443);
               }
 
               i.today-selection {
-                @include transparentIcon(#1A82E5, #DF22F2);
+                @include transparentIcon(#1a82e5, #df22f2);
               }
 
               i.chart {
-                @include transparentIcon(#F44336, #FFB353);
+                @include transparentIcon(#f44336, #ffb353);
               }
 
               i.music-4u {
-                @include transparentIcon(#27B3E2, #13F8E5);
+                @include transparentIcon(#27b3e2, #13f8e5);
               }
 
               p.nav-name {
@@ -281,7 +283,6 @@ $scale: 5rem;
             opacity: 0;
             height: 0;
 
-
             &-main {
               @include display-flex;
               @include align-items(center);
@@ -302,7 +303,7 @@ $scale: 5rem;
               }
 
               &:hover .nav-item-detail-main-hover {
-                background-color: #2DAAED;
+                background-color: #2daaed;
               }
 
               span {
@@ -324,6 +325,17 @@ $scale: 5rem;
             opacity: 1;
             height: 9.6rem;
           }
+        }
+      }
+
+      .ls-library {
+        
+      }
+
+      ul.library-menu {
+
+        li.library-item {
+
         }
       }
     }

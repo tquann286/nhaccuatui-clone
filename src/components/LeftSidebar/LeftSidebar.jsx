@@ -20,12 +20,12 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
 import { useGetPosition } from 'hooks'
 
-import { isEmpty } from 'lodash'
+import { auth } from 'config/firebase'
 
 const LeftSidebar = () => {
   const [state, dispatch] = useStore()
-  const { theme, lang, showLogin, showSignUp, user } = state
-  console.log(user ? 'true' : 'false')
+  const { theme, lang, showLogin, showSignUp } = state
+  console.log(auth.currentUser)
   const [showSettingsModal, setShowSettingsModal] = useState(false)
   const [settingsModalPosition, setSettingsModalPosition] = useState({
     top: 0,
@@ -95,7 +95,22 @@ const LeftSidebar = () => {
         </div>
         <div className='ls-auth-setting'>
           <div className='ls-auth'>
-            {isEmpty(user) ? (
+            {auth.currentUser ? (
+              <React.Fragment>
+                <div className='ls-user-thumb'>
+                  <Link to='user'>
+                    <img src={auth.currentUser.photoURL} />
+                  </Link>
+                </div>
+                <div className='ls-user-name'>
+                  <Link to='user'>
+                    <div className='ls-user-name-content' title={auth.currentUser.displayName}>
+                      {auth.currentUser.displayName}
+                    </div>
+                  </Link>
+                </div>
+              </React.Fragment>
+            ) : (
               <div className='ls-auth-main'>
                 <p>
                   <span onClick={toggleShowLogin}>{lang === 'vi' ? 'Đăng nhập' : 'Sign in'}</span>
@@ -106,21 +121,6 @@ const LeftSidebar = () => {
                   {(showLogin || showSignUp) && <AuthForm />}
                 </PopupModal>
               </div>
-            ) : (
-              <React.Fragment>
-                <div className='ls-user-thumb'>
-                  <Link to='user'>
-                    <img src={user.photoUrl} />
-                  </Link>
-                </div>
-                <div className='ls-user-name'>
-                  <Link to='user'>
-                    <div className='ls-user-name-content' title={user.displayName}>
-                      {user.displayName}
-                    </div>
-                  </Link>
-                </div>
-              </React.Fragment>
             )}
           </div>
           <div className='ls-setting'>
@@ -128,7 +128,7 @@ const LeftSidebar = () => {
               <AiOutlineSetting style={showSettingsModal && { transform: 'rotate(60deg)' }} />
             </div>
             <PopupModal showModal={showSettingsModal} modalPosition={settingsModalPosition} toggleModal={toggleShowSettings}>
-              <SettingsModal user={user} theme={theme} lang={lang} dispatch={dispatch} />
+              <SettingsModal user={auth.currentUser} theme={theme} lang={lang} dispatch={dispatch} />
             </PopupModal>
           </div>
         </div>
@@ -246,6 +246,14 @@ const LeftSidebar = () => {
                 </NavLink>
               </li>
             </ul>
+            {auth.currentUser && (
+              <React.Fragment>
+                <div className='ls-library'>{lang === 'vi' ? 'Thư viện' : 'Library'}</div>
+                <ul className='library-menu'>
+                  <div className='library-item'></div>
+                </ul>
+              </React.Fragment>
+            )}
           </div>
         </div>
       </Scrollbars>

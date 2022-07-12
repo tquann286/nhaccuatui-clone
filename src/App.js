@@ -3,9 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import { useStore, actions } from 'store'
 
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from 'config/firebase'
-
 import './App.scss'
 import { Homepage, NotFound } from 'pages'
 
@@ -27,19 +24,6 @@ const App = () => {
     } else {
       localStorage.setItem('lang', 'vi')
     }
-
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const { displayName, email, photoURL, uid } = user
-  
-        dispatch(actions.setUserInfo('displayName', displayName))
-        dispatch(actions.setUserInfo('email', email))
-        dispatch(actions.setUserInfo('photoUrl', photoURL))
-        dispatch(actions.setUserInfo('uid', uid))
-      } else {
-        dispatch(actions.clearUserInfo())
-      }
-    })
   }, [])
 
   useEffect(() => {
