@@ -71,9 +71,6 @@ const LeftSidebar = () => {
     })
   )
 
-  // const {currentUser } = auth
-  // console.log(currentUser)
-
   return (
     <div className='left-sidebar'>
       <Scrollbars {...scrollBarStyles}>
@@ -100,7 +97,7 @@ const LeftSidebar = () => {
             <div className='ls-auth-main'>
               <p>
                 <span onClick={toggleShowLogin}>{lang === 'vi' ? 'Đăng nhập' : 'Sign in'}</span>
-                {" | "}
+                {' | '}
                 <span onClick={toggleShowSignUp}>{lang === 'vi' ? 'Đăng ký' : 'Sign up'}</span>
               </p>
               <PopupModal showModal={showLogin || showSignUp} toggleModal={(showLogin && toggleShowLogin) || (showSignUp && toggleShowSignUp)} overlayStyles={overlayAuthStyles}>
@@ -153,26 +150,26 @@ const LeftSidebar = () => {
                 </div>
                 <div className={`${showDiscoveryMenu && 'show-detail'} nav-item-detail discovery-detail`}>
                   <NavLink to='/bai-hat'>
-                    <div className="nav-item-detail-main">
-                      <div className="nav-item-detail-main-hover"></div>
+                    <div className='nav-item-detail-main'>
+                      <div className='nav-item-detail-main-hover'></div>
                       <span>{lang === 'vi' ? 'bài hát' : 'song'}</span>
                     </div>
                   </NavLink>
                   <NavLink to='/playlist'>
-                    <div className="nav-item-detail-main">
-                      <div className="nav-item-detail-main-hover"></div>
+                    <div className='nav-item-detail-main'>
+                      <div className='nav-item-detail-main-hover'></div>
                       <span>playlist</span>
                     </div>
                   </NavLink>
                   <NavLink to='/video'>
-                    <div className="nav-item-detail-main">
-                      <div className="nav-item-detail-main-hover"></div>
+                    <div className='nav-item-detail-main'>
+                      <div className='nav-item-detail-main-hover'></div>
                       <span>video</span>
                     </div>
                   </NavLink>
                   <NavLink to='/artist'>
-                    <div className="nav-item-detail-main">
-                      <div className="nav-item-detail-main-hover"></div>
+                    <div className='nav-item-detail-main'>
+                      <div className='nav-item-detail-main-hover'></div>
                       <span>{lang === 'vi' ? 'nghệ sỹ' : 'artist'}</span>
                     </div>
                   </NavLink>
@@ -189,20 +186,20 @@ const LeftSidebar = () => {
                 </div>
                 <div className={`${showTodaySelection && 'show-detail'} nav-item-detail today-selection-detail`}>
                   <NavLink to='/chu-de'>
-                    <div className="nav-item-detail-main">
-                      <div className="nav-item-detail-main-hover"></div>
+                    <div className='nav-item-detail-main'>
+                      <div className='nav-item-detail-main-hover'></div>
                       <span>{lang === 'vi' ? 'chủ đề' : 'topic'}</span>
                     </div>
                   </NavLink>
                   <NavLink to='/playlist'>
-                    <div className="nav-item-detail-main">
-                      <div className="nav-item-detail-main-hover"></div>
+                    <div className='nav-item-detail-main'>
+                      <div className='nav-item-detail-main-hover'></div>
                       <span>{lang === 'vi' ? 'tuyển tập' : 'collection'}</span>
                     </div>
                   </NavLink>
                   <NavLink to='/top-100'>
-                    <div className="nav-item-detail-main">
-                      <div className="nav-item-detail-main-hover"></div>
+                    <div className='nav-item-detail-main'>
+                      <div className='nav-item-detail-main-hover'></div>
                       <span>top 100</span>
                     </div>
                   </NavLink>

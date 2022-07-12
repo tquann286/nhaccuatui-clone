@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 import { ToastContainer } from 'react-toastify'
 
-import { TERM_LINK } from 'share/constants'
+import { DEFAULT_IMAGE, TERM_LINK } from 'share/constants'
 import { authToastProps, authToastNotify } from 'share/toast'
 import { handleFocus, handleBlur, authSchema, handleLoginError, handleSignUpError } from 'services/AuthForm'
 
@@ -82,7 +82,8 @@ const AuthForm = () => {
 
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
       updateProfile(auth.currentUser, {
-        displayName: username
+        displayName: username,
+        photoURL: DEFAULT_IMAGE
       })
 
       const docRef = doc(db, 'users', userCredential.user.uid)
