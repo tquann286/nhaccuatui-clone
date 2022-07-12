@@ -23,8 +23,8 @@ import { FcGoogle } from 'react-icons/fc'
 import loginLogo from 'images/login-logo.png'
 
 import { auth, db, facebookProvider, googleProvider } from 'config/firebase'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
-import { addUser, setUser } from 'services/firebase/firestore'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth'
+import { addUser } from 'services/firebase/firestore'
 import { doc, getDoc } from 'firebase/firestore'
 
 const AuthForm = () => {
@@ -33,8 +33,6 @@ const AuthForm = () => {
 
   const [agreeTerm, setAgreeTerm] = useState(false || showLogin)
   const [isVerifying, setIsVerifying] = useState(false)
-
-  const currentUser = auth.currentUser
 
   const defineLang = (vie, eng) => {
     return lang === 'vi' ? vie : eng
@@ -69,7 +67,7 @@ const AuthForm = () => {
 
       signInWithEmailAndPassword(auth, email, password)
       authToastNotify(defineLang('Đăng nhập thành công.', 'Sign in successfully.'), 'success')
-      
+
       toggleShowLogin()
       setIsVerifying(false)
     } catch (error) {
@@ -83,7 +81,17 @@ const AuthForm = () => {
       setIsVerifying(true)
 
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-      addUser(username, email, userCredential.user.uid)
+      updateProfile(auth.currentUser, {
+        displayName: username
+      })
+
+      const docRef = doc(db, 'users', userCredential.user.uid)
+      const docSnap = await getDoc(docRef)
+
+      if (!docSnap.exists()) {
+        // User is not exists in firestore
+        await addUser(docRef, username, email, null, userCredential.user.uid)
+      }
 
       authToastNotify(defineLang('Đăng ký thành công.', 'Sign up successfully.'), 'success')
 
@@ -105,7 +113,7 @@ const AuthForm = () => {
 
       if (!docSnap.exists()) {
         // User is not exists in firestore
-        await setUser(docRef, displayName, email, photoURL, uid)
+        await addUser(docRef, displayName, email, photoURL, uid)
       }
 
       if (showLogin) {
@@ -128,7 +136,7 @@ const AuthForm = () => {
 
       if (!docSnap.exists()) {
         // User is not exists in firestore
-        await setUser(docRef, displayName, email, photoURL, uid)
+        await addUser(docRef, displayName, email, photoURL, uid)
       }
 
       if (showLogin) {

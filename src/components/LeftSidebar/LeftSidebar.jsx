@@ -19,6 +19,7 @@ import { AiOutlineSetting } from 'react-icons/ai'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
 import { useGetPosition } from 'hooks'
+import { auth } from 'config/firebase'
 
 const LeftSidebar = () => {
   const [state, dispatch] = useStore()
@@ -69,6 +70,9 @@ const LeftSidebar = () => {
       left: right,
     })
   )
+
+  // const {currentUser } = auth
+  // console.log(currentUser)
 
   return (
     <div className='left-sidebar'>
