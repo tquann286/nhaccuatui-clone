@@ -140,7 +140,7 @@ const LeftSidebar = () => {
                   <div className='nav-item nav-search'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
-                      <i className='uil uil-search search'></i>
+                      <i className='fa-solid fa-magnifying-glass search'></i>
                       <p className='nav-name'>{lang === 'vi' ? 'Tìm kiếm' : 'Search'}</p>
                     </div>
                   </div>
@@ -151,7 +151,7 @@ const LeftSidebar = () => {
                   <div className='nav-item nav-home'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
-                      <i className='uil uil-estate home'></i>
+                      <i className='fa-solid fa-house home'></i>
                       <p className='nav-name'>{lang === 'vi' ? 'Trang chủ' : 'Home'}</p>
                     </div>
                   </div>
@@ -161,7 +161,7 @@ const LeftSidebar = () => {
                 <div className='nav-item nav-discovery' onClick={toggleDiscoveryMenu}>
                   <div className='nav-active-item'></div>
                   <div className='nav-content'>
-                    <i className='uil uil-compass discovery'></i>
+                    <i className='fa-solid fa-compass discovery'></i>
                     <p className='nav-name'>{lang === 'vi' ? 'Khám phá' : 'Discovery'}</p>
                     <MdOutlineKeyboardArrowDown className={`${showDiscoveryMenu && 'show-detail'}`} />
                   </div>
@@ -197,7 +197,7 @@ const LeftSidebar = () => {
                 <div className='nav-item nav-today-selection' onClick={toggleTodaySelection}>
                   <div className='nav-active-item'></div>
                   <div className='nav-content'>
-                    <i className='uil uil-headphones today-selection'></i>
+                    <i className='fa-solid fa-headphones-simple today-selection'></i>
                     <p className='nav-name'>{lang === 'vi' ? 'Nghe gì hôm nay' : 'Today selection'}</p>
                     <MdOutlineKeyboardArrowDown className={`${showTodaySelection && 'show-detail'}`} />
                   </div>
@@ -228,7 +228,7 @@ const LeftSidebar = () => {
                   <div className='nav-item nav-chart'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
-                      <i className='uil uil-chart-bar chart'></i>
+                      <i className='fa-solid fa-chart-simple chart'></i>
                       <p className='nav-name'>{lang === 'vi' ? 'BXH NCT' : 'NCT chart'}</p>
                     </div>
                   </div>
@@ -239,7 +239,7 @@ const LeftSidebar = () => {
                   <div className='nav-item nav-music-4u'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
-                      <i className='uil uil-music music-4u'></i>
+                      <i className='fa-regular fa-hand-point-up music-4u'></i>
                       <p className='nav-name'>Music 4U</p>
                     </div>
                   </div>
