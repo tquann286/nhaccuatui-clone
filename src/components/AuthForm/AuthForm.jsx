@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './AuthForm.scss'
 import { LoadingV2 } from 'components'
 
@@ -34,6 +34,8 @@ const AuthForm = () => {
   const [agreeTerm, setAgreeTerm] = useState(false || showLogin)
   const [isVerifying, setIsVerifying] = useState(false)
 
+  const currentUser = auth.currentUser
+
   const defineLang = (vie, eng) => {
     return lang === 'vi' ? vie : eng
   }
@@ -67,7 +69,8 @@ const AuthForm = () => {
 
       signInWithEmailAndPassword(auth, email, password)
       authToastNotify(defineLang('Đăng nhập thành công.', 'Sign in successfully.'), 'success')
-
+      
+      toggleShowLogin()
       setIsVerifying(false)
     } catch (error) {
       handleLoginError(error.code, defineLang)
@@ -84,6 +87,7 @@ const AuthForm = () => {
 
       authToastNotify(defineLang('Đăng ký thành công.', 'Sign up successfully.'), 'success')
 
+      toggleShowSignUp()
       setIsVerifying(false)
     } catch (error) {
       handleSignUpError(error.code, defineLang)
@@ -103,7 +107,12 @@ const AuthForm = () => {
         // User is not exists in firestore
         await setUser(docRef, displayName, email, photoURL, uid)
       }
-      
+
+      if (showLogin) {
+        toggleShowLogin()
+      } else if (showSignUp) {
+        toggleShowSignUp()
+      }
     } catch (error) {
       authToastNotify(defineLang('Đăng nhập không thành công.', 'Sign in unsuccessful.'), 'error')
     }
@@ -121,7 +130,12 @@ const AuthForm = () => {
         // User is not exists in firestore
         await setUser(docRef, displayName, email, photoURL, uid)
       }
-      
+
+      if (showLogin) {
+        toggleShowLogin()
+      } else if (showSignUp) {
+        toggleShowSignUp()
+      }
     } catch (error) {
       authToastNotify(defineLang('Đăng nhập không thành công.', 'Sign in unsuccessful.'), 'error')
     }
