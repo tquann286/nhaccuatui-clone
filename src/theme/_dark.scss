@@ -2,7 +2,7 @@
 
 $main-bg-color-dark: #1d2631;
 $border-dark: rgba(244, 246, 248, 0.05);
-$dark-color: #1e1e1e;
+$dark-color: #100f2c;
 $darkmode-text-color: rgba(244, 246, 248, 0.88);
 
 // Left sidebar
@@ -104,5 +104,4 @@ body[data-theme='dark'] {
   .play-now {
     border: 0.1rem solid rgba(244, 246, 248, 0.1) !important;
   }
-
 }

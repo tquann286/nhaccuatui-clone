@@ -34,7 +34,7 @@
 
 @mixin hoverMainColor {
   &:hover {
-    color: $main-text-color;
+    color: $main-text-color !important;
   }
 }
 

@@ -59,7 +59,7 @@
 					cursor: pointer;
 
 					&:hover {
-						border: 0.1rem solid $main-text-color;
+						border: 0.1rem solid $main-text-color !important;
 					}
         }
       }
