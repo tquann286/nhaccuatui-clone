@@ -6,7 +6,8 @@ export const addUser = (docRef, username, email, photoUrl, userId) => {
     username,
     email,
     photoUrl: photoUrl || DEFAULT_IMAGE,
-    history: '',
+    history: {},
+    favorite: {},
     userId,
   })
 }
