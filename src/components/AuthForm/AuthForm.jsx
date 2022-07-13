@@ -5,8 +5,6 @@ import { LoadingV2 } from 'components'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { ToastContainer } from 'react-toastify'
-
 import { DEFAULT_IMAGE, TERM_LINK } from 'share/constants'
 import { authToastProps, authToastNotify } from 'share/toast'
 import { handleFocus, handleBlur, authSchema, handleLoginError, handleSignUpError } from 'services/AuthForm'
@@ -261,7 +259,6 @@ const AuthForm = () => {
               <button type='submit' className={`submit-btn ${showSignUp && 'sign-up'} ${agreeTerm || 'disabled'} ${isVerifying && 'disabled'}`} disabled={!agreeTerm || isVerifying}>
                 {isVerifying ? <LoadingV2 /> : handleAuthFunc(defineLang('Đăng nhập', 'Sign in'), defineLang('Đăng ký', 'Sign up'))}
               </button>
-              <ToastContainer {...authToastProps} />
             </form>
           </div>
           <div className='af-plugin'>

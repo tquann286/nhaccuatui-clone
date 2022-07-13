@@ -8,10 +8,9 @@ import { BsHeadphones, BsLink45Deg, BsMusicNote } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { SiYoutubemusic } from 'react-icons/si'
 
-import { animationConfig, createSongUrl, createArtistUrl, toastConfig, copyNotify } from 'share/utilities'
+import { animationConfig, createSongUrl, createArtistUrl, copyNotify } from 'share/utilities'
 import { createRandomSongView } from 'services/SongDetail'
 import { Animated } from 'react-animated-css'
-import { ToastContainer } from 'react-toastify'
 
 const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
   const [songView, setSongView] = useState(0)
@@ -114,7 +113,6 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
           </ul>
         </div>
       </Animated>
-      <ToastContainer {...toastConfig} />
     </React.Fragment>
   )
 }

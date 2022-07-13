@@ -10,9 +10,7 @@ import { Animated } from 'react-animated-css'
 import { useOnClickOutside, useGetPosition } from 'hooks'
 import { handleVideoLink } from 'services/VideoDetail'
 import { PROXY } from 'share/constants'
-import { animationConfig, createArtistUrl, toastConfig, copyNotify } from 'share/utilities'
-
-import { ToastContainer } from 'react-toastify'
+import { animationConfig, createArtistUrl, copyNotify } from 'share/utilities'
 import 'react-toastify/dist/ReactToastify.css'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -114,7 +112,6 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
           </ul>
         </div>
       </Animated>
-      <ToastContainer {...toastConfig} />
     </React.Fragment>
   )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
+import { ToastContainer } from 'react-toastify'
 
 import { StoreProvider } from 'store'
 
@@ -9,6 +10,7 @@ root.render(
   <React.StrictMode>
     <StoreProvider>
       <App />
+      <ToastContainer />
     </StoreProvider>
   </React.StrictMode>
 )
