@@ -12,8 +12,6 @@ const RightSidebar = () => {
   const { lang, lastPlayedSongId } = state
 
   const [playingSong, setPlayingSong] = useState(null)
-  const [trendingSong, setTrendingSong] = useState(null)
-  console.log(trendingSong)
 
   useEffect(() => {
     if (lastPlayedSongId) {

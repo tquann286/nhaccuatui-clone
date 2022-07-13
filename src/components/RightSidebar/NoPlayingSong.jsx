@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import noPlayer from 'images/default_player_v2.jpg'
@@ -6,6 +6,8 @@ import noPlayer from 'images/default_player_v2.jpg'
 import { getTrendingSong } from 'services/RightSidebar/NoPlayingSong'
 
 const NoPlayingSong = ({ defineSong }) => {
+  const [trendingSong, setTrendingSong] = useState(null)
+  console.log(trendingSong)
 
   useEffect(() => {
     getTrendingSong().then((res) => {
@@ -22,9 +24,7 @@ const NoPlayingSong = ({ defineSong }) => {
             <img src={noPlayer} alt={defineSong('Thưởng thức nhạc thôi nào!', 'Play music and enjoy')} />
             <p className='title'>{defineSong('Thưởng thức những giai điệu theo cách riêng của bạn', 'Enjoy the melody in your own way')}</p>
             <div className='play-now'>
-              <Link to='/bai-hat/top-20/nhac-viet'>
-                {defineSong('Nghe nào', 'Play now')}
-              </Link>
+              <Link to='/bai-hat/top-20/nhac-viet'>{defineSong('Nghe nào', 'Play now')}</Link>
             </div>
           </div>
         </div>
