@@ -63,9 +63,9 @@ const AuthForm = () => {
     try {
       setIsVerifying(true)
 
-      signInWithEmailAndPassword(auth, email, password)
-      authToastNotify(defineLang('Đăng nhập thành công.', 'Sign in successfully.'), 'success')
+      await signInWithEmailAndPassword(auth, email, password)
 
+      authToastNotify(defineLang('Đăng nhập thành công.', 'Sign in successfully.'), 'success')
       toggleShowLogin()
       setIsVerifying(false)
     } catch (error) {
