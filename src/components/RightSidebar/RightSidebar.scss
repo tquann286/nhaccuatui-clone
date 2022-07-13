@@ -8,9 +8,12 @@
   top: 0;
   right: 0;
   border-left: $border-light;
+  z-index: 1;
 
   .rb-suggestion {
-    @include flexCenter;
+    @include display-flex;
+    @include align-items(center);
+    @include justify-content(center);
     @include flexDirection(column);
     height: 100%;
     background-color: rgba(255, 255, 255, 0.07);
@@ -37,30 +40,92 @@
         }
 
         p.title {
-					font-size: 1.3rem;
-					line-height: 1.8rem;
-					width: 100%;
-					margin-top: 4rem;
-					color: rgba(28,30,32,0.88);
+          font-size: 1.3rem;
+          line-height: 1.8rem;
+          width: 100%;
+          margin-top: 4rem;
+          color: rgba(28, 30, 32, 0.88);
         }
 
         .play-now {
-					@include flexCenter;
-					@include fitContentWidth;
-					@include hoverMainColor;
-					@include transition-effect(0.1s);
-					height: 3.2rem;
-					margin: 2.4rem auto 0;
-					font-size: 1.3rem;
-					color: rgba(28,30,32,0.5);
-					border: 0.1rem solid rgba(28,30,32,0.1);
-					border-radius: 1.6rem;
-					padding: 1rem 3.7rem;
-					cursor: pointer;
+          @include flexCenter;
+          @include fitContentWidth;
+          @include hoverMainColor;
+          @include transition-effect(0.1s);
+          height: 3.2rem;
+          margin: 2.4rem auto 0;
+          font-size: 1.3rem;
+          color: rgba(28, 30, 32, 0.5);
+          border: 0.1rem solid rgba(28, 30, 32, 0.1);
+          border-radius: 1.6rem;
+          padding: 1rem 3.7rem;
+          cursor: pointer;
+          
+          &:hover {
+            border: 0.1rem solid $main-text-color !important;
+          }
+        }
+      }
+    }
 
-					&:hover {
-						border: 0.1rem solid $main-text-color !important;
-					}
+    .suggest-song {
+      width: 100%;
+
+      .suggest-song-main {
+        @include display-flex;
+        border-top: 0.1rem solid rgba(28, 30, 32, 0.1);
+        padding: 2.5rem 2.4rem 3.1rem;
+
+        .suggest-trending-thumb {
+          img {
+            border-radius: 0.4rem;
+            width: 6.4rem;
+            height: 6.4rem;
+            cursor: pointer;
+          }
+        }
+
+        .suggest-trending-info {
+          @include display-flex;
+          @include justify-content(center);
+          @include flexDirection(column);
+          width: calc(100% - 8rem);
+          margin-left: 1.6rem;
+
+          .suggest-lead-title {
+            margin: 0 0 0.8rem;
+            color: rgba(28, 30, 32, 0.5);
+            font-size: 1.3rem;
+            line-height: 1.8rem;
+            width: 100%;
+          }
+
+          a {
+            @include threeDotContent;
+            @include transition-effect(0.1s);
+            @include hoverMainColor;
+            color: rgba(28, 30, 32, 0.88);
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.4rem;
+            margin-bottom: 0.6rem;
+          }
+
+          h5 {
+            @include threeDotContent;
+            vertical-align: text-bottom;
+
+            a {
+              color: rgba(28, 30, 32, 0.5);
+              font-size: 1.2rem;
+              line-height: 1.8rem;
+              span.suggest-artist-name {
+                @include transition-effect(0.1s);
+                @include hoverMainColor;
+              }
+            }
+          }
         }
       }
     }

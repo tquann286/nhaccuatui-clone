@@ -136,3 +136,9 @@
   -webkit-animation: $name $duration $timing-function $fill-mode;
   animation: $name $duration $timing-function $fill-mode;
 }
+
+@mixin threeDotContent {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

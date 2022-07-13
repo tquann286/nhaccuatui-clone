@@ -4,20 +4,10 @@ import { Link } from 'react-router-dom'
 import noPlayer from 'images/default_player_v2.jpg'
 
 import { getTrendingSong } from 'services/RightSidebar/NoPlayingSong'
+import { createArtistUrl, createSongUrl } from 'share/utilities'
 
-const NoPlayingSong = ({ defineSong }) => {
-  const [trendingSong, setTrendingSong] = useState(null)
-  console.log(trendingSong)
-
-  useEffect(() => {
-    getTrendingSong().then((res) => {
-      if (res) {
-        setTrendingSong(res)
-      }
-    })
-  }, [])
-  return (
-    <div className='rb-container'>
+const MainContainer = ({ defineSong, children }) => (
+  <div className='rb-container'>
       <div className='rb-suggestion'>
         <div className='no-playing-song'>
           <div className='main'>
@@ -28,9 +18,60 @@ const NoPlayingSong = ({ defineSong }) => {
             </div>
           </div>
         </div>
-        <div className='suggest-song'></div>
+        {children}
       </div>
     </div>
+)
+
+const NoPlayingSong = ({ defineSong }) => {
+  const [trendingSong, setTrendingSong] = useState(null)
+
+  useEffect(() => {
+    getTrendingSong().then((res) => {
+      if (res) {
+        setTrendingSong(res)
+      }
+    })
+  }, [])
+
+  if (trendingSong) {
+    const { artists, songKey, thumbnail, title } = trendingSong
+
+    return (
+      <MainContainer defineSong={defineSong}>
+      {trendingSong && (
+        <div className='suggest-song'>
+          <div className='suggest-song-main'>
+            <div className='suggest-trending-thumb'>
+              <img src={thumbnail} alt='thumb' title={title} />
+            </div>
+            <div className='suggest-trending-info'>
+              <p className='suggest-lead-title'>{defineSong('Đang được nghe nhiều nhất', 'Top pick these days')}</p>
+              <Link to={createSongUrl(title, songKey)}>{title}</Link>
+              <h5 className='suggest-artist'>
+                {artists.map((artist, index) => {
+                  const { artistId, name, shortLink } = artist
+
+                  return (
+                    <React.Fragment key={artistId}>
+                      <Link to={createArtistUrl(name, shortLink, artistId)}>
+                        <span className='suggest-artist-name'>{name}</span>
+                      </Link>
+                      {index + 1 !== artists.length && ', '}
+                    </React.Fragment>
+                  )
+                })}
+              </h5>
+            </div>
+          </div>
+        </div>
+      )}
+      </MainContainer>
+    )
+  }
+
+  return (
+    <MainContainer defineSong={defineSong} />
   )
 }
 
