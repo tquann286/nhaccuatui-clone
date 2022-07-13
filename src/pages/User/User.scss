@@ -1,17 +1,11 @@
 @import 'settings';
 
-.hp-main {
+.user-main {
 	@include transition-effect(0.75s);
 	width: calc(100% - $left-sidebar-width - $right-sidebar-width);
 	margin-left: $left-sidebar-width;
 	margin-right: $right-sidebar-width;
 	padding-bottom: 0.8rem;
 
-	.loading-container {
-		@include display-flex;
-		@include align-items(center);
-		@include justify-content(center);
-		
-		height: 100vh;
-	}
+  height: 100vh;
 }

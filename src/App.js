@@ -4,9 +4,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useStore, actions } from 'store'
 
 import './App.scss'
-import { Homepage, NotFound } from 'pages'
+import { Homepage, NotFound, User } from 'pages'
 import { auth } from 'config/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
+import { MainHomepage } from 'components'
 
 const App = () => {
   const [state, dispatch] = useStore()
@@ -54,7 +55,10 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Homepage />} />
+        <Route path='/' element={<Homepage />}>
+          <Route index element={<MainHomepage />} />
+          <Route path='user' element={<User />} />
+        </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
