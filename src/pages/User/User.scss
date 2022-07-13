@@ -1,11 +1,5 @@
 @import 'settings';
 
 .user-main {
-	@include transition-effect(0.75s);
-	width: calc(100% - $left-sidebar-width - $right-sidebar-width);
-	margin-left: $left-sidebar-width;
-	margin-right: $right-sidebar-width;
-	padding-bottom: 0.8rem;
-
-  height: 100vh;
+	@include commonMainOutlet;
 }
