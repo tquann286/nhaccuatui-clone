@@ -101,13 +101,10 @@ $login-header-hight: 6rem;
                   padding: 0 0.8rem;
 
                   &-icon {
+                    @include hoverMainColor;
                     font-size: 1.7rem;
                     color: rgba(28, 30, 32, 0.2);
                     cursor: pointer;
-
-                    &:hover {
-                      color: $main-text-color;
-                    }
                   }
 
                   &-description {
@@ -200,6 +197,7 @@ $login-header-hight: 6rem;
                   width: 1.6rem;
                   background-color: #eee;
                   border-radius: 0.4rem;
+                  border: 1px solid rgba(28, 30, 32, 0.2);
 
                   /* Create the checkmark/indicator (hidden when not checked) */
                   &:after {
