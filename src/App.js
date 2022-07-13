@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+
 import { useStore, actions } from 'store'
 
 import './App.scss'
@@ -9,6 +10,7 @@ import { auth } from 'config/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 import { MainHomepage } from 'components'
 
+import 'theme/_dark.scss'
 const App = () => {
   const [state, dispatch] = useStore()
 

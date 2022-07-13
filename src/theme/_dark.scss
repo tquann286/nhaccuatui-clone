@@ -37,7 +37,9 @@ body[data-theme='dark'] {
   }
 
   .ls-auth-setting,
-  .nav-name {
+  .nav-name,
+  .sm-container,
+  .no-playing-song .main p.title {
     color: rgba(244, 246, 248, 0.88) !important;
   }
 
@@ -58,16 +60,13 @@ body[data-theme='dark'] {
   .t1-nav,
   .ft-container,
   .nav-content,
-  .nav-item-detail-main span {
+  .nav-item-detail-main span,
+  .play-now {
     color: rgba(244, 246, 248, 0.5) !important;
   }
 
   .disabled {
     color: rgba(244,246,248,0.2) !important;
-  }
-
-  .ma-watch-all {
-    border: 0.1rem solid rgba(244, 246, 248, 0.1) !important;
   }
 
   .nr-active-slide,
@@ -91,4 +90,19 @@ body[data-theme='dark'] {
       background-color: rgba(244, 246, 248, 0.1) !important;
     }
   }
+
+  .sm-container, .sm-sub-items {
+    background-color: #222B36 !important;
+  }
+
+  .sm-item:hover, .sm-sub-item:hover {
+    background-color: rgba(244, 246, 248, 0.05) !important;
+  }
+
+  // Border
+  .ma-watch-all,
+  .play-now {
+    border: 0.1rem solid rgba(244, 246, 248, 0.1) !important;
+  }
+
 }
