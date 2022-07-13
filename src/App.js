@@ -10,7 +10,6 @@ import { auth } from 'config/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 import { MainHomepage } from 'components'
 
-import 'theme/_dark.scss'
 const App = () => {
   const [state, dispatch] = useStore()
 
