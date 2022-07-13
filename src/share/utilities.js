@@ -95,16 +95,6 @@ export const copyNotify = (lang) =>
     progress: undefined,
   })
 
-export const toastConfig = {
-  position: 'bottom-left',
-  autoClose: 3000,
-  hideProgressBar: false,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-}
-
 export const animationConfig = {
   animationIn: 'fadeIn',
   animationOut: 'fadeOut',

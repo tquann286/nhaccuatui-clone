@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { DEFAULT_IMAGE, TERM_LINK } from 'share/constants'
-import { authToastProps, authToastNotify } from 'share/toast'
+import { authToastNotify } from 'share/toast'
 import { handleFocus, handleBlur, authSchema, handleLoginError, handleSignUpError } from 'services/AuthForm'
 
 import { useStore, actions } from 'store'

@@ -11,7 +11,6 @@ import { useOnClickOutside, useGetPosition } from 'hooks'
 import { handleVideoLink } from 'services/VideoDetail'
 import { PROXY } from 'share/constants'
 import { animationConfig, createArtistUrl, copyNotify } from 'share/utilities'
-import 'react-toastify/dist/ReactToastify.css'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { useStore } from 'store'
