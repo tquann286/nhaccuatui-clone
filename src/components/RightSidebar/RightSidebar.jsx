@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import NoPlayingSong from './NoPlayingSong'
 import './RightSidebar.scss'
 
-import { getPlayingSong, getTrendingSong } from 'services/RightSidebar'
+import { getPlayingSong } from 'services/RightSidebar/RightSidebar'
 
 import { useStore, actions } from 'store'
 
@@ -13,6 +13,7 @@ const RightSidebar = () => {
 
   const [playingSong, setPlayingSong] = useState(null)
   const [trendingSong, setTrendingSong] = useState(null)
+  console.log(trendingSong)
 
   useEffect(() => {
     if (lastPlayedSongId) {
@@ -23,14 +24,6 @@ const RightSidebar = () => {
       })
     }
   }, [lastPlayedSongId])
-
-  useEffect(() => {
-    getTrendingSong().then((res) => {
-      if (res) {
-        setTrendingSong(res)
-      }
-    })
-  }, [])
 
   const defineSong = (vie, eng) => {
     return lang === 'vi' ? vie : eng

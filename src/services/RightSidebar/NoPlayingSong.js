@@ -1,14 +1,3 @@
-import { explore, getChart, getSong } from 'nhaccuatui-api-full'
-
-export const getPlayingSong = async (songId) => {
-  try {
-    const songDetail = await getSong()
-    if (songDetail) return songDetail
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 export const getTrendingSong = async () => {
   try {
     const { ranking } = await getChart({ category: 'nhac-viet', type: 'song', size: 1 })
@@ -23,3 +12,4 @@ export const getTrendingSong = async () => {
     console.log(error)
   }
 }
+

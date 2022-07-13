@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import noPlayer from 'images/default_player_v2.jpg'
 
+import { getTrendingSong } from 'services/RightSidebar/NoPlayingSong'
+
 const NoPlayingSong = ({ defineSong }) => {
+
+  useEffect(() => {
+    getTrendingSong().then((res) => {
+      if (res) {
+        setTrendingSong(res)
+      }
+    })
+  }, [])
   return (
     <div className='rb-container'>
       <div className='rb-suggestion'>
