@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useStore, actions } from 'store'
 
 import './App.scss'
-import { Homepage, NotFound, User } from 'pages'
+import { Explore, Homepage, NotFound, User } from 'pages'
 import { auth } from 'config/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 import { MainHomepage } from 'components'
@@ -58,6 +58,7 @@ const App = () => {
         <Route path='/' element={<Homepage />}>
           <Route index element={<MainHomepage />} />
           <Route path='user' element={<User />} />
+          <Route path='kham-pha' element={<Explore />} />
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
