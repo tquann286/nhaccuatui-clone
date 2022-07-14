@@ -2,14 +2,6 @@ import * as Yup from 'yup'
 import { REGEX_VIETNAMESE, REGEX_EMAIL, EXISTED_EMAIL, USER_NOT_FOUND, WRONG_PASSWORD } from 'share/constants'
 import { toastNotify } from 'share/toast'
 
-export const handleFocus = (e) => {
-  e.target.parentElement.classList.add('focus')
-}
-
-export const handleBlur = (e) => {
-  e.target.parentElement.classList.remove('focus')
-}
-
 export const authSchema = (defineLang, handleAuthFunc) => {
   const emailSchema = Yup.string().required(defineLang('Vui lòng điền vào trường này.', 'Email is required.')).matches(REGEX_EMAIL, defineLang('Email không hợp lệ.', 'Invalid email.')).trim(defineLang('Email không hợp lệ.', 'Invalid email'))
 

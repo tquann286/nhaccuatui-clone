@@ -102,3 +102,11 @@ export const animationConfig = {
   animationOutDuration: 100,
   style: { zIndex: 1 },
 }
+
+export const handleFocusInput = (e) => {
+  e.target.parentElement.classList.add('focus')
+}
+
+export const handleBlurInput = (e) => {
+  e.target.parentElement.classList.remove('focus')
+}

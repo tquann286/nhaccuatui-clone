@@ -7,7 +7,9 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 import { DEFAULT_IMAGE, TERM_LINK } from 'share/constants'
 import { toastNotify } from 'share/toast'
-import { handleFocus, handleBlur, authSchema, handleLoginError, handleSignUpError } from 'services/AuthForm'
+import {  handleFocusInput, handleBlurInput } from 'share/utilities'
+
+import { authSchema, handleLoginError, handleSignUpError } from 'services/AuthForm'
 
 import { useStore, actions } from 'store'
 
@@ -165,7 +167,7 @@ const AuthForm = () => {
                   <div className='input-container username'>
                     <div className='input-main'>
                       <AiOutlineUser className='input-icon' />
-                      <input type='text' {...register('username')} placeholder={defineLang('Tên hiển thị', 'Username')} onFocus={(e) => handleFocus(e)} onBlur={(e) => handleBlur(e)} />
+                      <input type='text' {...register('username')} placeholder={defineLang('Tên hiển thị', 'Username')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                       {showSignUp && (
                         <div className='more-info username'>
                           <BsInfoCircle className='more-info-icon' />
@@ -186,7 +188,7 @@ const AuthForm = () => {
               <div className='input-container email'>
                 <div className='input-main'>
                   <HiOutlineMail className='input-icon' />
-                  <input type='email' {...register('email')} placeholder='Email' onFocus={(e) => handleFocus(e)} onBlur={(e) => handleBlur(e)} />
+                  <input type='email' {...register('email')} placeholder='Email' onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                   {showSignUp && (
                     <div className='more-info email'>
                       <BsInfoCircle className='more-info-icon' />
@@ -205,7 +207,7 @@ const AuthForm = () => {
               <div className='input-container password'>
                 <div className='input-main'>
                   <BsKeyboard className='input-icon' />
-                  <input type='password' {...register('password')} placeholder={defineLang('Mật khẩu', 'Password')} onFocus={(e) => handleFocus(e)} onBlur={(e) => handleBlur(e)} />
+                  <input type='password' {...register('password')} placeholder={defineLang('Mật khẩu', 'Password')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                   {showSignUp && (
                     <div className='more-info password'>
                       <BsInfoCircle className='more-info-icon' />
@@ -226,7 +228,7 @@ const AuthForm = () => {
                   <div className='input-container confirmedPassword'>
                     <div className='input-main'>
                       <BsKeyboard className='input-icon' />
-                      <input type='password' {...register('confirmedPassword')} placeholder={defineLang('Nhập lại mật khẩu', 'Re-enter Password')} onFocus={(e) => handleFocus(e)} onBlur={(e) => handleBlur(e)} />
+                      <input type='password' {...register('confirmedPassword')} placeholder={defineLang('Nhập lại mật khẩu', 'Re-enter Password')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                       {showSignUp && (
                         <div className='more-info confirmedPassword'>
                           <BsInfoCircle className='more-info-icon' />
