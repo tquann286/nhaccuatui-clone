@@ -2,6 +2,7 @@
 
 .t1-container {
   position: relative;
+	margin-bottom: 8rem;
 
   .t1-title {
     @include main-title-scss;
