@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useRef, memo } from 'react'
+import React, { useState, useRef, memo } from 'react'
 
 import { BsLink45Deg, BsPlayCircleFill } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { SiApplemusic } from 'react-icons/si'
+
+import { OptionModal } from 'components'
 
 import { isEmpty } from 'lodash'
 import { Animated } from 'react-animated-css'
@@ -22,7 +24,7 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
   const [showMoreOptions, setShowMoreOptions] = useState(false)
   const [showMorePosition, setShowMorePosition] = useState({
     top: 0,
-    left: 0
+    left: 0,
   })
   const videoRef = useRef(null)
   const moreDivRef = useRef(null)
@@ -33,8 +35,8 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
   useGetPosition(videoRef, (right, top) =>
     setShowMorePosition({
       top: top,
-      left: right
-    })
+      left: right,
+    }), showMoreOptions
   )
 
   const toggleShowMore = () => {
@@ -43,6 +45,11 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
 
   const handleMoreOptions = (e) => {
     e.stopPropagation()
+    if (videoRef) {
+			const { right } = videoRef.current.getBoundingClientRect()
+			const top = videoRef.current.offsetTop
+      console.log(right, top)
+    }
     toggleShowMore()
   }
 
@@ -96,20 +103,22 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
         </div>
       </div>
       <Animated {...animationConfig} isVisible={showMoreOptions}>
-        <div className='vd-more-options-box' style={showMorePosition} ref={moreOptionsRef}>
-          <ul>
-            {!isEmpty(refMapping) && (
-              <li>
-                <SiApplemusic />
-                <span>{lang === 'vi' ? 'Nghe audio' : 'Listen audio'}</span>
+        <OptionModal showModal={showMoreOptions} positionRef={videoRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
+          <div className='om-main'>
+            <ul>
+              {!isEmpty(refMapping) && (
+                <li>
+                  <SiApplemusic />
+                  <span>{lang === 'vi' ? 'Nghe audio' : 'Listen audio'}</span>
+                </li>
+              )}
+              <li onClick={(e) => handleCopyClick(e)}>
+                <BsLink45Deg />
+                <span>{lang === 'vi' ? 'Sao chép link' : 'Copy link'}</span>
               </li>
-            )}
-            <li onClick={(e) => handleCopyClick(e)}>
-              <BsLink45Deg />
-              <span>{lang === 'vi' ? 'Sao chép link' : 'Copy link'}</span>
-            </li>
-          </ul>
-        </div>
+            </ul>
+          </div>
+        </OptionModal>
       </Animated>
     </React.Fragment>
   )
