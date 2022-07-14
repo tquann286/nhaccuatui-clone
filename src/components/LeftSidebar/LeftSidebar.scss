@@ -190,6 +190,7 @@ $scale: 5rem;
           .nav-item {
             @include display-flex;
             @include align-items(center);
+            @include transition-effect(0.1s);
             position: relative;
             width: $left-sidebar-width;
             height: 3.2rem;
