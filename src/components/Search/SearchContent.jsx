@@ -54,7 +54,7 @@ const SearchContent = () => {
 
   return (
     <div className='search-container'>
-      <SearchHeader topArtists={topArtists} />
+      <SearchHeader topArtists={topArtists} defineLang={defineLang} />
     </div>
   )
 }

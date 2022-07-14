@@ -3,7 +3,7 @@ import React from 'react'
 import { FiSearch } from 'react-icons/fi'
 import { IoMdClose } from 'react-icons/io'
 
-const SearchHeader = ({ topArtists }) => {
+const SearchHeader = ({ topArtists, defineLang }) => {
   
 
   return (
@@ -14,7 +14,7 @@ const SearchHeader = ({ topArtists }) => {
         </div>
         <div className="search-input-main">
           <div className="search-input-section">
-            <input type="text" className='search-input-content'  />
+            <input type="text" className='search-input-content' placeholder={defineLang('Tìm kiếm...', 'Search...')}/>
             <div className="search-suggest-container"></div>
           </div>
           <div className="search-mask"></div>
