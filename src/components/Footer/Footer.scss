@@ -9,7 +9,7 @@
 		@include display-flex;
 		@include align-items(center);
 		@include justify-content(space-between);
-		height: 5.6rem;
+		height: $footer-height;
 		margin: 0 3.2rem;
 
 		.ft-owner {

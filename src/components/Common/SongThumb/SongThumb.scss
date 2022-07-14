@@ -1,0 +1,36 @@
+@import 'settings';
+
+.st-container {
+  @include display-flex;
+  @include align-items(center);
+  @include flexDirection(column);
+  @include fitContentWidth;
+  height: 100%;
+
+  .shadow1, .shadow2 {
+    border-radius: 0.4rem 0.4rem 0 0;
+    width: 60%;
+    background-color: rgba(28,30,32,0.05);
+  }
+
+  .shadow2 {
+    border-radius: 0.4rem 0.4rem 0 0;
+    width: 80%;
+    background-color: rgba(28,30,32,0.1);
+  }
+
+  .st-image {
+    position: relative;
+    border-radius: 0.4rem;
+    box-shadow: 0 0.8rem 1.6rem rgba(0,0,0,0.2);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+    &:after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { explore, getChart, getSong } from 'nhaccuatui-api-full'
+import { getSong } from 'nhaccuatui-api-full'
 
 export const getPlayingSong = async (songId) => {
   try {
