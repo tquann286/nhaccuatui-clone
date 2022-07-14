@@ -15,6 +15,7 @@
     .search-input-container {
       @include display-flex;
       @include align-items(center);
+      @include transition-effect(0.1s);
       position: relative;
       width: 50%;
       height: 4rem;
@@ -22,6 +23,10 @@
       border-radius: 0.4rem;
       color: rgba(28, 30, 32, 0.5);
       background-color: rgba(0, 0, 0, 0.02);
+
+      &.focus {
+        border-color: $main-text-color !important;
+      }
 
       .search-btn-container {
         @include display-flex;
