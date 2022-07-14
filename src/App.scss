@@ -11,6 +11,7 @@ body {
   position: relative;
 }
 
+// Reset CSS
 html,
 body,
 body div,
@@ -169,6 +170,29 @@ button, input[type=button] {
 
 .clickable, label, input[type=button], input[type=submit], input[type=file], button {
   cursor: pointer;
+}
+
+button, input {
+  overflow: visible;
+}
+
+button, input, optgroup, select, textarea {
+  font: inherit;
+  margin: 0;
+}
+
+input {
+  outline: none;
+  border: 0;
+  background: transparent;
+}
+
+button, input, select, textarea {
+  margin: 0;
+}
+
+input, select {
+  vertical-align: middle;
 }
 
 // Override toastify css
