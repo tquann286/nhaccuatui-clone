@@ -5,8 +5,6 @@ import { fetchHomeData } from 'services/HomeContent'
 
 import { NotFound } from 'pages'
 import { Loading, ShowcaseSlider, TopicEvent, NewRelease, MusicRanking, NewVideo, Song, HotTopic, Top100, Footer } from 'components'
-
-import { useLang } from 'hooks'
 import { toastNotify } from 'share/toast'
 
 import { useStore } from 'store'
@@ -14,9 +12,10 @@ import { useStore } from 'store'
 const MainHomepage = () => {
   const [homeContent, setHomeContent] = useState({})
   const [isLoading, setIsLoading] = useState(true)
+  const [isFetchingFail, setIsFetchingFail] = useState(false)
 
-  const { lang } = useStore().state
-  const defineLang = (vie, eng) => lang === 'vi' ? vie : eng
+  const [state] = useStore()
+  const defineLang = (vie, eng) => state.lang === 'vi' ? vie : eng
 
   useEffect(() => {
     fetchHomeData()
@@ -27,12 +26,15 @@ const MainHomepage = () => {
       .catch((error) => {
         console.log(error)
         setIsLoading(false)
+        setIsFetchingFail(true)
         toastNotify(defineLang('Có lỗi khi lấy dữ liệu từ server.', 'A server error occurred while retrieving data.'), 'error')
 
         return <NotFound />
       })
   }, [])
 
+  if (isFetchingFail) return <NotFound />
+  
   if (isLoading) {
     return (
       <div className='hp-main'>

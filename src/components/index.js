@@ -23,3 +23,6 @@ export { default as AuthForm } from './AuthForm/AuthForm'
 
 // User
 export { default as NoUserFound } from './User/NoUserFound/NoUserFound'
+
+// Search
+export { default as SearchContent } from './Search/SearchContent'
