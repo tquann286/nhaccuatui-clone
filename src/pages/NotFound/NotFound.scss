@@ -1,94 +1,19 @@
-#notfound {
-  position: relative;
-  height: 100vh;
-  background: #030005;
-}
+@import 'settings';
 
-#notfound .notfound {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
+.notfound-container {
+  @include commonMainOutlet;
+  @include flexCenter;
+  @include flexDirection(column);
+  
+  img {
+    width: 20rem;
+    height: 20rem;
+  }
 
-.notfound {
-  max-width: 76.7rem;
-  width: 100%;
-  line-height: 1.4;
-  text-align: center;
-}
-
-.notfound .notfound-404 {
-  position: relative;
-  height: 18rem;
-  margin-bottom: 2rem;
-  z-index: -1;
-}
-
-.notfound .notfound-404 h1 {
-  font-family: 'Montserrat', sans-serif;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50% , -50%);
-      -ms-transform: translate(-50% , -50%);
-          transform: translate(-50% , -50%);
-  font-size: 22.4rem;
-  font-weight: 900;
-  margin-top: 0rem;
-  margin-bottom: 0rem;
-  margin-left: -1.2rem;
-  color: #030005;
-  text-transform: uppercase;
-  text-shadow: -0.1rem -0.1rem 0rem #8400ff, 0.1rem 0.1rem 0rem #ff005a;
-  letter-spacing: -2rem;
-}
-
-
-.notfound .notfound-404 h2 {
-  font-family: 'Montserrat', sans-serif;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 11rem;
-  font-size: 4.2rem;
-  font-weight: 700;
-  color: #fff;
-  text-transform: uppercase;
-  text-shadow: 0rem 0.2rem 0rem #8400ff;
-  letter-spacing: 1.3rem;
-  margin: 0;
-}
-
-.notfound a {
-  font-family: 'Montserrat', sans-serif;
-  display: inline-block;
-  text-transform: uppercase;
-  color: #ff005a;
-  text-decoration: none;
-  border: 0.2rem solid;
-  background: transparent;
-  padding: 1rem 4rem;
-  font-size: 1.4rem;
-  font-weight: 700;
-  -webkit-transition: 0.2s all;
-  transition: 0.2s all;
-}
-
-.notfound a:hover {
-  color: #8400ff;
-}
-
-@media only screen and (max-width: 76.7rem) {
-    .notfound .notfound-404 h2 {
-        font-size: 2.4rem;
-    }
-}
-
-@media only screen and (max-width: 48rem) {
-  .notfound .notfound-404 h1 {
-      font-size: 18.2rem;
+  p.notfound-title {
+    font-size: 1.6rem;
+    color: rgba(28,30,32,0.5);
+    margin: 0 1.5rem;
+    text-align: center;
   }
 }

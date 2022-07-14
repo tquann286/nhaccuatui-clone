@@ -100,7 +100,7 @@
             width: 100%;
           }
 
-          a {
+          a.suggest-title {
             @include threeDotContent;
             @include transition-effect(0.1s);
             @include hoverMainColor;
@@ -115,9 +115,9 @@
           h5 {
             @include threeDotContent;
             vertical-align: text-bottom;
+            color: rgba(28, 30, 32, 0.5);
 
             a {
-              color: rgba(28, 30, 32, 0.5);
               font-size: 1.2rem;
               line-height: 1.8rem;
               span.suggest-artist-name {

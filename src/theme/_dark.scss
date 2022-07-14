@@ -42,7 +42,10 @@ body[data-theme='dark'] {
   .sm-container,
   .no-playing-song .main p.title,
   .af-header,
-  .af-plugin p {
+  .af-plugin p,
+  .ls-library,
+  .ls-user-name-content,
+  a.suggest-title {
     color: rgba(244, 246, 248, 0.88) !important;
   }
 
@@ -73,7 +76,10 @@ body[data-theme='dark'] {
   .so-more-options-box ul li svg,
   .vd-more-options-box ul li svg,
   .af-header button.close-btn svg,
-  .input-main input {
+  .input-main input,
+  p.notfound-title,
+  .suggest-lead-title,
+  .suggest-trending-info h5 {
     color: rgba(244, 246, 248, 0.5) !important;
   }
 

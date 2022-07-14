@@ -59,8 +59,8 @@ const App = () => {
           <Route index element={<MainHomepage />} />
           <Route path='user' element={<User />} />
           <Route path='kham-pha' element={<Explore />} />
+          <Route path='*' element={<NotFound />} />
         </Route>
-        <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )

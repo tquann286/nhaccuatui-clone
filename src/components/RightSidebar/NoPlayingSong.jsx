@@ -47,7 +47,7 @@ const NoPlayingSong = ({ defineSong }) => {
             </div>
             <div className='suggest-trending-info'>
               <p className='suggest-lead-title'>{defineSong('Đang được nghe nhiều nhất', 'Top pick these days')}</p>
-              <Link to={createSongUrl(title, songKey)}>{title}</Link>
+              <Link className='suggest-title' to={createSongUrl(title, songKey)}>{title}</Link>
               <h5 className='suggest-artist'>
                 {artists.map((artist, index) => {
                   const { artistId, name, shortLink } = artist
