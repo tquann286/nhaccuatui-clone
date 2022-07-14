@@ -12,7 +12,7 @@ import { actions } from 'store'
 
 import { signOut } from 'firebase/auth'
 import { auth } from 'config/firebase'
-import { authToastNotify } from 'share/toast'
+import { toastNotify } from 'share/toast'
 
 const SettingsModal = ({ user, theme, lang, dispatch }) => {
 
@@ -34,7 +34,7 @@ const SettingsModal = ({ user, theme, lang, dispatch }) => {
 
   const onLogout = () => {
     signOut(auth)
-    authToastNotify(lang === 'vi' ? 'Đăng xuất thành công.' : 'Logout successfully.')
+    toastNotify(lang === 'vi' ? 'Đăng xuất thành công.' : 'Logout successfully.')
   }
 
   return (

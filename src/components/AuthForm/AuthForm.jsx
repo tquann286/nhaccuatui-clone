@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { DEFAULT_IMAGE, TERM_LINK } from 'share/constants'
-import { authToastNotify } from 'share/toast'
+import { toastNotify } from 'share/toast'
 import { handleFocus, handleBlur, authSchema, handleLoginError, handleSignUpError } from 'services/AuthForm'
 
 import { useStore, actions } from 'store'
@@ -65,7 +65,7 @@ const AuthForm = () => {
 
       await signInWithEmailAndPassword(auth, email, password)
 
-      authToastNotify(defineLang('Đăng nhập thành công.', 'Sign in successfully.'), 'success')
+      toastNotify(defineLang('Đăng nhập thành công.', 'Sign in successfully.'), 'success')
       toggleShowLogin()
       setIsVerifying(false)
     } catch (error) {
@@ -92,7 +92,7 @@ const AuthForm = () => {
         await addUser(docRef, username, email, null, userCredential.user.uid)
       }
 
-      authToastNotify(defineLang('Đăng ký thành công.', 'Sign up successfully.'), 'success')
+      toastNotify(defineLang('Đăng ký thành công.', 'Sign up successfully.'), 'success')
 
       toggleShowSignUp()
       setIsVerifying(false)
@@ -121,7 +121,7 @@ const AuthForm = () => {
         toggleShowSignUp()
       }
     } catch (error) {
-      authToastNotify(defineLang('Đăng nhập không thành công.', 'Sign in unsuccessful.'), 'error')
+      toastNotify(defineLang('Đăng nhập không thành công.', 'Sign in unsuccessful.'), 'error')
     }
   }
 
@@ -144,7 +144,7 @@ const AuthForm = () => {
         toggleShowSignUp()
       }
     } catch (error) {
-      authToastNotify(defineLang('Đăng nhập không thành công.', 'Sign in unsuccessful.'), 'error')
+      toastNotify(defineLang('Đăng nhập không thành công.', 'Sign in unsuccessful.'), 'error')
     }
   }
 

@@ -2,12 +2,4 @@
 
 .hp-main {
 	@include commonMainOutlet;
-
-	.loading-container {
-		@include display-flex;
-		@include align-items(center);
-		@include justify-content(center);
-		
-		height: 100vh;
-	}
 }

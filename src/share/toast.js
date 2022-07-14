@@ -1,7 +1,7 @@
 import { toast, Slide } from 'react-toastify'
 
 // Auth Toast
-export const authToastNotify = (message, status = 'info', hideProgressBar = true) =>
+export const toastNotify = (message, status = 'info', hideProgressBar = true) =>
   toast[status](message, {
     position: 'top-right',
     autoClose: 3000,

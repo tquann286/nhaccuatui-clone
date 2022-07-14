@@ -3,7 +3,9 @@ import './Loading.scss'
 
 const Loading = () => {
   return (
-    <div className='loading-spin'></div>
+    <div className='loading-container'>
+      <div className='loading-spin'></div>
+    </div>
   )
 }
 

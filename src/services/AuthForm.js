@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 import { REGEX_VIETNAMESE, REGEX_EMAIL, EXISTED_EMAIL, USER_NOT_FOUND, WRONG_PASSWORD } from 'share/constants'
-import { authToastNotify } from 'share/toast'
+import { toastNotify } from 'share/toast'
 
 export const handleFocus = (e) => {
   e.target.parentElement.classList.add('focus')
@@ -40,7 +40,7 @@ export const authSchema = (defineLang, handleAuthFunc) => {
 export const handleSignUpError = (error, defineLang) => {
   switch (error) {
     case EXISTED_EMAIL:
-      authToastNotify(defineLang('Email đã được sử dụng bởi một người dùng khác', 'There is already an account for this email address'), 'error')
+      toastNotify(defineLang('Email đã được sử dụng bởi một người dùng khác', 'There is already an account for this email address'), 'error')
       break
     default:
       break
@@ -50,10 +50,10 @@ export const handleSignUpError = (error, defineLang) => {
 export const handleLoginError = (error, defineLang) => {
   switch (error) {
     case USER_NOT_FOUND:
-      authToastNotify(defineLang('Không tìm thấy email hoặc email chưa được đăng ký', 'Email not found or unregistered email'), 'error')
+      toastNotify(defineLang('Không tìm thấy email hoặc email chưa được đăng ký', 'Email not found or unregistered email'), 'error')
       break
     case WRONG_PASSWORD:
-      authToastNotify(defineLang('Sai mật khẩu, vui lòng thử lại.', 'Wrong password, please try again.'), 'error')
+      toastNotify(defineLang('Sai mật khẩu, vui lòng thử lại.', 'Wrong password, please try again.'), 'error')
       break
     default:
       break

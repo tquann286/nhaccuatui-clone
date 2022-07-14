@@ -3,50 +3,59 @@ import './MainHomepage.scss'
 
 import { fetchHomeData } from 'services/HomeContent'
 
+import { NotFound } from 'pages'
 import { Loading, ShowcaseSlider, TopicEvent, NewRelease, MusicRanking, NewVideo, Song, HotTopic, Top100, Footer } from 'components'
 
+import { useLang } from 'hooks'
+import { toastNotify } from 'share/toast'
+
+import { useStore } from 'store'
+
 const MainHomepage = () => {
-	const [homeContent, setHomeContent] = useState({})
-	const [isLoading, setIsLoading] = useState(true)
+  const [homeContent, setHomeContent] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
 
-	useEffect(() => {
-		try {
-			fetchHomeData().then((res) => {
-				setHomeContent(res)
-				setIsLoading(false)
-			})
-		} catch (error) {
-			console.log(error)
-		}
-	}, [])
+  const { lang } = useStore().state
+  const defineLang = (vie, eng) => lang === 'vi' ? vie : eng
 
-	if (isLoading) {
-		return (
-			<div className='hp-main'>
-				<div className='loading-container'>
-					<Loading />
-				</div>
-			</div>
-		)
-	}
+  useEffect(() => {
+    fetchHomeData()
+      .then((res) => {
+        setHomeContent(res)
+        setIsLoading(false)
+      })
+      .catch((error) => {
+        console.log(error)
+        setIsLoading(false)
+        toastNotify(defineLang('Có lỗi khi lấy dữ liệu từ server.', 'A server error occurred while retrieving data.'), 'error')
 
-	const {showcase, topicEvent, newRelease, ranking, usukRanking, kpopRanking, video, song, topic, top100} = homeContent
+        return <NotFound />
+      })
+  }, [])
 
-	return (
-		<div className='hp-main'>
-			<ShowcaseSlider showcase={showcase} />
-			<TopicEvent topicEvent={topicEvent} />
-			<NewRelease newRelease={newRelease} />
-			<MusicRanking ranking={[ranking, usukRanking, kpopRanking]} />
-			<NewVideo videos={video} />
-			<Song song={song} />
-			<HotTopic hotTopic={topic} />
-			<Top100 top100List={top100} />
-			<Footer />
-		
-		</div>
-	)
+  if (isLoading) {
+    return (
+      <div className='hp-main'>
+        <Loading />
+      </div>
+    )
+  }
+
+  const { showcase, topicEvent, newRelease, ranking, usukRanking, kpopRanking, video, song, topic, top100 } = homeContent
+
+  return (
+    <div className='hp-main'>
+      <ShowcaseSlider showcase={showcase} />
+      <TopicEvent topicEvent={topicEvent} />
+      <NewRelease newRelease={newRelease} />
+      <MusicRanking ranking={[ranking, usukRanking, kpopRanking]} />
+      <NewVideo videos={video} />
+      <Song song={song} />
+      <HotTopic hotTopic={topic} />
+      <Top100 top100List={top100} />
+      <Footer />
+    </div>
+  )
 }
 
 export default MainHomepage
-
