@@ -11,6 +11,7 @@ import { SiYoutubemusic } from 'react-icons/si'
 import { animationConfig, createSongUrl, createArtistUrl, copyNotify } from 'share/utilities'
 import { createRandomSongView } from 'services/SongDetail'
 import { Animated } from 'react-animated-css'
+import { OptionModal } from 'components'
 
 const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
   const [songView, setSongView] = useState(0)
@@ -25,10 +26,13 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
 
   const navigate = useNavigate()
 
-  useGetPosition(songContainerRef, (right, top) =>
-    setShowMorePosition({
-      transform: `translate(${right}px, ${top}px)`,
-    })
+  useGetPosition(
+    songContainerRef,
+    (right, top) =>
+      setShowMorePosition({
+        transform: `translate(${right}px, ${top}px)`,
+      }),
+    showMoreOptions
   )
 
   useEffect(() => {
@@ -96,22 +100,24 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
         </div>
       </div>
       <Animated {...animationConfig} isVisible={showMoreOptions}>
-        <div className='so-more-options-box' style={showMorePosition} ref={moreOptionsRef}>
-          <ul>
-            <li>
-              <SiYoutubemusic />
-              <span>{lang === 'vi' ? 'Thêm vào chờ phát' : 'Add to queue'}</span>
-            </li>
-            <li onClick={(e) => handleCopyClick(e)}>
-              <BsLink45Deg />
-              <span>{lang === 'vi' ? 'Sao chép link' : 'Copy link'}</span>
-            </li>
-            <li onClick={() => navigate(createSongUrl(title, songId))}>
-              <BsMusicNote />
-              <span>{lang === 'vi' ? 'Đi đến bài hát' : 'Go to song'}</span>
-            </li>
-          </ul>
-        </div>
+        <OptionModal showModal={showMoreOptions} positionRef={songContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
+          <div className='om-main'>
+            <ul>
+              <li>
+                <SiYoutubemusic />
+                <span>{lang === 'vi' ? 'Thêm vào chờ phát' : 'Add to queue'}</span>
+              </li>
+              <li onClick={(e) => handleCopyClick(e)}>
+                <BsLink45Deg />
+                <span>{lang === 'vi' ? 'Sao chép link' : 'Copy link'}</span>
+              </li>
+              <li onClick={() => navigate(createSongUrl(title, songId))}>
+                <BsMusicNote />
+                <span>{lang === 'vi' ? 'Đi đến bài hát' : 'Go to song'}</span>
+              </li>
+            </ul>
+          </div>
+        </OptionModal>
       </Animated>
     </React.Fragment>
   )

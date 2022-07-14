@@ -69,7 +69,7 @@ const LeftSidebar = () => {
     setSettingsModalPosition({
       top: top,
       left: right,
-    })
+    }), showSettingsModal
   )
 
   return (
