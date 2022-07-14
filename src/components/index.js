@@ -26,3 +26,4 @@ export { default as NoUserFound } from './User/NoUserFound/NoUserFound'
 
 // Search
 export { default as SearchContent } from './Search/SearchContent'
+export { default as SearchHeader } from './Search/SearchHeader'

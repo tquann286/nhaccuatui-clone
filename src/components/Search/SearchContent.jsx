@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import './SearchContent.scss'
+import { SearchHeader } from 'components'
 
 import { NotFound } from 'pages'
 
-import { getTopArtists } from 'services/Search/SearchContent'
+import { getTopArtists, getTrendingKeyword } from 'services/Search/SearchContent'
 import { toastNotify } from 'share/toast'
 
 import { useStore, actions } from 'store'
@@ -13,28 +14,32 @@ const SearchContent = () => {
   const [state, dispatch] = useStore()
   const { lang } = state
 
-  const defineLang = (vie, eng) => lang === 'vi' ? vie : eng
+  const defineLang = (vie, eng) => (lang === 'vi' ? vie : eng)
 
   const [topArtists, setTopArtists] = useState(null)
-  console.log('topArtists: ', topArtists)
+  const [trendingKeywords, setTrendingKeywords] = useState(null)
 
   const [isLoading, setIsLoading] = useState(true)
   const [isFetchingFail, setIsFetchingFail] = useState(false)
 
   useEffect(() => {
-    getTopArtists()
-      .then((res) => {
-        setTopArtists(res)
-        setIsLoading(false)
+    const getSearchContent = async () => {
+      try {
+        const topArtists = await getTopArtists()
+        const trendingKeywords = await getTrendingKeyword()
 
-        
-      })
-      .catch((error) => {
+        setTopArtists(topArtists)
+        setTrendingKeywords(trendingKeywords)
+        setIsLoading(false)
+      } catch (error) {
         console.log(error)
         setIsLoading(false)
         setIsFetchingFail(true)
         toastNotify(defineLang('Có lỗi khi lấy dữ liệu từ server.', 'A server error occurred while retrieving data.'), 'error')
-      })
+      }
+    }
+
+    getSearchContent()
   }, [])
 
   if (isFetchingFail) return <NotFound />
@@ -48,7 +53,9 @@ const SearchContent = () => {
   }
 
   return (
-    <div className='search-container'>SearchContent</div>
+    <div className='search-container'>
+      <SearchHeader topArtists={topArtists} />
+    </div>
   )
 }
 

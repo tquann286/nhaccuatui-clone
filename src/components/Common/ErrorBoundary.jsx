@@ -17,7 +17,7 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="hp-container">
+        <div className='hp-container'>
           <LeftSidebar />
           <NotFound />
           <RightSidebar />
