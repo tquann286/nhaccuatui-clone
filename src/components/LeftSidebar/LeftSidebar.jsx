@@ -250,8 +250,18 @@ const LeftSidebar = () => {
               <React.Fragment>
                 <div className='ls-library'>{lang === 'vi' ? 'Thư viện' : 'Library'}</div>
                 <ul className='nav-menu'>
+                <li>
+                  <NavLink to='user/yeu-thich'>
+                    <div className='nav-item nav-favorite'>
+                      <div className='nav-active-item'></div>
+                      <div className='nav-content'>
+                        <p className='nav-name'>{lang === 'vi' ? 'NhacCuaTui' : 'Favorite'}</p>
+                      </div>
+                    </div>
+                  </NavLink>
+                </li>
                   <li>
-                    <NavLink to='user/history/bai-hat'>
+                    <NavLink to='user/history'>
                       <div className='nav-item nav-history'>
                         <div className='nav-active-item'></div>
                         <div className='nav-content'>

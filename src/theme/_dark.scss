@@ -46,7 +46,8 @@ body[data-theme='dark'] {
     color: rgba(244, 246, 248, 0.88) !important;
   }
 
-  .term-container {
+  .term-container,
+  .git-icon svg:hover {
     color: rgba(244, 246, 248, 0.6) !important;
   }
 
