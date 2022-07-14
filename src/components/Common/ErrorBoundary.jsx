@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { NotFound } from 'pages'
+import { LeftSidebar, RightSidebar } from 'components'
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -15,7 +16,13 @@ class ErrorBoundary extends Component {
   }
   render() {
     if (this.state.hasError) {
-      return <NotFound />
+      return (
+        <div className="hp-container">
+          <LeftSidebar />
+          <NotFound />
+          <RightSidebar />
+        </div>
+      )
     }
     return this.props.children
   }
