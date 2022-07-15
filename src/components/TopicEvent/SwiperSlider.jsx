@@ -1,9 +1,29 @@
-import { BsFillPlayCircleFill } from 'react-icons/bs'
+import { useState, useRef } from 'react'
+import { OptionModal } from 'components'
+import { BsFillPlayCircleFill, BsLink45Deg } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 
 import { handleCopyBtn } from 'services/SwiperSlider'
 
 const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist, lang}) => {
+  const [showMoreOptions, setShowMoreOptions] = useState(false)
+
+  const playlistContainerRef = useRef(null)
+  const moreDivRef = useRef(null)
+
+  const toggleShowMore = () => {
+    setShowMoreOptions(!showMoreOptions)
+  }
+
+  const handleMoreOptions = (e) => {
+    e.stopPropagation()
+    toggleShowMore()
+  }
+
+  const handleCopyClick = (e) => {
+		handleCopyBtn(e, title , keyId, lang)
+    toggleShowMore()
+  }
 
 	return (
 			<div className='pl-container'>
@@ -12,11 +32,11 @@ const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist, lang}) => {
 					onClick={() => onNavigatePlaylist(title, keyId)}
 				>
 					<img src={thumbnail} alt={title} />
-					<div className='pl-extensions'>
+					<div className='pl-extensions' ref={playlistContainerRef}>
 						<div className='pl-play-btn'>
 							<BsFillPlayCircleFill />
 						</div>
-						<div title={lang === 'vi' ? 'Sao chép link' : 'Copy link'} className='pl-more' onClick={(e) => handleCopyBtn(e, title, keyId, lang)}>
+						<div title={lang === 'vi' ? 'Thêm' : 'More'} className='pl-more' onClick={(e) => handleMoreOptions(e)}>
 							<IoMdMore />
 						</div>
 					</div>
@@ -28,6 +48,16 @@ const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist, lang}) => {
 				>
 					{title}
 				</div>
+				<OptionModal showModal={showMoreOptions} positionRef={playlistContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
+          <div className='om-main'>
+            <ul>
+              <li onClick={(e) => handleCopyClick(e)}>
+                <BsLink45Deg />
+                <span>{lang === 'vi' ? 'Sao chép link' : 'Copy link'}</span>
+              </li>
+            </ul>
+          </div>
+        </OptionModal>
 			</div>
 	)
 }

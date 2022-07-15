@@ -25,7 +25,6 @@ const SwiperSlider = ({keyId, title, thumbnail}) => {
 
   const handleMoreOptions = (e) => {
     e.stopPropagation()
-		console.log({ ... [playlistContainerRef.current.getBoundingClientRect().y], }, window.pageYOffset)
     toggleShowMore()
   }
 
@@ -43,14 +42,13 @@ const SwiperSlider = ({keyId, title, thumbnail}) => {
 				<div
 					className='pl-img-container'
 					onClick={() => onNavigatePlaylist(title, keyId)}
-					
 				>
 					<img src={thumbnail} alt={title}/>
 					<div className='pl-extensions' ref={playlistContainerRef}>
 						<div className='pl-play-btn'>
 							<BsFillPlayCircleFill />
 						</div>
-						<div title='Sao chép link' className='pl-more' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
+						<div title={lang === 'vi' ? 'Thêm' : 'More'} className='pl-more' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
 							<IoMdMore />
 						</div>
 					</div>
