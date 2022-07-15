@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { PROXY } from 'share/constants'
-import { useOnClickOutside, useGetPosition } from 'hooks'
+import { useGetPosition } from 'hooks'
 
 import { BsHeadphones, BsLink45Deg, BsMusicNote } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
@@ -15,24 +15,11 @@ import { OptionModal } from 'components'
 const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
   const [songView, setSongView] = useState(0)
   const [showMoreOptions, setShowMoreOptions] = useState(false)
-  const [showMorePosition, setShowMorePosition] = useState({
-    transform: `translate(${0}px, ${0}px)`,
-  })
 
   const songContainerRef = useRef(null)
   const moreDivRef = useRef(null)
-  const moreOptionsRef = useRef(null)
 
   const navigate = useNavigate()
-
-  useGetPosition(
-    songContainerRef,
-    (right, top) =>
-      setShowMorePosition({
-        transform: `translate(${right}px, ${top}px)`,
-      }),
-    showMoreOptions
-  )
 
   useEffect(() => {
     setSongView(createRandomSongView())
@@ -56,8 +43,6 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
     toggleShowMore()
     copyNotify(lang)
   }
-
-  useOnClickOutside(moreOptionsRef, moreDivRef, () => setShowMoreOptions(false))
 
   return (
     <React.Fragment>
