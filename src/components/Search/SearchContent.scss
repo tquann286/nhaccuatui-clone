@@ -52,17 +52,45 @@
 
           input.search-input-content {
             width: 100%;
-            line-height: 20px;
+            line-height: 2rem;
             font-size: 1.4rem;
             color: rgba(28, 30, 32, 0.5);
           }
 
-          .search-suggest-container {}
+          .search-suggest-container {
+            padding-top: 0.4rem;
+
+            .search-suggest-main {
+              background-color: $light-color;
+              z-index: 9;
+              position: absolute;
+              width: calc(100% - -0.2rem);
+              left: -0.1rem;
+              top: 4.1rem;
+              max-height: 40rem;
+              overflow-y: auto;
+
+              &.empty {
+                padding: 0;
+                height: 0;
+                width: 0;
+              }
+            }
+          }
         }
 
-        .search-mask {
-
-          &.show {}
+        .mask-overlay {
+          position: fixed;
+          background-color: transparent;
+          z-index: 5;
+          width: 100%;
+          height: 100%;
+          display: none;
+          top: 0;
+          left: 0;
+          &.show {
+            display: block;
+          }
         }
 
         .search-clear-btn {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import { FiSearch } from 'react-icons/fi'
 import { IoMdClose } from 'react-icons/io'
@@ -29,11 +29,15 @@ const SearchHeader = ({ topArtists, defineLang }) => {
         <div className='search-input-main'>
           <div className='search-input-section'>
             <input className='search-input-content' {...searchInputProps} />
-            <div className='search-suggest-container'></div>
+            <div className='search-suggest-container'>
+              <div className="search-suggest-main">
+                {/* We are working on implementing the feature */}
+              </div>
+            </div>
           </div>
-          <div className='search-mask'></div>
+          <div className='mask-overlay'></div>
           {searchInputValue && (
-            <div className='search-clear-btn'>
+            <div className='search-clear-btn' onClick={() => setSearchInputValue('')}>
               <IoMdClose />
             </div>
           )}
