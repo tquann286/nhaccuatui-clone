@@ -107,9 +107,76 @@
         }
       }
     }
+
+    .trending-artists-container {
+      @include display-flex;
+      @include justify-content(flex-end);
+      width: calc(50% - 1.6rem);
+      margin-left: 1.6rem;
+
+      .ta-main {
+        @include display-flex;
+        @include justify-content(flex-end);
+        @include align-items(center);
+        width: 100%;
+
+        .ta-wrapper {
+          position: relative;
+          width: 18rem;
+          height: 100%;
+
+          .ta-active-artists {
+            position: relative;
+            overflow: hidden;
+            height: 4rem;
+            width: 18rem;
+            border: $border-light;
+            border-radius: 2rem;
+
+            .ta-swiper-container {
+
+              .ta-slider-content {
+                @include display-flex;
+                @include justify-content(space-between);
+                @include align-items(center);
+                width: 100%;
+                padding: 0.5rem 0.8rem;
+                font-size: 1.3rem;
+
+                p.ta-artist-name {
+                  @include threeDotContent;
+                  color: #2DAAED;
+                  font-size: 1.3rem;
+                  width: 85%;
+
+                  span.ta-artist-position {
+                    margin-right: 0.8rem;
+                  }
+                }
+
+                .ta-new-label {
+                  width: 2.2rem;
+                  &-main {
+                    @include flexCenter;
+                    width: 100%;
+                    height: auto;
+
+                    p.ta-new-label-content {
+                      color: #FFC100;
+                      font-size: 1rem;
+                      margin-left: 0.2rem;
+                      font-weight: 400;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   .sm-container {
-    
   }
 }

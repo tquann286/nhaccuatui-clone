@@ -3,9 +3,15 @@ import React, { useState } from 'react'
 import { FiSearch } from 'react-icons/fi'
 import { IoMdClose } from 'react-icons/io'
 
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay } from 'swiper'
+import 'swiper/scss'
+import 'swiper/scss/autoplay'
+
 const SearchHeader = ({ topArtists, defineLang }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [isFocusSearchInput, setIsFocusSearchInput] = useState(false)
+  console.log(topArtists)
 
   const handleSearchTermChange = (e) => {
     setSearchTerm(e.target.value)
@@ -30,9 +36,7 @@ const SearchHeader = ({ topArtists, defineLang }) => {
           <div className='search-input-section'>
             <input className='search-input-content' {...searchInputProps} />
             <div className='search-suggest-container'>
-              <div className="search-suggest-main">
-                {/* We are working on implementing the feature */}
-              </div>
+              <div className='search-suggest-main'>{/* We are working on implementing the feature */}</div>
             </div>
           </div>
           <div className='mask-overlay'></div>
@@ -43,7 +47,25 @@ const SearchHeader = ({ topArtists, defineLang }) => {
           )}
         </div>
       </div>
-      {topArtists && <div className='trending-artists-container'></div>}
+      {topArtists && (
+        <div className='trending-artists-container'>
+          <div className='ta-main'>
+            <div className='ta-wrapper'>
+              <div className='ta-active-artists'>
+                <Swiper direction={'vertical'} className='ta-swiper-container'>
+                  {topArtists.map((artist, i) => {
+                    const { name, position, shortLink } = artist
+
+                    return (
+                      <div className=""></div>
+                    )
+                  })}
+                </Swiper>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
