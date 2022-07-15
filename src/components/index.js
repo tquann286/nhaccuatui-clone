@@ -1,5 +1,6 @@
 // Common
 export { default as ErrorBoundary } from './Common/ErrorBoundary'
+export { default as Title } from './Common/Title'
 export { default as SongThumb } from './Common/SongThumb/SongThumb'
 export { default as OptionModal } from './Common/OptionModal/OptionModal'
 
