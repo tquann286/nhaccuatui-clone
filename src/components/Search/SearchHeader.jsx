@@ -4,17 +4,17 @@ import { FiSearch } from 'react-icons/fi'
 import { IoMdClose } from 'react-icons/io'
 
 const SearchHeader = ({ topArtists, defineLang }) => {
-  const [searchInputValue, setSearchInputValue] = useState('')
+  const [searchTerm, setSearchTerm] = useState('')
   const [isFocusSearchInput, setIsFocusSearchInput] = useState(false)
 
-  const handleSearchInputChange = (e) => {
-    setSearchInputValue(e.target.value)
+  const handleSearchTermChange = (e) => {
+    setSearchTerm(e.target.value)
   }
 
   const searchInputProps = {
     type: 'text',
-    value: searchInputValue,
-    onChange: (e) => handleSearchInputChange(e),
+    value: searchTerm,
+    onChange: (e) => handleSearchTermChange(e),
     onFocus: () => setIsFocusSearchInput(true),
     onBlur: () => setIsFocusSearchInput(false),
     placeholder: defineLang('Tìm kiếm...', 'Search...'),
@@ -36,8 +36,8 @@ const SearchHeader = ({ topArtists, defineLang }) => {
             </div>
           </div>
           <div className='mask-overlay'></div>
-          {searchInputValue && (
-            <div className='search-clear-btn' onClick={() => setSearchInputValue('')}>
+          {searchTerm && (
+            <div className='search-clear-btn' onClick={() => setSearchTerm('')}>
               <IoMdClose />
             </div>
           )}

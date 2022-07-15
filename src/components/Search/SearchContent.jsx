@@ -8,7 +8,7 @@ import { getTopArtists, getTrendingKeyword } from 'services/Search/SearchContent
 import { toastNotify } from 'share/toast'
 
 import { useStore, actions } from 'store'
-import { Loading, Title } from 'components'
+import { Loading } from 'components'
 
 const SearchContent = () => {
   const [state, dispatch] = useStore()
@@ -54,7 +54,6 @@ const SearchContent = () => {
 
   return (
     <div className='search-container'>
-      <Title title={defineLang('Tìm kiếm  bài hát - Playlist - MV', 'Search for song - Playlist - MV')} />
       <SearchHeader topArtists={topArtists} defineLang={defineLang} />
     </div>
   )

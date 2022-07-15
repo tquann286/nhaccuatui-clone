@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Explore.scss'
 
-import { SongThumb, Footer } from 'components'
+import { SongThumb, Footer, Title } from 'components'
 import m4u_image from 'images/m4u/m4u_v1.jpg'
 
 import { auth } from 'config/firebase'
@@ -16,6 +16,7 @@ const Explore = () => {
 
   return (
     <div className='explore-container'>
+      <Title title={defineLang('Giai điệu âm nhạc dành riêng cho bạn - NhacCuaTui', 'Music melody just for you - NhacCuaTui')} />
       <div className='explore-wrapper'>
         <div className='explore-content'>
           <div style={{ padding: '2.4rem 3.2rem 0' }}>
