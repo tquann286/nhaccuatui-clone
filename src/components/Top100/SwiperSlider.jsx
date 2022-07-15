@@ -33,6 +33,7 @@ const SwiperSlider = ({keyId, title, thumbnail}) => {
 						</div>
 					</div>
 				</div>
+				
 			</div>
 	)
 }

@@ -7,12 +7,11 @@ import { SiApplemusic } from 'react-icons/si'
 import { OptionModal } from 'components'
 
 import { isEmpty } from 'lodash'
-import { Animated } from 'react-animated-css'
 
 import { useOnClickOutside, useGetPosition } from 'hooks'
 import { handleVideoLink } from 'services/VideoDetail'
 import { PROXY } from 'share/constants'
-import { animationConfig, createArtistUrl, copyNotify } from 'share/utilities'
+import { createArtistUrl, copyNotify } from 'share/utilities'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { useStore } from 'store'
@@ -48,7 +47,6 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
     if (videoRef) {
 			const { right } = videoRef.current.getBoundingClientRect()
 			const top = videoRef.current.offsetTop
-      console.log(right, top)
     }
     toggleShowMore()
   }
@@ -102,7 +100,6 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
           })}
         </div>
       </div>
-      <Animated {...animationConfig} isVisible={showMoreOptions}>
         <OptionModal showModal={showMoreOptions} positionRef={videoRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
           <div className='om-main'>
             <ul>
@@ -119,7 +116,6 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
             </ul>
           </div>
         </OptionModal>
-      </Animated>
     </React.Fragment>
   )
 }

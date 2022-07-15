@@ -8,9 +8,8 @@ import { BsHeadphones, BsLink45Deg, BsMusicNote } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { SiYoutubemusic } from 'react-icons/si'
 
-import { animationConfig, createSongUrl, createArtistUrl, copyNotify } from 'share/utilities'
+import { createSongUrl, createArtistUrl, copyNotify } from 'share/utilities'
 import { createRandomSongView } from 'services/SongDetail'
-import { Animated } from 'react-animated-css'
 import { OptionModal } from 'components'
 
 const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
@@ -99,7 +98,6 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
           </div>
         </div>
       </div>
-      <Animated {...animationConfig} isVisible={showMoreOptions}>
         <OptionModal showModal={showMoreOptions} positionRef={songContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
           <div className='om-main'>
             <ul>
@@ -118,7 +116,6 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
             </ul>
           </div>
         </OptionModal>
-      </Animated>
     </React.Fragment>
   )
 }
