@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './SearchContent.scss'
-import { SearchHeader } from 'components'
+import { SearchHeader, SearchMain } from 'components'
 
 import { NotFound } from 'pages'
 
@@ -32,10 +32,11 @@ const SearchContent = () => {
         setTrendingKeywords(trendingKeywords)
         setIsLoading(false)
       } catch (error) {
-        console.log(error)
         setIsLoading(false)
         setIsFetchingFail(true)
         toastNotify(defineLang('Có lỗi khi lấy dữ liệu từ server.', 'A server error occurred while retrieving data.'), 'error')
+
+        throw new Error(error)
       }
     }
 
@@ -44,17 +45,16 @@ const SearchContent = () => {
 
   if (isFetchingFail) return <NotFound />
 
-  if (isLoading) {
-    return (
-      <div className='search-container'>
-        <Loading />
-      </div>
-    )
-  }
+  if (isLoading) (
+    <div className='search-container'>
+      <Loading />
+    </div>
+  )
 
   return (
     <div className='search-container'>
       <SearchHeader topArtists={topArtists} defineLang={defineLang} />
+      <SearchMain trendingKeywords={trendingKeywords} defineLang={defineLang} />
     </div>
   )
 }

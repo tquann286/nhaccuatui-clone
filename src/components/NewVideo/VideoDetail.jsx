@@ -8,7 +8,6 @@ import { OptionModal } from 'components'
 
 import { isEmpty } from 'lodash'
 
-import { useOnClickOutside, useGetPosition } from 'hooks'
 import { handleVideoLink } from 'services/VideoDetail'
 import { PROXY } from 'share/constants'
 import { createArtistUrl, copyNotify } from 'share/utilities'
@@ -21,22 +20,11 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
   const { lang } = state
 
   const [showMoreOptions, setShowMoreOptions] = useState(false)
-  const [showMorePosition, setShowMorePosition] = useState({
-    top: 0,
-    left: 0,
-  })
+
   const videoRef = useRef(null)
   const moreDivRef = useRef(null)
-  const moreOptionsRef = useRef(null)
 
   const navigate = useNavigate()
-
-  useGetPosition(videoRef, (right, top) =>
-    setShowMorePosition({
-      top: top,
-      left: right,
-    }), showMoreOptions
-  )
 
   const toggleShowMore = () => {
     setShowMoreOptions(!showMoreOptions)
@@ -44,10 +32,6 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
 
   const handleMoreOptions = (e) => {
     e.stopPropagation()
-    if (videoRef) {
-			const { right } = videoRef.current.getBoundingClientRect()
-			const top = videoRef.current.offsetTop
-    }
     toggleShowMore()
   }
 
@@ -64,8 +48,6 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
   const handleVideoClick = () => {
     navigate(handleVideoLink(keyId, title, artists))
   }
-
-  useOnClickOutside(moreOptionsRef, moreDivRef, () => setShowMoreOptions(false))
 
   return (
     <React.Fragment>
