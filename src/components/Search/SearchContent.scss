@@ -126,6 +126,7 @@
           height: 100%;
 
           .ta-active-artists {
+            @include transition-effect(0.2s);
             position: relative;
             overflow: hidden;
             height: $search-content-height;
@@ -145,7 +146,7 @@
 
                 p.ta-artist-name {
                   @include threeDotContent;
-                  color: #2DAAED;
+                  color: #2daaed;
                   font-size: 1.3rem;
                   width: 85%;
 
@@ -153,22 +154,85 @@
                     margin-right: 0.8rem;
                   }
                 }
+              }
+            }
+          }
 
-                .ta-new-label {
-                  width: 2.2rem;
-                  &-main {
-                    @include flexCenter;
-                    width: 100%;
-                    height: auto;
+          .ta-full-artists-main {
+            position: absolute;
+            top: 4rem;
+            padding-top: 0.5rem;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+            opacity: 0;
+            .ta-full-artists-content {
+              position: relative;
+              width: 18rem;
+              height: 100%;
+              padding-bottom: 0.4rem;
+              border-radius: 0.4rem;
+              box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+              background-color: $light-color;
 
-                    p.ta-new-label-content {
-                      color: #FFC100;
-                      font-size: 1rem;
-                      margin-left: 0.2rem;
-                      font-weight: 400;
-                    }
+              p.ta-lead-title {
+                @include flexCenter;
+                font-size: 1.3rem;
+                font-weight: bold;
+                height: 3.2rem;
+                width: 100%;
+                color: rgba(28, 30, 32, 0.5);
+                background-color: rgba(28, 30, 32, 0.02);
+              }
+
+              .ta-full-artists-item {
+                @include display-flex;
+                @include justify-content(space-between);
+                @include align-items(center);
+                @include transition-effect(0.15s);
+                width: 100%;
+                padding: 0.5rem 0.8rem;
+                font-size: 1.3rem;
+                position: relative;
+                width: 18rem;
+                height: 100%;
+
+                &:hover {
+                  background-color: rgba(28, 30, 32, 0.05);
+                  cursor: pointer;
+                }
+                p.ta-full-artists-name {
+                  @include threeDotContent;
+                  color: rgba(28, 30, 32, 0.5);
+                  font-size: 1.3rem;
+                  width: 85%;
+                  span.ta-full-artists-position {
+                    margin-right: 0.8rem;
                   }
                 }
+              }
+            }
+          }
+
+          &:hover .ta-full-artists-main {
+            @include transition-effect(0.3s);
+            opacity: 1;
+            z-index: 10;
+            will-change: opacity;
+          }
+
+          .ta-new-label {
+            width: 2.2rem;
+            &-main {
+              @include flexCenter;
+              width: 100%;
+              height: auto;
+
+              p.ta-new-label-content {
+                color: #ffc100;
+                font-size: 1rem;
+                margin-left: 0.2rem;
+                font-weight: 400;
               }
             }
           }
@@ -185,7 +249,7 @@
       h1.tk-title {
         font-size: 2.2rem;
         font-weight: 700;
-        color: rgba(28,30,32,0.88);
+        color: rgba(28, 30, 32, 0.88);
       }
       .tk-main {
         margin-top: 1.6rem;
@@ -193,24 +257,24 @@
           position: relative;
           display: inline-block;
           font-size: 1.4rem;
-          color: rgba(28,30,32,0.5);
+          color: rgba(28, 30, 32, 0.5);
           margin-bottom: 0.8rem;
           margin-right: 1.8rem;
           margin-left: 0;
           padding: 0.6rem 1.2rem 0.5rem;
-          background-color: rgba(28,30,32,0.05);
+          background-color: rgba(28, 30, 32, 0.05);
           border-top-left-radius: 0.4rem;
           border-bottom-left-radius: 0.4rem;
           cursor: pointer;
 
           &::before {
-            content: "";
+            content: '';
             position: absolute;
             right: -1rem;
             bottom: 0;
             width: 0;
             height: 0;
-            border-left: 1rem solid rgba(28,30,32,0.05);
+            border-left: 1rem solid rgba(28, 30, 32, 0.05);
             border-top: 1.5rem solid transparent;
             border-bottom: 1.5rem solid transparent;
             border-top-left-radius: 0.3rem;
@@ -220,9 +284,9 @@
           p.tk-content-title {
             @include transition-effect(0.1s);
             @include hoverMainColor;
-            color: rgba(28,30,32,0.5);
+            color: rgba(28, 30, 32, 0.5);
             span.tk-position {
-              color: #2DAAED;
+              color: #2daaed;
               font-weight: 700;
               margin-right: 0.8rem;
             }

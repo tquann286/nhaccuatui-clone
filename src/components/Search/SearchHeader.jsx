@@ -7,15 +7,16 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { trendArtSwiperProps } from 'services/Search/SearchHeader'
 import 'swiper/scss'
 import 'swiper/scss/autoplay'
+import { Link } from 'react-router-dom'
 
 const SearchHeader = ({ topArtists, defineLang }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [isFocusSearchInput, setIsFocusSearchInput] = useState(false)
-
+  console.log(topArtists)
   const handleSearchTermChange = (e) => {
     setSearchTerm(e.target.value)
   }
-  
+
   const searchInputProps = {
     type: 'text',
     value: searchTerm,
@@ -72,6 +73,30 @@ const SearchHeader = ({ topArtists, defineLang }) => {
                     )
                   })}
                 </Swiper>
+              </div>
+              <div className='ta-full-artists-main'>
+                <div className='ta-full-artists-content'>
+                  <p className='ta-lead-title'>{defineLang('Nghệ sĩ Trending', 'Trending Artists')}</p>
+                  {topArtists.map((artist, i) => {
+                    const { name, position, shortLink } = artist
+
+                    return (
+                      <Link key={i} to='/'>
+                        <div className='ta-full-artists-item'>
+                          <p className='ta-full-artists-name'>
+                            <span className='ta-full-artists-position'>{position}.</span>
+                            {name}
+                          </p>
+                          <div className='ta-new-label'>
+                            <div className='ta-new-label-main'>
+                              <p className='ta-new-label-content'>New</p>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    )
+                  })}
+                </div>
               </div>
             </div>
           </div>

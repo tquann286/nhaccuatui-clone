@@ -3,7 +3,6 @@ import React from 'react'
 import { Loading } from 'components'
 
 const SearchMain = ({  defineLang, trendingKeywords, }) => {
-  console.log(trendingKeywords)
 
   if (!trendingKeywords) return <Loading />
 
@@ -12,7 +11,6 @@ const SearchMain = ({  defineLang, trendingKeywords, }) => {
       <div className="trend-keywords-container">
         <h1 className="tk-title">{defineLang('Top từ khóa', 'Top keywords')}</h1>
         <div className="tk-main">
-          
           {trendingKeywords.map(keyword => {
             const {order, title, link} = keyword
 
