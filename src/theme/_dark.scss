@@ -80,8 +80,6 @@ body[data-theme='dark'] {
   .nav-content,
   .nav-item-detail-main span,
   .play-now,
-  .so-more-options-box ul li svg,
-  .vd-more-options-box ul li svg,
   .af-header button.close-btn svg,
   .input-main input,
   p.notfound-title,
@@ -96,7 +94,8 @@ body[data-theme='dark'] {
   p.tk-content-title,
   .tk-content,
   p.ta-lead-title,
-  p.ta-full-artists-name {
+  p.ta-full-artists-name,
+  .om-main ul li svg {
     color: rgba(244, 246, 248, 0.5) !important;
   }
 
@@ -130,7 +129,8 @@ body[data-theme='dark'] {
   .shadow1,
   a.active .nav-item,
   .tk-content,
-  .ta-full-artists-item:hover {
+  .ta-full-artists-item:hover,
+  .om-main ul li:hover {
     background-color: rgba(244, 246, 248, 0.05) !important;
   }
   
@@ -146,7 +146,8 @@ body[data-theme='dark'] {
   }
 
   .checkmark,
-  .ta-full-artists-content {
+  .ta-full-artists-content,
+  .om-main {
     background-color: rgba(24,34,45,1) !important;
   }
 
