@@ -41,8 +41,11 @@ $tp-title-height: 3rem;
 					font-size: 1.8rem;
 					.cusArrow {
 						@include transition-effect(0.1s);
-						@include hoverMainColor;
 						cursor: pointer;
+						
+						&:hover {
+							color: $main-text-color !important;
+						}
 
 						&.prevArr {
 							margin: 0 0.8rem;
