@@ -29,9 +29,9 @@
         .cusArrow {
           @include transition-effect(0.1s);
           cursor: pointer;
-          
+
           &:hover {
-            color: $main-text-color !important;
+            color: $main-text-color;
           }
 
           &.prevArr {
