@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 const Title = ({ title }) => {
-  let location = useLocation()
+  const { pathname } = useLocation()
 	useEffect(() => {
 		document.title = title
-	}, [title, location])
+	}, [title, pathname])
 	return <React.Fragment></React.Fragment>
 }
 

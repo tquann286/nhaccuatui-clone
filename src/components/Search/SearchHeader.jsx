@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { FiSearch } from 'react-icons/fi'
 import { IoMdClose } from 'react-icons/io'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { trendArtSwiperProps } from 'services/Search/SearchHeader'
+import { createSearchUrl, trendArtSwiperProps } from 'services/Search/SearchHeader'
 import 'swiper/scss'
 import 'swiper/scss/autoplay'
-import { Link } from 'react-router-dom'
 
 const SearchHeader = ({ topArtists, defineLang }) => {
+  const navigate = useNavigate()
+
   const [searchTerm, setSearchTerm] = useState('')
   const [isFocusSearchInput, setIsFocusSearchInput] = useState(false)
-  
+  console.log(topArtists)
   const handleSearchTermChange = (e) => {
     setSearchTerm(e.target.value)
   }
@@ -24,6 +26,14 @@ const SearchHeader = ({ topArtists, defineLang }) => {
     onFocus: () => setIsFocusSearchInput(true),
     onBlur: () => setIsFocusSearchInput(false),
     placeholder: defineLang('Tìm kiếm...', 'Search...'),
+  }
+
+  const handleNavSearch = (name) => {
+    if (name) {
+      setSearchTerm(name)
+      navigate(createSearchUrl(name))
+      document.title = `${name} | ${defineLang('Tìm kiếm', 'Search')}`
+    }
   }
 
   return (
@@ -54,11 +64,11 @@ const SearchHeader = ({ topArtists, defineLang }) => {
               <div className='ta-active-artists'>
                 <Swiper {...trendArtSwiperProps}>
                   {topArtists.map((artist, i) => {
-                    const { name, position, shortLink } = artist
+                    const { name, position } = artist
 
                     return (
                       <SwiperSlide key={i}>
-                        <div className='ta-slider-content'>
+                        <div className='ta-slider-content' onClick={() => handleNavSearch(name)}>
                           <p className='ta-artist-name'>
                             <span className='ta-artist-position'>{position}.</span>
                             {name}
@@ -78,22 +88,20 @@ const SearchHeader = ({ topArtists, defineLang }) => {
                 <div className='ta-full-artists-content'>
                   <p className='ta-lead-title'>{defineLang('Nghệ sĩ Trending', 'Trending Artists')}</p>
                   {topArtists.map((artist, i) => {
-                    const { name, position, shortLink } = artist
+                    const { name, position } = artist
 
                     return (
-                      <Link key={i} to='/'>
-                        <div className='ta-full-artists-item'>
-                          <p className='ta-full-artists-name'>
-                            <span className='ta-full-artists-position'>{position}.</span>
-                            {name}
-                          </p>
-                          <div className='ta-new-label'>
-                            <div className='ta-new-label-main'>
-                              <p className='ta-new-label-content'>New</p>
-                            </div>
+                      <div key={i} className='ta-full-artists-item' onClick={() => handleNavSearch(name)}>
+                        <p className='ta-full-artists-name'>
+                          <span className='ta-full-artists-position'>{position}.</span>
+                          {name}
+                        </p>
+                        <div className='ta-new-label'>
+                          <div className='ta-new-label-main'>
+                            <p className='ta-new-label-content'>New</p>
                           </div>
                         </div>
-                      </Link>
+                      </div>
                     )
                   })}
                 </div>

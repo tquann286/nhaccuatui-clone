@@ -1,2 +1,3 @@
-export { default as removeDuplicate } from './removeDuplicate';
-export { default as removeVietnameseTones } from './removeVietnameseTones';
+export { default as removeDuplicate } from './removeDuplicate'
+export { default as removeVietnameseTones } from './removeVietnameseTones'
+
