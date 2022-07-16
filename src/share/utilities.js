@@ -93,6 +93,7 @@ export const copyNotify = (lang) =>
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
+    theme: localStorage.getItem('theme'),
   })
 
 export const handleFocusInput = (e) => {

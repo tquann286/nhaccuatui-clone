@@ -52,7 +52,8 @@ body[data-theme='dark'] {
   .ls-user-name-content,
   a.suggest-title,
   p.title-playlist,
-  .tk-title {
+  .tk-title,
+  .Toastify__toast-theme--dark {
     color: rgba(244, 246, 248, 0.88) !important;
   }
 
@@ -112,11 +113,15 @@ body[data-theme='dark'] {
   // Background color
   .af-main,
   .so-more-options-box, 
-  .vd-more-options-box {
+  .vd-more-options-box,
+  .checkmark,
+  .ta-full-artists-content,
+  .om-main,
+  .sm-container,
+  .sm-sub-items,
+  .Toastify__toast-theme--dark {
     background-color: rgba(24, 34, 45, 1) !important;
   }
-
-
   
   li:not(.slick-active) .customDots,
   .shadow2 {
@@ -143,14 +148,6 @@ body[data-theme='dark'] {
 
   .input-main input {
     background-color: rgba(244, 246, 248, 0.01) !important;
-  }
-
-  .checkmark,
-  .ta-full-artists-content,
-  .om-main,
-  .sm-container,
-  .sm-sub-items {
-    background-color: rgba(24,34,45,1) !important;
   }
 
   // Border
