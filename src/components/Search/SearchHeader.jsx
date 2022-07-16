@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { handleNavSearch } from 'services/Search/Search'
+
 import { FiSearch } from 'react-icons/fi'
 import { IoMdClose } from 'react-icons/io'
 
@@ -11,7 +13,7 @@ import 'swiper/scss/autoplay'
 
 const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory }) => {
   const navigate = useNavigate()
-
+  console.log(searchHistory)
   const [searchTerm, setSearchTerm] = useState('')
   const [isFocusSearchInput, setIsFocusSearchInput] = useState(false)
   
@@ -28,11 +30,18 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory 
     placeholder: defineLang('Tìm kiếm...', 'Search...'),
   }
 
-  const handleNavSearch = (name) => {
+  const onNavSearch = (name) => {
     if (name) {
       setSearchTerm(name)
       navigate(createSearchUrl(name))
-      document.title = `${name} | ${defineLang('Tìm kiếm', 'Search')}`
+
+      if (searchHistory.includes(name)) {
+        setSearchHistory([ ... searchHistory.filter(search => search !== name), name ])
+      } else {
+        setSearchHistory([ ... searchHistory, name ])
+      }
+      
+      handleNavSearch(defineLang, [ ... searchHistory, name ])
     }
   }
 
@@ -68,7 +77,7 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory 
 
                     return (
                       <SwiperSlide key={i}>
-                        <div className='ta-slider-content' onClick={() => handleNavSearch(name)}>
+                        <div className='ta-slider-content' onClick={() => onNavSearch(name)}>
                           <p className='ta-artist-name'>
                             <span className='ta-artist-position'>{position}.</span>
                             {name}
@@ -91,7 +100,7 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory 
                     const { name, position } = artist
 
                     return (
-                      <div key={i} className='ta-full-artists-item' onClick={() => handleNavSearch(name)}>
+                      <div key={i} className='ta-full-artists-item' onClick={() => onNavSearch(name)}>
                         <p className='ta-full-artists-name'>
                           <span className='ta-full-artists-position'>{position}.</span>
                           {name}

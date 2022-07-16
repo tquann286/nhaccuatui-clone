@@ -3,14 +3,21 @@ import { useNavigate } from 'react-router-dom'
 
 import { Loading } from 'components'
 import { createSearchUrl } from 'services/Search/SearchHeader'
+import { handleNavSearch } from 'services/Search/Search'
 
 const SearchMain = ({  defineLang, trendingKeywords, searchHistory, setSearchHistory }) => {
   const navigate = useNavigate()
   
-  const handleNavSearch = (name) => {
+  const onNavSearch = (name) => {
     if (name) {
       navigate(createSearchUrl(name))
-      document.title = `${name} | ${defineLang('Tìm kiếm', 'Search')}`
+
+      if (searchHistory.includes(name)) {
+        setSearchHistory([ ... searchHistory.filter(search => search !== name), name ])
+      } else {
+        setSearchHistory([ ... searchHistory, name ])
+      }
+      handleNavSearch(defineLang, name, [ ... searchHistory, name ])
     }
   }
   
@@ -25,7 +32,7 @@ const SearchMain = ({  defineLang, trendingKeywords, searchHistory, setSearchHis
             const { order, title } = keyword
 
             return (
-              <div key={order} className="tk-content" onClick={() => handleNavSearch(title)}>
+              <div key={order} className="tk-content" onClick={() => onNavSearch(title)}>
               <p className="tk-content-title">
                 <span className="tk-position">#{order}</span>
                 {title}

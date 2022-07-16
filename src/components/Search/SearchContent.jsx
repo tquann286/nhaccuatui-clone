@@ -19,7 +19,7 @@ const SearchContent = () => {
   const [trendingKeywords, setTrendingKeywords] = useState(null)
 
   const [isFetchingFail, setIsFetchingFail] = useState(false)
-  const [searchHistory, setSearchHistory] = useState(null)
+  const [searchHistory, setSearchHistory] = useState([])
 
   useEffect(() => {
     const getSearchContent = async () => {
@@ -38,8 +38,8 @@ const SearchContent = () => {
     }
 
     // Get local search history
-    const searchHistory = localStorage.getItem('searchHistory')
-
+    const searchHistory = JSON.parse(localStorage.getItem('searchHistory'))
+    
     if (searchHistory) {
       setSearchHistory(searchHistory)
     }
