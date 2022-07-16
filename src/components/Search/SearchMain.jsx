@@ -1,9 +1,19 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { Loading } from 'components'
+import { createSearchUrl } from 'services/Search/SearchHeader'
 
-const SearchMain = ({  defineLang, trendingKeywords, }) => {
-
+const SearchMain = ({  defineLang, trendingKeywords, searchHistory, setSearchHistory }) => {
+  const navigate = useNavigate()
+  
+  const handleNavSearch = (name) => {
+    if (name) {
+      navigate(createSearchUrl(name))
+      document.title = `${name} | ${defineLang('Tìm kiếm', 'Search')}`
+    }
+  }
+  
   if (!trendingKeywords) return <Loading />
 
   return (
@@ -12,10 +22,10 @@ const SearchMain = ({  defineLang, trendingKeywords, }) => {
         <h1 className="tk-title">{defineLang('Top từ khóa', 'Top Keyword')}</h1>
         <div className="tk-main">
           {trendingKeywords.map(keyword => {
-            const {order, title, link} = keyword
+            const { order, title } = keyword
 
             return (
-              <div key={order} className="tk-content">
+              <div key={order} className="tk-content" onClick={() => handleNavSearch(title)}>
               <p className="tk-content-title">
                 <span className="tk-position">#{order}</span>
                 {title}

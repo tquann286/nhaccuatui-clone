@@ -9,12 +9,12 @@ import { createSearchUrl, trendArtSwiperProps } from 'services/Search/SearchHead
 import 'swiper/scss'
 import 'swiper/scss/autoplay'
 
-const SearchHeader = ({ topArtists, defineLang }) => {
+const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory }) => {
   const navigate = useNavigate()
 
   const [searchTerm, setSearchTerm] = useState('')
   const [isFocusSearchInput, setIsFocusSearchInput] = useState(false)
-  console.log(topArtists)
+  
   const handleSearchTermChange = (e) => {
     setSearchTerm(e.target.value)
   }

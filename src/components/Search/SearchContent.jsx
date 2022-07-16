@@ -19,12 +19,13 @@ const SearchContent = () => {
   const [trendingKeywords, setTrendingKeywords] = useState(null)
 
   const [isFetchingFail, setIsFetchingFail] = useState(false)
+  const [searchHistory, setSearchHistory] = useState(null)
 
   useEffect(() => {
     const getSearchContent = async () => {
       try {
         const topArtists = await getTopArtists()
-        const {listKeyValue} = await getTrendingKeyword()
+        const { listKeyValue } = await getTrendingKeyword()
 
         setTopArtists(topArtists)
         setTrendingKeywords(listKeyValue)
@@ -36,15 +37,28 @@ const SearchContent = () => {
       }
     }
 
+    // Get local search history
+    const searchHistory = localStorage.getItem('searchHistory')
+
+    if (searchHistory) {
+      setSearchHistory(searchHistory)
+    }
+
     getSearchContent()
   }, [])
+
+  const passedSearchProps = {
+    defineLang,
+    searchHistory,
+    setSearchHistory,
+  }
 
   if (isFetchingFail) return <NotFound />
 
   return (
     <div className='search-container'>
-      <SearchHeader topArtists={topArtists} defineLang={defineLang} />
-      <SearchMain trendingKeywords={trendingKeywords} defineLang={defineLang} />
+      <SearchHeader topArtists={topArtists} { ... passedSearchProps } />
+      <SearchMain trendingKeywords={trendingKeywords} { ... passedSearchProps } />
     </div>
   )
 }
