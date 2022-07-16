@@ -11,20 +11,15 @@ import { createSearchUrl, trendArtSwiperProps } from 'services/Search/SearchHead
 import 'swiper/scss'
 import 'swiper/scss/autoplay'
 
-const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory }) => {
+const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory, searchTerm, setSearchTerm }) => {
   const navigate = useNavigate()
-  console.log(searchHistory)
-  const [searchTerm, setSearchTerm] = useState('')
+
   const [isFocusSearchInput, setIsFocusSearchInput] = useState(false)
-  
-  const handleSearchTermChange = (e) => {
-    setSearchTerm(e.target.value)
-  }
 
   const searchInputProps = {
     type: 'text',
     value: searchTerm,
-    onChange: (e) => handleSearchTermChange(e),
+    onChange: (e) => setSearchTerm(e.target.value),
     onFocus: () => setIsFocusSearchInput(true),
     onBlur: () => setIsFocusSearchInput(false),
     placeholder: defineLang('Tìm kiếm...', 'Search...'),
@@ -34,14 +29,10 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory 
     if (name) {
       setSearchTerm(name)
       navigate(createSearchUrl(name))
-
-      if (searchHistory.includes(name)) {
-        setSearchHistory([ ... searchHistory.filter(search => search !== name), name ])
-      } else {
-        setSearchHistory([ ... searchHistory, name ])
+      if (searchHistory[searchHistory.length - 1] !== name) {
+        setSearchHistory([...searchHistory.filter((search) => search !== name), name])
+        handleNavSearch(defineLang, name, [...searchHistory.filter((search) => search !== name), name])
       }
-      
-      handleNavSearch(defineLang, [ ... searchHistory, name ])
     }
   }
 

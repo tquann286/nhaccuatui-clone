@@ -5,26 +5,26 @@ import { Loading } from 'components'
 import { createSearchUrl } from 'services/Search/SearchHeader'
 import { handleNavSearch } from 'services/Search/Search'
 
-const SearchMain = ({  defineLang, trendingKeywords, searchHistory, setSearchHistory }) => {
+const SearchMain = ({  defineLang, trendingKeywords, searchHistory, setSearchHistory, searchTerm,
+  setSearchTerm }) => {
   const navigate = useNavigate()
   
   const onNavSearch = (name) => {
     if (name) {
+      setSearchTerm(name)
       navigate(createSearchUrl(name))
 
-      if (searchHistory.includes(name)) {
+      if (searchHistory[searchHistory.length - 1] !== name) {
         setSearchHistory([ ... searchHistory.filter(search => search !== name), name ])
-      } else {
-        setSearchHistory([ ... searchHistory, name ])
+        handleNavSearch(defineLang, name, [ ... searchHistory.filter(search => search !== name), name ])
       }
-      handleNavSearch(defineLang, name, [ ... searchHistory, name ])
     }
   }
   
   if (!trendingKeywords) return <Loading />
 
   return (
-    <div className='sm-container'>
+    <div className='smain-container'>
       <div className="trend-keywords-container">
         <h1 className="tk-title">{defineLang('Top từ khóa', 'Top Keyword')}</h1>
         <div className="tk-main">
