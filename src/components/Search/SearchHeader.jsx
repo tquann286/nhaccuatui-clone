@@ -4,7 +4,7 @@ import { FiSearch } from 'react-icons/fi'
 import { IoMdClose } from 'react-icons/io'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay } from 'swiper'
+import { trendArtSwiperProps } from 'services/Search/SearchHeader'
 import 'swiper/scss'
 import 'swiper/scss/autoplay'
 
@@ -16,7 +16,7 @@ const SearchHeader = ({ topArtists, defineLang }) => {
   const handleSearchTermChange = (e) => {
     setSearchTerm(e.target.value)
   }
-
+  
   const searchInputProps = {
     type: 'text',
     value: searchTerm,
@@ -52,12 +52,24 @@ const SearchHeader = ({ topArtists, defineLang }) => {
           <div className='ta-main'>
             <div className='ta-wrapper'>
               <div className='ta-active-artists'>
-                <Swiper direction={'vertical'} className='ta-swiper-container'>
+                <Swiper {...trendArtSwiperProps}>
                   {topArtists.map((artist, i) => {
                     const { name, position, shortLink } = artist
 
                     return (
-                      <div className=""></div>
+                      <SwiperSlide key={i}>
+                        <div className='ta-slider-content'>
+                          <p className='ta-artist-name'>
+                            <span className='ta-artist-position'>{position}.</span>
+                            {name}
+                          </p>
+                          <div className='ta-new-label'>
+                            <div className='ta-new-label-main'>
+                              <p className='ta-new-label-content'>New</p>
+                            </div>
+                          </div>
+                        </div>
+                      </SwiperSlide>
                     )
                   })}
                 </Swiper>

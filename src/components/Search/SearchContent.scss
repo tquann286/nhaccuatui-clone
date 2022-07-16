@@ -18,7 +18,7 @@
       @include transition-effect(0.1s);
       position: relative;
       width: 50%;
-      height: 4rem;
+      height: $search-content-height;
       border: $border-light;
       border-radius: 0.4rem;
       color: rgba(28, 30, 32, 0.5);
@@ -128,19 +128,19 @@
           .ta-active-artists {
             position: relative;
             overflow: hidden;
-            height: 4rem;
+            height: $search-content-height;
             width: 18rem;
             border: $border-light;
             border-radius: 2rem;
 
             .ta-swiper-container {
-
+              height: $search-content-height;
               .ta-slider-content {
                 @include display-flex;
                 @include justify-content(space-between);
                 @include align-items(center);
                 width: 100%;
-                padding: 0.5rem 0.8rem;
+                padding: 1rem 1.2rem;
                 font-size: 1.3rem;
 
                 p.ta-artist-name {
