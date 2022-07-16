@@ -9,7 +9,7 @@ const SearchMain = ({  defineLang, trendingKeywords, }) => {
   return (
     <div className='sm-container'>
       <div className="trend-keywords-container">
-        <h1 className="tk-title">{defineLang('Top từ khóa', 'Top keywords')}</h1>
+        <h1 className="tk-title">{defineLang('Top từ khóa', 'Top Keyword')}</h1>
         <div className="tk-main">
           {trendingKeywords.map(keyword => {
             const {order, title, link} = keyword

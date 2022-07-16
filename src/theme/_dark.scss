@@ -21,6 +21,7 @@ body[data-theme='dark'] {
     border-color: $border-dark;
   }
 
+  // Special
   .left-sidebar {
     .box {
       background-color: $dark-color !important;
@@ -36,6 +37,10 @@ body[data-theme='dark'] {
     }
   }
 
+  .tk-content::before {
+    border-left-color: rgba(244, 246, 248, 0.05) !important;
+  }
+
   // Color
   .ls-auth-setting,
   .nav-name,
@@ -46,7 +51,8 @@ body[data-theme='dark'] {
   .ls-library,
   .ls-user-name-content,
   a.suggest-title,
-  p.title-playlist {
+  p.title-playlist,
+  .tk-title {
     color: rgba(244, 246, 248, 0.88) !important;
   }
 
@@ -83,7 +89,14 @@ body[data-theme='dark'] {
   .suggest-trending-info h5,
   p.title-playlist span,
   .explore-description p.description,
-  .explore-btn-title {
+  .explore-btn-title,
+  .search-btn-container svg,
+  input.search-input-content,
+  .search-clear-btn svg,
+  p.tk-content-title,
+  .tk-content,
+  p.ta-lead-title,
+  p.ta-full-artists-name {
     color: rgba(244, 246, 248, 0.5) !important;
   }
 
@@ -115,12 +128,16 @@ body[data-theme='dark'] {
   .sm-sub-item:hover,
   .af-plugin-img,
   .shadow1,
-  a.active .nav-item {
+  a.active .nav-item,
+  .tk-content,
+  .ta-full-artists-item:hover {
     background-color: rgba(244, 246, 248, 0.05) !important;
   }
   
   .nr-active-slide,
-  .sd-main {
+  .sd-main,
+  .search-input-container,
+  p.ta-lead-title {
     background-color: rgba(244, 246, 248, 0.02) !important;
   }
 
@@ -128,11 +145,8 @@ body[data-theme='dark'] {
     background-color: rgba(244, 246, 248, 0.01) !important;
   }
 
-  .sm-container, .sm-sub-items {
-    background-color: rgba(34, 43, 54, 1) !important;
-  }
-
-  .checkmark {
+  .checkmark,
+  .ta-full-artists-content {
     background-color: rgba(24,34,45,1) !important;
   }
 
@@ -149,7 +163,10 @@ body[data-theme='dark'] {
 
   .af-header,
   .input-main,
-  .input-icon {
+  .input-icon,
+  .sh-container,
+  .search-input-container,
+  .ta-active-artists {
     border-color: rgba(244, 246, 248, 0.05) !important;
   }
 }
