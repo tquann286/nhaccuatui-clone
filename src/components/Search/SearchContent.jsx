@@ -8,7 +8,6 @@ import { getTopArtists, getTrendingKeyword } from 'services/Search/SearchContent
 import { toastNotify } from 'share/toast'
 
 import { useStore, actions } from 'store'
-import { Loading } from 'components'
 
 const SearchContent = () => {
   const [state, dispatch] = useStore()
@@ -19,20 +18,17 @@ const SearchContent = () => {
   const [topArtists, setTopArtists] = useState(null)
   const [trendingKeywords, setTrendingKeywords] = useState(null)
 
-  const [isLoading, setIsLoading] = useState(true)
   const [isFetchingFail, setIsFetchingFail] = useState(false)
 
   useEffect(() => {
     const getSearchContent = async () => {
       try {
         const topArtists = await getTopArtists()
-        const trendingKeywords = await getTrendingKeyword()
+        const {listKeyValue} = await getTrendingKeyword()
 
         setTopArtists(topArtists)
-        setTrendingKeywords(trendingKeywords)
-        setIsLoading(false)
+        setTrendingKeywords(listKeyValue)
       } catch (error) {
-        setIsLoading(false)
         setIsFetchingFail(true)
         toastNotify(defineLang('Có lỗi khi lấy dữ liệu từ server.', 'A server error occurred while retrieving data.'), 'error')
 
@@ -44,12 +40,6 @@ const SearchContent = () => {
   }, [])
 
   if (isFetchingFail) return <NotFound />
-
-  if (isLoading) (
-    <div className='search-container'>
-      <Loading />
-    </div>
-  )
 
   return (
     <div className='search-container'>

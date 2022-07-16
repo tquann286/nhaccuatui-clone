@@ -178,5 +178,57 @@
   }
 
   .sm-container {
+    .trend-keywords-container {
+      position: relative;
+      padding: 4rem 3.2rem 0;
+
+      h1.tk-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: rgba(28,30,32,0.88);
+      }
+      .tk-main {
+        margin-top: 1.6rem;
+        .tk-content {
+          position: relative;
+          display: inline-block;
+          font-size: 1.4rem;
+          color: rgba(28,30,32,0.5);
+          margin-bottom: 0.8rem;
+          margin-right: 1.8rem;
+          margin-left: 0;
+          padding: 0.6rem 1.2rem 0.5rem;
+          background-color: rgba(28,30,32,0.05);
+          border-top-left-radius: 0.4rem;
+          border-bottom-left-radius: 0.4rem;
+          cursor: pointer;
+
+          &::before {
+            content: "";
+            position: absolute;
+            right: -1rem;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 1rem solid rgba(28,30,32,0.05);
+            border-top: 1.5rem solid transparent;
+            border-bottom: 1.5rem solid transparent;
+            border-top-left-radius: 0.3rem;
+            border-bottom-left-radius: 0.3rem;
+          }
+
+          p.tk-content-title {
+            @include transition-effect(0.1s);
+            @include hoverMainColor;
+            color: rgba(28,30,32,0.5);
+            span.tk-position {
+              color: #2DAAED;
+              font-weight: 700;
+              margin-right: 0.8rem;
+            }
+          }
+        }
+      }
+    }
   }
 }

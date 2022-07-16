@@ -11,7 +11,6 @@ import 'swiper/scss/autoplay'
 const SearchHeader = ({ topArtists, defineLang }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [isFocusSearchInput, setIsFocusSearchInput] = useState(false)
-  console.log(topArtists)
 
   const handleSearchTermChange = (e) => {
     setSearchTerm(e.target.value)
