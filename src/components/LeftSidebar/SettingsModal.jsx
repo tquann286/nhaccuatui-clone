@@ -17,19 +17,19 @@ import { toastNotify } from 'share/toast'
 const SettingsModal = ({ user, theme, lang, dispatch }) => {
 
   const onChangeViLang = () => {
-    dispatch(actions.changeViLang())
+    if (lang === 'en') dispatch(actions.changeViLang())
   }
 
   const onChangeEnLang = () => {
-    dispatch(actions.changeEnLang())
+    if (lang === 'vi') dispatch(actions.changeEnLang())
   }
 
   const onChangeLightTheme = () => {
-    dispatch(actions.changeLightTheme())
+    if (theme === 'dark') dispatch(actions.changeLightTheme())
   }
 
   const onChangeDarkTheme = () => {
-    dispatch(actions.changeDarkTheme())
+    if (theme === 'light') dispatch(actions.changeDarkTheme())
   }
 
   const onLogout = () => {
