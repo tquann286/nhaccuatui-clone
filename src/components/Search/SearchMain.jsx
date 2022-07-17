@@ -1,6 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { FaRegTrashAlt } from 'react-icons/fa'
+
 import { Loading } from 'components'
 import { createSearchUrl } from 'services/Search/SearchHeader'
 import { handleNavSearch } from 'services/Search/Search'
@@ -19,6 +21,17 @@ const SearchMain = ({  defineLang, trendingKeywords, searchHistory, setSearchHis
         handleNavSearch(defineLang, name, [ ... searchHistory.filter(search => search !== name), name ])
       }
     }
+  }
+  
+  const handleClearSearchItem = (index) => {
+    const newSearchHistory = searchHistory.filter((search, i) => i !== index)
+    setSearchHistory(newSearchHistory)
+    localStorage.setItem('searchHistory', newSearchHistory)
+  }
+
+  const handleClearAllSearch = () => {
+    setSearchHistory([])
+    localStorage.removeItem('searchHistory')
   }
   
   if (!trendingKeywords) return <Loading />
@@ -42,6 +55,23 @@ const SearchMain = ({  defineLang, trendingKeywords, searchHistory, setSearchHis
           })}
         </div>
       </div>
+      {searchHistory.length === 0 || (
+        <div className="search-history-container">
+          <h1 className="search-history-title">{defineLang('Lịch sử tìm kiếm', 'Search History')}</h1>
+          <div className="sh-main-list">
+            {searchHistory.map((search, i) => (
+              <div key={i} className="sh-item">
+              <p className="sh-search-term">{search}</p>
+              <div className="sh-clear-item" onClick={() => handleClearSearchItem(i)}>
+                <FaRegTrashAlt />
+              </div>
+            </div>
+            ))}
+          </div>
+          <p className="sh-clear-all" onClick={handleClearAllSearch}>{defineLang('Xóa tất cả', 'Clear all')}</p>
+        </div>
+      )}
+      
     </div>
   )
 }
