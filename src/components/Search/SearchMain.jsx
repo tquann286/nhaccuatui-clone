@@ -2,13 +2,33 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { FaRegTrashAlt } from 'react-icons/fa'
+import { BsLink45Deg, BsPlayCircleFill } from 'react-icons/bs'
+import { IoMdMore } from 'react-icons/io'
 
 import { Loading } from 'components'
 import { createSearchUrl } from 'services/Search/SearchHeader'
 import { handleNavSearch } from 'services/Search/Search'
+import { getMaybeHit } from 'services/Search/SearchMain'
 
-const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHistory, searchTerm, setSearchTerm, isLoading, setIsLoading }) => {
+const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHistory, searchTerm, setSearchTerm, isLoading }) => {
   const navigate = useNavigate()
+
+  const [maybeHit, setMaybeHit] = useState(null)
+  console.log(maybeHit)
+
+  useEffect(() => {
+    const getMaybeHitState = async () => {
+      try {
+        const maybeHit = await getMaybeHit()
+
+        setMaybeHit(maybeHit)
+      } catch (error) {
+        throw new Error(error)
+      }
+    }
+
+    getMaybeHitState()
+  }, [])
 
   const onNavSearch = (name) => {
     if (name) {
@@ -70,6 +90,36 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
           <p className='sh-clear-all' onClick={handleClearAllSearch}>
             {defineLang('Xóa tất cả', 'Clear all')}
           </p>
+        </div>
+      )}
+      {maybeHit && (
+        <div className='maybe-hit-container'>
+          <div className='maybe-hit-title'>
+            <div className="maybe-hit-lead">
+            {defineLang('Có thể hot', 'Maybe Hit')}
+            </div>
+          </div>
+          <div className='maybe-hit-wrapper'>
+            <div className='maybe-hit-main'>
+              <div className='maybe-hit-thumb'>
+                <div className='speacial-tag'>{defineLang('Đặc biệt', 'Special')}</div>
+                <div className='maybe-hit-img-wrapper'>
+                  <div className='maybe-hit-img-main'>
+                    <img src={maybeHit.thumbnail} title={maybeHit.title} />
+                    <div className="maybe-hit-img-overlay">
+                      <div className="maybe-hit-icon">
+                        <BsPlayCircleFill />
+                      </div>
+                      <div className="maybe-hit-more-options">
+                        <IoMdMore />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className='maybe-hit-description'></div>
+            </div>
+          </div>
         </div>
       )}
     </div>

@@ -8,8 +8,8 @@ export const getMaybeHit = async () => {
       page: 1,
       pageSize: 1,
     })
-
-    console.log(data)
+    
+    if (data) return data.data[0]
   } catch (error) {
     throw new Error(error)
   }

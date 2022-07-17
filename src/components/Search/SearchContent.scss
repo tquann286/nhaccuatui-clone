@@ -365,5 +365,129 @@
         color: rgba(28, 30, 32, 0.5);
       }
     }
+
+    .maybe-hit-container {
+      .maybe-hit-title {
+        width: 100%;
+        padding: 3.2rem 3.2rem 0;
+        .maybe-hit-lead {
+          @include fitContentWidth;
+          height: 3rem;
+          line-height: 3rem;
+          font-size: 2.2rem;
+          font-weight: 700;
+          color: rgba(28, 30, 32, 0.88);
+        }
+      }
+
+      .maybe-hit-wrapper {
+        width: 100%;
+        padding: 1.2rem 3.2rem 3rem;
+        background-color: rgba(28, 30, 32, 0.02);
+        margin-top: 1.6rem;
+        border-radius: 0.4rem;
+
+        .maybe-hit-main {
+          @include display-flex;
+          @include align-items(center);
+          height: 16.6rem;
+
+          .maybe-hit-thumb {
+            @include fitContentHeight;
+            @include display-flex;
+            @include align-items(flex-end);
+            position: relative;
+
+            .speacial-tag {
+              position: absolute;
+              top: -0.5rem;
+              left: 0;
+              font-size: 1rem;
+              padding: 0.4rem 1.1rem;
+              border-top-right-radius: 0.4rem;
+              border-bottom-left-radius: 0.4rem;
+              background-color: #f44336;
+              color: #fff;
+              font-weight: 700;
+              z-index: 1;
+              text-transform: uppercase;
+            }
+
+            .maybe-hit-img-wrapper {
+              width: 16rem;
+              height: 16rem;
+              .maybe-hit-img-main {
+                cursor: pointer;
+                position: relative;
+                width: 100%;
+                border: $border-light;
+                border-radius: 0.4rem;
+                overflow: hidden;
+                box-shadow: 0 0.4rem 0.8rem rgba(0,0,0,0.2);
+                
+                &:hover {
+                  img {
+                    @include transform-effect(scale(1.1));
+                  }
+
+                  .maybe-hit-img-overlay {
+                    opacity: 1;
+                  }
+                }
+
+                img {
+                  @include transition-effect(0.3s, transform);
+                  cursor: pointer;
+                  min-width: 16rem;
+                  min-height: 16rem;
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 0.4rem;
+                }
+                .maybe-hit-img-overlay {
+                  @include transition-effect(0.3s, opcacity);
+                  position: absolute;
+                  top: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: rgba(0,0,0,0.5);
+                  opacity: 0;
+                  .maybe-hit-icon {
+                    @include flexCenter;
+                    text-align: center;
+                    height: 100%;
+                    svg {
+                      @include transition-effect(0.3s);
+                      font-size: 3.8rem;
+                      color: rgba(255,255,255,0.88);
+
+                      &:hover {
+                        @include transform-effect(scale(1.15));
+                      }
+                    }
+                  }
+                  .maybe-hit-more-options {
+                    @include display-flex;
+                    @include fitContentWidth;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    border-radius: 0.4rem;
+                    svg {
+                      font-size: 2.5rem;
+                      margin: 0.4rem;
+                      cursor: pointer;
+                      color: $light-color;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .maybe-hit-description {
+          }
+        }
+      }
+    }
   }
 }
