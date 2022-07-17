@@ -485,6 +485,80 @@
             }
           }
           .maybe-hit-description {
+            width: calc(100% - 20.2rem);
+            margin-left: 4rem;
+            font-weight: 500;
+
+            .maybe-hit-desc-title {
+              @include threeDotContent;
+              font-size: 1.4rem;
+              color: rgba(28,30,32,0.88);
+              span {
+                color: rgba(28,30,32,0.5);
+                font-size: 1.3rem;
+              }
+
+              a {
+                @include transition-effect(0.15s);
+                @include hoverMainColor;
+              }
+            }
+
+            .maybe-hit-artist-container {
+              .maybe-hit-artist-main {
+                @include display-flex;
+                @include align-items(center);
+  
+                margin-top: 1rem;
+                .maybe-hit-artist-img-container {
+                  display: inline-block;
+                  .maybe-hit-artist-img {
+                    display: inline-block;
+                    width: 2.4rem;
+                    height: 2.4rem;
+                    border: 0.1rem solid rgba(255, 255, 255, 1);
+                    border-radius: 50%;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    margin-right: -0.8rem;
+  
+                    img {
+                      width: 100%;
+                      border-radius: 50%;
+                    }
+                  }
+                }
+  
+                .maybe-hit-artist-name {
+                  line-height: inherit;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                  overflow: hidden;
+                  font-size: 1.3rem;
+                  margin-left: 1.2rem;
+                  color: rgba(28, 30, 32, 0.5);
+                  a {
+                    span {
+                      @include transition-effect(0.1s);
+                      @include hoverMainColor;
+                    }
+                  }
+                }
+              }
+            }
+  
+            .maybe-hit-date-release {
+              @include display-flex;
+              @include align-items(center);
+  
+              margin-top: 0.6rem;
+              font-size: 1.4rem;
+              color: rgba(28, 30, 32, 0.5);
+              user-select: text;
+              svg {
+                margin-right: 0.4rem;
+              }
+            }
           }
         }
       }

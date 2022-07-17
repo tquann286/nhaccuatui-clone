@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { PROXY } from 'share/constants'
-import { useGetPosition } from 'hooks'
+import { OptionModal } from 'components'
 
 import { BsHeadphones, BsLink45Deg, BsMusicNote } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { SiYoutubemusic } from 'react-icons/si'
 
-import { createSongUrl, createArtistUrl, copyNotify } from 'share/utilities'
+import { PROXY } from 'share/constants'
+import { createSongUrl, createArtistUrl, copyNotify, handleCopyClick } from 'share/utilities'
 import { createRandomSongView } from 'services/SongDetail'
-import { OptionModal } from 'components'
 
 const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
   const [songView, setSongView] = useState(0)
@@ -34,14 +33,9 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
     toggleShowMore()
   }
 
-  const handleCopyClick = (e) => {
-    e.stopPropagation()
-
-    const songLink = `${PROXY}/${createSongUrl(title, songId)}`
-
-    navigator.clipboard.writeText(songLink)
+  const onCopyClick = (e) => {
     toggleShowMore()
-    copyNotify(lang)
+    handleCopyClick(e, lang, title, songId)
   }
 
   return (
@@ -83,24 +77,24 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
           </div>
         </div>
       </div>
-        <OptionModal showModal={showMoreOptions} positionRef={songContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
-          <div className='om-main'>
-            <ul>
-              <li>
-                <SiYoutubemusic />
-                <span>{lang === 'vi' ? 'Thêm vào chờ phát' : 'Add to queue'}</span>
-              </li>
-              <li onClick={(e) => handleCopyClick(e)}>
-                <BsLink45Deg />
-                <span>{lang === 'vi' ? 'Sao chép link' : 'Copy link'}</span>
-              </li>
-              <li onClick={() => navigate(createSongUrl(title, songId))}>
-                <BsMusicNote />
-                <span>{lang === 'vi' ? 'Đi đến bài hát' : 'Go to song'}</span>
-              </li>
-            </ul>
-          </div>
-        </OptionModal>
+      <OptionModal showModal={showMoreOptions} positionRef={songContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
+        <div className='om-main'>
+          <ul>
+            <li>
+              <SiYoutubemusic />
+              <span>{lang === 'vi' ? 'Thêm vào chờ phát' : 'Add to queue'}</span>
+            </li>
+            <li onClick={(e) => onCopyClick(e)}>
+              <BsLink45Deg />
+              <span>{lang === 'vi' ? 'Sao chép link' : 'Copy link'}</span>
+            </li>
+            <li onClick={() => navigate(createSongUrl(title, songId))}>
+              <BsMusicNote />
+              <span>{lang === 'vi' ? 'Đi đến bài hát' : 'Go to song'}</span>
+            </li>
+          </ul>
+        </div>
+      </OptionModal>
     </React.Fragment>
   )
 }

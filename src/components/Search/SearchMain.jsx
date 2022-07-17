@@ -1,20 +1,43 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect, useRef } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+
+import { OptionModal } from 'components'
 
 import { FaRegTrashAlt } from 'react-icons/fa'
-import { BsLink45Deg, BsPlayCircleFill } from 'react-icons/bs'
+import { BsHeadphones, BsLink45Deg, BsMusicNote, BsPlayCircleFill } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
+import { SiYoutubemusic } from 'react-icons/si'
 
 import { Loading } from 'components'
 import { createSearchUrl } from 'services/Search/SearchHeader'
 import { handleNavSearch } from 'services/Search/Search'
 import { getMaybeHit } from 'services/Search/SearchMain'
+import { covertTimestamp, createArtistUrl, createSongUrl, copyNotify, handleCopyClick } from 'share/utilities'
+import { GoCalendar } from 'react-icons/go'
 
 const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHistory, searchTerm, setSearchTerm, isLoading }) => {
   const navigate = useNavigate()
 
   const [maybeHit, setMaybeHit] = useState(null)
-  console.log(maybeHit)
+  console.log('maybeHit: ', maybeHit)
+  const [showMoreOptions, setShowMoreOptions] = useState(false)
+
+  const songContainerRef = useRef(null)
+  const moreDivRef = useRef(null)
+  
+  const toggleShowMore = () => {
+    setShowMoreOptions(!showMoreOptions)
+  }
+
+  const handleMoreOptions = (e) => {
+    e.stopPropagation()
+    toggleShowMore()
+  }
+
+  const onCopyClick = (e, title, songId) => {
+    toggleShowMore()
+    handleCopyClick(e, defineLang('vi', 'en'), title, songId)
+  }
 
   useEffect(() => {
     const getMaybeHitState = async () => {
@@ -95,9 +118,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
       {maybeHit && (
         <div className='maybe-hit-container'>
           <div className='maybe-hit-title'>
-            <div className="maybe-hit-lead">
-            {defineLang('Có thể hot', 'Maybe Hit')}
-            </div>
+            <div className='maybe-hit-lead'>{defineLang('Có thể hot', 'Maybe Hit')}</div>
           </div>
           <div className='maybe-hit-wrapper'>
             <div className='maybe-hit-main'>
@@ -105,19 +126,77 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
                 <div className='speacial-tag'>{defineLang('Đặc biệt', 'Special')}</div>
                 <div className='maybe-hit-img-wrapper'>
                   <div className='maybe-hit-img-main'>
-                    <img src={maybeHit.thumbnail} title={maybeHit.title} />
-                    <div className="maybe-hit-img-overlay">
-                      <div className="maybe-hit-icon">
+                    <img src={maybeHit.thumbnail} title={maybeHit.title} ref={songContainerRef} />
+                    <OptionModal showModal={showMoreOptions} positionRef={songContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
+                      <div className='om-main'>
+                        <ul>
+                          <li>
+                            <SiYoutubemusic />
+                            <span>{defineLang('Thêm vào chờ phát', 'Add to queue')}</span>
+                          </li>
+                          <li onClick={(e) => onCopyClick(e, maybeHit.title, maybeHit.key)}>
+                            <BsLink45Deg />
+                            <span>{defineLang('Sao chép link', 'Copy link')}</span>
+                          </li>
+                          <li onClick={() => navigate(`/${createSongUrl(maybeHit.title, maybeHit.key)}`)}>
+                            <BsMusicNote />
+                            <span>{defineLang('Đi đến bài hát', 'Go to song')}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </OptionModal>
+                    <div className='maybe-hit-img-overlay'>
+                      <div className='maybe-hit-icon'>
                         <BsPlayCircleFill />
                       </div>
-                      <div className="maybe-hit-more-options">
+                      <div className='maybe-hit-more-options' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
                         <IoMdMore />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className='maybe-hit-description'></div>
+              <div className='maybe-hit-description'>
+                <div className='maybe-hit-desc-title'>
+                  <span>{defineLang('Bài hát: ', 'Song: ')}</span>
+                  <Link to={`/${createSongUrl(maybeHit.title, maybeHit.key)}`}>{maybeHit.title}</Link>
+                </div>
+                <div className='maybe-hit-artist-container'>
+                  <div className='maybe-hit-artist-main'>
+                    <div className='maybe-hit-artist-img-container'>
+                      {maybeHit.artists.map((artist) => {
+                        const { artistId, imageUrl, name, shortLink } = artist
+
+                        return (
+                          <Link to={createArtistUrl(name, shortLink, artistId)} key={artistId} className='maybe-hit-artist-img'>
+                            <img src={imageUrl} />
+                          </Link>
+                        )
+                      })}
+                    </div>
+                    <div className='maybe-hit-artist-name'>
+                      {maybeHit.artists.map((artist, index) => {
+                        const { artistId, name, shortLink } = artist
+
+                        return (
+                          <React.Fragment key={artistId}>
+                            <Link to={createArtistUrl(name, shortLink, artistId)} key={artistId}>
+                              <span>{name}</span>
+                            </Link>
+                            {index + 1 === maybeHit.artists.length ? '' : ', '}
+                          </React.Fragment>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </div>
+                <div className='maybe-hit-date-release'>
+                  <GoCalendar />
+                  <span>
+                    {defineLang('Ngày phát hành', 'Released date')}: {covertTimestamp(maybeHit.dateRelease)}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

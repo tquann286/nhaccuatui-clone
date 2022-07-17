@@ -1,5 +1,6 @@
 import { removeVietnameseTones } from 'share'
 import { toast } from 'react-toastify'
+import { PROXY } from 'share/constants'
 
 export const covertTimestamp = (time) => {
   const date = new Date(time)
@@ -102,4 +103,13 @@ export const handleFocusInput = (e) => {
 
 export const handleBlurInput = (e) => {
   e.target.parentElement.classList.remove('focus')
+}
+
+export const handleCopyClick = (e, lang, title, songId) => {
+  e.stopPropagation()
+
+  const songLink = `${PROXY}/${createSongUrl(title, songId)}`
+  navigator.clipboard.writeText(songLink)
+  copyNotify(lang)
+
 }
