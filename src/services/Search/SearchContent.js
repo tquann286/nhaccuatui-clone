@@ -6,7 +6,7 @@ export const getTopArtists = async () => {
 
     if (data) return data.artistTrending
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 }
 
@@ -16,6 +16,6 @@ export const getTrendingKeyword = async () => {
 
     if (data) return data
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 }

@@ -17,9 +17,10 @@ const SearchContent = () => {
 
   const [topArtists, setTopArtists] = useState(null)
   const [trendingKeywords, setTrendingKeywords] = useState(null)
-
-  const [isFetchingFail, setIsFetchingFail] = useState(false)
   const [searchHistory, setSearchHistory] = useState([])
+
+  const [isLoading, setIsLoading] = useState(true)
+  const [isFetchingFail, setIsFetchingFail] = useState(false)
 
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -31,8 +32,10 @@ const SearchContent = () => {
 
         setTopArtists(topArtists)
         setTrendingKeywords(listKeyValue)
+        setIsLoading(false)
       } catch (error) {
         setIsFetchingFail(true)
+        setIsLoading(false)
         toastNotify(defineLang('Có lỗi khi lấy dữ liệu từ server.', 'A server error occurred while retrieving data.'), 'error')
 
         throw new Error(error)
@@ -55,6 +58,8 @@ const SearchContent = () => {
     setSearchHistory,
     searchTerm,
     setSearchTerm,
+    isLoading,
+    setIsLoading
   }
 
   if (isFetchingFail) return <NotFound />
