@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import './SearchContent.scss'
 import { SearchHeader, SearchMain } from 'components'
 
@@ -13,7 +13,7 @@ const SearchContent = () => {
   const [state, dispatch] = useStore()
   const { lang } = state
 
-  const defineLang = (vie, eng) => (lang === 'vi' ? vie : eng)
+  const defineLang = useCallback((vie, eng) => (lang === 'vi' ? vie : eng), [lang])
 
   const [topArtists, setTopArtists] = useState(null)
   const [trendingKeywords, setTrendingKeywords] = useState(null)
@@ -50,7 +50,7 @@ const SearchContent = () => {
     }
 
     getSearchContent()
-  }, [])
+  }, [defineLang])
 
   const passedSearchProps = {
     defineLang,

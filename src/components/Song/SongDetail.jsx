@@ -7,8 +7,7 @@ import { BsHeadphones, BsLink45Deg, BsMusicNote } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { SiYoutubemusic } from 'react-icons/si'
 
-import { PROXY } from 'share/constants'
-import { createSongUrl, createArtistUrl, copyNotify, handleCopyClick } from 'share/utilities'
+import { createSongUrl, createArtistUrl, handleCopyClick } from 'share/utilities'
 import { createRandomSongView } from 'services/SongDetail'
 
 const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
