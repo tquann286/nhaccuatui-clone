@@ -14,6 +14,7 @@ import { handleNavSearch } from 'services/Search/Search'
 import { getMaybeHit } from 'services/Search/SearchMain'
 import { covertTimestamp, createArtistUrl, createSongUrl, handleCopyClick } from 'share/utilities'
 import { GoCalendar } from 'react-icons/go'
+import { basicModal } from 'share/animation'
 
 const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHistory, setSearchTerm, isLoading }) => {
   const navigate = useNavigate()
@@ -128,23 +129,25 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
                   <div className='maybe-hit-img-main'>
                     <img src={maybeHit.thumbnail} alt={maybeHit.title} title={maybeHit.title} />
                     <OptionModal showModal={showMoreOptions} positionRef={songContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
-                    <div className='om-main'>
-                      <ul>
-                        <li>
-                          <SiYoutubemusic />
-                          <span>{defineLang('Thêm vào chờ phát', 'Add to queue')}</span>
-                        </li>
-                        <li onClick={(e) => onCopyClick(e, maybeHit.title, maybeHit.key)}>
-                          <BsLink45Deg />
-                          <span>{defineLang('Sao chép link', 'Copy link')}</span>
-                        </li>
-                        <li onClick={() => navigate(`/${createSongUrl(maybeHit.title, maybeHit.key)}`)}>
-                          <BsMusicNote />
-                          <span>{defineLang('Đi đến bài hát', 'Go to song')}</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </OptionModal>
+                      <ModalAnimate animateProps={basicModal} isVisible={showMoreOptions} key={maybeHit.key}>
+                        <div className='om-main'>
+                          <ul>
+                            <li>
+                              <SiYoutubemusic />
+                              <span>{defineLang('Thêm vào chờ phát', 'Add to queue')}</span>
+                            </li>
+                            <li onClick={(e) => onCopyClick(e, maybeHit.title, maybeHit.key)}>
+                              <BsLink45Deg />
+                              <span>{defineLang('Sao chép link', 'Copy link')}</span>
+                            </li>
+                            <li onClick={() => navigate(`/${createSongUrl(maybeHit.title, maybeHit.key)}`)}>
+                              <BsMusicNote />
+                              <span>{defineLang('Đi đến bài hát', 'Go to song')}</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </ModalAnimate>
+                    </OptionModal>
                     <div className='maybe-hit-img-overlay' ref={songContainerRef}>
                       <div className='maybe-hit-icon'>
                         <BsPlayCircleFill />

@@ -448,7 +448,7 @@
                   border-radius: 0.4rem;
                 }
                 .maybe-hit-img-overlay {
-                  @include transition-effect(0.3s, opcacity);
+                  @include transition-effect(0.3s);
                   position: absolute;
                   top: 0;
                   width: 100%;
