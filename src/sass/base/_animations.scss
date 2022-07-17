@@ -10,14 +10,12 @@
 
 @keyframes scaleAndFadeIn {
   0% {
-    width: 40rem;
-    height: 44rem;
+    @include transform-effect(scale(0.8));
     opacity: 0.5;
   }
 
   100% {
-    width: 46rem;
-    height: 50rem;
+    @include transform-effect(scale(1));
     opacity: 1;
   }
 }

@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 import { DEFAULT_IMAGE, TERM_LINK } from 'share/constants'
 import { toastNotify } from 'share/toast'
-import {  handleFocusInput, handleBlurInput } from 'share/utilities'
+import { handleFocusInput, handleBlurInput } from 'share/utilities'
 
 import { authSchema, handleLoginError, handleSignUpError } from 'services/AuthForm'
 
@@ -83,7 +83,7 @@ const AuthForm = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
       updateProfile(auth.currentUser, {
         displayName: username,
-        photoURL: DEFAULT_IMAGE
+        photoURL: DEFAULT_IMAGE,
       })
 
       const docRef = doc(db, 'users', userCredential.user.uid)

@@ -59,7 +59,7 @@ const SearchContent = () => {
     searchTerm,
     setSearchTerm,
     isLoading,
-    setIsLoading
+    setIsLoading,
   }
 
   if (isFetchingFail) return <NotFound />

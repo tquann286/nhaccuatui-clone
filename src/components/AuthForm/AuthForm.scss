@@ -14,6 +14,8 @@ $login-header-hight: 6rem;
       background-color: $light-color;
       position: relative;
       border-radius: 0.4rem;
+      width: 46rem;
+      height: 50rem;
 
       .af-header {
         @include flexCenter;
