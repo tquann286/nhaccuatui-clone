@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import './MainHomepage.scss'
 
 import { fetchHomeData } from 'services/HomeContent'
@@ -15,7 +15,7 @@ const MainHomepage = () => {
   const [isFetchingFail, setIsFetchingFail] = useState(false)
 
   const [state] = useStore()
-  const defineLang = (vie, eng) => state.lang === 'vi' ? vie : eng
+  const defineLang = useCallback((vie, eng) => (lang === 'vi' ? vie : eng), [lang])
 
   useEffect(() => {
     fetchHomeData()
@@ -31,7 +31,7 @@ const MainHomepage = () => {
 
         return <NotFound />
       })
-  }, [])
+  }, [defineLang])
 
   if (isFetchingFail) return <NotFound />
   

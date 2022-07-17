@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './AuthForm.scss'
 import { LoadingV2 } from 'components'
 
@@ -34,9 +34,7 @@ const AuthForm = () => {
   const [agreeTerm, setAgreeTerm] = useState(false || showLogin)
   const [isVerifying, setIsVerifying] = useState(false)
 
-  const defineLang = (vie, eng) => {
-    return lang === 'vi' ? vie : eng
-  }
+  const defineLang = (vie, eng) => lang === 'vi' ? vie : eng
 
   const handleAuthFunc = (loginFunc, signUpFunc) => {
     return (showLogin && loginFunc) || (showSignUp && signUpFunc)
