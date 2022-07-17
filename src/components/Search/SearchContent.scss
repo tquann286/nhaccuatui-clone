@@ -244,6 +244,8 @@
   }
 
   .smain-container {
+    margin-bottom: calc(#{$footer-height} * 2);
+    
     .trend-keywords-container {
       position: relative;
       padding: 4rem 3.2rem 0;
@@ -367,7 +369,6 @@
     }
 
     .maybe-hit-container {
-      margin-bottom: calc($footer-height * 2);
 
       .maybe-hit-title {
         width: 100%;

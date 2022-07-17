@@ -64,7 +64,8 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
     }
   }
 
-  const handleClearSearchItem = (index) => {
+  const handleClearSearchItem = (e, index) => {
+    e.stopPropagation()
     const newSearchHistory = searchHistory.filter((search, i) => i !== index)
     setSearchHistory(newSearchHistory)
     localStorage.setItem('searchHistory', newSearchHistory)
@@ -101,9 +102,9 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
           <h1 className='search-history-title'>{defineLang('Lịch sử tìm kiếm', 'Search History')}</h1>
           <div className='sh-main-list'>
             {searchHistory.map((search, i) => (
-              <div key={i} className='sh-item'>
+              <div key={i} className='sh-item' onClick={() => onNavSearch(search)}>
                 <p className='sh-search-term'>{search}</p>
-                <div className='sh-clear-item' onClick={() => handleClearSearchItem(i)}>
+                <div className='sh-clear-item' onClick={(e) => handleClearSearchItem(e, i)}>
                   <FaRegTrashAlt />
                 </div>
               </div>
