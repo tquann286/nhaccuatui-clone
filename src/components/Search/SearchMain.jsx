@@ -125,32 +125,32 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
                 <div className='speacial-tag'>{defineLang('Đặc biệt', 'Special')}</div>
                 <div className='maybe-hit-img-wrapper'>
                   <div className='maybe-hit-img-main'>
-                    <img src={maybeHit.thumbnail} alt={maybeHit.title} title={maybeHit.title} ref={songContainerRef} />
-                    <div className='maybe-hit-img-overlay'>
+                    <img src={maybeHit.thumbnail} alt={maybeHit.title} title={maybeHit.title} />
+                    <OptionModal showModal={showMoreOptions} positionRef={songContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
+                      <div className='om-main'>
+                        <ul>
+                          <li>
+                            <SiYoutubemusic />
+                            <span>{defineLang('Thêm vào chờ phát', 'Add to queue')}</span>
+                          </li>
+                          <li onClick={(e) => onCopyClick(e, maybeHit.title, maybeHit.key)}>
+                            <BsLink45Deg />
+                            <span>{defineLang('Sao chép link', 'Copy link')}</span>
+                          </li>
+                          <li onClick={() => navigate(`/${createSongUrl(maybeHit.title, maybeHit.key)}`)}>
+                            <BsMusicNote />
+                            <span>{defineLang('Đi đến bài hát', 'Go to song')}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </OptionModal>
+                    <div className='maybe-hit-img-overlay' ref={songContainerRef} >
                       <div className='maybe-hit-icon'>
                         <BsPlayCircleFill />
                       </div>
                       <div className='maybe-hit-more-options' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
                         <IoMdMore />
                       </div>
-                      <OptionModal showModal={showMoreOptions} positionRef={songContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
-                        <div className='om-main'>
-                          <ul>
-                            <li>
-                              <SiYoutubemusic />
-                              <span>{defineLang('Thêm vào chờ phát', 'Add to queue')}</span>
-                            </li>
-                            <li onClick={(e) => onCopyClick(e, maybeHit.title, maybeHit.key)}>
-                              <BsLink45Deg />
-                              <span>{defineLang('Sao chép link', 'Copy link')}</span>
-                            </li>
-                            <li onClick={() => navigate(`/${createSongUrl(maybeHit.title, maybeHit.key)}`)}>
-                              <BsMusicNote />
-                              <span>{defineLang('Đi đến bài hát', 'Go to song')}</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </OptionModal>
                     </div>
                   </div>
                 </div>
