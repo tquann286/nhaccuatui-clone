@@ -9,6 +9,7 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.8.4",
+    "framer-motion": "^6.5.1",
     "lodash": "^4.17.21",
     "millify": "^4.0.0",
     "nhaccuatui-api-full": "^1.1.0",
