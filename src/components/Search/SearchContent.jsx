@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import './SearchContent.scss'
-import { SearchHeader, SearchMain } from 'components'
+import { SearchHeader, SearchMain, Footer } from 'components'
 
 import { NotFound } from 'pages'
 
@@ -68,6 +68,7 @@ const SearchContent = () => {
     <div className='search-container'>
       <SearchHeader topArtists={topArtists} {...passedSearchProps} />
       <SearchMain trendingKeywords={trendingKeywords} {...passedSearchProps} />
+      <Footer />
     </div>
   )
 }
