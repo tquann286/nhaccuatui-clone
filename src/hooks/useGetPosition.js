@@ -7,7 +7,7 @@ const useGetPosition = (ref, handle, showModal) => {
 			const top = ref.current?.offsetTop || ref.current?.getBoundingClientRect().y + window.pageYOffset
       handle(position?.right, top)
     }
-  }, [showModal, ref])
+  }, [showModal, ref, handle])
 }
 
 export default useGetPosition

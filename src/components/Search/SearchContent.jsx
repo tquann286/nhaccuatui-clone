@@ -7,10 +7,10 @@ import { NotFound } from 'pages'
 import { getTopArtists, getTrendingKeyword } from 'services/Search/SearchContent'
 import { toastNotify } from 'share/toast'
 
-import { useStore, actions } from 'store'
+import { useStore } from 'store'
 
 const SearchContent = () => {
-  const [state, dispatch] = useStore()
+  const [state] = useStore()
   const { lang } = state
 
   const defineLang = useCallback((vie, eng) => (lang === 'vi' ? vie : eng), [lang])

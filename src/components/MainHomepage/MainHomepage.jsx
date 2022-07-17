@@ -15,7 +15,7 @@ const MainHomepage = () => {
   const [isFetchingFail, setIsFetchingFail] = useState(false)
 
   const [state] = useStore()
-  const defineLang = useCallback((vie, eng) => (lang === 'vi' ? vie : eng), [lang])
+  const defineLang = useCallback((vie, eng) => (state.lang === 'vi' ? vie : eng), [state.lang])
 
   useEffect(() => {
     fetchHomeData()
