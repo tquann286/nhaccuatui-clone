@@ -116,3 +116,9 @@ export const handleCopyClick = (e, lang, title, songId) => {
   navigator.clipboard.writeText(songLink)
   copyNotify(lang)
 }
+
+export const handleCopyPlaylist = (event, title, keyId, lang) => {
+	event.stopPropagation()
+	navigator.clipboard.writeText(`${PROXY}${createPlaylistUrl(title, keyId)}`)
+	copyNotify(lang)
+}

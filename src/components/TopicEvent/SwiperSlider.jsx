@@ -3,7 +3,7 @@ import { OptionModal } from 'components'
 import { BsFillPlayCircleFill, BsLink45Deg } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 
-import { handleCopyBtn } from 'services/SwiperSlider'
+import { handleCopyPlaylist } from 'share/utilities'
 
 const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist, lang}) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
@@ -21,7 +21,7 @@ const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist, lang}) => {
   }
 
   const handleCopyClick = (e) => {
-		handleCopyBtn(e, title , keyId, lang)
+		handleCopyPlaylist(e, title , keyId, lang)
     toggleShowMore()
   }
 

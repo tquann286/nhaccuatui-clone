@@ -1,0 +1,73 @@
+@import 'settings';
+
+.img-overlay-container {
+  position: relative;
+  width: 100%;
+  border: $border-light;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    img {
+      @include transform-effect(scale(1.1));
+    }
+
+    .io-overlay {
+      opacity: 1;
+    }
+  }
+
+  img {
+    @include transition-effect(0.3s);
+    cursor: pointer;
+    min-width: 16rem;
+    min-height: 16rem;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.4rem;
+    will-change: transform;
+  }
+
+  .io-overlay {
+    @include transition-effect(0.3s);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    will-change: opacity;
+
+    .io-play-button {
+      @include flexCenter;
+      text-align: center;
+      height: 100%;
+
+      svg {
+        @include transition-effect(0.3s);
+        font-size: 3.8rem;
+        color: rgba(255, 255, 255, 0.88);
+        will-change: opacity, transform;
+        &:hover {
+          @include transform-effect(scale(1.15));
+        }
+      }
+    }
+
+    .io-more-options {
+      @include display-flex;
+      @include fitContentWidth;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 0.4rem;
+      svg {
+        font-size: 2.5rem;
+        margin: 0.4rem;
+        cursor: pointer;
+        color: $light-color;
+      }
+    }
+  }
+}

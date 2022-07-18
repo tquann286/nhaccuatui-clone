@@ -4,8 +4,7 @@ import { BsFillPlayCircleFill, BsLink45Deg } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 
 import { useNavigate } from 'react-router-dom'
-import { handleCopyBtn } from 'services/SwiperSlider'
-import { createPlaylistUrl } from 'share/utilities'
+import { createPlaylistUrl, handleCopyPlaylist } from 'share/utilities'
 
 import { useStore } from 'store'
 
@@ -33,7 +32,7 @@ const SwiperSlider = ({keyId, title, thumbnail}) => {
 	}
 
   const handleCopyClick = (e) => {
-		handleCopyBtn(e, title , keyId, lang)
+		handleCopyPlaylist(e, title , keyId, lang)
     toggleShowMore()
   }
 

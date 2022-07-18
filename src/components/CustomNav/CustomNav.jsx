@@ -5,7 +5,9 @@ import './CustomNav.scss'
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
 
 export const SlideNextButton = () => {
-	const swiper = useSwiper()
+	const swiper = useSwiper({navigation: {
+    nextEl: 'cusArrow nextArr',
+  }})
 	const [isReachEnd, setIsReachEnd] = useState(false)
 
 	swiper.on('slideChange', () => {
@@ -24,7 +26,9 @@ export const SlideNextButton = () => {
 }
 
 export const SlidePrevButton = () => {
-	const swiper = useSwiper()
+	const swiper = useSwiper({navigation: {
+    prevEl: 'cusArrow prevArr',
+  }})
 	const [isReachBeginning, setIsReachBeginning] = useState(true)
 
 	swiper.on('slideChange', () => {

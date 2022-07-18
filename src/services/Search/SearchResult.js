@@ -16,3 +16,7 @@ export const searchResultNavbar = [
   { title: {vi: 'Danh sách phát', en: 'Playlist'}, value: 'playlist' },
   { title: {vi: 'Video', en: 'Video'}, value: 'video' },
 ]
+
+export const topResultSwiperProps = {
+  slidesPerView: 1
+}
