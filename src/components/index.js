@@ -5,6 +5,7 @@ export { default as ModalAnimate } from './Common/ModalAnimate'
 export { default as SongThumb } from './Common/SongThumb/SongThumb'
 export { default as OptionModal } from './Common/OptionModal/OptionModal'
 export { default as ImageOverlay } from './Common/ImageOverlay/ImageOverlay'
+export { default as CommonArtist } from './Common/CommonArtist/CommonArtist'
 
 // Home
 export { default as Loading } from './Loading/Loading'

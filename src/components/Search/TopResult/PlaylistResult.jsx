@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { ImageOverlay } from 'components'
+import { CommonArtist, ImageOverlay } from 'components'
 import { SwiperSlide } from 'swiper/react'
 import { createPlaylistUrl, handleCopyPlaylist } from 'share/utilities'
 
@@ -23,6 +23,11 @@ const PlaylistResult = ({ playlists, defineLang }) => {
                 <div className='tr-thumb-main'>
                   <ImageOverlay key={key} imageUrl={thumbnail} title={title} handleNavigate={() => navigate(createPlaylistUrl(title, key))} copyLink handleCopyLink={(e) => handleCopyPlaylist(e, title , key, defineLang)} />
                 </div>
+              </div>
+              <div className="tr-description">
+                <div className="tr-decoration">#1</div>
+                <div className="tr-main-title">{title}</div>
+                <CommonArtist artists={artists} />
               </div>
             </div>
           </SwiperSlide>

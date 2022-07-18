@@ -34,14 +34,14 @@ const ImageOverlay = ({ key, imageUrl, title, handleNavigate, addToFav, handleAd
   }
 
   return (
-    <div className='img-overlay-container' onClick={handleNavigate}>
+    <div key={key} className='img-overlay-container' onClick={handleNavigate}>
       <img className='io-img' src={imageUrl} alt={title || ''} title={title || ''} />
       <OptionModal showModal={showMoreOptions} positionRef={positionRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
         <ModalAnimate animateProps={basicModal} isVisible={showMoreOptions} key={key}>
           <div className='om-main'>
             <ul>
               {addToFav && (
-                <li>
+                <li onClick={handleAddToFav}>
                   <SiYoutubemusic />
                   <span>{defineLang('Thêm vào chờ phát', 'Add to queue')}</span>
                 </li>
