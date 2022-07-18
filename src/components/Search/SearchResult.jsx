@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react'
+import { Loading } from 'components'
 
 import { getSearchResult } from 'services/Search/SearchResult'
 
-const SearchResult = ({ searchQuery, defineLang, isLoading }) => {
+const SearchResult = ({ searchQuery, defineLang, isLoading, searchTerm }) => {
   const [searchResult, setSearchResult] = useState(null)
-  console.log(searchResult)
-
+  console.log('searchResult: ', searchResult)
+  
   useEffect(() => {
     const getSearchResultState = async () => {
       try {
-        const searchResult = await getSearchResult(searchQuery)
+        console.log(searchQuery)
+        const searchResult = await getSearchResult(searchTerm)
 
         setSearchResult(searchResult)
       } catch (error) {
@@ -20,7 +22,13 @@ const SearchResult = ({ searchQuery, defineLang, isLoading }) => {
     getSearchResultState()
   }, [searchQuery])
 
-  return <div>SearchResult</div>
+  if (isLoading) return <Loading />
+
+  return (
+    <div className="search-result-container">
+
+    </div>
+  )
 }
 
 export default SearchResult

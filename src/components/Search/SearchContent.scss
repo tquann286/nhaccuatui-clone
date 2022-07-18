@@ -568,6 +568,11 @@
     }
   }
 
+  .search-result-container {
+    margin-bottom: calc(#{$footer-height} * 2);
+
+  }
+
   .ft-container { 
     position: absolute;
     bottom: 0.8rem;

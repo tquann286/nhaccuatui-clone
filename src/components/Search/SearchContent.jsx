@@ -17,6 +17,7 @@ const SearchContent = () => {
   const { search: searchLocation } = useLocation()
   const [searchParams, setSearchParams] = useSearchParams()
   const [searchQuery, setSearchQuery] = useState(null)
+  console.log('searchQuery: ', searchQuery)
   
   const defineLang = useCallback((vie, eng) => (lang === 'vi' ? vie : eng), [lang])
 
@@ -77,7 +78,7 @@ const SearchContent = () => {
     <div className='search-container'>
       <SearchHeader topArtists={topArtists} {...passedSearchProps} />
       {searchQuery ? (
-        <SearchResult searchQuery={searchQuery} defineLang={defineLang} isLoading={isLoading} />
+        <SearchResult searchQuery={searchQuery} { ... passedSearchProps }  />
       ) : (
         <SearchMain trendingKeywords={trendingKeywords} {...passedSearchProps} />
       )}
