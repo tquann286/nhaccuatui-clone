@@ -9,3 +9,10 @@ export const getSearchResult = async (query) => {
     throw new Error(error)
   }
 }
+
+export const searchResultNavbar = [
+  { title: {vi: 'Tất cả', en: 'All'}, value: 'all' },
+  { title: {vi: 'Bài hát', en: 'Song'}, value: 'song' },
+  { title: {vi: 'Danh sách phát', en: 'Playlist'}, value: 'playlist' },
+  { title: {vi: 'Video', en: 'Video'}, value: 'video' },
+]
