@@ -36,7 +36,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
 
   const onCopyClick = (e, title, songId) => {
     toggleShowMore()
-    handleCopyClick(e, defineLang('vi', 'en'), title, songId)
+    handleCopyClick(e, defineLang, title, songId)
   }
 
   useEffect(() => {

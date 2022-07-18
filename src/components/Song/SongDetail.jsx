@@ -18,6 +18,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
   const moreDivRef = useRef(null)
 
   const navigate = useNavigate()
+  const defineLang = (vie, eng) => lang === 'vi' ? vie : eng
 
   useEffect(() => {
     setSongView(createRandomSongView())
@@ -34,7 +35,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
 
   const onCopyClick = (e) => {
     toggleShowMore()
-    handleCopyClick(e, lang, title, songId)
+    handleCopyClick(e, defineLang, title, songId)
   }
 
   return (

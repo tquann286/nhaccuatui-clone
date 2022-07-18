@@ -7,6 +7,7 @@ import { handleCopyPlaylist } from 'share/utilities'
 
 const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist, lang}) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
+	const defineLang = (vie, eng) => lang === 'vi' ? vie : eng
 
   const playlistContainerRef = useRef(null)
   const moreDivRef = useRef(null)
@@ -21,7 +22,7 @@ const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist, lang}) => {
   }
 
   const handleCopyClick = (e) => {
-		handleCopyPlaylist(e, title , keyId, lang)
+		handleCopyPlaylist(e, title , keyId, defineLang)
     toggleShowMore()
   }
 
@@ -36,7 +37,7 @@ const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist, lang}) => {
 						<div className='pl-play-btn'>
 							<BsFillPlayCircleFill />
 						</div>
-						<div title={lang === 'vi' ? 'Thêm' : 'More'} className='pl-more' onClick={(e) => handleMoreOptions(e)} ref={moreDivRef}>
+						<div title={defineLang('Thêm', 'More')} className='pl-more' onClick={(e) => handleMoreOptions(e)} ref={moreDivRef}>
 							<IoMdMore />
 						</div>
 					</div>
@@ -53,7 +54,7 @@ const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist, lang}) => {
             <ul>
               <li onClick={(e) => handleCopyClick(e)}>
                 <BsLink45Deg />
-                <span>{lang === 'vi' ? 'Sao chép link' : 'Copy link'}</span>
+                <span>{defineLang('Sao chép link', 'Copy link')}</span>
               </li>
             </ul>
           </div>

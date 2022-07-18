@@ -17,7 +17,7 @@ import { useStore } from 'store'
 
 const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMapping }) => {
   const [state] = useStore()
-  const { lang } = state
+  const defineLang = (vie, eng) => state.lang === 'vi' ? vie : eng
 
   const [showMoreOptions, setShowMoreOptions] = useState(false)
 
@@ -42,7 +42,7 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
 
     navigator.clipboard.writeText(videoLink)
     toggleShowMore()
-    copyNotify(lang)
+    copyNotify(defineLang)
   }
 
   const handleVideoClick = () => {
@@ -59,7 +59,7 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
             <div className='vd-play-icon'>
               <BsPlayCircleFill />
             </div>
-            <div title={lang === 'vi' ? 'Thêm' : 'More'} className='vd-more-options' onClick={(e) => handleMoreOptions(e)} ref={moreDivRef}>
+            <div title={defineLang('Thêm', 'More')} className='vd-more-options' onClick={(e) => handleMoreOptions(e)} ref={moreDivRef}>
               <IoMdMore />
             </div>
           </div>
@@ -88,12 +88,12 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
               {!isEmpty(refMapping) && (
                 <li>
                   <SiApplemusic />
-                  <span>{lang === 'vi' ? 'Nghe audio' : 'Listen audio'}</span>
+                  <span>{defineLang('Nghe audio', 'Listen audio')}</span>
                 </li>
               )}
               <li onClick={(e) => handleCopyClick(e)}>
                 <BsLink45Deg />
-                <span>{lang === 'vi' ? 'Sao chép link' : 'Copy link'}</span>
+                <span>{defineLang('Sao chép link', 'Copy link')}</span>
               </li>
             </ul>
           </div>

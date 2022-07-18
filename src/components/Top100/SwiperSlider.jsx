@@ -10,7 +10,8 @@ import { useStore } from 'store'
 
 const SwiperSlider = ({keyId, title, thumbnail}) => {
   const [state] = useStore()
-  const { lang } = state
+  const defineLang = (vie, eng) => state.lang === 'vi' ? vie : eng
+
 	const navigate = useNavigate()
 	
   const [showMoreOptions, setShowMoreOptions] = useState(false)
@@ -32,7 +33,7 @@ const SwiperSlider = ({keyId, title, thumbnail}) => {
 	}
 
   const handleCopyClick = (e) => {
-		handleCopyPlaylist(e, title , keyId, lang)
+		handleCopyPlaylist(e, title , keyId, defineLang)
     toggleShowMore()
   }
 
@@ -47,7 +48,7 @@ const SwiperSlider = ({keyId, title, thumbnail}) => {
 						<div className='pl-play-btn'>
 							<BsFillPlayCircleFill />
 						</div>
-						<div title={lang === 'vi' ? 'Thêm' : 'More'} className='pl-more' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
+						<div title={defineLang('Thêm', 'More')} className='pl-more' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
 							<IoMdMore />
 						</div>
 					</div>
@@ -57,7 +58,7 @@ const SwiperSlider = ({keyId, title, thumbnail}) => {
             <ul>
               <li onClick={(e) => handleCopyClick(e)}>
                 <BsLink45Deg />
-                <span>{lang === 'vi' ? 'Sao chép link' : 'Copy link'}</span>
+                <span>{defineLang('Sao chép link', 'Copy link')}</span>
               </li>
             </ul>
           </div>

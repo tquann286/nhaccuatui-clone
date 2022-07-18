@@ -89,8 +89,8 @@ export const getNavigateUrl = (url) => {
   }
 }
 
-export const copyNotify = (lang) =>
-  toast(lang === 'vi' ? '🦄 Đã sao chép link.' : '🦄 Copied link successfully.', {
+export const copyNotify = (defineLang) =>
+  toast(defineLang('🦄 Đã sao chép link.', '🦄 Copied link successfully.'), {
     position: 'bottom-left',
     autoClose: 3000,
     hideProgressBar: false,
@@ -109,16 +109,16 @@ export const handleBlurInput = (e) => {
   e.target.parentElement.classList.remove('focus')
 }
 
-export const handleCopyClick = (e, lang, title, songId) => {
+export const handleCopyClick = (e, defineLang, title, songId) => {
   e.stopPropagation()
 
   const songLink = `${PROXY}/${createSongUrl(title, songId)}`
   navigator.clipboard.writeText(songLink)
-  copyNotify(lang)
+  copyNotify(defineLang)
 }
 
-export const handleCopyPlaylist = (event, title, keyId, lang) => {
+export const handleCopyPlaylist = (event, title, keyId, defineLang) => {
 	event.stopPropagation()
 	navigator.clipboard.writeText(`${PROXY}${createPlaylistUrl(title, keyId)}`)
-	copyNotify(lang)
+	copyNotify(defineLang)
 }
