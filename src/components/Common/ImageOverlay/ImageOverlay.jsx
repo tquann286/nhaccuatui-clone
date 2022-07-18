@@ -28,6 +28,11 @@ const ImageOverlay = ({ key, imageUrl, title, addToFav, handleAddToFav, copyLink
     toggleShowMore()
   }
 
+  const onCopyLink = (e) => {
+    handleCopyLink(e)
+    toggleShowMore()
+  }
+
   return (
     <div className='img-overlay-container'>
       <img className='io-img' src={imageUrl} alt={title || ''} title={title || ''} />
@@ -42,7 +47,7 @@ const ImageOverlay = ({ key, imageUrl, title, addToFav, handleAddToFav, copyLink
                 </li>
               )}
               {copyLink && (
-                <li onClick={handleCopyLink}>
+                <li onClick={(e) => onCopyLink(e)}>
                   <BsLink45Deg />
                   <span>{defineLang('Sao chép link', 'Copy link')}</span>
                 </li>

@@ -19,7 +19,7 @@ const TopResult = ({ playlist, song, defineLang }) => {
       </div>
       <div className='tr-main'>
         <Swiper className='tr-swiper' {...topResultSwiperProps}>
-          {playlist && <PlaylistResult playlists={playlist} />}
+          {playlist && <PlaylistResult playlists={playlist} defineLang={defineLang} />}
         </Swiper>
       </div>
     </div>

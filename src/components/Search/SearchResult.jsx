@@ -3,6 +3,7 @@ import { Loading, TopResult } from 'components'
 import { NotFound } from 'pages'
 
 import { getSearchResult, searchResultNavbar } from 'services/Search/SearchResult'
+import { isEmpty } from 'lodash'
 
 const SearchResult = ({ searchQuery, defineLang, isLoading, searchTerm }) => {
   const [searchResult, setSearchResult] = useState(null)
@@ -45,9 +46,13 @@ const SearchResult = ({ searchQuery, defineLang, isLoading, searchTerm }) => {
             ))}
           </div>
         </div>
-        <div className='sr-main'>{currentCate === 'all' && (
-          <TopResult { ... recommend } defineLang={defineLang} />
-        )}</div>
+        <div className='sr-main'>
+          {currentCate === 'all' && (
+            <React.Fragment>
+              {isEmpty(recommend) || <TopResult { ... recommend } defineLang={defineLang} />}
+            </React.Fragment>
+          )}
+        </div>
       </div>
     )
   }
