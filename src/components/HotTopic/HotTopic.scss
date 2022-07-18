@@ -26,30 +26,6 @@
         right: 0;
         font-size: 1.8rem;
         margin-right: 3.2rem;
-        .cusArrow {
-          @include transition-effect(0.1s);
-          cursor: pointer;
-
-          &:hover {
-            color: $main-text-color;
-          }
-
-          &.prevArr {
-            margin: 0 0.8rem;
-
-            &.disabled {
-              cursor: default;
-              color: $disabled-color;
-            }
-          }
-
-          &.nextArr {
-            &.disabled {
-              cursor: default;
-              color: $disabled-color;
-            }
-          }
-        }
       }
     }
 

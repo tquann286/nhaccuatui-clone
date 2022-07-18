@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSwiper } from 'swiper/react'
+import './CustomNav.scss'
 
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
 
