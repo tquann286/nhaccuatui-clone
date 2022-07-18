@@ -11,7 +11,7 @@ import { basicModal } from 'share/animation'
 import { SiYoutubemusic } from 'react-icons/si'
 
 const ImageOverlay = ({ key, imageUrl, title, addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong }) => {
-  const [state] = useStore
+  const [state] = useStore()
   const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
 
   const [showMoreOptions, setShowMoreOptions] = useState(false)
