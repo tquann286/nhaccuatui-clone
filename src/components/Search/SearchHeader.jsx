@@ -38,7 +38,7 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
     }
   }
 
-  const onEnterSearch = e => e.keyCode === 13 && onNavSearch(searchTerm)
+  const onEnterSearch = (e) => e.keyCode === 13 && onNavSearch(searchTerm)
 
   return (
     <div className='sh-container'>
@@ -48,7 +48,10 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
         </div>
         <div className='search-input-main'>
           <div className='search-input-section'>
-            <input className='search-input-content' {...searchInputProps} onKeyDown={(e) => onEnterSearch(e)}/>
+            <input
+              className='search-input-content'
+              {...searchInputProps}
+            />
             <div className='search-suggest-container'>
               <div className='search-suggest-main'>{/* We are working on implementing the feature */}</div>
             </div>

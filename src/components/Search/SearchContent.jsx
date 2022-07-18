@@ -17,7 +17,6 @@ const SearchContent = () => {
   const { search: searchLocation } = useLocation()
   const [searchParams, setSearchParams] = useSearchParams()
   const [searchQuery, setSearchQuery] = useState(null)
-  console.log('searchQuery: ', searchQuery)
   
   const defineLang = useCallback((vie, eng) => (lang === 'vi' ? vie : eng), [lang])
 

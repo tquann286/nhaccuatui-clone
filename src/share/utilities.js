@@ -8,6 +8,10 @@ export const covertTimestamp = (time) => {
   return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
 }
 
+export const createSlug = (name) => {
+  if (name) return `${replaceDashUrl(removeVietnameseTones(name.trim()))}`
+}
+
 export const getPlaylistKeyId = (url) => {
   const startIndex = url.indexOf('va.') + 3
   const keyIdLength = 12
@@ -31,7 +35,7 @@ export const createPlaylistUrl = (title, keyId) => {
 
 export const createSongUrl = (title, keyId) => {
   if (title && keyId) {
-    return `bai-hat/${replaceDashUrl(removeVietnameseTones(title))}&k=${keyId}`
+    return `bai-hat/${createSlug(title)}&k=${keyId}`
   } else {
     return '/'
   }
@@ -47,7 +51,7 @@ export const createArtistUrl = (name, shortLink, artistId) => {
 
 export const createTopicUrl = (title, keyId) => {
   if (title && keyId) {
-    return `chu-de/${replaceDashUrl(removeVietnameseTones(title))}&k=${keyId}`
+    return `chu-de/${createSlug(title)}&k=${keyId}`
   } else {
     return '/'
   }
@@ -55,7 +59,7 @@ export const createTopicUrl = (title, keyId) => {
 
 export const createTop100Url = (title, keyId) => {
   if (title && keyId) {
-    return `top-100/${replaceDashUrl(removeVietnameseTones(title))}&k=${keyId}`
+    return `top-100/${createSlug(title)}&k=${keyId}`
   } else {
     return '/'
   }
@@ -111,5 +115,4 @@ export const handleCopyClick = (e, lang, title, songId) => {
   const songLink = `${PROXY}/${createSongUrl(title, songId)}`
   navigator.clipboard.writeText(songLink)
   copyNotify(lang)
-
 }
