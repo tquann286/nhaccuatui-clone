@@ -30,7 +30,7 @@ const ImageOverlay = ({ key, imageUrl, title, addToFav, handleAddToFav, copyLink
 
   return (
     <div className='img-overlay-container'>
-      <img className='io-img' src={imageUrl} alt={title || ''} />
+      <img className='io-img' src={imageUrl} alt={title || ''} title={title || ''} />
       <OptionModal showModal={showMoreOptions} positionRef={positionRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
         <ModalAnimate animateProps={basicModal} isVisible={showMoreOptions} key={key}>
           <div className='om-main'>
@@ -57,7 +57,7 @@ const ImageOverlay = ({ key, imageUrl, title, addToFav, handleAddToFav, copyLink
           </div>
         </ModalAnimate>
       </OptionModal>
-      <div className='io-overlay'>
+      <div className='io-overlay' ref={positionRef}>
         <div className='io-play-button'>
           <BsPlayCircleFill />
         </div>

@@ -11,7 +11,9 @@ const PlaylistResult = ({ playlists }) => {
       {playlists.map((playlist) => {
         const { artists, key, title, type, thumbnail } = playlist
         
-        const handleCopyLink = () => {}
+        const handleCopyLink = (e) => {
+          
+        }
 
         return (
           <SwiperSlide key={key}>
