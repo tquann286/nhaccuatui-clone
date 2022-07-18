@@ -30,21 +30,25 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
       setSearchTerm(name)
       navigate(createSearchUrl(name))
       if (searchHistory[searchHistory.length - 1] !== name) {
-        setSearchHistory([...searchHistory.filter((search) => search !== name), name])
-        handleNavSearch(defineLang, name, [...searchHistory.filter((search) => search !== name), name])
+        const newSearchHistory = [...searchHistory.filter((search) => search !== name), name]
+
+        setSearchHistory(newSearchHistory)
+        handleNavSearch(defineLang, name, newSearchHistory)
       }
     }
   }
 
+  const onEnterSearch = e => e.keyCode === 13 && onNavSearch(searchTerm)
+
   return (
     <div className='sh-container'>
       <div className={`search-input-container ${isFocusSearchInput && 'focus'}`}>
-        <div className='search-btn-container'>
+        <div className='search-btn-container' onClick={() => onNavSearch(searchTerm)}>
           <FiSearch />
         </div>
         <div className='search-input-main'>
           <div className='search-input-section'>
-            <input className='search-input-content' {...searchInputProps} />
+            <input className='search-input-content' {...searchInputProps} onKeyDown={(e) => onEnterSearch(e)}/>
             <div className='search-suggest-container'>
               <div className='search-suggest-main'>{/* We are working on implementing the feature */}</div>
             </div>

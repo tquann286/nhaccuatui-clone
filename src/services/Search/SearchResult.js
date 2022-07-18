@@ -2,7 +2,7 @@ import { searchByKeyword } from 'nhaccuatui-api-full/dist'
 
 export const getSearchResult = async (query) => {
   try {
-    const data = await searchByKeyword('son tung')
+    const data = await searchByKeyword(query)
 
     if (data) return data
   } catch (error) {

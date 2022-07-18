@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
+import { useLocation, useSearchParams } from 'react-router-dom'
 import './SearchContent.scss'
-import { SearchHeader, SearchMain, Footer } from 'components'
+import { SearchHeader, SearchMain, SearchResult, Footer } from 'components'
 
 import { NotFound } from 'pages'
 
@@ -13,6 +14,10 @@ const SearchContent = () => {
   const [state] = useStore()
   const { lang } = state
 
+  const { search: searchLocation } = useLocation()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchQuery, setSearchQuery] = useState(null)
+  
   const defineLang = useCallback((vie, eng) => (lang === 'vi' ? vie : eng), [lang])
 
   const [topArtists, setTopArtists] = useState(null)
@@ -52,6 +57,10 @@ const SearchContent = () => {
     getSearchContent()
   }, [defineLang])
 
+  useEffect(() => {
+    setSearchQuery(searchParams.get('q'))
+  }, [searchLocation])
+
   const passedSearchProps = {
     defineLang,
     searchHistory,
@@ -67,7 +76,11 @@ const SearchContent = () => {
   return (
     <div className='search-container'>
       <SearchHeader topArtists={topArtists} {...passedSearchProps} />
-      <SearchMain trendingKeywords={trendingKeywords} {...passedSearchProps} />
+      {searchQuery ? (
+        <SearchResult searchQuery={searchQuery} defineLang={defineLang} isLoading={isLoading} />
+      ) : (
+        <SearchMain trendingKeywords={trendingKeywords} {...passedSearchProps} />
+      )}
       <Footer />
     </div>
   )
