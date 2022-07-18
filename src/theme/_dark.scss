@@ -43,7 +43,7 @@ body[data-theme='dark'] {
   }
 
   // Color
-  .ls-auth-setting, .nav-name, .sm-container, .no-playing-song .main p.title, .af-header, .af-plugin p, .ls-library, .ls-user-name-content, a.suggest-title, p.title-playlist, .tk-title, .Toastify__toast-theme--dark, .maybe-hit-lead, .maybe-hit-desc-title, h1.search-history-title {
+  .ls-auth-setting, .nav-name, .sm-container, .no-playing-song .main p.title, .af-header, .af-plugin p, .ls-library, .ls-user-name-content, a.suggest-title, p.title-playlist, .tk-title, .Toastify__toast-theme--dark, .maybe-hit-lead, .maybe-hit-desc-title, h1.search-history-title, .tr-title-lead, .tr-main-title {
     color: rgba(244, 246, 248, 0.88) !important;
   }
 
@@ -56,7 +56,7 @@ body[data-theme='dark'] {
   }
 
   .nr-artist-name, .nr-date-release, .ma-active-artists, .ma-watch-all, .vd-artists, .sd-artists span, .sd-view-count svg, .sc-view-number, .tp-nav, .ht-nav, .t1-nav, .ft-container, .nav-content, .nav-item-detail-main span, .play-now, .af-header button.close-btn svg, .input-main input, p.notfound-title, .suggest-lead-title, .suggest-trending-info h5, p.title-playlist span, .explore-description p.description, .explore-btn-title, .search-btn-container svg,
-  input.search-input-content, .search-clear-btn svg, p.tk-content-title, .tk-content, p.ta-lead-title, p.ta-full-artists-name, .om-main ul li svg, .maybe-hit-desc-title span, .maybe-hit-artist-name, .maybe-hit-date-release, p.sh-clear-all, p.sh-search-term, .sh-clear-item svg {
+  input.search-input-content, .search-clear-btn svg, p.tk-content-title, .tk-content, p.ta-lead-title, p.ta-full-artists-name, .om-main ul li svg, .maybe-hit-desc-title span, .maybe-hit-artist-name, .maybe-hit-date-release, p.sh-clear-all, p.sh-search-term, .sh-clear-item svg, .common-artists-container, .tr-type {
     color: rgba(244, 246, 248, 0.5) !important;
   }
 

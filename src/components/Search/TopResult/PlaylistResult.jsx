@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { CommonArtist, ImageOverlay } from 'components'
 import { SwiperSlide } from 'swiper/react'
@@ -26,8 +26,11 @@ const PlaylistResult = ({ playlists, defineLang }) => {
               </div>
               <div className="tr-description">
                 <div className="tr-decoration">#1</div>
-                <div className="tr-main-title">{title}</div>
+                <div className="tr-main-title">
+                  <Link to={createPlaylistUrl(title, key)}>{title}</Link>
+                </div>
                 <CommonArtist artists={artists} />
+                <p className="tr-type">{type}</p>
               </div>
             </div>
           </SwiperSlide>
