@@ -51,6 +51,7 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
             <input
               className='search-input-content'
               {...searchInputProps}
+              onKeyDown={(e) => onEnterSearch(e)}
             />
             <div className='search-suggest-container'>
               <div className='search-suggest-main'>{/* We are working on implementing the feature */}</div>

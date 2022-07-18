@@ -1,10 +1,13 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { ImageOverlay } from 'components'
 import { SwiperSlide } from 'swiper/react'
-import { handleCopyPlaylist } from 'share/utilities'
+import { createPlaylistUrl, handleCopyPlaylist } from 'share/utilities'
 
 const PlaylistResult = ({ playlists, defineLang }) => {
+  const navigate = useNavigate()
+
   console.log('playlists: ', playlists)
   if (!playlists) return null
 
@@ -18,7 +21,7 @@ const PlaylistResult = ({ playlists, defineLang }) => {
             <div className='tr-slider'>
               <div className='tr-thumb-container'>
                 <div className='tr-thumb-main'>
-                  <ImageOverlay key={key} imageUrl={thumbnail} title={title} copyLink handleCopyLink={(e) => handleCopyPlaylist(e, title , key, defineLang)} />
+                  <ImageOverlay key={key} imageUrl={thumbnail} title={title} handleNavigate={() => navigate(createPlaylistUrl(title, key))} copyLink handleCopyLink={(e) => handleCopyPlaylist(e, title , key, defineLang)} />
                 </div>
               </div>
             </div>

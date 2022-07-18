@@ -10,7 +10,7 @@ import { IoMdMore } from 'react-icons/io'
 import { basicModal } from 'share/animation'
 import { SiYoutubemusic } from 'react-icons/si'
 
-const ImageOverlay = ({ key, imageUrl, title, addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong }) => {
+const ImageOverlay = ({ key, imageUrl, title, handleNavigate, addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong }) => {
   const [state] = useStore()
   const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
 
@@ -34,7 +34,7 @@ const ImageOverlay = ({ key, imageUrl, title, addToFav, handleAddToFav, copyLink
   }
 
   return (
-    <div className='img-overlay-container'>
+    <div className='img-overlay-container' onClick={handleNavigate}>
       <img className='io-img' src={imageUrl} alt={title || ''} title={title || ''} />
       <OptionModal showModal={showMoreOptions} positionRef={positionRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
         <ModalAnimate animateProps={basicModal} isVisible={showMoreOptions} key={key}>

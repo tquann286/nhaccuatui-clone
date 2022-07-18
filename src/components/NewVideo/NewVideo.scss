@@ -24,7 +24,7 @@
 					border-radius: 0.4rem;
 					overflow: hidden;
 					border: 0.1rem solid rgba(28, 30, 32, 0.05);
-					box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+					box-shadow: $box-shadow-effect;
 					cursor: pointer;
 
 					img.vd-img {

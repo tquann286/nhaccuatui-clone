@@ -174,7 +174,7 @@
               height: 100%;
               padding-bottom: 0.4rem;
               border-radius: 0.4rem;
-              box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+              box-shadow: $box-shadow-effect;
               background-color: $light-color;
 
               p.ta-lead-title {
@@ -425,7 +425,7 @@
                 border: $border-light;
                 border-radius: 0.4rem;
                 overflow: hidden;
-                box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+                box-shadow: $box-shadow-effect;
 
                 &:hover {
                   img {
