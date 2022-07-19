@@ -19,17 +19,14 @@
   }
 
   .tr-swiper {
-    @include display-flex;
-    @include align-items(center);
-    padding: 2.4rem 0rem 2.4rem 3.2rem;
-    background-color: rgba(0, 0, 0, 0.02);
-    margin-top: 1.6rem;
-    width: 100%;
 
     
     .tr-slider {
       @include display-flex;
       @include align-items(center);
+      padding: 2.4rem 0rem 2.4rem 3.2rem;
+      background-color: rgba(0, 0, 0, 0.02);
+      margin-top: 1.6rem;
       width: 100%;
 
       .tr-thumb-container {
