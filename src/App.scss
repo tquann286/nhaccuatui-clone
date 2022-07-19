@@ -1,6 +1,5 @@
-@import 'settings';
+@import 'sass/base/base';
 @import 'theme/dark';
-@import 'sass/base/utilities';
 
 html {
   font-size: 62.5%;
@@ -8,7 +7,7 @@ html {
 
 body {
   font-family: 'Montserrat', sans-serif;
-  color: $dark-text-color;
+  color: rgba(28, 30, 32, 0.88);
   position: relative;
 }
 

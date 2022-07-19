@@ -10,8 +10,6 @@ $login-header-hight: 6rem;
       @include display-flex;
       @include flexDirection(column);
       @include animation(scaleAndFadeIn, 0.1s, linear, forwards);
-
-      background-color: $light-color;
       position: relative;
       border-radius: 0.4rem;
       width: 46rem;

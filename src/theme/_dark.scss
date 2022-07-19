@@ -9,14 +9,6 @@ $darkmode-text-color: rgba(244, 246, 248, 0.88);
 $box-border-dark: 0.1rem solid #303130;
 $ball-color-dark: #404040;
 
-.color-0-88 {
-  color: rgba(28, 30, 32, 0.88);
-}
-
-svg {
-  color: rgba(28, 30, 32, 0.88);
-}
-
 body[data-theme='dark'] {
   color: $darkmode-text-color;
 
@@ -72,7 +64,7 @@ body[data-theme='dark'] {
   }
 
   // Background color
-  .af-main, .so-more-options-box, .vd-more-options-box, .checkmark, .ta-full-artists-content, .om-main, .sm-container, .sm-sub-items, .Toastify__toast-theme--dark {
+  .af-main, .so-more-options-box, .vd-more-options-box, .checkmark, .ta-full-artists-content, .om-main, .sm-container, .sm-sub-items, .Toastify__toast-theme--dark, .bg-dark-color-1 {
     background-color: rgba(24, 34, 45, 1) !important;
   }
 
