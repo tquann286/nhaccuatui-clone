@@ -40,7 +40,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
         {lang === 'vi' ? 'Mới phát hành' : 'New Releases'}
       </Link>
       <div className='nr-main'>
-        <div className='nr-active-slide'>
+        <div className='nr-active-slide bg-color-0-02'>
           <Slider {...activeSlideSettings} asNavFor={slide.thumbSlide} ref={activeSlideRef}>
             {newSong.map((song) => {
               const { key, artists, dateRelease, thumbnail, title } = song

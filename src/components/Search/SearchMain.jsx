@@ -103,7 +103,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
           <h1 className='search-history-title common-title color-0-88'>{defineLang('Lịch sử tìm kiếm', 'Search History')}</h1>
           <div className='sh-main-list'>
             {searchHistory.map((search, i) => (
-              <div key={i} className='sh-item hover-bg-color-0-05' onClick={() => onNavSearch(search)}>
+              <div key={i} className='sh-item bg-color-0-02 hover-bg-color-0-05' onClick={() => onNavSearch(search)}>
                 <p className='sh-search-term color-0-5'>{search}</p>
                 <div className='sh-clear-item' onClick={(e) => handleClearSearchItem(e, i)}>
                   <FaRegTrashAlt />
@@ -121,7 +121,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
           <div className='maybe-hit-title'>
             <div className='maybe-hit-lead common-title color-0-88'>{defineLang('Có thể hot', 'Maybe Hit')}</div>
           </div>
-          <div className='maybe-hit-wrapper'>
+          <div className='maybe-hit-wrapper bg-color-0-02'>
             <div className='maybe-hit-main'>
               <div className='maybe-hit-thumb'>
                 <div className='speacial-tag'>{defineLang('Đặc biệt', 'Special')}</div>

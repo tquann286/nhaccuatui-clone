@@ -42,7 +42,7 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
 
   return (
     <div className='sh-container'>
-      <div className={`search-input-container ${isFocusSearchInput && 'focus'}`}>
+      <div className={`search-input-container bg-color-0-02 ${isFocusSearchInput && 'focus'}`}>
         <div className='search-btn-container' onClick={() => onNavSearch(searchTerm)}>
           <FiSearch />
         </div>
@@ -94,7 +94,7 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
               </div>
               <div className='ta-full-artists-main'>
                 <div className='ta-full-artists-content bg-dark-color-1'>
-                  <p className='ta-lead-title color-0-5'>{defineLang('Nghệ sĩ Trending', 'Trending Artists')}</p>
+                  <p className='ta-lead-title bg-color-0-02 color-0-5'>{defineLang('Nghệ sĩ Trending', 'Trending Artists')}</p>
                   {topArtists.map((artist, i) => {
                     const { name, position } = artist
 

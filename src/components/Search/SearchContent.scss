@@ -23,7 +23,6 @@
       border: $border-light;
       border-radius: 0.4rem;
       color: rgba(28, 30, 32, 0.5);
-      background-color: rgba(0, 0, 0, 0.02);
 
       &.focus {
         border-color: $main-text-color !important;
@@ -179,7 +178,6 @@
                 font-weight: bold;
                 height: 3.2rem;
                 width: 100%;
-                background-color: rgba(28, 30, 32, 0.02);
               }
 
               .ta-full-artists-item {
@@ -298,12 +296,10 @@
           padding: 0 1.6rem;
           height: 4rem;
           margin-bottom: 0.4rem;
-          background-color: rgba(0, 0, 0, 0.02);
           border-radius: 0.4rem;
           cursor: pointer;
 
           &:hover {
-            background-color: rgba(28, 30, 32, 0.05);
 
             .sh-clear-item {
               opacity: 1;
@@ -356,7 +352,6 @@
       .maybe-hit-wrapper {
         width: 100%;
         padding: 1.2rem 3.2rem 3rem;
-        background-color: rgba(28, 30, 32, 0.02);
         margin-top: 1.6rem;
         border-radius: 0.4rem;
 
