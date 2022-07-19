@@ -19,5 +19,5 @@ export const searchResultNavbar = [
 
 export const topResultSwiperProps = {
   slidesPerView: 1,
-  centeredSlides: true
+  speed: 300,
 }

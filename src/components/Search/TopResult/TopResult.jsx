@@ -3,7 +3,7 @@ import './TopResult.scss'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { SlideNextButton, SlidePrevButton } from 'components/CustomNav/CustomNav'
-import 'swiper/css'
+import 'swiper/scss'
 
 import { topResultSwiperProps } from 'services/Search/SearchResult'
 import { PlaylistResult, TopSongResult } from 'components'
@@ -13,10 +13,14 @@ const TopResult = ({ playlist, song, defineLang, isLoading }) => {
 
   return (
     <div className='top-result-container'>
-      <div className='tr-title'>
-        <div className='tr-title-lead'>{defineLang('Top tìm kiếm', 'Top Result')}</div>
-      </div>
       <Swiper className='tr-swiper' {...topResultSwiperProps}>
+        <div className='tr-title'>
+          <div className='tr-title-lead'>{defineLang('Top tìm kiếm', 'Top Result')}</div>
+          <div className='custom-arrow-container'>
+            <SlidePrevButton />
+            <SlideNextButton />
+          </div>
+        </div>
         {playlist && (
           <React.Fragment>
             {playlist.map((pl) => (
