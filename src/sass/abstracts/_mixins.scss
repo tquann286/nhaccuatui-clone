@@ -121,10 +121,6 @@
     border-bottom-right-radius: 0.4rem;
     border-bottom-left-radius: 0.4rem;
   }
-
-  &:hover {
-    background-color: darken($light-color, 4);
-  }
 }
 
 @mixin userSelect($value) {

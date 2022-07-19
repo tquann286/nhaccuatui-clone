@@ -40,7 +40,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
         {lang === 'vi' ? 'Mới phát hành' : 'New Releases'}
       </Link>
       <div className='nr-main'>
-        <div className='nr-active-slide'>
+        <div className='nr-active-slide bg-color-0-02'>
           <Slider {...activeSlideSettings} asNavFor={slide.thumbSlide} ref={activeSlideRef}>
             {newSong.map((song) => {
               const { key, artists, dateRelease, thumbnail, title } = song
@@ -68,7 +68,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
                           })}
                         </div>
 
-                        <div className='nr-artist-name'>
+                        <div className='nr-artist-name color-0-5'>
                           {artists.map((artist, index) => {
                             const { artistId, name, shortLink } = artist
 
@@ -84,7 +84,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
                         </div>
                       </div>
                     </div>
-                    <div className='nr-date-release'>
+                    <div className='nr-date-release color-0-5'>
                       <GoCalendar />
                       <span>
                         {lang === 'vi' ? 'Ngày phát hành' : 'Released date'}: {covertTimestamp(dateRelease)}

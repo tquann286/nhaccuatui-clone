@@ -23,7 +23,7 @@ const HotTopic = ({ hotTopic }) => {
 			</div>
 			<div className='ht-main'>
 				<Swiper slidesPerView={4} spaceBetween={8}>
-					<div className='ht-nav'>
+					<div className='ht-nav color-0-5'>
 						<SlidePrevButton />
 						<SlideNextButton />
 					</div>

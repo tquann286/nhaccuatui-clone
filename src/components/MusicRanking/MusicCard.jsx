@@ -57,13 +57,13 @@ const MusicCard = ({ keyId, region, song, bgImage, category, lang }) => {
 					)
 				})}
 			</div>
-			<div className='ma-active-position'>#{position}</div>
+			<div className='ma-active-position color-0-05'>#{position}</div>
 			<div className='ma-active-title'>
 				<Link to={createSongUrl(title, songKey)}>{title}</Link>
 			</div>
 
 			{artists && (
-				<div className='ma-active-artists'>
+				<div className='ma-active-artists color-0-5'>
 					{artists.map((artist, index) => {
 						const { artistId, name, shortLink } = artist
 
@@ -78,7 +78,7 @@ const MusicCard = ({ keyId, region, song, bgImage, category, lang }) => {
 					})}
 				</div>
 			)}
-			<div className='ma-watch-all'>
+			<div className='ma-watch-all border-0-1 color-0-5'>
 				<Link to={createTop20Url(category)}>{lang === 'vi' ? 'Xem tất cả' : 'Full Chart'}</Link>
 			</div>
 		</div>

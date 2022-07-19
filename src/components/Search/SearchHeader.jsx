@@ -41,15 +41,15 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
   const onEnterSearch = (e) => e.keyCode === 13 && onNavSearch(searchTerm)
 
   return (
-    <div className='sh-container'>
-      <div className={`search-input-container ${isFocusSearchInput && 'focus'}`}>
+    <div className='sh-container border-0-1'>
+      <div className={`search-input-container border-0-05 bg-color-0-02 ${isFocusSearchInput && 'focus'}`}>
         <div className='search-btn-container' onClick={() => onNavSearch(searchTerm)}>
           <FiSearch />
         </div>
         <div className='search-input-main'>
           <div className='search-input-section'>
             <input
-              className='search-input-content'
+              className='search-input-content color-0-5'
               {...searchInputProps}
               onKeyDown={(e) => onEnterSearch(e)}
             />
@@ -69,7 +69,7 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
         <div className='trending-artists-container'>
           <div className='ta-main'>
             <div className='ta-wrapper'>
-              <div className='ta-active-artists'>
+              <div className='ta-active-artists border-0-05'>
                 <Swiper {...trendArtSwiperProps}>
                   {topArtists.map((artist, i) => {
                     const { name, position } = artist
@@ -93,14 +93,14 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
                 </Swiper>
               </div>
               <div className='ta-full-artists-main'>
-                <div className='ta-full-artists-content'>
-                  <p className='ta-lead-title'>{defineLang('Nghệ sĩ Trending', 'Trending Artists')}</p>
+                <div className='ta-full-artists-content bg-dark-color-1'>
+                  <p className='ta-lead-title bg-color-0-02 color-0-5'>{defineLang('Nghệ sĩ Trending', 'Trending Artists')}</p>
                   {topArtists.map((artist, i) => {
                     const { name, position } = artist
 
                     return (
-                      <div key={i} className='ta-full-artists-item' onClick={() => onNavSearch(name)}>
-                        <p className='ta-full-artists-name'>
+                      <div key={i} className='ta-full-artists-item hover-bg-color-0-05' onClick={() => onNavSearch(name)}>
+                        <p className='ta-full-artists-name color-0-5'>
                           <span className='ta-full-artists-position'>{position}.</span>
                           {name}
                         </p>

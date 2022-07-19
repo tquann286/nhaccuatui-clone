@@ -10,7 +10,7 @@ const CommonArtist = ({ artists }) => {
   return (
     <React.Fragment>
       {artists && (
-        <div className='common-artists-container'>
+        <div className='common-artists-container color-0-5'>
           {artists.map((artist, index) => {
             const { artistId, name, shortLink } = artist
 

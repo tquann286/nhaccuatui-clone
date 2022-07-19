@@ -1,7 +1,6 @@
 @import 'settings';
 
 .ft-container {
-	@include dark-color-text(0.5);
 	border: $border-light;
 
 	.ft-main {

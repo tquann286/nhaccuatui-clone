@@ -28,7 +28,6 @@
       .t1-nav {
         @include display-flex;
         @include align-items(center);
-        @include dark-color-text(0.5);
         
         height: 3rem;
         position: absolute;

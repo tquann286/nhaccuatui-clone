@@ -41,17 +41,17 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
   return (
     <React.Fragment>
       <div className='sd-container' ref={songContainerRef}>
-        <div className={`sd-main ${showMoreOptions ? 'focus' : 'non-focus'}`}>
+        <div className={`sd-main bg-color-0-02 ${showMoreOptions ? 'focus' : 'non-focus'}`}>
           <Link to={createSongUrl(title, songId)} className='sd-thumbnail' title={title}>
             <div className='sd-thumb-img' style={{ backgroundImage: `url(${thumbnail})` }}></div>
           </Link>
           <div className='sd-more'>
             <div className='sd-view-count'>
               <BsHeadphones />
-              <div className='sc-view-number'>{songView}</div>
+              <div className='sc-view-number color-0-5'>{songView}</div>
             </div>
             <div className='sd-more-options'>
-              <div className='sd-three-dots' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
+              <div className='sd-three-dots color-0-5' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
                 <IoMdMore />
               </div>
             </div>
@@ -60,7 +60,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
             <div className='sd-song-title'>
               <Link to={createSongUrl(title, songId)}>{title}</Link>
             </div>
-            <div className='sd-artists'>
+            <div className='sd-artists color-0-5'>
               {artists.map((artist, i) => {
                 const { artistId, name, shortLink } = artist
 
@@ -78,7 +78,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
         </div>
       </div>
       <OptionModal showModal={showMoreOptions} positionRef={songContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
-        <div className='om-main'>
+        <div className='om-main color-0-88 bg-dark-color-1'>
           <ul>
             <li>
               <SiYoutubemusic />

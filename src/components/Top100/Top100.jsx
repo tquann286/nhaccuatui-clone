@@ -16,7 +16,7 @@ const Top100 = ({ top100List }) => {
       </div>
       <div className="t1-main">
       <Swiper slidesPerView={4} spaceBetween={8}>
-								<div className='t1-nav'>
+								<div className='t1-nav color-0-5'>
 									<SlidePrevButton />
 									<SlideNextButton />
 								</div>

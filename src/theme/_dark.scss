@@ -42,64 +42,70 @@ body[data-theme='dark'] {
     border-left-color: rgba(244, 246, 248, 0.05) !important;
   }
 
+  a.active {
+    .nav-item {
+      background-color: rgba(244, 246, 248, 0.05) !important;
+    }
+  }
+
   // Color
-  .ls-auth-setting, .nav-name, .sm-container, .no-playing-song .main p.title, .af-header, .af-plugin p, .ls-library, .ls-user-name-content, a.suggest-title, p.title-playlist, .tk-title, .Toastify__toast-theme--dark, .maybe-hit-lead, .maybe-hit-desc-title, h1.search-history-title, .tr-title-lead, .tr-main-title, .sr-nav-item {
-    color: rgba(244, 246, 248, 0.88) !important;
+  .Toastify__toast-theme--dark, .color-0-88 {
+    color: rgba(244, 246, 248, 0.88);
   }
 
-  .term-container, .git-icon svg:hover {
-    color: rgba(244, 246, 248, 0.6) !important;
+  .git-icon svg:hover, .color-0-6 {
+    color: rgba(244, 246, 248, 0.6);
   }
 
-  .sd-three-dots {
-    color: rgba(244, 246, 248, 0.55) !important;
+  .color-0-5, svg {
+    color: rgba(244, 246, 248, 0.5);
   }
 
-  .nr-artist-name, .nr-date-release, .ma-active-artists, .ma-watch-all, .vd-artists, .sd-artists span, .sd-view-count svg, .sc-view-number, .tp-nav, .ht-nav, .t1-nav, .ft-container, .nav-content, .nav-item-detail-main span, .play-now, .af-header button.close-btn svg, .input-main input, p.notfound-title, .suggest-lead-title, .suggest-trending-info h5, p.title-playlist span, .explore-description p.description, .explore-btn-title, .search-btn-container svg,
-  input.search-input-content, .search-clear-btn svg, p.tk-content-title, .tk-content, p.ta-lead-title, p.ta-full-artists-name, .om-main ul li svg, .maybe-hit-desc-title span, .maybe-hit-artist-name, .maybe-hit-date-release, p.sh-clear-all, p.sh-search-term, .sh-clear-item svg, .common-artists-container, .tr-type {
-    color: rgba(244, 246, 248, 0.5) !important;
+  .disabled, .color-0-2 {
+    color: rgba(244, 246, 248, 0.2);
   }
 
-  .disabled, .input-icon, .more-info-icon {
-    color: rgba(244, 246, 248, 0.2) !important;
-  }
-
-  .ma-active-position {
-    color: rgba(244, 246, 248, 0.05) !important;
+  .color-0-05 {
+    color: rgba(244, 246, 248, 0.05);
   }
 
   // Background color
-  .af-main, .so-more-options-box, .vd-more-options-box, .checkmark, .ta-full-artists-content, .om-main, .sm-container, .sm-sub-items, .Toastify__toast-theme--dark {
-    background-color: rgba(24, 34, 45, 1) !important;
+  .Toastify__toast-theme--dark, .bg-dark-color-1 {
+    background-color: rgba(24, 34, 45, 1);
   }
 
-  li:not(.slick-active) .customDots,
-  .shadow2 {
-    background-color: rgba(244, 246, 248, 0.1) !important;
+  li:not(.slick-active) .customDots, .bg-color-0-1 {
+    background-color: rgba(244, 246, 248, 0.1);
   }
 
-  .sm-item:hover, .sm-sub-item:hover, .af-plugin-img, .shadow1, a.active .nav-item, .tk-content, .ta-full-artists-item:hover, .om-main ul li:hover, .sh-item:hover {
-    background-color: rgba(244, 246, 248, 0.05) !important;
+  .om-main ul li:hover, .bg-color-0-05 {
+    background-color: rgba(244, 246, 248, 0.05);
   }
 
-  .nr-active-slide, .sd-main, .search-input-container, p.ta-lead-title, .maybe-hit-wrapper, .sh-item {
-    background-color: rgba(244, 246, 248, 0.02) !important;
+  .bg-color-0-02 {
+    background-color: rgba(244, 246, 248, 0.02);
   }
 
-  .input-main input {
-    background-color: rgba(244, 246, 248, 0.01) !important;
+  .bg-color-0-01 {
+    background-color: rgba(244, 246, 248, 0.01);
+  }
+
+  .hover-bg-color-0-05 {
+    &:hover {
+      background-color: rgba(244, 246, 248, 0.05);
+    }
   }
 
   // Border
-  .checkmark {
-    border-color: rgba(244, 246, 248, 0.2) !important;
+  .border-0-2 {
+    border-color:rgba(244, 246, 248, 0.2);
   }
 
-  .ma-watch-all, .play-now, .explore-btn {
-    border-color: rgba(244, 246, 248, 0.1) !important;
+  .border-0-1 {
+    border-color:rgba(244, 246, 248, 0.1);
   }
 
-  .af-header, .input-main, .input-icon, .sh-container, .search-input-container, .ta-active-artists {
-    border-color: rgba(244, 246, 248, 0.05) !important;
+  .border-0-05 {
+    border-color:rgba(244, 246, 248, 0.05);
   }
 }

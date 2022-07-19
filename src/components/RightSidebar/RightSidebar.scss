@@ -44,7 +44,6 @@
           line-height: 1.8rem;
           width: 100%;
           margin-top: 4rem;
-          color: rgba(28, 30, 32, 0.88);
         }
 
         .play-now {
@@ -55,8 +54,8 @@
           height: 3.2rem;
           margin: 2.4rem auto 0;
           font-size: 1.3rem;
-          color: rgba(28, 30, 32, 0.5);
-          border: 0.1rem solid rgba(28, 30, 32, 0.1);
+          border-width: 0.1rem;
+          border-style: solid;
           border-radius: 1.6rem;
           padding: 1rem 3.7rem;
           cursor: pointer;
@@ -94,7 +93,6 @@
 
           .suggest-lead-title {
             margin: 0 0 0.8rem;
-            color: rgba(28, 30, 32, 0.5);
             font-size: 1.3rem;
             line-height: 1.8rem;
             width: 100%;
@@ -104,7 +102,6 @@
             @include threeDotContent;
             @include transition-effect(0.1s);
             @include hoverMainColor;
-            color: rgba(28, 30, 32, 0.88);
             font-weight: 700;
             cursor: pointer;
             width: 100%;
@@ -115,7 +112,6 @@
           h5 {
             @include threeDotContent;
             vertical-align: text-bottom;
-            color: rgba(28, 30, 32, 0.5);
 
             a {
               font-size: 1.2rem;

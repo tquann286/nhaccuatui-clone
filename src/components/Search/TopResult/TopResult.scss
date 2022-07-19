@@ -21,7 +21,6 @@
         line-height: 3rem;
         font-size: 2.2rem;
         font-weight: 600;
-        color: rgba(28, 30, 32, 0.88);
       }
     }
 
@@ -62,7 +61,6 @@
           @include transition-effect(0.15s);
           @include hoverMainColor;
           font-weight: 600;
-          color: rgba(28, 30, 32, 0.88);
           min-width: 3rem;
           font-size: 1.4rem;
           line-height: 2rem;
@@ -71,7 +69,6 @@
 
         p.tr-type {
           text-transform: uppercase;
-          color: rgba(28, 30, 32, 0.5);
           font-size: 1.3rem;
           line-height: 1.8rem;
         }

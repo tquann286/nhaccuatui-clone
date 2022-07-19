@@ -21,18 +21,15 @@
           p.title-playlist {    
             font-size: 1.6rem;
             font-weight: bold;
-            color: rgba(28,30,32,0.88);
 
             span {
               font-size: 1.4rem;
               font-weight: 400;
-              color: rgba(28,30,32,0.5);
             }
           }
 
           p.description {
             margin-top: 2rem;
-            color: rgba(28,30,32,0.5);
             font-size: 1.4rem;
             font-weight: 400;
           }
@@ -43,13 +40,12 @@
             margin-top: 2.4rem;
             width: 16rem;
             height: 3.2rem;
-            border: 0.1rem solid rgba(28,30,32,0.1);
+            border: 0.1rem solid;
             border-radius: 1.6rem;
             cursor: pointer;
 
             &-title {
               @include transition-effect(0.1s);
-              color: rgba(28,30,32,0.5);
               font-size: 1.4rem;
               font-weight: 400;
             }

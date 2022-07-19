@@ -1,8 +1,67 @@
-@mixin commonMainOutlet {
-	@include transition-effect(0.75s);
-	width: calc(100% - $left-sidebar-width - $right-sidebar-width);
-	margin-left: $left-sidebar-width;
-	margin-right: $right-sidebar-width;
-	padding-bottom: 0.8rem;
-	min-height: 100vh;
+.common-title {
+  font-size: 2.2rem;
+  font-weight: 700;
 }
+
+// Color 
+.color-0-88 {
+  color: rgba(28, 30, 32, 0.88);
+}
+
+.color-0-6 {
+  color: rgba(28, 30, 32, 0.6);
+}
+
+.color-0-5 {
+  color: rgba(28, 30, 32, 0.5);
+}
+
+.color-0-2 {
+  color: rgba(28, 30, 32, 0.2);
+}
+
+.color-0-05 {
+  color: rgba(28, 30, 32, 0.05);
+}
+
+// Background Color
+.bg-dark-color-1 {
+  background-color: #fafafa;
+}
+
+.bg-color-0-1 {
+  background-color: rgba(28, 30, 32, 0.1);
+}
+
+.bg-color-0-05 {
+  background-color: rgba(28, 30, 32, 0.05);
+}
+
+.bg-color-0-02 {
+  background-color: rgba(28, 30, 32, 0.02);
+}
+
+.bg-color-0-01 {
+  background-color: rgba(28, 30, 32, 0.01);
+}
+
+// Border
+.border-0-2 {
+  border-color:rgba(28, 30, 32, 0.2);
+}
+
+.border-0-1 {
+  border-color:rgba(28, 30, 32, 0.1);
+}
+
+.border-0-05 {
+  border-color:rgba(28, 30, 32, 0.05);
+}
+
+// Hover Effect
+.hover-bg-color-0-05 {
+  &:hover {
+    background-color: rgba(28, 30, 32, 0.05);
+  }
+}
+

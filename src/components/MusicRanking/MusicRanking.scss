@@ -28,7 +28,7 @@ $card-border-radius: 0.4rem 0.4rem 0 0;
 			height: 32rem;
 			background-color: rgba(28, 30, 32, 0.02);
 			&:not(:last-child) {
-				margin-right: 1.6rem;
+				padding-right: 1.6rem;
 			}
 			border-radius: $card-border-radius;
 
@@ -113,7 +113,6 @@ $card-border-radius: 0.4rem 0.4rem 0 0;
 			.ma-active-artists {
 				@include transition-effect(0.1s);
 				@include fitContentWidth;
-				@include dark-color-text(0.5);
 				@include threeDotContent;
 				max-width: 100%;
 				margin-top: 0.6rem;
@@ -131,7 +130,6 @@ $card-border-radius: 0.4rem 0.4rem 0 0;
 			}
 
 			.ma-active-position {
-				@include dark-color-text(0.05);
 				position: absolute;
 				top: 19.2rem;
 				right: 3.3rem;
@@ -143,13 +141,12 @@ $card-border-radius: 0.4rem 0.4rem 0 0;
 			.ma-watch-all {
 				@include transition-effect(0.1s);
 				@include hoverMainColor;
-				@include dark-color-text(0.5);
 				width: 12rem;
 				height: 3.2rem;
 				line-height: 3.2rem;
 				font-size: 1.3rem;
 				font-weight: 500;
-				border: 0.1rem solid rgba(28,30,32,0.1);
+				border: 0.1rem solid;
 				text-align: center;
 				border-radius: 0.4rem;
 				margin-left: 2.4rem;

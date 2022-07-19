@@ -11,7 +11,8 @@
     width: 100%;
     height: $search-header-height;
     padding: 0 3.2rem;
-    border-bottom: $border-light;
+    border-width: 0 0 0.1rem 0;
+    border-style: solid;
 
     .search-input-container {
       @include display-flex;
@@ -20,10 +21,10 @@
       position: relative;
       width: 50%;
       height: $search-content-height;
-      border: $border-light;
+      border-width: 0.1rem;
+      border-style: solid;
       border-radius: 0.4rem;
       color: rgba(28, 30, 32, 0.5);
-      background-color: rgba(0, 0, 0, 0.02);
 
       &.focus {
         border-color: $main-text-color !important;
@@ -36,7 +37,6 @@
         padding: 1.6rem 1.1rem;
 
         svg {
-          color: rgba(28, 30, 32, 0.5);
           font-size: 1.7rem;
         }
       }
@@ -55,7 +55,6 @@
             width: 100%;
             line-height: 2rem;
             font-size: 1.4rem;
-            color: rgba(28, 30, 32, 0.5);
           }
 
           .search-suggest-container {
@@ -102,7 +101,6 @@
 
           svg {
             font-size: 1.6rem;
-            color: rgba(28, 30, 32, 0.5);
             font-weight: 700;
           }
         }
@@ -132,7 +130,8 @@
             overflow: hidden;
             height: $search-content-height;
             width: 18rem;
-            border: $border-light;
+            border-width: 0.1rem;
+            border-style: solid;
             border-radius: 2rem;
             cursor: pointer;
 
@@ -175,7 +174,6 @@
               padding-bottom: 0.4rem;
               border-radius: 0.4rem;
               box-shadow: $box-shadow-effect;
-              background-color: $light-color;
 
               p.ta-lead-title {
                 @include flexCenter;
@@ -183,8 +181,6 @@
                 font-weight: bold;
                 height: 3.2rem;
                 width: 100%;
-                color: rgba(28, 30, 32, 0.5);
-                background-color: rgba(28, 30, 32, 0.02);
               }
 
               .ta-full-artists-item {
@@ -198,14 +194,10 @@
                 position: relative;
                 width: 18rem;
                 height: 100%;
-
-                &:hover {
-                  background-color: rgba(28, 30, 32, 0.05);
-                  cursor: pointer;
-                }
+                cursor: pointer;
+                
                 p.ta-full-artists-name {
                   @include threeDotContent;
-                  color: rgba(28, 30, 32, 0.5);
                   font-size: 1.3rem;
                   width: 85%;
                   span.ta-full-artists-position {
@@ -256,12 +248,10 @@
           position: relative;
           display: inline-block;
           font-size: 1.4rem;
-          color: rgba(28, 30, 32, 0.5);
           margin-bottom: 0.8rem;
           margin-right: 1.8rem;
           margin-left: 0;
           padding: 0.6rem 1.2rem 0.5rem;
-          background-color: rgba(28, 30, 32, 0.05);
           border-top-left-radius: 0.4rem;
           border-bottom-left-radius: 0.4rem;
           cursor: pointer;
@@ -283,7 +273,6 @@
           p.tk-content-title {
             @include transition-effect(0.1s);
             @include hoverMainColor;
-            color: rgba(28, 30, 32, 0.5);
             span.tk-position {
               color: #2daaed;
               font-weight: 700;
@@ -310,12 +299,10 @@
           padding: 0 1.6rem;
           height: 4rem;
           margin-bottom: 0.4rem;
-          background-color: rgba(0, 0, 0, 0.02);
           border-radius: 0.4rem;
           cursor: pointer;
 
           &:hover {
-            background-color: rgba(28, 30, 32, 0.05);
 
             .sh-clear-item {
               opacity: 1;
@@ -324,7 +311,6 @@
 
           p.sh-search-term {
             font-size: 1.5rem;
-            color: rgba(28, 30, 32, 0.5);
             font-weight: 600;
           }
           .sh-clear-item {
@@ -333,7 +319,6 @@
             svg {
               @include transition-effect(0.15s);
               font-size: 1.6rem;
-              color: rgba(28, 30, 32, 0.5);
               font-weight: 400;
 
               &:hover {
@@ -353,7 +338,6 @@
         font-size: 1.3rem;
         line-height: 1.8rem;
         cursor: pointer;
-        color: rgba(28, 30, 32, 0.5);
       }
     }
 
@@ -371,7 +355,6 @@
       .maybe-hit-wrapper {
         width: 100%;
         padding: 1.2rem 3.2rem 3rem;
-        background-color: rgba(28, 30, 32, 0.02);
         margin-top: 1.6rem;
         border-radius: 0.4rem;
 
@@ -480,9 +463,7 @@
             .maybe-hit-desc-title {
               @include threeDotContent;
               font-size: 1.4rem;
-              color: rgba(28, 30, 32, 0.88);
               span {
-                color: rgba(28, 30, 32, 0.5);
                 font-size: 1.3rem;
               }
 
@@ -524,7 +505,6 @@
                   overflow: hidden;
                   font-size: 1.3rem;
                   margin-left: 1.2rem;
-                  color: rgba(28, 30, 32, 0.5);
                   a {
                     span {
                       @include transition-effect(0.1s);
@@ -541,7 +521,6 @@
 
               margin-top: 0.6rem;
               font-size: 1.4rem;
-              color: rgba(28, 30, 32, 0.5);
               user-select: text;
               svg {
                 margin-right: 0.4rem;
@@ -577,7 +556,6 @@
           font-size: 1.4rem;
           font-weight: 600;
           margin: 0 0.4rem;
-          color: rgba(28,30,32,0.88);
           cursor: pointer;
 
           &:hover {

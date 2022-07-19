@@ -24,7 +24,7 @@ const TopSongResult = ({ song, defineLang }) => {
           <Link to={createSongUrl(title, key)}>{title}</Link>
         </div>
         <CommonArtist artists={artists} />
-        <p className='tr-type'>{type}</p>
+        <p className='tr-type color-0-5'>{type}</p>
       </div>
     </div>
   )

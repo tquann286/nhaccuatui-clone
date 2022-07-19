@@ -150,8 +150,8 @@ const AuthForm = () => {
 
   return (
     <div className='af-container' onClick={(e) => e.stopPropagation()}>
-      <div className='af-main'>
-        <div className='af-header'>
+      <div className='af-main bg-dark-color-1'>
+        <div className='af-header border-0-05 color-0-88'>
           <h4>{lang === 'vi' ? handleAuthFunc('Đăng nhập', 'Đăng ký') : handleAuthFunc('Sign in', 'Sign up')}</h4>
           <button className='close-btn' onClick={handleAuthFunc(toggleShowLogin, toggleShowSignUp)}>
             <IoMdClose />
@@ -163,12 +163,12 @@ const AuthForm = () => {
               {showSignUp && (
                 <React.Fragment>
                   <div className='input-container username'>
-                    <div className='input-main'>
-                      <AiOutlineUser className='input-icon' />
-                      <input type='text' {...register('username')} placeholder={defineLang('Tên hiển thị', 'Username')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
+                    <div className='input-main border-0-05'>
+                      <AiOutlineUser className='input-icon border-0-05 color-0-5' />
+                      <input className='color-0-5 bg-color-0-01' type='text' {...register('username')} placeholder={defineLang('Tên hiển thị', 'Username')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                       {showSignUp && (
                         <div className='more-info username'>
-                          <BsInfoCircle className='more-info-icon' />
+                          <BsInfoCircle className='more-info-icon color-0-2' />
                           <div className='more-info-description'>
                             <p>{defineLang('Bạn có thể sử dụng chữ cái, chữ số, gạch dưới và dấu chấm. Chiều dài tối đa 30 kí tự', 'You can use letters, numbers, underscores and dots. Length from 30 characters')}</p>
                           </div>
@@ -184,12 +184,12 @@ const AuthForm = () => {
                 </React.Fragment>
               )}
               <div className='input-container email'>
-                <div className='input-main'>
-                  <HiOutlineMail className='input-icon' />
-                  <input type='email' {...register('email')} placeholder='Email' onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
+                <div className='input-main border-0-05'>
+                  <HiOutlineMail className='input-icon border-0-05 color-0-5' />
+                  <input className='color-0-5 bg-color-0-01' type='email' {...register('email')} placeholder='Email' onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                   {showSignUp && (
                     <div className='more-info email'>
-                      <BsInfoCircle className='more-info-icon' />
+                      <BsInfoCircle className='more-info-icon color-0-2' />
                       <div className='more-info-description'>
                         <p>{defineLang('Điền vào Email bạn muốn sử dụng cho tài khoản này', 'Fill in the Email you want to use for this account')}</p>
                       </div>
@@ -203,12 +203,12 @@ const AuthForm = () => {
                 </p>
               )}
               <div className='input-container password'>
-                <div className='input-main'>
-                  <BsKeyboard className='input-icon' />
-                  <input type='password' {...register('password')} placeholder={defineLang('Mật khẩu', 'Password')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
+                <div className='input-main border-0-05'>
+                  <BsKeyboard className='input-icon border-0-05 color-0-5' />
+                  <input className='color-0-5 bg-color-0-01' type='password' {...register('password')} placeholder={defineLang('Mật khẩu', 'Password')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                   {showSignUp && (
                     <div className='more-info password'>
-                      <BsInfoCircle className='more-info-icon' />
+                      <BsInfoCircle className='more-info-icon color-0-2' />
                       <div className='more-info-description'>
                         <p>{defineLang('Chiều dài ít nhất 6 kí tự. Không sử dụng tiếng Việt có dấu', 'Length is must more than 6 characters. Do not use accented Vietnamese')}</p>
                       </div>
@@ -224,12 +224,12 @@ const AuthForm = () => {
               {showSignUp && (
                 <React.Fragment>
                   <div className='input-container confirmedPassword'>
-                    <div className='input-main'>
-                      <BsKeyboard className='input-icon' />
-                      <input type='password' {...register('confirmedPassword')} placeholder={defineLang('Nhập lại mật khẩu', 'Re-enter Password')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
+                    <div className='input-main border-0-05'>
+                      <BsKeyboard className='input-icon border-0-05 color-0-5' />
+                      <input className='color-0-5 bg-color-0-01' type='password' {...register('confirmedPassword')} placeholder={defineLang('Nhập lại mật khẩu', 'Re-enter Password')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                       {showSignUp && (
                         <div className='more-info confirmedPassword'>
-                          <BsInfoCircle className='more-info-icon' />
+                          <BsInfoCircle className='more-info-icon color-0-2' />
                           <div className='more-info-description'>
                             <p>{defineLang('Nhập lại mật khẩu giống như bên trên một lần nữa', 'Re-enter the same password as above again')}</p>
                           </div>
@@ -245,11 +245,11 @@ const AuthForm = () => {
                 </React.Fragment>
               )}
               {showSignUp && (
-                <div className='term-container'>
+                <div className='term-container color-0-6'>
                   <label className='container'>
                     {defineLang(`Tôi đã đọc và đồng ý với các `, `I have read and agree to the `)}
-                    <input type='checkbox' checked={agreeTerm} onChange={() => setAgreeTerm(!agreeTerm)} />
-                    <span className='checkmark'></span>
+                    <input className='color-0-5 bg-color-0-01' type='checkbox' checked={agreeTerm} onChange={() => setAgreeTerm(!agreeTerm)} />
+                    <span className='checkmark border-0-2 bg-dark-color-1'></span>
                   </label>
                   <a href={TERM_LINK} className='link-term' target='_blank' rel='noreferrer'>
                     {defineLang('Điều khoản', 'Terms')}
@@ -262,25 +262,25 @@ const AuthForm = () => {
             </form>
           </div>
           <div className='af-plugin'>
-            <p>{handleAuthFunc(defineLang('Hoặc đăng nhập bằng:', 'Or sign in via:'), defineLang('Đăng nhập NCT ID:', 'Sign in with NCT ID:'))}</p>
+            <p className='color-0-88'>{handleAuthFunc(defineLang('Hoặc đăng nhập bằng:', 'Or sign in via:'), defineLang('Đăng nhập NCT ID:', 'Sign in with NCT ID:'))}</p>
             {showSignUp && (
               <React.Fragment>
-                <div className='af-plugin-img af-nct-login' onClick={changeAuthForm}>
+                <div className='af-plugin-img bg-color-0-05 af-nct-login' onClick={changeAuthForm}>
                   <img src={loginLogo} alt='NCT logo' />
                 </div>
-                <p>{defineLang('Hoặc', 'Or')}</p>
+                <p className='color-0-88'>{defineLang('Hoặc', 'Or')}</p>
               </React.Fragment>
             )}
-            <div className='af-plugin-img af-fb' onClick={onSignInWithFacebook}>
+            <div className='af-plugin-img bg-color-0-05 af-fb' onClick={onSignInWithFacebook}>
               <FaFacebookF />
             </div>
-            <div className='af-plugin-img af-gg' onClick={onSignInWithGoogle}>
+            <div className='af-plugin-img bg-color-0-05 af-gg' onClick={onSignInWithGoogle}>
               <FcGoogle />
             </div>
           </div>
           {showLogin && (
             <div className='signup-now'>
-              <p>
+              <p className='color-0-88'>
                 {defineLang('Bạn chưa có tài khoản NCT ID?', "Don't have NCT ID account?")}
                 <span onClick={changeAuthForm}>{defineLang(` Đăng ký ngay`, ` Sign up now`)}</span>
               </p>
