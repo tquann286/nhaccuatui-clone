@@ -10,16 +10,18 @@ export const SlideNextButton = () => {
   }})
 	const [isReachEnd, setIsReachEnd] = useState(false)
 
-	swiper.on('slideChange', () => {
+	const isEnding = () => {
 		if (swiper.isEnd) {
 			setIsReachEnd(true)
 		} else {
 			setIsReachEnd(false)
 		}
-	})
+	}
+
+	swiper.on('slideChange', isEnding)
 
 	return (
-		<div className={`cusArrow nextArr ${isReachEnd ? 'disabled' : ''}`} onClick={() => swiper.slideNext()}>
+		<div className={`cusArrow nextArr ${(swiper.slides.length === 1 || isReachEnd) ? 'disabled' : ''}`} onClick={() => swiper.slideNext()}>
 			<IoIosArrowForward />
 		</div>
 	)
