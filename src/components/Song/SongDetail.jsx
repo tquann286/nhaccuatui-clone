@@ -81,15 +81,15 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
         <div className='om-main'>
           <ul>
             <li>
-              <SiYoutubemusic />
+              <SiYoutubemusic className='color-0-5' />
               <span>{lang === 'vi' ? 'Thêm vào chờ phát' : 'Add to queue'}</span>
             </li>
             <li onClick={(e) => onCopyClick(e)}>
-              <BsLink45Deg />
+              <BsLink45Deg className='color-0-5' />
               <span>{lang === 'vi' ? 'Sao chép link' : 'Copy link'}</span>
             </li>
             <li onClick={() => navigate(createSongUrl(title, songId))}>
-              <BsMusicNote />
+              <BsMusicNote className='color-0-5' />
               <span>{lang === 'vi' ? 'Đi đến bài hát' : 'Go to song'}</span>
             </li>
           </ul>

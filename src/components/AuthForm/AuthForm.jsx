@@ -154,7 +154,7 @@ const AuthForm = () => {
         <div className='af-header color-0-88'>
           <h4>{lang === 'vi' ? handleAuthFunc('Đăng nhập', 'Đăng ký') : handleAuthFunc('Sign in', 'Sign up')}</h4>
           <button className='close-btn' onClick={handleAuthFunc(toggleShowLogin, toggleShowSignUp)}>
-            <IoMdClose />
+            <IoMdClose className='color-0-5' />
           </button>
         </div>
         <div className='af-content' style={showLogin ? { marginTop: '3.6rem' } : {}}>
@@ -165,7 +165,7 @@ const AuthForm = () => {
                   <div className='input-container username'>
                     <div className='input-main'>
                       <AiOutlineUser className='input-icon' />
-                      <input type='text' {...register('username')} placeholder={defineLang('Tên hiển thị', 'Username')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
+                      <input className='color-0-5' type='text' {...register('username')} placeholder={defineLang('Tên hiển thị', 'Username')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                       {showSignUp && (
                         <div className='more-info username'>
                           <BsInfoCircle className='more-info-icon' />
@@ -186,7 +186,7 @@ const AuthForm = () => {
               <div className='input-container email'>
                 <div className='input-main'>
                   <HiOutlineMail className='input-icon' />
-                  <input type='email' {...register('email')} placeholder='Email' onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
+                  <input className='color-0-5' type='email' {...register('email')} placeholder='Email' onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                   {showSignUp && (
                     <div className='more-info email'>
                       <BsInfoCircle className='more-info-icon' />
@@ -205,7 +205,7 @@ const AuthForm = () => {
               <div className='input-container password'>
                 <div className='input-main'>
                   <BsKeyboard className='input-icon' />
-                  <input type='password' {...register('password')} placeholder={defineLang('Mật khẩu', 'Password')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
+                  <input className='color-0-5' type='password' {...register('password')} placeholder={defineLang('Mật khẩu', 'Password')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                   {showSignUp && (
                     <div className='more-info password'>
                       <BsInfoCircle className='more-info-icon' />
@@ -226,7 +226,7 @@ const AuthForm = () => {
                   <div className='input-container confirmedPassword'>
                     <div className='input-main'>
                       <BsKeyboard className='input-icon' />
-                      <input type='password' {...register('confirmedPassword')} placeholder={defineLang('Nhập lại mật khẩu', 'Re-enter Password')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
+                      <input className='color-0-5' type='password' {...register('confirmedPassword')} placeholder={defineLang('Nhập lại mật khẩu', 'Re-enter Password')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                       {showSignUp && (
                         <div className='more-info confirmedPassword'>
                           <BsInfoCircle className='more-info-icon' />
@@ -248,7 +248,7 @@ const AuthForm = () => {
                 <div className='term-container color-0-6'>
                   <label className='container'>
                     {defineLang(`Tôi đã đọc và đồng ý với các `, `I have read and agree to the `)}
-                    <input type='checkbox' checked={agreeTerm} onChange={() => setAgreeTerm(!agreeTerm)} />
+                    <input className='color-0-5' type='checkbox' checked={agreeTerm} onChange={() => setAgreeTerm(!agreeTerm)} />
                     <span className='checkmark'></span>
                   </label>
                   <a href={TERM_LINK} className='link-term' target='_blank' rel='noreferrer'>

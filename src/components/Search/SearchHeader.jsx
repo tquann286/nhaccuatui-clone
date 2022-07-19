@@ -44,12 +44,12 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
     <div className='sh-container'>
       <div className={`search-input-container ${isFocusSearchInput && 'focus'}`}>
         <div className='search-btn-container' onClick={() => onNavSearch(searchTerm)}>
-          <FiSearch />
+          <FiSearch className='color-0-5' />
         </div>
         <div className='search-input-main'>
           <div className='search-input-section'>
             <input
-              className='search-input-content'
+              className='search-input-content color-0-5'
               {...searchInputProps}
               onKeyDown={(e) => onEnterSearch(e)}
             />
@@ -60,7 +60,7 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
           <div className='mask-overlay'></div>
           {searchTerm && (
             <div className='search-clear-btn' onClick={() => setSearchTerm('')}>
-              <IoMdClose />
+              <IoMdClose className='color-0-5' />
             </div>
           )}
         </div>
@@ -94,13 +94,13 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
               </div>
               <div className='ta-full-artists-main'>
                 <div className='ta-full-artists-content'>
-                  <p className='ta-lead-title'>{defineLang('Nghệ sĩ Trending', 'Trending Artists')}</p>
+                  <p className='ta-lead-title color-0-5'>{defineLang('Nghệ sĩ Trending', 'Trending Artists')}</p>
                   {topArtists.map((artist, i) => {
                     const { name, position } = artist
 
                     return (
                       <div key={i} className='ta-full-artists-item' onClick={() => onNavSearch(name)}>
-                        <p className='ta-full-artists-name'>
+                        <p className='ta-full-artists-name color-0-5'>
                           <span className='ta-full-artists-position'>{position}.</span>
                           {name}
                         </p>

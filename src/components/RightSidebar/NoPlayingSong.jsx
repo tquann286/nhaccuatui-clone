@@ -13,7 +13,7 @@ const MainContainer = ({ defineSong, children }) => (
         <div className='main'>
           <img src={noPlayer} alt={defineSong('Thưởng thức nhạc thôi nào!', 'Play music and enjoy')} />
           <p className='title color-0-88'>{defineSong('Thưởng thức những giai điệu theo cách riêng của bạn', 'Enjoy the melody in your own way')}</p>
-          <div className='play-now'>
+          <div className='play-now color-0-5'>
             <Link to='/bai-hat/top-20/nhac-viet'>{defineSong('Nghe nào', 'Play now')}</Link>
           </div>
         </div>
@@ -48,11 +48,11 @@ const NoPlayingSong = ({ defineSong }) => {
                 </Link>
               </div>
               <div className='suggest-trending-info'>
-                <p className='suggest-lead-title'>{defineSong('Đang được nghe nhiều nhất', 'Top pick these days')}</p>
+                <p className='suggest-lead-title color-0-5'>{defineSong('Đang được nghe nhiều nhất', 'Top pick these days')}</p>
                 <Link className='suggest-title color-0-88' to={createSongUrl(title, songKey)}>
                   {title}
                 </Link>
-                <h5 className='suggest-artist'>
+                <h5 className='suggest-artist color-0-5'>
                   {artists.map((artist, index) => {
                     const { artistId, name, shortLink } = artist
 

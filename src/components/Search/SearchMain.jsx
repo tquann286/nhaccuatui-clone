@@ -88,8 +88,8 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
             const { order, title } = keyword
 
             return (
-              <div key={order} className='tk-content' onClick={() => onNavSearch(title)}>
-                <p className='tk-content-title'>
+              <div key={order} className='tk-content color-0-5' onClick={() => onNavSearch(title)}>
+                <p className='tk-content-title color-0-5'>
                   <span className='tk-position'>#{order}</span>
                   {title}
                 </p>
@@ -104,14 +104,14 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
           <div className='sh-main-list'>
             {searchHistory.map((search, i) => (
               <div key={i} className='sh-item' onClick={() => onNavSearch(search)}>
-                <p className='sh-search-term'>{search}</p>
+                <p className='sh-search-term color-0-5'>{search}</p>
                 <div className='sh-clear-item' onClick={(e) => handleClearSearchItem(e, i)}>
-                  <FaRegTrashAlt />
+                  <FaRegTrashAlt className='color-0-5' />
                 </div>
               </div>
             ))}
           </div>
-          <p className='sh-clear-all' onClick={handleClearAllSearch}>
+          <p className='sh-clear-all color-0-5' onClick={handleClearAllSearch}>
             {defineLang('Xóa tất cả', 'Clear all')}
           </p>
         </div>
@@ -133,15 +133,15 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
                         <div className='om-main'>
                           <ul>
                             <li>
-                              <SiYoutubemusic />
+                              <SiYoutubemusic className='color-0-5' />
                               <span>{defineLang('Thêm vào chờ phát', 'Add to queue')}</span>
                             </li>
                             <li onClick={(e) => onCopyClick(e, maybeHit.title, maybeHit.key)}>
-                              <BsLink45Deg />
+                              <BsLink45Deg className='color-0-5' />
                               <span>{defineLang('Sao chép link', 'Copy link')}</span>
                             </li>
                             <li onClick={() => navigate(`/${createSongUrl(maybeHit.title, maybeHit.key)}`)}>
-                              <BsMusicNote />
+                              <BsMusicNote className='color-0-5' />
                               <span>{defineLang('Đi đến bài hát', 'Go to song')}</span>
                             </li>
                           </ul>
@@ -161,7 +161,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
               </div>
               <div className='maybe-hit-description'>
                 <div className='maybe-hit-desc-title color-0-88'>
-                  <span>{defineLang('Bài hát: ', 'Song: ')}</span>
+                  <span className='color-0-5'>{defineLang('Bài hát: ', 'Song: ')}</span>
                   <Link to={`/${createSongUrl(maybeHit.title, maybeHit.key)}`}>{maybeHit.title}</Link>
                 </div>
                 <div className='maybe-hit-artist-container'>
@@ -177,7 +177,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
                         )
                       })}
                     </div>
-                    <div className='maybe-hit-artist-name'>
+                    <div className='maybe-hit-artist-name color-0-5'>
                       {maybeHit.artists.map((artist, index) => {
                         const { artistId, name, shortLink } = artist
 
@@ -193,7 +193,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
                     </div>
                   </div>
                 </div>
-                <div className='maybe-hit-date-release'>
+                <div className='maybe-hit-date-release color-0-5'>
                   <GoCalendar />
                   <span>
                     {defineLang('Ngày phát hành', 'Released date')}: {covertTimestamp(maybeHit.dateRelease)}

@@ -36,7 +36,6 @@
         padding: 1.6rem 1.1rem;
 
         svg {
-          color: rgba(28, 30, 32, 0.5);
           font-size: 1.7rem;
         }
       }
@@ -55,7 +54,6 @@
             width: 100%;
             line-height: 2rem;
             font-size: 1.4rem;
-            color: rgba(28, 30, 32, 0.5);
           }
 
           .search-suggest-container {
@@ -102,7 +100,6 @@
 
           svg {
             font-size: 1.6rem;
-            color: rgba(28, 30, 32, 0.5);
             font-weight: 700;
           }
         }
@@ -183,7 +180,6 @@
                 font-weight: bold;
                 height: 3.2rem;
                 width: 100%;
-                color: rgba(28, 30, 32, 0.5);
                 background-color: rgba(28, 30, 32, 0.02);
               }
 
@@ -205,7 +201,6 @@
                 }
                 p.ta-full-artists-name {
                   @include threeDotContent;
-                  color: rgba(28, 30, 32, 0.5);
                   font-size: 1.3rem;
                   width: 85%;
                   span.ta-full-artists-position {
@@ -256,7 +251,6 @@
           position: relative;
           display: inline-block;
           font-size: 1.4rem;
-          color: rgba(28, 30, 32, 0.5);
           margin-bottom: 0.8rem;
           margin-right: 1.8rem;
           margin-left: 0;
@@ -283,7 +277,6 @@
           p.tk-content-title {
             @include transition-effect(0.1s);
             @include hoverMainColor;
-            color: rgba(28, 30, 32, 0.5);
             span.tk-position {
               color: #2daaed;
               font-weight: 700;
@@ -324,7 +317,6 @@
 
           p.sh-search-term {
             font-size: 1.5rem;
-            color: rgba(28, 30, 32, 0.5);
             font-weight: 600;
           }
           .sh-clear-item {
@@ -333,7 +325,6 @@
             svg {
               @include transition-effect(0.15s);
               font-size: 1.6rem;
-              color: rgba(28, 30, 32, 0.5);
               font-weight: 400;
 
               &:hover {
@@ -353,7 +344,6 @@
         font-size: 1.3rem;
         line-height: 1.8rem;
         cursor: pointer;
-        color: rgba(28, 30, 32, 0.5);
       }
     }
 
@@ -481,7 +471,6 @@
               @include threeDotContent;
               font-size: 1.4rem;
               span {
-                color: rgba(28, 30, 32, 0.5);
                 font-size: 1.3rem;
               }
 
@@ -523,7 +512,6 @@
                   overflow: hidden;
                   font-size: 1.3rem;
                   margin-left: 1.2rem;
-                  color: rgba(28, 30, 32, 0.5);
                   a {
                     span {
                       @include transition-effect(0.1s);
@@ -540,7 +528,6 @@
 
               margin-top: 0.6rem;
               font-size: 1.4rem;
-              color: rgba(28, 30, 32, 0.5);
               user-select: text;
               svg {
                 margin-right: 0.4rem;
