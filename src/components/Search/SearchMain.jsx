@@ -88,7 +88,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
             const { order, title } = keyword
 
             return (
-              <div key={order} className='tk-content color-0-5' onClick={() => onNavSearch(title)}>
+              <div key={order} className='tk-content bg-color-0-05 color-0-5' onClick={() => onNavSearch(title)}>
                 <p className='tk-content-title color-0-5'>
                   <span className='tk-position'>#{order}</span>
                   {title}
@@ -103,7 +103,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
           <h1 className='search-history-title common-title color-0-88'>{defineLang('Lịch sử tìm kiếm', 'Search History')}</h1>
           <div className='sh-main-list'>
             {searchHistory.map((search, i) => (
-              <div key={i} className='sh-item' onClick={() => onNavSearch(search)}>
+              <div key={i} className='sh-item hover-bg-color-0-05' onClick={() => onNavSearch(search)}>
                 <p className='sh-search-term color-0-5'>{search}</p>
                 <div className='sh-clear-item' onClick={(e) => handleClearSearchItem(e, i)}>
                   <FaRegTrashAlt />

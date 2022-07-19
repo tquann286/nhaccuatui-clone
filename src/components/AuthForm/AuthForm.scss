@@ -258,7 +258,6 @@ $login-header-hight: 6rem;
           .af-plugin-img {
             @include flexCenter;
             @include transition-effect(0.05s);
-            background-color: rgba(28, 30, 32, 0.05);
             border: beige;
             border-radius: 5rem;
             width: 5rem;

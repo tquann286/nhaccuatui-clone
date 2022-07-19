@@ -265,16 +265,16 @@ const AuthForm = () => {
             <p className='color-0-88'>{handleAuthFunc(defineLang('Hoặc đăng nhập bằng:', 'Or sign in via:'), defineLang('Đăng nhập NCT ID:', 'Sign in with NCT ID:'))}</p>
             {showSignUp && (
               <React.Fragment>
-                <div className='af-plugin-img af-nct-login' onClick={changeAuthForm}>
+                <div className='af-plugin-img bg-color-0-05 af-nct-login' onClick={changeAuthForm}>
                   <img src={loginLogo} alt='NCT logo' />
                 </div>
                 <p className='color-0-88'>{defineLang('Hoặc', 'Or')}</p>
               </React.Fragment>
             )}
-            <div className='af-plugin-img af-fb' onClick={onSignInWithFacebook}>
+            <div className='af-plugin-img bg-color-0-05 af-fb' onClick={onSignInWithFacebook}>
               <FaFacebookF />
             </div>
-            <div className='af-plugin-img af-gg' onClick={onSignInWithGoogle}>
+            <div className='af-plugin-img bg-color-0-05 af-gg' onClick={onSignInWithGoogle}>
               <FcGoogle />
             </div>
           </div>
