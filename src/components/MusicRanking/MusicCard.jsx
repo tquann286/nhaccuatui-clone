@@ -78,7 +78,7 @@ const MusicCard = ({ keyId, region, song, bgImage, category, lang }) => {
 					})}
 				</div>
 			)}
-			<div className='ma-watch-all color-0-5'>
+			<div className='ma-watch-all border-0-1 color-0-5'>
 				<Link to={createTop20Url(category)}>{lang === 'vi' ? 'Xem tất cả' : 'Full Chart'}</Link>
 			</div>
 		</div>

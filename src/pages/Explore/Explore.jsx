@@ -28,7 +28,7 @@ const Explore = () => {
                   Music 4U
                 </p>
                 <p className='description color-0-5'>{auth.currentUser ? defineLang('Dữ liệu nghe nhạc của bạn chưa đủ để sử dụng tính năng này, tiếp tục nghe nhạc để chúng tôi có thể hiểu bạn nhiều hơn.', 'Your data is not enough to use this feature. Listen more the get the music that matches your interest!') : defineLang('Đăng nhập ngay để khám phá những ca khúc hay nhất được chọn lọc dành riêng cho bạn.', "Sign in now to discover the best songs selected just for you. Don't miss it out!")}</p>
-                <div className='explore-btn'>
+                <div className='explore-btn border-0-1'>
                   <p className='explore-btn-title color-0-5'>{auth.currentUser ? <Link to='/bai-hat/top-20/nhac-viet'>{defineLang('Nghe nhạc', 'Listen music')}</Link> : defineLang('Đăng nhập ngay', 'Sign in now')}</p>
                 </div>
               </div>

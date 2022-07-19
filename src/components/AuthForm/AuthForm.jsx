@@ -151,7 +151,7 @@ const AuthForm = () => {
   return (
     <div className='af-container' onClick={(e) => e.stopPropagation()}>
       <div className='af-main bg-dark-color-1'>
-        <div className='af-header color-0-88'>
+        <div className='af-header border-0-05 color-0-88'>
           <h4>{lang === 'vi' ? handleAuthFunc('Đăng nhập', 'Đăng ký') : handleAuthFunc('Sign in', 'Sign up')}</h4>
           <button className='close-btn' onClick={handleAuthFunc(toggleShowLogin, toggleShowSignUp)}>
             <IoMdClose />
@@ -164,7 +164,7 @@ const AuthForm = () => {
                 <React.Fragment>
                   <div className='input-container username'>
                     <div className='input-main'>
-                      <AiOutlineUser className='input-icon' />
+                      <AiOutlineUser className='input-icon color-0-5' />
                       <input className='color-0-5 bg-color-0-01' type='text' {...register('username')} placeholder={defineLang('Tên hiển thị', 'Username')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                       {showSignUp && (
                         <div className='more-info username'>
@@ -185,7 +185,7 @@ const AuthForm = () => {
               )}
               <div className='input-container email'>
                 <div className='input-main'>
-                  <HiOutlineMail className='input-icon' />
+                  <HiOutlineMail className='input-icon color-0-5' />
                   <input className='color-0-5 bg-color-0-01' type='email' {...register('email')} placeholder='Email' onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                   {showSignUp && (
                     <div className='more-info email'>
@@ -204,7 +204,7 @@ const AuthForm = () => {
               )}
               <div className='input-container password'>
                 <div className='input-main'>
-                  <BsKeyboard className='input-icon' />
+                  <BsKeyboard className='input-icon color-0-5' />
                   <input className='color-0-5 bg-color-0-01' type='password' {...register('password')} placeholder={defineLang('Mật khẩu', 'Password')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                   {showSignUp && (
                     <div className='more-info password'>
@@ -225,7 +225,7 @@ const AuthForm = () => {
                 <React.Fragment>
                   <div className='input-container confirmedPassword'>
                     <div className='input-main'>
-                      <BsKeyboard className='input-icon' />
+                      <BsKeyboard className='input-icon color-0-5' />
                       <input className='color-0-5 bg-color-0-01' type='password' {...register('confirmedPassword')} placeholder={defineLang('Nhập lại mật khẩu', 'Re-enter Password')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                       {showSignUp && (
                         <div className='more-info confirmedPassword'>
@@ -249,7 +249,7 @@ const AuthForm = () => {
                   <label className='container'>
                     {defineLang(`Tôi đã đọc và đồng ý với các `, `I have read and agree to the `)}
                     <input className='color-0-5 bg-color-0-01' type='checkbox' checked={agreeTerm} onChange={() => setAgreeTerm(!agreeTerm)} />
-                    <span className='checkmark bg-dark-color-1'></span>
+                    <span className='checkmark border-0-2 bg-dark-color-1'></span>
                   </label>
                   <a href={TERM_LINK} className='link-term' target='_blank' rel='noreferrer'>
                     {defineLang('Điều khoản', 'Terms')}

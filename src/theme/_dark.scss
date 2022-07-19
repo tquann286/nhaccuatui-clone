@@ -91,15 +91,15 @@ body[data-theme='dark'] {
   }
 
   // Border
-  .checkmark {
-    border-color: rgba(244, 246, 248, 0.2) !important;
+  .border-0-2 {
+    border-color:rgba(244, 246, 248, 0.2);
   }
 
-  .ma-watch-all, .play-now, .explore-btn {
-    border-color: rgba(244, 246, 248, 0.1) !important;
+  .border-0-1 {
+    border-color:rgba(244, 246, 248, 0.1);
   }
 
-  .af-header, .input-main, .input-icon, .sh-container, .search-input-container, .ta-active-artists {
-    border-color: rgba(244, 246, 248, 0.05) !important;
+  .af-header, .input-main, .input-icon, .sh-container, .search-input-container, .ta-active-artists, .border-0-05 {
+    border-color:rgba(244, 246, 248, 0.05);
   }
 }
