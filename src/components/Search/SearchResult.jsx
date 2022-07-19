@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Loading, TopResult } from 'components'
+import { Loading, SearchDetail, TopResult } from 'components'
 import { NotFound } from 'pages'
 
 import { getSearchResult, searchResultNavbar } from 'services/Search/SearchResult'
@@ -9,7 +9,7 @@ const SearchResult = ({ searchQuery, defineLang, isLoading, setIsLoading }) => {
   const [searchResult, setSearchResult] = useState(null)
   const [currentCate, setCurrentCate] = useState('all')
 
-  // console.log('searchResult: ', searchResult)
+  console.log('searchResult: ', searchResult)
 
   useEffect(() => {
     const getSearchResultState = async () => {
@@ -52,6 +52,7 @@ const SearchResult = ({ searchQuery, defineLang, isLoading, setIsLoading }) => {
           {currentCate === 'all' && (
             <React.Fragment>
               {isEmpty(recommend) || <TopResult { ... recommend } defineLang={defineLang} />}
+              {isEmpty(search) || <SearchDetail { ... search } defineLang={defineLang} />}
             </React.Fragment>
           )}
         </div>
