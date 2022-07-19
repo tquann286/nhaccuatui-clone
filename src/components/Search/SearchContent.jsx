@@ -48,10 +48,17 @@ const SearchContent = () => {
     }
 
     // Get local search history
-    const searchHistory = JSON.parse(localStorage.getItem('searchHistory'))
-
-    if (searchHistory) {
-      setSearchHistory(searchHistory)
+    try {
+      const searchHistory = JSON.parse(localStorage.getItem('searchHistory'))
+  
+      if (searchHistory) {
+        setSearchHistory(searchHistory)
+      } else {
+        localStorage.setItem('searchHistory', searchHistory)
+      }
+      
+    } catch (error) {
+      console.log(error)
     }
 
     getSearchContent()

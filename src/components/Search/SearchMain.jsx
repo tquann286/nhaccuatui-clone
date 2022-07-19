@@ -69,7 +69,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
     e.stopPropagation()
     const newSearchHistory = searchHistory.filter((search, i) => i !== index)
     setSearchHistory(newSearchHistory)
-    localStorage.setItem('searchHistory', newSearchHistory)
+    localStorage.setItem('searchHistory', JSON.stringify(newSearchHistory))
   }
 
   const handleClearAllSearch = () => {
