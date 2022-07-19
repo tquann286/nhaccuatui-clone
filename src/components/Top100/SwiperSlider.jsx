@@ -54,7 +54,7 @@ const SwiperSlider = ({keyId, title, thumbnail}) => {
 					</div>
 				</div>
 				<OptionModal showModal={showMoreOptions} positionRef={playlistContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
-          <div className='om-main bg-dark-color-1'>
+          <div className='om-main color-0-88 bg-dark-color-1'>
             <ul>
               <li onClick={(e) => handleCopyClick(e)}>
                 <BsLink45Deg />

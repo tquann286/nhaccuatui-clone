@@ -78,7 +78,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
         </div>
       </div>
       <OptionModal showModal={showMoreOptions} positionRef={songContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
-        <div className='om-main bg-dark-color-1'>
+        <div className='om-main color-0-88 bg-dark-color-1'>
           <ul>
             <li>
               <SiYoutubemusic />

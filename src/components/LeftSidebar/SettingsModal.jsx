@@ -38,7 +38,7 @@ const SettingsModal = ({ user, theme, lang, dispatch }) => {
   }
 
   return (
-    <div className='sm-container color-0-88 bg-dark-color-1'>
+    <div className='sm-container color-0-6 bg-dark-color-1'>
       <div className='sm-item sm-languages'>
         <MdLanguage className='sm-icon' />
         <span className='sm-title'>{lang === 'vi' ? 'Ngôn ngữ' : 'Language'}</span>
