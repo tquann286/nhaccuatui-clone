@@ -137,7 +137,7 @@ const LeftSidebar = () => {
             <ul className='nav-menu'>
               <li>
                 <NavLink to='/tim-kiem'>
-                  <div className='nav-item nav-search'>
+                  <div className='nav-item bg-color-0-05 nav-search'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content color-0-5'>
                       <i className='fa-solid fa-magnifying-glass search'></i>
@@ -148,7 +148,7 @@ const LeftSidebar = () => {
               </li>
               <li>
                 <NavLink to='/'>
-                  <div className='nav-item nav-home'>
+                  <div className='nav-item bg-color-0-05 nav-home'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content color-0-5'>
                       <i className='fa-solid fa-house home'></i>
@@ -158,7 +158,7 @@ const LeftSidebar = () => {
                 </NavLink>
               </li>
               <li>
-                <div className='nav-item nav-discovery' onClick={toggleDiscoveryMenu}>
+                <div className='nav-item bg-color-0-05 nav-discovery' onClick={toggleDiscoveryMenu}>
                   <div className='nav-active-item'></div>
                   <div className='nav-content color-0-5'>
                     <i className='fa-solid fa-compass discovery'></i>
@@ -194,7 +194,7 @@ const LeftSidebar = () => {
                 </div>
               </li>
               <li>
-                <div className='nav-item nav-today-selection' onClick={toggleTodaySelection}>
+                <div className='nav-item bg-color-0-05 nav-today-selection' onClick={toggleTodaySelection}>
                   <div className='nav-active-item'></div>
                   <div className='nav-content color-0-5'>
                     <i className='fa-solid fa-headphones-simple today-selection'></i>
@@ -225,7 +225,7 @@ const LeftSidebar = () => {
               </li>
               <li>
                 <NavLink to='/bang-xep-hang/top-20&k=nhac-viet'>
-                  <div className='nav-item nav-chart'>
+                  <div className='nav-item bg-color-0-05 nav-chart'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content color-0-5'>
                       <i className='fa-solid fa-chart-simple chart'></i>
@@ -236,7 +236,7 @@ const LeftSidebar = () => {
               </li>
               <li>
                 <NavLink to='/kham-pha'>
-                  <div className='nav-item nav-music-4u'>
+                  <div className='nav-item bg-color-0-05 nav-music-4u'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content color-0-5'>
                       <i className='fa-regular fa-hand-point-up music-4u'></i>
@@ -252,7 +252,7 @@ const LeftSidebar = () => {
                 <ul className='nav-menu'>
                 <li>
                   <NavLink to='user/yeu-thich'>
-                    <div className='nav-item nav-favorite'>
+                    <div className='nav-item bg-color-0-05 nav-favorite'>
                       <div className='nav-active-item'></div>
                       <div className='nav-content color-0-5'>
                         <p className='nav-name color-0-88'>{lang === 'vi' ? 'NhacCuaTui' : 'Favorite'}</p>
@@ -262,7 +262,7 @@ const LeftSidebar = () => {
                 </li>
                   <li>
                     <NavLink to='user/history'>
-                      <div className='nav-item nav-history'>
+                      <div className='nav-item bg-color-0-05 nav-history'>
                         <div className='nav-active-item'></div>
                         <div className='nav-content color-0-5'>
                           <p className='nav-name color-0-88'>{lang === 'vi' ? 'Lịch sử' : 'History'}</p>

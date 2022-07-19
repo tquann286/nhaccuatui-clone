@@ -99,7 +99,7 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
                     const { name, position } = artist
 
                     return (
-                      <div key={i} className='ta-full-artists-item' onClick={() => onNavSearch(name)}>
+                      <div key={i} className='ta-full-artists-item hover-bg-color-0-05' onClick={() => onNavSearch(name)}>
                         <p className='ta-full-artists-name color-0-5'>
                           <span className='ta-full-artists-position'>{position}.</span>
                           {name}
