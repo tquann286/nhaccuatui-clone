@@ -160,7 +160,6 @@ $login-header-hight: 6rem;
             .term-container {
               @include display-flex;
               @include align-items(center);
-              @include dark-color-text(0.6);
               width: 100%;
               font-size: 1.3rem;
               margin-top: 1.6rem;

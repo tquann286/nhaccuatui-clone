@@ -67,7 +67,7 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
         <div className='vd-title'>
           <Link to={handleVideoLink(keyId, title, artists)}>{title}</Link>
         </div>
-        <div className='vd-artists'>
+        <div className='vd-artists color-0-5'>
           {artists.map((artist, i) => {
             const { artistId, name, shortLink } = artist
 

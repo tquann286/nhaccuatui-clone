@@ -221,7 +221,6 @@ $scale: 5rem;
               @include display-flex;
               @include align-items(center);
               @include transition-effect(0.5s);
-              @include dark-color-text(0.5);
               width: 17.8rem;
               height: 2.4rem;
               margin-left: 0.8rem;
@@ -311,7 +310,6 @@ $scale: 5rem;
               }
 
               span {
-                @include dark-color-text(0.5);
                 font-size: 1.3rem;
                 padding-left: 6.6rem;
               }

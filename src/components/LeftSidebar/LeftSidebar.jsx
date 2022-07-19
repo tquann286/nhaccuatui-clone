@@ -139,7 +139,7 @@ const LeftSidebar = () => {
                 <NavLink to='/tim-kiem'>
                   <div className='nav-item nav-search'>
                     <div className='nav-active-item'></div>
-                    <div className='nav-content'>
+                    <div className='nav-content color-0-5'>
                       <i className='fa-solid fa-magnifying-glass search'></i>
                       <p className='nav-name color-0-88'>{lang === 'vi' ? 'Tìm kiếm' : 'Search'}</p>
                     </div>
@@ -150,7 +150,7 @@ const LeftSidebar = () => {
                 <NavLink to='/'>
                   <div className='nav-item nav-home'>
                     <div className='nav-active-item'></div>
-                    <div className='nav-content'>
+                    <div className='nav-content color-0-5'>
                       <i className='fa-solid fa-house home'></i>
                       <p className='nav-name color-0-88'>{lang === 'vi' ? 'Trang chủ' : 'Home'}</p>
                     </div>
@@ -160,7 +160,7 @@ const LeftSidebar = () => {
               <li>
                 <div className='nav-item nav-discovery' onClick={toggleDiscoveryMenu}>
                   <div className='nav-active-item'></div>
-                  <div className='nav-content'>
+                  <div className='nav-content color-0-5'>
                     <i className='fa-solid fa-compass discovery'></i>
                     <p className='nav-name color-0-88'>{lang === 'vi' ? 'Khám phá' : 'Discovery'}</p>
                     <MdOutlineKeyboardArrowDown className={`${showDiscoveryMenu && 'show-detail'}`} />
@@ -170,25 +170,25 @@ const LeftSidebar = () => {
                   <NavLink to='/bai-hat'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
-                      <span>{lang === 'vi' ? 'bài hát' : 'song'}</span>
+                      <span className='color-0-5'>{lang === 'vi' ? 'bài hát' : 'song'}</span>
                     </div>
                   </NavLink>
                   <NavLink to='/playlist'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
-                      <span>playlist</span>
+                      <span className='color-0-5'>playlist</span>
                     </div>
                   </NavLink>
                   <NavLink to='/video'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
-                      <span>video</span>
+                      <span className='color-0-5'>video</span>
                     </div>
                   </NavLink>
                   <NavLink to='/artist'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
-                      <span>{lang === 'vi' ? 'nghệ sỹ' : 'artist'}</span>
+                      <span className='color-0-5'>{lang === 'vi' ? 'nghệ sỹ' : 'artist'}</span>
                     </div>
                   </NavLink>
                 </div>
@@ -196,7 +196,7 @@ const LeftSidebar = () => {
               <li>
                 <div className='nav-item nav-today-selection' onClick={toggleTodaySelection}>
                   <div className='nav-active-item'></div>
-                  <div className='nav-content'>
+                  <div className='nav-content color-0-5'>
                     <i className='fa-solid fa-headphones-simple today-selection'></i>
                     <p className='nav-name color-0-88'>{lang === 'vi' ? 'Nghe gì hôm nay' : 'Today selection'}</p>
                     <MdOutlineKeyboardArrowDown className={`${showTodaySelection && 'show-detail'}`} />
@@ -206,19 +206,19 @@ const LeftSidebar = () => {
                   <NavLink to='/chu-de'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
-                      <span>{lang === 'vi' ? 'chủ đề' : 'topic'}</span>
+                      <span className='color-0-5'>{lang === 'vi' ? 'chủ đề' : 'topic'}</span>
                     </div>
                   </NavLink>
                   <NavLink to='/playlist'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
-                      <span>{lang === 'vi' ? 'tuyển tập' : 'collection'}</span>
+                      <span className='color-0-5'>{lang === 'vi' ? 'tuyển tập' : 'collection'}</span>
                     </div>
                   </NavLink>
                   <NavLink to='/top-100'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
-                      <span>top 100</span>
+                      <span className='color-0-5'>top 100</span>
                     </div>
                   </NavLink>
                 </div>
@@ -227,7 +227,7 @@ const LeftSidebar = () => {
                 <NavLink to='/bang-xep-hang/top-20&k=nhac-viet'>
                   <div className='nav-item nav-chart'>
                     <div className='nav-active-item'></div>
-                    <div className='nav-content'>
+                    <div className='nav-content color-0-5'>
                       <i className='fa-solid fa-chart-simple chart'></i>
                       <p className='nav-name color-0-88'>{lang === 'vi' ? 'BXH NCT' : 'NCT chart'}</p>
                     </div>
@@ -238,7 +238,7 @@ const LeftSidebar = () => {
                 <NavLink to='/kham-pha'>
                   <div className='nav-item nav-music-4u'>
                     <div className='nav-active-item'></div>
-                    <div className='nav-content'>
+                    <div className='nav-content color-0-5'>
                       <i className='fa-regular fa-hand-point-up music-4u'></i>
                       <p className='nav-name color-0-88'>Music 4U</p>
                     </div>
@@ -254,7 +254,7 @@ const LeftSidebar = () => {
                   <NavLink to='user/yeu-thich'>
                     <div className='nav-item nav-favorite'>
                       <div className='nav-active-item'></div>
-                      <div className='nav-content'>
+                      <div className='nav-content color-0-5'>
                         <p className='nav-name color-0-88'>{lang === 'vi' ? 'NhacCuaTui' : 'Favorite'}</p>
                       </div>
                     </div>
@@ -264,7 +264,7 @@ const LeftSidebar = () => {
                     <NavLink to='user/history'>
                       <div className='nav-item nav-history'>
                         <div className='nav-active-item'></div>
-                        <div className='nav-content'>
+                        <div className='nav-content color-0-5'>
                           <p className='nav-name color-0-88'>{lang === 'vi' ? 'Lịch sử' : 'History'}</p>
                         </div>
                       </div>

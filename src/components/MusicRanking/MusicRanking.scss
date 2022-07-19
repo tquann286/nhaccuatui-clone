@@ -113,7 +113,6 @@ $card-border-radius: 0.4rem 0.4rem 0 0;
 			.ma-active-artists {
 				@include transition-effect(0.1s);
 				@include fitContentWidth;
-				@include dark-color-text(0.5);
 				@include threeDotContent;
 				max-width: 100%;
 				margin-top: 0.6rem;
@@ -143,7 +142,6 @@ $card-border-radius: 0.4rem 0.4rem 0 0;
 			.ma-watch-all {
 				@include transition-effect(0.1s);
 				@include hoverMainColor;
-				@include dark-color-text(0.5);
 				width: 12rem;
 				height: 3.2rem;
 				line-height: 3.2rem;

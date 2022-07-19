@@ -63,7 +63,7 @@ const MusicCard = ({ keyId, region, song, bgImage, category, lang }) => {
 			</div>
 
 			{artists && (
-				<div className='ma-active-artists'>
+				<div className='ma-active-artists color-0-5'>
 					{artists.map((artist, index) => {
 						const { artistId, name, shortLink } = artist
 
@@ -78,7 +78,7 @@ const MusicCard = ({ keyId, region, song, bgImage, category, lang }) => {
 					})}
 				</div>
 			)}
-			<div className='ma-watch-all'>
+			<div className='ma-watch-all color-0-5'>
 				<Link to={createTop20Url(category)}>{lang === 'vi' ? 'Xem tất cả' : 'Full Chart'}</Link>
 			</div>
 		</div>

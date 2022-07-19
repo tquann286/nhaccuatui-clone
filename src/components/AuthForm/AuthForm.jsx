@@ -245,7 +245,7 @@ const AuthForm = () => {
                 </React.Fragment>
               )}
               {showSignUp && (
-                <div className='term-container'>
+                <div className='term-container color-0-6'>
                   <label className='container'>
                     {defineLang(`Tôi đã đọc và đồng ý với các `, `I have read and agree to the `)}
                     <input type='checkbox' checked={agreeTerm} onChange={() => setAgreeTerm(!agreeTerm)} />

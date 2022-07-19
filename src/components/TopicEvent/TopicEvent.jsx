@@ -36,7 +36,7 @@ const TopicEvent = ({ topicEvent = [] }) => {
 						</div>
 						<div className='tp-main'>
 							<Swiper slidesPerView={4} spaceBetween={8}>
-								<div className='tp-nav'>
+								<div className='tp-nav color-0-5'>
 									<SlidePrevButton />
 									<SlideNextButton />
 								</div>

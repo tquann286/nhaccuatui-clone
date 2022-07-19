@@ -89,7 +89,6 @@ $active-img-width: 16rem;
 								overflow: hidden;
 								font-size: 1.3rem;
 								margin-left: 1.2rem;
-								color: rgba(28, 30, 32, 0.5);
 								a {
 									span {
 										@include transition-effect(0.1s);
@@ -106,7 +105,6 @@ $active-img-width: 16rem;
 
 						margin-top: 0.5rem;
 						font-size: 1.4rem;
-						color: rgba(28, 30, 32, 0.5);
 						user-select: text;
 						svg {
 							margin-right: 0.4rem;

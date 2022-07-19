@@ -47,11 +47,11 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
           </Link>
           <div className='sd-more'>
             <div className='sd-view-count'>
-              <BsHeadphones />
-              <div className='sc-view-number'>{songView}</div>
+              <BsHeadphones className='color-0-5' />
+              <div className='sc-view-number color-0-5'>{songView}</div>
             </div>
             <div className='sd-more-options'>
-              <div className='sd-three-dots' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
+              <div className='sd-three-dots color-0-5' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
                 <IoMdMore />
               </div>
             </div>
@@ -60,7 +60,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
             <div className='sd-song-title'>
               <Link to={createSongUrl(title, songId)}>{title}</Link>
             </div>
-            <div className='sd-artists'>
+            <div className='sd-artists color-0-5'>
               {artists.map((artist, i) => {
                 const { artistId, name, shortLink } = artist
 

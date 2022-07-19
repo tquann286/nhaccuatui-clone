@@ -8,7 +8,7 @@ import { FB_LINK, INSTA_LINK, GIT_LINK } from 'share/constants'
 
 const Footer = () => {
   return (
-    <div className='ft-container'>
+    <div className='ft-container color-0-5'>
       <div className='ft-main'>
         <div className='ft-owner'>
           Cloned by: tquann286_
