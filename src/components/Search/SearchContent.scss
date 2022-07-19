@@ -480,7 +480,6 @@
             .maybe-hit-desc-title {
               @include threeDotContent;
               font-size: 1.4rem;
-              color: rgba(28, 30, 32, 0.88);
               span {
                 color: rgba(28, 30, 32, 0.5);
                 font-size: 1.3rem;
@@ -577,7 +576,6 @@
           font-size: 1.4rem;
           font-weight: 600;
           margin: 0 0.4rem;
-          color: rgba(28,30,32,0.88);
           cursor: pointer;
 
           &:hover {

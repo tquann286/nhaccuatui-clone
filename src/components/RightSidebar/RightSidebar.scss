@@ -44,7 +44,6 @@
           line-height: 1.8rem;
           width: 100%;
           margin-top: 4rem;
-          color: rgba(28, 30, 32, 0.88);
         }
 
         .play-now {
@@ -104,7 +103,6 @@
             @include threeDotContent;
             @include transition-effect(0.1s);
             @include hoverMainColor;
-            color: rgba(28, 30, 32, 0.88);
             font-weight: 700;
             cursor: pointer;
             width: 100%;

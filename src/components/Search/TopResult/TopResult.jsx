@@ -15,7 +15,7 @@ const TopResult = ({ playlist, song, defineLang, isLoading }) => {
     <div className='top-result-container'>
       <Swiper className='tr-swiper' {...topResultSwiperProps}>
         <div className='tr-title'>
-          <div className='tr-title-lead'>{defineLang('Top tìm kiếm', 'Top Result')}</div>
+          <div className='tr-title-lead color-0-88'>{defineLang('Top tìm kiếm', 'Top Result')}</div>
           <div className='custom-arrow-container'>
             <SlidePrevButton />
             <SlideNextButton />

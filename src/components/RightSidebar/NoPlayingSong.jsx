@@ -12,7 +12,7 @@ const MainContainer = ({ defineSong, children }) => (
       <div className='no-playing-song'>
         <div className='main'>
           <img src={noPlayer} alt={defineSong('Thưởng thức nhạc thôi nào!', 'Play music and enjoy')} />
-          <p className='title'>{defineSong('Thưởng thức những giai điệu theo cách riêng của bạn', 'Enjoy the melody in your own way')}</p>
+          <p className='title color-0-88'>{defineSong('Thưởng thức những giai điệu theo cách riêng của bạn', 'Enjoy the melody in your own way')}</p>
           <div className='play-now'>
             <Link to='/bai-hat/top-20/nhac-viet'>{defineSong('Nghe nào', 'Play now')}</Link>
           </div>
@@ -49,7 +49,7 @@ const NoPlayingSong = ({ defineSong }) => {
               </div>
               <div className='suggest-trending-info'>
                 <p className='suggest-lead-title'>{defineSong('Đang được nghe nhiều nhất', 'Top pick these days')}</p>
-                <Link className='suggest-title' to={createSongUrl(title, songKey)}>
+                <Link className='suggest-title color-0-88' to={createSongUrl(title, songKey)}>
                   {title}
                 </Link>
                 <h5 className='suggest-artist'>

@@ -23,7 +23,7 @@ const Explore = () => {
             <div className='explore-main'>
               <SongThumb width='24rem' shadowHeight='0.6rem' imageUrl={m4u_image} />
               <div className='explore-description'>
-                <p className='title-playlist'>
+                <p className='title-playlist color-0-88'>
                   <span>{defineLang('Danh sách phát: ', 'Playlist: ')}</span>
                   Music 4U
                 </p>

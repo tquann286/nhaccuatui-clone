@@ -20,7 +20,6 @@ $login-header-hight: 6rem;
       .af-header {
         @include flexCenter;
         height: $login-header-hight;
-        color: $dark-text-color;
         border-radius: 0.4rem 0.4rem 0 0;
         border-bottom: $border-light;
 
@@ -262,10 +261,6 @@ $login-header-hight: 6rem;
           background-color: rgba(28, 30, 32, 0.02);
           margin-top: 2.4rem;
           font-size: 1.4rem;
-
-          p {
-            color: $dark-text-color;
-          }
 
           .af-nct-login {
             margin: 0 1.2rem;

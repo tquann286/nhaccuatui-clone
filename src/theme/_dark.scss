@@ -9,6 +9,10 @@ $darkmode-text-color: rgba(244, 246, 248, 0.88);
 $box-border-dark: 0.1rem solid #303130;
 $ball-color-dark: #404040;
 
+.color-0-88 {
+  color: rgba(28, 30, 32, 0.88);
+}
+
 body[data-theme='dark'] {
   color: $darkmode-text-color;
 
@@ -43,7 +47,7 @@ body[data-theme='dark'] {
   }
 
   // Color
-  .ls-auth-setting, .nav-name, .sm-container, .no-playing-song .main p.title, .af-header, .af-plugin p, .ls-library, .ls-user-name-content, a.suggest-title, p.title-playlist, .tk-title, .Toastify__toast-theme--dark, .maybe-hit-lead, .maybe-hit-desc-title, h1.search-history-title, .tr-title-lead, .tr-main-title, .sr-nav-item {
+  .Toastify__toast-theme--dark, .color-0-88 {
     color: rgba(244, 246, 248, 0.88) !important;
   }
 

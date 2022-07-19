@@ -93,7 +93,7 @@ const LeftSidebar = () => {
             </div>
           </div>
         </div>
-        <div className='ls-auth-setting'>
+        <div className='ls-auth-setting color-0-88'>
           <div className='ls-auth'>
             {auth.currentUser ? (
               <React.Fragment>
@@ -104,7 +104,7 @@ const LeftSidebar = () => {
                 </div>
                 <div className='ls-user-name'>
                   <Link to='user'>
-                    <div className='ls-user-name-content' title={auth.currentUser.displayName}>
+                    <div className=' color-0-88' title={auth.currentUser.displayName}>
                       {auth.currentUser.displayName}
                     </div>
                   </Link>
@@ -141,7 +141,7 @@ const LeftSidebar = () => {
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
                       <i className='fa-solid fa-magnifying-glass search'></i>
-                      <p className='nav-name'>{lang === 'vi' ? 'Tìm kiếm' : 'Search'}</p>
+                      <p className='nav-name color-0-88'>{lang === 'vi' ? 'Tìm kiếm' : 'Search'}</p>
                     </div>
                   </div>
                 </NavLink>
@@ -152,7 +152,7 @@ const LeftSidebar = () => {
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
                       <i className='fa-solid fa-house home'></i>
-                      <p className='nav-name'>{lang === 'vi' ? 'Trang chủ' : 'Home'}</p>
+                      <p className='nav-name color-0-88'>{lang === 'vi' ? 'Trang chủ' : 'Home'}</p>
                     </div>
                   </div>
                 </NavLink>
@@ -162,7 +162,7 @@ const LeftSidebar = () => {
                   <div className='nav-active-item'></div>
                   <div className='nav-content'>
                     <i className='fa-solid fa-compass discovery'></i>
-                    <p className='nav-name'>{lang === 'vi' ? 'Khám phá' : 'Discovery'}</p>
+                    <p className='nav-name color-0-88'>{lang === 'vi' ? 'Khám phá' : 'Discovery'}</p>
                     <MdOutlineKeyboardArrowDown className={`${showDiscoveryMenu && 'show-detail'}`} />
                   </div>
                 </div>
@@ -198,7 +198,7 @@ const LeftSidebar = () => {
                   <div className='nav-active-item'></div>
                   <div className='nav-content'>
                     <i className='fa-solid fa-headphones-simple today-selection'></i>
-                    <p className='nav-name'>{lang === 'vi' ? 'Nghe gì hôm nay' : 'Today selection'}</p>
+                    <p className='nav-name color-0-88'>{lang === 'vi' ? 'Nghe gì hôm nay' : 'Today selection'}</p>
                     <MdOutlineKeyboardArrowDown className={`${showTodaySelection && 'show-detail'}`} />
                   </div>
                 </div>
@@ -229,7 +229,7 @@ const LeftSidebar = () => {
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
                       <i className='fa-solid fa-chart-simple chart'></i>
-                      <p className='nav-name'>{lang === 'vi' ? 'BXH NCT' : 'NCT chart'}</p>
+                      <p className='nav-name color-0-88'>{lang === 'vi' ? 'BXH NCT' : 'NCT chart'}</p>
                     </div>
                   </div>
                 </NavLink>
@@ -240,7 +240,7 @@ const LeftSidebar = () => {
                     <div className='nav-active-item'></div>
                     <div className='nav-content'>
                       <i className='fa-regular fa-hand-point-up music-4u'></i>
-                      <p className='nav-name'>Music 4U</p>
+                      <p className='nav-name color-0-88'>Music 4U</p>
                     </div>
                   </div>
                 </NavLink>
@@ -248,14 +248,14 @@ const LeftSidebar = () => {
             </ul>
             {auth.currentUser && (
               <React.Fragment>
-                <div className='ls-library'>{lang === 'vi' ? 'Thư viện' : 'Library'}</div>
+                <div className='ls-library color-0-88'>{lang === 'vi' ? 'Thư viện' : 'Library'}</div>
                 <ul className='nav-menu'>
                 <li>
                   <NavLink to='user/yeu-thich'>
                     <div className='nav-item nav-favorite'>
                       <div className='nav-active-item'></div>
                       <div className='nav-content'>
-                        <p className='nav-name'>{lang === 'vi' ? 'NhacCuaTui' : 'Favorite'}</p>
+                        <p className='nav-name color-0-88'>{lang === 'vi' ? 'NhacCuaTui' : 'Favorite'}</p>
                       </div>
                     </div>
                   </NavLink>
@@ -265,7 +265,7 @@ const LeftSidebar = () => {
                       <div className='nav-item nav-history'>
                         <div className='nav-active-item'></div>
                         <div className='nav-content'>
-                          <p className='nav-name'>{lang === 'vi' ? 'Lịch sử' : 'History'}</p>
+                          <p className='nav-name color-0-88'>{lang === 'vi' ? 'Lịch sử' : 'History'}</p>
                         </div>
                       </div>
                     </NavLink>

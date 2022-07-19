@@ -151,7 +151,7 @@ const AuthForm = () => {
   return (
     <div className='af-container' onClick={(e) => e.stopPropagation()}>
       <div className='af-main'>
-        <div className='af-header'>
+        <div className='af-header color-0-88'>
           <h4>{lang === 'vi' ? handleAuthFunc('Đăng nhập', 'Đăng ký') : handleAuthFunc('Sign in', 'Sign up')}</h4>
           <button className='close-btn' onClick={handleAuthFunc(toggleShowLogin, toggleShowSignUp)}>
             <IoMdClose />
@@ -262,13 +262,13 @@ const AuthForm = () => {
             </form>
           </div>
           <div className='af-plugin'>
-            <p>{handleAuthFunc(defineLang('Hoặc đăng nhập bằng:', 'Or sign in via:'), defineLang('Đăng nhập NCT ID:', 'Sign in with NCT ID:'))}</p>
+            <p className='color-0-88'>{handleAuthFunc(defineLang('Hoặc đăng nhập bằng:', 'Or sign in via:'), defineLang('Đăng nhập NCT ID:', 'Sign in with NCT ID:'))}</p>
             {showSignUp && (
               <React.Fragment>
                 <div className='af-plugin-img af-nct-login' onClick={changeAuthForm}>
                   <img src={loginLogo} alt='NCT logo' />
                 </div>
-                <p>{defineLang('Hoặc', 'Or')}</p>
+                <p className='color-0-88'>{defineLang('Hoặc', 'Or')}</p>
               </React.Fragment>
             )}
             <div className='af-plugin-img af-fb' onClick={onSignInWithFacebook}>
@@ -280,7 +280,7 @@ const AuthForm = () => {
           </div>
           {showLogin && (
             <div className='signup-now'>
-              <p>
+              <p className='color-0-88'>
                 {defineLang('Bạn chưa có tài khoản NCT ID?', "Don't have NCT ID account?")}
                 <span onClick={changeAuthForm}>{defineLang(` Đăng ký ngay`, ` Sign up now`)}</span>
               </p>

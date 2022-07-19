@@ -41,7 +41,7 @@ const SearchResult = ({ searchQuery, defineLang, isLoading, setIsLoading }) => {
         <div className='sr-navbar'>
           <div className='sr-navbar-menu'>
             {searchResultNavbar.map((cate) => (
-              <div key={cate.value} className='sr-nav-item' onClick={() => setCurrentCate(cate.value)}>
+              <div key={cate.value} className='sr-nav-item color-0-88' onClick={() => setCurrentCate(cate.value)}>
                 {defineLang(cate.title.vi, cate.title.en)}
                 <div className={`sr-nav-active ${isActiveCate(cate.value) && 'is-active'}`}></div>
               </div>

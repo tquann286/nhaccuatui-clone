@@ -82,7 +82,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
   return (
     <div className='smain-container'>
       <div className='trend-keywords-container'>
-        <h1 className='tk-title common-title'>{defineLang('Top từ khóa', 'Top Keyword')}</h1>
+        <h1 className='tk-title common-title color-0-88'>{defineLang('Top từ khóa', 'Top Keyword')}</h1>
         <div className='tk-main'>
           {trendingKeywords.map((keyword) => {
             const { order, title } = keyword
@@ -100,7 +100,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
       </div>
       {searchHistory.length === 0 || (
         <div className='search-history-container'>
-          <h1 className='search-history-title common-title'>{defineLang('Lịch sử tìm kiếm', 'Search History')}</h1>
+          <h1 className='search-history-title common-title color-0-88'>{defineLang('Lịch sử tìm kiếm', 'Search History')}</h1>
           <div className='sh-main-list'>
             {searchHistory.map((search, i) => (
               <div key={i} className='sh-item' onClick={() => onNavSearch(search)}>
@@ -119,7 +119,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
       {maybeHit && (
         <div className='maybe-hit-container'>
           <div className='maybe-hit-title'>
-            <div className='maybe-hit-lead common-title'>{defineLang('Có thể hot', 'Maybe Hit')}</div>
+            <div className='maybe-hit-lead common-title color-0-88'>{defineLang('Có thể hot', 'Maybe Hit')}</div>
           </div>
           <div className='maybe-hit-wrapper'>
             <div className='maybe-hit-main'>
@@ -160,7 +160,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
                 </div>
               </div>
               <div className='maybe-hit-description'>
-                <div className='maybe-hit-desc-title'>
+                <div className='maybe-hit-desc-title color-0-88'>
                   <span>{defineLang('Bài hát: ', 'Song: ')}</span>
                   <Link to={`/${createSongUrl(maybeHit.title, maybeHit.key)}`}>{maybeHit.title}</Link>
                 </div>

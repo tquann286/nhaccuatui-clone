@@ -21,7 +21,7 @@ const PlaylistResult = ({ playlist, defineLang }) => {
       </div>
       <div className='tr-description'>
         <div className='tr-decoration'>#1</div>
-        <div className='tr-main-title'>
+        <div className='tr-main-title color-0-88'>
           <Link to={createPlaylistUrl(title, key)}>{title}</Link>
         </div>
         <CommonArtist artists={artists} />
