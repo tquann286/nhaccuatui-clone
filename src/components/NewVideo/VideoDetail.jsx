@@ -87,12 +87,12 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
             <ul>
               {!isEmpty(refMapping) && (
                 <li>
-                  <SiApplemusic className='color-0-5' />
+                  <SiApplemusic />
                   <span>{defineLang('Nghe audio', 'Listen audio')}</span>
                 </li>
               )}
               <li onClick={(e) => handleCopyClick(e)}>
-                <BsLink45Deg className='color-0-5' />
+                <BsLink45Deg />
                 <span>{defineLang('Sao chép link', 'Copy link')}</span>
               </li>
             </ul>

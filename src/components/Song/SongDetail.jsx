@@ -47,7 +47,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
           </Link>
           <div className='sd-more'>
             <div className='sd-view-count'>
-              <BsHeadphones className='color-0-5' />
+              <BsHeadphones />
               <div className='sc-view-number color-0-5'>{songView}</div>
             </div>
             <div className='sd-more-options'>
@@ -81,15 +81,15 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
         <div className='om-main'>
           <ul>
             <li>
-              <SiYoutubemusic className='color-0-5' />
+              <SiYoutubemusic />
               <span>{lang === 'vi' ? 'Thêm vào chờ phát' : 'Add to queue'}</span>
             </li>
             <li onClick={(e) => onCopyClick(e)}>
-              <BsLink45Deg className='color-0-5' />
+              <BsLink45Deg />
               <span>{lang === 'vi' ? 'Sao chép link' : 'Copy link'}</span>
             </li>
             <li onClick={() => navigate(createSongUrl(title, songId))}>
-              <BsMusicNote className='color-0-5' />
+              <BsMusicNote />
               <span>{lang === 'vi' ? 'Đi đến bài hát' : 'Go to song'}</span>
             </li>
           </ul>

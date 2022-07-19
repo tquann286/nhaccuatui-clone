@@ -44,7 +44,7 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
     <div className='sh-container'>
       <div className={`search-input-container ${isFocusSearchInput && 'focus'}`}>
         <div className='search-btn-container' onClick={() => onNavSearch(searchTerm)}>
-          <FiSearch className='color-0-5' />
+          <FiSearch />
         </div>
         <div className='search-input-main'>
           <div className='search-input-section'>
@@ -60,7 +60,7 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
           <div className='mask-overlay'></div>
           {searchTerm && (
             <div className='search-clear-btn' onClick={() => setSearchTerm('')}>
-              <IoMdClose className='color-0-5' />
+              <IoMdClose />
             </div>
           )}
         </div>

@@ -53,7 +53,7 @@ const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist, lang}) => {
           <div className='om-main'>
             <ul>
               <li onClick={(e) => handleCopyClick(e)}>
-                <BsLink45Deg className='color-0-5' />
+                <BsLink45Deg />
                 <span>{defineLang('Sao chép link', 'Copy link')}</span>
               </li>
             </ul>

@@ -154,7 +154,7 @@ const AuthForm = () => {
         <div className='af-header color-0-88'>
           <h4>{lang === 'vi' ? handleAuthFunc('Đăng nhập', 'Đăng ký') : handleAuthFunc('Sign in', 'Sign up')}</h4>
           <button className='close-btn' onClick={handleAuthFunc(toggleShowLogin, toggleShowSignUp)}>
-            <IoMdClose className='color-0-5' />
+            <IoMdClose />
           </button>
         </div>
         <div className='af-content' style={showLogin ? { marginTop: '3.6rem' } : {}}>

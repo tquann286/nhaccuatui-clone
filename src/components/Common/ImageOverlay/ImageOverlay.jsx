@@ -42,19 +42,19 @@ const ImageOverlay = ({ keyId, imageUrl, title, handleNavigate, addToFav, handle
             <ul>
               {addToFav && (
                 <li onClick={handleAddToFav}>
-                  <SiYoutubemusic className='color-0-5' />
+                  <SiYoutubemusic />
                   <span>{defineLang('Thêm vào chờ phát', 'Add to queue')}</span>
                 </li>
               )}
               {copyLink && (
                 <li onClick={(e) => onCopyLink(e)}>
-                  <BsLink45Deg className='color-0-5' />
+                  <BsLink45Deg />
                   <span>{defineLang('Sao chép link', 'Copy link')}</span>
                 </li>
               )}
               {goToSong && (
                 <li>
-                  <BsMusicNote className='color-0-5' />
+                  <BsMusicNote />
                   <span>{defineLang('Đi đến bài hát', 'Go to song')}</span>
                 </li>
               )}

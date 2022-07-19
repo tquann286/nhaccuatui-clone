@@ -106,7 +106,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
               <div key={i} className='sh-item' onClick={() => onNavSearch(search)}>
                 <p className='sh-search-term color-0-5'>{search}</p>
                 <div className='sh-clear-item' onClick={(e) => handleClearSearchItem(e, i)}>
-                  <FaRegTrashAlt className='color-0-5' />
+                  <FaRegTrashAlt />
                 </div>
               </div>
             ))}
@@ -133,15 +133,15 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
                         <div className='om-main'>
                           <ul>
                             <li>
-                              <SiYoutubemusic className='color-0-5' />
+                              <SiYoutubemusic />
                               <span>{defineLang('Thêm vào chờ phát', 'Add to queue')}</span>
                             </li>
                             <li onClick={(e) => onCopyClick(e, maybeHit.title, maybeHit.key)}>
-                              <BsLink45Deg className='color-0-5' />
+                              <BsLink45Deg />
                               <span>{defineLang('Sao chép link', 'Copy link')}</span>
                             </li>
                             <li onClick={() => navigate(`/${createSongUrl(maybeHit.title, maybeHit.key)}`)}>
-                              <BsMusicNote className='color-0-5' />
+                              <BsMusicNote />
                               <span>{defineLang('Đi đến bài hát', 'Go to song')}</span>
                             </li>
                           </ul>
