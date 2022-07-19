@@ -7,7 +7,7 @@
   @include fitContentWidth;
   height: 100%;
 
-  .shadow1, .shadow2 {
+  .shadow1 {
     border-radius: 0.4rem 0.4rem 0 0;
     width: 60%;
     background-color: rgba(28,30,32,0.05);
@@ -16,7 +16,6 @@
   .shadow2 {
     border-radius: 0.4rem 0.4rem 0 0;
     width: 80%;
-    background-color: rgba(28,30,32,0.1);
   }
 
   .st-image {

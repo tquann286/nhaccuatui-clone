@@ -140,7 +140,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
                               <BsLink45Deg />
                               <span>{defineLang('Sao chép link', 'Copy link')}</span>
                             </li>
-                            <li onClick={() => navigate(`/${createSongUrl(maybeHit.title, maybeHit.key)}`)}>
+                            <li onClick={() => navigate(createSongUrl(maybeHit.title, maybeHit.key))}>
                               <BsMusicNote />
                               <span>{defineLang('Đi đến bài hát', 'Go to song')}</span>
                             </li>
@@ -162,7 +162,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
               <div className='maybe-hit-description'>
                 <div className='maybe-hit-desc-title color-0-88'>
                   <span className='color-0-5'>{defineLang('Bài hát: ', 'Song: ')}</span>
-                  <Link to={`/${createSongUrl(maybeHit.title, maybeHit.key)}`}>{maybeHit.title}</Link>
+                  <Link to={createSongUrl(maybeHit.title, maybeHit.key)}>{maybeHit.title}</Link>
                 </div>
                 <div className='maybe-hit-artist-container'>
                   <div className='maybe-hit-artist-main'>

@@ -24,7 +24,22 @@
   color: rgba(28, 30, 32, 0.05);
 }
 
+// Background Color
 .bg-dark-color-1 {
   background-color: #fafafa;
+}
+
+.bg-color-0-1 {
+  background-color: rgba(28, 30, 32, 0.1);
+}
+
+.bg-color-0-05 {
+  background-color: rgba(28, 30, 32, 0.05);
+}
+
+.hover-bg-color-0-05 {
+  &:hover {
+    background-color: rgba(28, 30, 32, 0.05);
+  }
 }
 

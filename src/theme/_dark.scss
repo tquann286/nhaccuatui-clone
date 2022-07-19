@@ -68,13 +68,18 @@ body[data-theme='dark'] {
     background-color: rgba(24, 34, 45, 1);
   }
 
-  li:not(.slick-active) .customDots,
-  .shadow2, .bg-color-0-1 {
+  li:not(.slick-active) .customDots, .bg-color-0-1 {
     background-color: rgba(244, 246, 248, 0.1);
   }
 
-  .sm-item:hover, .sm-sub-item:hover, .af-plugin-img, .shadow1, a.active .nav-item, .tk-content, .ta-full-artists-item:hover, .om-main ul li:hover, .sh-item:hover {
-    background-color: rgba(244, 246, 248, 0.05) !important;
+  .sm-item:hover, .sm-sub-item:hover, .af-plugin-img, .shadow1, a.active .nav-item, .tk-content, .ta-full-artists-item:hover, .om-main ul li:hover, .sh-item:hover, .bg-color-0-05 {
+    background-color: rgba(244, 246, 248, 0.05);
+  }
+
+  .hover-bg-color-0-05 {
+    &:hover {
+      background-color: rgba(244, 246, 248, 0.05);
+    }
   }
 
   .nr-active-slide, .sd-main, .search-input-container, p.ta-lead-title, .maybe-hit-wrapper, .sh-item {
