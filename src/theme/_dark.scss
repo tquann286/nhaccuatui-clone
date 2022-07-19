@@ -23,6 +23,10 @@ body[data-theme='dark'] {
   }
 
   // Special
+  svg {
+    color: rgba(244, 246, 248, 0.5);
+  }
+
   .left-sidebar {
     .box {
       background-color: $dark-color !important;
@@ -48,6 +52,10 @@ body[data-theme='dark'] {
     }
   }
 
+  .disabled, .cusArrow.nextArr.disabled {
+    color: rgba(244, 246, 248, 0.2) !important;
+  }
+
   // Color
   .Toastify__toast-theme--dark, .color-0-88 {
     color: rgba(244, 246, 248, 0.88);
@@ -57,7 +65,7 @@ body[data-theme='dark'] {
     color: rgba(244, 246, 248, 0.6);
   }
 
-  .color-0-5, svg {
+  .color-0-5 {
     color: rgba(244, 246, 248, 0.5);
   }
 

@@ -17,7 +17,8 @@
     @include flexDirection(column);
     height: 100%;
     background-color: rgba(255, 255, 255, 0.07);
-    border-left: $border-light;
+    border-width: 0 0 0 0.1rem;
+    border-style: solid;
 
     .no-playing-song {
       @include display-flex;
@@ -72,7 +73,8 @@
 
       .suggest-song-main {
         @include display-flex;
-        border-top: 0.1rem solid rgba(28, 30, 32, 0.1);
+        border-width: 0.1rem 0 0 0;
+        border-style: solid;
         padding: 2.5rem 2.4rem 3.1rem;
 
         .suggest-trending-thumb {

@@ -8,7 +8,7 @@ import { createArtistUrl, createSongUrl } from 'share/utilities'
 
 const MainContainer = ({ defineSong, children }) => (
   <div className='rb-container'>
-    <div className='rb-suggestion'>
+    <div className='rb-suggestion border-0-05'>
       <div className='no-playing-song'>
         <div className='main'>
           <img src={noPlayer} alt={defineSong('Thưởng thức nhạc thôi nào!', 'Play music and enjoy')} />
@@ -41,7 +41,7 @@ const NoPlayingSong = ({ defineSong }) => {
       <MainContainer defineSong={defineSong}>
         {trendingSong && (
           <div className='suggest-song'>
-            <div className='suggest-song-main'>
+            <div className='suggest-song-main border-0-1'>
               <div className='suggest-trending-thumb'>
                 <Link to={createSongUrl(title, songKey)}>
                   <img src={thumbnail} alt='thumb' title={title} />
