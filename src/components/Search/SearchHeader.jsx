@@ -93,7 +93,7 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
                 </Swiper>
               </div>
               <div className='ta-full-artists-main'>
-                <div className='ta-full-artists-content'>
+                <div className='ta-full-artists-content bg-dark-color-1'>
                   <p className='ta-lead-title color-0-5'>{defineLang('Nghệ sĩ Trending', 'Trending Artists')}</p>
                   {topArtists.map((artist, i) => {
                     const { name, position } = artist

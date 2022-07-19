@@ -83,7 +83,7 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
         </div>
       </div>
         <OptionModal showModal={showMoreOptions} positionRef={videoRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
-          <div className='om-main'>
+          <div className='om-main bg-dark-color-1'>
             <ul>
               {!isEmpty(refMapping) && (
                 <li>

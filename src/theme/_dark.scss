@@ -56,16 +56,16 @@ body[data-theme='dark'] {
   }
 
   .disabled, .input-icon, .color-0-2 {
-    color: rgba(244, 246, 248, 0.2) !important;
+    color: rgba(244, 246, 248, 0.2);
   }
 
   .color-0-05 {
-    color: rgba(244, 246, 248, 0.05) !important;
+    color: rgba(244, 246, 248, 0.05);
   }
 
   // Background color
-  .af-main, .so-more-options-box, .vd-more-options-box, .checkmark, .ta-full-artists-content, .om-main, .sm-container, .sm-sub-items, .Toastify__toast-theme--dark, .bg-dark-color-1 {
-    background-color: rgba(24, 34, 45, 1) !important;
+  .Toastify__toast-theme--dark, .bg-dark-color-1 {
+    background-color: rgba(24, 34, 45, 1);
   }
 
   li:not(.slick-active) .customDots,

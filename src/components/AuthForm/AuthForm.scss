@@ -190,7 +190,6 @@ $login-header-hight: 6rem;
                   left: 0;
                   height: 1.6rem;
                   width: 1.6rem;
-                  background-color: #eee;
                   border-radius: 0.4rem;
                   border: 1px solid rgba(28, 30, 32, 0.2);
 
@@ -207,10 +206,6 @@ $login-header-hight: 6rem;
                     border: solid white;
                     border-width: 0 0.2rem 0.2rem 0;
                   }
-                }
-
-                &:hover input ~ .checkmark {
-                  background-color: #ccc;
                 }
               }
 

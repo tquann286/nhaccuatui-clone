@@ -38,12 +38,12 @@ const SettingsModal = ({ user, theme, lang, dispatch }) => {
   }
 
   return (
-    <div className='sm-container color-0-88'>
+    <div className='sm-container color-0-88 bg-dark-color-1'>
       <div className='sm-item sm-languages'>
         <MdLanguage className='sm-icon' />
         <span className='sm-title'>{lang === 'vi' ? 'Ngôn ngữ' : 'Language'}</span>
         <MdArrowForwardIos className='ar-icon' />
-        <div className='sm-sub-items sm-lang-items'>
+        <div className='sm-sub-items bg-dark-color-1 sm-lang-items'>
           <div className='sm-sub-item sm-lang-vi' onClick={onChangeViLang}>
             <span className='sm-title'>{lang === 'vi' ? 'Tiếng Việt' : 'Vietnamese'}</span>
           </div>
@@ -60,7 +60,7 @@ const SettingsModal = ({ user, theme, lang, dispatch }) => {
         {theme === 'light' ? <MdWbSunny className='sm-icon' /> : <BsFillMoonStarsFill className='sm-icon' />}
         <span className='sm-title'>{lang === 'vi' ? 'Chủ đề' : 'Theme'}</span>
         <MdArrowForwardIos className='ar-icon' />
-        <div className='sm-sub-items sm-theme-items'>
+        <div className='sm-sub-items bg-dark-color-1 sm-theme-items'>
           <div className='sm-sub-item sm-theme-light' onClick={onChangeLightTheme}>
             <span className='sm-title'>{lang === 'vi' ? 'Nền sáng' : 'Light mode'}</span>
           </div>

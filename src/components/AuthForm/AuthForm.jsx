@@ -150,7 +150,7 @@ const AuthForm = () => {
 
   return (
     <div className='af-container' onClick={(e) => e.stopPropagation()}>
-      <div className='af-main '>
+      <div className='af-main bg-dark-color-1'>
         <div className='af-header color-0-88'>
           <h4>{lang === 'vi' ? handleAuthFunc('Đăng nhập', 'Đăng ký') : handleAuthFunc('Sign in', 'Sign up')}</h4>
           <button className='close-btn' onClick={handleAuthFunc(toggleShowLogin, toggleShowSignUp)}>
@@ -249,7 +249,7 @@ const AuthForm = () => {
                   <label className='container'>
                     {defineLang(`Tôi đã đọc và đồng ý với các `, `I have read and agree to the `)}
                     <input className='color-0-5' type='checkbox' checked={agreeTerm} onChange={() => setAgreeTerm(!agreeTerm)} />
-                    <span className='checkmark'></span>
+                    <span className='checkmark bg-dark-color-1'></span>
                   </label>
                   <a href={TERM_LINK} className='link-term' target='_blank' rel='noreferrer'>
                     {defineLang('Điều khoản', 'Terms')}

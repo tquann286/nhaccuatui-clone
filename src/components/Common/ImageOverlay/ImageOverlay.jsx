@@ -38,7 +38,7 @@ const ImageOverlay = ({ keyId, imageUrl, title, handleNavigate, addToFav, handle
       <img className='io-img' src={imageUrl} alt={title || ''} title={title || ''} />
       <OptionModal showModal={showMoreOptions} positionRef={positionRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
         <ModalAnimate animateProps={basicModal} isVisible={showMoreOptions} keyId={keyId}>
-          <div className='om-main'>
+          <div className='om-main bg-dark-color-1'>
             <ul>
               {addToFav && (
                 <li onClick={handleAddToFav}>
