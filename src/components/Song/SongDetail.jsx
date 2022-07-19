@@ -7,7 +7,7 @@ import { BsHeadphones, BsLink45Deg, BsMusicNote } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { SiYoutubemusic } from 'react-icons/si'
 
-import { createSongUrl, createArtistUrl, handleCopyClick } from 'share/utilities'
+import { createSongUrl, createArtistUrl, handleCopySong } from 'share/utilities'
 import { createRandomSongView } from 'services/SongDetail'
 
 const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
@@ -35,7 +35,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
 
   const onCopyClick = (e) => {
     toggleShowMore()
-    handleCopyClick(e, defineLang, title, songId)
+    handleCopySong(e, defineLang, title, songId)
   }
 
   return (

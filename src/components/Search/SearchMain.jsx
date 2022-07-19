@@ -12,7 +12,7 @@ import { Loading } from 'components'
 import { createSearchUrl } from 'services/Search/SearchHeader'
 import { handleNavSearch } from 'services/Search/Search'
 import { getMaybeHit } from 'services/Search/SearchMain'
-import { covertTimestamp, createArtistUrl, createSongUrl, handleCopyClick } from 'share/utilities'
+import { covertTimestamp, createArtistUrl, createSongUrl, handleCopySong } from 'share/utilities'
 import { GoCalendar } from 'react-icons/go'
 import { basicModal } from 'share/animation'
 
@@ -36,7 +36,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
 
   const onCopyClick = (e, title, songId) => {
     toggleShowMore()
-    handleCopyClick(e, defineLang, title, songId)
+    handleCopySong(e, defineLang, title, songId)
   }
 
   useEffect(() => {

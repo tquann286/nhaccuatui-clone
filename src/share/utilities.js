@@ -28,9 +28,13 @@ export const replaceDashUrl = (url) => {
 }
 
 export const createPlaylistUrl = (title, keyId) => {
-  const playlistTitle = replaceDashUrl(title)
+  if (title && keyId) {
+    const playlistTitle = replaceDashUrl(title)
 
-  return `/playlist/${playlistTitle}.&k=${keyId}`
+    return `/playlist/${playlistTitle}&k=${keyId}`
+  } else {
+    return '/'
+  }
 }
 
 export const createSongUrl = (title, keyId) => {
@@ -109,7 +113,7 @@ export const handleBlurInput = (e) => {
   e.target.parentElement.classList.remove('focus')
 }
 
-export const handleCopyClick = (e, defineLang, title, songId) => {
+export const handleCopySong = (e, defineLang, title, songId) => {
   e.stopPropagation()
 
   const songLink = `${PROXY}/${createSongUrl(title, songId)}`

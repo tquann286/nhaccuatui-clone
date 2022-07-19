@@ -5,7 +5,7 @@ import { NotFound } from 'pages'
 import { getSearchResult, searchResultNavbar } from 'services/Search/SearchResult'
 import { isEmpty } from 'lodash'
 
-const SearchResult = ({ searchQuery, defineLang, isLoading, searchTerm }) => {
+const SearchResult = ({ searchQuery, defineLang, isLoading, setIsLoading }) => {
   const [searchResult, setSearchResult] = useState(null)
   const [currentCate, setCurrentCate] = useState('all')
 
@@ -14,9 +14,11 @@ const SearchResult = ({ searchQuery, defineLang, isLoading, searchTerm }) => {
   useEffect(() => {
     const getSearchResultState = async () => {
       try {
+        setIsLoading(true)
         const searchResult = await getSearchResult(searchQuery)
 
         setSearchResult(searchResult)
+        setIsLoading(false)
       } catch (error) {
         throw new Error(error)
       }
