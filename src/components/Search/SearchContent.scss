@@ -11,7 +11,8 @@
     width: 100%;
     height: $search-header-height;
     padding: 0 3.2rem;
-    border-bottom: $border-light;
+    border-width: 0 0 0.1rem 0;
+    border-style: solid;
 
     .search-input-container {
       @include display-flex;
@@ -20,7 +21,8 @@
       position: relative;
       width: 50%;
       height: $search-content-height;
-      border: $border-light;
+      border-width: 0.1rem;
+      border-style: solid;
       border-radius: 0.4rem;
       color: rgba(28, 30, 32, 0.5);
 
@@ -128,7 +130,8 @@
             overflow: hidden;
             height: $search-content-height;
             width: 18rem;
-            border: $border-light;
+            border-width: 0.1rem;
+            border-style: solid;
             border-radius: 2rem;
             cursor: pointer;
 

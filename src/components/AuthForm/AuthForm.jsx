@@ -163,8 +163,8 @@ const AuthForm = () => {
               {showSignUp && (
                 <React.Fragment>
                   <div className='input-container username'>
-                    <div className='input-main'>
-                      <AiOutlineUser className='input-icon color-0-5' />
+                    <div className='input-main border-0-05'>
+                      <AiOutlineUser className='input-icon border-0-05 color-0-5' />
                       <input className='color-0-5 bg-color-0-01' type='text' {...register('username')} placeholder={defineLang('Tên hiển thị', 'Username')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                       {showSignUp && (
                         <div className='more-info username'>
@@ -184,8 +184,8 @@ const AuthForm = () => {
                 </React.Fragment>
               )}
               <div className='input-container email'>
-                <div className='input-main'>
-                  <HiOutlineMail className='input-icon color-0-5' />
+                <div className='input-main border-0-05'>
+                  <HiOutlineMail className='input-icon border-0-05 color-0-5' />
                   <input className='color-0-5 bg-color-0-01' type='email' {...register('email')} placeholder='Email' onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                   {showSignUp && (
                     <div className='more-info email'>
@@ -203,8 +203,8 @@ const AuthForm = () => {
                 </p>
               )}
               <div className='input-container password'>
-                <div className='input-main'>
-                  <BsKeyboard className='input-icon color-0-5' />
+                <div className='input-main border-0-05'>
+                  <BsKeyboard className='input-icon border-0-05 color-0-5' />
                   <input className='color-0-5 bg-color-0-01' type='password' {...register('password')} placeholder={defineLang('Mật khẩu', 'Password')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                   {showSignUp && (
                     <div className='more-info password'>
@@ -224,8 +224,8 @@ const AuthForm = () => {
               {showSignUp && (
                 <React.Fragment>
                   <div className='input-container confirmedPassword'>
-                    <div className='input-main'>
-                      <BsKeyboard className='input-icon color-0-5' />
+                    <div className='input-main border-0-05'>
+                      <BsKeyboard className='input-icon border-0-05 color-0-5' />
                       <input className='color-0-5 bg-color-0-01' type='password' {...register('confirmedPassword')} placeholder={defineLang('Nhập lại mật khẩu', 'Re-enter Password')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                       {showSignUp && (
                         <div className='more-info confirmedPassword'>

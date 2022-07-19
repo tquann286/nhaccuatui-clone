@@ -42,6 +42,12 @@ body[data-theme='dark'] {
     border-left-color: rgba(244, 246, 248, 0.05) !important;
   }
 
+  a.active {
+    .nav-item {
+      background-color: rgba(244, 246, 248, 0.05) !important;
+    }
+  }
+
   // Color
   .Toastify__toast-theme--dark, .color-0-88 {
     color: rgba(244, 246, 248, 0.88);
@@ -55,7 +61,7 @@ body[data-theme='dark'] {
     color: rgba(244, 246, 248, 0.5);
   }
 
-  .disabled, .input-icon, .color-0-2 {
+  .disabled, .color-0-2 {
     color: rgba(244, 246, 248, 0.2);
   }
 
@@ -99,7 +105,7 @@ body[data-theme='dark'] {
     border-color:rgba(244, 246, 248, 0.1);
   }
 
-  .af-header, .input-main, .input-icon, .sh-container, .search-input-container, .ta-active-artists, .border-0-05 {
+  .border-0-05 {
     border-color:rgba(244, 246, 248, 0.05);
   }
 }

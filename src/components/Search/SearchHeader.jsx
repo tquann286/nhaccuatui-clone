@@ -41,8 +41,8 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
   const onEnterSearch = (e) => e.keyCode === 13 && onNavSearch(searchTerm)
 
   return (
-    <div className='sh-container'>
-      <div className={`search-input-container bg-color-0-02 ${isFocusSearchInput && 'focus'}`}>
+    <div className='sh-container border-0-1'>
+      <div className={`search-input-container border-0-05 bg-color-0-02 ${isFocusSearchInput && 'focus'}`}>
         <div className='search-btn-container' onClick={() => onNavSearch(searchTerm)}>
           <FiSearch />
         </div>
@@ -69,7 +69,7 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
         <div className='trending-artists-container'>
           <div className='ta-main'>
             <div className='ta-wrapper'>
-              <div className='ta-active-artists'>
+              <div className='ta-active-artists border-0-05'>
                 <Swiper {...trendArtSwiperProps}>
                   {topArtists.map((artist, i) => {
                     const { name, position } = artist
