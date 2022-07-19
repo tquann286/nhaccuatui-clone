@@ -57,7 +57,7 @@ const MusicCard = ({ keyId, region, song, bgImage, category, lang }) => {
 					)
 				})}
 			</div>
-			<div className='ma-active-position'>#{position}</div>
+			<div className='ma-active-position color-0-05'>#{position}</div>
 			<div className='ma-active-title'>
 				<Link to={createSongUrl(title, songKey)}>{title}</Link>
 			</div>

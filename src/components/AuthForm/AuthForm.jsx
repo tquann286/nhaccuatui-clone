@@ -168,7 +168,7 @@ const AuthForm = () => {
                       <input className='color-0-5' type='text' {...register('username')} placeholder={defineLang('Tên hiển thị', 'Username')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                       {showSignUp && (
                         <div className='more-info username'>
-                          <BsInfoCircle className='more-info-icon' />
+                          <BsInfoCircle className='more-info-icon color-0-2' />
                           <div className='more-info-description'>
                             <p>{defineLang('Bạn có thể sử dụng chữ cái, chữ số, gạch dưới và dấu chấm. Chiều dài tối đa 30 kí tự', 'You can use letters, numbers, underscores and dots. Length from 30 characters')}</p>
                           </div>
@@ -189,7 +189,7 @@ const AuthForm = () => {
                   <input className='color-0-5' type='email' {...register('email')} placeholder='Email' onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                   {showSignUp && (
                     <div className='more-info email'>
-                      <BsInfoCircle className='more-info-icon' />
+                      <BsInfoCircle className='more-info-icon color-0-2' />
                       <div className='more-info-description'>
                         <p>{defineLang('Điền vào Email bạn muốn sử dụng cho tài khoản này', 'Fill in the Email you want to use for this account')}</p>
                       </div>
@@ -208,7 +208,7 @@ const AuthForm = () => {
                   <input className='color-0-5' type='password' {...register('password')} placeholder={defineLang('Mật khẩu', 'Password')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                   {showSignUp && (
                     <div className='more-info password'>
-                      <BsInfoCircle className='more-info-icon' />
+                      <BsInfoCircle className='more-info-icon color-0-2' />
                       <div className='more-info-description'>
                         <p>{defineLang('Chiều dài ít nhất 6 kí tự. Không sử dụng tiếng Việt có dấu', 'Length is must more than 6 characters. Do not use accented Vietnamese')}</p>
                       </div>
@@ -229,7 +229,7 @@ const AuthForm = () => {
                       <input className='color-0-5' type='password' {...register('confirmedPassword')} placeholder={defineLang('Nhập lại mật khẩu', 'Re-enter Password')} onFocus={(e) => handleFocusInput(e)} onBlur={(e) => handleBlurInput(e)} />
                       {showSignUp && (
                         <div className='more-info confirmedPassword'>
-                          <BsInfoCircle className='more-info-icon' />
+                          <BsInfoCircle className='more-info-icon color-0-2' />
                           <div className='more-info-description'>
                             <p>{defineLang('Nhập lại mật khẩu giống như bên trên một lần nữa', 'Re-enter the same password as above again')}</p>
                           </div>

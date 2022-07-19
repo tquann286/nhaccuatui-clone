@@ -130,7 +130,6 @@ $card-border-radius: 0.4rem 0.4rem 0 0;
 			}
 
 			.ma-active-position {
-				@include dark-color-text(0.05);
 				position: absolute;
 				top: 19.2rem;
 				right: 3.3rem;
