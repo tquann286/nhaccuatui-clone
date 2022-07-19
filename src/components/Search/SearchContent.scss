@@ -250,11 +250,6 @@
       position: relative;
       padding: 4rem 3.2rem 0;
 
-      h1.tk-title {
-        font-size: 2.2rem;
-        font-weight: 700;
-        color: rgba(28, 30, 32, 0.88);
-      }
       .tk-main {
         margin-top: 1.6rem;
         .tk-content {
@@ -302,12 +297,6 @@
     .search-history-container {
       position: relative;
       padding: 4rem 3.2rem 0;
-
-      h1.search-history-title {
-        font-size: 2.2rem;
-        font-weight: 700;
-        color: rgba(28, 30, 32, 0.88);
-      }
 
       .sh-main-list {
         display: flex;
@@ -376,9 +365,6 @@
           @include fitContentWidth;
           height: 3rem;
           line-height: 3rem;
-          font-size: 2.2rem;
-          font-weight: 700;
-          color: rgba(28, 30, 32, 0.88);
         }
       }
 
