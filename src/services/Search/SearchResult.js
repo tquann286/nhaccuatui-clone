@@ -18,5 +18,5 @@ export const searchResultNavbar = [
 ]
 
 export const topResultSwiperProps = {
-  slidesPerView: 1
+  slidesPerView: 1,
 }
