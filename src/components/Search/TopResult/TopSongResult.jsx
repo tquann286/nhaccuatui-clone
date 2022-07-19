@@ -27,7 +27,7 @@ const TopSongResult = ({ songs, defineLang }) => {
               <div className="tr-description">
                 <div className="tr-decoration">#1</div>
                 <div className="tr-main-title">
-                  <Link to={`/${createSongUrl(title, key)}`}>{title}</Link>
+                  <Link to={createSongUrl(title, key)}>{title}</Link>
                 </div>
                 <CommonArtist artists={artists} />
                 <p className="tr-type">{type}</p>

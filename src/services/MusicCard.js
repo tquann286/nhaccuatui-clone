@@ -10,7 +10,7 @@ export const detectZ = (index) => {
 
 export const createTop20Url = (category) => {
   if (category) {
-    return `top-20/${category}`
+    return `top-20?q=${category}`
   } else {
     return '/'
   }

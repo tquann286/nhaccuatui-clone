@@ -38,7 +38,7 @@ const MusicCard = ({ keyId, region, song, bgImage, category, lang }) => {
 					return (
 						<Link
 							key={songKey}
-							to='/'
+							to={createSongUrl(title, songKey)}
 							className='ma-thumb-container'
 							style={{
 								backgroundImage: `url(${thumbnail})`,

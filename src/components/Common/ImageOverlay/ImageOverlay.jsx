@@ -53,7 +53,7 @@ const ImageOverlay = ({ key, imageUrl, title, handleNavigate, addToFav, handleAd
                 </li>
               )}
               {goToSong && (
-                <li onClick={handleGoToSong}>
+                <li>
                   <BsMusicNote />
                   <span>{defineLang('Đi đến bài hát', 'Go to song')}</span>
                 </li>

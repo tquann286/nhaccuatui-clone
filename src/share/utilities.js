@@ -24,7 +24,7 @@ export const getPlaylistKeyId = (url) => {
 }
 
 export const replaceDashUrl = (url) => {
-  return url.replaceAll(' ', '-')
+  return url.replaceAll(' ', '-').replaceAll('/', '-')
 }
 
 export const createPlaylistUrl = (title, keyId) => {
@@ -39,7 +39,7 @@ export const createPlaylistUrl = (title, keyId) => {
 
 export const createSongUrl = (title, keyId) => {
   if (title && keyId) {
-    return `bai-hat/${createSlug(title)}&k=${keyId}`
+    return `/bai-hat/${createSlug(title)}&k=${keyId}`
   } else {
     return '/'
   }
@@ -49,7 +49,7 @@ export const createArtistUrl = (name, shortLink, artistId) => {
   if (name && shortLink && artistId) {
     return `nghe-si/${shortLink}&k=${artistId}`
   } else {
-    return `tim-kiem/q=${replaceDashUrl(name)}`
+    return `tim-kiem?q=${replaceDashUrl(name)}`
   }
 }
 
@@ -116,7 +116,7 @@ export const handleBlurInput = (e) => {
 export const handleCopySong = (e, defineLang, title, songId) => {
   e.stopPropagation()
 
-  const songLink = `${PROXY}/${createSongUrl(title, songId)}`
+  const songLink = `${PROXY}${createSongUrl(title, songId)}`
   navigator.clipboard.writeText(songLink)
   copyNotify(defineLang)
 }
