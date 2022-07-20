@@ -8,6 +8,7 @@ export { default as ImageOverlay } from './Common/ImageOverlay/ImageOverlay'
 export { default as CommonArtist } from './Common/CommonArtist/CommonArtist'
 export { default as CommonSong } from './Common/CommonSong/CommonSong'
 export { default as SquareImg } from './Common/SquareImg/SquareImg'
+export { default as ExtendModal } from './Common/ExtendModal/ExtendModal'
 
 // Home
 export { default as Loading } from './Loading/Loading'

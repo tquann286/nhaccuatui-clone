@@ -30,7 +30,6 @@ const CommonSong = ({ artists, dateRelease, duration, keyId, thumbnail, title, s
             </div>
           </IconButton>
         </div>
-        
       </div>
       <div className="cs-content w3-rest">
           <div className="cs-song-title color-0-88">
