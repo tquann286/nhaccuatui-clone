@@ -9,7 +9,7 @@ const SearchResult = ({ searchQuery, defineLang, isLoading, setIsLoading }) => {
   const [searchResult, setSearchResult] = useState(null)
   const [currentCate, setCurrentCate] = useState('all')
 
-  console.log('searchResult: ', searchResult)
+  // console.log('searchResult: ', searchResult)
 
   useEffect(() => {
     const getSearchResultState = async () => {

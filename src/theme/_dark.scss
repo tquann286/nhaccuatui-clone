@@ -28,10 +28,6 @@ body[data-theme='dark'] {
     color: rgba(244, 246, 248, 0.2) !important;
   }
 
-  .disabled {
-    color: rgba(244, 246, 248, 0.2) !important;
-  }
-
   svg {
     color: rgba(244, 246, 248, 0.5);
   }
@@ -74,7 +70,7 @@ body[data-theme='dark'] {
     color: rgba(244, 246, 248, 0.5);
   }
 
-  .disabled, .color-0-2 {
+  .color-0-2 {
     color: rgba(244, 246, 248, 0.2);
   }
 
