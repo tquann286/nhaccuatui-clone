@@ -1,3 +1,4 @@
+// Source: https://blog.napthedev.com/post/10-doan-code-javascript-huu-ich
 const copyToClipboard = (text) => {
   try {
     if (navigator.clipboard && window.isSecureContext) {

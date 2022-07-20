@@ -13,7 +13,6 @@
     "framer-motion": "^6.5.1",
     "js-sha512": "^0.8.0",
     "lodash": "^4.17.21",
-    "millify": "^4.0.0",
     "nhaccuatui-api-full": "^1.1.0",
     "node-sass": "^7.0.1",
     "react": "^18.1.0",
