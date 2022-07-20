@@ -28,7 +28,7 @@ const SearchContent = () => {
   const [isFetchingFail, setIsFetchingFail] = useState(false)
 
   const [searchTerm, setSearchTerm] = useState('')
-
+  
   useEffect(() => {
     const getSearchContent = async () => {
       try {
@@ -62,6 +62,7 @@ const SearchContent = () => {
     }
 
     getSearchContent()
+
   }, [defineLang])
 
   useEffect(() => {
