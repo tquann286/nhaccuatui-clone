@@ -74,7 +74,7 @@
     }
   }
 
-  &:hover {
+  &:hover, &.focus {
     .cs-view-count {
       visibility: hidden;
     }

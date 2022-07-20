@@ -24,8 +24,6 @@ const CommonSong = ({ artists, keyId, thumbnail, title, songView }) => {
   const positionRef = useRef(null)
   const moreDivRef = useRef(null)
 
-  console.log({ ... positionRef})
-
   const toggleShowMore = () => {
     setShowMoreOptions(!showMoreOptions)
   }
@@ -47,7 +45,7 @@ const CommonSong = ({ artists, keyId, thumbnail, title, songView }) => {
 
 
   return (
-    <div className='common-song-container bg-color-0-02 w3-row'>
+    <div className={`common-song-container bg-color-0-02 w3-row hover-bg-color-0-05 ${showMoreOptions && 'focus bg-color-0-05'}`} ref={positionRef}>
       <div className='cs-img-container w3-col border-0-05'>
         <SquareImg imageUrl={thumbnail} title={title} />
       </div>
@@ -58,7 +56,7 @@ const CommonSong = ({ artists, keyId, thumbnail, title, songView }) => {
           </div>
           <div className='cs-view-count-content w3-col color-0-5'>{formatNumber(songView)}</div>
         </div>
-        <div className='cs-more-options' ref={positionRef}>
+        <div className='cs-more-options'>
           <IconButton className='cs-more-btn' size='large'>
             <div className='cs-more-icon color-0-5' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
               <IoMdMore />
