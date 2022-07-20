@@ -27,15 +27,11 @@ const SongInfo = ({ songs, defineLang }) => {
       <div className='si-title common-header common-title color-0-88'>{defineLang('Bài hát', 'Song')}</div>
       <div className='song-info-main common-main'>
         <Grid className='list-songs' container spacing={2}>
-          {songs.map(song => {
-            const { } = song
-
-            return (
-              <Grid key={song.key} item xs={6} >
-                <CommonSong { ... song } />
-              </Grid>
-            )
-          })}
+          {songs.map((song) => (
+            <Grid key={song.key} item xs={6}>
+              <CommonSong {...song} songView={songsView[song.key] || 0} />
+            </Grid>
+          ))}
         </Grid>
       </div>
     </div>
