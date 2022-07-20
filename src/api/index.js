@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { sha512 } from 'js-sha512'
-import { env } from 'config/environment'
 
 const PROXY_URL = 'https://nct.napdev.workers.dev/'
 const API_URL = 'https://beta.nhaccuatui.com/api'
@@ -32,4 +31,4 @@ const joinQueryString = (obj) =>
 
 export const getMaybeHit = () => client.post('search/maybehit')
 
-
+export const getView = (listSongKeys) => client.post('counter/view', joinQueryString({ listSongKeys }))
