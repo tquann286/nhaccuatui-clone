@@ -54,6 +54,7 @@
 					float: right;
 
 					.sd-view-count {
+						@include flexCenter;
 						position: relative;
 						visibility: visible;
 

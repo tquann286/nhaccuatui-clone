@@ -2,6 +2,7 @@ import { removeVietnameseTones, copyToClipboard } from 'share'
 import { toast } from 'react-toastify'
 import { PROXY } from 'share/constants'
 import { toastNotify } from 'share/toast'
+import { getView } from 'api'
 
 export const covertTimestamp = (time) => {
   const date = new Date(time)
@@ -85,7 +86,7 @@ export const createVideoUrl = (keyId, title, artists) => {
   return videoLink
 }
 
-export const getListSongsKey = (songs) => songs.map(song => song.key)
+export const getListSongsKey = (songs) => songs.map((song) => song.key)
 
 export const getNavigateUrl = (url) => {
   const linkStartIndex = url.indexOf('nhaccuatui.com/') + 15
@@ -144,7 +145,7 @@ export const handleCopySong = (event, defineLang, title, songId) => {
 }
 
 export const handleCopyPlaylist = (event, title, keyId, defineLang) => {
-	event.stopPropagation()
+  event.stopPropagation()
   if (title && keyId && defineLang) {
     const playlistLink = `${PROXY}${createPlaylistUrl(title, keyId)}`
 
@@ -156,13 +157,25 @@ export const handleCopyPlaylist = (event, title, keyId, defineLang) => {
 }
 
 export const handleCopyVideo = (event, title, keyId, artists, defineLang) => {
-	event.stopPropagation()
+  event.stopPropagation()
   if (title && keyId && defineLang) {
     const videoLink = `${PROXY}${createVideoUrl(keyId, title, artists)}`
-  
+
     copyToClipboard(videoLink)
     copyNotify(defineLang)
   } else {
     toastNotify(defineLang('Có lỗi khi sao chép liên kết video', 'An  error has occurred when copying video link'), 'error')
+  }
+}
+
+export const getSongsView = async (listSongKeys) => {
+  try {
+    if (listSongKeys) {
+      const data = await getView(listSongKeys)
+      console.log(data)
+      if (data) return data.song
+    }
+  } catch (error) {
+    throw new Error(error)
   }
 }

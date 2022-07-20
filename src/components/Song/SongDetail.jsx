@@ -7,11 +7,11 @@ import { BsHeadphones, BsLink45Deg, BsMusicNote } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { SiYoutubemusic } from 'react-icons/si'
 
+import { formatNumber } from 'share'
 import { createSongUrl, createArtistUrl, handleCopySong } from 'share/utilities'
 import { createRandomSongView } from 'services/SongDetail'
 
-const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
-  const [songView, setSongView] = useState(0)
+const SongDetail = ({ artists, songId, thumbnail, title, lang, songView }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
 
   const songContainerRef = useRef(null)
@@ -21,7 +21,9 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
   const defineLang = (vie, eng) => lang === 'vi' ? vie : eng
 
   useEffect(() => {
-    setSongView(createRandomSongView())
+    if (!songView) {
+      songView = createRandomSongView()
+    }
   }, [])
 
   const toggleShowMore = () => {
@@ -48,7 +50,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
           <div className='sd-more'>
             <div className='sd-view-count'>
               <BsHeadphones />
-              <div className='sc-view-number color-0-5'>{songView}</div>
+              <div className='sc-view-number color-0-5'>{formatNumber(songView)}</div>
             </div>
             <div className='sd-more-options'>
               <div className='sd-three-dots color-0-5' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
