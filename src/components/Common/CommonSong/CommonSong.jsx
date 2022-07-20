@@ -5,8 +5,8 @@ const CommonSong = ({ artists, dateRelease, duration, key, thumbnail, title }) =
 
 
   return (
-    <div className="common-song-container">
-      common-song
+    <div className="common-song-container bg-color-0-02">
+      
     </div>
   )
 }

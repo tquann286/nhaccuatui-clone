@@ -52,7 +52,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
                   </Link>
                   <div className='nr-active-detail'>
                     <Link to={createSongUrl(title, key)}>
-                      <h4>{title}</h4>
+                      <h4 className='color-0-88'>{title}</h4>
                     </Link>
                     <div className='nr-artist-container'>
                       <div className='nr-artist-main'>
