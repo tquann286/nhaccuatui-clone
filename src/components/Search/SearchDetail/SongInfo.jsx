@@ -5,7 +5,6 @@ import { Grid } from '@mui/material'
 import { CommonSong } from 'components'
 
 const SongInfo = ({ songs, defineLang }) => {
-  console.log('songs: ', songs)
   const [songsView, setSongView] = useState({})
 
   useEffect(() => {

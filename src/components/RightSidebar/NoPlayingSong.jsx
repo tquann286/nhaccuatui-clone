@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import noPlayer from 'images/default_player_v2.jpg'
+import noPlayer from 'images/default/default_player_v2.jpg'
 
 import { getTrendingSong } from 'services/RightSidebar/NoPlayingSong'
 import { createArtistUrl, createSongUrl } from 'share/utilities'
