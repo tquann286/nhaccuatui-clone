@@ -1,43 +1,32 @@
 import React, { useState, useEffect } from 'react'
-import { getView } from 'api'
-import { getListSongsKey } from 'share/utilities'
+import { Link } from 'react-router-dom'
+import { getListSongsKey, getSongsView } from 'share/utilities'
 
 const SongInfo = ({ songs, defineLang }) => {
   console.log('songs: ', songs)
   const [songsView, setSongView] = useState({})
-  console.log(songsView)
 
   useEffect(() => {
     try {
-      const getSongsView = async (listSongKeys) => {
-        if (listSongKeys) {
-          const songsView = await getView(listSongKeys)
-          if (songsView) {
-            setSongView(songsView.song)
-          }
-  
-        }
+      const getSongsViewState = async (listSongsKey) => {
+        const songsView = await getSongsView(listSongsKey)
+        setSongView(songsView)
       }
-  
-      if (songs) {
-        getSongsView(getListSongsKey(songs))
-      }
+      getSongsViewState(getListSongsKey(songs))
     } catch (error) {
       throw new Error(error)
     }
-
   }, [songs])
 
-  if (songs) {
-    songs.map((song) => {
-      console.log(song.title)
-      console.log(songsView[song.key])
-    })
-  }
+  if (!songs) return null 
 
   return (
     <div className='song-info-container'>
-      <div className='si-title common-title color-0-88'>{defineLang('Bài hát', 'Song')}</div>
+      <div className='si-title common-header color-0-88'>
+        <div className="common-title">
+          <Link to='/bai-hat'>{defineLang('Bài hát', 'Song')}</Link>
+        </div>
+      </div>
     </div>
   )
 }

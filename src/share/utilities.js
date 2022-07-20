@@ -168,6 +168,7 @@ export const handleCopyVideo = (event, title, keyId, artists, defineLang) => {
   }
 }
 
+// API
 export const getSongsView = async (listSongKeys) => {
   try {
     if (listSongKeys) {
