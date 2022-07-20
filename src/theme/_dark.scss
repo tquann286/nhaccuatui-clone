@@ -23,6 +23,15 @@ body[data-theme='dark'] {
   }
 
   // Special
+
+  .disabled {
+    color: rgba(244, 246, 248, 0.2) !important;
+  }
+
+  .disabled {
+    color: rgba(244, 246, 248, 0.2) !important;
+  }
+
   svg {
     color: rgba(244, 246, 248, 0.5);
   }
@@ -50,10 +59,6 @@ body[data-theme='dark'] {
     .nav-item {
       background-color: rgba(244, 246, 248, 0.05) !important;
     }
-  }
-
-  .disabled, .cusArrow.nextArr.disabled {
-    color: rgba(244, 246, 248, 0.2) !important;
   }
 
   // Color
