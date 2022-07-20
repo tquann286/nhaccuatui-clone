@@ -1,6 +1,7 @@
 @import 'sass/base/color';
 @import 'sass/base/base';
 @import 'theme/dark';
+@import 'sass/base/override';
 
 html {
   font-size: 62.5%;
@@ -199,9 +200,4 @@ input, select {
 p {
   font-size: 1.4rem;
   line-height: 20px;
-}
-
-// Override toastify css
-.Toastify__toast-body {
-  font-size: 1.4rem;
 }

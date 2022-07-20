@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+
 import { getListSongsKey, getSongsView } from 'share/utilities'
+import { Grid } from '@mui/material'
+import { CommonSong } from 'components'
 
 const SongInfo = ({ songs, defineLang }) => {
   console.log('songs: ', songs)
@@ -23,8 +25,18 @@ const SongInfo = ({ songs, defineLang }) => {
   return (
     <div className='song-info-container common-section'>
       <div className='si-title common-header common-title color-0-88'>{defineLang('Bài hát', 'Song')}</div>
-      <div className="song-info-main common-main">
-        
+      <div className='song-info-main common-main'>
+        <Grid className='list-songs' container spacing={2}>
+          {songs.map(song => {
+            const { } = song
+
+            return (
+              <Grid key={song.key} item xs={6} >
+                <CommonSong { ... song } />
+              </Grid>
+            )
+          })}
+        </Grid>
       </div>
     </div>
   )
