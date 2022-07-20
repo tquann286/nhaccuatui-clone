@@ -1,1 +1,0 @@
-export const getListSongsKey = (songs) => songs.map(song => song.key)

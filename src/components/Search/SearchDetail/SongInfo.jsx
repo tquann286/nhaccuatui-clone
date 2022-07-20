@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getView } from 'api'
-import { getListSongsKey } from 'services/Search/SearchDetail'
+import { getListSongsKey } from 'share/utilities'
 
 const SongInfo = ({ songs, defineLang }) => {
   console.log('songs: ', songs)
