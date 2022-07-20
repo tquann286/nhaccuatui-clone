@@ -24,6 +24,8 @@ const CommonSong = ({ artists, keyId, thumbnail, title, songView }) => {
   const positionRef = useRef(null)
   const moreDivRef = useRef(null)
 
+  console.log({ ... positionRef})
+
   const toggleShowMore = () => {
     setShowMoreOptions(!showMoreOptions)
   }
