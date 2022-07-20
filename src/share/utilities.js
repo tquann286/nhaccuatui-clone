@@ -173,7 +173,6 @@ export const getSongsView = async (listSongKeys) => {
   try {
     if (listSongKeys) {
       const data = await getView(listSongKeys)
-      console.log(data)
       if (data) return data.song
     }
   } catch (error) {

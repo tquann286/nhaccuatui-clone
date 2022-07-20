@@ -18,14 +18,13 @@ const SongInfo = ({ songs, defineLang }) => {
     }
   }, [songs])
 
-  if (!songs) return null 
+  if (!songs) return null
 
   return (
-    <div className='song-info-container'>
-      <div className='si-title common-header color-0-88'>
-        <div className="common-title">
-          <Link to='/bai-hat'>{defineLang('Bài hát', 'Song')}</Link>
-        </div>
+    <div className='song-info-container common-section'>
+      <div className='si-title common-header common-title color-0-88'>{defineLang('Bài hát', 'Song')}</div>
+      <div className="song-info-main common-main">
+        
       </div>
     </div>
   )
