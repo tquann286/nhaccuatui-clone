@@ -42,7 +42,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang }) => {
     <React.Fragment>
       <div className='sd-container' ref={songContainerRef}>
         <div className={`sd-main hover-bg-color-0-05 bg-color-0-02 ${showMoreOptions ? 'focus' : 'non-focus'}`}>
-          <Link to={createSongUrl(title, songId)} className='sd-thumbnail' title={title}>
+          <Link to={createSongUrl(title, songId)} className='sd-thumbnail border-0-05' title={title}>
             <div className='sd-thumb-img' style={{ backgroundImage: `url(${thumbnail})` }}></div>
           </Link>
           <div className='sd-more'>

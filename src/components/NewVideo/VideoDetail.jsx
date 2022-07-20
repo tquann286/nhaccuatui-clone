@@ -45,7 +45,7 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
   return (
     <React.Fragment>
       <div className='vd-container' ref={videoRef}>
-        <div className='vd-video' title={title} style={{ height }} onClick={() => handleVideoClick()}>
+        <div className='vd-video border-0-05' title={title} style={{ height }} onClick={() => handleVideoClick()}>
           <img className='vd-img' src={thumbnail} alt={title} />
           <div className='vd-duration'>{duration}</div>
           <div className='vd-blur-layer'>

@@ -6,7 +6,7 @@ const SwiperSlider = ({ keyId, title, thumbURL, onNavigateTopic }) => {
 		<div className='ht-container'>
 			<Link to={createTopicUrl(title, keyId)}>
 			<div
-				className='ht-img-container '
+				className='ht-img-container border-0-05'
 			>
 				<img src={thumbURL} alt={title} />
 				<div className='ht-blur-layer'></div>
