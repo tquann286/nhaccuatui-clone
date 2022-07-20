@@ -7,6 +7,7 @@ export { default as OptionModal } from './Common/OptionModal/OptionModal'
 export { default as ImageOverlay } from './Common/ImageOverlay/ImageOverlay'
 export { default as CommonArtist } from './Common/CommonArtist/CommonArtist'
 export { default as CommonSong } from './Common/CommonSong/CommonSong'
+export { default as SquareImg } from './Common/SquareImg/SquareImg'
 
 // Home
 export { default as Loading } from './Loading/Loading'
