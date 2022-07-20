@@ -32,9 +32,9 @@
       padding: 0 0.8rem;
 
       .ht-img-container {
+        @include useBorder;
         position: relative;
         width: 100%;
-        border: 0.1rem solid rgba(28, 30, 32, 0.05);
         border-radius: 0.4rem;
         overflow: hidden;
         box-shadow: $box-shadow-effect;

@@ -8,9 +8,7 @@ import { OptionModal } from 'components'
 
 import { isEmpty } from 'lodash'
 
-import { handleVideoLink } from 'services/VideoDetail'
-import { PROXY } from 'share/constants'
-import { createArtistUrl, copyNotify } from 'share/utilities'
+import { createArtistUrl, handleCopyVideo, createVideoUrl } from 'share/utilities'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { useStore } from 'store'
@@ -36,23 +34,18 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
   }
 
   const handleCopyClick = (e) => {
-    e.stopPropagation()
-
-    const videoLink = `${PROXY}/${handleVideoLink(keyId, title, artists)}`
-
-    navigator.clipboard.writeText(videoLink)
     toggleShowMore()
-    copyNotify(defineLang)
+    handleCopyVideo(e, title, keyId, artists, defineLang)
   }
 
   const handleVideoClick = () => {
-    navigate(handleVideoLink(keyId, title, artists))
+    navigate(createVideoUrl(keyId, title, artists))
   }
 
   return (
     <React.Fragment>
       <div className='vd-container' ref={videoRef}>
-        <div className='vd-video' title={title} style={{ height }} onClick={() => handleVideoClick()}>
+        <div className='vd-video border-0-05' title={title} style={{ height }} onClick={() => handleVideoClick()}>
           <img className='vd-img' src={thumbnail} alt={title} />
           <div className='vd-duration'>{duration}</div>
           <div className='vd-blur-layer'>
@@ -65,7 +58,7 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
           </div>
         </div>
         <div className='vd-title'>
-          <Link to={handleVideoLink(keyId, title, artists)}>{title}</Link>
+          <Link to={createVideoUrl(keyId, title, artists)}>{title}</Link>
         </div>
         <div className='vd-artists color-0-5'>
           {artists.map((artist, i) => {

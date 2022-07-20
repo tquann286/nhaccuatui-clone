@@ -1,10 +1,10 @@
-import { getChart } from 'nhaccuatui-api-full/dist'
+import { getMaybeHit } from 'api'
 
 export const getTrendingSong = async () => {
   try {
-    const { ranking } = await getChart({ category: 'nhac-viet', type: 'song', size: 1 })
-    if (ranking) return ranking.song[0]
+    const data = await getMaybeHit()
+    if (data && data.status === 'success') return data.song
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 }

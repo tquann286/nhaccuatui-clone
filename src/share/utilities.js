@@ -1,6 +1,8 @@
-import { removeVietnameseTones } from 'share'
+import { removeVietnameseTones, copyToClipboard } from 'share'
 import { toast } from 'react-toastify'
 import { PROXY } from 'share/constants'
+import { toastNotify } from 'share/toast'
+import { getView } from 'api'
 
 export const covertTimestamp = (time) => {
   const date = new Date(time)
@@ -69,6 +71,23 @@ export const createTop100Url = (title, keyId) => {
   }
 }
 
+export const createVideoUrl = (keyId, title, artists) => {
+  const artistLink = artists.reduce((acc, cur, i) => {
+    if (!cur.shortLink) {
+      return `${acc}${i > 0 ? '-ft-' : ''}${replaceDashUrl(removeVietnameseTones(cur.name))}`
+    }
+    if (acc) {
+      return `${acc}${i > 0 ? '-ft-' : ''}${cur.shortLink}`
+    }
+    return `${cur.shortLink}`
+  }, '')
+  const videoLink = `/video/${replaceDashUrl(removeVietnameseTones(title))}-${artistLink}`.toLocaleLowerCase() + `&k=${keyId}`
+
+  return videoLink
+}
+
+export const getListSongsKey = (songs) => songs.map((song) => song.key)
+
 export const getNavigateUrl = (url) => {
   const linkStartIndex = url.indexOf('nhaccuatui.com/') + 15
   const keyStartIndex = url.indexOf('.html') - 12
@@ -113,16 +132,50 @@ export const handleBlurInput = (e) => {
   e.target.parentElement.classList.remove('focus')
 }
 
-export const handleCopySong = (e, defineLang, title, songId) => {
-  e.stopPropagation()
+export const handleCopySong = (event, defineLang, title, songId) => {
+  event.stopPropagation()
+  if (title && songId && defineLang) {
+    const songLink = `${PROXY}${createSongUrl(title, songId)}`
 
-  const songLink = `${PROXY}${createSongUrl(title, songId)}`
-  navigator.clipboard.writeText(songLink)
-  copyNotify(defineLang)
+    copyToClipboard(songLink)
+    copyNotify(defineLang)
+  } else {
+    toastNotify(defineLang('Có lỗi khi sao chép liên kết bài hát', 'An  error has occurred when copying song link'), 'error')
+  }
 }
 
 export const handleCopyPlaylist = (event, title, keyId, defineLang) => {
-	event.stopPropagation()
-	navigator.clipboard.writeText(`${PROXY}${createPlaylistUrl(title, keyId)}`)
-	copyNotify(defineLang)
+  event.stopPropagation()
+  if (title && keyId && defineLang) {
+    const playlistLink = `${PROXY}${createPlaylistUrl(title, keyId)}`
+
+    copyToClipboard(playlistLink)
+    copyNotify(defineLang)
+  } else {
+    toastNotify(defineLang('Có lỗi khi sao chép liên kết danh sách phát', 'An  error has occurred when copying playlist link'), 'error')
+  }
+}
+
+export const handleCopyVideo = (event, title, keyId, artists, defineLang) => {
+  event.stopPropagation()
+  if (title && keyId && defineLang) {
+    const videoLink = `${PROXY}${createVideoUrl(keyId, title, artists)}`
+
+    copyToClipboard(videoLink)
+    copyNotify(defineLang)
+  } else {
+    toastNotify(defineLang('Có lỗi khi sao chép liên kết video', 'An  error has occurred when copying video link'), 'error')
+  }
+}
+
+export const getSongsView = async (listSongKeys) => {
+  try {
+    if (listSongKeys) {
+      const data = await getView(listSongKeys)
+      console.log(data)
+      if (data) return data.song
+    }
+  } catch (error) {
+    throw new Error(error)
+  }
 }

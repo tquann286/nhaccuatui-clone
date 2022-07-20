@@ -29,7 +29,7 @@ const SwiperSlider = ({keyId, title, thumbnail, onNavigatePlaylist, lang}) => {
 	return (
 			<div className='pl-container'>
 				<div
-					className='pl-img-container'
+					className='pl-img-container border-0-05'
 					onClick={() => onNavigatePlaylist(title, keyId)}
 				>
 					<img src={thumbnail} alt={title} />
