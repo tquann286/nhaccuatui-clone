@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Homepage.scss'
 
+import { useLocation } from 'react-router-dom'
 import { useLang } from 'hooks'
 import { LeftSidebar, RightSidebar, Title } from 'components'
 import { Outlet } from 'react-router-dom'
 
+import { scrollToTop } from 'share'
+
 const Homepage = () => {
+
+  const location = useLocation()
+
+  useEffect(() => {
+		scrollToTop()
+	}, [location])
+
   return (
     <div className='hp-container'>
       <Title title={useLang('NhacCuaTui Clone - Nghe nhạc Mới, tải nhạc Hot chất lượng cao', 'NhacCuaTui Clone - Music for everyone')} />

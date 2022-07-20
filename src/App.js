@@ -9,6 +9,7 @@ import { auth } from 'config/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 import { MainHomepage } from 'components'
 
+
 const App = () => {
   const [state, dispatch] = useStore()
 
