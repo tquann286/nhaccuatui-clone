@@ -59,7 +59,20 @@
     }
   }
 
-  
+  .cs-content {
+
+    .cs-song-title {
+      @include transition-effect(0.15s);
+      @include fitContentWidth;
+      @include threeDotContent;
+      @include hoverMainColor;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-top: 1.6rem;
+      max-width: 100%;
+      line-height: 1.8rem;
+    }
+  }
 
   &:hover {
     .cs-view-count {

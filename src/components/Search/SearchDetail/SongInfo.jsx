@@ -29,7 +29,7 @@ const SongInfo = ({ songs, defineLang }) => {
         <Grid className='list-songs' container spacing={2}>
           {songs.map((song) => (
             <Grid key={song.key} item xs={6}>
-              <CommonSong {...song} songView={songsView[song.key] || 0} />
+              <CommonSong {...song} songView={songsView[song.key] || 0} keyId={song.key} />
             </Grid>
           ))}
         </Grid>

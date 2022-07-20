@@ -1,10 +1,10 @@
 import './SquareImg.scss'
 
-const SquareImg = ({ imageUrl }) => {
+const SquareImg = ({ imageUrl, title = '' }) => {
 
 
   return (
-    <div className="square-img-container" style={{ backgroundImage: `url(${imageUrl})` }}>
+    <div className="square-img-container" style={{ backgroundImage: `url(${imageUrl})` }} title={title}>
     </div>
   )
 }
