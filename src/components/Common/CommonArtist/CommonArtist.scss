@@ -10,6 +10,7 @@
   line-height: 1.8rem;
   position: relative;
   z-index: 1;
+  font-weight: 500;
   a.common-artists-name {
     span {
       @include transition-effect(0.1s);

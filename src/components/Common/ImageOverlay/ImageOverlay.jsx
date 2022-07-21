@@ -56,7 +56,7 @@ const ImageOverlay = ({ keyId, imageUrl, title, handleNavigate, handleAddToFav, 
           <ExtendModal {...extendModalProps} />
         </ModalAnimate>
       </OptionModal>
-      <div className='io-overlay' ref={positionRef}>
+      <div className='io-overlay' ref={positionRef} title={title || ''}>
         <div className='io-play-button'>
           <BsPlayCircleFill />
         </div>
