@@ -1,16 +1,13 @@
 import React from 'react'
 import './SearchDetail.scss'
 
-import { SongInfo } from 'components'
+import { PlaylistInfo, SongInfo } from 'components'
 
-const SearchDetail = ({ playlist: playlistInfo, song: songInfo, video: videoInfo, defineLang }) => {
-
-
-  return (
-    <div className='song-detail-container'>
-      {songInfo && <SongInfo songs={songInfo.song} defineLang={defineLang} />}
-    </div>
-  )
-}
+const SearchDetail = ({ playlist, song, video, defineLang }) => (
+  <div className='song-detail-container'>
+    {song && <SongInfo songs={song.song} defineLang={defineLang} />}
+    {playlist && <PlaylistInfo playlists={playlist.playlist} defineLang={defineLang} />}
+  </div>
+)
 
 export default SearchDetail

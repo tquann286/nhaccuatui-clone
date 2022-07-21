@@ -14,6 +14,23 @@ body {
   position: relative;
 }
 
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #6a93cb;
+background-image: linear-gradient(315deg, #6a93cb 0%, #a4bfef 74%);
+  border-radius: 0.8rem;
+}
+
 // Reset CSS
 html,
 body,
@@ -149,37 +166,57 @@ embed {
   max-width: 100%;
 }
 
-[type=button], [type=reset], [type=submit], button {
+[type='button'],
+[type='reset'],
+[type='submit'],
+button {
   -webkit-appearance: button;
 }
 
-button, select {
+button,
+select {
   text-transform: none;
 }
 
-button, input {
+button,
+input {
   overflow: visible;
 }
 
-button, input, optgroup, select, textarea {
+button,
+input,
+optgroup,
+select,
+textarea {
   font: inherit;
   margin: 0;
 }
 
-button, input[type=button] {
+button,
+input[type='button'] {
   width: auto;
   overflow: visible;
 }
 
-.clickable, label, input[type=button], input[type=submit], input[type=file], button {
+.clickable,
+label,
+input[type='button'],
+input[type='submit'],
+input[type='file'],
+button {
   cursor: pointer;
 }
 
-button, input {
+button,
+input {
   overflow: visible;
 }
 
-button, input, optgroup, select, textarea {
+button,
+input,
+optgroup,
+select,
+textarea {
   font: inherit;
   margin: 0;
 }
@@ -190,11 +227,15 @@ input {
   background: transparent;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   margin: 0;
 }
 
-input, select {
+input,
+select {
   vertical-align: middle;
 }
 

@@ -18,7 +18,7 @@ import { BsMoonStarsFill, BsSunFill } from 'react-icons/bs'
 import { AiOutlineSetting } from 'react-icons/ai'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
-import { useGetPosition } from 'hooks'
+import { useGetFixedPosition } from 'hooks'
 
 import { auth } from 'config/firebase'
 
@@ -65,7 +65,7 @@ const LeftSidebar = () => {
     dispatch(actions.toggleShowSignUp())
   }
 
-  useGetPosition(
+  useGetFixedPosition(
     settingsBtnRef,
     (right, top) =>
       setSettingsModalPosition({
