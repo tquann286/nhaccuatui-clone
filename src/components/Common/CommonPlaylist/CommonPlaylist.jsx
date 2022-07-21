@@ -33,7 +33,7 @@ const CommonPlaylist = ({ keyId, artists, thumbnail, title }) => {
   }
 
   return (
-    <div className='common-playlist-container'>
+    <div className='common-playlist-container inherit-width'>
       <ShadowOverlay { ... shadowOverlayProps } />
       <div className="common-playlist-title color-0-88" title={title}>
         <Link to={createPlaylistUrl(title, keyId)}>{title}</Link>
