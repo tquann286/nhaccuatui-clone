@@ -56,11 +56,11 @@ const ImageOverlay = ({ keyId, imageUrl, title, handleNavigate, handleAddToFav, 
           <ExtendModal {...extendModalProps} />
         </ModalAnimate>
       </OptionModal>
-      <div className='io-overlay' ref={positionRef} title={title || ''}>
-        <div className='io-play-button'>
+      <div className='overlay-container' ref={positionRef} title={title || ''}>
+        <div className='overlay-play-btn'>
           <BsPlayCircleFill />
         </div>
-        <div className='io-more-options' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
+        <div className='overlay-more-options' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
           <IoMdMore />
         </div>
       </div>

@@ -7,11 +7,11 @@ import { createVideoUrl, handleCopyVideo } from 'share/utilities'
 
 import { useStore } from 'store'
 
-const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title }) => {
+const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title, videoHeight }) => {
   const navigate = useNavigate()
 
   const [state] = useStore()
-  const defineLang = (vie, eng) => state.lang === 'vi' ? vie : eng
+  const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
 
   const onNavigateVideo = () => {
     navigate(createVideoUrl(keyId, title, artists))
@@ -27,13 +27,14 @@ const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title })
     title,
     handleNagivate: onNavigateVideo,
     copyLink: true,
-    handleCopyLink: (e) => onCopyVideo(e)
+    duration,
+    handleCopyLink: (e) => onCopyVideo(e),
   }
 
   return (
     <div className='common-video-container inherit-width'>
-      <div className="cv-video border-0-05">
-        <VideoOverlay { ... videoOverlayProps } />
+      <div className='cv-video border-0-05' style={{ height: videoHeight }}>
+        <VideoOverlay {...videoOverlayProps} />
       </div>
     </div>
   )
