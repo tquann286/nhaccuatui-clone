@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import noImg from 'images/default/default_player.jpg'
 import './ImageOverlay.scss'
 
 import { ExtendModal, ModalAnimate, OptionModal } from 'components'
@@ -50,7 +51,7 @@ const ImageOverlay = ({ keyId, imageUrl, title, handleNavigate, handleAddToFav, 
 
   return (
     <div className='img-overlay-container' onClick={handleNavigate}>
-      <img className='io-img' src={imageUrl} alt={title || ''} title={title || ''} />
+      <img className='io-img' src={imageUrl || noImg} alt={title || ''} title={title || ''} />
       <OptionModal {...optionModalProps}>
         <ModalAnimate { ... modalAnimateProps }>
           <ExtendModal {...extendModalProps} />

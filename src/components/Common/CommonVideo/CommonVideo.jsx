@@ -17,18 +17,14 @@ const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title, v
     navigate(createVideoUrl(keyId, title, artists))
   }
 
-  const onCopyVideo = (e) => {
-    handleCopyVideo(e, title, keyId, artists, defineLang)
-  }
-
   const videoOverlayProps = {
     keyId,
     imageUrl: thumbnail,
     title,
     handleNagivate: onNavigateVideo,
-    copyLink: true,
     duration,
-    handleCopyLink: (e) => onCopyVideo(e),
+    artists,
+    defineLang
   }
 
   return (
