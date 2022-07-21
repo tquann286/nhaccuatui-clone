@@ -10,6 +10,7 @@ export { default as CommonSong } from './Common/CommonSong/CommonSong'
 export { default as CommonPlaylist } from './Common/CommonPlaylist/CommonPlaylist'
 export { default as SquareImg } from './Common/SquareImg/SquareImg'
 export { default as ExtendModal } from './Common/ExtendModal/ExtendModal'
+export { default as ShadowOverlay } from './Common/ShadowOverlay/ShadowOverlay'
 
 // Home
 export { default as Loading } from './Loading/Loading'
