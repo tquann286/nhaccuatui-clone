@@ -8,12 +8,20 @@ import { useStore } from 'store'
 import { auth } from 'config/firebase'
 import { isEmpty } from 'lodash'
 
-const ExtendModal = ({ handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong, refMapping, handleRefMapping }) => {
+const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong, refMapping, handleRefMapping }) => {
   const [state] = useStore()
   const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
 
+  const onAddToFav = (e) => {
+    handleAddToFav(e)
+  }
+
   const onCopyLink = (e) => {
     handleCopyLink(e)
+  }
+
+  const onGoToSong = (e) => {
+    handleGoToSong(e)
   }
 
   return (
@@ -25,8 +33,8 @@ const ExtendModal = ({ handleAddToFav, copyLink, handleCopyLink, goToSong, handl
             <span>{defineLang('Nghe audio', 'Play audio')}</span>
           </li>
         )}
-        {auth.currentUser && (
-          <li className='hover-bg-color-0-05' onClick={handleAddToFav}>
+        {(auth.currentUser && addToFav) && (
+          <li className='hover-bg-color-0-05' onClick={(e) => onAddToFav(e)}>
             <SiYoutubemusic />
             <span>{defineLang('Thêm vào chờ phát', 'Add to queue')}</span>
           </li>
@@ -38,7 +46,7 @@ const ExtendModal = ({ handleAddToFav, copyLink, handleCopyLink, goToSong, handl
           </li>
         )}
         {goToSong && (
-          <li className='hover-bg-color-0-05' onClick={(e) => handleGoToSong(e)}>
+          <li className='hover-bg-color-0-05' onClick={(e) => onGoToSong(e)}>
             <BsMusicNote />
             <span>{defineLang('Đi đến bài hát', 'Go to song')}</span>
           </li>

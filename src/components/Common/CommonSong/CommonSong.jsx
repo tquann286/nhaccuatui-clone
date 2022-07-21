@@ -13,6 +13,8 @@ import { formatNumber } from 'share'
 import { IoMdMore } from 'react-icons/io'
 
 import { useStore } from 'store'
+import { auth } from 'config/firebase'
+import { handleAddToFavSong } from 'share/addToFav'
 
 const CommonSong = ({ artists, keyId, thumbnail, title, songView }) => {
   const [state] = useStore()
@@ -44,6 +46,12 @@ const CommonSong = ({ artists, keyId, thumbnail, title, songView }) => {
     navigate(createSongUrl(title, keyId))
   }
   
+  const handleAddToFav = (e) => {
+    e.stopPropagation()
+    handleAddToFavSong({ artists, keyId, thumbnail, title }, defineLang)
+    toggleShowMore()
+  }
+
   return (
     <div className={`common-song-container bg-color-0-02 w3-row hover-bg-color-0-05 ${showMoreOptions && 'focus bg-color-0-05'}`} ref={positionRef}>
       <div className='cs-img-container w3-col border-0-05'>
@@ -72,7 +80,7 @@ const CommonSong = ({ artists, keyId, thumbnail, title, songView }) => {
       </div>
       <OptionModal showModal={showMoreOptions} positionRef={positionRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
         <ModalAnimate animateProps={basicModal} isVisible={showMoreOptions} keyId={keyId}>
-          <ExtendModal copyLink handleCopyLink={(e) => onCopyLink(e)} goToSong handleGoToSong={(e) => handleGoToSong(e)} />
+          <ExtendModal copyLink handleCopyLink={(e) => onCopyLink(e)} goToSong handleGoToSong={(e) => handleGoToSong(e)} addToFav handleAddToFav={(e) => handleAddToFav(e)} />
         </ModalAnimate>
       </OptionModal>
     </div>

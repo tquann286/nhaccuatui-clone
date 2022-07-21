@@ -114,7 +114,7 @@ const AuthForm = () => {
         // User is not exists in firestore
         await addUser(docRef, displayName, email, photoURL, uid)
       }
-
+      toastNotify(defineLang('Đăng nhập thành công.', 'Sign in successful.'), 'success')
       if (showLogin) {
         toggleShowLogin()
       } else if (showSignUp) {
@@ -137,6 +137,7 @@ const AuthForm = () => {
         // User is not exists in firestore
         await addUser(docRef, displayName, email, photoURL, uid)
       }
+      toastNotify(defineLang('Đăng nhập thành công.', 'Sign in successful.'), 'success')
 
       if (showLogin) {
         toggleShowLogin()
