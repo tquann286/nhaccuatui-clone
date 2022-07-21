@@ -4,7 +4,6 @@ import { CommonPlaylist } from 'components'
 import { Grid } from '@mui/material'
 
 const PlaylistInfo = ({ playlists, defineLang }) => {
-  console.log(playlists)
 
   return (
     <div className='playlist-info-container common-section'>
