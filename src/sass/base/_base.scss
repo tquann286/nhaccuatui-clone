@@ -67,3 +67,14 @@
     }
   }
 }
+
+.small-title {
+  @include transition-effect(0.15s);
+  @include hoverMainColor;
+  @include fitContentWidth;
+  @include threeDotContent;
+  max-width: 100%;
+  line-height: 2rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
