@@ -65,11 +65,14 @@ const LeftSidebar = () => {
     dispatch(actions.toggleShowSignUp())
   }
 
-  useGetPosition(settingsBtnRef, (right, top) =>
-    setSettingsModalPosition({
-      top: top,
-      left: right,
-    }), showSettingsModal
+  useGetPosition(
+    settingsBtnRef,
+    (right, top) =>
+      setSettingsModalPosition({
+        top: top,
+        left: right,
+      }),
+    showSettingsModal
   )
 
   return (
@@ -104,7 +107,7 @@ const LeftSidebar = () => {
                 </div>
                 <div className='ls-user-name'>
                   <Link to='user'>
-                    <div className=' color-0-88' title={auth.currentUser.displayName}>
+                    <div className='ls-user-name-content color-0-88' title={auth.currentUser.displayName}>
                       {auth.currentUser.displayName}
                     </div>
                   </Link>
@@ -250,16 +253,16 @@ const LeftSidebar = () => {
               <React.Fragment>
                 <div className='ls-library color-0-88'>{lang === 'vi' ? 'Thư viện' : 'Library'}</div>
                 <ul className='nav-menu'>
-                <li>
-                  <NavLink to='user/yeu-thich'>
-                    <div className='nav-item bg-color-0-05 nav-favorite'>
-                      <div className='nav-active-item'></div>
-                      <div className='nav-content color-0-5'>
-                        <p className='nav-name color-0-88'>{lang === 'vi' ? 'NhacCuaTui' : 'Favorite'}</p>
+                  <li>
+                    <NavLink to='user/yeu-thich'>
+                      <div className='nav-item bg-color-0-05 nav-favorite'>
+                        <div className='nav-active-item'></div>
+                        <div className='nav-content color-0-5'>
+                          <p className='nav-name color-0-88'>{lang === 'vi' ? 'NhacCuaTui' : 'Favorite'}</p>
+                        </div>
                       </div>
-                    </div>
-                  </NavLink>
-                </li>
+                    </NavLink>
+                  </li>
                   <li>
                     <NavLink to='user/history'>
                       <div className='nav-item bg-color-0-05 nav-history'>

@@ -14,7 +14,7 @@ const MainContainer = ({ defineSong, children }) => (
           <img src={noPlayer} alt={defineSong('Thưởng thức nhạc thôi nào!', 'Play music and enjoy')} />
           <p className='title color-0-88'>{defineSong('Thưởng thức những giai điệu theo cách riêng của bạn', 'Enjoy the melody in your own way')}</p>
           <div className='play-now border-0-1 color-0-5'>
-            <Link to='/bai-hat/top-20/nhac-viet'>{defineSong('Nghe nào', 'Play now')}</Link>
+            <Link to='/bang-xep-hang/top-20&k=nhac-viet'>{defineSong('Nghe nào', 'Play now')}</Link>
           </div>
         </div>
       </div>

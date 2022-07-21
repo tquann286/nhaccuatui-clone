@@ -37,10 +37,10 @@
           .explore-btn {
             @include flexCenter;
             @include transition-effect(0.1s);
+            @include useBorder;
             margin-top: 2.4rem;
             width: 16rem;
             height: 3.2rem;
-            border: 0.1rem solid;
             border-radius: 1.6rem;
             cursor: pointer;
 

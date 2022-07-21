@@ -49,7 +49,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
         throw new Error(error)
       }
     }
-
+    setSearchTerm('')
     getMaybeHitState()
   }, [])
 
