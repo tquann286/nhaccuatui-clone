@@ -19,19 +19,19 @@ const ExtendModal = ({ handleAddToFav, copyLink, handleCopyLink, goToSong, handl
     <div className='extend-modal-main color-0-88 bg-dark-color-1'>
       <ul>
         {auth.currentUser && (
-          <li onClick={handleAddToFav}>
+          <li className='hover-bg-color-0-05' onClick={handleAddToFav}>
             <SiYoutubemusic />
             <span>{defineLang('Thêm vào chờ phát', 'Add to queue')}</span>
           </li>
         )}
         {copyLink && (
-          <li onClick={(e) => onCopyLink(e)}>
+          <li className='hover-bg-color-0-05' onClick={(e) => onCopyLink(e)}>
             <BsLink45Deg />
             <span>{defineLang('Sao chép link', 'Copy link')}</span>
           </li>
         )}
         {goToSong && (
-          <li onClick={(e) => handleGoToSong(e)}>
+          <li className='hover-bg-color-0-05' onClick={(e) => handleGoToSong(e)}>
             <BsMusicNote />
             <span>{defineLang('Đi đến bài hát', 'Go to song')}</span>
           </li>

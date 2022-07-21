@@ -1,19 +1,13 @@
 import React, { useState, useRef } from 'react'
 import './ImageOverlay.scss'
 
-import { useStore } from 'store'
+import { ExtendModal, ModalAnimate, OptionModal } from 'components'
 
-import { ModalAnimate, OptionModal } from 'components'
-
-import { BsLink45Deg, BsMusicNote, BsPlayCircleFill } from 'react-icons/bs'
+import { BsPlayCircleFill } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { basicModal } from 'share/animation'
-import { SiYoutubemusic } from 'react-icons/si'
 
 const ImageOverlay = ({ keyId, imageUrl, title, handleNavigate, addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong }) => {
-  const [state] = useStore()
-  const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
-
   const [showMoreOptions, setShowMoreOptions] = useState(false)
 
   const positionRef = useRef(null)
@@ -33,33 +27,34 @@ const ImageOverlay = ({ keyId, imageUrl, title, handleNavigate, addToFav, handle
     toggleShowMore()
   }
 
+  const optionModalProps = {
+    showModal: showMoreOptions,
+    positionRef,
+    parentRef: moreDivRef,
+    toggleModal: toggleShowMore,
+  }
+
+  const modalAnimateProps = {
+    animateProps: basicModal,
+    isVisible: showMoreOptions,
+    keyId
+  }
+
+  const extendModalProps = {
+    addToFav,
+    handleAddToFav: (e) => handleAddToFav(e),
+    copyLink,
+    handleCopyLink: (e) => onCopyLink(e),
+    goToSong,
+    handleGoToSong: (e) => handleGoToSong(e),
+  }
+
   return (
     <div className='img-overlay-container' onClick={handleNavigate}>
       <img className='io-img' src={imageUrl} alt={title || ''} title={title || ''} />
-      <OptionModal showModal={showMoreOptions} positionRef={positionRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
-        <ModalAnimate animateProps={basicModal} isVisible={showMoreOptions} keyId={keyId}>
-          <div className='om-main color-0-88 bg-dark-color-1'>
-            <ul>
-              {addToFav && (
-                <li onClick={handleAddToFav}>
-                  <SiYoutubemusic />
-                  <span>{defineLang('Thêm vào chờ phát', 'Add to queue')}</span>
-                </li>
-              )}
-              {copyLink && (
-                <li onClick={(e) => onCopyLink(e)}>
-                  <BsLink45Deg />
-                  <span>{defineLang('Sao chép link', 'Copy link')}</span>
-                </li>
-              )}
-              {goToSong && (
-                <li>
-                  <BsMusicNote />
-                  <span>{defineLang('Đi đến bài hát', 'Go to song')}</span>
-                </li>
-              )}
-            </ul>
-          </div>
+      <OptionModal {...optionModalProps}>
+        <ModalAnimate { ... modalAnimateProps }>
+          <ExtendModal {...extendModalProps} />
         </ModalAnimate>
       </OptionModal>
       <div className='io-overlay' ref={positionRef}>

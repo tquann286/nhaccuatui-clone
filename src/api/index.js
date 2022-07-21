@@ -32,3 +32,5 @@ const joinQueryString = (obj) =>
 export const getMaybeHit = () => client.post('search/maybehit')
 
 export const getView = (listSongKeys) => client.post('counter/view', joinQueryString({ listSongKeys }))
+
+export const getSearchByKeywords = (query, pageSize = 12) => client.post('search/all', joinQueryString({ key: query, pageSize }))
