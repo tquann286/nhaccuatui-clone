@@ -12,6 +12,7 @@ export { default as CommonVideo } from './Common/CommonVideo/CommonVideo'
 export { default as SquareImg } from './Common/SquareImg/SquareImg'
 export { default as ExtendModal } from './Common/ExtendModal/ExtendModal'
 export { default as ShadowOverlay } from './Common/ShadowOverlay/ShadowOverlay'
+export { default as VideoOverlay } from './Common/VideoOverlay/VideoOverlay'
 
 // Home
 export { default as Loading } from './Loading/Loading'

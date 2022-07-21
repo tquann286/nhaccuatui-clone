@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import noPlaylistImg from 'images/default/default_playlist.png'
 import './CommonPlaylist.scss'
 
 import { CommonArtist, ShadowOverlay } from 'components'
@@ -24,7 +25,7 @@ const CommonPlaylist = ({ keyId, artists, thumbnail, title }) => {
   const shadowOverlayProps = {
     width: '100%',
     shadowHeight: '0.6rem',
-    imageUrl: thumbnail,
+    imageUrl: thumbnail || noPlaylistImg,
     keyId,
     title,
     handleNavigate: onNavigatePlaylist,
