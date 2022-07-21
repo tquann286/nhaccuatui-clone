@@ -24,7 +24,8 @@ const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title, v
     handleNagivate: onNavigateVideo,
     duration,
     artists,
-    defineLang
+    defineLang,
+    refMapping
   }
 
   return (

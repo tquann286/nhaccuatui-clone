@@ -1,13 +1,14 @@
 import React from 'react'
 import './ExtendModal.scss'
 
-import { SiYoutubemusic } from 'react-icons/si'
+import { SiAudiomack, SiYoutubemusic } from 'react-icons/si'
 import { BsLink45Deg, BsMusicNote } from 'react-icons/bs'
 
 import { useStore } from 'store'
 import { auth } from 'config/firebase'
+import { isEmpty } from 'lodash'
 
-const ExtendModal = ({ handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong }) => {
+const ExtendModal = ({ handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong, refMapping, handleRefMapping }) => {
   const [state] = useStore()
   const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
 
@@ -18,6 +19,12 @@ const ExtendModal = ({ handleAddToFav, copyLink, handleCopyLink, goToSong, handl
   return (
     <div className='extend-modal-main color-0-88 bg-dark-color-1'>
       <ul>
+        {isEmpty(refMapping) || (
+          <li className='hover-bg-color-0-05' onClick={(e) => handleRefMapping(e)}>
+            <SiAudiomack />
+            <span>{defineLang('Nghe audio', 'Play audio')}</span>
+          </li>
+        )}
         {auth.currentUser && (
           <li className='hover-bg-color-0-05' onClick={handleAddToFav}>
             <SiYoutubemusic />
