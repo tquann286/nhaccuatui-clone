@@ -8,5 +8,5 @@ export const scrollBarStyles = {
   autoHideDuration: 100,
   renderTrackVertical: ({style, ...props}) => (
     <div {...props} style={{...style, width: 3, top: 1, bottom: 1, right: 0, borderRadius: 3 }} />
-  )
+  ),
 }
