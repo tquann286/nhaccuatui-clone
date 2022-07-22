@@ -1,24 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { OptionModal } from 'components'
+import { ExtendModal, ModalAnimate, OptionModal } from 'components'
 
-import { BsHeadphones, BsLink45Deg, BsMusicNote } from 'react-icons/bs'
+import { BsHeadphones } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
-import { SiYoutubemusic } from 'react-icons/si'
 
 import { formatNumber } from 'share'
 import { createSongUrl, createArtistUrl, handleCopySong } from 'share/utilities'
 import { createRandomSongView } from 'services/SongDetail'
+import { basicModal } from 'share/animation'
+import { handleAddToFavSong } from 'share/addToFav'
 
-const SongDetail = ({ artists, songId, thumbnail, title, lang, songView }) => {
+const SongDetail = ({ artists, songId, thumbnail, title, lang, songView, type }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
 
   const songContainerRef = useRef(null)
   const moreDivRef = useRef(null)
 
   const navigate = useNavigate()
-  const defineLang = (vie, eng) => lang === 'vi' ? vie : eng
+  const defineLang = (vie, eng) => (lang === 'vi' ? vie : eng)
 
   useEffect(() => {
     if (!songView) {
@@ -35,15 +36,48 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang, songView }) => {
     toggleShowMore()
   }
 
-  const onCopyClick = (e) => {
+  const onCopyLink = (e) => {
     toggleShowMore()
     handleCopySong(e, defineLang, title, songId)
+  }
+
+  const handleGoToSong = (e) => {
+    e.stopPropagation()
+    navigate(createSongUrl(title, songId))
+  }
+
+  const handleAddToFav = (e) => {
+    e.stopPropagation()
+    handleAddToFavSong({ artists, songId, thumbnail, title, type }, defineLang)
+    toggleShowMore()
+  }
+
+  const optionModalProps = {
+    showModal: showMoreOptions,
+    positionRef: songContainerRef,
+    parentRef: moreDivRef,
+    toggleModal: toggleShowMore,
+  }
+
+  const modalAnimateProps = {
+    animateProps: basicModal,
+    isVisible: showMoreOptions,
+    keyId: songId,
+  }
+
+  const extendModalProps = {
+    copyLink: true,
+    handelCopyLink: (e) => onCopyLink(e),
+    goToSong: true,
+    handleGoToSong: (e) => handleGoToSong(e),
+    addToFav: true,
+    handleAddToFav: (e) => handleAddToFav(e),
   }
 
   return (
     <React.Fragment>
       <div className='sd-container' ref={songContainerRef}>
-        <div className={`sd-main hover-bg-color-0-05 bg-color-0-02 ${showMoreOptions ? 'focus' : 'non-focus'}`}>
+        <div className={`sd-main bg-color-0-02 hover-bg-color-0-05 ${showMoreOptions && 'focus bg-color-0-05'}`}>
           <Link to={createSongUrl(title, songId)} className='sd-thumbnail border-0-05' title={title}>
             <div className='sd-thumb-img' style={{ backgroundImage: `url(${thumbnail})` }}></div>
           </Link>
@@ -79,23 +113,10 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang, songView }) => {
           </div>
         </div>
       </div>
-      <OptionModal showModal={showMoreOptions} positionRef={songContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
-        <div className='om-main color-0-88 bg-dark-color-1'>
-          <ul>
-            <li>
-              <SiYoutubemusic />
-              <span>{lang === 'vi' ? 'Thêm vào chờ phát' : 'Add to favorite'}</span>
-            </li>
-            <li onClick={(e) => onCopyClick(e)}>
-              <BsLink45Deg />
-              <span>{lang === 'vi' ? 'Sao chép link' : 'Copy link'}</span>
-            </li>
-            <li onClick={() => navigate(createSongUrl(title, songId))}>
-              <BsMusicNote />
-              <span>{lang === 'vi' ? 'Đi đến bài hát' : 'Go to song'}</span>
-            </li>
-          </ul>
-        </div>
+      <OptionModal {...optionModalProps}>
+        <ModalAnimate {...modalAnimateProps}>
+          <ExtendModal {...extendModalProps} />
+        </ModalAnimate>
       </OptionModal>
     </React.Fragment>
   )

@@ -45,13 +45,35 @@ const CommonSong = ({ artists, keyId, thumbnail, title, songView, type }) => {
     e.stopPropagation()
     navigate(createSongUrl(title, keyId))
   }
-  
+
   const handleAddToFav = (e) => {
     e.stopPropagation()
     handleAddToFavSong({ artists, keyId, thumbnail, title, type }, defineLang)
     toggleShowMore()
   }
 
+  const optionModalProps = {
+    showModal: showMoreOptions,
+    positionRef,
+    parentRef: moreDivRef,
+    toggleModal: toggleShowMore,
+  }
+
+  const modalAnimateProps = {
+    animateProps: basicModal,
+    isVisible: showMoreOptions,
+    keyId: keyId,
+  }
+
+  const extendModalProps = {
+    copyLink: true,
+    handelCopyLink: (e) => onCopyLink(e),
+    goToSong: true,
+    handleGoToSong: (e) => handleGoToSong(e),
+    addToFav: true,
+    handleAddToFav: (e) => handleAddToFav(e)
+  }
+  
   return (
     <div className={`common-song-container bg-color-0-02 w3-row hover-bg-color-0-05 ${showMoreOptions && 'focus bg-color-0-05'}`} ref={positionRef}>
       <div className='cs-img-container w3-col border-0-05'>
@@ -78,9 +100,9 @@ const CommonSong = ({ artists, keyId, thumbnail, title, songView, type }) => {
         </div>
         <CommonArtist artists={artists} />
       </div>
-      <OptionModal showModal={showMoreOptions} positionRef={positionRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
-        <ModalAnimate animateProps={basicModal} isVisible={showMoreOptions} keyId={keyId}>
-          <ExtendModal copyLink handleCopyLink={(e) => onCopyLink(e)} goToSong handleGoToSong={(e) => handleGoToSong(e)} addToFav handleAddToFav={(e) => handleAddToFav(e)} />
+      <OptionModal {... optionModalProps}>
+        <ModalAnimate { ... modalAnimateProps }>
+          <ExtendModal { ... extendModalProps } />
         </ModalAnimate>
       </OptionModal>
     </div>
