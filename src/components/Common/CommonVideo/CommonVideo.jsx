@@ -17,7 +17,7 @@ const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title, v
   const onNavigateVideo = () => {
     navigate(createVideoUrl(keyId, title, artists))
   }
-  
+
   const handleAddToFav = () => {
     handleAddToFavVideo({ keyId, artists, duration, refMapping, thumbnail, title, type }, defineLang)
   }
@@ -39,7 +39,7 @@ const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title, v
       <div className='cv-video border-0-05' style={{ height: videoHeight }}>
         <VideoOverlay {...videoOverlayProps} />
       </div>
-      <div className="cv-title color-0-88 small-title" title={title}>
+      <div className='cv-title color-0-88 small-title' title={title}>
         <Link to={createVideoUrl(keyId, title, artists)}>{title}</Link>
       </div>
       <CommonArtist artists={artists} />

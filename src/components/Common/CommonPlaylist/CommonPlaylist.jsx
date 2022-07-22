@@ -11,7 +11,7 @@ import { handleAddToFavPlaylist } from 'share/addToFav'
 
 const CommonPlaylist = ({ keyId, artists, thumbnail, title, type }) => {
   const [state] = useStore()
-  const defineLang = (vie, eng) => state.lang === 'vi' ? vie : eng
+  const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
 
   const navigate = useNavigate()
 
@@ -22,7 +22,7 @@ const CommonPlaylist = ({ keyId, artists, thumbnail, title, type }) => {
   const onCopyPlaylist = (e) => {
     handleCopyPlaylist(e, title, keyId, defineLang)
   }
-  
+
   const handleAddToFav = () => {
     handleAddToFavPlaylist({ artists, keyId, thumbnail, title, type }, defineLang)
   }
@@ -37,13 +37,13 @@ const CommonPlaylist = ({ keyId, artists, thumbnail, title, type }) => {
     copyLink: true,
     handleCopyLink: (e) => onCopyPlaylist(e),
     addToFav: true,
-    handleAddToFav
+    handleAddToFav,
   }
 
   return (
     <div className='common-playlist-container inherit-width'>
-      <ShadowOverlay { ... shadowOverlayProps } />
-      <div className="common-playlist-title color-0-88" title={title}>
+      <ShadowOverlay {...shadowOverlayProps} />
+      <div className='common-playlist-title color-0-88' title={title}>
         <Link to={createPlaylistUrl(title, keyId)}>{title}</Link>
       </div>
       <CommonArtist artists={artists} />

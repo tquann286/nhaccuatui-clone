@@ -18,7 +18,8 @@ export const handleAddToFavSong = async (song, defineLang) => {
 export const handleAddToFavPlaylist = async (playlist, defineLang) => {
   if (auth.currentUser) {
     if (playlist) {
-      await addFavPlaylist(playlist)
+      const data = await addFavPlaylist(playlist)
+      console.log(data)
       toastNotify(defineLang('Thêm danh sách phát vào danh sách yêu thích thành công.', 'Successfully added playlist to favorite list.'), 'success')
     } else {
       toastNotify(defineLang('Có lỗi khi thêm danh sách phát vào danh sách yêu thích.', 'Add playlist to favorite list failed due to an error.'), 'error')

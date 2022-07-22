@@ -28,7 +28,7 @@ const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToS
     <div className='extend-modal-main color-0-6 bg-dark-color-1'>
       <ul>
         {isEmpty(refMapping) || (
-          <li className='hover-bg-color-0-05' onClick={(e) => handleRefMapping(e)}>
+          <li className='hover-bg-color-0-05'>
             <SiAudiomack />
             <span>{defineLang('Nghe audio', 'Play audio')}</span>
           </li>
