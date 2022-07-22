@@ -1,6 +1,6 @@
-import './SongThumb.scss'
+import './ShadowThumb.scss'
 
-const SongThumb = ({ width, shadowHeight, imageUrl }) => {
+const ShadowThumb = ({ width, shadowHeight, imageUrl }) => {
   return (
     <div className='st-container'>
       <div className='shadow1 bg-color-0-05' style={{ height: shadowHeight }}></div>
@@ -10,4 +10,4 @@ const SongThumb = ({ width, shadowHeight, imageUrl }) => {
   )
 }
 
-export default SongThumb
+export default ShadowThumb

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Explore.scss'
 
-import { SongThumb, Footer, Title } from 'components'
+import { ShadowThumb, Footer, Title } from 'components'
 import m4u_image from 'images/m4u/m4u_v1.jpg'
 
 import { auth } from 'config/firebase'
@@ -21,7 +21,7 @@ const Explore = () => {
         <div className='explore-content'>
           <div style={{ padding: '2.4rem 3.2rem 0' }}>
             <div className='explore-main'>
-              <SongThumb width='24rem' shadowHeight='0.6rem' imageUrl={m4u_image} />
+              <ShadowThumb width='24rem' shadowHeight='0.6rem' imageUrl={m4u_image} />
               <div className='explore-description'>
                 <p className='title-playlist color-0-88'>
                   <span className='color-0-5'>{defineLang('Danh sách phát: ', 'Playlist: ')}</span>
