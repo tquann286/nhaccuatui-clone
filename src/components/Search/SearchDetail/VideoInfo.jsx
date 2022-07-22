@@ -3,7 +3,7 @@ import { Grid } from '@mui/material'
 
 const VideoInfo = ({ videos }) => (
   <div className='video-info-container common-section'>
-    <div class='video-info-title common-header common-title color-0-88'>Video</div>
+    <div className='video-info-title common-header common-title color-0-88'>Video</div>
     <div className="video-info-main common-main">
       <Grid className='list-videos' container spacing={2}>
         {videos.map(video => (
