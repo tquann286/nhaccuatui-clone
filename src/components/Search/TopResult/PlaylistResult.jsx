@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { CommonArtist, ImageOverlay } from 'components'
 
 import { createPlaylistUrl, handleCopyPlaylist } from 'share/utilities'
+import { handleAddToFavPlaylist } from 'share/addToFav'
 
 const PlaylistResult = ({ playlist, defineLang }) => {
   const navigate = useNavigate()
@@ -12,11 +13,34 @@ const PlaylistResult = ({ playlist, defineLang }) => {
 
   const { artists, key, title, type, thumbnail } = playlist
 
+  const onNavigatePlaylist = () => {
+    navigate(createPlaylistUrl(title, key))
+  }
+
+  const onCopyPlaylist = (e) => {
+    handleCopyPlaylist(e, title, key, defineLang)
+  }
+
+  const handleAddToFav = () => {
+    handleAddToFavPlaylist({ artists, key, thumbnail, title, type }, defineLang)
+  }
+
+  const imageOverlayProps = {
+    keyId: key,
+    imageUrl: thumbnail,
+    title,
+    handleNavigate: onNavigatePlaylist,
+    copyLink: true,
+    handleCopyLink: (e) => onCopyPlaylist(e),
+    addToFav: true,
+    handleAddToFav
+  }
+
   return (
     <div className='tr-slider'>
       <div className='tr-thumb-container'>
         <div className='tr-thumb-main'>
-          <ImageOverlay keyId={key} imageUrl={thumbnail} title={title} handleNavigate={() => navigate(createPlaylistUrl(title, key))} copyLink handleCopyLink={(e) => handleCopyPlaylist(e, title, key, defineLang)} />
+          <ImageOverlay { ... imageOverlayProps } />
         </div>
       </div>
       <div className='tr-description'>

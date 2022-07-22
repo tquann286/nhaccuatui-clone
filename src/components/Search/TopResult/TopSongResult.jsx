@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import { CommonArtist, ImageOverlay } from 'components'
 import { createSongUrl, handleCopySong } from 'share/utilities'
+import { handleAddToFavSong } from 'share/addToFav'
 
 const TopSongResult = ({ song, defineLang }) => {
   const navigate = useNavigate()
@@ -11,11 +12,37 @@ const TopSongResult = ({ song, defineLang }) => {
 
   const { artists, key, title, type, thumbnail } = song
 
+  const onNavigateSong = () => {
+    navigate(createSongUrl(title, key))
+  }
+
+  const onCopyLink = (e) => {
+    handleCopySong(e, defineLang, title, key)
+  }
+
+  const handleAddToFav = (e) => {
+    e.stopPropagation()
+    handleAddToFavSong({ artists, key, thumbnail, title, type }, defineLang)
+  }
+
+  const imageOverlayProps = {
+    keyId: key,
+    imageUrl: thumbnail,
+    title,
+    handleNavigate: onNavigateSong,
+    copyLink: true,
+    handleCopyLink: (e) => onCopyLink(e),
+    addToFav: true,
+    handleAddToFav,
+    goToSong: true,
+    handleGoToSong: onNavigateSong
+  }
+
   return (
     <div className='tr-slider'>
       <div className='tr-thumb-container'>
         <div className='tr-thumb-main'>
-          <ImageOverlay key={key} imageUrl={thumbnail} title={title} handleNavigate={() => navigate(createSongUrl(title, key))} copyLink handleCopyLink={(e) => handleCopySong(e, defineLang, title, key)} />
+          <ImageOverlay { ... imageOverlayProps} />
         </div>
       </div>
       <div className='tr-description'>
