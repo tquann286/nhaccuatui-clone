@@ -3,13 +3,14 @@ import './ShadowOverlay.scss'
 
 import { ImageOverlay } from 'components'
 
-const ShadowOverlay = ({ width, shadowHeight, imageUrl, keyId, title, handleNavigate, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong }) => {
+const ShadowOverlay = ({ width, shadowHeight, imageUrl, keyId, title, handleNavigate, addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong }) => {
   
   const imageOverlayProps = {
     keyId,
     imageUrl,
     title,
     handleNavigate,
+    addToFav,
     handleAddToFav,
     copyLink,
     handleCopyLink,

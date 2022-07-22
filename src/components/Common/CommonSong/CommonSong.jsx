@@ -16,7 +16,7 @@ import { useStore } from 'store'
 import { auth } from 'config/firebase'
 import { handleAddToFavSong } from 'share/addToFav'
 
-const CommonSong = ({ artists, keyId, thumbnail, title, songView }) => {
+const CommonSong = ({ artists, keyId, thumbnail, title, songView, type }) => {
   const [state] = useStore()
   const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
 
@@ -48,7 +48,7 @@ const CommonSong = ({ artists, keyId, thumbnail, title, songView }) => {
   
   const handleAddToFav = (e) => {
     e.stopPropagation()
-    handleAddToFavSong({ artists, keyId, thumbnail, title }, defineLang)
+    handleAddToFavSong({ artists, keyId, thumbnail, title, type }, defineLang)
     toggleShowMore()
   }
 

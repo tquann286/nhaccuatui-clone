@@ -8,7 +8,7 @@ import { BsPlayCircleFill } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { basicModal } from 'share/animation'
 
-const ImageOverlay = ({ keyId, imageUrl, title, handleNavigate, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong }) => {
+const ImageOverlay = ({ keyId, imageUrl, title, handleNavigate, addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
 
   const positionRef = useRef(null)
@@ -28,6 +28,12 @@ const ImageOverlay = ({ keyId, imageUrl, title, handleNavigate, handleAddToFav, 
     toggleShowMore()
   }
 
+  const onAddToFav = (e) => {
+    e.stopPropagation()
+    handleAddToFav(e)
+    toggleShowMore()
+  }
+
   const optionModalProps = {
     showModal: showMoreOptions,
     positionRef,
@@ -42,7 +48,8 @@ const ImageOverlay = ({ keyId, imageUrl, title, handleNavigate, handleAddToFav, 
   }
 
   const extendModalProps = {
-    handleAddToFav: (e) => handleAddToFav(e),
+    addToFav,
+    handleAddToFav: (e) => onAddToFav(e),
     copyLink,
     handleCopyLink: (e) => onCopyLink(e),
     goToSong,

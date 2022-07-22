@@ -7,8 +7,9 @@ import { CommonArtist, ShadowOverlay } from 'components'
 import { createPlaylistUrl, handleCopyPlaylist } from 'share/utilities'
 
 import { useStore } from 'store'
+import { handleAddToFavPlaylist } from 'share/addToFav'
 
-const CommonPlaylist = ({ keyId, artists, thumbnail, title }) => {
+const CommonPlaylist = ({ keyId, artists, thumbnail, title, type }) => {
   const [state] = useStore()
   const defineLang = (vie, eng) => state.lang === 'vi' ? vie : eng
 
@@ -21,6 +22,10 @@ const CommonPlaylist = ({ keyId, artists, thumbnail, title }) => {
   const onCopyPlaylist = (e) => {
     handleCopyPlaylist(e, title, keyId, defineLang)
   }
+  
+  const handleAddToFav = (e) => {
+    handleAddToFavPlaylist({ artists, keyId, thumbnail, title, type }, defineLang)
+  }
 
   const shadowOverlayProps = {
     width: '100%',
@@ -30,7 +35,9 @@ const CommonPlaylist = ({ keyId, artists, thumbnail, title }) => {
     title,
     handleNavigate: onNavigatePlaylist,
     copyLink: true,
-    handleCopyLink: (e) => onCopyPlaylist(e)
+    handleCopyLink: (e) => onCopyPlaylist(e),
+    addToFav: true,
+    handleAddToFav
   }
 
   return (
