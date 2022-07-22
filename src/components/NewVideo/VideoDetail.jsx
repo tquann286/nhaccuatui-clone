@@ -1,19 +1,18 @@
 import React, { useState, useRef, memo } from 'react'
 
-import { BsLink45Deg, BsPlayCircleFill } from 'react-icons/bs'
+import { BsPlayCircleFill } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
-import { SiApplemusic } from 'react-icons/si'
 
-import { OptionModal } from 'components'
-
-import { isEmpty } from 'lodash'
+import { ExtendModal, ModalAnimate, OptionModal } from 'components'
 
 import { createArtistUrl, handleCopyVideo, createVideoUrl } from 'share/utilities'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { useStore } from 'store'
+import { basicModal } from 'share/animation'
+import { handleAddToFavVideo } from 'share/addToFav'
 
-const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMapping }) => {
+const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMapping, type }) => {
   const [state] = useStore()
   const defineLang = (vie, eng) => state.lang === 'vi' ? vie : eng
 
@@ -33,13 +32,40 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
     toggleShowMore()
   }
 
-  const handleCopyClick = (e) => {
+  const onCopyVideo = (e) => {
     toggleShowMore()
     handleCopyVideo(e, title, keyId, artists, defineLang)
   }
 
   const handleVideoClick = () => {
     navigate(createVideoUrl(keyId, title, artists))
+  }
+
+  const onAddToFav = (e) => {
+    e.stopPropagation()
+    handleAddToFavVideo({ keyId, artists, duration, refMapping, thumbnail, title, type }, defineLang)
+    toggleShowMore()
+  }
+
+  const optionModalProps = {
+    showModal: showMoreOptions,
+    positionRef: videoRef,
+    parentRef: moreDivRef,
+    toggleModal: toggleShowMore,
+  }
+
+  const modalAnimateProps = {
+    animateProps: basicModal,
+    isVisible: showMoreOptions,
+    keyId,
+  }
+
+  const extendModalProps = {
+    copyLink: true,
+    handleCopyLink: (e) => onCopyVideo(e),
+    refMapping,
+    addToFav: true,
+    handleAddToFav: (e) => onAddToFav(e),
   }
 
   return (
@@ -75,22 +101,11 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
           })}
         </div>
       </div>
-        <OptionModal showModal={showMoreOptions} positionRef={videoRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
-          <div className='om-main color-0-88 bg-dark-color-1'>
-            <ul>
-              {!isEmpty(refMapping) && (
-                <li>
-                  <SiApplemusic />
-                  <span>{defineLang('Nghe audio', 'Listen audio')}</span>
-                </li>
-              )}
-              <li onClick={(e) => handleCopyClick(e)}>
-                <BsLink45Deg />
-                <span>{defineLang('Sao chép link', 'Copy link')}</span>
-              </li>
-            </ul>
-          </div>
-        </OptionModal>
+      <OptionModal {...optionModalProps}>
+      <ModalAnimate {...modalAnimateProps}>
+        <ExtendModal {...extendModalProps} />
+      </ModalAnimate>
+    </OptionModal>
     </React.Fragment>
   )
 }

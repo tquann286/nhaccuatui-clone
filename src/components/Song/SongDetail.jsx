@@ -84,7 +84,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang, songView }) => {
           <ul>
             <li>
               <SiYoutubemusic />
-              <span>{lang === 'vi' ? 'Thêm vào chờ phát' : 'Add to queue'}</span>
+              <span>{lang === 'vi' ? 'Thêm vào chờ phát' : 'Add to favorite'}</span>
             </li>
             <li onClick={(e) => onCopyClick(e)}>
               <BsLink45Deg />

@@ -36,7 +36,7 @@ const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToS
         {(auth.currentUser && addToFav) && (
           <li className='hover-bg-color-0-05' onClick={(e) => onAddToFav(e)}>
             <SiYoutubemusic />
-            <span>{defineLang('Thêm vào chờ phát', 'Add to queue')}</span>
+            <span>{defineLang('Thêm vào yêu thích', 'Add to favorite')}</span>
           </li>
         )}
         {copyLink && (
