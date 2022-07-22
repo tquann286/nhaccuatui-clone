@@ -25,7 +25,7 @@ const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToS
   }
 
   return (
-    <div className='extend-modal-main color-0-88 bg-dark-color-1'>
+    <div className='extend-modal-main color-0-6 bg-dark-color-1'>
       <ul>
         {isEmpty(refMapping) || (
           <li className='hover-bg-color-0-05' onClick={(e) => handleRefMapping(e)}>

@@ -3,7 +3,7 @@ import { Grid } from '@mui/material'
 
 const PlaylistInfo = ({ playlists, defineLang }) => (
   <div className='playlist-info-container common-section'>
-    <div class='pi-title common-header common-title color-0-88'>{defineLang('Danh sách phát', 'Playlist')}</div>
+    <div className='pi-title common-header common-title color-0-88'>{defineLang('Danh sách phát', 'Playlist')}</div>
     <div className='pi-main common-main'>
       <Grid className='list-playlists' container spacing={2}>
         {playlists.map((playlist) => (

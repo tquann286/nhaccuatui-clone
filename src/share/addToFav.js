@@ -5,6 +5,7 @@ import { toastNotify } from 'share/toast'
 export const handleAddToFavSong = async (song, defineLang) => {
   if (auth.currentUser) {
     if (song) {
+      console.log(song)
       await addFavSong(song)
       toastNotify(defineLang('Thêm bài hát vào danh sách yêu thích thành công.', 'Successfully added song to favorite list.'), 'success')
     } else {

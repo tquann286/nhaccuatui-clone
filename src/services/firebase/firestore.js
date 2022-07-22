@@ -2,7 +2,8 @@ import { auth, db } from 'config/firebase'
 import { setDoc, updateDoc, arrayUnion, doc } from 'firebase/firestore'
 import { DEFAULT_IMAGE } from 'share/constants'
 
-export const addUser = (docRef, username, email, photoUrl, userId) => {
+
+export const addUser = (docRef, username, email, photoUrl, userId) =>
   setDoc(docRef, {
     username,
     email,
@@ -11,11 +12,27 @@ export const addUser = (docRef, username, email, photoUrl, userId) => {
     favorite: {},
     userId,
   })
-}
 
 export const addFavSong = (song) => {
-  const docRef = doc(db, 'users', auth.currentUser.uid)
-  updateDoc(docRef, {
-    "favorite.songs": arrayUnion(song)
+  const currentUserRef = doc(db, 'users', auth.currentUser.uid)
+  
+  updateDoc(currentUserRef, {
+    'favorite.songs': arrayUnion(song),
+  })
+}
+
+export const addFavPlaylist = (playlist) => {
+  const currentUserRef = doc(db, 'users', auth.currentUser.uid)
+  
+  updateDoc(currentUserRef, {
+    'favorite.playlists': arrayUnion(playlist),
+  })
+}
+
+export const addFavVideo = (video) => {
+  const currentUserRef = doc(db, 'users', auth.currentUser.uid)
+  
+  updateDoc(currentUserRef, {
+    'favorite.videos': arrayUnion(video),
   })
 }
