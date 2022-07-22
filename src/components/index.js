@@ -2,7 +2,7 @@
 export { default as ErrorBoundary } from './Common/ErrorBoundary'
 export { default as Title } from './Common/Title'
 export { default as ModalAnimate } from './Common/ModalAnimate'
-export { default as SongThumb } from './Common/SongThumb/SongThumb'
+export { default as ShadowThumb } from './Common/ShadowThumb/ShadowThumb'
 export { default as OptionModal } from './Common/OptionModal/OptionModal'
 export { default as ImageOverlay } from './Common/ImageOverlay/ImageOverlay'
 export { default as CommonArtist } from './Common/CommonArtist/CommonArtist'
@@ -13,6 +13,7 @@ export { default as SquareImg } from './Common/SquareImg/SquareImg'
 export { default as ExtendModal } from './Common/ExtendModal/ExtendModal'
 export { default as ShadowOverlay } from './Common/ShadowOverlay/ShadowOverlay'
 export { default as VideoOverlay } from './Common/VideoOverlay/VideoOverlay'
+export { default as SongSquare } from './Common/SongSquare/SongSquare'
 
 // Home
 export { default as Loading } from './Loading/Loading'
