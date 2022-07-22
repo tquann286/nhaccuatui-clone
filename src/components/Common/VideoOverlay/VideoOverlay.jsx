@@ -29,6 +29,12 @@ const VideoOverlay = ({ imageUrl, title, duration, artists, keyId, handleNagivat
     toggleShowMore()
   }
 
+  const onAddToFav = (e) => {
+    e.stopPropagation()
+    handleAddToFav()
+    toggleShowMore()
+  }
+
   const optionModalProps = {
     showModal: showMoreOptions,
     positionRef,
@@ -43,10 +49,11 @@ const VideoOverlay = ({ imageUrl, title, duration, artists, keyId, handleNagivat
   }
 
   const extendModalProps = {
-    handleAddToFav: (e) => handleAddToFav(e),
     copyLink: true,
     handleCopyLink: (e) => onCopyVideo(e),
     refMapping,
+    addToFav: true,
+    handleAddToFav: (e) => onAddToFav(e),
   }
 
   return (

@@ -6,8 +6,9 @@ import { CommonArtist, VideoOverlay } from 'components'
 import { createVideoUrl } from 'share/utilities'
 
 import { useStore } from 'store'
+import { handleAddToFavVideo } from 'share/addToFav'
 
-const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title, videoHeight }) => {
+const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title, videoHeight, type }) => {
   const navigate = useNavigate()
 
   const [state] = useStore()
@@ -15,6 +16,10 @@ const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title, v
 
   const onNavigateVideo = () => {
     navigate(createVideoUrl(keyId, title, artists))
+  }
+  
+  const handleAddToFav = () => {
+    handleAddToFavVideo({ keyId, artists, duration, refMapping, thumbnail, title, type }, defineLang)
   }
 
   const videoOverlayProps = {
@@ -25,7 +30,8 @@ const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title, v
     duration,
     artists,
     defineLang,
-    refMapping
+    refMapping,
+    handleAddToFav,
   }
 
   return (

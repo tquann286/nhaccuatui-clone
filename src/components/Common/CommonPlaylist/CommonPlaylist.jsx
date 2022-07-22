@@ -23,7 +23,7 @@ const CommonPlaylist = ({ keyId, artists, thumbnail, title, type }) => {
     handleCopyPlaylist(e, title, keyId, defineLang)
   }
   
-  const handleAddToFav = (e) => {
+  const handleAddToFav = () => {
     handleAddToFavPlaylist({ artists, keyId, thumbnail, title, type }, defineLang)
   }
 
