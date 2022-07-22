@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Loading, SearchDetail, TopResult } from 'components'
+import { Loading, SearchDetail, TopResult, SongResult } from 'components'
 import { NotFound } from 'pages'
 
 import { getSearchResult, searchResultNavbar } from 'services/Search/SearchResult'
@@ -53,6 +53,11 @@ const SearchResult = ({ searchQuery, defineLang, isLoading, setIsLoading }) => {
             <React.Fragment>
               {isEmpty(recommend) || <TopResult { ... recommend } defineLang={defineLang} />}
               {isEmpty(search) || <SearchDetail { ... search } defineLang={defineLang} />}
+            </React.Fragment>
+          )}
+          {currentCate === 'song' && (
+            <React.Fragment>
+              {isEmpty(search.song) || <SongResult { ... search.song } defineLang={defineLang} />}
             </React.Fragment>
           )}
         </div>

@@ -35,21 +35,21 @@ const NoPlayingSong = ({ defineSong }) => {
   }, [])
 
   if (trendingSong) {
-    const { artists, songKey, thumbnail, title } = trendingSong
-
+    const { artists, key, thumbnail, title } = trendingSong
+    
     return (
       <MainContainer defineSong={defineSong}>
         {trendingSong && (
           <div className='suggest-song'>
             <div className='suggest-song-main border-0-1'>
               <div className='suggest-trending-thumb'>
-                <Link to={createSongUrl(title, songKey)}>
+                <Link to={createSongUrl(title, key)}>
                   <img src={thumbnail} alt='thumb' title={title} />
                 </Link>
               </div>
               <div className='suggest-trending-info'>
                 <p className='suggest-lead-title color-0-5'>{defineSong('Đang được nghe nhiều nhất', 'Top pick these days')}</p>
-                <Link className='suggest-title color-0-88' to={createSongUrl(title, songKey)}>
+                <Link className='suggest-title color-0-88' to={createSongUrl(title, key)}>
                   {title}
                 </Link>
                 <h5 className='suggest-artist color-0-5'>
