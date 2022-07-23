@@ -89,3 +89,21 @@
     font-weight: 600;
   }
 }
+
+.common-sub-title {
+  font-size: 1.3rem;
+  margin-top: 1.2rem;
+  font-weight: 600;
+
+  span {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-left: 1.2rem;
+  }
+}
+
+.width-fit-content {
+  @include fitContentWidth;
+  font-size: 1.3rem;
+  font-weight: 500;
+}

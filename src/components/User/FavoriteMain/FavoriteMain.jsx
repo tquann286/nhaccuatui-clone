@@ -22,6 +22,10 @@ const FavoriteMain = () => {
     handleCateChange,
     categories: favCateNav
   }
+
+  const cateFavProps = {
+    defineLang
+  }
   
 
   return (
@@ -30,7 +34,7 @@ const FavoriteMain = () => {
         <CateCommon { ... cateCommonProps } />
         <div className="fm-content">
           {curCate === 'song' && (
-            <SongFav />
+            <SongFav { ... cateFavProps } />
           )}
         </div>
       </div>
