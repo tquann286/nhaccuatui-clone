@@ -41,7 +41,6 @@ const SearchContent = () => {
       } catch (error) {
         setIsFetchingFail(true)
         setIsLoading(false)
-        toastNotify(defineLang('Có lỗi khi lấy dữ liệu từ server.', 'A server error occurred while retrieving data.'), 'error')
 
         throw new Error(error)
       }

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
+import { Outlet } from 'react-router-dom'
 import './Homepage.scss'
 
 import { useLocation } from 'react-router-dom'
 import { useLang } from 'hooks'
 import { LeftSidebar, RightSidebar, Title } from 'components'
-import { Outlet } from 'react-router-dom'
 
 import { scrollToTop } from 'share'
 

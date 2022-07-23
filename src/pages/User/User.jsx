@@ -1,4 +1,5 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 import './User.scss'
 
 import { auth } from 'config/firebase'
@@ -11,7 +12,7 @@ const User = () => {
 
   return (
     <div className='user-container'>
-      
+      <Outlet />
     </div>
   )
 }

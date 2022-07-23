@@ -35,6 +35,7 @@ export { default as AuthForm } from './AuthForm/AuthForm'
 
 // User
 export { default as NoUserFound } from './User/NoUserFound/NoUserFound'
+export { default as FavoriteMain } from './User/FavoriteMain/FavoriteMain'
 
 // Search
 export { default as SearchContent } from './Search/SearchContent'

@@ -1,0 +1,5 @@
+@import 'settings';
+
+.favorite-main-container {
+  @include commonMainOutlet;
+}

@@ -1,5 +1,6 @@
 export { default as NotFound } from './NotFound/NotFound'
 export { default as Homepage } from './Homepage/Homepage'
 export { default as User } from './User/User'
+export { default as Favorite } from './User/Favorite/Favorite'
 export { default as Explore } from './Explore/Explore'
 export { default as Search } from './Search/Search'
