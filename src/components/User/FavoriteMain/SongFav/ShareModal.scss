@@ -35,4 +35,11 @@
       }
     }
   }
+
+  .share-modal-main {
+    @include display-flex;
+    @include justify-content(space-between);
+    width: 100%;
+    padding: 2.4rem 6rem;
+  }
 }

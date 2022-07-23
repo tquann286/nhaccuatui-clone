@@ -26,6 +26,11 @@ const SongFav = ({ defineLang, currentUser }) => {
     getFavSongsState()
   }, [])
 
+  const shareModalProps = {
+    defineLang,
+    toggleShareModal
+  }
+
   if (!favSongs) return null
 
   if (!currentUser) return null
@@ -56,7 +61,7 @@ const SongFav = ({ defineLang, currentUser }) => {
                 </Tooltip>
               </div>
               <PopupModal showModal={showShareModal} toggleModal={toggleShareModal} overlayStyles={overlayFavStyles}>
-                <ShareModal defineLang={defineLang} />
+                <ShareModal { ... shareModalProps } />
               </PopupModal>
               <div className='sf-author-main w3-rest w3-row'>
                 <div className='sf-author-img border-0-05 w3-col'>
