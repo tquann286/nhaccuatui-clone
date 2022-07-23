@@ -17,9 +17,9 @@
 }
 
 .MuiTab-textColorPrimary.Mui-selected {
-  color: #2DAAED !important;
+  color: $main-text-color !important;
 }
 
 .MuiTabs-indicator {
-  background-color: #2DAAED !important;
+  background-color: $main-text-color !important;
 }

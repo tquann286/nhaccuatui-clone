@@ -1,7 +1,6 @@
 @import 'settings';
 
 .song-fav-container {
-
   .sf-header {
     position: relative;
 
@@ -17,6 +16,61 @@
       .sf-total-number {
         margin-top: 1.4rem;
       }
+
+      .sf-author {
+        width: 100%;
+        height: 6.4rem;
+        border-radius: 0.4rem;
+        margin-top: 2.4rem;
+        padding-right: 1.4rem;
+
+        .sf-author-main {
+          height: 4rem;
+          margin: 1.2rem 2.4rem;
+          .sf-author-img {
+            @include useBorder;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+          }
+
+          .sf-author-desc {
+            @include fitContentWidth;
+            margin-left: 0.8rem;
+            max-width: calc(100% - 10rem);
+            overflow: hidden;
+
+            .sf-author-name {
+              margin-top: 0.6rem;
+              font-size: 1.4rem;
+              font-weight: 700;
+              color: $main-text-color;
+              text-transform: uppercase;
+            }
+          }
+        }
+
+        .sf-extend {
+          @include fitContentWidth;
+          @include flexCenter;
+          height: 100%;
+          .sf-tooltip {
+            @include transition-effect(0.3s);
+            @include hoverMainColor;
+            font-size: 2.3rem;
+            font-weight: 500;
+          }
+        }
+      }
     }
   }
+}
+
+.MuiTooltip-tooltip {
+  font-size: 1.3rem !important;
+  background-color: $main-text-color !important;
+}
+
+.MuiTooltip-arrow {
+  color: $main-text-color !important;
 }

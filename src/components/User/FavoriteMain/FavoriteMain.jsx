@@ -5,6 +5,7 @@ import { CateCommon, SongFav } from 'components'
 import { favCateNav } from 'services/User/Favorite'
 
 import { useStore } from 'store'
+import { auth } from 'config/firebase'
 
 const FavoriteMain = () => {
   const [state] = useStore()
@@ -24,7 +25,8 @@ const FavoriteMain = () => {
   }
 
   const cateFavProps = {
-    defineLang
+    defineLang,
+    currentUser: auth.currentUser
   }
   
 
