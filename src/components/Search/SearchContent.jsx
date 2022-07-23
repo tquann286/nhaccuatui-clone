@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
 import './SearchContent.scss'
-import { SearchHeader, SearchMain, SearchResult, Footer } from 'components'
 
+import { SearchHeader, SearchMain, SearchResult, Footer } from 'components'
 import { NotFound } from 'pages'
 
 import { getTopArtists, getTrendingKeyword } from 'services/Search/SearchContent'
 import { toastNotify } from 'share/toast'
+import { ErrorBoundary } from 'components'
 
 import { useStore } from 'store'
 
@@ -17,7 +18,7 @@ const SearchContent = () => {
   const { search: searchLocation } = useLocation()
   const [searchParams, setSearchParams] = useSearchParams()
   const [searchQuery, setSearchQuery] = useState(null)
-  
+
   const defineLang = useCallback((vie, eng) => (lang === 'vi' ? vie : eng), [lang])
 
   const [topArtists, setTopArtists] = useState(null)
@@ -25,10 +26,10 @@ const SearchContent = () => {
   const [searchHistory, setSearchHistory] = useState([])
 
   const [isLoading, setIsLoading] = useState(true)
-  const [isFetchingFail, setIsFetchingFail] = useState(false)
+  // const [isFetchingFail, setIsFetchingFail] = useState(false)
 
   const [searchTerm, setSearchTerm] = useState('')
-  
+
   useEffect(() => {
     const getSearchContent = async () => {
       try {
@@ -39,9 +40,8 @@ const SearchContent = () => {
         setTrendingKeywords(listKeyValue)
         setIsLoading(false)
       } catch (error) {
-        setIsFetchingFail(true)
+        // setIsFetchingFail(true)
         setIsLoading(false)
-
         throw new Error(error)
       }
     }
@@ -49,19 +49,17 @@ const SearchContent = () => {
     // Get local search history
     try {
       const searchHistory = JSON.parse(localStorage.getItem('searchHistory'))
-  
+
       if (searchHistory) {
         setSearchHistory(searchHistory)
       } else {
         localStorage.setItem('searchHistory', searchHistory)
       }
-      
     } catch (error) {
       console.log(error)
     }
 
     getSearchContent()
-
   }, [defineLang])
 
   useEffect(() => {
@@ -78,18 +76,16 @@ const SearchContent = () => {
     setIsLoading,
   }
 
-  if (isFetchingFail) return <NotFound />
+  // if (isFetchingFail) return <NotFound />
 
   return (
-    <div className='search-container'>
-      <SearchHeader topArtists={topArtists} {...passedSearchProps} />
-      {searchQuery ? (
-        <SearchResult searchQuery={searchQuery} { ... passedSearchProps }  />
-      ) : (
-        <SearchMain trendingKeywords={trendingKeywords} {...passedSearchProps} />
-      )}
-      <Footer />
-    </div>
+    <ErrorBoundary>
+      <div className='search-container'>
+        <SearchHeader topArtists={topArtists} {...passedSearchProps} />
+        {searchQuery ? <SearchResult searchQuery={searchQuery} {...passedSearchProps} /> : <SearchMain trendingKeywords={trendingKeywords} {...passedSearchProps} />}
+        <Footer />
+      </div>
+    </ErrorBoundary>
   )
 }
 

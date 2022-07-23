@@ -16,13 +16,7 @@ class ErrorBoundary extends Component {
   }
   render() {
     if (this.state.hasError) {
-      return (
-        <div className='hp-container'>
-          <LeftSidebar />
-          <NotFound />
-          <RightSidebar />
-        </div>
-      )
+      return <NotFound />
     }
     return this.props.children
   }

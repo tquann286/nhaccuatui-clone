@@ -44,12 +44,13 @@ const SongFav = ({ defineLang, currentUser }) => {
           <div className='bottom-position'>
             <div className='sf-author w3-row bg-color-0-02'>
               <div className='sf-extend w3-col w3-right'>
-                <Tooltip className='sf-tooltip color-0-5' title={defineLang('Chia sẻ', 'Share')} placement='top' arrow enterDelay={400}>
+                <Tooltip className='sf-tooltip color-0-5' title={defineLang('Chia sẻ', 'Share')} placement='top' arrow enterDelay={500}>
                   <IconButton aria-label='share' size='large'>
                     <AiOutlineShareAlt />
                   </IconButton>
                 </Tooltip>
               </div>
+              
               <div className='sf-author-main w3-rest w3-row'>
                 <div className='sf-author-img border-0-05 w3-col'>
                   <SquareImg imageUrl={photoURL || initUser} title={displayName} />

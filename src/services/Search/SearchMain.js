@@ -9,7 +9,7 @@ export const getMaybeHit = async () => {
       pageSize: 1,
     })
     
-    if (data) return data.data[0]
+    if (data) return data?.data[0]
   } catch (error) {
     throw new Error(error)
   }

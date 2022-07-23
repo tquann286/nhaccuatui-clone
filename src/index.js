@@ -10,9 +10,9 @@ import { StoreProvider } from 'store'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <StoreProvider>
-      <App />
-      <ToastContainer />
-    </StoreProvider>
+      <StoreProvider>
+        <App />
+        <ToastContainer />
+      </StoreProvider>
   </React.StrictMode>
 )

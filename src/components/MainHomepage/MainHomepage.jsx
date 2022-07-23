@@ -28,8 +28,6 @@ const MainHomepage = () => {
         setIsLoading(false)
         setIsFetchingFail(true)
         toastNotify(defineLang('Có lỗi khi lấy dữ liệu từ server.', 'A server error occurred while retrieving data.'), 'error')
-
-        return <NotFound />
       })
   }, [defineLang])
 

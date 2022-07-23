@@ -40,17 +40,17 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
   }
 
   useEffect(() => {
-    const getMaybeHitState = async () => {
-      try {
+    try {
+      const getMaybeHitState = async () => {
         const maybeHit = await getMaybeHit()
 
         setMaybeHit(maybeHit)
-      } catch (error) {
-        throw new Error(error)
       }
+      setSearchTerm('')
+      getMaybeHitState()
+    } catch (error) {
+      throw new Error(error)
     }
-    setSearchTerm('')
-    getMaybeHitState()
   }, [])
 
   const onNavSearch = (name) => {
