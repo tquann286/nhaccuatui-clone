@@ -18,3 +18,12 @@ export const getFavSong = async (defineLang) => {
     toastNotify(defineLang('Không tìm thấy danh sách yêu thích', 'There is no favorite list song found'), 'error')
   }
 }
+
+export const overlayFavStyles = {
+  backgroundColor: 'rgba(0,0,0,0.5)',
+  height: '100%',
+  width: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}

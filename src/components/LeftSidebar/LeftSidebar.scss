@@ -285,6 +285,12 @@ $scale: 5rem;
             opacity: 0;
             height: 0;
 
+            a.active {
+              .nav-item-detail-main-hover {
+                background-color: $main-text-color;
+              }
+            }
+
             &-main {
               @include display-flex;
               @include align-items(center);
@@ -306,7 +312,7 @@ $scale: 5rem;
               }
 
               &:hover .nav-item-detail-main-hover {
-                background-color: #2daaed;
+                background-color: $main-text-color;
               }
 
               span {

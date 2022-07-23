@@ -130,7 +130,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
                     <img src={maybeHit.thumbnail} alt={maybeHit.title} title={maybeHit.title} />
                     <OptionModal showModal={showMoreOptions} positionRef={songContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
                       <ModalAnimate animateProps={basicModal} isVisible={showMoreOptions} key={maybeHit.key}>
-                        <div className='om-main color-0-88 bg-dark-color-1'>
+                        <div className='om-main color-0-88 bg-color-1'>
                           <ul>
                             <li>
                               <SiYoutubemusic />

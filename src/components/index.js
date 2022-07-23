@@ -38,6 +38,7 @@ export { default as AuthForm } from './AuthForm/AuthForm'
 export { default as NoUserFound } from './User/NoUserFound/NoUserFound'
 export { default as FavoriteMain } from './User/FavoriteMain/FavoriteMain'
 export { default as SongFav } from './User/FavoriteMain/SongFav/SongFav'
+export { default as ShareModal } from './User/FavoriteMain/SongFav/ShareModal'
 
 // Search
 export { default as SearchContent } from './Search/SearchContent'

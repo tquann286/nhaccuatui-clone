@@ -3,13 +3,18 @@ import './SongFav.scss'
 
 import initImage from 'images/default/default_personal_playlist.png'
 import initUser from 'images/default/default_user.jpg'
-import { ShadowThumb, SquareImg } from 'components'
-import { getFavSong } from 'services/User/Favorite'
+import { PopupModal, ShadowThumb, ShareModal, SquareImg } from 'components'
+import { getFavSong, overlayFavStyles } from 'services/User/Favorite'
 import { AiOutlineShareAlt } from 'react-icons/ai'
 import { Button, IconButton, Tooltip } from '@mui/material'
 
 const SongFav = ({ defineLang, currentUser }) => {
   const [favSongs, setFavSongs] = useState(null)
+  const [showShareModal, setShowShareModal] = useState(false)
+
+  const toggleShareModal = () => {
+    setShowShareModal(!showShareModal)
+  }
 
   useEffect(() => {
     const getFavSongsState = async () => {
@@ -45,12 +50,14 @@ const SongFav = ({ defineLang, currentUser }) => {
             <div className='sf-author w3-row bg-color-0-02'>
               <div className='sf-extend w3-col w3-right'>
                 <Tooltip className='sf-tooltip color-0-5' title={defineLang('Chia sẻ', 'Share')} placement='top' arrow enterDelay={500}>
-                  <IconButton aria-label='share' size='large'>
+                  <IconButton aria-label='share' size='large' onClick={toggleShareModal}>
                     <AiOutlineShareAlt />
                   </IconButton>
                 </Tooltip>
               </div>
-              
+              <PopupModal showModal={showShareModal} toggleModal={toggleShareModal} overlayStyles={overlayFavStyles}>
+                <ShareModal />
+              </PopupModal>
               <div className='sf-author-main w3-rest w3-row'>
                 <div className='sf-author-img border-0-05 w3-col'>
                   <SquareImg imageUrl={photoURL || initUser} title={displayName} />
