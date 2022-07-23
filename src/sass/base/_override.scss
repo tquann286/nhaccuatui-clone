@@ -15,3 +15,11 @@
 .list-playlists.MuiGrid-spacing-xs-2 > .MuiGrid-item, .list-videos.MuiGrid-spacing-xs-2 > .MuiGrid-item {
   padding: 8px;
 }
+
+.MuiTab-textColorPrimary.Mui-selected {
+  color: #2DAAED !important;
+}
+
+.MuiTabs-indicator {
+  background-color: #2DAAED !important;
+}

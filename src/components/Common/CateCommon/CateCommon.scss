@@ -1,1 +1,17 @@
 @import 'settings';
+
+.cate-common-container {
+  min-height: 4rem !important;
+  border-width: 0 0 0.1rem;
+  border-style: solid;
+
+  .cate-item {
+    width: 12rem;
+    height: 3.2rem;
+    padding: 0;
+    font-size: 1.3rem;
+    min-width: 12rem;
+    min-height: 3.2rem;
+    font-weight: 700;
+  }
+}
