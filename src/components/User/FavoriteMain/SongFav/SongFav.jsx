@@ -56,7 +56,7 @@ const SongFav = ({ defineLang, currentUser }) => {
                 </Tooltip>
               </div>
               <PopupModal showModal={showShareModal} toggleModal={toggleShareModal} overlayStyles={overlayFavStyles}>
-                <ShareModal />
+                <ShareModal defineLang={defineLang} />
               </PopupModal>
               <div className='sf-author-main w3-rest w3-row'>
                 <div className='sf-author-img border-0-05 w3-col'>
