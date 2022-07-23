@@ -3,8 +3,10 @@ import './FavoriteMain.scss'
 
 const FavoriteMain = () => {
   return (
-    <div className='favorite-main-container'>
-      Helo
+    <div className='favorite-main'>
+      <div className="fm-container">
+        
+      </div>
     </div>
   )
 }

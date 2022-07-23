@@ -1,5 +1,9 @@
 @import 'settings';
 
-.favorite-main-container {
+.favorite-main {
   @include commonMainOutlet;
+
+  .fm-container {
+    padding-top: 2.4rem;
+  }
 }
