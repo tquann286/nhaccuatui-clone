@@ -12,10 +12,12 @@ class ErrorBoundary extends Component {
   }
   componentDidCatch(error, errorInfo) {
     // Send error information to the server for devs to fix bug
-    const localTheme = localStorage.getItem('theme')
+    const lang = localStorage.getItem('lang')
 
-    console.log(error, errorInfo)
-    toastNotify(localTheme === 'vi' ? 'Có lỗi khi lấy dữ liệu từ server.' : 'A server error occurred while retrieving data.', 'error')
+    console.log('error: ', error)
+    console.log('errorInfo: ', errorInfo)
+    
+    toastNotify(lang === 'vi' ? 'Có lỗi khi lấy dữ liệu từ server.' : 'A server error occurred while retrieving data.', 'error')
   }
   render() {
     if (this.state.hasError) {

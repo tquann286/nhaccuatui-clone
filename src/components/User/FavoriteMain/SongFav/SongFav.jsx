@@ -10,8 +10,6 @@ import { getSongsView, getListSongsKey } from 'share/utilities'
 const SongFav = ({ defineLang, currentUser }) => {
   const [favSongs, setFavSongs] = useState(null)
   const [songsView, setSongView] = useState({})
-  console.log('songsView: ', songsView)
-  console.log('favSongs: ', favSongs)
 
   useEffect(() => {
     const getFavSongsState = async () => {

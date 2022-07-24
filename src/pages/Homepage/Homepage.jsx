@@ -4,7 +4,7 @@ import './Homepage.scss'
 
 import { useLocation } from 'react-router-dom'
 import { useLang } from 'hooks'
-import { LeftSidebar, RightSidebar, Title } from 'components'
+import { ErrorBoundary, LeftSidebar, RightSidebar, Title } from 'components'
 
 import { scrollToTop } from 'share'
 
@@ -20,7 +20,7 @@ const Homepage = () => {
     <div className='hp-container'>
       <Title title={useLang('NhacCuaTui Clone - Nghe nhạc Mới, tải nhạc Hot chất lượng cao', 'NhacCuaTui Clone - Music for everyone')} />
       <LeftSidebar />
-      <Outlet />
+        <Outlet />
       <RightSidebar />
     </div>
   )
