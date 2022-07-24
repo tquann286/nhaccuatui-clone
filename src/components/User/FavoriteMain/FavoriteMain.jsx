@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import './FavoriteMain.scss'
 
-import { CateCommon, SongFav } from 'components'
+import { CateCommon, Footer, SongFav } from 'components'
 import { favCateNav } from 'services/User/Favorite'
 
 import { useStore } from 'store'
@@ -40,6 +40,7 @@ const FavoriteMain = () => {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

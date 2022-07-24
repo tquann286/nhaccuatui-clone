@@ -88,7 +88,7 @@ const SongFav = ({ defineLang, currentUser }) => {
               <div className='song-list-title duration-title'>{defineLang('Thời gian', 'Duration')}</div>
             </li>
             {favSongs.map((song) => {
-              const { keyId, artists, title, songId, key } = song
+              const { keyId, artists, title, songId, key, duration } = song
 
               return (
                 <li key={keyId || songId || key} className='song-list-common bg-color-0-02 li-list-item-common color-0-6'>
@@ -104,7 +104,7 @@ const SongFav = ({ defineLang, currentUser }) => {
                       <span className='view-count-content color-0-5'>{formatNumber(songsView[keyId || songId || key])}</span>
                     </div>
                   </div>
-                  <div className='song-list-title duration-title-real'>4:10</div>
+                  <div className='song-list-title duration-title-real'>{duration}</div>
                 </li>
               )
             })}
