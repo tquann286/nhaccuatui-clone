@@ -84,7 +84,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang, songView, type, d
           <div className='sd-more'>
             <div className='sd-view-count'>
               <BsHeadphones />
-              <div className='sc-view-number color-0-5'>{formatNumber(songView)}</div>
+              <div className='sc-view-number color-0-5'>{formatNumber(songView ? songView : createRandomSongView())}</div>
             </div>
             <div className='sd-more-options'>
               <div className='sd-three-dots color-0-5' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>

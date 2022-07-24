@@ -3,13 +3,22 @@ import './SongFav.scss'
 
 import initImage from 'images/default/default_personal_playlist.png'
 import initUser from 'images/default/default_user.jpg'
+
 import { ShadowThumb, SongItem, SquareImg } from 'components'
 import { getFavSong } from 'services/User/Favorite'
 import { getSongsView, getListSongsKey } from 'share/utilities'
+import { clearAllSong } from 'services/firebase/firestore'
+import { toastNotify } from 'share/toast'
 
 const SongFav = ({ defineLang, currentUser }) => {
   const [favSongs, setFavSongs] = useState(null)
   const [songsView, setSongView] = useState({})
+
+  const handleClearAllSong = async () => {
+    await clearAllSong()
+    setFavSongs(null)
+    toastNotify(defineLang('Xóa tất cả bài hát khỏi yêu thích thành công', 'Removed all songs from favorite list successfully'), 'success')
+  }
 
   useEffect(() => {
     const getFavSongsState = async () => {
@@ -36,8 +45,6 @@ const SongFav = ({ defineLang, currentUser }) => {
     }
   }, [favSongs])
 
-  if (!favSongs) return null
-
   if (!currentUser) return null
 
   const { displayName, photoURL } = currentUser
@@ -54,7 +61,7 @@ const SongFav = ({ defineLang, currentUser }) => {
             <span className='color-0-88'>{defineLang('Bài hát yêu thích', 'Favorite songs')}</span>
           </div>
           <div className='sf-total-number w3-row'>
-            <div className='width-fit-content color-0-5'>{defineLang(`${favSongs.length} bài hát`, `${favSongs.length} songs`)}</div>
+            <div className='width-fit-content color-0-5'>{defineLang(`${favSongs?.length || 0} bài hát`, `${favSongs?.length || 0} songs`)}</div>
           </div>
           <div className='bottom-position'>
             <div className='sf-author w3-row bg-color-0-02'>
@@ -72,7 +79,12 @@ const SongFav = ({ defineLang, currentUser }) => {
         </div>
       </div>
       <div className='sf-main'>
-        <div className='song-list color-0-88'>{defineLang('Danh sách bài hát', 'Song list')}</div>
+        <div className='song-list color-0-88 alcenter-jcbetween'>
+          <div className='sf-title-content'>{defineLang('Danh sách bài hát', 'Song list')}</div>
+          <div className='clear-all-song color-0-5' onClick={handleClearAllSong}>
+            {defineLang('Xóa tất cả', 'Clear all')}
+          </div>
+        </div>
         <div style={{ marginTop: '1.6rem' }}>
           <ul>
             <li className='song-list-common song-list-header bg-color-0-02'>
@@ -83,8 +95,8 @@ const SongFav = ({ defineLang, currentUser }) => {
               <div className='song-list-title listen-title'>{defineLang('Lượt nghe', 'Listens')}</div>
               <div className='song-list-title duration-title'>{defineLang('Thời gian', 'Duration')}</div>
             </li>
-            {favSongs.map((song) => (
-              <SongItem {...song} songsView={songsView} favSongs={favSongs} setFavSongs={setFavSongs} />
+            {favSongs?.map((song) => (
+              <SongItem {...song} songsView={songsView} favSongs={favSongs} setFavSongs={setFavSongs} defineLang={defineLang} key={song.key || song.keyId || song.songId} />
             ))}
           </ul>
         </div>

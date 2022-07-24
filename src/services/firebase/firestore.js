@@ -1,5 +1,5 @@
 import { auth, db } from 'config/firebase'
-import { setDoc, updateDoc, arrayUnion, arrayRemove, doc, FieldValue } from 'firebase/firestore'
+import { setDoc, updateDoc, arrayUnion, arrayRemove, doc, deleteField } from 'firebase/firestore'
 import { DEFAULT_IMAGE } from 'share/constants'
 
 export const addUser = (docRef, username, email, photoUrl, userId) =>
@@ -25,6 +25,14 @@ export const removeFavSong = (song) => {
 
   updateDoc(currentUserRef, {
     'favorite.songs': arrayRemove(song),
+  })
+}
+
+export const clearAllSong = () => {
+  const currentUserRef = doc(db, 'users', auth.currentUser.uid)
+
+  updateDoc(currentUserRef, {
+    'favorite.songs': deleteField(),
   })
 }
 

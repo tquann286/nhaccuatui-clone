@@ -11,8 +11,9 @@ import { removeFavSong } from 'services/firebase/firestore'
 
 import { BsHeadphones } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
+import { toastNotify } from 'share/toast'
 
-const SongItem = ({ keyId, songId, key, title, artists, duration, songsView, favSongs, setFavSongs }) => {
+const SongItem = ({ keyId, songId, key, title, artists, duration, songsView, favSongs, setFavSongs, defineLang }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
   const navigate = useNavigate()
 
@@ -40,6 +41,7 @@ const SongItem = ({ keyId, songId, key, title, artists, duration, songsView, fav
 
     await removeFavSong(songToRemove)
     setFavSongs(favSongs.filter(song => (song.key || song.keyId || song.songId) !== keyId))
+    toastNotify(defineLang('Xóa bài hát khỏi yêu thích thành công', 'Removed song from favorite list successfully'), 'success')
     toggleShowMore()
   }
 
