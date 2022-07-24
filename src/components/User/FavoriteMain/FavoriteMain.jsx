@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import './FavoriteMain.scss'
 
-import { CateCommon, Footer, SongFav } from 'components'
+import { CateCommon, Footer, SongFav, ErrorBoundary } from 'components'
 import { favCateNav } from 'services/User/Favorite'
 
 import { useStore } from 'store'
@@ -21,26 +21,23 @@ const FavoriteMain = () => {
     defineLang,
     curCate,
     handleCateChange,
-    categories: favCateNav
+    categories: favCateNav,
   }
 
   const cateFavProps = {
     defineLang,
-    currentUser: auth.currentUser
+    currentUser: auth.currentUser,
   }
-  
 
   return (
     <div className='favorite-main'>
-      <div className="fm-container">
-        <CateCommon { ... cateCommonProps } />
-        <div className="fm-content">
-          {curCate === 'song' && (
-            <SongFav { ... cateFavProps } />
-          )}
+      <ErrorBoundary>
+        <div className='fm-container'>
+          <CateCommon {...cateCommonProps} />
+          <div className='fm-content'>{curCate === 'song' && <SongFav {...cateFavProps} />}</div>
         </div>
-      </div>
-      <Footer />
+        <Footer />
+      </ErrorBoundary>
     </div>
   )
 }

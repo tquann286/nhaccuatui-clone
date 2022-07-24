@@ -3,6 +3,7 @@ import { CommonArtist } from 'components'
 import { BsHeadphones } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { formatNumber } from 'share'
+import { createRandomSongView } from 'services/SongDetail'
 
 const SongItem = ({ keyId, songId, key, title, artists, duration, songsView }) => {
   return (
@@ -11,12 +12,14 @@ const SongItem = ({ keyId, songId, key, title, artists, duration, songsView }) =
         <div className='song-list-title song-list-title-real'>
           <div className='alcenter-jcbetween'>
             <div className='alcenter' style={{ overflow: 'hidden' }}>
-              <div className="song-list-title-scss color-0-88" title={title}>{title}</div>
+              <div className='song-list-title-scss color-0-88' title={title}>
+                {title}
+              </div>
             </div>
-            <div className="alcenter fit-width">
-              <div className="vi-hidden">
-                <IconButton className='more-btn' aria-label="more">
-                  <IoMdMore />
+            <div className='alcenter fit-width'>
+              <div className='vi-hidden'>
+                <IconButton className='more-btn' aria-label='more'>
+                  <IoMdMore className='color-0-5' />
                 </IconButton>
               </div>
             </div>
@@ -29,7 +32,7 @@ const SongItem = ({ keyId, songId, key, title, artists, duration, songsView }) =
       <div className='song-list-title listen-title-real'>
         <div className='view-count'>
           <BsHeadphones />
-          <span className='view-count-content color-0-5'>{formatNumber(songsView[keyId || songId || key])}</span>
+          <span className='view-count-content color-0-5'>{formatNumber(songsView ? songsView[keyId || songId || key] : createRandomSongView())}</span>
         </div>
       </div>
       <div className='song-list-title duration-title-real'>{duration}</div>

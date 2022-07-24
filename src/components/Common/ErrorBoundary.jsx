@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { NotFound } from 'pages'
-import { LeftSidebar, RightSidebar } from 'components'
+import { toastNotify } from 'share/toast'
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -12,7 +12,10 @@ class ErrorBoundary extends Component {
   }
   componentDidCatch(error, errorInfo) {
     // Send error information to the server for devs to fix bug
+    const localTheme = localStorage.getItem('theme')
+
     console.log(error, errorInfo)
+    toastNotify(localTheme === 'vi' ? 'Có lỗi khi lấy dữ liệu từ server.' : 'A server error occurred while retrieving data.', 'error')
   }
   render() {
     if (this.state.hasError) {
