@@ -4,7 +4,7 @@ import './Homepage.scss'
 
 import { useLocation } from 'react-router-dom'
 import { useLang } from 'hooks'
-import { ErrorBoundary, LeftSidebar, RightSidebar, Title } from 'components'
+import { LeftSidebar, RightSidebar, Title } from 'components'
 
 import { scrollToTop } from 'share'
 

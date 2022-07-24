@@ -3,17 +3,22 @@ import './ExtendModal.scss'
 
 import { SiAudiomack, SiYoutubemusic } from 'react-icons/si'
 import { BsLink45Deg, BsMusicNote } from 'react-icons/bs'
+import { FaRegTrashAlt } from 'react-icons/fa'
 
 import { useStore } from 'store'
 import { auth } from 'config/firebase'
 import { isEmpty } from 'lodash'
 
-const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong, refMapping, handleRefMapping }) => {
+const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong, refMapping, handleRefMapping, removeFav, handleRemoveFav }) => {
   const [state] = useStore()
   const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
 
   const onAddToFav = (e) => {
     handleAddToFav(e)
+  }
+
+  const onRemoveFav = (e) => {
+    handleRemoveFav(e)
   }
 
   const onCopyLink = (e) => {
@@ -27,13 +32,19 @@ const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToS
   return (
     <div className='extend-modal-main color-0-6 bg-color-1'>
       <ul>
+        {removeFav && (
+          <li className='hover-bg-color-0-05' onClick={(e) => onRemoveFav(e)}>
+            <FaRegTrashAlt />
+            <span>{defineLang('Xóa khỏi yêu thích', 'Remove from favorite')}</span>
+          </li>
+        )}
         {isEmpty(refMapping) || (
           <li className='hover-bg-color-0-05'>
             <SiAudiomack />
             <span>{defineLang('Nghe audio', 'Play audio')}</span>
           </li>
         )}
-        {(auth.currentUser && addToFav) && (
+        {auth.currentUser && addToFav && (
           <li className='hover-bg-color-0-05' onClick={(e) => onAddToFav(e)}>
             <SiYoutubemusic />
             <span>{defineLang('Thêm vào yêu thích', 'Add to favorite')}</span>

@@ -25,6 +25,7 @@ const MainHomepage = () => {
       })
       .catch((error) => {
         console.log(error)
+        
         setIsLoading(false)
         setIsFetchingFail(true)
         toastNotify(defineLang('Có lỗi khi lấy dữ liệu từ server.', 'A server error occurred while retrieving data.'), 'error')
