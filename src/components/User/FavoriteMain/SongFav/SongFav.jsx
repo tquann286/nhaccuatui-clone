@@ -3,10 +3,8 @@ import './SongFav.scss'
 
 import initImage from 'images/default/default_personal_playlist.png'
 import initUser from 'images/default/default_user.jpg'
-import { CommonArtist, ShadowThumb, SquareImg } from 'components'
+import { ShadowThumb, SongItem, SquareImg } from 'components'
 import { getFavSong } from 'services/User/Favorite'
-import { formatNumber } from 'share'
-import { BsHeadphones } from 'react-icons/bs'
 import { getSongsView, getListSongsKey } from 'share/utilities'
 
 const SongFav = ({ defineLang, currentUser }) => {
@@ -87,27 +85,9 @@ const SongFav = ({ defineLang, currentUser }) => {
               <div className='song-list-title listen-title'>{defineLang('Lượt nghe', 'Listens')}</div>
               <div className='song-list-title duration-title'>{defineLang('Thời gian', 'Duration')}</div>
             </li>
-            {favSongs.map((song) => {
-              const { keyId, artists, title, songId, key, duration } = song
-
-              return (
-                <li key={keyId || songId || key} className='song-list-common bg-color-0-02 li-list-item-common color-0-6'>
-                  <div className='song-list-title-artist'>
-                    <div className='song-list-title song-list-title-real'>{title}</div>
-                    <div className='song-list-title song-list-artist-real'>
-                      <CommonArtist artists={artists} />
-                    </div>
-                  </div>
-                  <div className='song-list-title listen-title-real'>
-                    <div className='view-count'>
-                      <BsHeadphones />
-                      <span className='view-count-content color-0-5'>{formatNumber(songsView[keyId || songId || key])}</span>
-                    </div>
-                  </div>
-                  <div className='song-list-title duration-title-real'>{duration}</div>
-                </li>
-              )
-            })}
+            {favSongs.map((song) => (
+              <SongItem { ... song } songsView={songsView} /> 
+            ))}
           </ul>
         </div>
       </div>
