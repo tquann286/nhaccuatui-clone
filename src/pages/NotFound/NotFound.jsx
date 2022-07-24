@@ -4,12 +4,12 @@ import './NotFound.scss'
 import { useLang } from 'hooks'
 import { Title } from 'components'
 
-const NotFound = () => {
+const NotFound = ({ vie = 'Không có sẵn dữ liệu để hiển thị', eng = 'No data available here' }) => {
   return (
     <div className='notfound-container'>
       <Title title={useLang('Không có dữ liệu', 'No data available')} />
       <img src={notfoundImg} alt='Page not found' />
-      <p className='notfound-title color-0-5'>{useLang('Không có sẵn dữ liệu để hiển thị', 'No data available here')}</p>
+      <p className='notfound-title color-0-5'>{useLang(vie, eng)}</p>
     </div>
   )
 }
