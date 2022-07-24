@@ -6,7 +6,13 @@ const SongItem = ({ keyId, songId, key, title, artists, duration, songsView }) =
   return (
     <li key={keyId || songId || key} className='song-list-common bg-color-0-02 li-list-item-common color-0-6 hover-bg-color-0-05'>
       <div className='song-list-title-artist'>
-        <div className='song-list-title song-list-title-real'>{title}</div>
+        <div className='song-list-title song-list-title-real'>
+          <div className='alcenter-jcbetween'>
+            <div className='alcenter' style={{ overflow: 'hidden' }}>
+              <div className="song-list-title-scss color-0-88" title={title}>{title}</div>
+            </div>
+          </div>
+        </div>
         <div className='song-list-title song-list-artist-real'>
           <CommonArtist artists={artists} />
         </div>

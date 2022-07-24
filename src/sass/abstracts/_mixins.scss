@@ -28,6 +28,9 @@
 }
 
 @mixin align-items($value) {
+  -ms-flex-align: $value;
+  -webkit-align-items: $value;
+  -webkit-box-align: $value;
   -webkit-align-items: $value;
   -webkit-box-align: $value;
   -ms-flex-align: $value;

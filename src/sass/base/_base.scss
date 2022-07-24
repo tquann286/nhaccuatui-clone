@@ -119,3 +119,17 @@
   line-height: 1.8rem;
   font-size: 1.3rem;
 }
+
+// Flex
+.alcenter {
+  @include display-flex;
+  @include align-items(center);
+  width: 100%;
+}
+
+.alcenter-jcbetween {
+  @include display-flex;
+  @include align-items(center);
+  @include justify-content(space-between);
+  width: 100%;
+}

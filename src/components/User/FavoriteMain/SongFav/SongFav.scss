@@ -141,11 +141,21 @@
 
           &.song-list-title-real {
             @include justify-content(space-between);
-            @include transition-effect(0.15s);
-            @include hoverMainColor;
             width: 50%;
             padding-left: 1.6rem;
             cursor: pointer;
+
+            .song-list-title-scss {
+              @include threeDotContent;
+              @include transition-effect(0.15s);
+              @include hoverMainColor;
+              margin-top: 0;
+              margin-right: 0.8rem;
+              min-width: 2.8rem;
+              font-size: 1.3rem;
+              line-height: 2rem;
+              vertical-align: text-bottom;
+            }
           }
 
           &.song-list-artist-real {
