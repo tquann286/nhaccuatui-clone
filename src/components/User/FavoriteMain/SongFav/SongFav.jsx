@@ -81,16 +81,18 @@ const SongFav = ({ defineLang, currentUser }) => {
       <div className='sf-main'>
         <div className='song-list color-0-88 alcenter-jcbetween'>
           <div className='sf-title-content'>{defineLang('Danh sách bài hát', 'Song list')}</div>
-          <div className='clear-all-song color-0-5' onClick={handleClearAllSong}>
-            {defineLang('Xóa tất cả', 'Clear all')}
-          </div>
+          {favSongs && (
+            <div className='clear-all-song color-0-5' onClick={handleClearAllSong}>
+              {defineLang('Xóa tất cả', 'Clear all')}
+            </div>
+          )}
         </div>
         <div style={{ marginTop: '1.6rem' }}>
           <ul>
             <li className='song-list-common song-list-header bg-color-0-02'>
               <div className='song-list-title-artist'>
                 <div className='song-list-title song-list-title-header color-0-88'>{defineLang('Tiêu đề', 'Title')}</div>
-                <div className='song-list-title song-list-artist-header color-0-88'>{defineLang('Nghệ sĩ', 'Artist')}</div>
+                <div className='song-list-title song-list-artist-header color-0-88'>{defineLang('Nghệ sỹ', 'Artist')}</div>
               </div>
               <div className='song-list-title listen-title'>{defineLang('Lượt nghe', 'Listens')}</div>
               <div className='song-list-title duration-title'>{defineLang('Thời gian', 'Duration')}</div>

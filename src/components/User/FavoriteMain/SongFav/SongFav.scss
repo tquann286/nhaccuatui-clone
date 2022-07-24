@@ -102,12 +102,12 @@
               @include justify-content(space-between);
               width: 50%;
               padding-left: 1.6rem;
-              font-weight: 600;
+              font-weight: 700;
             }
             .song-list-artist-header {
               width: 50%;
               padding: 0 1.2rem;
-              font-weight: 600;
+              font-weight: 700;
             }
           }
   
@@ -115,12 +115,12 @@
             &.listen-title {
               width: 8.2rem;
               margin-right: 2.2rem;
-              font-weight: 600;
+              font-weight: 700;
             }
             &.duration-title {
               @include justify-content(center);
               width: 8rem;
-              font-weight: 600;
+              font-weight: 700;
             }
           }
         }

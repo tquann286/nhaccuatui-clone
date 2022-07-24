@@ -2,6 +2,7 @@
 
 .favorite-main {
   @include commonMainOutlet;
+  position: relative;
 
   .fm-container {
     padding-top: 2.4rem;
@@ -10,5 +11,11 @@
 
   .fm-content {
     padding: 4rem 3.2rem 0;
+  }
+
+  .ft-container {
+    position: absolute;
+    bottom: 0.8rem;
+    width: 100%;
   }
 }
