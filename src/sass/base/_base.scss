@@ -133,3 +133,18 @@
   @include justify-content(space-between);
   width: 100%;
 }
+
+.fit-width {
+  @include fitContentWidth;
+}
+
+.hover-visible {
+  &:hover, &.active {
+    .vi-hidden {
+      visibility: visible;
+    }
+  }
+  .vi-hidden {
+    visibility: hidden;
+  }
+}
