@@ -86,7 +86,7 @@ export const createVideoUrl = (keyId, title, artists) => {
   return videoLink
 }
 
-export const getListSongsKey = (songs) => songs.map((song) => song.key)
+export const getListSongsKey = (songs) => songs.map((song) => song.key || song.songId || song.keyId)
 
 export const getNavigateUrl = (url) => {
   const linkStartIndex = url.indexOf('nhaccuatui.com/') + 15

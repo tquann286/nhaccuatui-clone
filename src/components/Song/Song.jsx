@@ -3,8 +3,7 @@ import './Song.scss'
 import { Link } from 'react-router-dom'
 import SongDetail from './SongDetail'
 
-import { getSongsView } from 'share/utilities'
-import { getListSongsKey } from 'share/utilities'
+import { getSongsView, getListSongsKey } from 'share/utilities'
 
 import { useStore } from 'store'
 

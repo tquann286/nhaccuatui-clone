@@ -13,13 +13,12 @@ import { formatNumber } from 'share'
 import { IoMdMore } from 'react-icons/io'
 
 import { useStore } from 'store'
-import { auth } from 'config/firebase'
 import { handleAddToFavSong } from 'share/addToFav'
 
-const CommonSong = ({ artists, keyId, thumbnail, title, songView, type }) => {
+const CommonSong = ({ artists, keyId, thumbnail, title, songView, type, duration }) => {
   const [state] = useStore()
   const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
-
+  
   const navigate = useNavigate()
 
   const [showMoreOptions, setShowMoreOptions] = useState(false)
@@ -48,7 +47,7 @@ const CommonSong = ({ artists, keyId, thumbnail, title, songView, type }) => {
 
   const handleAddToFav = (e) => {
     e.stopPropagation()
-    handleAddToFavSong({ artists, keyId, thumbnail, title, type }, defineLang)
+    handleAddToFavSong({ artists, keyId, thumbnail, title, type, duration }, defineLang)
     toggleShowMore()
   }
 

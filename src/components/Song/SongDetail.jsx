@@ -12,7 +12,7 @@ import { createRandomSongView } from 'services/SongDetail'
 import { basicModal } from 'share/animation'
 import { handleAddToFavSong } from 'share/addToFav'
 
-const SongDetail = ({ artists, songId, thumbnail, title, lang, songView, type }) => {
+const SongDetail = ({ artists, songId, thumbnail, title, lang, songView, type, duration }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
 
   const songContainerRef = useRef(null)
@@ -48,7 +48,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang, songView, type })
 
   const handleAddToFav = (e) => {
     e.stopPropagation()
-    handleAddToFavSong({ artists, songId, thumbnail, title, type }, defineLang)
+    handleAddToFavSong({ artists, songId, thumbnail, title, type, duration }, defineLang)
     toggleShowMore()
   }
 

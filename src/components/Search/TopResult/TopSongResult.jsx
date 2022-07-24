@@ -10,7 +10,7 @@ const TopSongResult = ({ song, defineLang }) => {
 
   if (!song) return null
 
-  const { artists, key, title, type, thumbnail } = song
+  const { artists, key, title, type, thumbnail, duration } = song
 
   const onNavigateSong = () => {
     navigate(createSongUrl(title, key))
@@ -22,7 +22,7 @@ const TopSongResult = ({ song, defineLang }) => {
 
   const handleAddToFav = (e) => {
     e.stopPropagation()
-    handleAddToFavSong({ artists, key, thumbnail, title, type }, defineLang)
+    handleAddToFavSong({ artists, key, thumbnail, title, type, duration }, defineLang)
   }
 
   const imageOverlayProps = {

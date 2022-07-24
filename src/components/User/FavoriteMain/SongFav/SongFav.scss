@@ -137,11 +137,15 @@
           @include display-flex;
           @include align-items(center);
           font-size: 1.3rem;
+          font-weight: 600;
 
           &.song-list-title-real {
             @include justify-content(space-between);
+            @include transition-effect(0.15s);
+            @include hoverMainColor;
             width: 50%;
             padding-left: 1.6rem;
+            cursor: pointer;
           }
 
           &.song-list-artist-real {
@@ -152,6 +156,16 @@
           &.listen-title-real {
             width: 8rem;
             margin-right: 2.4rem;
+
+            .view-count {
+              @include fitContentHeight;
+              @include display-flex;
+              @include align-items(center);
+              font-size: 1.3rem;
+              svg {
+                margin-right: 0.3rem;
+              }
+            }
           }
 
           &.duration-title-real {
