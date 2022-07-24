@@ -258,7 +258,7 @@ const LeftSidebar = () => {
                       <div className='nav-item bg-color-0-05 nav-favorite'>
                         <div className='nav-active-item'></div>
                         <div className='nav-content color-0-5'>
-                          <p className='nav-name color-0-88'>{lang === 'vi' ? 'NhacCuaTui' : 'Favorite'}</p>
+                          <p className='nav-name color-0-88'>NhacCuaTui</p>
                         </div>
                       </div>
                     </NavLink>

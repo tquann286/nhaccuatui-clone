@@ -64,6 +64,104 @@
       }
     }
   }
+
+  .sf-main {
+    .song-list {
+      margin-top: 4.4rem;
+      margin-bottom: 1.6rem;
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+
+    ul {
+      .song-list-common {
+        @include display-flex;
+        height: 4rem;
+        border-radius: 0.4rem;
+        margin-bottom: 0.2rem;
+
+        &.li-list-item-common {
+          margin-top: 2px;
+          margin-bottom: 0;
+        }
+
+        &.song-list-header {
+          height: 3.2rem;
+          margin-bottom: 0.4rem;
+          text-transform: uppercase;
+  
+          .song-list-title-artist {
+            .song-list-title-header {
+              @include justify-content(space-between);
+              width: 50%;
+              padding-left: 1.6rem;
+              font-weight: 600;
+            }
+            .song-list-artist-header {
+              width: 50%;
+              padding: 0 1.2rem;
+              font-weight: 600;
+            }
+          }
+  
+          .song-list-title {
+            &.listen-title {
+              width: 8rem;
+              margin-right: 2.4rem;
+              font-weight: 600;
+            }
+            &.duration-title {
+              @include justify-content(center);
+              width: 8rem;
+              font-weight: 600;
+            }
+          }
+        }
+
+        .song-list-title-artist {
+          @include display-flex;
+          width: calc(100% - 18.4rem);
+          .listen-title {
+            width: 8rem;
+            margin-right: 2.4rem;
+            font-weight: 600;
+          }
+          .duration-title {
+            @include justify-content(center);
+            width: 8rem;
+            font-weight: 600;
+          }
+        }
+
+        .song-list-title {
+          @include display-flex;
+          @include align-items(center);
+          font-size: 1.3rem;
+
+          &.song-list-title-real {
+            @include justify-content(space-between);
+            width: 50%;
+            padding-left: 1.6rem;
+          }
+
+          &.song-list-artist-real {
+            width: 50%;
+            padding: 0 12px;
+          }
+
+          &.listen-title-real {
+            width: 8rem;
+            margin-right: 2.4rem;
+          }
+
+          &.duration-title-real {
+            @include justify-content(center);
+            width: 8rem;
+          }
+        }
+      }
+    }
+  }
 }
 
 .MuiTooltip-tooltip {

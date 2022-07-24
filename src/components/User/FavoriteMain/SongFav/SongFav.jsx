@@ -3,18 +3,12 @@ import './SongFav.scss'
 
 import initImage from 'images/default/default_personal_playlist.png'
 import initUser from 'images/default/default_user.jpg'
-import { PopupModal, ShadowThumb, ShareModal, SquareImg } from 'components'
-import { getFavSong, overlayFavStyles } from 'services/User/Favorite'
-import { AiOutlineShareAlt } from 'react-icons/ai'
-import { Button, IconButton, Tooltip } from '@mui/material'
+import { CommonArtist, ShadowThumb, SquareImg } from 'components'
+import { getFavSong } from 'services/User/Favorite'
 
 const SongFav = ({ defineLang, currentUser }) => {
   const [favSongs, setFavSongs] = useState(null)
-  const [showShareModal, setShowShareModal] = useState(false)
-
-  const toggleShareModal = () => {
-    setShowShareModal(!showShareModal)
-  }
+  console.log('favSongs: ', favSongs)
 
   useEffect(() => {
     const getFavSongsState = async () => {
@@ -25,11 +19,6 @@ const SongFav = ({ defineLang, currentUser }) => {
 
     getFavSongsState()
   }, [])
-
-  const shareModalProps = {
-    defineLang,
-    toggleShareModal
-  }
 
   if (!favSongs) return null
 
@@ -53,16 +42,6 @@ const SongFav = ({ defineLang, currentUser }) => {
           </div>
           <div className='bottom-position'>
             <div className='sf-author w3-row bg-color-0-02'>
-              <div className='sf-extend w3-col w3-right'>
-                <Tooltip className='sf-tooltip color-0-5' title={defineLang('Chia sẻ', 'Share')} placement='top' arrow enterDelay={500}>
-                  <IconButton aria-label='share' size='large' onClick={toggleShareModal}>
-                    <AiOutlineShareAlt />
-                  </IconButton>
-                </Tooltip>
-              </div>
-              <PopupModal showModal={showShareModal} toggleModal={toggleShareModal} overlayStyles={overlayFavStyles}>
-                <ShareModal { ... shareModalProps } />
-              </PopupModal>
               <div className='sf-author-main w3-rest w3-row'>
                 <div className='sf-author-img border-0-05 w3-col'>
                   <SquareImg imageUrl={photoURL || initUser} title={displayName} />
@@ -74,6 +53,37 @@ const SongFav = ({ defineLang, currentUser }) => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className='sf-main'>
+        <div className='song-list color-0-88'>{defineLang('Danh sách bài hát', 'Song list')}</div>
+        <div style={{ marginTop: '1.6rem' }}>
+          <ul>
+            <li className='song-list-common song-list-header bg-color-0-02'>
+              <div className='song-list-title-artist'>
+                <div className='song-list-title song-list-title-header color-0-88'>{defineLang('Tiêu đề', 'Title')}</div>
+                <div className='song-list-title song-list-artist-header color-0-88'>{defineLang('Nghệ sĩ', 'Artist')}</div>
+              </div>
+              <div className='song-list-title listen-title'>{defineLang('Lượt nghe', 'Listens')}</div>
+              <div className='song-list-title duration-title'>{defineLang('Thời gian', 'Duration')}</div>
+            </li>
+            {favSongs.map((song) => {
+              const { keyId, artists, title } = song
+
+              return (
+                <li key={keyId} className='song-list-common bg-color-0-02 li-list-item-common color-0-6'>
+                  <div className='song-list-title-artist'>
+                    <div className='song-list-title song-list-title-real'>{title}</div>
+                    <div className='song-list-title song-list-artist-real'>
+                      <CommonArtist artists={artists} />
+                    </div>
+                  </div>
+                  <div className='song-list-title listen-title-real'>5</div>
+                  <div className='song-list-title duration-title-real'>4:10</div>
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </div>
     </div>
