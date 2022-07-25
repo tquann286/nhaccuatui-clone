@@ -1,9 +1,7 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 const ModalAnimate = ({ children, animateProps, isVisible, keyId }) => {
-  const [animationParent] = useAutoAnimate()
 
   return (
     <AnimatePresence>

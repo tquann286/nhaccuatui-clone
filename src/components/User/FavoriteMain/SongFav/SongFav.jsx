@@ -15,7 +15,6 @@ import { useStore, actions } from 'store'
 const SongFav = ({ defineLang, currentUser }) => {
   const [state, dispatch] = useStore()
   const { favSongs } = state
-  console.log('favSongs: ', favSongs)
   const [animationParent] = useAutoAnimate()
 
   const [songsView, setSongView] = useState({})
@@ -74,7 +73,7 @@ const SongFav = ({ defineLang, currentUser }) => {
             <span className='color-0-88'>{defineLang('Bài hát yêu thích', 'Favorite songs')}</span>
           </div>
           <div className='sf-total-number w3-row'>
-            <div className='width-fit-content color-0-5'>{defineLang(`${favSongs?.length || 0} bài hát`, `${favSongs?.length || 0} songs`)}</div>
+            <div className='width-fit-content color-0-5'>{defineLang(`${favSongs.length || 0} bài hát`, `${favSongs.length || 0} songs`)}</div>
           </div>
           <div className='bottom-position'>
             <div className='sf-author w3-row bg-color-0-02'>

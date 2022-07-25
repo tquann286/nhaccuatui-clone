@@ -13,7 +13,7 @@ export const getFavSong = async (defineLang) => {
   const userSnap = await getDoc(currentUserRef)
 
   if (userSnap.exists()) {
-    return userSnap.data().favorite.songs
+    return userSnap.data().favorite.songs || []
   } else {
     toastNotify(defineLang('Không tìm thấy danh sách yêu thích', 'There is no favorite list song found'), 'info')
   }
