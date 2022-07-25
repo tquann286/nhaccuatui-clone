@@ -6,6 +6,8 @@ const removeDuplicate = (arr, key) => {
   } else {
     const uniqueArr = arr.filter((value, index, self) => index === self.findIndex((t) => (t.key || t.keyId || t.songId) === (value.key || value.keyId || value.songId)))
 
+    console.log(arr.filter((value, index, self) => index !== self.findIndex((t) => (t.key || t.keyId || t.songId) === (value.key || value.keyId || value.songId))))
+
     return uniqueArr
   }
 }
