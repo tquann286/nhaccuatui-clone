@@ -16,6 +16,10 @@
   padding: 8px;
 }
 
+.MuiGrid-spacing-xs-2 > .MuiGrid-item {
+  padding: 8px !important;
+}
+
 .MuiTab-textColorPrimary.Mui-selected {
   color: $main-text-color !important;
 }

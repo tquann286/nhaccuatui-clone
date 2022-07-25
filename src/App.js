@@ -8,10 +8,12 @@ import { Explore, Homepage, NotFound, Search, User, Favorite } from 'pages'
 import { auth } from 'config/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 import { MainHomepage } from 'components'
+import { getFavSong } from 'services/User/Favorite'
 
 
 const App = () => {
   const [state, dispatch] = useStore()
+  const defineLang = (vie, eng) => state.lang === 'vi' ? vie : eng
 
   useEffect(() => {
     // Theme
@@ -51,6 +53,16 @@ const App = () => {
         dispatch(actions.onSignedOut())
       }
     })
+    
+    // Get Favorite songs
+    if (auth.currentUser) {
+      const getFavSongsState = async () => {
+        const favSongs = await getFavSong(defineLang)
+        dispatch(actions.setFavSongs(favSongs))
+      }
+  
+      getFavSongsState()
+    }
 	}, [auth.currentUser])
 
   return (
