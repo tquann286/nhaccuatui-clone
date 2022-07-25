@@ -31,7 +31,7 @@ const SearchResult = ({ searchQuery, searchTerm, defineLang, isLoading, setIsLoa
 
   if (searchResult) searchResult.status === 'error' && <NotFound />
 
-  const passedProps = {
+  const commonProps = {
     searchQuery,
     searchTerm,
     defineLang,
@@ -59,7 +59,7 @@ const SearchResult = ({ searchQuery, searchTerm, defineLang, isLoading, setIsLoa
               {isEmpty(search) || <SearchDetail {...search} defineLang={defineLang} />}
             </React.Fragment>
           )}
-          {currentCate === 'song' && <React.Fragment>{isEmpty(search.song) || <SongResult {...search.song} { ... passedProps } />}</React.Fragment>}
+          {currentCate === 'song' && <React.Fragment>{isEmpty(search.song) || <SongResult { ... commonProps } />}</React.Fragment>}
         </div>
       </div>
     )

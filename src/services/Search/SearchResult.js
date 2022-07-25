@@ -26,7 +26,7 @@ export const getSongResult = async (query, pageIndex = 1) => {
   try {
     const data = await getSearchSong(query, pageIndex)
 
-    if (data) return data
+    if (data) return data.song
   } catch (error) {
     throw new Error(error)
   }

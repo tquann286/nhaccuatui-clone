@@ -4,8 +4,9 @@ import './SongResult.scss'
 import { getSongResult } from 'services/Search/SearchResult'
 import { SongSquare } from 'components'
 
-const SongResult = ({ searchTerm, searchQuery, defineLang, total }) => {
+const SongResult = ({ searchTerm, searchQuery, defineLang }) => {
   const [songResult, setSongResult] = useState(null)
+  const [pageIndex, setPageIndex] = useState(1)
   console.log('songResult: ', songResult)
 
   useEffect(() => {
@@ -16,7 +17,11 @@ const SongResult = ({ searchTerm, searchQuery, defineLang, total }) => {
     }
 
     getSongResultState()
-  }, [])
+  }, [pageIndex])
+
+  if (!songResult) return null
+
+  const { total } = songResult
   
   return (
     <div className='song-result-container common-section'>
