@@ -34,7 +34,7 @@ const SongResult = ({ searchTerm, searchQuery, defineLang }) => {
         <Grid container spacing={2}>
           {songResult?.song.map(song => (
             <Grid item key={song.key} xs={3} sm={3} md={3} xl={2}>
-            <SongSquare { ... song } />
+            <SongSquare { ... song } keyId={song.key} />
             </Grid>
           ))}
         </Grid>

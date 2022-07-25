@@ -168,6 +168,8 @@ export const handleCopyVideo = (event, title, keyId, artists, defineLang) => {
   }
 }
 
+export const calcPaginationPage = (total, itemPerPage = 36) => Math.ceil(total / itemPerPage)
+
 // API
 export const getSongsView = async (listSongKeys) => {
   try {
