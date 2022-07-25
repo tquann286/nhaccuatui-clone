@@ -15,6 +15,7 @@ export { default as ShadowOverlay } from './Common/ShadowOverlay/ShadowOverlay'
 export { default as VideoOverlay } from './Common/VideoOverlay/VideoOverlay'
 export { default as SongSquare } from './Common/SongSquare/SongSquare'
 export { default as CateCommon } from './Common/CateCommon/CateCommon'
+export { default as PagiCommon } from './Common/PagiCommon/PagiCommon'
 
 // Home
 export { default as Loading } from './Loading/Loading'

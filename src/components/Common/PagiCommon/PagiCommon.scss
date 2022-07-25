@@ -1,0 +1,11 @@
+@import 'settings';
+
+.pagi-common-container {
+  @include flexCenter;
+  height: 4rem;
+
+  ul {
+    @include useBorder;
+    border-radius: 2rem;
+  }
+}

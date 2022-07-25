@@ -534,7 +534,6 @@
 
   .search-result-container {
     margin-bottom: calc(#{$footer-height} * 2);
-
     .sr-navbar {
       padding-top: 1.6rem;
 
@@ -581,6 +580,16 @@
         }
       }
 
+    }
+    .sr-main {
+      .search-not-found {
+        @include flexCenter;
+        @include flexDirection(column);
+
+        img {
+          width: 30%;
+        }
+      }
     }
   }
 
