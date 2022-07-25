@@ -1,4 +1,4 @@
-import { SET_THEME, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME, CHANGE_VI_LANG, CHANGE_EN_LANG, SET_LANG, TOGGLE_SHOW_LOGIN, TOGGLE_SHOW_SIGN_UP, SIGNED_IN, SIGNED_OUT, SET_LAST_PLAYED_SONG } from 'share/constants'
+import { SET_THEME, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME, CHANGE_VI_LANG, CHANGE_EN_LANG, SET_LANG, TOGGLE_SHOW_LOGIN, TOGGLE_SHOW_SIGN_UP, SIGNED_IN, SIGNED_OUT, SET_LAST_PLAYED_SONG, SET_FAV_SONGS } from 'share/constants'
 
 // Theme
 export const setTheme = (payload) => ({
@@ -70,3 +70,9 @@ export const setLastPlayedSongId = (songId) => {
     songId
   })
 }
+
+// Favorite
+export const setFavSongs = (favSongs) => ({
+  type: SET_FAV_SONGS,
+  favSongs
+})

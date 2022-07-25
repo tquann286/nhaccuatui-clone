@@ -10,14 +10,16 @@ import { getSongsView, getListSongsKey } from 'share/utilities'
 import { clearAllSong } from 'services/firebase/firestore'
 import { toastNotify } from 'share/toast'
 import { removeDuplicate } from 'share'
+import { useStore, actions } from 'store'
 
 const SongFav = ({ defineLang, currentUser }) => {
-  const [favSongs, setFavSongs] = useState(null)
+  const [state, dispatch] = useStore()
+  const { favSongs } = state
   const [songsView, setSongView] = useState({})
 
   const handleClearAllSong = async () => {
     await clearAllSong()
-    setFavSongs(null)
+    dispatch(actions.setFavSongs(null))
     toastNotify(defineLang('Xóa tất cả bài hát khỏi yêu thích thành công', 'Removed all songs from favorite list successfully'), 'success')
   }
 
@@ -25,7 +27,7 @@ const SongFav = ({ defineLang, currentUser }) => {
     const getFavSongsState = async () => {
       const favSongs = await getFavSong(defineLang)
       
-      setFavSongs(removeDuplicate(favSongs))
+      dispatch(actions.setFavSongs(favSongs))
     }
 
     getFavSongsState()
@@ -53,7 +55,7 @@ const SongFav = ({ defineLang, currentUser }) => {
   const songItemProps = {
     songsView,
     favSongs,
-    setFavSongs,
+    setFavSongs: (favSongs) => dispatch(actions.setFavSongs(favSongs)),
     defineLang,
   }
 

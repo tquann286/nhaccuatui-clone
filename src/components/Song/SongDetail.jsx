@@ -11,8 +11,10 @@ import { createSongUrl, createArtistUrl, handleCopySong } from 'share/utilities'
 import { createRandomSongView } from 'services/SongDetail'
 import { basicModal } from 'share/animation'
 import { handleAddToFavSong } from 'share/addToFav'
+import { useStore } from 'store'
 
 const SongDetail = ({ artists, songId, thumbnail, title, lang, songView, type, duration }) => {
+  const [state] = useStore()
   const [showMoreOptions, setShowMoreOptions] = useState(false)
 
   const songContainerRef = useRef(null)
@@ -48,7 +50,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang, songView, type, d
 
   const handleAddToFav = (e) => {
     e.stopPropagation()
-    handleAddToFavSong({ artists, songId, thumbnail, title, type, duration }, defineLang)
+    handleAddToFavSong({ artists, songId, thumbnail, title, type, duration }, state.favSongs, defineLang)
     toggleShowMore()
   }
 

@@ -4,9 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ExtendModal, ModalAnimate, OptionModal } from 'components'
 
 import { FaRegTrashAlt } from 'react-icons/fa'
-import { BsLink45Deg, BsMusicNote, BsPlayCircleFill } from 'react-icons/bs'
+import { BsPlayCircleFill } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
-import { SiYoutubemusic } from 'react-icons/si'
 
 import { Loading } from 'components'
 import { createSearchUrl } from 'services/Search/SearchHeader'
@@ -16,8 +15,10 @@ import { covertTimestamp, createArtistUrl, createSongUrl, handleCopySong } from 
 import { GoCalendar } from 'react-icons/go'
 import { basicModal } from 'share/animation'
 import { handleAddToFavSong } from 'share/addToFav'
+import { useStore } from 'store'
 
 const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHistory, setSearchTerm, isLoading }) => {
+  const [state] = useStore()
   const navigate = useNavigate()
 
   const [maybeHit, setMaybeHit] = useState(null)
@@ -63,7 +64,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
 
   const handleAddToFav = (e) => {
     e.stopPropagation()
-    handleAddToFavSong(maybeHit, defineLang)
+    handleAddToFavSong(maybeHit, state.favSongs, defineLang)
     toggleShowMore()
   }
 

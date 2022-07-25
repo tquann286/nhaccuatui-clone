@@ -1,10 +1,18 @@
 import { auth } from 'config/firebase'
 import { addFavSong, addFavPlaylist, addFavVideo } from 'services/firebase/firestore'
 import { toastNotify } from 'share/toast'
+import { isEmpty } from 'lodash'
 
-export const handleAddToFavSong = async (song, defineLang) => {
+export const handleAddToFavSong = async (song, favSongs, defineLang) => {
   if (auth.currentUser) {
     if (song) {
+      const isDuplicate = favSongs.filter(sg => (sg.key || sg.keyId || sg.songId) === (song.key || song.keyId || song.songId))
+      
+      if (!isEmpty(isDuplicate)) {
+        toastNotify(defineLang('Bài hát đã có trong yêu thích.', 'Song already exists in favorite playlist.'))
+        return null
+      }
+
       await addFavSong(song)
       toastNotify(defineLang('Thêm bài hát vào danh sách yêu thích thành công.', 'Successfully added song to favorite list.'), 'success')
     } else {

@@ -4,8 +4,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { CommonArtist, ImageOverlay } from 'components'
 import { createSongUrl, handleCopySong } from 'share/utilities'
 import { handleAddToFavSong } from 'share/addToFav'
+import { useStore } from 'store'
 
 const TopSongResult = ({ song, defineLang }) => {
+  const [state] = useStore()
   const navigate = useNavigate()
 
   if (!song) return null
@@ -22,7 +24,7 @@ const TopSongResult = ({ song, defineLang }) => {
 
   const handleAddToFav = (e) => {
     e.stopPropagation()
-    handleAddToFavSong({ artists, key, thumbnail, title, type, duration }, defineLang)
+    handleAddToFavSong({ artists, key, thumbnail, title, type, duration }, state.favSongs, defineLang)
   }
 
   const imageOverlayProps = {

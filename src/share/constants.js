@@ -38,3 +38,6 @@ export const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|
 
 // Play 
 export const SET_LAST_PLAYED_SONG = 'set_last_played_song'
+
+// Favorite
+export const SET_FAV_SONGS = 'set_fav_songs'
