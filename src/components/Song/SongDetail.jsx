@@ -67,7 +67,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang, songView, type, d
 
   const extendModalProps = {
     copyLink: true,
-    handelCopyLink: (e) => onCopyLink(e),
+    handleCopyLink: (e) => onCopyLink(e),
     goToSong: true,
     handleGoToSong: (e) => handleGoToSong(e),
     addToFav: true,

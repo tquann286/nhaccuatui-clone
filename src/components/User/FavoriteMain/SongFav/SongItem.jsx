@@ -13,7 +13,7 @@ import { BsHeadphones } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { toastNotify } from 'share/toast'
 
-const SongItem = ({ keyId, songId, key, title, artists, duration, songsView, favSongs, setFavSongs, defineLang }) => {
+const SongItem = ({ realKey, title, artists, duration, songsView, favSongs, setFavSongs, defineLang }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
   const navigate = useNavigate()
 
@@ -31,11 +31,11 @@ const SongItem = ({ keyId, songId, key, title, artists, duration, songsView, fav
 
   const handleGoToSong = (e) => {
     e.stopPropagation()
-    navigate(createSongUrl(title, keyId || key || songId))
+    navigate(createSongUrl(title, realKey))
   }
 
   const handleCopyLink = (e) => {
-    handleCopySong(e, defineLang, title, keyId || key || songId)
+    handleCopySong(e, defineLang, title, realKey)
     toggleShowMore()
   }
 
@@ -60,7 +60,7 @@ const SongItem = ({ keyId, songId, key, title, artists, duration, songsView, fav
   const modalAnimateProps = {
     animateProps: basicModal,
     isVisible: showMoreOptions,
-    keyId: keyId || songId || key,
+    keyId: realKey,
   }
 
   const extendModalProps = {
@@ -69,10 +69,10 @@ const SongItem = ({ keyId, songId, key, title, artists, duration, songsView, fav
     goToSong: true,
     handleGoToSong: (e) => handleGoToSong(e),
     removeFav: true,
-    handleRemoveFav: (e) => handleRemoveFav(e, keyId || songId || key),
+    handleRemoveFav: (e) => handleRemoveFav(e, realKey),
   }
   return (
-    <li key={keyId || songId || key} className='song-list-common bg-color-0-02 li-list-item-common color-0-6 hover-bg-color-0-05 hover-visible'>
+    <li key={realKey} className='song-list-common bg-color-0-02 li-list-item-common color-0-6 hover-bg-color-0-05 hover-visible'>
       <div className='song-list-title-artist'>
         <div className='song-list-title song-list-title-real'>
           <div className='alcenter-jcbetween'>
@@ -102,7 +102,7 @@ const SongItem = ({ keyId, songId, key, title, artists, duration, songsView, fav
       <div className='song-list-title listen-title-real'>
         <div className='view-count'>
           <BsHeadphones />
-          <span className='view-count-content color-0-5'>{formatNumber(songsView ? songsView[keyId || songId || key] : createRandomSongView())}</span>
+          <span className='view-count-content color-0-5'>{formatNumber(songsView ? songsView[realKey] : createRandomSongView())}</span>
         </div>
       </div>
       <div className='song-list-title duration-title-real'>{duration}</div>

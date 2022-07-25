@@ -33,7 +33,7 @@ const TopSongResult = ({ song, defineLang }) => {
     copyLink: true,
     handleCopyLink: (e) => onCopyLink(e),
     addToFav: true,
-    handleAddToFav,
+    handleAddToFav: (e) => handleAddToFav(e),
     goToSong: true,
     handleGoToSong: onNavigateSong
   }

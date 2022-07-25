@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { ModalAnimate, OptionModal } from 'components'
+import { ExtendModal, ModalAnimate, OptionModal } from 'components'
 
 import { FaRegTrashAlt } from 'react-icons/fa'
 import { BsLink45Deg, BsMusicNote, BsPlayCircleFill } from 'react-icons/bs'
@@ -15,29 +15,13 @@ import { getMaybeHit } from 'services/Search/SearchMain'
 import { covertTimestamp, createArtistUrl, createSongUrl, handleCopySong } from 'share/utilities'
 import { GoCalendar } from 'react-icons/go'
 import { basicModal } from 'share/animation'
+import { handleAddToFavSong } from 'share/addToFav'
 
 const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHistory, setSearchTerm, isLoading }) => {
   const navigate = useNavigate()
 
   const [maybeHit, setMaybeHit] = useState(null)
   const [showMoreOptions, setShowMoreOptions] = useState(false)
-
-  const songContainerRef = useRef(null)
-  const moreDivRef = useRef(null)
-
-  const toggleShowMore = () => {
-    setShowMoreOptions(!showMoreOptions)
-  }
-
-  const handleMoreOptions = (e) => {
-    e.stopPropagation()
-    toggleShowMore()
-  }
-
-  const onCopyClick = (e, title, songId) => {
-    toggleShowMore()
-    handleCopySong(e, defineLang, title, songId)
-  }
 
   useEffect(() => {
     try {
@@ -52,6 +36,36 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
       throw new Error(error)
     }
   }, [])
+
+  const positionRef = useRef(null)
+  const moreDivRef = useRef(null)
+
+  const toggleShowMore = () => {
+    setShowMoreOptions(!showMoreOptions)
+  }
+
+  const handleMoreOptions = (e) => {
+    e.stopPropagation()
+    toggleShowMore()
+  }
+
+  if (!maybeHit) return null
+
+  const onCopyLink = (e, title, songId) => {
+    toggleShowMore()
+    handleCopySong(e, defineLang, title, songId)
+  }
+
+  const handleGoToSong = (e, title, songId) => {
+    e.stopPropagation()
+    navigate(createSongUrl(title, songId))
+  }
+
+  const handleAddToFav = (e) => {
+    e.stopPropagation()
+    handleAddToFavSong(maybeHit, defineLang)
+    toggleShowMore()
+  }
 
   const onNavSearch = (name) => {
     if (name) {
@@ -75,6 +89,28 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
   const handleClearAllSearch = () => {
     setSearchHistory([])
     localStorage.removeItem('searchHistory')
+  }
+  
+  const optionModalProps = {
+    showModal: showMoreOptions,
+    positionRef,
+    parentRef: moreDivRef,
+    toggleModal: toggleShowMore,
+  }
+
+  const modalAnimateProps = {
+    animateProps: basicModal,
+    isVisible: showMoreOptions,
+    keyId: maybeHit?.key,
+  }
+
+  const extendModalProps = {
+    copyLink: true,
+    handleCopyLink: (e) => onCopyLink(e, maybeHit.title, maybeHit.key),
+    goToSong: true,
+    handleGoToSong: (e) => handleGoToSong(e, maybeHit.title, maybeHit.key),
+    addToFav: true,
+    handleAddToFav: (e) => handleAddToFav(e),
   }
 
   if (isLoading) return <Loading />
@@ -128,27 +164,12 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
                 <div className='maybe-hit-img-wrapper'>
                   <div className='maybe-hit-img-main'>
                     <img src={maybeHit.thumbnail} alt={maybeHit.title} title={maybeHit.title} />
-                    <OptionModal showModal={showMoreOptions} positionRef={songContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
-                      <ModalAnimate animateProps={basicModal} isVisible={showMoreOptions} key={maybeHit.key}>
-                        <div className='om-main color-0-88 bg-color-1'>
-                          <ul>
-                            <li>
-                              <SiYoutubemusic />
-                              <span>{defineLang('Thêm vào chờ phát', 'Add to queue')}</span>
-                            </li>
-                            <li onClick={(e) => onCopyClick(e, maybeHit.title, maybeHit.key)}>
-                              <BsLink45Deg />
-                              <span>{defineLang('Sao chép link', 'Copy link')}</span>
-                            </li>
-                            <li onClick={() => navigate(createSongUrl(maybeHit.title, maybeHit.key))}>
-                              <BsMusicNote />
-                              <span>{defineLang('Đi đến bài hát', 'Go to song')}</span>
-                            </li>
-                          </ul>
-                        </div>
+                    <OptionModal {...optionModalProps}>
+                      <ModalAnimate {...modalAnimateProps}>
+                        <ExtendModal {...extendModalProps} />
                       </ModalAnimate>
                     </OptionModal>
-                    <div className='maybe-hit-img-overlay' ref={songContainerRef}>
+                    <div className='maybe-hit-img-overlay' ref={positionRef}>
                       <div className='maybe-hit-icon'>
                         <BsPlayCircleFill />
                       </div>
@@ -209,3 +230,20 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
 }
 
 export default SearchMain
+
+// <div className='om-main color-0-88 bg-color-1'>
+//                           <ul>
+//                             <li>
+//                               <SiYoutubemusic />
+//                               <span>{defineLang('Thêm vào chờ phát', 'Add to queue')}</span>
+//                             </li>
+//                             <li onClick={(e) => onCopyClick(e, maybeHit.title, maybeHit.key)}>
+//                               <BsLink45Deg />
+//                               <span>{defineLang('Sao chép link', 'Copy link')}</span>
+//                             </li>
+//                             <li onClick={() => navigate(createSongUrl(maybeHit.title, maybeHit.key))}>
+//                               <BsMusicNote />
+//                               <span>{defineLang('Đi đến bài hát', 'Go to song')}</span>
+//                             </li>
+//                           </ul>
+//                         </div>

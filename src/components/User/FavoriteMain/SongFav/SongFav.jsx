@@ -98,7 +98,7 @@ const SongFav = ({ defineLang, currentUser }) => {
               <div className='song-list-title duration-title'>{defineLang('Thời gian', 'Duration')}</div>
             </li>
             {favSongs?.map((song) => (
-              <SongItem {...song} songsView={songsView} favSongs={favSongs} setFavSongs={setFavSongs} defineLang={defineLang} key={song.key || song.keyId || song.songId} />
+              <SongItem {...song} songsView={songsView} favSongs={favSongs} setFavSongs={setFavSongs} defineLang={defineLang} key={song.key || song.keyId || song.songId} realKey={song.key || song.keyId || song.songId} />
             ))}
           </ul>
         </div>
