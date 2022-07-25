@@ -20,7 +20,7 @@ import { useStore } from 'store'
 const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHistory, setSearchTerm, isLoading }) => {
   const [state] = useStore()
   const navigate = useNavigate()
-
+  
   const [maybeHit, setMaybeHit] = useState(null)
   const [showMoreOptions, setShowMoreOptions] = useState(false)
 

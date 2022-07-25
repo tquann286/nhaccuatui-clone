@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import noPlayer from 'images/default/default_player_v2.jpg'
 
 import { getTrendingSong } from 'services/RightSidebar/NoPlayingSong'
-import { createArtistUrl, createSongUrl } from 'share/utilities'
+import { createArtistUrl, createPlaylistUrl, createSongUrl, createVideoUrl } from 'share/utilities'
 
 const MainContainer = ({ defineSong, children }) => (
   <div className='rb-container'>
@@ -35,7 +35,20 @@ const NoPlayingSong = ({ defineSong }) => {
   }, [])
 
   if (trendingSong) {
-    const { artists, key, thumbnail, title } = trendingSong
+    const { artists, key, thumbnail, title, type } = trendingSong
+
+    const getTrendingLink = () => {
+      switch (type) {
+        case 'SONG':
+          return createSongUrl(title, key)
+        case 'PLAYLIST':
+          return createPlaylistUrl(title, key)
+        case 'VIDEO':
+          return createVideoUrl(title, key, artists)
+        default:
+          break
+      }
+    }
     
     return (
       <MainContainer defineSong={defineSong}>
@@ -43,13 +56,13 @@ const NoPlayingSong = ({ defineSong }) => {
           <div className='suggest-song'>
             <div className='suggest-song-main border-0-1'>
               <div className='suggest-trending-thumb'>
-                <Link to={createSongUrl(title, key)}>
+                <Link to={getTrendingLink()}>
                   <img src={thumbnail} alt='thumb' title={title} />
                 </Link>
               </div>
               <div className='suggest-trending-info'>
                 <p className='suggest-lead-title color-0-5'>{defineSong('Đang được nghe nhiều nhất', 'Top pick these days')}</p>
-                <Link className='suggest-title color-0-88' to={createSongUrl(title, key)}>
+                <Link className='suggest-title color-0-88' to={getTrendingLink()}>
                   {title}
                 </Link>
                 <h5 className='suggest-artist color-0-5'>
