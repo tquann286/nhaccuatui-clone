@@ -9,17 +9,20 @@ import { getFavSong } from 'services/User/Favorite'
 import { getSongsView, getListSongsKey } from 'share/utilities'
 import { clearAllSong } from 'services/firebase/firestore'
 import { toastNotify } from 'share/toast'
-import { removeDuplicate } from 'share'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { useStore, actions } from 'store'
 
 const SongFav = ({ defineLang, currentUser }) => {
   const [state, dispatch] = useStore()
   const { favSongs } = state
+  console.log('favSongs: ', favSongs)
+  const [animationParent] = useAutoAnimate()
+
   const [songsView, setSongView] = useState({})
 
   const handleClearAllSong = async () => {
     await clearAllSong()
-    dispatch(actions.setFavSongs(null))
+    dispatch(actions.setFavSongs([]))
     toastNotify(defineLang('Xóa tất cả bài hát khỏi yêu thích thành công', 'Removed all songs from favorite list successfully'), 'success')
   }
 
@@ -98,7 +101,7 @@ const SongFav = ({ defineLang, currentUser }) => {
           )}
         </div>
         <div style={{ marginTop: '1.6rem' }}>
-          <ul>
+          <ul ref={animationParent}>
             <li className='song-list-common song-list-header bg-color-0-02'>
               <div className='song-list-title-artist'>
                 <div className='song-list-title song-list-title-header color-0-88'>{defineLang('Tiêu đề', 'Title')}</div>
@@ -107,6 +110,7 @@ const SongFav = ({ defineLang, currentUser }) => {
               <div className='song-list-title listen-title'>{defineLang('Lượt nghe', 'Listens')}</div>
               <div className='song-list-title duration-title'>{defineLang('Thời gian', 'Duration')}</div>
             </li>
+
             {favSongs?.map((song) => (
               <SongItem {...song} { ... songItemProps } key={song.key || song.keyId || song.songId} realKey={song.key || song.keyId || song.songId} />
             ))}

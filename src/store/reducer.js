@@ -8,7 +8,7 @@ export const initState = {
   showSignUp: false,
   isSignedIn: false,
   lastPlayedSongId: '',
-  favSongs: null,
+  favSongs: [],
 }
 
 const reducer = (state, action) => {
