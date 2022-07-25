@@ -9,6 +9,7 @@ import { getFavSong } from 'services/User/Favorite'
 import { getSongsView, getListSongsKey } from 'share/utilities'
 import { clearAllSong } from 'services/firebase/firestore'
 import { toastNotify } from 'share/toast'
+import { removeDuplicate } from 'share'
 
 const SongFav = ({ defineLang, currentUser }) => {
   const [favSongs, setFavSongs] = useState(null)
@@ -23,8 +24,8 @@ const SongFav = ({ defineLang, currentUser }) => {
   useEffect(() => {
     const getFavSongsState = async () => {
       const favSongs = await getFavSong(defineLang)
-
-      setFavSongs(favSongs)
+      
+      setFavSongs(removeDuplicate(favSongs))
     }
 
     getFavSongsState()
@@ -48,6 +49,13 @@ const SongFav = ({ defineLang, currentUser }) => {
   if (!currentUser) return null
 
   const { displayName, photoURL } = currentUser
+
+  const songItemProps = {
+    songsView,
+    favSongs,
+    setFavSongs,
+    defineLang,
+  }
 
   return (
     <div className='song-fav-container'>
@@ -98,7 +106,7 @@ const SongFav = ({ defineLang, currentUser }) => {
               <div className='song-list-title duration-title'>{defineLang('Thời gian', 'Duration')}</div>
             </li>
             {favSongs?.map((song) => (
-              <SongItem {...song} songsView={songsView} favSongs={favSongs} setFavSongs={setFavSongs} defineLang={defineLang} key={song.key || song.keyId || song.songId} realKey={song.key || song.keyId || song.songId} />
+              <SongItem {...song} { ... songItemProps } key={song.key || song.keyId || song.songId} realKey={song.key || song.keyId || song.songId} />
             ))}
           </ul>
         </div>

@@ -6,7 +6,7 @@
 
   .fm-container {
     padding-top: 2.4rem;
-    margin-bottom: 6.4rem;
+    margin-bottom: calc(#{$footer-height} * 2);
   }
 
   .fm-content {
