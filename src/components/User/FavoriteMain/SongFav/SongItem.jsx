@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { CommonArtist, ExtendModal, ModalAnimate, OptionModal } from 'components'
 import { formatNumber } from 'share'
-import { createSongUrl } from 'share/utilities'
+import { createSongUrl, handleCopySong } from 'share/utilities'
 import { createRandomSongView } from 'services/SongDetail'
 import { IconButton } from '@mui/material'
 import { basicModal } from 'share/animation'
@@ -34,10 +34,15 @@ const SongItem = ({ keyId, songId, key, title, artists, duration, songsView, fav
     navigate(createSongUrl(title, keyId || key || songId))
   }
 
+  const handleCopyLink = (e) => {
+    handleCopySong(e, defineLang, title, keyId || key || songId)
+    toggleShowMore()
+  }
+
   // Handle Remove Song From Favorite
   const handleRemoveFav = async (e, keyId) => {
     e.stopPropagation()
-    const songToRemove = favSongs.filter(song => (song.key || song.keyId || song.songId) === keyId)[0]
+    const songToRemove = favSongs.filter(song => (song.key || song.keyId || song.songId) === keyId)[0]  
 
     await removeFavSong(songToRemove)
     setFavSongs(favSongs.filter(song => (song.key || song.keyId || song.songId) !== keyId))
@@ -59,6 +64,8 @@ const SongItem = ({ keyId, songId, key, title, artists, duration, songsView, fav
   }
 
   const extendModalProps = {
+    copyLink: true,
+    handleCopyLink: (e) => handleCopyLink(e),
     goToSong: true,
     handleGoToSong: (e) => handleGoToSong(e),
     removeFav: true,

@@ -3,7 +3,9 @@ import './PlaylistFav.scss'
 
 const PlaylistFav = () => {
   return (
-    <div>PlaylistFav</div>
+    <div className='playlist-fav-container'>
+      
+    </div>
   )
 }
 
