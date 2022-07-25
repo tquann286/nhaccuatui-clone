@@ -5,7 +5,7 @@ import { NotFound } from 'pages'
 import { getSearchResult, searchResultNavbar } from 'services/Search/SearchResult'
 import { isEmpty } from 'lodash'
 
-const SearchResult = ({ searchQuery, defineLang, isLoading, setIsLoading }) => {
+const SearchResult = ({ searchQuery, searchTerm, defineLang, isLoading, setIsLoading }) => {
   const [searchResult, setSearchResult] = useState(null)
   const [currentCate, setCurrentCate] = useState('all')
 
@@ -31,6 +31,12 @@ const SearchResult = ({ searchQuery, defineLang, isLoading, setIsLoading }) => {
 
   if (searchResult) searchResult.status === 'error' && <NotFound />
 
+  const passedProps = {
+    searchQuery,
+    searchTerm,
+    defineLang,
+  }
+
   if (searchResult) {
     const { recommend, search } = searchResult
 
@@ -49,15 +55,11 @@ const SearchResult = ({ searchQuery, defineLang, isLoading, setIsLoading }) => {
         <div className='sr-main'>
           {currentCate === 'all' && (
             <React.Fragment>
-              {isEmpty(recommend) || <TopResult { ... recommend } defineLang={defineLang} />}
-              {isEmpty(search) || <SearchDetail { ... search } defineLang={defineLang} />}
+              {isEmpty(recommend) || <TopResult {...recommend} defineLang={defineLang} />}
+              {isEmpty(search) || <SearchDetail {...search} defineLang={defineLang} />}
             </React.Fragment>
           )}
-          {currentCate === 'song' && (
-            <React.Fragment>
-              {isEmpty(search.song) || <SongResult { ... search.song } defineLang={defineLang} />}
-            </React.Fragment>
-          )}
+          {currentCate === 'song' && <React.Fragment>{isEmpty(search.song) || <SongResult {...search.song} { ... passedProps } />}</React.Fragment>}
         </div>
       </div>
     )

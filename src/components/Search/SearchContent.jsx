@@ -26,7 +26,6 @@ const SearchContent = () => {
   const [searchHistory, setSearchHistory] = useState([])
 
   const [isLoading, setIsLoading] = useState(true)
-  // const [isFetchingFail, setIsFetchingFail] = useState(false)
 
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -58,7 +57,7 @@ const SearchContent = () => {
     } catch (error) {
       console.log(error)
     }
-
+    
     getSearchContent()
   }, [defineLang])
 
@@ -75,8 +74,6 @@ const SearchContent = () => {
     isLoading,
     setIsLoading,
   }
-
-  // if (isFetchingFail) return <NotFound />
 
   return (
     <ErrorBoundary>

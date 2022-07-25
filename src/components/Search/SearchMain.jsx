@@ -36,6 +36,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
     } catch (error) {
       throw new Error(error)
     }
+    document.title = defineLang('Tìm kiếm  bài hát - Playlist - MV', 'Search for song - Playlist - MV')
   }, [])
 
   const positionRef = useRef(null)

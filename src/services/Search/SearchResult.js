@@ -1,4 +1,4 @@
-import { getSearchByKeywords } from 'api'
+import { getSearchByKeywords, getSearchSong } from 'api'
 
 export const getSearchResult = async (query) => {
   try {
@@ -20,4 +20,14 @@ export const searchResultNavbar = [
 export const topResultSwiperProps = {
   slidesPerView: 1,
   speed: 300,
+}
+
+export const getSongResult = async (query, pageIndex = 1) => {
+  try {
+    const data = await getSearchSong(query, pageIndex)
+
+    if (data) return data
+  } catch (error) {
+    throw new Error(error)
+  }
 }
