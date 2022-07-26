@@ -2,10 +2,38 @@
 
 .pagi-common-container {
   @include flexCenter;
-  height: 4rem;
 
-  ul {
+  ul.ul-pagination {
+    @include display-flex;
+    @include align-items(center);
+    @include justify-content(space-around);
     @include useBorder;
     border-radius: 2rem;
+    height: 4rem;
+    width: 70%;
+    cursor: pointer;
+
+    li {
+      .pagi-btn {
+        @include flexCenter;
+        @include transition-effect(0.15s);
+        @include userSelect(none);
+        width: 4rem;
+        height: 4rem;
+        font-size: 1.4rem;
+        outline: none;
+        border-bottom: 0.1rem solid transparent;
+        
+        &:not(.disabled) {
+          @include hoverMainColor;
+        }
+        
+
+        &.selected {
+          border-bottom-color: $main-text-color;
+          color: $main-text-color;
+        }
+      }
+    }
   }
 }

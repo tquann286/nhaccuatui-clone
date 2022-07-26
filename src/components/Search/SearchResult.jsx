@@ -8,7 +8,6 @@ import { isEmpty } from 'lodash'
 
 const SearchResult = ({ searchQuery, searchTerm, defineLang, isLoading, setIsLoading }) => {
   const [searchResult, setSearchResult] = useState(null)
-  console.log('searchResult: ', searchResult)
   const [currentCate, setCurrentCate] = useState('all')
 
   useEffect(() => {

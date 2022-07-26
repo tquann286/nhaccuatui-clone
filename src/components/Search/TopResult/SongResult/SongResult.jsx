@@ -24,6 +24,13 @@ const SongResult = ({ searchTerm, searchQuery, defineLang }) => {
 
   const { total } = songResult
 
+  const pagiProps = {
+    pageIndex,
+    setPageIndex,
+    count: calcPaginationPage(total),
+    defineLang,
+  }
+
   return (
     <div className='song-result-container common-section'>
       <div className='song-result-title color-0-88 search-header'>
@@ -41,7 +48,7 @@ const SongResult = ({ searchTerm, searchQuery, defineLang }) => {
       </div>
       {calcPaginationPage(total) > 1 && (
         <div style={{ margin: '2.4rem 3.2rem 0 3.2rem' }}>
-          <PagiCommon pageIndex={pageIndex} setPageIndex={setPageIndex} count={calcPaginationPage(total)} />
+          <PagiCommon { ... pagiProps } />
         </div>
       )}
     </div>
