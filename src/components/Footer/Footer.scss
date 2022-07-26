@@ -1,7 +1,8 @@
 @import 'settings';
 
 .ft-container {
-	border: $border-light;
+	border-width: 0.1rem 0;
+	border-style: solid;
 
 	.ft-main {
 		@include display-flex;
