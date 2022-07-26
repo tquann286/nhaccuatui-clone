@@ -86,6 +86,14 @@ export const createVideoUrl = (keyId, title, artists) => {
   return videoLink
 }
 
+export const createTop20Url = (category) => {
+  if (category) {
+    return `/bang-xep-hang/top-20?q=${category}`
+  } else {
+    return '/'
+  }
+}
+
 export const getListSongsKey = (songs) => songs.map((song) => song.key || song.songId || song.keyId)
 
 export const getNavigateUrl = (url) => {

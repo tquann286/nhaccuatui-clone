@@ -7,11 +7,3 @@ export const detectZ = (index) => {
     return 1
   }
 }
-
-export const createTop20Url = (category) => {
-  if (category) {
-    return `top-20?q=${category}`
-  } else {
-    return '/'
-  }
-}

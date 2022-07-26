@@ -21,6 +21,7 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { useGetFixedPosition } from 'hooks'
 
 import { auth } from 'config/firebase'
+import { createTop20Url } from 'share/utilities'
 
 const LeftSidebar = () => {
   const [state, dispatch] = useStore()
@@ -227,7 +228,7 @@ const LeftSidebar = () => {
                 </div>
               </li>
               <li>
-                <NavLink to='/bang-xep-hang/top-20&k=nhac-viet'>
+                <NavLink to={createTop20Url('nhac-viet')}>
                   <div className='nav-item bg-color-0-05 nav-chart'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content color-0-5'>

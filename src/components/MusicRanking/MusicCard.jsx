@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { cloneDeep } from 'lodash'
 import { BsPlayCircleFill } from 'react-icons/bs'
 
-import { detectZ, createTop20Url } from 'services/MusicCard'
-import { createSongUrl, createArtistUrl } from 'share/utilities'
+import { detectZ } from 'services/MusicCard'
+import { createSongUrl, createArtistUrl, createTop20Url } from 'share/utilities'
 
 const MusicCard = ({ keyId, region, song, bgImage, category, lang }) => {
 	const [topThreeSong, setTopThreeSong] = useState([])
