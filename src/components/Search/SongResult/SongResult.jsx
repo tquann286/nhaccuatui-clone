@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import './SongResult.scss'
 
 import { getSongResult } from 'services/Search/SearchResult'
 import { SongSquare, PagiCommon, LoadingV2 } from 'components'
@@ -42,7 +41,7 @@ const SongResult = ({ searchTerm, searchQuery, defineLang }) => {
   }
 
   return (
-    <div className='song-result-container common-section'>
+    <div className='song-result-container common-section common-paddingLR'>
       <div className='song-result-title color-0-88 search-header'>
         {defineLang('Bài hát ', 'Song ')}
         <span className='color-0-5'>{defineLang(`(Có ${total.toLocaleString('en-US')} kết quả)`, `${total > 1 ? `(There are ${total.toLocaleString('en-US')} results)` : `(There is ${total} result)`}`)}</span>
