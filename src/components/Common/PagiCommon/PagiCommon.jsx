@@ -15,6 +15,7 @@ const PagiCommon = ({ pageIndex, setPageIndex, count, defineLang }) => {
     count,
     siblingCount: 2,
     onChange: handleChangePage,
+    page: pageIndex
   })
 
   const defineTitle = (type) => {

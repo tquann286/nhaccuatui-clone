@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './SongResult.scss'
 
 import { getSongResult } from 'services/Search/SearchResult'
-import { SongSquare, PagiCommon } from 'components'
+import { SongSquare, PagiCommon, LoadingV2 } from 'components'
 import { Grid } from '@mui/material'
 import { calcPaginationPage } from 'share/utilities'
 
@@ -10,7 +10,6 @@ const SongResult = ({ searchTerm, searchQuery, defineLang }) => {
   const [songResult, setSongResult] = useState(null)
   const [pageIndex, setPageIndex] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
-  console.log('isLoading: ', isLoading)
 
   useEffect(() => {
     const getSongResultState = async () => {
@@ -23,6 +22,13 @@ const SongResult = ({ searchTerm, searchQuery, defineLang }) => {
 
     getSongResultState()
   }, [pageIndex])
+
+  if (isLoading)
+    return (
+      <div className='search-result-loading'>
+        <LoadingV2 />
+      </div>
+    )
 
   if (!songResult) return null
 
@@ -52,7 +58,7 @@ const SongResult = ({ searchTerm, searchQuery, defineLang }) => {
       </div>
       {calcPaginationPage(total) > 1 && (
         <div style={{ margin: '2.4rem 3.2rem 0 3.2rem' }}>
-          <PagiCommon { ... pagiProps } />
+          <PagiCommon {...pagiProps} />
         </div>
       )}
     </div>
