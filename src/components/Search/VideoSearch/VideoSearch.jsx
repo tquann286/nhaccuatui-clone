@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react'
 
-import { getPlaylistResult } from 'services/Search/SearchResult'
-import { PagiCommon, LoadingV2, CommonPlaylist } from 'components'
+import { getVideoResult } from 'services/Search/SearchResult'
+import { PagiCommon, LoadingV2, CommonVideo } from 'components'
 import { Grid } from '@mui/material'
 import { calcPaginationPage } from 'share/utilities'
 
-const PlaylistSearch = ({ searchTerm, searchQuery, defineLang }) => {
-  const [playlistSearch, setPlaylistSearch] = useState(null)
+const VideoSearch = ({ searchTerm, searchQuery, defineLang }) => {
+  const [videoSearch, setVideoSearch] = useState(null)
   const [pageIndex, setPageIndex] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    const getPlaylistSearchState = async () => {
+    const getVideoSearchState = async () => {
       setIsLoading(true)
-      const playlistResult = await getPlaylistResult(searchTerm || searchQuery, pageIndex)
+      const videoResult = await getVideoResult(searchTerm || searchQuery, pageIndex)
 
-      setPlaylistSearch(playlistResult)
+      setVideoSearch(videoResult)
       setIsLoading(false)
     }
 
-    getPlaylistSearchState()
+    getVideoSearchState()
   }, [pageIndex])
 
   if (isLoading)
@@ -29,9 +29,9 @@ const PlaylistSearch = ({ searchTerm, searchQuery, defineLang }) => {
       </div>
     )
 
-  if (!playlistSearch) return null
+  if (!videoSearch) return null
 
-  const { total } = playlistSearch
+  const { total } = videoSearch
 
   const pagiProps = {
     pageIndex,
@@ -41,16 +41,16 @@ const PlaylistSearch = ({ searchTerm, searchQuery, defineLang }) => {
   }
 
   return (
-    <div className='playlist-search-container common-section common-paddingLR'>
-      <div className='playlist-search-title color-0-88 search-header'>
-        {defineLang('Danh sách phát ', 'Playlist ')}
+    <div className='video-search-container common-section common-paddingLR'>
+      <div className='video-search-title color-0-88 search-header'>
+        {defineLang('Video ', 'Video ')}
         <span className='color-0-5'>{defineLang(`(Có ${total.toLocaleString('en-US')} kết quả)`, `${total > 1 ? `(There are ${total.toLocaleString('en-US')} results)` : `(There is ${total} result)`}`)}</span>
       </div>
-      <div className='playlist-search-main'>
+      <div className='video-search-main'>
         <Grid container spacing={2}>
-          {playlistSearch?.playlist.map((playlist) => (
-            <Grid item key={playlist.key} xs={3} sm={3} md={3} xl={2}>
-              <CommonPlaylist {...playlist} keyId={playlist.key} />
+          {videoSearch?.video.map((video) => (
+            <Grid item key={video.key} xs={4} sm={4} md={4} xl={3}>
+              <CommonVideo {...video} keyId={video.key} />
             </Grid>
           ))}
         </Grid>
@@ -64,4 +64,4 @@ const PlaylistSearch = ({ searchTerm, searchQuery, defineLang }) => {
   )
 }
 
-export default PlaylistSearch
+export default VideoSearch
