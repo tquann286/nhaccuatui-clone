@@ -29,9 +29,10 @@ const joinQueryString = (obj) =>
     .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`)
     .join('&')
 
-export const getMaybeHit = () => client.post('search/maybehit')
-
 export const getView = (listSongKeys) => client.post('counter/view', joinQueryString({ listSongKeys }))
+
+// Search
+export const getMaybeHit = () => client.post('search/maybehit')
 
 export const getSearchByKeywords = (key, pageSize = 12) => client.post('search/all', joinQueryString({ key, pageSize }))
 
@@ -40,3 +41,6 @@ export const getSearchSong = (key, pageIndex = 1, pageSize = 36) => client.post(
 export const getSearchPlaylist = (key, pageIndex = 1, pageSize = 36) => client.post('search/playlist', joinQueryString({ key, pageIndex, pageSize }))
 
 export const getSearchVideo = (key, pageIndex = 1, pageSize = 36) => client.post('search/video', joinQueryString({ key, pageIndex, pageSize }))
+
+// Explore
+export const getGenre = (type, key, pageIndex = 1, order = 1, pageSize = 36) => client.post('genre', joinQueryString({ type, key, order, pageIndex, pageSize }))
