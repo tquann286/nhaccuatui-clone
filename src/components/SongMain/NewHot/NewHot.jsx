@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import './NewHot.scss'
 
 import { getExplore } from 'services/SongPage/SongMain'
 import { SongSquare, PagiCommon, LoadingV2 } from 'components'
@@ -42,7 +41,7 @@ const NewHot = ({ defineLang }) => {
   }
 
   return (
-    <div className='new-hot-container common-section common-marginTLR'>
+    <div className='new-hot-container common-section common-marginTLR' style={{ paddingTop: '2rem' }}>
       <div className='new-hot-title color-0-88 common-title padding-bottom-1-2'>{defineLang('Mới & Hot', 'New & Hot')}</div>
       <div className='new-hot-main'>
         <Grid container spacing={2}>
