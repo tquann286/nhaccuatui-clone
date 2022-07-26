@@ -1,0 +1,5 @@
+@import 'settings';
+
+.song-main-container {
+  @include commonMainOutlet;
+}

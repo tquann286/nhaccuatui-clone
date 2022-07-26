@@ -4,10 +4,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useStore, actions } from 'store'
 
 import './App.scss'
-import { Explore, Homepage, NotFound, Search, User, Favorite } from 'pages'
+import { Explore, Homepage, NotFound, Search, User, Favorite, SongPage } from 'pages'
 import { auth } from 'config/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
-import { MainHomepage } from 'components'
+import { MainHomepage, SongMain } from 'components'
 import { getFavSong } from 'services/User/Favorite'
 
 
@@ -75,6 +75,9 @@ const App = () => {
           </Route>
           <Route path='kham-pha' element={<Explore />} />
           <Route path='tim-kiem' element={<Search />} />
+          <Route path='bai-hat' element={<SongPage />}>
+            <Route index element={<SongMain />} />
+          </Route>
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>

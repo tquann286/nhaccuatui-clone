@@ -58,3 +58,7 @@ export { default as PlaylistInfo } from './Search/SearchDetail/PlaylistInfo'
 export { default as VideoInfo } from './Search/SearchDetail/VideoInfo'
 export { default as PlaylistSearch } from './Search/PlaylistSearch/PlaylistSearch'
 export { default as VideoSearch } from './Search/VideoSearch/VideoSearch'
+
+// SongPage
+export { default as SongMain } from './SongMain/SongMain.jsx'
+

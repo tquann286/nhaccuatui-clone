@@ -1,5 +1,3 @@
-import './Search.scss'
-
 import { SearchContent, Title } from 'components'
 import { useLang } from 'hooks'
 

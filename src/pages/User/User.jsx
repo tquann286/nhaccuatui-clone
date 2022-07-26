@@ -1,10 +1,8 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import './User.scss'
 
 import { auth } from 'config/firebase'
-import { NoUserFound, Title } from 'components'
-import { useLang } from 'hooks'
+import { NoUserFound } from 'components'
 
 const User = () => {
 
