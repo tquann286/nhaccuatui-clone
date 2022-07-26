@@ -7,7 +7,6 @@ import { calcPaginationPage } from 'share/utilities'
 
 const PlaylistSearch = ({ searchTerm, searchQuery, defineLang }) => {
   const [playlistSearch, setPlaylistSearch] = useState(null)
-  console.log('playlistSearch: ', playlistSearch)
   const [pageIndex, setPageIndex] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -56,6 +55,11 @@ const PlaylistSearch = ({ searchTerm, searchQuery, defineLang }) => {
           ))}
         </Grid>
       </div>
+      {calcPaginationPage(total) > 1 && (
+        <div className='common-marginTLR'>
+          <PagiCommon {...pagiProps} />
+        </div>
+      )}
     </div>
   )
 }

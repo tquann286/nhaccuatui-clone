@@ -56,7 +56,7 @@ const SongResult = ({ searchTerm, searchQuery, defineLang }) => {
         </Grid>
       </div>
       {calcPaginationPage(total) > 1 && (
-        <div style={{ margin: '2.4rem 3.2rem 0 3.2rem' }}>
+        <div className='common-marginTLR'>
           <PagiCommon {...pagiProps} />
         </div>
       )}
