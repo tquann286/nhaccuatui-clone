@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Loading, SearchDetail, TopResult, SongResult } from 'components'
+import { Loading, SearchDetail, TopResult, SongResult, PlaylistSearch } from 'components'
 import { NotFound } from 'pages'
 import notfoundImg from 'images/not_found.png'
 
@@ -67,7 +67,8 @@ const SearchResult = ({ searchQuery, searchTerm, defineLang, isLoading, setIsLoa
                   {isEmpty(search) || <SearchDetail {...search} defineLang={defineLang} />}
                 </React.Fragment>
               )}
-              {currentCate === 'song' && <React.Fragment>{isEmpty(search.song) || <SongResult {...commonProps} />}</React.Fragment>}
+              {currentCate === 'song' && <SongResult {...commonProps} />}
+              {currentCate === 'playlist' && <PlaylistSearch {...commonProps} />}
             </React.Fragment>
           )}
         </div>

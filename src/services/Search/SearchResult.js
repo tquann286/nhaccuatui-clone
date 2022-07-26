@@ -1,4 +1,4 @@
-import { getSearchByKeywords, getSearchSong } from 'api'
+import { getSearchByKeywords, getSearchPlaylist, getSearchSong } from 'api'
 
 export const getSearchResult = async (query) => {
   try {
@@ -27,6 +27,16 @@ export const getSongResult = async (query, pageIndex = 1) => {
     const data = await getSearchSong(query, pageIndex)
 
     if (data) return data.song
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+export const getPlaylistResult = async (query, pageIndex = 1) => {
+  try {
+    const data = await getSearchPlaylist(query, pageIndex)
+
+    if (data) return data.playlist
   } catch (error) {
     throw new Error(error)
   }

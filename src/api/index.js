@@ -36,3 +36,5 @@ export const getView = (listSongKeys) => client.post('counter/view', joinQuerySt
 export const getSearchByKeywords = (key, pageSize = 12) => client.post('search/all', joinQueryString({ key, pageSize }))
 
 export const getSearchSong = (key, pageIndex = 1, pageSize = 36) =>client.post('search/song', joinQueryString({ key, pageIndex, pageSize }))
+
+export const getSearchPlaylist = (key, pageIndex = 1, pageSize = 36) =>client.post('search/playlist', joinQueryString({ key, pageIndex, pageSize }))
