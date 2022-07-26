@@ -44,7 +44,7 @@ const SearchResult = ({ searchQuery, searchTerm, defineLang, isLoading, setIsLoa
     return (
       <div className='search-result-container'>
         <div className='sr-navbar'>
-          <div className='sr-navbar-menu'>
+          <div className='sr-navbar-menu border-0-05'>
             {searchResultNavbar.map((cate) => (
               <div key={cate.value} className='sr-nav-item color-0-88' onClick={() => setCurrentCate(cate.value)}>
                 {defineLang(cate.title.vi, cate.title.en)}
