@@ -9,12 +9,16 @@ import { calcPaginationPage } from 'share/utilities'
 const SongResult = ({ searchTerm, searchQuery, defineLang }) => {
   const [songResult, setSongResult] = useState(null)
   const [pageIndex, setPageIndex] = useState(1)
+  const [isLoading, setIsLoading] = useState(false)
+  console.log('isLoading: ', isLoading)
 
   useEffect(() => {
     const getSongResultState = async () => {
-      const songResult = await getSongResult(searchTerm || searchQuery)
+      setIsLoading(true)
+      const songResult = await getSongResult(searchTerm || searchQuery, pageIndex)
 
       setSongResult(songResult)
+      setIsLoading(false)
     }
 
     getSongResultState()

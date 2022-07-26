@@ -1,4 +1,5 @@
 // Common
+export { default as Loading } from './Loading/Loading'
 export { default as ErrorBoundary } from './Common/ErrorBoundary'
 export { default as Title } from './Common/Title'
 export { default as ModalAnimate } from './Common/ModalAnimate'
@@ -18,7 +19,6 @@ export { default as CateCommon } from './Common/CateCommon/CateCommon'
 export { default as PagiCommon } from './Common/PagiCommon/PagiCommon'
 
 // Home
-export { default as Loading } from './Loading/Loading'
 export { default as LoadingV2 } from './Loading/LoadingV2'
 export { default as MainHomepage } from './MainHomepage/MainHomepage'
 export { default as LeftSidebar } from './LeftSidebar/LeftSidebar'

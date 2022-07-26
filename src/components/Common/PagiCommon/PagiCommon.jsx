@@ -2,15 +2,20 @@ import React from 'react'
 import './PagiCommon.scss'
 
 import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/md'
-import { PaginationItem, usePagination } from '@mui/material'
+import { usePagination } from '@mui/material'
+import onScrollToTop from 'share/scrollToTop'
 
 const PagiCommon = ({ pageIndex, setPageIndex, count, defineLang }) => {
+  const handleChangePage = (e, page) => {
+    setPageIndex(page)
+    onScrollToTop()
+  }
+
   const { items } = usePagination({
     count,
     siblingCount: 2,
+    onChange: handleChangePage,
   })
-
-  console.log(items)
 
   const defineTitle = (type) => {
     switch (type) {
@@ -18,18 +23,12 @@ const PagiCommon = ({ pageIndex, setPageIndex, count, defineLang }) => {
         return defineLang('Trang trước', 'Previous page')
       case 'next':
         return defineLang('Trang kế', 'Next page')
-      case 'end-ellipsis':
-        return defineLang('Đến 5 Trang Kế', 'Next to 5 pages')
-      case 'start-ellipsis':
-        return defineLang('Về 5 Trang Trước', 'Back to 5 pages')
       default:
         return ''
     }
   }
 
   const defineChildren = ({ page, type, selected, disabled, ...item }) => {
-    let children = null
-
     switch (type) {
       case 'start-ellipsis':
         return <div className='pagi-btn start-ellipsis ellipsis'>...</div>
@@ -37,13 +36,13 @@ const PagiCommon = ({ pageIndex, setPageIndex, count, defineLang }) => {
         return <div className='pagi-btn end-ellipsis ellipsis'>...</div>
       case 'previous':
         return (
-          <div className={`pagi-btn previous-btn nav-btn ${disabled && 'disabled color-0-2'}`} {...item}>
+          <div className={`pagi-btn previous-btn border-0-05 nav-btn ${disabled && 'disabled color-0-2'}`} {...item}>
             <MdOutlineArrowBackIosNew />
           </div>
         )
       case 'next':
         return (
-          <div className={`pagi-btn next-btn nav-btn ${disabled && 'disabled color-0-2'}`} {...item}>
+          <div className={`pagi-btn next-btn border-0-05 nav-btn ${disabled && 'disabled color-0-2'}`} {...item}>
             <MdOutlineArrowForwardIos />
           </div>
         )
@@ -61,10 +60,10 @@ const PagiCommon = ({ pageIndex, setPageIndex, count, defineLang }) => {
   return (
     <div className='pagi-common-container color-0-5'>
       <ul className='ul-pagination border-0-1'>
-        {items.map(({ page, type, selected, ...item }, index) => {
+        {items.map((item, index) => {
           return (
-            <li key={index} title={defineTitle(type)}>
-              {defineChildren({ page, type, selected, ...item })}
+            <li key={index} title={defineTitle(item.type)}>
+              {defineChildren(item)}
             </li>
           )
         })}
