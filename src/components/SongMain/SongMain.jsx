@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import './SongMain.scss'
 
-import { CateCommon, NewHot } from 'components'
+import { CateCommon, Footer, NewHot } from 'components'
 import { songMainCate } from 'services/SongPage/SongMain'
 import { useStore } from 'store'
 
@@ -31,9 +31,10 @@ const SongMain = () => {
       <div style={{ paddingTop: '1.2rem' }}>
         <CateCommon { ... cateCommonProps } />
       </div>
-      <div className="song-main-content">
+      <div className="song-main-content margin-footer">
         {curCate === 'newHot' && <NewHot { ... commonProps } />}
       </div>
+      <Footer />
     </div>
   )
 }
