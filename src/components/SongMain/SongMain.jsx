@@ -7,7 +7,7 @@ import { useStore } from 'store'
 
 const SongMain = () => {
   const [state] = useStore()
-  const defineLang = useCallback((vie, eng) => state.lang === 'vi' ? vie : eng, [])
+  const defineLang = useCallback((vie, eng) => state.lang === 'vi' ? vie : eng, [state.lang])
   
   const [curCate, setCurCate] = useState(songMainCate[0].value)
 

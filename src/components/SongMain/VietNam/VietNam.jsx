@@ -5,7 +5,7 @@ import { CateBasic } from 'components'
 const VietNam = ({ defineLang }) => {
   return (
     <div className='viet-nam-container'>
-    
+      <CateBasic />
     </div>
   )
 }
