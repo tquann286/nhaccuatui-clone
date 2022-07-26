@@ -8,7 +8,7 @@ export const songMainCate = [
   { title: { vi: 'Khác', en: 'Others' }, value: 'others' },
 ]
 
-export const getSongMain = async (type, key, pageIndex = 1, order = 1, pageSize = 36) => {
+export const getExplore = async (type, key, pageIndex = 1, order = 1, pageSize = 36) => {
   try {
     const data = await getGenre(type, key, pageIndex, order, pageSize)
 

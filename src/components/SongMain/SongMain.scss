@@ -2,4 +2,9 @@
 
 .song-main-container {
   @include commonMainOutlet;
+
+  .song-main-loading {
+    @include flexCenter;
+    height: calc(100vh - 5.2rem);
+  }
 }

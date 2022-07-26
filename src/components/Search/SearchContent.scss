@@ -604,9 +604,4 @@
 .search-result-loading {
   @include flexCenter;
   height: calc(100vh - #{$search-header-height} * 2);
-
-  .loading-v2 {
-    height: 5.6rem;
-    width: 5.6rem;
-  }
 }
