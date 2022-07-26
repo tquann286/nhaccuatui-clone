@@ -1,20 +1,39 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useCallback } from 'react'
 import './SongMain.scss'
 
-import { getSongMain } from 'services/SongPage/SongMain'
-import { SongSquare, PagiCommon, LoadingV2 } from 'components'
-import { Grid } from '@mui/material'
-import { calcPaginationPage } from 'share/utilities'
+import { CateCommon, NewHot } from 'components'
+import { songMainCate } from 'services/SongPage/SongMain'
+import { useStore } from 'store'
 
 const SongMain = () => {
-  const [songMain, setSongMain] = useState(null)
-  const [pageIndex, setPageIndex] = useState(1)
-  const [isLoading, setIsLoading] = useState(false)
+  const [state] = useStore()
+  const defineLang = useCallback((vie, eng) => state.lang === 'vi' ? vie : eng, [])
+  
+  const [curCate, setCurCate] = useState(songMainCate[0].value)
 
+  const handleCateChange = (e, newCate) => {
+    setCurCate(newCate)
+  }
+
+  const cateCommonProps = {
+    defineLang,
+    curCate,
+    handleCateChange,
+    categories: songMainCate,
+  }
+
+  const commonProps = {
+    defineLang
+  }
 
   return (
     <div className="song-main-container">
-      Song Main
+      <div style={{ paddingTop: '1.2rem' }}>
+        <CateCommon { ... cateCommonProps } />
+      </div>
+      <div className="song-main-content">
+        {curCate === 'newHot' && <NewHot { ... commonProps } />}
+      </div>
     </div>
   )
 }

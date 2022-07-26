@@ -60,5 +60,5 @@ export { default as PlaylistSearch } from './Search/PlaylistSearch/PlaylistSearc
 export { default as VideoSearch } from './Search/VideoSearch/VideoSearch'
 
 // SongPage
-export { default as SongMain } from './SongMain/SongMain.jsx'
-
+export { default as SongMain } from './SongMain/SongMain'
+export { default as NewHot } from './SongMain/NewHot/NewHot'

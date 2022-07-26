@@ -13,8 +13,8 @@ const FavoriteMain = () => {
   
   const [curCate, setCurCate] = useState(favCateNav[0].value)
 
-  const handleCateChange = (e, newValue) => {
-    setCurCate(newValue)
+  const handleCateChange = (e, newCate) => {
+    setCurCate(newCate)
   }
 
   const cateCommonProps = {
