@@ -1,8 +1,12 @@
 import React from 'react'
 
+import { CateBasic } from 'components'
+
 const VietNam = ({ defineLang }) => {
   return (
-    <div>VietNam</div>
+    <div className='viet-nam-container'>
+    
+    </div>
   )
 }
 

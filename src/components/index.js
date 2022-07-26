@@ -17,6 +17,7 @@ export { default as VideoOverlay } from './Common/VideoOverlay/VideoOverlay'
 export { default as SongSquare } from './Common/SongSquare/SongSquare'
 export { default as CateCommon } from './Common/CateCommon/CateCommon'
 export { default as PagiCommon } from './Common/PagiCommon/PagiCommon'
+export { default as CateBasic } from './Common/CateBasic/CateBasic'
 
 // Home
 export { default as LoadingV2 } from './Loading/LoadingV2'
