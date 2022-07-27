@@ -31,7 +31,7 @@ const SongMain = () => {
       <div style={{ paddingTop: '1.2rem' }}>
         <CateCommon { ... cateCommonProps } />
       </div>
-      <div className="song-main-content margin-footer">
+      <div className="song-main-content margin-footer min-height-v1">
         {curCate === 'newHot' && <NewHot { ... commonProps } />}
         {curCate === 'vietnam' && <VietNam { ... commonProps } />}
       </div>
