@@ -91,10 +91,10 @@ const SongFav = ({ defineLang, currentUser }) => {
         </div>
       </div>
       <div className='sf-main'>
-        <div className='song-list color-0-88 alcenter-jcbetween'>
+        <div className='song-list common-title color-0-88 alcenter-jcbetween'>
           <div className='sf-title-content'>{defineLang('Danh sách bài hát', 'Song list')}</div>
           {favSongs.length !== 0 && (
-            <div className='clear-all-song color-0-5' onClick={handleClearAllSong}>
+            <div className='clear-all-song clickable small-common color-0-5' onClick={handleClearAllSong}>
               {defineLang('Xóa tất cả', 'Clear all')}
             </div>
           )}

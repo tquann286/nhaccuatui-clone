@@ -69,15 +69,6 @@
     .song-list {
       margin-top: 4.4rem;
       margin-bottom: 1.6rem;
-      font-size: 2.2rem;
-      font-weight: 700;
-
-      .clear-all-song {
-        @include transition-effect(0.15s);
-        @include hoverMainColor;
-        cursor: pointer;
-        font-size: 1.3rem;
-      }
     }
 
     ul {
@@ -205,13 +196,4 @@
       }
     }
   }
-}
-
-.MuiTooltip-tooltip {
-  font-size: 1.3rem !important;
-  background-color: $main-text-color !important;
-}
-
-.MuiTooltip-arrow {
-  color: $main-text-color !important;
 }
