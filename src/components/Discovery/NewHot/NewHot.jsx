@@ -5,7 +5,7 @@ import { Grid } from '@mui/material'
 import { calcPaginationPage } from 'share/utilities'
 import { getExplore } from 'services/Explore'
 
-const NewHot = ({ defineLang }) => {
+const NewHot = ({ defineLang, type }) => {
   const [newHot, setNewHot] = useState(null)
   const [pageIndex, setPageIndex] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
@@ -13,14 +13,14 @@ const NewHot = ({ defineLang }) => {
   useEffect(() => {
     const getNewHotState = async () => {
       setIsLoading(true)
-      const newHot = await getExplore('song', 'moi-hot', pageIndex)
+      const newHot = await getExplore(type, 'moi-hot', pageIndex)
 
       setNewHot(newHot)
       setIsLoading(false)
     }
 
     getNewHotState()
-  }, [pageIndex])
+  }, [pageIndex, type])
 
   if (isLoading)
     return (

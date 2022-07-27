@@ -7,7 +7,7 @@ import { Grid } from '@mui/material'
 import { calcPaginationPage } from 'share/utilities'
 import { scrollToTop } from 'share'
 
-const UsUk = ({ defineLang }) => {
+const UsUk = ({ defineLang, type }) => {
   const [usuk, setUsUk] = useState(null)
   const [pageIndex, setPageIndex] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
@@ -30,7 +30,7 @@ const UsUk = ({ defineLang }) => {
     const getUsUkState = async () => {
       try {
         setIsLoading(true)
-        const usuk = await getExplore('song', curCate, pageIndex)
+        const usuk = await getExplore(type, curCate, pageIndex)
 
         setUsUk(usuk)
         setIsLoading(false)
@@ -41,7 +41,7 @@ const UsUk = ({ defineLang }) => {
     }
 
     getUsUkState()
-  }, [pageIndex, curCate])
+  }, [pageIndex, curCate, type])
 
   if (isLoading)
     return (

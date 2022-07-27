@@ -60,9 +60,12 @@ export { default as VideoInfo } from './Search/SearchDetail/VideoInfo'
 export { default as PlaylistSearch } from './Search/PlaylistSearch/PlaylistSearch'
 export { default as VideoSearch } from './Search/VideoSearch/VideoSearch'
 
+// Discovery
+export { default as NewHot } from './Discovery/NewHot/NewHot'
+export { default as VietNam } from './Discovery/VietNam/VietNam'
+export { default as UsUk } from './Discovery/UsUk/UsUk'
+export { default as Asia } from './Discovery/Asia/Asia'
+
 // SongPage
 export { default as SongMain } from './SongMain/SongMain'
-export { default as NewHotSong } from './SongMain/NewHot/NewHot'
-export { default as VietNamSong } from './SongMain/VietNam/VietNam'
-export { default as UsUkSong } from './SongMain/UsUk/UsUk'
-export { default as AsiaSong } from './SongMain/Asia/Asia'
+

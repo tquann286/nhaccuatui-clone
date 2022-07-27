@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react'
 
 import { getExplore } from 'services/Explore'
-import { vietnamCate } from 'share/subCate'
+import { asiaCate } from 'share/subCate'
 import { SongSquare, PagiCommon, LoadingV2, CateBasic, ErrorBoundary } from 'components'
 import { Grid } from '@mui/material'
 import { calcPaginationPage } from 'share/utilities'
 import { scrollToTop } from 'share'
 
-const VietNam = ({ defineLang }) => {
-  const [vnContent, setVnContent] = useState(null)
+const Asia = ({ defineLang, type }) => {
+  const [asia, setAsia] = useState(null)
   const [pageIndex, setPageIndex] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
-  const [curCate, setCurCate] = useState(vietnamCate[0].value)
+  const [curCate, setCurCate] = useState(asiaCate[0].value)
 
   const handleCateChange = (newCate) => {
     setCurCate(newCate)
@@ -23,31 +23,30 @@ const VietNam = ({ defineLang }) => {
     defineLang,
     curCate,
     handleCateChange,
-    categories: vietnamCate,
+    categories: asiaCate,
   }
 
   useEffect(() => {
-    try {
-      const getVnContentState = async () => {
+    const getAsiaState = async () => {
+      try {
         setIsLoading(true)
-        const vnContent = await getExplore('song', curCate, pageIndex)
-  
-        setVnContent(vnContent)
+        const asia = await getExplore(type, curCate, pageIndex)
+
+        setAsia(asia)
         setIsLoading(false)
+      } catch (error) {
+        setIsLoading(false)
+        throw new Error(error)
       }
-  
-      getVnContentState()
-    } catch (error) {
-      setIsLoading(false)
-      throw new Error
-      
     }
-  }, [pageIndex, curCate])
+
+    getAsiaState()
+  }, [pageIndex, curCate, type])
 
   if (isLoading)
     return (
-      <div className='viet-nam-container common-marginTLR'>
-        <div className='vn-cate pb-1-2'>
+      <div className='asia-container common-marginTLR'>
+        <div className='asia-cate pb-1-2'>
           <CateBasic {...cateBasicProps} />
         </div>
         <div className='loading-container'>
@@ -56,9 +55,9 @@ const VietNam = ({ defineLang }) => {
       </div>
     )
 
-  if (!vnContent) return null
+  if (!asia) return null
 
-  const { data: songs, total } = vnContent
+  const { data: songs, total, status } = asia
 
   const pagiProps = {
     pageIndex,
@@ -68,12 +67,12 @@ const VietNam = ({ defineLang }) => {
   }
 
   return (
-    <div className='viet-nam-container common-marginTLR'>
-      <div className='vn-cate pb-1-2'>
+    <div className='asia-container common-marginTLR'>
+      <div className='asia-cate pb-1-2'>
         <CateBasic {...cateBasicProps} />
       </div>
       <ErrorBoundary>
-        <div className='vn-main'>
+        <div className='asia-main'>
           <Grid container spacing={2}>
             {songs?.map((song) => (
               <Grid item key={song.key} xs={3} sm={3} md={3} xl={2}>
@@ -92,4 +91,4 @@ const VietNam = ({ defineLang }) => {
   )
 }
 
-export default VietNam
+export default Asia
