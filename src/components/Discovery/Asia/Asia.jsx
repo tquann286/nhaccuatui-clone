@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { getExplore } from 'services/Explore'
 import { asiaCate } from 'share/Categories'
-import { SongSquare, PagiCommon, LoadingV2, CateBasic, ErrorBoundary } from 'components'
+import { SongSquare, PagiCommon, LoadingV2, CateBasic, ErrorBoundary, CommonPlaylist } from 'components'
 import { Grid } from '@mui/material'
 import { calcPaginationPage } from 'share/utilities'
 import { scrollToTop } from 'share'
@@ -77,6 +77,7 @@ const Asia = ({ defineLang, type }) => {
             {data?.map((content) => (
               <Grid item key={content.key} xs={3} sm={3} md={3} xl={2}>
                 {type === 'song' && <SongSquare {...content} keyId={content.key} />}
+                {type === 'playlist' && <CommonPlaylist {...content} keyId={content.key} />}
               </Grid>
             ))}
           </Grid>
