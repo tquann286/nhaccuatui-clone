@@ -35,7 +35,7 @@ const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToS
         {removeFav && (
           <li className='hover-bg-color-0-05' onClick={(e) => onRemoveFav(e)}>
             <FaRegTrashAlt />
-            <span>{defineLang('Xóa khỏi yêu thích', 'Remove from favorite')}</span>
+            <span>{defineLang('Bỏ thích', 'Remove favorite')}</span>
           </li>
         )}
         {isEmpty(refMapping) || (

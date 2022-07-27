@@ -9,7 +9,7 @@ import { createPlaylistUrl, handleCopyPlaylist } from 'share/utilities'
 import { useStore } from 'store'
 import { handleAddToFavPlaylist } from 'share/addToFav'
 
-const CommonPlaylist = ({ keyId, artists, thumbnail, title, type, addToFav, removeFromFav, handleRemoveFromFav }) => {
+const CommonPlaylist = ({ keyId, artists, thumbnail, title, type, addToFav, removeFav, handleRemoveFav }) => {
   const [state] = useStore()
   const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
 
@@ -38,8 +38,8 @@ const CommonPlaylist = ({ keyId, artists, thumbnail, title, type, addToFav, remo
     handleCopyLink: (e) => onCopyPlaylist(e),
     addToFav: true && addToFav, // addToFav === false ? false : true
     handleAddToFav,
-    removeFromFav,
-    handleRemoveFromFav,
+    removeFav,
+    handleRemoveFav,
   }
 
   return (

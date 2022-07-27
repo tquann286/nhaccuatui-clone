@@ -16,6 +16,10 @@ const PlaylistFav = ({ defineLang, currentUser }) => {
     dispatch(actions.setFavPlaylists([]))
   }
 
+  const handleRemoveFav = async (keyId) => {
+    console.log(keyId)
+  }
+
   useEffect(() => {
     try {
       const getFavPlaylistsState = async () => {
@@ -46,7 +50,7 @@ const PlaylistFav = ({ defineLang, currentUser }) => {
         <Grid container spacing={2}>
           {favPlaylists.map((playlist) => (
             <Grid item key={playlist.key || playlist.keyId} xs={3} sm={3} md={3} xl={2}>
-              <CommonPlaylist {...playlist} keyId={playlist.key || playlist.keyId} addToFav={false} />
+              <CommonPlaylist {...playlist} keyId={playlist.key || playlist.keyId} addToFav={false} removeFav handleRemoveFav={() => handleRemoveFav(playlist.key || playlist.keyId)} />
             </Grid>
           ))}
         </Grid>
