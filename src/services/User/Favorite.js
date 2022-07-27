@@ -19,7 +19,7 @@ export const getFavSong = async (defineLang) => {
   }
 }
 
-export const getFavPlaylist = async (defineLang) => {
+export const getFavPlaylists = async (defineLang) => {
   const currentUserRef = doc(db, 'users', auth.currentUser.uid)
   const userSnap = await getDoc(currentUserRef)
 
