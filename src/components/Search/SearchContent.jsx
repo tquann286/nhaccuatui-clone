@@ -3,10 +3,7 @@ import { useLocation, useSearchParams } from 'react-router-dom'
 import './SearchContent.scss'
 
 import { SearchHeader, SearchMain, SearchResult, Footer } from 'components'
-import { NotFound } from 'pages'
-
 import { getTopArtists, getTrendingKeyword } from 'services/Search/SearchContent'
-import { toastNotify } from 'share/toast'
 import { ErrorBoundary } from 'components'
 
 import { useStore } from 'store'
@@ -39,7 +36,6 @@ const SearchContent = () => {
         setTrendingKeywords(listKeyValue)
         setIsLoading(false)
       } catch (error) {
-        // setIsFetchingFail(true)
         setIsLoading(false)
         throw new Error(error)
       }

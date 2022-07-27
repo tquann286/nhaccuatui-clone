@@ -27,15 +27,21 @@ const VietNam = ({ defineLang }) => {
   }
 
   useEffect(() => {
-    const getVnContentState = async () => {
-      setIsLoading(true)
-      const vnContent = await getExplore('song', curCate, pageIndex)
-
-      setVnContent(vnContent)
+    try {
+      const getVnContentState = async () => {
+        setIsLoading(true)
+        const vnContent = await getExplore('song', curCate, pageIndex)
+  
+        setVnContent(vnContent)
+        setIsLoading(false)
+      }
+  
+      getVnContentState()
+    } catch (error) {
       setIsLoading(false)
+      throw new Error
+      
     }
-
-    getVnContentState()
   }, [pageIndex, curCate])
 
   if (isLoading)

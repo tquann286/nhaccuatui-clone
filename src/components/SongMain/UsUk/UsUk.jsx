@@ -28,11 +28,16 @@ const UsUk = ({ defineLang }) => {
 
   useEffect(() => {
     const getUsUkState = async () => {
-      setIsLoading(true)
-      const usuk = await getExplore('song', curCate, pageIndex)
+      try {
+        setIsLoading(true)
+        const usuk = await getExplore('song', curCate, pageIndex)
 
-      setUsUk(usuk)
-      setIsLoading(false)
+        setUsUk(usuk)
+        setIsLoading(false)
+      } catch (error) {
+        setIsLoading(false)
+        throw new Error(error)
+      }
     }
 
     getUsUkState()
@@ -52,7 +57,7 @@ const UsUk = ({ defineLang }) => {
 
   if (!usuk) return null
 
-  const { data: songs, total } = usuk
+  const { data: songs, total, status } = usuk
 
   const pagiProps = {
     pageIndex,
@@ -69,7 +74,7 @@ const UsUk = ({ defineLang }) => {
       <ErrorBoundary>
         <div className='usuk-main'>
           <Grid container spacing={2}>
-            {songs.map((song) => (
+            {songs?.map((song) => (
               <Grid item key={song.key} xs={3} sm={3} md={3} xl={2}>
                 <SongSquare {...song} keyId={song.key} />
               </Grid>
