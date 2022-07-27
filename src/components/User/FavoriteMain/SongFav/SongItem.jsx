@@ -7,7 +7,7 @@ import { createSongUrl, handleCopySong } from 'share/utilities'
 import { createRandomSongView } from 'services/SongDetail'
 import { IconButton } from '@mui/material'
 import { basicModal } from 'share/animation'
-import { removeFavSong } from 'services/firebase/firestore'
+import { removeFavItem } from 'services/firebase/firestore'
 
 import { BsHeadphones } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
@@ -44,9 +44,8 @@ const SongItem = ({ realKey, title, artists, duration, songsView, favSongs, setF
     e.stopPropagation()
     const songToRemove = favSongs.filter(song => (song.key || song.keyId || song.songId) === keyId)[0]
 
-    await removeFavSong(songToRemove)
+    await removeFavItem(songToRemove, 'song', defineLang)
     setFavSongs(favSongs.filter(song => (song.key || song.keyId || song.songId) !== keyId))
-    toastNotify(defineLang('Xóa bài hát khỏi yêu thích thành công', 'Removed song from favorite list successfully'), 'success')
     toggleShowMore()
   }
 

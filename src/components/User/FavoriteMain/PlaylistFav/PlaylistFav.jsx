@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 import { getFavPlaylists } from 'services/User/Favorite'
-import { handleClearAllFav } from 'services/firebase/firestore'
+import { handleClearAllFav, removeFavItem } from 'services/firebase/firestore'
 import { useStore, actions } from 'store'
 import { Grid } from '@mui/material'
 import { CommonPlaylist } from 'components'
@@ -9,7 +9,6 @@ import { CommonPlaylist } from 'components'
 const PlaylistFav = ({ defineLang, currentUser }) => {
   const [state, dispatch] = useStore()
   const { favPlaylists } = state
-  console.log('favPlaylists: ', favPlaylists)
 
   const handlehandleClearAllFav = async () => {
     await handleClearAllFav('playlists', defineLang)
@@ -17,7 +16,10 @@ const PlaylistFav = ({ defineLang, currentUser }) => {
   }
 
   const handleRemoveFav = async (keyId) => {
-    console.log(keyId)
+    const playlistToRemove = favPlaylists.filter(playlist => playlist.keyId === keyId)[0]
+
+    await removeFavItem(playlistToRemove, 'playlist', defineLang)
+    dispatch(actions.setFavPlaylists(favPlaylists.filter(playlist => playlist.keyId !== keyId)))
   }
 
   useEffect(() => {
@@ -47,7 +49,7 @@ const PlaylistFav = ({ defineLang, currentUser }) => {
         )}
       </div>
       <div className='playlist-fav-main pt-2'>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} direction='row-reverse'>
           {favPlaylists.map((playlist) => (
             <Grid item key={playlist.key || playlist.keyId} xs={3} sm={3} md={3} xl={2}>
               <CommonPlaylist {...playlist} keyId={playlist.key || playlist.keyId} addToFav={false} removeFav handleRemoveFav={() => handleRemoveFav(playlist.key || playlist.keyId)} />

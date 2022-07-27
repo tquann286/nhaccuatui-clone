@@ -21,12 +21,30 @@ export const addFavSong = (song) => {
   })
 }
 
-export const removeFavSong = (song) => {
+export const removeFavItem = (item, cate, defineLang) => {
   const currentUserRef = doc(db, 'users', auth.currentUser.uid)
 
-  updateDoc(currentUserRef, {
-    'favorite.songs': arrayRemove(song),
-  })
+  switch (cate) {
+    case 'song':
+      updateDoc(currentUserRef, {
+        'favorite.songs': arrayRemove(item),
+      })
+      toastNotify(defineLang('Xóa bài hát khỏi yêu thích thành công', 'Removed song from favorite list successfully'), 'success')
+      break
+    case 'playlist':
+      updateDoc(currentUserRef, {
+        'favorite.playlists': arrayRemove(item),
+      })
+      toastNotify(defineLang('Xóa danh sách phát khỏi yêu thích thành công', 'Removed playlist from favorite successfully'), 'success')
+      break
+    case 'video':
+      updateDoc(currentUserRef, {
+        'favorite.videos': arrayRemove(item),
+      })
+      break
+    default:
+      break
+  }
 }
 
 export const handleClearAllFav = (cate, defineLang) => {
