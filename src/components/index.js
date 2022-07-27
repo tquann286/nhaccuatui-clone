@@ -65,6 +65,7 @@ export { default as NewHot } from './Discovery/NewHot/NewHot'
 export { default as VietNam } from './Discovery/VietNam/VietNam'
 export { default as UsUk } from './Discovery/UsUk/UsUk'
 export { default as Asia } from './Discovery/Asia/Asia'
+export { default as Others } from './Discovery/Others/Others'
 
 // SongPage
 export { default as SongMain } from './SongMain/SongMain'

@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import './SongMain.scss'
 
-import { CateCommon, Footer, NewHot, VietNam, UsUk, Asia } from 'components'
+import { CateCommon, Footer, NewHot, VietNam, UsUk, Asia, Others } from 'components'
 import { songMainCate } from 'services/SongPage/SongMain'
 import { useStore } from 'store'
 import { scrollToTop } from 'share'
@@ -39,6 +39,7 @@ const SongMain = () => {
         {curCate === 'vietnam' && <VietNam {...commonProps} />}
         {curCate === 'usuk' && <UsUk {...commonProps} />}
         {curCate === 'asia' && <Asia {...commonProps} />}
+        {curCate === 'others' && <Others {...commonProps} />}
       </div>
       <Footer />
     </div>

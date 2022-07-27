@@ -26,3 +26,12 @@ export const asiaCate = [
   { title: { vi: 'Nhạc Nhật', en: 'Japan' }, value: 'nhac-nhat' },
   { title: { vi: 'Nhạc Thái', en: 'Thailand' }, value: 'nhac-thai' },
 ]
+
+export const othersCate = [
+  { title: { vi: 'Thiếu Nhi', en: 'Kid' }, value: 'thieu-nhi' },
+  { title: { vi: 'Không Lời', en: 'No lyric' }, value: 'khong-loi' },
+  { title: { vi: 'Beat', en: 'Beat' }, value: 'beat' },
+  { title: { vi: 'Thể Loại Khác', en: 'Others' }, value: 'the-loai-khac' },
+  { title: { vi: 'Tui Hát', en: 'I Sing' }, value: 'tui-hat' },
+]
+
