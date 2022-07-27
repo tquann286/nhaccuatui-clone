@@ -46,7 +46,7 @@ const UsUk = ({ defineLang }) => {
   if (isLoading)
     return (
       <div className='usuk-container common-marginTLR'>
-        <div className='vn-cate pb-1-2'>
+        <div className='usuk-cate pb-1-2'>
           <CateBasic {...cateBasicProps} />
         </div>
         <div className='loading-container'>

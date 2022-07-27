@@ -15,7 +15,14 @@ export const usukCate = [
   { title: { vi: 'Điện tử', en: 'Electronica/Dance' }, value: 'dance' },
   { title: { vi: 'Rap', en: 'R&B/Hip Hop/Rap' }, value: 'r-b-hip-hop-rap' },
   { title: { vi: 'Blues/Jazz', en: 'Blues/Jazz' }, value: 'blue-jazz' },
-  { title: { vi: 'Đồng quê', en: "Country" }, value: 'country' },
+  { title: { vi: 'Đồng quê', en: 'Country' }, value: 'country' },
   { title: { vi: 'Latin', en: 'Latin' }, value: 'latin' },
   { title: { vi: 'Âu Mỹ Khác', en: 'Others' }, value: 's_us_other' },
+]
+
+export const asiaCate = [
+  { title: { vi: 'Nhạc Hàn', en: 'Korea' }, value: 'han-quoc' },
+  { title: { vi: 'Nhạc Hoa', en: 'China' }, value: 'nhac-hoa' },
+  { title: { vi: 'Nhạc Nhật', en: 'Japan' }, value: 'nhac-nhat' },
+  { title: { vi: 'Nhạc Thái', en: 'Thailand' }, value: 'nhac-thai' },
 ]
