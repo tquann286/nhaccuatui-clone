@@ -19,7 +19,7 @@ const VietNam = ({ defineLang }) => {
     scrollToTop()
   }
 
-  const cateCommonProps = {
+  const cateBasicProps = {
     defineLang,
     curCate,
     handleCateChange,
@@ -42,9 +42,9 @@ const VietNam = ({ defineLang }) => {
     return (
       <div className='viet-nam-container common-marginTLR'>
         <div className='vn-cate pb-1-2'>
-          <CateBasic {...cateCommonProps} />
+          <CateBasic {...cateBasicProps} />
         </div>
-        <div className="loading-container">
+        <div className='loading-container'>
           <LoadingV2 />
         </div>
       </div>
@@ -64,7 +64,7 @@ const VietNam = ({ defineLang }) => {
   return (
     <div className='viet-nam-container common-marginTLR'>
       <div className='vn-cate pb-1-2'>
-        <CateBasic {...cateCommonProps} />
+        <CateBasic {...cateBasicProps} />
       </div>
       <ErrorBoundary>
         <div className='vn-main'>
