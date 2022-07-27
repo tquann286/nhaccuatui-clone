@@ -3,8 +3,16 @@
 .song-main-container {
   @include commonMainOutlet;
 
-  .song-main-loading {
-    @include flexCenter;
-    height: calc(100vh - 5.2rem);
+  .song-main-content {
+    .notfound-container {
+      margin-left: unset;
+      margin-right: unset;
+    }
+
+    .loading-container {
+      @include flexCenter;
+      width: 100%;
+      height: calc(100vh - #{$footer-height} * 2 - 6.3rem - 2.8rem - 2.4rem);
+    }
   }
 }
