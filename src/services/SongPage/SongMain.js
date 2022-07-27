@@ -17,4 +17,3 @@ export const getExplore = async (type, key, pageIndex = 1, order = 1, pageSize =
     throw new Error(error)
   }
 }
-

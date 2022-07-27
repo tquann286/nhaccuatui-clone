@@ -32,8 +32,8 @@ const SongMain = () => {
         <CateCommon { ... cateCommonProps } />
       </div>
       <div className="song-main-content margin-footer">
-        {curCate === 'newHot' && <NewHot defineLang={defineLang} />}
-        {curCate === 'vietnam' && <VietNam defineLang={defineLang} />}
+        {curCate === 'newHot' && <NewHot { ... commonProps } />}
+        {curCate === 'vietnam' && <VietNam { ... commonProps } />}
       </div>
       <Footer />
     </div>
