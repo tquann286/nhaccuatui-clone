@@ -31,16 +31,15 @@ const VietNam = ({ defineLang, type }) => {
       const getVnContentState = async () => {
         setIsLoading(true)
         const vnContent = await getExplore(type, curCate, pageIndex)
-  
+
         setVnContent(vnContent)
         setIsLoading(false)
       }
-  
+
       getVnContentState()
     } catch (error) {
       setIsLoading(false)
-      throw new Error
-      
+      throw new Error()
     }
   }, [pageIndex, curCate, type])
 
@@ -58,7 +57,7 @@ const VietNam = ({ defineLang, type }) => {
 
   if (!vnContent) return null
 
-  const { data: songs, total } = vnContent
+  const { data, total } = vnContent
 
   const pagiProps = {
     pageIndex,
@@ -75,9 +74,9 @@ const VietNam = ({ defineLang, type }) => {
       <ErrorBoundary>
         <div className='vn-main'>
           <Grid container spacing={2}>
-            {songs?.map((song) => (
-              <Grid item key={song.key} xs={3} sm={3} md={3} xl={2}>
-                <SongSquare {...song} keyId={song.key} />
+            {data?.map((content) => (
+              <Grid item key={content.key} xs={3} sm={3} md={3} xl={2}>
+                {type === 'song' && <SongSquare {...content} keyId={content.key} />}
               </Grid>
             ))}
           </Grid>

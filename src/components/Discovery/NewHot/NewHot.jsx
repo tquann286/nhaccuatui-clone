@@ -31,7 +31,7 @@ const NewHot = ({ defineLang, type }) => {
 
   if (!newHot) return null
 
-  const { data: songs, total } = newHot
+  const { data, total } = newHot
 
   const pagiProps = {
     pageIndex,
@@ -45,9 +45,9 @@ const NewHot = ({ defineLang, type }) => {
       <div className='new-hot-title color-0-88 common-title pb-1-2'>{defineLang('Mới & Hot', 'New & Hot')}</div>
       <div className='new-hot-main'>
         <Grid container spacing={2}>
-          {songs?.map((song) => (
-            <Grid item key={song.key} xs={3} sm={3} md={3} xl={2}>
-              <SongSquare {...song} keyId={song.key} />
+          {data?.map((content) => (
+            <Grid item key={content.key} xs={3} sm={3} md={3} xl={2}>
+              {type === 'song' && <SongSquare {...content} keyId={content.key} />}
             </Grid>
           ))}
         </Grid>

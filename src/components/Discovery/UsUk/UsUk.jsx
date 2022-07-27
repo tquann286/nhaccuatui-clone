@@ -57,7 +57,7 @@ const UsUk = ({ defineLang, type }) => {
 
   if (!usuk) return null
 
-  const { data: songs, total, status } = usuk
+  const { data, total } = usuk
 
   const pagiProps = {
     pageIndex,
@@ -74,9 +74,9 @@ const UsUk = ({ defineLang, type }) => {
       <ErrorBoundary>
         <div className='usuk-main'>
           <Grid container spacing={2}>
-            {songs?.map((song) => (
-              <Grid item key={song.key} xs={3} sm={3} md={3} xl={2}>
-                <SongSquare {...song} keyId={song.key} />
+            {data?.map((content) => (
+              <Grid item key={content.key} xs={3} sm={3} md={3} xl={2}>
+                {type === 'song' && <SongSquare {...content} keyId={content.key} />}
               </Grid>
             ))}
           </Grid>
