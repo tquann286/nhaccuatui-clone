@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { getExplore } from 'services/Explore'
-import { othersCate } from 'share/subCate'
+import { othersCate } from 'share/Categories'
 import { SongSquare, PagiCommon, LoadingV2, CateBasic, ErrorBoundary } from 'components'
 import { Grid } from '@mui/material'
 import { calcPaginationPage } from 'share/utilities'

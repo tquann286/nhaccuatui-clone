@@ -68,5 +68,5 @@ export { default as Asia } from './Discovery/Asia/Asia'
 export { default as Others } from './Discovery/Others/Others'
 
 // SongPage
-export { default as SongMain } from './SongMain/SongMain'
+export { default as SongPlaylistVideo } from './SongPlaylistVideo/SongPlaylistVideo'
 

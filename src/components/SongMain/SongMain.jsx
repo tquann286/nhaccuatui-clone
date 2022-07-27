@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react'
 import './SongMain.scss'
 
 import { CateCommon, Footer, NewHot, VietNam, UsUk, Asia, Others } from 'components'
-import { songMainCate } from 'services/SongPage/SongMain'
+import { commonMainCate } from 'share/Categories'
 import { useStore } from 'store'
 import { scrollToTop } from 'share'
 
@@ -10,7 +10,7 @@ const SongMain = () => {
   const [state] = useStore()
   const defineLang = useCallback((vie, eng) => (state.lang === 'vi' ? vie : eng), [state.lang])
 
-  const [curCate, setCurCate] = useState(songMainCate[0].value)
+  const [curCate, setCurCate] = useState(commonMainCate[0].value)
 
   const handleCateChange = (e, newCate) => {
     setCurCate(newCate)
@@ -21,7 +21,7 @@ const SongMain = () => {
     defineLang,
     curCate,
     handleCateChange,
-    categories: songMainCate,
+    categories: commonMainCate,
   }
 
   const commonProps = {
