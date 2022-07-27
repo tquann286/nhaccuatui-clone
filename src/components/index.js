@@ -66,6 +66,7 @@ export { default as VietNam } from './Discovery/VietNam/VietNam'
 export { default as UsUk } from './Discovery/UsUk/UsUk'
 export { default as Asia } from './Discovery/Asia/Asia'
 export { default as Others } from './Discovery/Others/Others'
+export { default as Karaoke } from './Discovery/Karaoke/Karaoke'
 
 // SongPage
 export { default as SongPlaylistVideo } from './SongPlaylistVideo/SongPlaylistVideo'

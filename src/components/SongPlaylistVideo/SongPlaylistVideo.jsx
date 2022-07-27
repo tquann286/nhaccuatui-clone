@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react'
 import './SongPlaylistVideo.scss'
 
-import { CateCommon, Footer, NewHot, VietNam, UsUk, Asia, Others } from 'components'
-import { commonMainCate } from 'share/Categories'
+import { CateCommon, Footer, NewHot, VietNam, UsUk, Asia, Others, Karaoke } from 'components'
+import { commonMainCate, videoMainCate } from 'share/Categories'
 import { useStore } from 'store'
 import { scrollToTop } from 'share'
 
@@ -10,7 +10,7 @@ const SongPlaylistVideo = ({ type }) => {
   const [state] = useStore()
   const defineLang = useCallback((vie, eng) => (state.lang === 'vi' ? vie : eng), [state.lang])
 
-  const [curCate, setCurCate] = useState(commonMainCate[0].value)
+  const [curCate, setCurCate] = useState(type === 'mv' ? videoMainCate : commonMainCate[0].value)
 
   const handleCateChange = (e, newCate) => {
     setCurCate(newCate)
@@ -21,12 +21,12 @@ const SongPlaylistVideo = ({ type }) => {
     defineLang,
     curCate,
     handleCateChange,
-    categories: commonMainCate,
+    categories: type === 'mv' ? videoMainCate : commonMainCate,
   }
 
   const commonProps = {
     defineLang,
-    type
+    type,
   }
 
   return (
@@ -39,6 +39,7 @@ const SongPlaylistVideo = ({ type }) => {
         {curCate === 'vietnam' && <VietNam {...commonProps} />}
         {curCate === 'usuk' && <UsUk {...commonProps} />}
         {curCate === 'asia' && <Asia {...commonProps} />}
+        {(type === 'mv' && curCate === 'karaoke') && <Karaoke {...commonProps} />}
         {curCate === 'others' && <Others {...commonProps} />}
       </div>
       <Footer />

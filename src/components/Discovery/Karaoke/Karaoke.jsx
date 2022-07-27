@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react'
 
 import { getExplore } from 'services/Explore'
-import { defineCate, asiaCate, asiaPlaylistCate } from 'share/Categories'
-import { SongSquare, PagiCommon, LoadingV2, CateBasic, ErrorBoundary, CommonPlaylist, CommonVideo } from 'components'
+import { karaCate } from 'share/Categories'
+import { SongSquare, PagiCommon, LoadingV2, CateBasic, ErrorBoundary, CommonPlaylist } from 'components'
 import { Grid } from '@mui/material'
 import { calcPaginationPage, isFetchingFail } from 'share/utilities'
 import { scrollToTop } from 'share'
 
-const Asia = ({ defineLang, type }) => {
-  const [asia, setAsia] = useState(null)
+const Karaoke = ({ defineLang, type }) => {
+  const [kara, setKaraoke] = useState(null)
   const [pageIndex, setPageIndex] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
-  const [curCate, setCurCate] = useState(defineCate(type, asiaCate, asiaPlaylistCate)[0].value)
+  const [curCate, setCurCate] = useState(karaCate[0].value)
 
   const handleCateChange = (newCate) => {
     setCurCate(newCate)
@@ -23,17 +23,17 @@ const Asia = ({ defineLang, type }) => {
     defineLang,
     curCate,
     handleCateChange,
-    categories: defineCate(type, asiaCate, asiaPlaylistCate),
+    categories: karaCate,
   }
 
   useEffect(() => {
-    const getAsiaState = async () => {
+    const getKaraokeState = async () => {
       try {
         setIsLoading(true)
-        const asia = await getExplore(type, curCate, pageIndex)
-        isFetchingFail(asia.status, defineLang)
+        const kara = await getExplore(type, curCate, pageIndex)
+        isFetchingFail(kara.status, defineLang)
 
-        setAsia(asia)
+        setKaraoke(kara)
         setIsLoading(false)
       } catch (error) {
         setIsLoading(false)
@@ -41,13 +41,13 @@ const Asia = ({ defineLang, type }) => {
       }
     }
 
-    getAsiaState()
+    getKaraokeState()
   }, [pageIndex, curCate, type])
 
   if (isLoading)
     return (
-      <div className='asia-container common-marginTLR'>
-        <div className='asia-cate pb-1-2'>
+      <div className='kara-container common-marginTLR'>
+        <div className='kara-cate pb-1-2'>
           <CateBasic {...cateBasicProps} />
         </div>
         <div className='loading-container'>
@@ -56,9 +56,9 @@ const Asia = ({ defineLang, type }) => {
       </div>
     )
 
-  if (!asia) return null
+  if (!kara) return null
 
-  const { data, total } = asia
+  const { data, total } = kara
 
   const pagiProps = {
     pageIndex,
@@ -68,18 +68,17 @@ const Asia = ({ defineLang, type }) => {
   }
 
   return (
-    <div className='asia-container common-marginTLR'>
-      <div className='asia-cate pb-1-2'>
+    <div className='kara-container common-marginTLR'>
+      <div className='kara-cate pb-1-2'>
         <CateBasic {...cateBasicProps} />
       </div>
       <ErrorBoundary>
-        <div className='asia-main'>
+        <div className='kara-main'>
           <Grid container spacing={2}>
             {data?.map((content) => (
               <Grid item key={content.key} xs={3} sm={3} md={3} xl={2}>
                 {type === 'song' && <SongSquare {...content} keyId={content.key} />}
                 {type === 'playlist' && <CommonPlaylist {...content} keyId={content.key} />}
-                {type === 'mv' && <CommonVideo {...content} keyId={content.key} />}
               </Grid>
             ))}
           </Grid>
@@ -94,4 +93,4 @@ const Asia = ({ defineLang, type }) => {
   )
 }
 
-export default Asia
+export default Karaoke

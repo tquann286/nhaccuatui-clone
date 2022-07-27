@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
 import { getExplore } from 'services/Explore'
-import { usukCate } from 'share/Categories'
-import { SongSquare, PagiCommon, LoadingV2, CateBasic, ErrorBoundary } from 'components'
+import { defineCate, usukCate, usukPlaylistCate } from 'share/Categories'
+import { SongSquare, PagiCommon, LoadingV2, CateBasic, ErrorBoundary, CommonPlaylist, CommonVideo } from 'components'
 import { Grid } from '@mui/material'
 import { calcPaginationPage, isFetchingFail } from 'share/utilities'
 import { scrollToTop } from 'share'
@@ -11,7 +11,7 @@ const UsUk = ({ defineLang, type }) => {
   const [usuk, setUsUk] = useState(null)
   const [pageIndex, setPageIndex] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
-  const [curCate, setCurCate] = useState(usukCate[0].value)
+  const [curCate, setCurCate] = useState(defineCate(type, usukCate, usukPlaylistCate)[0].value)
 
   const handleCateChange = (newCate) => {
     setCurCate(newCate)
@@ -23,7 +23,7 @@ const UsUk = ({ defineLang, type }) => {
     defineLang,
     curCate,
     handleCateChange,
-    categories: usukCate,
+    categories: defineCate(type, usukCate, usukPlaylistCate),
   }
 
   useEffect(() => {
@@ -78,6 +78,8 @@ const UsUk = ({ defineLang, type }) => {
             {data?.map((content) => (
               <Grid item key={content.key} xs={3} sm={3} md={3} xl={2}>
                 {type === 'song' && <SongSquare {...content} keyId={content.key} />}
+                {type === 'playlist' && <CommonPlaylist {...content} keyId={content.key} />}
+                {type === 'mv' && <CommonVideo {...content} keyId={content.key} />}
               </Grid>
             ))}
           </Grid>

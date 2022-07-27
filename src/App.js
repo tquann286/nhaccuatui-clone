@@ -82,7 +82,7 @@ const App = () => {
             <Route index element={<SongPlaylistVideo type='playlist' />} />
           </Route>
           <Route path='video' element={<Video />}>
-            <Route index element={<SongPlaylistVideo type='video' />} />
+            <Route index element={<SongPlaylistVideo type='mv' />} />
           </Route>
           <Route path='*' element={<NotFound />} />
         </Route>

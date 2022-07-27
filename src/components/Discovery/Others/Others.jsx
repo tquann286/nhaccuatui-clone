@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
 import { getExplore } from 'services/Explore'
-import { othersCate } from 'share/Categories'
-import { SongSquare, PagiCommon, LoadingV2, CateBasic, ErrorBoundary, CommonPlaylist } from 'components'
+import { defineCate, othersCate, othersPlaylistCate } from 'share/Categories'
+import { SongSquare, PagiCommon, LoadingV2, CateBasic, ErrorBoundary, CommonPlaylist, CommonVideo } from 'components'
 import { Grid } from '@mui/material'
 import { calcPaginationPage, isFetchingFail } from 'share/utilities'
 import { scrollToTop } from 'share'
@@ -11,7 +11,7 @@ const Others = ({ defineLang, type }) => {
   const [others, setOthers] = useState(null)
   const [pageIndex, setPageIndex] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
-  const [curCate, setCurCate] = useState(othersCate[0].value)
+  const [curCate, setCurCate] = useState(defineCate(type, othersCate, othersPlaylistCate)[0].value)
   
   const handleCateChange = (newCate) => {
     setCurCate(newCate)
@@ -23,7 +23,7 @@ const Others = ({ defineLang, type }) => {
     defineLang,
     curCate,
     handleCateChange,
-    categories: othersCate,
+    categories: defineCate(type, othersCate, othersPlaylistCate),
   }
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Others = ({ defineLang, type }) => {
       const getOthersState = async () => {
         setIsLoading(true)
         const others = await getExplore(type, curCate, pageIndex)
-        isFetchingFail(others.status, defineLang)
+        isFetchingFail(others?.status, defineLang)
 
         setOthers(others)
         setIsLoading(false)
@@ -79,6 +79,7 @@ const Others = ({ defineLang, type }) => {
               <Grid item key={content.key} xs={3} sm={3} md={3} xl={2}>
                 {type === 'song' && <SongSquare {...content} keyId={content.key} />}
                 {type === 'playlist' && <CommonPlaylist {...content} keyId={content.key} />}
+                {type === 'mv' && <CommonVideo {...content} keyId={content.key} />}
               </Grid>
             ))}
           </Grid>

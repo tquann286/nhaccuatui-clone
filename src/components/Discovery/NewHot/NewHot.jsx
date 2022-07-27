@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { SongSquare, PagiCommon, LoadingV2, CommonPlaylist } from 'components'
+import { SongSquare, PagiCommon, LoadingV2, CommonPlaylist, CommonVideo } from 'components'
 import { Grid } from '@mui/material'
 import { calcPaginationPage, isFetchingFail } from 'share/utilities'
 import { getExplore } from 'services/Explore'
@@ -50,6 +50,7 @@ const NewHot = ({ defineLang, type }) => {
             <Grid item key={content.key} xs={3} sm={3} md={3} xl={2}>
               {type === 'song' && <SongSquare {...content} keyId={content.key} />}
               {type === 'playlist' && <CommonPlaylist {...content} keyId={content.key} />}
+              {type === 'mv' && <CommonVideo {...content} keyId={content.key} />}
             </Grid>
           ))}
         </Grid>
