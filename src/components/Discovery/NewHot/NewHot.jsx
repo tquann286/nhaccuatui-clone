@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { SongSquare, PagiCommon, LoadingV2, CommonPlaylist } from 'components'
 import { Grid } from '@mui/material'
-import { calcPaginationPage } from 'share/utilities'
+import { calcPaginationPage, isFetchingFail } from 'share/utilities'
 import { getExplore } from 'services/Explore'
 
 const NewHot = ({ defineLang, type }) => {
@@ -14,6 +14,7 @@ const NewHot = ({ defineLang, type }) => {
     const getNewHotState = async () => {
       setIsLoading(true)
       const newHot = await getExplore(type, 'moi-hot', pageIndex)
+      isFetchingFail(newHot.status, defineLang)
 
       setNewHot(newHot)
       setIsLoading(false)

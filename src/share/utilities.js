@@ -189,3 +189,9 @@ export const getSongsView = async (listSongKeys) => {
     throw new Error(error)
   }
 }
+
+export const isFetchingFail = (status, defineLang) => {
+  if (status === 'error') {
+    toastNotify(defineLang('Có lỗi khi lấy dữ liệu từ server.', 'A server error occurred while retrieving data.'), 'error')
+  }
+}

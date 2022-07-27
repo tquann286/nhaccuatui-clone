@@ -4,7 +4,7 @@ import { getExplore } from 'services/Explore'
 import { asiaCate } from 'share/Categories'
 import { SongSquare, PagiCommon, LoadingV2, CateBasic, ErrorBoundary, CommonPlaylist } from 'components'
 import { Grid } from '@mui/material'
-import { calcPaginationPage } from 'share/utilities'
+import { calcPaginationPage, isFetchingFail } from 'share/utilities'
 import { scrollToTop } from 'share'
 
 const Asia = ({ defineLang, type }) => {
@@ -31,6 +31,7 @@ const Asia = ({ defineLang, type }) => {
       try {
         setIsLoading(true)
         const asia = await getExplore(type, curCate, pageIndex)
+        isFetchingFail(asia.status, defineLang)
 
         setAsia(asia)
         setIsLoading(false)

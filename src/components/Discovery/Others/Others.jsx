@@ -4,7 +4,7 @@ import { getExplore } from 'services/Explore'
 import { othersCate } from 'share/Categories'
 import { SongSquare, PagiCommon, LoadingV2, CateBasic, ErrorBoundary, CommonPlaylist } from 'components'
 import { Grid } from '@mui/material'
-import { calcPaginationPage } from 'share/utilities'
+import { calcPaginationPage, isFetchingFail } from 'share/utilities'
 import { scrollToTop } from 'share'
 
 const Others = ({ defineLang, type }) => {
@@ -31,6 +31,7 @@ const Others = ({ defineLang, type }) => {
       const getOthersState = async () => {
         setIsLoading(true)
         const others = await getExplore(type, curCate, pageIndex)
+        isFetchingFail(others.status, defineLang)
 
         setOthers(others)
         setIsLoading(false)

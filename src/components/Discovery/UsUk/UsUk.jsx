@@ -4,7 +4,7 @@ import { getExplore } from 'services/Explore'
 import { usukCate } from 'share/Categories'
 import { SongSquare, PagiCommon, LoadingV2, CateBasic, ErrorBoundary } from 'components'
 import { Grid } from '@mui/material'
-import { calcPaginationPage } from 'share/utilities'
+import { calcPaginationPage, isFetchingFail } from 'share/utilities'
 import { scrollToTop } from 'share'
 
 const UsUk = ({ defineLang, type }) => {
@@ -31,6 +31,7 @@ const UsUk = ({ defineLang, type }) => {
       try {
         setIsLoading(true)
         const usuk = await getExplore(type, curCate, pageIndex)
+        isFetchingFail(usuk.status, defineLang)
 
         setUsUk(usuk)
         setIsLoading(false)

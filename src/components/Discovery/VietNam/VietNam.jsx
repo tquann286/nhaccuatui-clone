@@ -4,7 +4,7 @@ import { getExplore } from 'services/Explore'
 import { vietnamCate } from 'share/Categories'
 import { SongSquare, PagiCommon, LoadingV2, CateBasic, ErrorBoundary, CommonPlaylist } from 'components'
 import { Grid } from '@mui/material'
-import { calcPaginationPage } from 'share/utilities'
+import { calcPaginationPage, isFetchingFail } from 'share/utilities'
 import { scrollToTop } from 'share'
 
 const VietNam = ({ defineLang, type }) => {
@@ -31,6 +31,7 @@ const VietNam = ({ defineLang, type }) => {
       const getVnContentState = async () => {
         setIsLoading(true)
         const vnContent = await getExplore(type, curCate, pageIndex)
+        isFetchingFail(vnContent.status, defineLang)
 
         setVnContent(vnContent)
         setIsLoading(false)
