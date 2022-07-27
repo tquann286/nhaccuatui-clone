@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
-import { getExplore } from 'services/SongPage/SongMain'
 import { SongSquare, PagiCommon, LoadingV2 } from 'components'
 import { Grid } from '@mui/material'
 import { calcPaginationPage } from 'share/utilities'
+import { getExplore } from 'services/Explore'
 
 const NewHot = ({ defineLang }) => {
   const [newHot, setNewHot] = useState(null)

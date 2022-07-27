@@ -12,7 +12,7 @@ const CateBasic = ({ defineLang, curCate, handleCateChange, categories }) => {
       const { title, value } = cate
 
       return (
-        <div key={value} className="cate-basic-item" onClick={() => handleCateChange(value)}>
+        <div key={value} className={`cate-basic-item color-0-88 ${curCate === value && 'activeCate'}`} onClick={() => handleCateChange(value)}>
           {defineLang(title.vi, title.en)}
         </div>
       )
