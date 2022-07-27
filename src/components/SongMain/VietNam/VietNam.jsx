@@ -75,7 +75,7 @@ const VietNam = ({ defineLang }) => {
       <ErrorBoundary>
         <div className='vn-main'>
           <Grid container spacing={2}>
-            {songs.map((song) => (
+            {songs?.map((song) => (
               <Grid item key={song.key} xs={3} sm={3} md={3} xl={2}>
                 <SongSquare {...song} keyId={song.key} />
               </Grid>

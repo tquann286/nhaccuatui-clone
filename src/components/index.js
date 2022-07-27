@@ -62,6 +62,7 @@ export { default as VideoSearch } from './Search/VideoSearch/VideoSearch'
 
 // SongPage
 export { default as SongMain } from './SongMain/SongMain'
-export { default as NewHot } from './SongMain/NewHot/NewHot'
-export { default as VietNam } from './SongMain/VietNam/VietNam'
-export { default as UsUk } from './SongMain/UsUk/UsUk'
+export { default as NewHotSong } from './SongMain/NewHot/NewHot'
+export { default as VietNamSong } from './SongMain/VietNam/VietNam'
+export { default as UsUkSong } from './SongMain/UsUk/UsUk'
+export { default as AsiaSong } from './SongMain/Asia/Asia'
