@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { getExplore } from 'services/Explore'
-import { defineCate, vietnamCate, vietnamPlaylistCate } from 'share/Categories'
+import { defineCate, vietnamCate, vietnamPlaylistCate, vietnamVideoCate } from 'share/Categories'
 import { SongSquare, PagiCommon, LoadingV2, CateBasic, ErrorBoundary, CommonPlaylist, CommonVideo } from 'components'
 import { Grid } from '@mui/material'
 import { calcPaginationPage, isFetchingFail } from 'share/utilities'
@@ -11,7 +11,7 @@ const VietNam = ({ defineLang, type }) => {
   const [vnContent, setVnContent] = useState(null)
   const [pageIndex, setPageIndex] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
-  const [curCate, setCurCate] = useState(defineCate(type, vietnamCate, vietnamPlaylistCate)[0].value)
+  const [curCate, setCurCate] = useState(defineCate(type, vietnamCate, vietnamPlaylistCate, vietnamVideoCate)[0].value)
 
   const handleCateChange = (newCate) => {
     setCurCate(newCate)
@@ -23,7 +23,7 @@ const VietNam = ({ defineLang, type }) => {
     defineLang,
     curCate,
     handleCateChange,
-    categories: defineCate(type, vietnamCate, vietnamPlaylistCate),
+    categories: defineCate(type, vietnamCate, vietnamPlaylistCate, vietnamVideoCate),
   }
 
   useEffect(() => {

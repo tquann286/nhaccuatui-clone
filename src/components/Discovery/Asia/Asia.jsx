@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { getExplore } from 'services/Explore'
-import { defineCate, asiaCate, asiaPlaylistCate } from 'share/Categories'
+import { defineCate, asiaCate, asiaPlaylistCate, asiaVideoCate } from 'share/Categories'
 import { SongSquare, PagiCommon, LoadingV2, CateBasic, ErrorBoundary, CommonPlaylist, CommonVideo } from 'components'
 import { Grid } from '@mui/material'
 import { calcPaginationPage, isFetchingFail } from 'share/utilities'
@@ -11,7 +11,7 @@ const Asia = ({ defineLang, type }) => {
   const [asia, setAsia] = useState(null)
   const [pageIndex, setPageIndex] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
-  const [curCate, setCurCate] = useState(defineCate(type, asiaCate, asiaPlaylistCate)[0].value)
+  const [curCate, setCurCate] = useState(defineCate(type, asiaCate, asiaPlaylistCate, asiaVideoCate)[0].value)
 
   const handleCateChange = (newCate) => {
     setCurCate(newCate)
@@ -23,7 +23,7 @@ const Asia = ({ defineLang, type }) => {
     defineLang,
     curCate,
     handleCateChange,
-    categories: defineCate(type, asiaCate, asiaPlaylistCate),
+    categories: defineCate(type, asiaCate, asiaPlaylistCate, asiaVideoCate),
   }
 
   useEffect(() => {
