@@ -8,7 +8,7 @@ export const favCateNav = [
   { title: { vi: 'Video', en: 'Video' }, value: 'video' },
 ]
 
-export const getFavSong = async (defineLang) => {
+export const getFavSongs = async (defineLang) => {
   const currentUserRef = doc(db, 'users', auth.currentUser.uid)
   const userSnap = await getDoc(currentUserRef)
 
@@ -26,6 +26,17 @@ export const getFavPlaylists = async (defineLang) => {
   if (userSnap.exists()) {
     return userSnap.data().favorite.playlists
   } else {
-    toastNotify(defineLang('Không tìm thấy danh sách yêu thích', 'There is no favorite list song found'), 'info')
+    toastNotify(defineLang('Không tìm thấy danh sách yêu thích', 'There is no favorite playlist found'), 'info')
+  }
+}
+
+export const getFavVideos = async (defineLang) => {
+  const currentUserRef = doc(db, 'users', auth.currentUser.uid)
+  const userSnap = await getDoc(currentUserRef)
+
+  if (userSnap.exists()) {
+    return userSnap.data().favorite.videos
+  } else {
+    toastNotify(defineLang('Không tìm thấy video thích', 'There is no favorite video found'), 'info')
   }
 }

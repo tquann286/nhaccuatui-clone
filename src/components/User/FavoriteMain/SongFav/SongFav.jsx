@@ -5,10 +5,9 @@ import initImage from 'images/default/default_personal_playlist.png'
 import initUser from 'images/default/default_user.jpg'
 
 import { ShadowThumb, SongItem, SquareImg } from 'components'
-import { getFavSong } from 'services/User/Favorite'
+import { getFavSongs } from 'services/User/Favorite'
 import { getSongsView, getListSongsKey } from 'share/utilities'
-import { clearAllSong } from 'services/firebase/firestore'
-import { toastNotify } from 'share/toast'
+import { handleClearAllFav } from 'services/firebase/firestore'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { useStore, actions } from 'store'
 
@@ -19,15 +18,14 @@ const SongFav = ({ defineLang, currentUser }) => {
 
   const [songsView, setSongView] = useState({})
 
-  const handleClearAllSong = async () => {
-    await clearAllSong()
+  const handlehandleClearAllFav = async () => {
+    await handleClearAllFav('songs', defineLang)
     dispatch(actions.setFavSongs([]))
-    toastNotify(defineLang('Xóa tất cả bài hát khỏi yêu thích thành công', 'Removed all songs from favorite list successfully'), 'success')
   }
 
   useEffect(() => {
     const getFavSongsState = async () => {
-      const favSongs = await getFavSong(defineLang)
+      const favSongs = await getFavSongs(defineLang)
       
       dispatch(actions.setFavSongs(favSongs))
     }
@@ -94,7 +92,7 @@ const SongFav = ({ defineLang, currentUser }) => {
         <div className='song-list common-title color-0-88 alcenter-jcbetween'>
           <div className='sf-title-content'>{defineLang('Danh sách bài hát', 'Song list')}</div>
           {favSongs.length !== 0 && (
-            <div className='clear-all-song clickable small-common color-0-5' onClick={handleClearAllSong}>
+            <div className='clear-all-song clickable small-common color-0-5' onClick={handlehandleClearAllFav}>
               {defineLang('Xóa tất cả', 'Clear all')}
             </div>
           )}
