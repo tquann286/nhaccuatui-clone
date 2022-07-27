@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useStore, actions } from 'store'
 
 import './App.scss'
-import { Explore, Homepage, NotFound, Search, User, Favorite, SongPage, Playlist } from 'pages'
+import { Explore, Homepage, NotFound, Search, User, Favorite, SongPage, Playlist, Video } from 'pages'
 import { auth } from 'config/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 import { MainHomepage, SongPlaylistVideo } from 'components'
@@ -80,6 +80,9 @@ const App = () => {
           </Route>
           <Route path='playlist' element={<Playlist />}>
             <Route index element={<SongPlaylistVideo type='playlist' />} />
+          </Route>
+          <Route path='video' element={<Video />}>
+            <Route index element={<SongPlaylistVideo type='video' />} />
           </Route>
           <Route path='*' element={<NotFound />} />
         </Route>
