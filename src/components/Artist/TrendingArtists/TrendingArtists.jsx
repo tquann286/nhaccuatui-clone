@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './TrendingArtists.scss'
 
-import { Sharing, SquareImg } from 'components'
+import { Sharing } from 'components'
 import { createArtistUrl, getCurrentDay, handleCopyProxy } from 'share/utilities'
 import { toastNotify } from 'share/toast'
 import { getTopArtists } from 'services/Search/SearchContent'
+import { Grid } from '@mui/material'
 
 const TrendingArtists = ({ defineLang }) => {
   const [trendArtists, setTrendArtists] = useState(null)
-  console.log('trendArtists: ', trendArtists)
 
   useEffect(() => {
     const getTrendArtistsState = async () => {
@@ -55,10 +55,31 @@ const TrendingArtists = ({ defineLang }) => {
         <Sharing {...sharingProps} />
       </div>
       <div className='artists-trending-main'>
-        <div className="artists-trending-top1">
+        <div className='artists-trending-top1'>
           <Link to={createArtistUrl(top1.name, top1.shortLink)}>
-            <SquareImg imageUrl={top1.imageUrl} title={top1.name} />
+            <div className='top1-img' style={{ backgroundImage: `url(${top1.imageUrl})` }} title={top1.name}></div>
           </Link>
+        </div>
+        <div className='list-artist'>
+          <Grid container spacing={2}>
+            {trendArtists.map((artist) => {
+              const { name, position, shortLink } = artist
+
+              return (
+                <Grid key={name} item xs={6} sm={6} md={6} xl={4}>
+                  <Link to={createArtistUrl(name, shortLink)}>
+                    <div className='artist-item hover-bg-color-0-05'>
+                      <p className='artist-item-position color-0-5'>{position}</p>
+                      <div className='w2-2rem mr-1'>
+                        <div className='new-label'>New</div>
+                      </div>
+                      <div className='artist-item-name color-0-88'>{name}</div>
+                    </div>
+                  </Link>
+                </Grid>
+              )
+            })}
+          </Grid>
         </div>
       </div>
     </div>
