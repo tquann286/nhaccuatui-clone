@@ -21,15 +21,20 @@ const Sharing = ({ defineLang, placement, handleCopyShare, onShareWindowClose, s
     toggleShowShare()
   }
 
+  const onDoneShareFB = () => {
+    onShareWindowClose()
+    toggleShowShare()
+  }
+
   const centerModalProps = {
     modalName: defineLang('Chia sẻ', 'Share'),
     showModal: showShare,
     toggleModal: toggleShowShare,
   }
-  console.log(`${PROXY}${shareLink}`)
+  
   const fbShareProps = {
     url: `${PROXY}${shareLink}`,
-    onShareWindowClose,
+    onShareWindowClose: onDoneShareFB,
   }
 
   return (

@@ -3,14 +3,15 @@ import './TrendingArtists.scss'
 
 import { Sharing } from 'components'
 import { handleCopyProxy } from 'share/utilities'
+import { toastNotify } from 'share/toast'
 
 const TrendingArtists = ({ defineLang }) => {
   const handleCopyShare = () => {
     handleCopyProxy(defineLang, '/nghe-si')
   }
 
-  const onShareWindowClose = (a) => {
-    console.log(a)
+  const onShareWindowClose = () => {
+    toastNotify(defineLang('Chia sẻ lên facebook thành công', 'Share to facebook successfully'), 'success')
   }
 
   const sharingProps = {
