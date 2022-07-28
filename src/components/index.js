@@ -22,6 +22,7 @@ export { default as NotFoundV2 } from './Common/NotFound/NotFound'
 export { default as Sharing } from './Common/Sharing/Sharing'
 export { default as CenterModal } from './Common/CenterModal/CenterModal'
 export { default as ShareImage } from './Common/ShareImage'
+export { default as Navbar } from './Common/Navbar/Navbar'
 
 // Home
 export { default as LoadingV2 } from './Loading/LoadingV2'

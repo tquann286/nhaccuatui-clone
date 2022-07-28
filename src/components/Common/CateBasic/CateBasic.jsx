@@ -1,24 +1,18 @@
 import React from 'react'
 import './CateBasic.scss'
 
-const CateBasic = ({ defineLang, curCate, handleCateChange, categories }) => {
+const CateBasic = ({ defineLang, curCate, handleCateChange, categories }) => (
+  <div className='cate-basic-container'>
+  {categories.map(cate => {
+    const { title, value } = cate
 
-  if (!categories) return null
-
-  
-  return (
-    <div className='cate-basic-container'>
-    {categories.map(cate => {
-      const { title, value } = cate
-
-      return (
-        <div key={value} className={`cate-basic-item color-0-88 ${curCate === value && 'activeCate'}`} onClick={() => handleCateChange(value)}>
-          {defineLang(title.vi, title.en)}
-        </div>
-      )
-    })}
-  </div>
-  )
-}
+    return (
+      <div key={value} className={`cate-basic-item color-0-88 ${curCate === value && 'activeCate'}`} onClick={() => handleCateChange(value)}>
+        {defineLang(title.vi, title.en)}
+      </div>
+    )
+  })}
+</div>
+)
 
 export default CateBasic
