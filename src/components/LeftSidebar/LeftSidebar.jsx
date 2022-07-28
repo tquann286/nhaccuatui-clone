@@ -10,7 +10,7 @@ import nctLogo from 'images/nct-logo-v2.png'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { scrollBarStyles } from 'services/LeftSidebar'
 
-import { overlayAuthStyles } from 'services/PopupModal'
+import { overlayCommonStyles } from 'services/PopupModal'
 
 import { useStore, actions } from 'store'
 
@@ -121,7 +121,7 @@ const LeftSidebar = () => {
                   {' | '}
                   <span onClick={toggleShowSignUp}>{lang === 'vi' ? 'Đăng ký' : 'Sign up'}</span>
                 </p>
-                <PopupModal showModal={showLogin || showSignUp} toggleModal={(showLogin && toggleShowLogin) || (showSignUp && toggleShowSignUp)} overlayStyles={overlayAuthStyles}>
+                <PopupModal showModal={showLogin || showSignUp} toggleModal={(showLogin && toggleShowLogin) || (showSignUp && toggleShowSignUp)} overlayStyles={overlayCommonStyles}>
                   {(showLogin || showSignUp) && <AuthForm />}
                 </PopupModal>
               </div>

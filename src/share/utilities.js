@@ -195,3 +195,8 @@ export const isFetchingFail = (status, defineLang) => {
     toastNotify(defineLang('Có lỗi khi lấy dữ liệu từ server.', 'A server error occurred while retrieving data.'), 'error')
   }
 }
+
+export const handleCopyProxy = (defineLang, link) => {
+  copyToClipboard(`${PROXY}${link}`)
+  copyNotify(defineLang)
+}
