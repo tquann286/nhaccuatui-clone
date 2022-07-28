@@ -142,3 +142,11 @@ export const defineCate = (type, songCate = [], playlistCate = [], videoCate = [
     return songCate
   }
 }
+
+// Artist
+export const artistCate = [
+  { title: { vi: 'Hot', en: 'Hot' }, value: 'hot' },
+  { title: { vi: 'Việt Nam', en: 'V-Pop' }, value: 'vn' },
+  { title: { vi: 'Âu Mỹ', en: 'US-UK' }, value: 'usuk' },
+  { title: { vi: 'Hàn Quốc', en: 'K-Pop' }, value: 'kpop' },
+]

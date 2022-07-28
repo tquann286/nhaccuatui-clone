@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Loading, SearchDetail, TopResult, SongResult, PlaylistSearch, VideoSearch } from 'components'
+import { Loading, SearchDetail, TopResult, SongResult, PlaylistSearch, VideoSearch, Navbar } from 'components'
 import { NotFound } from 'pages'
 import notfoundImg from 'images/not_found.png'
 
@@ -9,6 +9,10 @@ import { isEmpty } from 'lodash'
 const SearchResult = ({ searchQuery, searchTerm, defineLang, isLoading, setIsLoading }) => {
   const [searchResult, setSearchResult] = useState(null)
   const [currentCate, setCurrentCate] = useState('all')
+
+  const handleCateChange = (value) => {
+    setCurrentCate(value)
+  }
 
   useEffect(() => {
     const getSearchResultState = async () => {
@@ -38,21 +42,16 @@ const SearchResult = ({ searchQuery, searchTerm, defineLang, isLoading, setIsLoa
     defineLang,
   }
 
+  const navbarProps = {
+    defineLang, curCate: currentCate, handleCateChange, categories: searchResultNavbar
+  }
+
   if (searchResult) {
     const { recommend, search } = searchResult
 
     return (
       <div className='search-result-container'>
-        <div className='sr-navbar'>
-          <div className='sr-navbar-menu border-0-05'>
-            {searchResultNavbar.map((cate) => (
-              <div key={cate.value} className='sr-nav-item color-0-88' onClick={() => setCurrentCate(cate.value)}>
-                {defineLang(cate.title.vi, cate.title.en)}
-                <div className={`sr-nav-active ${isActiveCate(cate.value) && 'is-active'}`}></div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <Navbar { ... navbarProps } />
         <div className='sr-main'>
           {isEmpty(recommend) && isEmpty(search.song.song) && isEmpty(search.playlist.playlist) && isEmpty(search.video.video) ? (
             <div className='search-not-found'>
