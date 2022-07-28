@@ -42,7 +42,7 @@ const PlaylistSearch = ({ searchTerm, searchQuery, defineLang }) => {
 
   return (
     <div className='playlist-search-container common-section common-paddingLR'>
-      <div className='playlist-search-title color-0-88 search-header'>
+      <div className='playlist-search-title color-0-88 common-header'>
         {defineLang('Danh sách phát ', 'Playlist ')}
         <span className='color-0-5'>{defineLang(`(Có ${total.toLocaleString('en-US')} kết quả)`, `${total > 1 ? `(There are ${total.toLocaleString('en-US')} results)` : `(There is ${total} result)`}`)}</span>
       </div>
