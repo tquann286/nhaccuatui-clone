@@ -145,6 +145,14 @@
   width: 100%;
 }
 
+.flexCenter {
+  @include flexCenter;
+}
+
+.flex-column {
+  @include flexDirection(column);
+}
+
 .fit-width {
   @include fitContentWidth;
 }
@@ -175,11 +183,31 @@
   font-size: 1.3rem;
 }
 
+p.notfound-title {
+  font-size: 1.6rem;
+  margin: 0 1.5rem;
+  text-align: center;
+}
+
 // Utilities
+// Padding
 .pb-1-2 {
   padding-bottom: 1.2rem;
 }
 
 .pt-2 {
   padding-top: 2rem;
+}
+
+// Witdh Height
+.h100 {
+  height: 100%;
+}
+
+.w25 {
+  width: 25%;
+}
+
+.h25 {
+  height: 25%;
 }
