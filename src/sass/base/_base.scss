@@ -189,6 +189,10 @@ p.notfound-title {
   text-align: center;
 }
 
+.commonMainOutlet {
+  @include commonMainOutlet;
+}
+
 // Utilities
 // Padding
 .pb-1-2 {

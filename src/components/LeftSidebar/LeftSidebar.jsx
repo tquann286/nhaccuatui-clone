@@ -189,7 +189,7 @@ const LeftSidebar = () => {
                       <span className='color-0-5'>video</span>
                     </div>
                   </NavLink>
-                  <NavLink to='/artist'>
+                  <NavLink to='/nghe-si'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
                       <span className='color-0-5'>{lang === 'vi' ? 'nghệ sỹ' : 'artist'}</span>
