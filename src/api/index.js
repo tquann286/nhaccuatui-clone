@@ -44,3 +44,6 @@ export const getSearchVideo = (key, pageIndex = 1, pageSize = 36) => client.post
 
 // Explore
 export const getGenre = (type, key, pageIndex = 1, order = 1, pageSize = 36) => client.post('genre', joinQueryString({ type, key, order, pageIndex, pageSize }))
+
+// Artist
+export const getArtistDetail = (shortLink, type = 'all', size = 20, index = 1, sort = 0) => client.post('artist/detail', joinQueryString({ shortLink, type, size, index, sort }))

@@ -104,7 +104,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang, songView, type, d
 
                 return (
                   <React.Fragment key={artistId}>
-                    <Link to={createArtistUrl(name, shortLink, artistId)}>
+                    <Link to={createArtistUrl(name, shortLink)}>
                       <span>{name}</span>
                     </Link>
                     {i + 1 === artists.length ? '' : ', '}

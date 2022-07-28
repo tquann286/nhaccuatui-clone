@@ -61,7 +61,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
                             const { artistId, imageUrl, name, shortLink } = artist
 
                             return (
-                              <Link to={createArtistUrl(name, shortLink, artistId)} key={artistId} className='nr-artist-img'>
+                              <Link to={createArtistUrl(name, shortLink)} key={artistId} className='nr-artist-img'>
                                 <img src={imageUrl} />
                               </Link>
                             )
@@ -74,7 +74,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 
                             return (
                               <React.Fragment key={artistId}>
-                                <Link to={createArtistUrl(name, shortLink, artistId)} key={artistId}>
+                                <Link to={createArtistUrl(name, shortLink)} key={artistId}>
                                   <span>{name}</span>
                                 </Link>
                                 {index + 1 === artists.length ? '' : ', '}

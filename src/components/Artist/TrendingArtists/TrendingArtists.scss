@@ -6,4 +6,18 @@
   .common-header {
     margin-bottom: unset;
   }
+
+  .artists-trending-main {
+    @include display-flex;
+    margin-top: 2.4rem;
+
+    .artists-trending-top1 {
+      width: 25%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      border-radius: 0.4rem;
+      box-shadow: 0 0.4rem 0.8rem rgba(0,0,0,0.2);
+    }
+  }
 }

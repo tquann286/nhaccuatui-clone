@@ -71,7 +71,7 @@ const NoPlayingSong = ({ defineSong }) => {
 
                     return (
                       <React.Fragment key={artistId}>
-                        <Link to={createArtistUrl(name, shortLink, artistId)}>
+                        <Link to={createArtistUrl(name, shortLink)}>
                           <span className='suggest-artist-name'>{name}</span>
                         </Link>
                         {index + 1 !== artists.length && ', '}

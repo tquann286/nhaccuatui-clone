@@ -194,7 +194,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
                         const { artistId, imageUrl, name, shortLink } = artist
 
                         return (
-                          <Link to={`/${createArtistUrl(name, shortLink, artistId)}`} key={artistId} className='maybe-hit-artist-img'>
+                          <Link to={`/${createArtistUrl(name, shortLink)}`} key={artistId} className='maybe-hit-artist-img'>
                             <img src={imageUrl} alt='' />
                           </Link>
                         )
@@ -206,7 +206,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
 
                         return (
                           <React.Fragment key={artistId}>
-                            <Link to={`/${createArtistUrl(name, shortLink, artistId)}`} key={artistId}>
+                            <Link to={`/${createArtistUrl(name, shortLink)}`} key={artistId}>
                               <span>{name}</span>
                             </Link>
                             {index + 1 === maybeHit.artists.length ? '' : ', '}

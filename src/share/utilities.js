@@ -47,17 +47,17 @@ export const createSongUrl = (title, keyId) => {
   }
 }
 
-export const createArtistUrl = (name, shortLink, artistId) => {
-  if (name && shortLink && artistId) {
-    return `nghe-si/${shortLink}&k=${artistId}`
+export const createArtistUrl = (name, shortLink) => {
+  if (name && shortLink) {
+    return `/nghe-si/${shortLink}`
   } else {
-    return `tim-kiem?q=${replaceDashUrl(name)}`
+    return `/tim-kiem?q=${name}`
   }
 }
 
 export const createTopicUrl = (title, keyId) => {
   if (title && keyId) {
-    return `chu-de/${createSlug(title)}&k=${keyId}`
+    return `/chu-de/${createSlug(title)}&k=${keyId}`
   } else {
     return '/'
   }
@@ -65,7 +65,7 @@ export const createTopicUrl = (title, keyId) => {
 
 export const createTop100Url = (title, keyId) => {
   if (title && keyId) {
-    return `top-100/${createSlug(title)}&k=${keyId}`
+    return `/top-100/${createSlug(title)}&k=${keyId}`
   } else {
     return '/'
   }
@@ -200,3 +200,5 @@ export const handleCopyProxy = (defineLang, link) => {
   copyToClipboard(`${PROXY}${link}`)
   copyNotify(defineLang)
 }
+
+export const getCurrentDay = () => new Date().toLocaleDateString()
