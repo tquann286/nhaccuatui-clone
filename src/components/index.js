@@ -21,6 +21,7 @@ export { default as CateBasic } from './Common/CateBasic/CateBasic'
 export { default as NotFoundV2 } from './Common/NotFound/NotFound'
 export { default as Sharing } from './Common/Sharing/Sharing'
 export { default as CenterModal } from './Common/CenterModal/CenterModal'
+export { default as ShareImage } from './Common/ShareImage'
 
 // Home
 export { default as LoadingV2 } from './Loading/LoadingV2'
