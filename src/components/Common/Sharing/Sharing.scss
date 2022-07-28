@@ -1,0 +1,17 @@
+@import 'settings';
+
+.sharing-container {
+  cursor: pointer;
+  .MuiIconButton-root {
+    padding: 1rem;
+  }
+}
+
+.MuiTooltip-tooltip {
+  font-size: 1.3rem !important;
+  background-color: $main-text-color !important;
+}
+
+.MuiTooltip-arrow {
+  color: $main-text-color !important;
+}
