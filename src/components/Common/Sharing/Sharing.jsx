@@ -6,8 +6,10 @@ import { FiShare2 } from 'react-icons/fi'
 import { CenterModal } from 'components'
 import { FaFacebookF } from 'react-icons/fa'
 import { BsLink45Deg } from 'react-icons/bs'
+import { FacebookShareButton } from 'react-share'
+import { PROXY } from 'share/constants'
 
-const Sharing = ({ defineLang, placement, handleCopyShare, handleShareFB }) => {
+const Sharing = ({ defineLang, placement, handleCopyShare, onShareWindowClose, shareLink }) => {
   const [showShare, setShowShare] = useState(false)
 
   const toggleShowShare = () => {
@@ -24,6 +26,11 @@ const Sharing = ({ defineLang, placement, handleCopyShare, handleShareFB }) => {
     showModal: showShare,
     toggleModal: toggleShowShare,
   }
+  console.log(`${PROXY}${shareLink}`)
+  const fbShareProps = {
+    url: `${PROXY}${shareLink}`,
+    onShareWindowClose,
+  }
 
   return (
     <div className='sharing-container'>
@@ -33,12 +40,14 @@ const Sharing = ({ defineLang, placement, handleCopyShare, handleShareFB }) => {
         </IconButton>
       </Tooltip>
       <CenterModal {...centerModalProps}>
-        <div className="sharing-modal-container">
-          <div className="sharing-item fb" onClick={handleShareFB}>
-            <FaFacebookF />
-            <span>Facebook</span>
-          </div>
-          <div className="sharing-item copy-link" onClick={onCopyShare}>
+        <div className='sharing-modal-container'>
+          <FacebookShareButton {...fbShareProps}>
+            <div className='sharing-item fb'>
+              <FaFacebookF />
+              <span>Facebook</span>
+            </div>
+          </FacebookShareButton>
+          <div className='sharing-item copy-link' onClick={onCopyShare}>
             <BsLink45Deg />
             <span>{defineLang('Sao chép link', 'Copy link')}</span>
           </div>
