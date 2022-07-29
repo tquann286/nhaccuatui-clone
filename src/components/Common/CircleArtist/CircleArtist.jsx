@@ -1,18 +1,15 @@
 import { Link } from 'react-router-dom'
+import { Image } from 'components'
 import { createArtistUrl } from 'share/utilities'
 import noArtistImg from 'images/default/default_artist.png'
 import './CircleArtist.scss'
 
 const CircleArtist = ({ name, shortLink, imageUrl }) => {
-  const handleErrorImg = ({ currentTarget }) => {
-    currentTarget.onerror = null
-    currentTarget.src = noArtistImg
-  }
 
   return (
     <Link to={createArtistUrl(name, shortLink)}>
       <div className='circle-artist-container'>
-        <img className='border-0-1' src={imageUrl} alt={name} title={name} onError={handleErrorImg} />
+        <Image className='border-0-1' imageUrl={imageUrl} backupImg={noArtistImg} title={name} />
         <p className='color-0-88'>{name}</p>
       </div>
     </Link>

@@ -5,8 +5,6 @@
   @include flexDirection(column);
   width: 100%;
   padding-bottom: 1.4rem;
-  padding-left: 0.3rem;
-  padding-right: 0.3rem;
 
   img {
     @include useBorder;
@@ -22,7 +20,7 @@
     font-size: 1.4rem;
     line-height: 2rem;
     max-width: 100%;
-    margin: 1rem 2.4rem 0;
+    margin-top: 1rem;
     font-weight: 600;
   }
 }
