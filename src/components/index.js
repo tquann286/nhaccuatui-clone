@@ -24,6 +24,7 @@ export { default as CenterModal } from './Common/CenterModal/CenterModal'
 export { default as ShareImage } from './Common/ShareImage'
 export { default as Navbar } from './Common/Navbar/Navbar'
 export { default as Select } from './Common/Select/Select'
+export { default as CircleArtist } from './Common/CircleArtist/CircleArtist'
 
 // Home
 export { default as LoadingV2 } from './Loading/LoadingV2'
