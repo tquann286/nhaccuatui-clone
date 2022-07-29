@@ -15,7 +15,6 @@ const ArtistMain = () => {
   const [artists, setArtists] = useState(null)
   const [renderArtists, setRenderArtists] = useState(null)
   const [count, setCount] = useState(null)
-  console.log('count: ', count)
 
   const [curCate, setCurCate] = useState(artistCate[0].value)
   const [curSubCate, setCurSubCate] = useState(subArtistCate[0].value)

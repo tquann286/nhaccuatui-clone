@@ -80,3 +80,6 @@ export { default as Karaoke } from './Discovery/Karaoke/Karaoke'
 // Artist
 export { default as ArtistMain } from './Artist/ArtistMain'
 export { default as TrendingArtists } from './Artist/TrendingArtists/TrendingArtists'
+
+// Topic
+export { default as TopicMain } from './Topic/TopicMain'

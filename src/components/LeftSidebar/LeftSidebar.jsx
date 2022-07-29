@@ -213,7 +213,7 @@ const LeftSidebar = () => {
                       <span className='color-0-5'>{lang === 'vi' ? 'chủ đề' : 'topic'}</span>
                     </div>
                   </NavLink>
-                  <NavLink to='/playlist'>
+                  <NavLink to='/playlist/tags'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
                       <span className='color-0-5'>{lang === 'vi' ? 'tuyển tập' : 'collection'}</span>
