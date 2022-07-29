@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import artist_share_fb from 'images/artist_share_fb.png'
 
-import { TrendingArtists, Title, ShareImage, ErrorBoundary, Navbar, CateBasic } from 'components'
+import { TrendingArtists, Title, ShareImage, ErrorBoundary, Navbar, CateBasic, Select } from 'components'
 import { useStore } from 'store'
-import { artistCate, subArtistCate } from 'share/Categories'
+import { artistCate, subArtistCate, charactersCate } from 'share/Categories'
 import { getArtistsMain } from 'services/Artist/Artist'
 
 const ArtistMain = () => {
@@ -64,7 +64,9 @@ const ArtistMain = () => {
             <CateBasic {...cateBasicProps} />
             </div>
           </div>
-        
+          <div className="artists-select po-ab">
+            <Select options={charactersCate}  defineLang={defineLang}  />
+          </div>
         </div>
       </div>
     </ErrorBoundary>
