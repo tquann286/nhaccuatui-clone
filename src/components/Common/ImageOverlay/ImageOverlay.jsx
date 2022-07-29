@@ -2,13 +2,13 @@ import React, { useState, useRef } from 'react'
 import noImg from 'images/default/default_player.jpg'
 import './ImageOverlay.scss'
 
-import { ExtendModal, ModalAnimate, OptionModal } from 'components'
+import { ExtendModal, Image, ModalAnimate, OptionModal } from 'components'
 
 import { BsPlayCircleFill } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { basicModal } from 'share/animation'
 
-const ImageOverlay = ({ keyId, imageUrl, title, handleNavigate, addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong, removeFav, handleRemoveFav }) => {
+const ImageOverlay = ({ keyId, imageUrl, title, backupImg, handleNavigate, addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong, removeFav, handleRemoveFav }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
 
   const positionRef = useRef(null)
@@ -50,7 +50,7 @@ const ImageOverlay = ({ keyId, imageUrl, title, handleNavigate, addToFav, handle
   const modalAnimateProps = {
     animateProps: basicModal,
     isVisible: showMoreOptions,
-    keyId
+    keyId,
   }
 
   const extendModalProps = {
@@ -64,11 +64,19 @@ const ImageOverlay = ({ keyId, imageUrl, title, handleNavigate, addToFav, handle
     handleRemoveFav: (e) => onRemoveFav(e),
   }
 
+  const imageProps = {
+    imageUrl: imageUrl || noImg,
+    backupImg,
+    alt: title || '',
+    title: title || '',
+    className: 'io-img',
+  }
+
   return (
     <div className='img-overlay-container' onClick={handleNavigate}>
-      <img className='io-img' src={imageUrl || noImg} alt={title || ''} title={title || ''} />
+      <Image { ... imageProps } />
       <OptionModal {...optionModalProps}>
-        <ModalAnimate { ... modalAnimateProps }>
+        <ModalAnimate {...modalAnimateProps}>
           <ExtendModal {...extendModalProps} />
         </ModalAnimate>
       </OptionModal>

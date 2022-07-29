@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import noVideoImg from 'images/default/default_video.png'
 import './VideoOverlay.scss'
 
-import { ExtendModal, ModalAnimate, OptionModal } from 'components'
+import { ExtendModal, Image, ModalAnimate, OptionModal } from 'components'
 import { basicModal } from 'share/animation'
 
 import { BsPlayCircleFill } from 'react-icons/bs'
@@ -56,9 +56,16 @@ const VideoOverlay = ({ imageUrl, title, duration, artists, keyId, handleNagivat
     handleAddToFav: (e) => onAddToFav(e),
   }
 
+  const imageProps = {
+    imageUrl: imageUrl || noVideoImg,
+    backupImg: noVideoImg,
+    alt: title || '',
+    title: title || '',
+  }
+
   return (
     <div className='video-overlay-container' onClick={handleNagivate}>
-      <img src={imageUrl || noVideoImg} alt={title || ''} />
+      <Image {...imageProps} />
       <div className='video-overlay-duration'>{duration}</div>
       <div className='overlay-container' ref={positionRef} title={title || ''}>
         <div className='overlay-play-btn'>

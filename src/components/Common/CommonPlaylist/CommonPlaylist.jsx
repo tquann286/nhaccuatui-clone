@@ -30,16 +30,17 @@ const CommonPlaylist = ({ keyId, artists, thumbnail, title, type, addToFav, remo
   const shadowOverlayProps = {
     width: '100%',
     shadowHeight: '0.6rem',
-    imageUrl: thumbnail || noPlaylistImg,
+    imageUrl: thumbnail,
     keyId,
     title,
     handleNavigate: onNavigatePlaylist,
     copyLink: true,
     handleCopyLink: (e) => onCopyPlaylist(e),
-    addToFav: true && addToFav, // addToFav === false ? false : true
+    addToFav: addToFav === false ? false : true,
     handleAddToFav,
     removeFav,
     handleRemoveFav,
+    backupImg: noPlaylistImg
   }
 
   return (
