@@ -202,3 +202,5 @@ export const handleCopyProxy = (defineLang, link) => {
 }
 
 export const getCurrentDay = () => new Date().toLocaleDateString()
+
+export const manualPagi = (pageIndex, itemsPerPage = 36) => ({ start: (pageIndex - 1) * itemsPerPage, end: pageIndex * itemsPerPage })
