@@ -168,8 +168,16 @@
   margin-bottom: $footer-height;
 }
 
+.margin-footer-x2 {
+  margin-bottom: calc(#{$footer-height} * 2);
+}
+
 .min-height-v1 {
   min-height: calc(100vh - #{$footer-height} * 2 - 6.2rem);
+}
+
+.min-height-100vh {
+  min-height: 100vh;
 }
 
 .clickable {
@@ -213,6 +221,10 @@ p.notfound-title {
   height: 100%;
 }
 
+.w100 {
+  width: 100%;
+}
+
 .w25 {
   width: 25%;
 }
@@ -244,4 +256,8 @@ p.notfound-title {
   top: 7.8rem;
   width: 5.6rem;
   height: 2.4rem;
+}
+
+.bottom-0-8 {
+  bottom: 0.8rem;
 }

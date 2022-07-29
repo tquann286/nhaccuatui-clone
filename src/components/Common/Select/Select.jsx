@@ -9,7 +9,7 @@ const Select = ({ defineLang, options, selectValue, handleChange }) => {
       <select className='bg-color-0-02 color-0-88 border-0-05' value={selectValue} 
       onChange={handleChange} >
         {options.map(option => (
-          <option key={option.value} value={option.value} className='bg-color-0-02 color-0-88'>{defineLang(option.title.vi, option.title.en)}</option>
+          <option key={option.value} value={option.value}>{defineLang(option.title.vi, option.title.en)}</option>
         ))}
       </select>
       <div className='dropdown color-0-5'>

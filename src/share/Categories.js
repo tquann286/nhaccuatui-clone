@@ -158,7 +158,7 @@ export const subArtistCate = [
 ]
 
 export const charactersCate = [
-  { title: { vi: 'All', en: 'All' }, value: 'All' },
+  { title: { vi: 'All', en: 'All' }, value: '' },
   { title: { vi: 'A', en: 'A' }, value: 'A' },
   { title: { vi: 'Ă', en: 'Ă' }, value: 'Ă' },
   { title: { vi: 'Â', en: 'Â' }, value: 'Â' },
