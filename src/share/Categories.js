@@ -150,3 +150,9 @@ export const artistCate = [
   { title: { vi: 'Âu Mỹ', en: 'US-UK' }, value: 'usuk' },
   { title: { vi: 'Hàn Quốc', en: 'K-Pop' }, value: 'kpop' },
 ]
+
+export const subArtistCate = [
+  { title: { vi: 'Nam', en: 'Male' }, value: '1' },
+  { title: { vi: 'Nữ', en: 'Female' }, value: '2' },
+  { title: { vi: 'Nhóm nhạc', en: 'Band' }, value: '3' },
+]
