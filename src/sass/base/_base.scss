@@ -197,6 +197,10 @@ p.notfound-title {
   @include commonMainOutlet;
 }
 
+.h100vh {
+  height: 100vh;
+}
+
 // Utilities
 // Padding
 .pb-1-2 {
