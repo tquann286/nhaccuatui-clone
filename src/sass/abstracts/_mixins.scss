@@ -158,3 +158,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@mixin appearance($value) {
+  -webkit-appearance: $value;
+  -moz-appearance: $value;
+  appearance: $value;
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import artist_share_fb from 'images/artist_share_fb.png'
 
-import { TrendingArtists, Title, ShareImage, ErrorBoundary, Navbar } from 'components'
+import { TrendingArtists, Title, ShareImage, ErrorBoundary, Navbar, CateBasic } from 'components'
 import { useStore } from 'store'
 import { artistCate, subArtistCate } from 'share/Categories'
 import { getArtistsMain } from 'services/Artist/Artist'
@@ -19,11 +19,22 @@ const ArtistMain = () => {
     setCurCate(newCate)
   }
 
+  const handleSubCateChange = (newCate) => {
+    setCurSubCate(newCate)
+  }
+
   const navbarProps = {
     defineLang,
     curCate,
     handleCateChange,
     categories: artistCate,
+  }
+
+  const cateBasicProps = {
+    defineLang,
+    curCate: curSubCate,
+    handleCateChange: handleSubCateChange,
+    categories: subArtistCate,
   }
 
   useEffect(() => {
@@ -38,7 +49,7 @@ const ArtistMain = () => {
     }
 
     getArtistsState()
-  }, [])
+  }, [curCate, curSubCate])
 
   return (
     <ErrorBoundary>
@@ -46,7 +57,15 @@ const ArtistMain = () => {
         <Title title={defineLang('Nghệ sĩ - Danh sách ca sĩ, nhóm nhạc mới hot nhất hiện nay', 'Artist - New singers and groups today')} />
         <ShareImage imageUrl={artist_share_fb} />
         <TrendingArtists defineLang={defineLang} />
-        <Navbar {...navbarProps} />
+        <div className="po-re">
+          <div>
+            <Navbar {...navbarProps} />
+            <div className='pt-2 common-paddingLR'>
+            <CateBasic {...cateBasicProps} />
+            </div>
+          </div>
+        
+        </div>
       </div>
     </ErrorBoundary>
   )
