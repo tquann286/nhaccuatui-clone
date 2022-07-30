@@ -61,10 +61,6 @@ const ArtistMain = () => {
     }
   }, [artists, pageIndex, selectValue])
 
-  if (!artists) return null
-
-  if (!renderArtists) return null
-
   const navbarProps = {
     defineLang,
     curCate,
@@ -112,7 +108,7 @@ const ArtistMain = () => {
             </div>
           ) : (
             <Grid container spacing={2}>
-              {renderArtists.map((artist) => (
+              {renderArtists?.map((artist) => (
                 <Grid key={artist.artistId} item xs={3} sm={3} md={3} xl={2}>
                   <CircleArtist {...artist} />
                 </Grid>

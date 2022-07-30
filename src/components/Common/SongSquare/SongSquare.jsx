@@ -35,7 +35,8 @@ const SongSquare = ({ keyId, artists, title, thumbnail, duration, type }) => {
     addToFav: true,
     handleAddToFav: (e) => handleAddToFav(e),
     goToSong: true,
-    handleGoToSong: onNavigateSong
+    handleGoToSong: onNavigateSong,
+    backupImg: noSongImg
   }
 
   return (

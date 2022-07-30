@@ -1,0 +1,13 @@
+@import 'settings';
+
+.topic-slider-container {
+
+  .topic-slide-img {
+    position: relative;
+    width: 100%;
+    padding-top: 31.25%;
+    -webkit-transition: background-image 300ms linear,background-color 300ms linear;
+    transition: background-image 300ms linear,background-color 300ms linear;
+    will-change: background-image,background-color;
+  }
+}

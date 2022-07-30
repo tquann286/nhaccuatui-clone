@@ -7,6 +7,7 @@ export const trendArtSwiperProps = {
     delay: 3000,
     disableOnInteraction: false,
   },
+  pauseOnMouseEnter: true,
   modules: [Autoplay],
   loop: true,
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import './TopicMain.scss'
 
-import { LoadingV2, Title } from 'components'
+import { LoadingV2, Title, TopicSlider } from 'components'
 import { getTopicsMain } from 'services/Topic/TopicMain'
 import { useStore } from 'store'
 
@@ -11,7 +11,6 @@ const TopicMain = () => {
 
   const [topicContent, setTopicContent] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-  console.log('topicContent: ', topicContent)
 
   useEffect(() => {
     const getTopicsState = async () => {
@@ -36,9 +35,17 @@ const TopicMain = () => {
       </div>
     )
 
+  const topicSliderProps = {
+    defineLang,
+    topicCover: topicContent?.topicCover,
+  }
+
   return (
     <div className='commonMainOutlet'>
       <Title title={defineLang('Nghe nhạc cực HOT theo chủ đề - NhacCuaTui Clone', 'Listen to HOT music by topic - NhacCuaTui')} />
+      <div className="topic-main-container">
+        <TopicSlider { ... topicSliderProps } />
+      </div>
     </div>
   )
 }
