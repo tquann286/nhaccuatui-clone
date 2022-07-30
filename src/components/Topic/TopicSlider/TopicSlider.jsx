@@ -9,13 +9,12 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 const TopicSlider = ({ defineLang, topicCover }) => {
   const [activeTopic, setActiveTopic] = useState(0)
   const [readMore, setReadMore] = useState(false)
-  console.log('activeTopic: ', activeTopic)
 
   const toggleReadMore = () => {
     setReadMore(!readMore)
   }
 
-  useSlider(setActiveTopic, topicCover)
+  useSlider(setActiveTopic, topicCover, 5000)
 
   if (!topicCover) return null
   

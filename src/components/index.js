@@ -25,6 +25,7 @@ export { default as ShareImage } from './Common/ShareImage'
 export { default as Navbar } from './Common/Navbar/Navbar'
 export { default as Select } from './Common/Select/Select'
 export { default as CircleArtist } from './Common/CircleArtist/CircleArtist'
+export { default as TopicItem } from './Common/TopicItem/TopicItem'
 export { default as Image } from './Common/Image'
 
 // Home

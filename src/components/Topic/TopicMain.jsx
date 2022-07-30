@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import './TopicMain.scss'
 
-import { LoadingV2, Title, TopicSlider } from 'components'
+import { LoadingV2, Title, TopicItem, TopicSlider } from 'components'
 import { getTopicsMain } from 'services/Topic/TopicMain'
 import { useStore } from 'store'
+import { Grid } from '@mui/material'
 
 const TopicMain = () => {
   const [state] = useStore()
@@ -45,6 +46,16 @@ const TopicMain = () => {
       <Title title={defineLang('Nghe nhạc cực HOT theo chủ đề - NhacCuaTui Clone', 'Listen to HOT music by topic - NhacCuaTui')} />
       <div className="topic-main-container">
         <TopicSlider { ... topicSliderProps } />
+        <div className="topic-main-title common-title color-0-88 common-marginTLR">{defineLang('Chủ đề', 'Topics')}</div>
+        <div className="topic-main-content common-marginTLR">
+          <Grid container spacing={2}>
+            {topicContent?.topic.map(topic => (
+              <Grid item xs={3} sm={3} md={3} xl={2}>
+                <TopicItem { ... topic } keyId={topic.key} />
+              </Grid>
+            ))}
+          </Grid>
+        </div>
       </div>
     </div>
   )
