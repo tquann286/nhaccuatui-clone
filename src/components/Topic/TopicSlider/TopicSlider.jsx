@@ -1,41 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './TopicSlider.scss'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/scss'
-import 'swiper/scss/effect-fade'
-import 'swiper/scss/autoplay'
-
+import { useSlider } from 'hooks'
 import { createTopicUrl } from 'share/utilities'
-import { topicSwiperProps } from 'services/Topic/TopicSlider'
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
 const TopicSlider = ({ defineLang, topicCover }) => {
-  console.log('topicCover: ', topicCover)
+  const [activeTopic, setActiveTopic] = useState(0)
+  const [readMore, setReadMore] = useState(false)
+  console.log('activeTopic: ', activeTopic)
+
+  const toggleReadMore = () => {
+    setReadMore(!readMore)
+  }
+
+  useSlider(setActiveTopic, topicCover)
 
   if (!topicCover) return null
-
   
+  const { backgroundColor, coverImageURL, description, key, thumbURL, title } = topicCover[activeTopic]
+
+  const imgStyle = {
+    backgroundColor,
+    backgroundImage: `url(${coverImageURL})`,
+  }
+
   return (
-    <div className='topic-slider-container bg-color-0-05'>
-      <Swiper { ... topicSwiperProps }>
-        {topicCover.map(topic => {
-          const { backgroundColor, coverImageURL, description, key, thumbURL, title } = topic
-          const imgStyle = {
-            backgroundColor,
-            backgroundImage: `url(${coverImageURL})`
-          }
-
-          return (
-            <SwiperSlide key={key} >
-              <Link to={createTopicUrl(title, key)}>
-                <div className='topic-slide-img' style={imgStyle}></div>
-              </Link>
-
-            </SwiperSlide>
-          )
-        })}
-      </Swiper>
+    <div className='topic-slider-container'>
+      <Link to={createTopicUrl(title, key)}>
+        <div className='topic-slide-img' style={imgStyle}></div>
+      </Link>
+      <div className={`topic-desc color-0-5 ${readMore && 'is-read-more'}`}>
+        {description}
+      </div>
+      <div className="color-0-5 clickable pt0-lr3-2 width-fit-content w3-row alcenter" onClick={toggleReadMore}>
+        <MdOutlineKeyboardArrowDown className={`${readMore && 'show-detail'}`} />
+        <span className='ml-0-5'>{defineLang('Thêm', 'Read more')}</span>
+      </div>
     </div>
   )
 }
