@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import './App.scss'
 
 import { useStore, actions } from 'store'
-
-import './App.scss'
 import { Explore, Homepage, NotFound, Search, User, Favorite, SongPage, Playlist, Video, Artist, Topic } from 'pages'
 import { auth } from 'config/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
-import { MainHomepage, SongPlaylistVideo, ArtistMain, TopicMain } from 'components'
+import { MainHomepage, SongPlaylistVideo, ArtistMain, TopicMain, Collection } from 'components'
 import { getFavSongs, getFavPlaylists } from 'services/User/Favorite'
-
 
 const App = () => {
   const [state, dispatch] = useStore()
@@ -83,6 +81,7 @@ const App = () => {
           </Route>
           <Route path='playlist' element={<Playlist />}>
             <Route index element={<SongPlaylistVideo type='playlist' />} />
+            <Route path='tags' element={<Collection />} />
           </Route>
           <Route path='video' element={<Video />}>
             <Route index element={<SongPlaylistVideo type='mv' />} />

@@ -85,3 +85,6 @@ export { default as TrendingArtists } from './Artist/TrendingArtists/TrendingArt
 // Topic
 export { default as TopicMain } from './Topic/TopicMain'
 export { default as TopicSlider } from './Topic/TopicSlider/TopicSlider'
+
+// Playlist
+export { default as Collection } from './Playlist/Collection/Collection'
