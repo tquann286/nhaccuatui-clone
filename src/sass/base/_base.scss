@@ -203,6 +203,10 @@ p.notfound-title {
 
 // Utilities
 // Padding
+.pt-100 {
+  padding-top: 100%;
+}
+
 .pb-1-2 {
   padding-bottom: 1.2rem;
 }
@@ -268,4 +272,28 @@ p.notfound-title {
 
 .bottom-0-8 {
   bottom: 0.8rem;
+}
+
+.use-border {
+  @include useBorder;
+}
+
+.bdrs4 {
+  border-radius: 0.4rem;
+}
+
+.over-hide {
+  overflow: hidden;
+}
+
+.blur-layer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  opacity: 0;
+  -webkit-transition: opacity 300ms ease-out;
+  transition: opacity 300ms ease-out;
+  will-change: opacity;
 }
