@@ -48,7 +48,7 @@ const PlaylistFav = ({ defineLang, currentUser }) => {
           </div>
         )}
       </div>
-      <div className='playlist-fav-main pt-2'>
+      <div className='playlist-fav-main pt2'>
         <Grid container spacing={2}>
           {favPlaylists.slice().reverse()?.map((playlist) => (
             <Grid item key={playlist.key || playlist.keyId} xs={3} sm={3} md={3} xl={2}>

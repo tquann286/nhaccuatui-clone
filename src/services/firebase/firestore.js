@@ -41,6 +41,7 @@ export const removeFavItem = (item, cate, defineLang) => {
       updateDoc(currentUserRef, {
         'favorite.videos': arrayRemove(item),
       })
+      toastNotify(defineLang('Xóa video khỏi yêu thích thành công', 'Removed video from favorite successfully'), 'success')
       break
     default:
       break

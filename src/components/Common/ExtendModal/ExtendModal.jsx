@@ -44,7 +44,7 @@ const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToS
             <span>{defineLang('Nghe audio', 'Play audio')}</span>
           </li>
         )}
-        {auth.currentUser && addToFav && (
+        {(auth.currentUser && addToFav) && (
           <li className='hover-bg-color-0-05' onClick={(e) => onAddToFav(e)}>
             <SiYoutubemusic />
             <span>{defineLang('Thêm vào yêu thích', 'Add to favorite')}</span>
