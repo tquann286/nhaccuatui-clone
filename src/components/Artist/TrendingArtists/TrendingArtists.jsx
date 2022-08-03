@@ -70,7 +70,7 @@ const TrendingArtists = ({ defineLang }) => {
                   <Link to={createArtistUrl(name, shortLink)}>
                     <div className='artist-item hover-bg-color-0-05'>
                       <p className='artist-item-position color-0-5'>{position}</p>
-                      <div className='w2-2rem mr-1'>
+                      <div className='w2-2rem mr1'>
                         <div className='new-label'>New</div>
                       </div>
                       <div className='artist-item-name color-0-88'>{name}</div>

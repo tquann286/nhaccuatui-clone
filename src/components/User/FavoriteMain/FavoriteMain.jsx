@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import './FavoriteMain.scss'
 
-import { CateCommon, Footer, SongFav, ErrorBoundary, PlaylistFav } from 'components'
+import { CateCommon, Footer, SongFav, ErrorBoundary, PlaylistFav, VideoFav } from 'components'
 import { favCateNav } from 'services/User/Favorite'
 
 import { useStore } from 'store'
@@ -37,6 +37,7 @@ const FavoriteMain = () => {
           <div className='fm-content'>
             {curCate === 'song' && <SongFav {...cateFavProps} />}
             {curCate === 'playlist' && <PlaylistFav {...cateFavProps} />}
+            {curCate === 'video' && <VideoFav {...cateFavProps} />}
           </div>
         </div>
         <Footer />
