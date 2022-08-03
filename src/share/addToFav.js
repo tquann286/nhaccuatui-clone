@@ -26,6 +26,13 @@ export const handleAddToFavSong = async (song, favSongs = [], defineLang) => {
 export const handleAddToFavPlaylist = async (playlist, defineLang) => {
   if (auth.currentUser) {
     if (playlist) {
+      const isDuplicate = favPlaylists.filter(pl => (pl.key || pl.keyId) === (playlist.key || playlist.keyId))
+      
+      if (!isEmpty(isDuplicate)) {
+        toastNotify(defineLang('Danh sách phát đã có trong yêu thích.', 'Playlist already exists in favorite lists.'))
+        return null
+      }
+
       await addFavPlaylist(playlist)
       toastNotify(defineLang('Thêm danh sách phát vào danh sách yêu thích thành công.', 'Successfully added playlist to favorite list.'), 'success')
     } else {
@@ -39,6 +46,13 @@ export const handleAddToFavPlaylist = async (playlist, defineLang) => {
 export const handleAddToFavVideo = async (video, defineLang) => {
   if (auth.currentUser) {
     if (video) {
+      const isDuplicate = favVideos.filter(vd => (vd.key || vd.keyId) === (video.key || video.keyId))
+      
+      if (!isEmpty(isDuplicate)) {
+        toastNotify(defineLang('Video đã có trong yêu thích.', 'Video already exists in favorite lists.'))
+        return null
+      }
+
       await addFavVideo(video)
       toastNotify(defineLang('Thêm video vào danh sách yêu thích thành công.', 'Successfully added video to favorite list.'), 'success')
     } else {
