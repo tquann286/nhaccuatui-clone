@@ -6,7 +6,7 @@ import notfoundImg from 'images/not_found.png'
 import { getSearchResult, searchResultNavbar } from 'services/Search/SearchResult'
 import { isEmpty } from 'lodash'
 
-const SearchResult = ({ searchQuery, searchTerm, defineLang, isLoading, setIsLoading }) => {
+const SearchResult = ({ searchQuery, searchTerm, defineLang, isLoading, setIsLoading, favPlaylists }) => {
   const [searchResult, setSearchResult] = useState(null)
   const [currentCate, setCurrentCate] = useState('all')
 
@@ -62,7 +62,7 @@ const SearchResult = ({ searchQuery, searchTerm, defineLang, isLoading, setIsLoa
             <React.Fragment>
               {currentCate === 'all' && (
                 <React.Fragment>
-                  {isEmpty(recommend) || <TopResult {...recommend} defineLang={defineLang} />}
+                  {isEmpty(recommend) || <TopResult {...recommend} defineLang={defineLang} favPlaylists={favPlaylists} />}
                   {isEmpty(search) || <SearchDetail {...search} defineLang={defineLang} />}
                 </React.Fragment>
               )}

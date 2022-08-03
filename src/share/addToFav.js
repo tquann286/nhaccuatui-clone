@@ -23,7 +23,7 @@ export const handleAddToFavSong = async (song, favSongs = [], defineLang) => {
   }
 }
 
-export const handleAddToFavPlaylist = async (playlist, defineLang) => {
+export const handleAddToFavPlaylist = async (playlist, favPlaylists = [], defineLang) => {
   if (auth.currentUser) {
     if (playlist) {
       const isDuplicate = favPlaylists.filter(pl => (pl.key || pl.keyId) === (playlist.key || playlist.keyId))
@@ -43,7 +43,7 @@ export const handleAddToFavPlaylist = async (playlist, defineLang) => {
   }
 }
 
-export const handleAddToFavVideo = async (video, defineLang) => {
+export const handleAddToFavVideo = async (video, favVideos = [], defineLang) => {
   if (auth.currentUser) {
     if (video) {
       const isDuplicate = favVideos.filter(vd => (vd.key || vd.keyId) === (video.key || video.keyId))

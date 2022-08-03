@@ -14,7 +14,7 @@ import { handleAddToFavVideo } from 'share/addToFav'
 
 const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMapping, type }) => {
   const [state] = useStore()
-  const defineLang = (vie, eng) => state.lang === 'vi' ? vie : eng
+  const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
 
   const [showMoreOptions, setShowMoreOptions] = useState(false)
 
@@ -43,7 +43,7 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
 
   const onAddToFav = (e) => {
     e.stopPropagation()
-    handleAddToFavVideo({ keyId, artists, duration, refMapping, thumbnail, title, type }, defineLang)
+    handleAddToFavVideo({ keyId, artists, duration, refMapping, thumbnail, title, type }, state.favVideos, defineLang)
     toggleShowMore()
   }
 
@@ -102,10 +102,10 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
         </div>
       </div>
       <OptionModal {...optionModalProps}>
-      <ModalAnimate {...modalAnimateProps}>
-        <ExtendModal {...extendModalProps} />
-      </ModalAnimate>
-    </OptionModal>
+        <ModalAnimate {...modalAnimateProps}>
+          <ExtendModal {...extendModalProps} />
+        </ModalAnimate>
+      </OptionModal>
     </React.Fragment>
   )
 }

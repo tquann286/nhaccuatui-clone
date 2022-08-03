@@ -10,7 +10,7 @@ import { useStore } from 'store'
 
 const SearchContent = () => {
   const [state] = useStore()
-  const { lang } = state
+  const { lang, favPlaylists } = state
 
   const { search: searchLocation } = useLocation()
   const [searchParams, setSearchParams] = useSearchParams()
@@ -69,6 +69,7 @@ const SearchContent = () => {
     setSearchTerm,
     isLoading,
     setIsLoading,
+    favPlaylists
   }
 
   return (

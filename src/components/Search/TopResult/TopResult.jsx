@@ -8,7 +8,7 @@ import 'swiper/scss'
 import { topResultSwiperProps } from 'services/Search/SearchResult'
 import { PlaylistResult, TopSongResult } from 'components'
 
-const TopResult = ({ playlist, song, defineLang, isLoading }) => {
+const TopResult = ({ playlist, song, defineLang, isLoading, favPlaylists }) => {
   if (isLoading) return null
 
   return (
@@ -25,7 +25,7 @@ const TopResult = ({ playlist, song, defineLang, isLoading }) => {
           <React.Fragment>
             {playlist.map((pl) => (
               <SwiperSlide key={pl.key}>
-                <PlaylistResult playlist={pl} defineLang={defineLang} />
+                <PlaylistResult playlist={pl} defineLang={defineLang} favPlaylists={favPlaylists} />
               </SwiperSlide>
             ))}
           </React.Fragment>

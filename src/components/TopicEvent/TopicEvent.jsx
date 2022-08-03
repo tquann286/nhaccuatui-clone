@@ -16,7 +16,7 @@ import { useStore } from 'store'
 
 const TopicEvent = ({ topicEvent = [] }) => {
   const [state] = useStore()
-  const { lang } = state
+  const { lang, favPlaylists } = state
 	const navigate = useNavigate()
 
 	const onNavigatePlaylist = (title, keyId) => {
@@ -51,6 +51,7 @@ const TopicEvent = ({ topicEvent = [] }) => {
 												title={title}
 												onNavigatePlaylist={onNavigatePlaylist}
 												lang={lang}
+												favPlaylists={favPlaylists}
 											/>
 										</SwiperSlide>
 									)

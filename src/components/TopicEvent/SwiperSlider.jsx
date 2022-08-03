@@ -7,7 +7,7 @@ import { handleCopyPlaylist } from 'share/utilities'
 import { basicModal } from 'share/animation'
 import { handleAddToFavPlaylist } from 'share/addToFav'
 
-const SwiperSlider = ({ keyId, title, thumbnail, onNavigatePlaylist, lang, type = 'PLAYLIST' }) => {
+const SwiperSlider = ({ keyId, title, thumbnail, onNavigatePlaylist, lang, type = 'PLAYLIST',favPlaylists }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
   const defineLang = (vie, eng) => (lang === 'vi' ? vie : eng)
 
@@ -31,7 +31,7 @@ const SwiperSlider = ({ keyId, title, thumbnail, onNavigatePlaylist, lang, type 
 
   const handleAddToFav = (e) => {
     e.stopPropagation()
-    handleAddToFavPlaylist({ keyId, thumbnail, title, type }, defineLang)
+    handleAddToFavPlaylist({ keyId, thumbnail, title, type }, favPlaylists, defineLang)
     toggleShowMore()
   }
 

@@ -6,7 +6,7 @@ import { CommonArtist, ImageOverlay } from 'components'
 import { createPlaylistUrl, handleCopyPlaylist } from 'share/utilities'
 import { handleAddToFavPlaylist } from 'share/addToFav'
 
-const PlaylistResult = ({ playlist, defineLang }) => {
+const PlaylistResult = ({ playlist, favPlaylists, defineLang }) => {
   const navigate = useNavigate()
 
   if (!playlist) return null
@@ -22,7 +22,7 @@ const PlaylistResult = ({ playlist, defineLang }) => {
   }
 
   const handleAddToFav = () => {
-    handleAddToFavPlaylist({ artists, key, thumbnail, title, type }, defineLang)
+    handleAddToFavPlaylist({ artists, key, thumbnail, title, type }, favPlaylists, defineLang)
   }
 
   const imageOverlayProps = {
