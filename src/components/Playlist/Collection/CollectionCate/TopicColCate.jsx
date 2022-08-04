@@ -1,8 +1,9 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useCallback } from 'react'
 
 import { MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { FullColCate } from 'components'
 import { useOnClickOutside } from 'hooks'
+import { BsCheck } from 'react-icons/bs'
 
 const TopicColCate = ({ defineLang, title, value: topicValue, mainCate, subCate, colCate, handleColCate }) => {
   const [loadMore, setLoadMore] = useState(false)
@@ -21,12 +22,15 @@ const TopicColCate = ({ defineLang, title, value: topicValue, mainCate, subCate,
     toggleLoadMore()
   }
 
+  const isActiveCate = useCallback((cateValue) => colCate.filter(collect => collect.value.value === cateValue).length !== 0 ? true : false, [colCate])
+
   const fullColCateProps = {
     defineLang,
     ref: fullColCateRef,
     subCate,
     colCate,
-    onChangeColCate
+    onChangeColCate,
+    isActiveCate
   }
 
   return (
@@ -35,8 +39,8 @@ const TopicColCate = ({ defineLang, title, value: topicValue, mainCate, subCate,
       {mainCate.map((cate) => {
         const { title, value } = cate
         return (
-          <div key={value} className='collection-cate' onClick={() => handleColCate(cate, topicValue)}>
-            <MdOutlineKeyboardArrowRight />
+          <div key={value} className={`collection-cate ${isActiveCate(value) && '!text-main'}`} onClick={() => handleColCate(cate, topicValue)}>
+            {isActiveCate(value) ? <BsCheck /> : <MdOutlineKeyboardArrowRight />}
             <div className='w3-rest truncate' title={defineLang(title.vi, title.en)}>
               {defineLang(title.vi, title.en)}
             </div>
