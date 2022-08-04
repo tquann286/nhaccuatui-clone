@@ -9,7 +9,7 @@ const MainColCate = ({ defineLang, colCate, handleColCate }) => {
   }
 
   return (
-    <div className="pt-6 pb-3 w3-row">
+    <div className="pt-6 pb-3 w3-row border-b border-0-05 border-solid">
       {collectionCate.map(collect => (
         <TopicColCate key={collect.value} { ... collect } { ... topicColCateProps } />
       ))}

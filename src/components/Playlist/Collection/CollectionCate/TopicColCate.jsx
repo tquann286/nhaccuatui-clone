@@ -39,7 +39,7 @@ const TopicColCate = ({ defineLang, title, value: topicValue, mainCate, subCate,
       {mainCate.map((cate) => {
         const { title, value } = cate
         return (
-          <div key={value} className={`collection-cate ${isActiveCate(value) && '!text-main'}`} onClick={() => handleColCate(cate, topicValue)}>
+          <div key={value} className={`collection-cate ${isActiveCate(value) && '!text-main font-semibold'}`} onClick={() => handleColCate(cate, topicValue)}>
             {isActiveCate(value) ? <BsCheck /> : <MdOutlineKeyboardArrowRight />}
             <div className='w3-rest truncate' title={defineLang(title.vi, title.en)}>
               {defineLang(title.vi, title.en)}
