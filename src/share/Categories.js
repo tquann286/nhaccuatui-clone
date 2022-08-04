@@ -195,7 +195,7 @@ export const charactersCate = [
 ]
 
 // Collection
-const collectionCate = [
+export const collectionCate = [
   {
     title: {
       vi: 'Nhạc trẻ',
@@ -278,7 +278,7 @@ const collectionCate = [
       { title: { vi: 'Ngọt Ngào', en: 'Sweet' }, value: 'ngot-ngao' },
       { title: { vi: 'Thư Giãn', en: 'Relax' }, value: 'thu-gian' },
     ],
-    value: 'genre',
+    value: 'mood',
   },
   {
     title: {
@@ -330,7 +330,7 @@ const collectionCate = [
       { title: { vi: 'Sinh Nhật', en: 'Birthday' }, value: 'sinh-nhat' },
       { title: { vi: 'Xế Chiều', en: 'Twiligh' }, value: 'xe-chieu' },
     ],
-    value: 'genre',
+    value: 'scene',
   },
   {
     title: {
@@ -369,6 +369,6 @@ const collectionCate = [
       { title: { vi: 'Đoàn - Đảng', en: 'Union - Party' }, value: 'doan-dang' },
       { title: { vi: 'Quê Hương', en: 'Countryside' }, value: 'que-huong' },
     ],
-    value: 'genre',
+    value: 'topic',
   },
 ]

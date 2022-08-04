@@ -106,7 +106,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
             return (
               <Link key={key} to={createSongUrl(title, key)} className='nr-thumb-img' title={title}>
                 <img src={thumbnail} alt={title} />
-                <div className='blur'>
+                <div className='blur-layer'>
                   <BsPlayCircleFill />
                 </div>
               </Link>

@@ -135,7 +135,7 @@ $active-img-width: 16rem;
 				width: 8rem;
 			}
 
-			.blur {
+			.blur-layer {
 				@include flexCenter;
 				@include transition-effect(0.2s);
 				position: absolute;

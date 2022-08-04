@@ -12,10 +12,14 @@ module.exports = {
       margin: {
         '16px': '1.6rem',
       },
-      text: {
-        '14px': '1.4rem',
-      },
     },
+    fontSize: {
+      sm: ['1.4rem', '2rem'],
+      base: ['1.6rem', '2.4rem'],
+      lg: ['2rem', '2.8rem'],
+      xl: ['2.4rem', '3.2rem'],
+      '2xl': ['2.8rem', '3.6rem'],
+    }
   },
   plugins: [],
 }

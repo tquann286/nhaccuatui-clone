@@ -49,7 +49,7 @@ const MusicCard = ({ keyId, region, song, bgImage, category, lang }) => {
 							}}
 							title={title}
 						>
-							<div className='ma-thumb-icon'>
+							<div className='ma-thumb-icon flex items-center justify-center'>
 								<BsPlayCircleFill />
 							</div>
 							<div className='ma-blur'></div>
