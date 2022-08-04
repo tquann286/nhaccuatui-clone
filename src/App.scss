@@ -8,6 +8,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .collection-cate {
+    @apply w3-row relative h-10 mt-1.5 ml-16px w-full color-0-5 transition-colors hoverMainColor flex items-center text-sm cursor-pointer capitalize;
+  }
+}
+
 html {
   font-size: 62.5%;
 }

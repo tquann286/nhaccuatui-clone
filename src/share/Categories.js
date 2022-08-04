@@ -244,7 +244,6 @@ export const collectionCate = [
       { title: { vi: 'Opera', en: 'Opera' }, value: 'opera' },
       { title: { vi: 'Hợp Xướng', en: 'Chorus' }, value: 'hop-xuong-chorus' },
       { title: { vi: 'Vocaloid', en: 'Vocaloid' }, value: 'vocaloid' },
-      { title: { vi: 'Opera', en: 'Opera' }, value: 'opera' },
       { title: { vi: 'Utaite', en: 'Utaite' }, value: 'utaite' },
       { title: { vi: 'Không Lời', en: 'No Lyric' }, value: 'khong-loi' },
       { title: { vi: 'Hòa Tấu', en: 'Concert' }, value: 'hoa-tau' },

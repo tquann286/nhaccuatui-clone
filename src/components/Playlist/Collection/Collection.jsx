@@ -8,7 +8,6 @@ const Collection = () => {
   const defineLang = useCallback((vie, eng) => state.lang === 'vi' ? vie : eng, [state.lang])
   
   const [colCate, setColCate] = useState([])
-  
 
   const mainColCateProps = {
     defineLang,
@@ -16,7 +15,7 @@ const Collection = () => {
   }
 
   return (
-    <div className='collection-container commonMainOutlet'>
+    <div className='collection-container min-h-[1500px] commonMainOutlet'>
       <div className="pt-10 common-paddingLR">
         <MainColCate {...mainColCateProps} />
       </div>
