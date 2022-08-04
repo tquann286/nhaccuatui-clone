@@ -297,7 +297,3 @@ p.notfound-title {
   transition: opacity 300ms ease-out;
   will-change: opacity;
 }
-
-.hoverMainColor {
-  @include hoverMainColor;
-}

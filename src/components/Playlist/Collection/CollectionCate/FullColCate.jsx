@@ -13,7 +13,7 @@ const FullColCate = ({ subCate, defineLang, colCate, onChangeColCate, isActiveCa
 
           return (
             <Grid key={value} item xs={3} md={3} sm={3} xl={2} className={`collection-cate ${isActiveCate(value) && '!text-main font-semibold'}`} onClick={() => onChangeColCate(cate)}>
-            {isActiveCate(value) ? <BsCheck /> : <MdOutlineKeyboardArrowRight />}
+              {isActiveCate(value) ? <BsCheck className='!text-main' /> : <MdOutlineKeyboardArrowRight />}
               <div className='w3-rest truncate' title={defineLang(title.vi, title.en)}>
                 {defineLang(title.vi, title.en)}
               </div>

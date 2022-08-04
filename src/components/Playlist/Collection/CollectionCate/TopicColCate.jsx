@@ -22,7 +22,7 @@ const TopicColCate = ({ defineLang, title, value: topicValue, mainCate, subCate,
     toggleLoadMore()
   }
 
-  const isActiveCate = useCallback((cateValue) => colCate.filter(collect => collect.value.value === cateValue).length !== 0 ? true : false, [colCate])
+  const isActiveCate = useCallback((cateValue) => (colCate.filter((collect) => collect.value.value === cateValue).length !== 0 ? true : ''), [colCate])
 
   const fullColCateProps = {
     defineLang,
@@ -30,7 +30,7 @@ const TopicColCate = ({ defineLang, title, value: topicValue, mainCate, subCate,
     subCate,
     colCate,
     onChangeColCate,
-    isActiveCate
+    isActiveCate,
   }
 
   return (
@@ -40,7 +40,7 @@ const TopicColCate = ({ defineLang, title, value: topicValue, mainCate, subCate,
         const { title, value } = cate
         return (
           <div key={value} className={`collection-cate ${isActiveCate(value) && '!text-main font-semibold'}`} onClick={() => handleColCate(cate, topicValue)}>
-            {isActiveCate(value) ? <BsCheck /> : <MdOutlineKeyboardArrowRight />}
+            {isActiveCate(value) ? <BsCheck className='!text-main' /> : <MdOutlineKeyboardArrowRight />}
             <div className='w3-rest truncate' title={defineLang(title.vi, title.en)}>
               {defineLang(title.vi, title.en)}
             </div>
@@ -53,7 +53,7 @@ const TopicColCate = ({ defineLang, title, value: topicValue, mainCate, subCate,
           {defineLang('Thêm...', 'Load more...')}
         </div>
       </div>
-      {loadMore && <FullColCate { ... fullColCateProps } />}
+      {loadMore && <FullColCate {...fullColCateProps} />}
     </div>
   )
 }

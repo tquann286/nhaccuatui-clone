@@ -1,12 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import 'sass/base/color';
 @import 'sass/base/base';
 @import 'theme/dark';
 @import 'sass/base/override';
 @import 'sass/base/w3';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.hoverMainColor {
+  @include hoverMainColor;
+}
 
 @layer components {
   .collection-cate {
