@@ -30,10 +30,11 @@
     font-size: 1.3rem;
     top: 0.1rem;
     right: 0.8rem;
-    line-height: 2.6rem;
     font-weight: 600;
-    height: 4rem;
     z-index: -1;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 100%;
   }
 }

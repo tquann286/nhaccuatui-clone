@@ -11,7 +11,7 @@ import { handleAddToFavPlaylist } from 'share/addToFav'
 
 const CommonPlaylist = ({ keyId, artists, thumbnail, title, type, addToFav, removeFav, handleRemoveFav }) => {
   const [state] = useStore()
-  const [favPlaylists, lang] = state
+  const { favPlaylists, lang } = state
   const defineLang = (vie, eng) => (lang === 'vi' ? vie : eng)
 
   const navigate = useNavigate()
