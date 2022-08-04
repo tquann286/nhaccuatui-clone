@@ -5,7 +5,7 @@ import { FullColCate } from 'components'
 import { useOnClickOutside } from 'hooks'
 import { BsCheck } from 'react-icons/bs'
 
-const TopicColCate = ({ defineLang, title, value: topicValue, mainCate, subCate, colCate, handleColCate }) => {
+const TopicColCate = ({ defineLang, title, value: topicValue, mainCate, subCate, colCate, handleAddColCate }) => {
   const [loadMore, setLoadMore] = useState(false)
 
   const toggleLoadMore = () => {
@@ -18,7 +18,7 @@ const TopicColCate = ({ defineLang, title, value: topicValue, mainCate, subCate,
   useOnClickOutside(fullColCateRef, parentRef, toggleLoadMore)
 
   const onChangeColCate = (cate) => {
-    handleColCate(cate, topicValue)
+    handleAddColCate(cate, topicValue)
     toggleLoadMore()
   }
 
@@ -39,7 +39,7 @@ const TopicColCate = ({ defineLang, title, value: topicValue, mainCate, subCate,
       {mainCate.map((cate) => {
         const { title, value } = cate
         return (
-          <div key={value} className={`collection-cate ${isActiveCate(value) && '!text-main font-semibold'}`} onClick={() => handleColCate(cate, topicValue)}>
+          <div key={value} className={`collection-cate ${isActiveCate(value) && '!text-main font-semibold'}`} onClick={() => handleAddColCate(cate, topicValue)}>
             {isActiveCate(value) ? <BsCheck className='!text-main' /> : <MdOutlineKeyboardArrowRight />}
             <div className='w3-rest truncate' title={defineLang(title.vi, title.en)}>
               {defineLang(title.vi, title.en)}

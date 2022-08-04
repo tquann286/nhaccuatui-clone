@@ -3,11 +3,11 @@ import React from 'react'
 import { collectionCate } from 'share/Categories'
 import { TopicColCate } from 'components'
 
-const MainColCate = ({ defineLang, colCate, handleColCate }) => {
+const MainColCate = ({ defineLang, colCate, handleAddColCate }) => {
   const topicColCateProps = {
     defineLang,
     colCate,
-    handleColCate,
+    handleAddColCate,
   }
 
   return (
