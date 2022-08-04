@@ -4,7 +4,7 @@ import { MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowDown } from 'react-i
 import { FullColCate } from 'components'
 import { useOnClickOutside } from 'hooks'
 
-const TopicColCate = ({ defineLang, title, value, mainCate, subCate }) => {
+const TopicColCate = ({ defineLang, title, value: topicValue, mainCate, subCate, colCate, handleColCate }) => {
   const [loadMore, setLoadMore] = useState(false)
 
   const toggleLoadMore = () => {
@@ -16,13 +16,26 @@ const TopicColCate = ({ defineLang, title, value, mainCate, subCate }) => {
 
   useOnClickOutside(fullColCateRef, parentRef, toggleLoadMore)
 
+  const onChangeColCate = (cate) => {
+    handleColCate(cate, topicValue)
+    toggleLoadMore()
+  }
+
+  const fullColCateProps = {
+    defineLang,
+    ref: fullColCateRef,
+    subCate,
+    colCate,
+    onChangeColCate
+  }
+
   return (
     <div className='w3-quarter'>
       <div className='text-sm font-bold uppercase color-0-88 pt-3 pb-5 pl-16px'>{defineLang(title.vi, title.en)}</div>
       {mainCate.map((cate) => {
         const { title, value } = cate
         return (
-          <div key={value} className='collection-cate'>
+          <div key={value} className='collection-cate' onClick={() => handleColCate(cate, topicValue)}>
             <MdOutlineKeyboardArrowRight />
             <div className='w3-rest truncate' title={defineLang(title.vi, title.en)}>
               {defineLang(title.vi, title.en)}
@@ -36,7 +49,7 @@ const TopicColCate = ({ defineLang, title, value, mainCate, subCate }) => {
           {defineLang('Thêm...', 'Load more...')}
         </div>
       </div>
-      {loadMore && <FullColCate ref={fullColCateRef} subCate={subCate} defineLang={defineLang} />}
+      {loadMore && <FullColCate { ... fullColCateProps } />}
     </div>
   )
 }

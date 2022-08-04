@@ -8,10 +8,18 @@ const Collection = () => {
   const defineLang = useCallback((vie, eng) => state.lang === 'vi' ? vie : eng, [state.lang])
   
   const [colCate, setColCate] = useState([])
+  console.log('colCate: ', colCate)
+
+  const handleColCate = (value, mainCate) => {
+    const oldColCate = colCate.filter(collection => collection.mainCate !== mainCate)
+
+    setColCate([ ...oldColCate, { value, mainCate }])
+  }
 
   const mainColCateProps = {
     defineLang,
-    colCate
+    colCate,
+    handleColCate
   }
 
   return (
