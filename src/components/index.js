@@ -89,3 +89,5 @@ export { default as TopicSlider } from './Topic/TopicSlider/TopicSlider'
 
 // Playlist
 export { default as Collection } from './Playlist/Collection/Collection'
+export { default as MainColCate } from './Playlist/Collection/CollectionCate/MainColCate'
+export { default as TopicColCate } from './Playlist/Collection/CollectionCate/TopicColCate'

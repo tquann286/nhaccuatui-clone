@@ -53,6 +53,10 @@
 @mixin hoverMainColor {
   &:hover {
     color: $main-text-color !important;
+
+    svg {
+      color: $main-text-color !important;
+    }
   }
 }
 
