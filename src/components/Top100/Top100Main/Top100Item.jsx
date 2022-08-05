@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { useOutletContext } from "react-router-dom"
+import { useOutletContext } from 'react-router-dom'
 
 import Blur from 'react-blur'
 import { LoadingV2 } from 'components'
@@ -48,10 +48,15 @@ const Top100Item = () => {
         <Blur img={top100.songs[0].thumbnail || blur_layer} blurRadius={100} className='h-full w-full'>
           <div className='absolute top-0 left-0 h-full w-full bg-black/70'></div>
         </Blur>
-        <div className="flex absolute items-center justify-between top-0 left-0 w-full h-full py-12px px-32px text-slate-100/90">
+        <div className='flex absolute items-center justify-between top-0 left-0 w-full h-full py-12px px-32px text-slate-100/90'>
           <div>
             <h2 className='text-3xl font-bold'>TOP 100</h2>
-            <p className="mt-2.5">{defineLang(top100Title.vi, top100Title.en)}</p>
+            <p className='mt-2.5 text-slate-100/60 uppercase text-13px font-medium'>
+              {defineLang(top100Title.vi, top100Title.en)} -{' '}
+              <span className='normal-case'>
+                {defineLang('Cập nhật vào: ', 'Updated at: ')}{top100.dateModify}
+              </span>
+            </p>
           </div>
         </div>
       </div>
