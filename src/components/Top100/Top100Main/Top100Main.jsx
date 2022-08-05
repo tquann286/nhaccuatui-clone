@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
+import { Outlet } from 'react-router-dom'
 
 import { Footer, LoadingV2, Title, NotFoundV2 } from 'components'
 import { top100Cate } from 'share/Categories'
@@ -24,7 +25,7 @@ const Top100Main = () => {
 
   return (
     <div className='commonMainOutlet'>
-      
+      <Outlet />
     </div>
   )
 }

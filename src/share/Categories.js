@@ -377,4 +377,33 @@ export const top100Cate = [
   { title: { vi: 'Việt Nam', en: 'Vietnam' }, value: 'vietnam' },
   { title: { vi: 'Âu Mỹ', en: 'US-UK' }, value: 'usuk' },
   { title: { vi: 'Châu Á', en: 'Asia' }, value: 'asia' },
+  { title: { vi: 'Không Lời', en: 'No Lyric' }, value: 'no-lyric' },
+]
+
+export const vnTop100Cate = [
+  { title: { vi: 'Nhạc Trẻ', en: 'New Genre' }, value: 'm3liaiy6vVsF', mainCate: 'vietnam' },
+  { title: { vi: 'Trữ Tình', en: 'Romantic' }, value: 'RKuTtHiGC8US', mainCate: 'vietnam' },
+  { title: { vi: 'Nhạc Trịnh', en: "Trịnh's music" }, value: 'v0AGjIhhCegh', mainCate: 'vietnam' },
+  { title: { vi: 'Tiền Chiến', en: 'Pre-War' }, value: 'TDSMAL1lI8F6', mainCate: 'vietnam' },
+  { title: { vi: 'Rap Việt', en: 'Rap Viet' }, value: 'iY1AnIsXedqE', mainCate: 'vietnam' },
+  { title: { vi: 'Remix Việt', en: 'Remix Viet' }, value: 'aY3KIEnpCywU', mainCate: 'vietnam' },
+]
+
+export const usukTop100Cate = [
+  { title: { vi: 'Nhạc Trẻ', en: 'Pop' }, value: 'zE23R7bc8e9X', mainCate: 'usuk' },
+  { title: { vi: 'Điện tử', en: 'Electronica/Dance' }, value: 'ippIsiqacmnE', mainCate: 'usuk' },
+  { title: { vi: 'R&B/Hip Hop/Rap', en: 'R&B/Hip Hop/Rap' }, value: 'bxkenI7MAoFv', mainCate: 'usuk' },
+  { title: { vi: 'Blues/Jazz', en: 'Blues/Jazz' }, value: 'BjTXbslQAOYD', mainCate: 'usuk' },
+  { title: { vi: 'Đồng quê', en: 'Country' }, value: 'EpHtSo41Zstq', mainCate: 'usuk' },
+  { title: { vi: 'Latin', en: 'Latin' }, value: 'cv4YefsXF887', mainCate: 'usuk' },
+]
+
+export const asiaTop100Cate = [
+  { title: { vi: 'Nhạc Hàn', en: 'Korea' }, value: 'iciV0mD8L9Ed', mainCate: 'asia' },
+  { title: { vi: 'Nhạc Hoa', en: 'China' }, value: 'g4Y7NTPP9exf', mainCate: 'asia' },
+  { title: { vi: 'Nhạc Nhật', en: 'Japan' }, value: 'aOokfjySrloy', mainCate: 'asia' },
+]
+
+export const noLyricTop100Cate = [
+  { title: { vi: 'Không Lời', en: 'No Lyric' }, value: 'kr9KYNtkzmnA', mainCate: 'no-lyric' },
 ]

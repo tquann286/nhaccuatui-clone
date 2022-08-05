@@ -13,7 +13,7 @@ const SearchContent = () => {
   const { lang, favPlaylists } = state
 
   const { search: searchLocation } = useLocation()
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
   const [searchQuery, setSearchQuery] = useState(null)
 
   const defineLang = useCallback((vie, eng) => (lang === 'vi' ? vie : eng), [lang])

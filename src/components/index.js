@@ -95,3 +95,4 @@ export { default as FullColCate } from './Playlist/Collection/CollectionCate/Ful
 // Top100
 export { default as Top100 } from './Top100/Top100'
 export { default as Top100Main } from './Top100/Top100Main/Top100Main'
+export { default as Top100Item } from './Top100/Top100Main/Top100Item'
