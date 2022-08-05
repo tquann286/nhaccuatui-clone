@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Outlet, useSearchParams, useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 
 import { Footer, LoadingV2, Title, NotFoundV2, CateCommon, CateBasic } from 'components'
-import { top100Cate, vnTop100Cate, usukTop100Cate, asiaTop100Cate, noLyricTop100Cate } from 'share/Categories'
+import { top100Cate } from 'share/Categories'
 import { createTop100Url } from 'share/utilities'
-
 import { useStore } from 'store'
 
 const Top100Main = () => {
@@ -14,11 +13,8 @@ const Top100Main = () => {
   const navigate = useNavigate()
 
   const [curCate, setCurCate] = useState(top100Cate[0].value)
-  console.log('curCate: ', curCate)
   const [curSubCate, setCurSubCate] = useState(top100Cate[0].subCate[0].value)
-  console.log('curSubCate: ', curSubCate)
   const [curShowSubCate, setCurShowSubCate] = useState(top100Cate[0].subCate)
-  console.log('curShowSubCate: ', curShowSubCate)
 
   const navTop100Cate = () => {
     const currentSubCate = curShowSubCate.filter((cate) => cate.value === curSubCate)[0]
@@ -74,11 +70,20 @@ const Top100Main = () => {
     categories: curShowSubCate,
   }
 
+  const outletProps = {
+    defineLang
+  }
+
   return (
     <div className='commonMainOutlet'>
-      <CateCommon {...cateCommonProps} />
-      <CateBasic {...cateBasicProps} />
-      <Outlet />
+      <Title title={defineLang('Top 100 ca khúc hay nhất | NhacCuaTui Clone', 'Top 100 best songs | NhacCuaTui Clone')} />
+      <div className="pt-16px">
+        <CateCommon {...cateCommonProps} />
+      </div>
+      <div className="py-8">
+        <CateBasic {...cateBasicProps} />
+      </div>
+      <Outlet { ... outletProps } />
     </div>
   )
 }
