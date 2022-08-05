@@ -371,3 +371,10 @@ export const collectionCate = [
     value: 'topic',
   },
 ]
+
+// Top 100
+export const top100Cate = [
+  { title: { vi: 'Việt Nam', en: 'Vietnam' }, value: 'vietnam' },
+  { title: { vi: 'Âu Mỹ', en: 'US-UK' }, value: 'usuk' },
+  { title: { vi: 'Châu Á', en: 'Asia' }, value: 'asia' },
+]

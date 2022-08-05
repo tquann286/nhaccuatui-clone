@@ -4,7 +4,7 @@ import { BsFillPlayCircleFill, BsLink45Deg } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 
 import { useNavigate } from 'react-router-dom'
-import { createPlaylistUrl, handleCopyPlaylist } from 'share/utilities'
+import { createTop100Url, handleCopyTop100 } from 'share/utilities'
 
 import { useStore } from 'store'
 
@@ -16,7 +16,7 @@ const SwiperSlider = ({keyId, title, thumbnail}) => {
 	
   const [showMoreOptions, setShowMoreOptions] = useState(false)
 
-  const playlistContainerRef = useRef(null)
+  const top100ContainerRef = useRef(null)
   const moreDivRef = useRef(null)
 
   const toggleShowMore = () => {
@@ -28,12 +28,12 @@ const SwiperSlider = ({keyId, title, thumbnail}) => {
     toggleShowMore()
   }
 
-	const onNavigatePlaylist = (title, keyId) => {
-		navigate(createPlaylistUrl(title, keyId))
+	const onNavigateTop100 = (title, keyId) => {
+		navigate(createTop100Url(title, keyId))
 	}
 
   const handleCopyClick = (e) => {
-		handleCopyPlaylist(e, title , keyId, defineLang)
+		handleCopyTop100(e, title , keyId, defineLang)
     toggleShowMore()
   }
 
@@ -41,10 +41,10 @@ const SwiperSlider = ({keyId, title, thumbnail}) => {
 			<div className='pl-container'>
 				<div
 					className='pl-img-container'
-					onClick={() => onNavigatePlaylist(title, keyId)}
+					onClick={() => onNavigateTop100(title, keyId)}
 				>
 					<img src={thumbnail} alt={title}/>
-					<div className='pl-extensions' ref={playlistContainerRef}>
+					<div className='pl-extensions' ref={top100ContainerRef}>
 						<div className='pl-play-btn'>
 							<BsFillPlayCircleFill />
 						</div>
@@ -53,7 +53,7 @@ const SwiperSlider = ({keyId, title, thumbnail}) => {
 						</div>
 					</div>
 				</div>
-				<OptionModal showModal={showMoreOptions} positionRef={playlistContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
+				<OptionModal showModal={showMoreOptions} positionRef={top100ContainerRef} parentRef={moreDivRef} toggleModal={toggleShowMore}>
           <div className='om-main color-0-88 bg-color-1'>
             <ul>
               <li onClick={(e) => handleCopyClick(e)}>

@@ -3,10 +3,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.scss'
 
 import { useStore, actions } from 'store'
-import { Explore, Homepage, NotFound, Search, User, Favorite, SongPage, Playlist, Video, Artist, Topic } from 'pages'
+import { Explore, Homepage, NotFound, Search, User, Favorite, SongPage, Playlist, Video, Artist, Topic, Top100 } from 'pages'
 import { auth } from 'config/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
-import { MainHomepage, SongPlaylistVideo, ArtistMain, TopicMain, Collection } from 'components'
+import { MainHomepage, SongPlaylistVideo, ArtistMain, TopicMain, Collection, Top100Main } from 'components'
 import { getFavSongs, getFavPlaylists, getFavVideos } from 'services/User/Favorite'
 
 const App = () => {
@@ -94,6 +94,9 @@ const App = () => {
           </Route>
           <Route path='chu-de' element={<Topic />}>
             <Route index element={<TopicMain />} />
+          </Route>
+          <Route path='top-100' element={<Top100 />}>
+            <Route index element={<Top100Main />} />
           </Route>
           <Route path='*' element={<NotFound />} />
         </Route>

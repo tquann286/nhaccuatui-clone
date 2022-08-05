@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import './TopicMain.scss'
 
 import { Footer, LoadingV2, Title, TopicItem, TopicSlider } from 'components'
 import { getTopicsMain } from 'services/Topic/TopicMain'

@@ -9,7 +9,6 @@ import { CommonVideo, NotFoundV2 } from 'components'
 const VideoFav = ({ defineLang, currentUser }) => {
   const [state, dispatch] = useStore()
   const { favVideos = [] } = state
-  console.log('favVideos: ', favVideos)
 
   const handlehandleClearAllFav = async () => {
     await handleClearAllFav('videos', defineLang)
@@ -42,8 +41,8 @@ const VideoFav = ({ defineLang, currentUser }) => {
   return (
     <div className='relative'>
       <div className='flex justify-between items-center mb-6 color-0-88'>
-        <div className='text-4xl font-semibold'>Video</div>
-        {favVideos?.length !== 0 && <div className='text-xl color-0-6 font-medium transition-colors hover:!text-main cursor-pointer' onClick={handlehandleClearAllFav}>{defineLang('Xóa tất cả', 'Clear all')}</div>}
+        <div className='text-xl font-semibold'>Video</div>
+        {favVideos?.length !== 0 && <div className='text-xs color-0-6 font-medium transition-colors hover:!text-main cursor-pointer' onClick={handlehandleClearAllFav}>{defineLang('Xóa tất cả', 'Clear all')}</div>}
       </div>
       <div className='pt2'>
         <Grid container spacing={2}>

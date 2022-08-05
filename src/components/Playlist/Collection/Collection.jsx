@@ -16,7 +16,6 @@ const Collection = () => {
   const [colCate, setColCate] = useState([])
   const [collection, setCollection] = useState({})
   const [pageIndex, setPageIndex] = useState(1)
-  console.log('collection: ', collection)
 
   useEffect(() => {
     try {

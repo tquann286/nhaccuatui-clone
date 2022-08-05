@@ -176,6 +176,18 @@ export const handleCopyVideo = (event, title, keyId, artists, defineLang) => {
   }
 }
 
+export const handleCopyTop100 = (event, title, keyId, defineLang) => {
+  event.stopPropagation()
+  if (title && keyId && defineLang) {
+    const top100Link = `${PROXY}${createTop100Url(title, keyId)}`
+
+    copyToClipboard(top100Link)
+    copyNotify(defineLang)
+  } else {
+    toastNotify(defineLang('Có lỗi khi sao chép liên kết danh sách phát', 'An  error has occurred when copying Top 100 link'), 'error')
+  }
+}
+
 export const calcPaginationPage = (total, itemPerPage = 36) => Math.ceil(total / itemPerPage)
 
 // API
