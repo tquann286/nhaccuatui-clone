@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 
-import { Footer, LoadingV2, Title, NotFoundV2, CateCommon, CateBasic } from 'components'
+import { Footer, Title, CateCommon, CateBasic } from 'components'
 import { top100Cate } from 'share/Categories'
 import { createTop100Url } from 'share/utilities'
 import { useStore } from 'store'
@@ -14,12 +14,14 @@ const Top100Main = () => {
 
   const [curCate, setCurCate] = useState(top100Cate[0].value)
   const [curSubCate, setCurSubCate] = useState(top100Cate[0].subCate[0].value)
+  const [curSubCateTitle, setCurSubCateTitle] = useState({})
   const [curShowSubCate, setCurShowSubCate] = useState(top100Cate[0].subCate)
 
   const navTop100Cate = () => {
     const currentSubCate = curShowSubCate.filter((cate) => cate.value === curSubCate)[0]
     const { title, value } = currentSubCate
 
+    setCurSubCateTitle(title)
     navigate(createTop100Url(defineLang(title.vi, title.en), value))
   }
 
@@ -70,9 +72,7 @@ const Top100Main = () => {
     categories: curShowSubCate,
   }
 
-  const outletProps = {
-    defineLang
-  }
+  const outletContext =[defineLang, curSubCateTitle]
 
   return (
     <div className='commonMainOutlet'>
@@ -83,7 +83,7 @@ const Top100Main = () => {
       <div className="py-8">
         <CateBasic {...cateBasicProps} />
       </div>
-      <Outlet { ... outletProps } />
+      <Outlet context={outletContext} />
     </div>
   )
 }

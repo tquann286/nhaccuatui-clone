@@ -7,7 +7,9 @@ module.exports = {
         main: '#2daaed',
       },
       padding: {
+        '12px': '1.2rem',
         '16px': '1.6rem',
+        '32px': '3.2rem',
       },
       margin: {
         '16px': '1.6rem',
@@ -24,6 +26,7 @@ module.exports = {
       lg: ['2rem', '2.8rem'],
       xl: ['2.4rem', '3.2rem'],
       '2xl': ['2.8rem', '3.6rem'],
+      '3xl': ['3.2rem', '4rem'],
     }
   },
   plugins: [],
