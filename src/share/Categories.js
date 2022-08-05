@@ -373,13 +373,6 @@ export const collectionCate = [
 ]
 
 // Top 100
-export const top100Cate = [
-  { title: { vi: 'Việt Nam', en: 'Vietnam' }, value: 'vietnam' },
-  { title: { vi: 'Âu Mỹ', en: 'US-UK' }, value: 'usuk' },
-  { title: { vi: 'Châu Á', en: 'Asia' }, value: 'asia' },
-  { title: { vi: 'Không Lời', en: 'No Lyric' }, value: 'no-lyric' },
-]
-
 export const vnTop100Cate = [
   { title: { vi: 'Nhạc Trẻ', en: 'New Genre' }, value: 'm3liaiy6vVsF', mainCate: 'vietnam' },
   { title: { vi: 'Trữ Tình', en: 'Romantic' }, value: 'RKuTtHiGC8US', mainCate: 'vietnam' },
@@ -406,4 +399,11 @@ export const asiaTop100Cate = [
 
 export const noLyricTop100Cate = [
   { title: { vi: 'Không Lời', en: 'No Lyric' }, value: 'kr9KYNtkzmnA', mainCate: 'no-lyric' },
+]
+
+export const top100Cate = [
+  { title: { vi: 'Việt Nam', en: 'Vietnam' }, value: 'vietnam', subCate: vnTop100Cate},
+  { title: { vi: 'Âu Mỹ', en: 'US-UK' }, value: 'usuk', subCate: usukTop100Cate},
+  { title: { vi: 'Châu Á', en: 'Asia' }, value: 'asia', subCate: asiaTop100Cate},
+  { title: { vi: 'Không Lời', en: 'No Lyric' }, value: 'no-lyric', subCate: noLyricTop100Cate},
 ]
