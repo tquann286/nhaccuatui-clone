@@ -12,10 +12,12 @@ module.exports = {
         '32px': '3.2rem',
       },
       margin: {
+        '14px': '1.4rem',
         '16px': '1.6rem',
       },
       spacing: {
         '8px': '0.8rem',
+        '32px': '3.2rem',
       }
     },
     fontSize: {
@@ -28,6 +30,9 @@ module.exports = {
       xl: ['2.4rem', '3.2rem'],
       '2xl': ['2.8rem', '3.6rem'],
       '3xl': ['3.2rem', '4rem'],
+    },
+    borderRadius: {
+      '16px': '1.6rem'
     }
   },
   plugins: [],

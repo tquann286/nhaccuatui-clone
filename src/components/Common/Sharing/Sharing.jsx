@@ -9,7 +9,7 @@ import { BsLink45Deg } from 'react-icons/bs'
 import { FacebookShareButton } from 'react-share'
 import { PROXY } from 'share/constants'
 
-const Sharing = ({ defineLang, placement, handleCopyShare, onShareWindowClose, shareLink }) => {
+const Sharing = ({ defineLang, placement, handleCopyShare, onShareWindowClose, shareLink, shareClass = '' }) => {
   const [showShare, setShowShare] = useState(false)
 
   const toggleShowShare = () => {
@@ -39,7 +39,7 @@ const Sharing = ({ defineLang, placement, handleCopyShare, onShareWindowClose, s
 
   return (
     <div className='sharing-container'>
-      <Tooltip className='color-0-5' title={defineLang('Chia sẻ', 'Share')} arrow enterDelay={400} placement={placement}>
+      <Tooltip className={`color-0-5 ${shareClass}`} title={defineLang('Chia sẻ', 'Share')} arrow enterDelay={400} placement={placement}>
         <IconButton aria-label='share' size='large' onClick={toggleShowShare}>
           <FiShare2 />
         </IconButton>

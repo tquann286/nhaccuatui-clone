@@ -9,7 +9,7 @@ const TopicItem = ({ keyId, thumbURL, title }) => {
   return (
     <div className='topic-item-container inherit-width'>
       <Link to={createTopicUrl(title, keyId)}>
-        <div className="topic-item-img po-re w100 border-0-05 use-border pt-100 bdrs4 over-hide">
+        <div className="topic-item-img po-re w100 border-0-05 useBorder pt-100 bdrs4 over-hide">
           <Image imageUrl={thumbURL} />
           <div className="blur-layer"></div>
         </div>
