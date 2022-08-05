@@ -52,3 +52,6 @@ export const getArtistDetail = (shortLink, type = 'all', size = 20, index = 1, s
 
 // Topic
 export const getTopics = () => client.post('topic')
+
+// Playlist
+export const getCollection = (tags, pageIndex = 1, pageSize = 36) => client.post('tags', joinQueryString({ tags, pageIndex, pageSize }))

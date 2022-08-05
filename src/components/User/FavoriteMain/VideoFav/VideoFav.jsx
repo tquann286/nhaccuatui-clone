@@ -56,7 +56,7 @@ const VideoFav = ({ defineLang, currentUser }) => {
       </div>
       {favVideos?.length === 0 && (
         <div className="h100">
-          <NotFoundV2 defineLang={defineLang} vie='Chưa có video yêu thích nào' eng='There are no favorite video added' />
+          <NotFoundV2 message={defineLang('Chưa có video yêu thích nào', 'There are no favorite video added')} />
         </div>
       )}
     </div>

@@ -12,6 +12,9 @@ module.exports = {
       margin: {
         '16px': '1.6rem',
       },
+      spacing: {
+        '8px': '0.8rem',
+      }
     },
     fontSize: {
       sm: ['1.4rem', '2rem'],

@@ -59,7 +59,7 @@ const PlaylistFav = ({ defineLang, currentUser }) => {
       </div>
       {favPlaylists?.length === 0 && (
         <div className="no-fav-playlist h100">
-          <NotFoundV2 defineLang={defineLang} vie='Chưa có danh sách yêu thích nào' eng='There are no favorite playlist added' />
+          <NotFoundV2 message={defineLang('Chưa có danh sách yêu thích nào', 'There are no favorite playlist added')} />
         </div>
       )}
     </div>
