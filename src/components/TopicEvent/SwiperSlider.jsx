@@ -1,7 +1,8 @@
 import { useState, useRef } from 'react'
-import { ExtendModal, ModalAnimate, OptionModal } from 'components'
-import { BsFillPlayCircleFill, BsLink45Deg } from 'react-icons/bs'
+import { ExtendModal, Image, ModalAnimate, OptionModal } from 'components'
+import { BsFillPlayCircleFill } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
+import backupImg from 'images/default/default_playlist.png'
 
 import { handleCopyPlaylist } from 'share/utilities'
 import { basicModal } from 'share/animation'
@@ -55,10 +56,16 @@ const SwiperSlider = ({ keyId, title, thumbnail, onNavigatePlaylist, lang, type 
     handleCopyLink: (e) => onCopyLink(e),
   }
 
+  const imageProps = {
+    imageUrl: thumbnail,
+    alt: title,
+    backupImg
+  }
+
   return (
     <div className='pl-container'>
       <div className='pl-img-container border-0-05' onClick={() => onNavigatePlaylist(title, keyId)}>
-        <img src={thumbnail} alt={title} />
+        <Image { ... imageProps } />
         <div className='pl-extensions' ref={positionRef}>
           <div className='pl-play-btn'>
             <BsFillPlayCircleFill />

@@ -22,7 +22,7 @@ const Image = ({ imageUrl, backupImg, loadingImg, ... props }) => {
     } else {
       imageRef.current.setAttribute('src', imageUrl)
     }
-  }, [])
+  }, [imageUrl])
 
   return (
     <img ref={imageRef} src={backupImg} onError={handleErrorImg} { ... props } />

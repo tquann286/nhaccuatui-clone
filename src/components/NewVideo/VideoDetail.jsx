@@ -1,9 +1,10 @@
 import React, { useState, useRef, memo } from 'react'
+import backupImg from 'images/default/default_video.png'
 
 import { BsPlayCircleFill } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 
-import { ExtendModal, ModalAnimate, OptionModal } from 'components'
+import { ExtendModal, ModalAnimate, OptionModal, Image } from 'components'
 
 import { createArtistUrl, handleCopyVideo, createVideoUrl } from 'share/utilities'
 import { Link, useNavigate } from 'react-router-dom'
@@ -68,11 +69,16 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
     handleAddToFav: (e) => onAddToFav(e),
   }
 
+  const imageProps = {
+    imageUrl: thumbnail,
+    alt: title,
+    backupImg,
+  }
   return (
     <React.Fragment>
       <div className='vd-container' ref={videoRef}>
         <div className='vd-video border-0-05' title={title} style={{ height }} onClick={() => handleVideoClick()}>
-          <img className='vd-img' src={thumbnail} alt={title} />
+          <Image className='vd-img' {...imageProps} />
           <div className='vd-duration'>{duration}</div>
           <div className='vd-blur-layer'>
             <div className='vd-play-icon'>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-
 import './NewRelease.scss'
+import backupImg from 'images/default/default_song.png'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -14,6 +14,7 @@ import { covertTimestamp, createArtistUrl, createSongUrl } from 'share/utilities
 import { activeSlideSettings, thumbSlideSettings } from 'services/NewRelease'
 
 import { useStore } from 'store'
+import { Image } from 'components'
 
 const NewRelease = ({ newRelease: { song: newSong } }) => {
   const [state] = useStore()
@@ -45,10 +46,16 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
             {newSong.map((song) => {
               const { key, artists, dateRelease, thumbnail, title } = song
 
+              const imageProps = {
+                imageUrl: thumbnail,
+                alt: title,
+                backupImg,
+              }
+
               return (
                 <div key={key} className='nr-active-container'>
                   <Link to={createSongUrl(title, key)} className='nr-active-img' title={title}>
-                    <img src={thumbnail} alt={title} />
+                    <Image {...imageProps} />
                   </Link>
                   <div className='nr-active-detail'>
                     <Link to={createSongUrl(title, key)}>
@@ -103,9 +110,14 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
           {newSong.map((song) => {
             const { key, thumbnail, title } = song
 
+            const imageProps = {
+              imageUrl: thumbnail,
+              alt: title,
+              backupImg,
+            }
             return (
               <Link key={key} to={createSongUrl(title, key)} className='nr-thumb-img' title={title}>
-                <img src={thumbnail} alt={title} />
+                <Image {...imageProps} />
                 <div className='blur-layer'>
                   <BsPlayCircleFill />
                 </div>
