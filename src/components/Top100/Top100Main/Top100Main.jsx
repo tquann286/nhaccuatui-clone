@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate, useParams } from 'react-router-dom'
 
-import { Footer, Title, CateCommon, CateBasic } from 'components'
+import { Title, CateCommon, CateBasic } from 'components'
 import { top100Cate } from 'share/Categories'
 import { createTop100Url } from 'share/utilities'
 import { useStore } from 'store'
 
 const Top100Main = () => {
+  const params = useParams()
+  const query = new URLSearchParams(params.top100Id)
+
   const [state] = useStore()
   const defineLang = useCallback((vie, eng) => (state.lang === 'vi' ? vie : eng), [state.lang])
 
@@ -29,6 +32,22 @@ const Top100Main = () => {
   useEffect(() => {
     navTop100Cate()
   }, [curCate, curSubCate])
+
+  useEffect(() => {
+    top100Cate.forEach((item, i) => {
+      item.subCate.forEach(sub => {
+        if (sub.value === query.get('k')) {
+          const { title, value, mainCate } = sub
+
+          setCurCate(mainCate)
+          setCurSubCate(value)
+          setCurSubCateTitle(title)
+          setCurShowSubCate(top100Cate[i].subCate)
+          navigate(createTop100Url(defineLang(title.vi, title.en), value))
+        }
+      })
+    })
+  }, [])
 
   const handleTop100Cate = (position) => {
     setCurSubCate(top100Cate[position].subCate[0].value)
@@ -75,7 +94,7 @@ const Top100Main = () => {
     categories: curShowSubCate,
   }
 
-  const outletContext =[defineLang, curSubCateTitle, count, setCount]
+  const outletContext = [defineLang, curSubCateTitle, count, setCount, curSubCate]
 
   return (
     <div className='commonMainOutlet'>

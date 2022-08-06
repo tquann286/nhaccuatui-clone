@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 import { useOutletContext } from 'react-router-dom'
 
 import Blur from 'react-blur'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import blur_layer from 'images/blur/blur_layer_v1.png'
 
-import { LoadingV2, Sharing, SongRanking } from 'components'
+import { Footer, LoadingV2, Sharing, SongRanking } from 'components'
 import { getTop100Item } from 'services/Top100/Top100'
 import { getCurrentPathname, handleCopyProxy } from 'share/utilities'
 import { toastNotify } from 'share/toast'
 
 const Top100Item = () => {
-  const params = useParams()
-  const query = new URLSearchParams(params.top100Id)
-  const [defineLang, top100Title, count, setCount] = useOutletContext()
+  const [defineLang, top100Title, count, setCount, curSubCate] = useOutletContext()
 
   const [top100, setTop100] = useState(null)
   const [renderSongs, setRenderSongs] = useState([])
-  console.log('renderSongs: ', renderSongs)
   const [isLoading, setIsLoading] = useState(false)
 
   const loadMoreItem = () => {
@@ -30,7 +26,7 @@ const Top100Item = () => {
     try {
       setIsLoading(true)
       const getTop100State = async () => {
-        const top100 = await getTop100Item(query.get('k'))
+        const top100 = await getTop100Item(curSubCate)
 
         setTop100(top100)
         setRenderSongs(top100.songs.slice(0, count))
@@ -41,7 +37,7 @@ const Top100Item = () => {
       setIsLoading(false)
       throw new Error(error)
     }
-  }, [params.top100Id])
+  }, [curSubCate])
 
   if (isLoading)
     return (
@@ -73,7 +69,6 @@ const Top100Item = () => {
     dataLength: count,
     next: loadMoreItem,
     hasMore: count !== 120,
-    loader: <LoadingV2 />,
   }
 
   return (
@@ -101,7 +96,7 @@ const Top100Item = () => {
           </div>
         </div>
       </div>
-      <div className='relative mt-10'>
+      <div className='relative mt-10 margin-footer'>
         <ul>
           <InfiniteScroll {...infiniteSrcollProps}>
             {renderSongs.map((item, i) => (
@@ -110,6 +105,7 @@ const Top100Item = () => {
           </InfiniteScroll>
         </ul>
       </div>
+      <Footer />
     </div>
   )
 }

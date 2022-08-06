@@ -18,10 +18,9 @@ const TopicSlider = ({ defineLang, topicCover }) => {
 
   if (!topicCover) return null
   
-  const { backgroundColor, coverImageURL, description, key, thumbURL, title } = topicCover[activeTopic]
+  const { coverImageURL, description, key, thumbURL, title } = topicCover[activeTopic]
 
   const imgStyle = {
-    backgroundColor,
     backgroundImage: `url(${coverImageURL})`,
   }
 
