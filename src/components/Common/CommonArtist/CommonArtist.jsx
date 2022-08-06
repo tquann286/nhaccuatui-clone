@@ -4,13 +4,13 @@ import './CommonArtist.scss'
 
 import { createArtistUrl } from 'share/utilities'
 
-const CommonArtist = ({ artists }) => {
+const CommonArtist = ({ artists, styles = '' }) => {
   if (!artists) return null
 
   return (
     <React.Fragment>
       {artists && (
-        <div className='common-artists-container color-0-5'>
+        <div className={`common-artists-container color-0-5 ${styles}`}>
           {artists.map((artist, index) => {
             const { artistId, name, shortLink } = artist
 

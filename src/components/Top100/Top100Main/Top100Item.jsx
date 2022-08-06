@@ -3,21 +3,28 @@ import { useParams } from 'react-router-dom'
 import { useOutletContext } from 'react-router-dom'
 
 import Blur from 'react-blur'
-import { LoadingV2, Sharing } from 'components'
-import { getTop100Item } from 'services/Top100/Top100'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import blur_layer from 'images/blur/blur_layer_v1.png'
+
+import { LoadingV2, Sharing, SongRanking } from 'components'
+import { getTop100Item } from 'services/Top100/Top100'
 import { getCurrentPathname, handleCopyProxy } from 'share/utilities'
 import { toastNotify } from 'share/toast'
 
 const Top100Item = () => {
   const params = useParams()
   const query = new URLSearchParams(params.top100Id)
-  const [defineLang, top100Title] = useOutletContext()
+  const [defineLang, top100Title, count, setCount] = useOutletContext()
 
   const [top100, setTop100] = useState(null)
-  console.log('top100: ', top100)
-  const [count, setCount] = useState(20)
+  const [renderSongs, setRenderSongs] = useState([])
+  console.log('renderSongs: ', renderSongs)
   const [isLoading, setIsLoading] = useState(false)
+
+  const loadMoreItem = () => {
+    setCount((count) => count + 20)
+    setRenderSongs(top100.songs.slice(0, count))
+  }
 
   useEffect(() => {
     try {
@@ -26,6 +33,7 @@ const Top100Item = () => {
         const top100 = await getTop100Item(query.get('k'))
 
         setTop100(top100)
+        setRenderSongs(top100.songs.slice(0, count))
         setIsLoading(false)
       }
       getTop100State()
@@ -58,7 +66,14 @@ const Top100Item = () => {
     handleCopyShare,
     onShareWindowClose,
     shareLink: getCurrentPathname(),
-    shareClass: '!text-white/70'
+    shareClass: '!text-white/70',
+  }
+
+  const infiniteSrcollProps = {
+    dataLength: count,
+    next: loadMoreItem,
+    hasMore: count !== 120,
+    loader: <LoadingV2 />,
   }
 
   return (
@@ -81,10 +96,19 @@ const Top100Item = () => {
           <div className='flex items-center'>
             <div className='flex justify-center items-center w-64 h-32px rounded-16px useBorder border-white/10 font-semibold cursor-pointer text-13px text-white/50 hover:border-main hover:text-main transition-colors'>{defineLang('Phát tất cả', 'Play all')}</div>
             <div className='ml-14px'>
-              <Sharing { ... sharingProps } />
+              <Sharing {...sharingProps} />
             </div>
           </div>
         </div>
+      </div>
+      <div className='relative mt-10'>
+        <ul>
+          <InfiniteScroll {...infiniteSrcollProps}>
+            {renderSongs.map((item, i) => (
+              <SongRanking key={item.key} {...item} position={i + 1} keyId={item.key} defineLang={defineLang} />
+            ))}
+          </InfiniteScroll>
+        </ul>
       </div>
     </div>
   )

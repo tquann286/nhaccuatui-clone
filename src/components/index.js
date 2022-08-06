@@ -27,6 +27,7 @@ export { default as Select } from './Common/Select/Select'
 export { default as CircleArtist } from './Common/CircleArtist/CircleArtist'
 export { default as TopicItem } from './Common/TopicItem/TopicItem'
 export { default as Image } from './Common/Image'
+export { default as SongRanking } from './Common/SongRanking/SongRanking'
 
 // Home
 export { default as LoadingV2 } from './Loading/LoadingV2'

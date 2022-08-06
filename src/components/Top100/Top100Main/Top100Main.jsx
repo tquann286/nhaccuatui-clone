@@ -16,6 +16,7 @@ const Top100Main = () => {
   const [curSubCate, setCurSubCate] = useState(top100Cate[0].subCate[0].value)
   const [curSubCateTitle, setCurSubCateTitle] = useState({})
   const [curShowSubCate, setCurShowSubCate] = useState(top100Cate[0].subCate)
+  const [count, setCount] = useState(20)
 
   const navTop100Cate = () => {
     const currentSubCate = curShowSubCate.filter((cate) => cate.value === curSubCate)[0]
@@ -32,6 +33,7 @@ const Top100Main = () => {
   const handleTop100Cate = (position) => {
     setCurSubCate(top100Cate[position].subCate[0].value)
     setCurShowSubCate(top100Cate[position].subCate)
+    setCount(20)
   }
 
   const handleCateChange = (e, newCate) => {
@@ -56,6 +58,7 @@ const Top100Main = () => {
 
   const handleSubCateChange = (newCate) => {
     setCurSubCate(newCate)
+    setCount(20)
   }
 
   const cateCommonProps = {
@@ -72,7 +75,7 @@ const Top100Main = () => {
     categories: curShowSubCate,
   }
 
-  const outletContext =[defineLang, curSubCateTitle]
+  const outletContext =[defineLang, curSubCateTitle, count, setCount]
 
   return (
     <div className='commonMainOutlet'>

@@ -12,11 +12,21 @@ module.exports = {
         '32px': '3.2rem',
       },
       margin: {
+        '8px': '0.8rem',
+        '12px': '1.2rem',
         '14px': '1.4rem',
         '16px': '1.6rem',
+        '24px': '2.4rem',
+        '32px': '3.2rem',
       },
       spacing: {
         '8px': '0.8rem',
+        '20px': '2rem',
+        '32px': '3.2rem',
+        '56px': '5.6rem',
+      },
+      lineHeight: {
+        '20px': '2rem',
         '32px': '3.2rem',
       }
     },
@@ -32,7 +42,11 @@ module.exports = {
       '3xl': ['3.2rem', '4rem'],
     },
     borderRadius: {
-      '16px': '1.6rem'
+      '50%': '50%',
+      'circle': '9999px',
+      '2px': '0.2rem',
+      '4px': '0.4rem',
+      '16px': '1.6rem',
     }
   },
   plugins: [],

@@ -61,7 +61,7 @@ const CommonSong = ({ artists, keyId, thumbnail, title, songView, type, duration
   const modalAnimateProps = {
     animateProps: basicModal,
     isVisible: showMoreOptions,
-    keyId: keyId,
+    keyId,
   }
 
   const extendModalProps = {
