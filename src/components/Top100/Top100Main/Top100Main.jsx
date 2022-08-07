@@ -35,7 +35,7 @@ const Top100Main = () => {
 
   useEffect(() => {
     top100Cate.forEach((item, i) => {
-      item.subCate.forEach(sub => {
+      item.subCate.forEach((sub) => {
         if (sub.value === query.get('k')) {
           const { title, value, mainCate } = sub
 
@@ -99,10 +99,10 @@ const Top100Main = () => {
   return (
     <div className='commonMainOutlet'>
       <Title title={defineLang('Top 100 ca khúc hay nhất | NhacCuaTui Clone', 'Top 100 best songs | NhacCuaTui Clone')} />
-      <div className="pt-16px">
+      <div className='pt-16px'>
         <CateCommon {...cateCommonProps} />
       </div>
-      <div className="py-8">
+      <div className='py-8'>
         <CateBasic {...cateBasicProps} />
       </div>
       <Outlet context={outletContext} />

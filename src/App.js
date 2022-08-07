@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.scss'
 
-import { Explore, Homepage, NotFound, Search, User, Favorite, SongPage, Playlist, Video, Artist, Topic, Chart } from 'pages'
-import { MainHomepage, SongPlaylistVideo, ArtistMain, TopicMain, Collection, Top100Main, Top100Item, ChartMain } from 'components'
+import { Explore, Homepage, NotFound, Search, User, Favorite, SongPage, Playlist, Video, Artist, Topic } from 'pages'
+import { MainHomepage, SongPlaylistVideo, ArtistMain, TopicMain, Collection, Top100Main, Top100Item, Chart, Realtime, Top20 } from 'components'
 
 import { useStore, actions } from 'store'
 import { auth } from 'config/firebase'
@@ -12,7 +12,7 @@ import { getFavSongs, getFavPlaylists, getFavVideos } from 'services/User/Favori
 
 const App = () => {
   const [state, dispatch] = useStore()
-  const defineLang = (vie, eng) => state.lang === 'vi' ? vie : eng
+  const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
 
   useEffect(() => {
     // Theme
@@ -30,8 +30,8 @@ const App = () => {
     } else {
       localStorage.setItem('lang', 'vi')
     }
-    
-		// Get last played song
+
+    // Get last played song
     const lastPlayedSongId = localStorage.getItem('lastPlayedSongId')
     if (lastPlayedSongId) {
       dispatch(actions.setLastPlayedSongId(lastPlayedSongId))
@@ -39,10 +39,10 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-		if (state.theme) {
-			document.body.setAttribute('data-theme', state.theme)
-		}
-	}, [state.theme])
+    if (state.theme) {
+      document.body.setAttribute('data-theme', state.theme)
+    }
+  }, [state.theme])
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -52,7 +52,7 @@ const App = () => {
         dispatch(actions.onSignedOut())
       }
     })
-    
+
     // Get Favorite lists
     if (auth.currentUser) {
       const getFavState = async () => {
@@ -65,10 +65,10 @@ const App = () => {
         const favVideos = await getFavVideos(defineLang)
         dispatch(actions.setFavVideos(favVideos))
       }
-  
+
       getFavState()
     }
-	}, [auth.currentUser])
+  }, [auth.currentUser])
 
   return (
     <BrowserRouter>
@@ -97,10 +97,11 @@ const App = () => {
             <Route index element={<TopicMain />} />
           </Route>
           <Route path='top-100' element={<Top100Main />}>
-              <Route path=':top100Id' element={<Top100Item />} />
+            <Route path=':top100Id' element={<Top100Item />} />
           </Route>
           <Route path='bang-xep-hang' element={<Chart />}>
-              <Route path=':cateId' element={<ChartMain />} />
+            <Route path='realtime' element={<Realtime />} />
+            <Route path=':top20Id' element={<Top20 />} />
           </Route>
           <Route path='*' element={<NotFound />} />
         </Route>

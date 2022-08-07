@@ -373,7 +373,7 @@ export const collectionCate = [
 ]
 
 // Top 100
-export const vnTop100Cate = [
+const vnTop100Cate = [
   { title: { vi: 'Nhạc Trẻ', en: 'New Genre' }, value: 'm3liaiy6vVsF', mainCate: 'vietnam' },
   { title: { vi: 'Trữ Tình', en: 'Romantic' }, value: 'RKuTtHiGC8US', mainCate: 'vietnam' },
   { title: { vi: 'Nhạc Trịnh', en: "Trịnh's music" }, value: 'v0AGjIhhCegh', mainCate: 'vietnam' },
@@ -382,7 +382,7 @@ export const vnTop100Cate = [
   { title: { vi: 'Remix Việt', en: 'Remix Viet' }, value: 'aY3KIEnpCywU', mainCate: 'vietnam' },
 ]
 
-export const usukTop100Cate = [
+const usukTop100Cate = [
   { title: { vi: 'Nhạc Trẻ', en: 'Pop' }, value: 'zE23R7bc8e9X', mainCate: 'usuk' },
   { title: { vi: 'Điện tử', en: 'Electronica/Dance' }, value: 'ippIsiqacmnE', mainCate: 'usuk' },
   { title: { vi: 'R&B/Hip Hop/Rap', en: 'R&B/Hip Hop/Rap' }, value: 'bxkenI7MAoFv', mainCate: 'usuk' },
@@ -391,13 +391,13 @@ export const usukTop100Cate = [
   { title: { vi: 'Latin', en: 'Latin' }, value: 'cv4YefsXF887', mainCate: 'usuk' },
 ]
 
-export const asiaTop100Cate = [
+const asiaTop100Cate = [
   { title: { vi: 'Nhạc Hàn', en: 'Korea' }, value: 'iciV0mD8L9Ed', mainCate: 'asia' },
   { title: { vi: 'Nhạc Hoa', en: 'China' }, value: 'g4Y7NTPP9exf', mainCate: 'asia' },
   { title: { vi: 'Nhạc Nhật', en: 'Japan' }, value: 'aOokfjySrloy', mainCate: 'asia' },
 ]
 
-export const noLyricTop100Cate = [
+const noLyricTop100Cate = [
   { title: { vi: 'Không Lời', en: 'No Lyric' }, value: 'kr9KYNtkzmnA', mainCate: 'no-lyric' },
 ]
 
@@ -406,4 +406,16 @@ export const top100Cate = [
   { title: { vi: 'Âu Mỹ', en: 'US-UK' }, value: 'usuk', subCate: usukTop100Cate},
   { title: { vi: 'Châu Á', en: 'Asia' }, value: 'asia', subCate: asiaTop100Cate},
   { title: { vi: 'Không Lời', en: 'No Lyric' }, value: 'no-lyric', subCate: noLyricTop100Cate},
+]
+
+// Chart
+export const chartCate = [
+  { title: { vi: 'BXH Tuần', en: 'Weekly chart' }, value: 'week' },
+  { title: { vi: 'Thời gian thực', en: 'Realtime' }, value: 'realtime' },
+]
+
+export const weekSubCate = [
+  { title: { vi: 'Việt Nam', en: 'V-Pop' }, value: 'nhac-viet' },
+  { title: { vi: 'Âu Mỹ', en: 'US-UK' }, value: 'au-my' },
+  { title: { vi: 'Hàn Quốc', en: 'K-Pop' }, value: 'nhac-han' },
 ]

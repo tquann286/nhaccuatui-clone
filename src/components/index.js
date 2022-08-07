@@ -99,4 +99,6 @@ export { default as Top100Main } from './Top100/Top100Main/Top100Main'
 export { default as Top100Item } from './Top100/Top100Main/Top100Item'
 
 // Chart
-export { default as ChartMain } from './Chart/ChartMain'
+export { default as Chart } from './Chart/Chart'
+export { default as Top20 } from './Chart/Top20'
+export { default as Realtime } from './Chart/Realtime'
