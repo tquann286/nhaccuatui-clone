@@ -219,7 +219,7 @@ const LeftSidebar = () => {
                       <span className='color-0-5'>{lang === 'vi' ? 'tuyển tập' : 'collection'}</span>
                     </div>
                   </NavLink>
-                  <NavLink to='/top-100/New-Genre&k=m3liaiy6vVsF'>
+                  <NavLink to='/top-100'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
                       <span className='color-0-5'>top 100</span>

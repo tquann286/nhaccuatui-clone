@@ -74,7 +74,7 @@ const Collection = () => {
             const { value } = cate
 
             return (
-              <span key={value.value} className='flex items-center px-5 py-3 ml-3 bg-color-0-05 rounded-3xl color-0-5'>
+              <span key={value.value} className='flex items-center px-5 py-3 ml-3 bg-color-0-05 rounded-16px color-0-5'>
                 <span className='text-sm font-medium mr-2'>{defineLang(value.title.vi, value.title.en)}</span>
                 <IoIosCloseCircle className='cursor-pointer' onClick={() => handleRemoveColCate(value.value)} />
               </span>

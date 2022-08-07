@@ -2,11 +2,12 @@ import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.scss'
 
+import { Explore, Homepage, NotFound, Search, User, Favorite, SongPage, Playlist, Video, Artist, Topic, Chart } from 'pages'
+import { MainHomepage, SongPlaylistVideo, ArtistMain, TopicMain, Collection, Top100Main, Top100Item, ChartMain } from 'components'
+
 import { useStore, actions } from 'store'
-import { Explore, Homepage, NotFound, Search, User, Favorite, SongPage, Playlist, Video, Artist, Topic } from 'pages'
 import { auth } from 'config/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
-import { MainHomepage, SongPlaylistVideo, ArtistMain, TopicMain, Collection, Top100Main, Top100Item } from 'components'
 import { getFavSongs, getFavPlaylists, getFavVideos } from 'services/User/Favorite'
 
 const App = () => {
@@ -97,6 +98,9 @@ const App = () => {
           </Route>
           <Route path='top-100' element={<Top100Main />}>
               <Route path=':top100Id' element={<Top100Item />} />
+          </Route>
+          <Route path='bang-xep-hang' element={<Chart />}>
+              <Route path=':cateId' element={<ChartMain />} />
           </Route>
           <Route path='*' element={<NotFound />} />
         </Route>
