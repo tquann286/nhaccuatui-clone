@@ -58,3 +58,6 @@ export const getCollection = (tags, pageIndex = 1, pageSize = 36) => client.post
 
 // Top 100
 export const getTop100Detail = (key) => client.post('top100', joinQueryString({ key }))
+
+// Top 20
+export const getTop20 = (category, week, year, type = 'song', size = 20) => client.post('top100', joinQueryString({ category, week, year, type, size }))
