@@ -1,11 +1,9 @@
-export const getRankWeek = () => {
-  // Source: https://www.javatpoint.com/calculate-current-week-number-in-javascript
-  const todayDate = new Date()
-  const oneJan = new Date(todayDate.getFullYear(), 0, 1)
-  const numberOfDays = Math.floor((todayDate - oneJan) / (24 * 60 * 60 * 1000)) 
+import moment from 'moment'
+import { getTop20 } from 'api'
 
-  return Math.ceil((todayDate.getDay() + 1 + numberOfDays) / 7)
-}
+export const getWeek = () => moment().week() - 2
+
+export const getYear = () => new Date().getFullYear()
 
 export const getRankDay = (week) => {
   var curr = new Date() // get current date
@@ -15,4 +13,14 @@ export const getRankDay = (week) => {
   var firstday = new Date(curr.setDate(first)).toUTCString()
   var lastday = new Date(curr.setDate(last)).toUTCString()
   return { firstday, lastday }
+}
+
+export const getTop20Data = async (category, type, week, year) => {
+  try {
+    const data = await getTop20(category, type, week, year)
+
+    return data.ranking.song
+  } catch (error) {
+    console.log(error)
+  }
 }
