@@ -14,7 +14,6 @@ const SongFav = ({ defineLang, currentUser }) => {
   const [animationParent] = useAutoAnimate()
 
   const [favSongs, setFavSongs] = useState([])
-  console.log('favSongs: ', favSongs)
   const [songsView, setSongView] = useState({})
 
   const handlehandleClearAllFav = async () => {
