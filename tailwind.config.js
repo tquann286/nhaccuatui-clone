@@ -6,11 +6,14 @@ module.exports = {
       colors: {
         main: '#2daaed',
         disable: 'rgba(28, 30, 32, 0.2)',
+        hot: '#F44336'
       },
       padding: {
+        '6px': '0.6rem',
         '12px': '1.2rem',
         '16px': '1.6rem',
         '32px': '3.2rem',
+        '40px': '4rem',
       },
       margin: {
         '8px': '0.8rem',
@@ -25,18 +28,27 @@ module.exports = {
       spacing: {
         '8px': '0.8rem',
         '20px': '2rem',
+        '22px': '2.2rem',
         '26px': '2.6rem',
         '32px': '3.2rem',
+        '48px': '4.8rem',
         '56px': '5.6rem',
       },
       lineHeight: {
         'inherit': 'inherit',
         '20px': '2rem',
+        '22px': '2.2rem',
         '26px': '2.6rem',
         '32px': '3.2rem',
+      },
+      transitionProperty: {
+        'width': 'width',
+        'height': 'height',
+        'spacing': 'margin, padding',
       }
     },
     fontSize: {
+      '10px': ['1rem', '1.4rem'],
       xs: ['1.2rem', '1.6rem'],
       '13px': ['1.3rem', '1.8rem'],
       sm: ['1.4rem', '2rem'],

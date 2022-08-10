@@ -19,7 +19,7 @@ export const getTop20Data = async (category, type, week, year) => {
   try {
     const data = await getTop20(category, type, week, year)
 
-    return data.ranking.song
+    return data.ranking[type]
   } catch (error) {
     console.log(error)
   }

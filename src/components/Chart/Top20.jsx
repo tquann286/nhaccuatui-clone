@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useOutletContext, useSearchParams } from 'react-router-dom'
 
-import { CateBasic } from 'components'
+import { CateBasic, LoadingV2, Top1 } from 'components'
 import { weekSubCate } from 'share/Categories'
 import { getWeek, getYear } from 'services/Chart/Top20'
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
@@ -14,12 +14,21 @@ const Top20 = () => {
   const [top20, setTop20] = useState({})
   console.log('top20: ', top20)
   const [type, setType] = useState('song')
+  console.log(type)
   const [week, setWeek] = useState(getWeek())
   const [year, setYear] = useState(getYear())
   const [curSubCate, setCurSubCate] = useState(weekSubCate[0].value)
   const [isLoading, setIsLoading] = useState(false)
 
   const handleTitle = ({ vi, en }) => (document.title = defineLang(`Bảng xếp hạng bài hát ${vi} - Tuần 31/2022 - NhacCuaTui Clone`, `${en} Song Chart - Week 31/2022 - NhacCuaTui Clone`))
+
+  const handleChangeType = (selectType) => {
+    if (selectType === 'song' && type === 'video') {
+      setType('song')
+    } else if (selectType === 'video' && type === 'song') {
+      setType('video')
+    }
+  }
 
   const handleChangeWeek = (type) => {
     if (type === 'next' && !((week === getWeek()) && (year === getYear()))) {
@@ -105,10 +114,15 @@ const Top20 = () => {
             <IoIosArrowForward />
           </div>
         </div>
-        <div className={`w3-col w3-right w-fit clickable inline-block`}>Video</div>
+        <div className={`w3-col w3-right w-fit clickable inline-block ${type === 'video' && 'text-main'}`} onClick={() => handleChangeType('video')}>Video</div>
         <div className='w3-col h26px leading-26px w3-right w-fit text-13px mr-12px inline-block'>|</div>
-        <div className={`w3-right w3-col w-fit clickable mr-12px inline-block`}>{defineLang('Bài hát', 'Song')}</div>
+        <div className={`w3-right w3-col w-fit clickable mr-12px inline-block ${type === 'song' && 'text-main'}`} onClick={() => handleChangeType('song')}>{defineLang('Bài hát', 'Song')}</div>
       </div>
+      {isLoading ? (<div className='flexCenter w-full h-[calc(100vh_-_20rem)]'>
+        <LoadingV2 />
+        </div>) : <div>
+          <Top1 { ... top20[0] } isVideo={type === 'video'} />
+        </div>}
     </div>
   )
 }
