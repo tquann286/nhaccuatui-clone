@@ -3,6 +3,7 @@
 @import 'theme/dark';
 @import 'sass/base/override';
 @import 'sass/base/w3';
+@import 'sass/abstracts/custom';
 
 @tailwind base;
 @tailwind components;
@@ -10,12 +11,6 @@
 
 .hoverMainColor {
   @include hoverMainColor;
-}
-
-@layer components {
-  .collection-cate {
-    @apply w3-row relative h-10 mt-1.5 ml-16px w-full color-0-5 transition-colors hoverMainColor flex items-center text-sm cursor-pointer capitalize;
-  }
 }
 
 html {

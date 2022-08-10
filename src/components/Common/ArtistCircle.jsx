@@ -9,7 +9,7 @@ const ArtistCircle = ({ artists }) => {
   if (!artists) return null
 
   return (
-    <React.Fragment>
+    <div className='flex'>
       {artists.map((artist, i) => {
         const { name, shortLink, imageUrl } = artist
         const imageProps = {
@@ -23,7 +23,7 @@ const ArtistCircle = ({ artists }) => {
           </Link>
         )
       })}
-    </React.Fragment>
+    </div>
   )
 }
 

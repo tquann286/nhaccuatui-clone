@@ -1,0 +1,17 @@
+@layer components {
+  .collection-cate {
+    @apply w3-row relative h-10 mt-1.5 ml-16px w-full color-0-5 transition-colors hoverMainColor flex items-center text-sm cursor-pointer capitalize;
+  }
+
+  .rank-position {
+    @apply w-48 h-64px pt-4px;
+  }
+  
+  .rank-number {
+    @apply text-22px font-bold;
+  }
+
+  .rank-title {
+    @apply text-13px mt-9px color-0-5 uppercase;
+  }
+}

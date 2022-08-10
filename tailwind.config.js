@@ -6,9 +6,12 @@ module.exports = {
       colors: {
         main: '#2daaed',
         disable: 'rgba(28, 30, 32, 0.2)',
-        hot: '#F44336'
+        hot: '#F44336',
+        yellow: '#FFC40E',
+        green: '#95D96D',
       },
       padding: {
+        '4px': '0.4rem',
         '6px': '0.6rem',
         '12px': '1.2rem',
         '16px': '1.6rem',
@@ -16,8 +19,10 @@ module.exports = {
         '40px': '4rem',
       },
       margin: {
+        unset: 'unset',
         '6px': '0.6rem',
         '8px': '0.8rem',
+        '9px': '0.9rem',
         '12px': '1.2rem',
         '14px': '1.4rem',
         '16px': '1.6rem',
@@ -35,6 +40,7 @@ module.exports = {
         '32px': '3.2rem',
         '48px': '4.8rem',
         '56px': '5.6rem',
+        '64px': '6.4rem',
       },
       lineHeight: {
         'inherit': 'inherit',

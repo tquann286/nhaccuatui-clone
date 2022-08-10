@@ -28,7 +28,9 @@ export { default as CircleArtist } from './Common/CircleArtist/CircleArtist'
 export { default as TopicItem } from './Common/TopicItem/TopicItem'
 export { default as Image } from './Common/Image'
 export { default as ArtistCircle } from './Common/ArtistCircle'
+export { default as LineBreak } from './Common/LineBreak'
 export { default as SongRanking } from './Common/SongRanking/SongRanking'
+export { default as RankPosition } from './Common/RankPosition'
 
 // Home
 export { default as LoadingV2 } from './Loading/LoadingV2'
