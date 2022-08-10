@@ -7,13 +7,12 @@ import { createSongUrl, handleCopySong } from 'share/utilities'
 import { createRandomSongView } from 'services/SongDetail'
 import { IconButton } from '@mui/material'
 import { basicModal } from 'share/animation'
-import { removeFavItem } from 'services/firebase/firestore'
+import { getUserDetail, removeFavItem } from 'services/firebase/firestore'
 
 import { BsHeadphones } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
-import { toastNotify } from 'share/toast'
 
-const SongItem = ({ realKey, title, artists, duration, songsView, favSongs, setFavSongs, defineLang }) => {
+const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setFavSongs }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
   const navigate = useNavigate()
 
@@ -31,21 +30,23 @@ const SongItem = ({ realKey, title, artists, duration, songsView, favSongs, setF
 
   const handleGoToSong = (e) => {
     e.stopPropagation()
-    navigate(createSongUrl(title, realKey))
+    navigate(createSongUrl(title, keyId))
   }
 
   const handleCopyLink = (e) => {
-    handleCopySong(e, defineLang, title, realKey)
+    handleCopySong(e, defineLang, title, keyId)
     toggleShowMore()
   }
 
   // Handle Remove Song From Favorite
   const handleRemoveFav = async (e, keyId) => {
     e.stopPropagation()
-    const songToRemove = favSongs.filter(song => (song.key || song.keyId || song.songId) === keyId)[0]
+    const userDetail = await getUserDetail()
+
+    const songToRemove = userDetail.favorite.songs.filter(songKey => songKey === keyId)[0]
 
     await removeFavItem(songToRemove, 'song', defineLang)
-    setFavSongs(favSongs.filter(song => (song.key || song.keyId || song.songId) !== keyId))
+    setFavSongs((oldFav) => oldFav.filter(song => song.key !== keyId))
     toggleShowMore()
   }
 
@@ -59,7 +60,7 @@ const SongItem = ({ realKey, title, artists, duration, songsView, favSongs, setF
   const modalAnimateProps = {
     animateProps: basicModal,
     isVisible: showMoreOptions,
-    keyId: realKey,
+    keyId,
   }
 
   const extendModalProps = {
@@ -68,10 +69,10 @@ const SongItem = ({ realKey, title, artists, duration, songsView, favSongs, setF
     goToSong: true,
     handleGoToSong: (e) => handleGoToSong(e),
     removeFav: true,
-    handleRemoveFav: (e) => handleRemoveFav(e, realKey),
+    handleRemoveFav: (e) => handleRemoveFav(e, keyId),
   }
   return (
-    <li key={realKey} className='song-list-common bg-color-0-02 li-list-item-common color-0-6 hover-bg-color-0-05 hover-visible'>
+    <li key={keyId} className='song-list-common bg-color-0-02 li-list-item-common color-0-6 hover-bg-color-0-05 hover-visible'>
       <div className='song-list-title-artist'>
         <div className='song-list-title song-list-title-real'>
           <div className='alcenter-jcbetween'>
@@ -101,7 +102,7 @@ const SongItem = ({ realKey, title, artists, duration, songsView, favSongs, setF
       <div className='song-list-title listen-title-real'>
         <div className='view-count'>
           <BsHeadphones />
-          <span className='view-count-content color-0-5'>{formatNumber(songsView ? songsView[realKey] : createRandomSongView())}</span>
+          <span className='view-count-content color-0-5'>{formatNumber(songsView ? songsView[keyId] : createRandomSongView())}</span>
         </div>
       </div>
       <div className='song-list-title duration-title-real'>{duration}</div>

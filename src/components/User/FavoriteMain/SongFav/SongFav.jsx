@@ -7,37 +7,39 @@ import initUser from 'images/default/default_user.jpg'
 import { ShadowThumb, SongItem, SquareImg } from 'components'
 import { getFavSongs } from 'services/User/Favorite'
 import { getSongsView, getListSongsKey } from 'share/utilities'
-import { handleClearAllFav } from 'services/firebase/firestore'
+import { getUserDetail, handleClearAllFav } from 'services/firebase/firestore'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-import { useStore, actions } from 'store'
 
 const SongFav = ({ defineLang, currentUser }) => {
-  const [state, dispatch] = useStore()
-  const { favSongs } = state
   const [animationParent] = useAutoAnimate()
 
+  const [favSongs, setFavSongs] = useState([])
   const [songsView, setSongView] = useState({})
 
   const handlehandleClearAllFav = async () => {
     await handleClearAllFav('songs', defineLang)
-    dispatch(actions.setFavSongs([]))
+    setFavSongs([])
   }
 
   useEffect(() => {
-    const getFavSongsState = async () => {
-      const favSongs = await getFavSongs(defineLang)
-      
-      dispatch(actions.setFavSongs(favSongs))
+
+    const getFavSongsData = async () => {
+      const { favorite } = await getUserDetail()
+      if (favorite.songs) {
+        const data = await getFavSongs(favorite.songs)
+  
+        setFavSongs(data)
+      }
     }
 
-    getFavSongsState()
+    getFavSongsData()
   }, [])
 
   useEffect(() => {
     try {
       if (favSongs) {
-        const getSongsViewState = async (listSongsKey) => {
-          const songsView = await getSongsView(listSongsKey)
+        const getSongsViewState = async (favSongsKey) => {
+          const songsView = await getSongsView(favSongsKey)
           setSongView(songsView)
         }
 
@@ -54,8 +56,7 @@ const SongFav = ({ defineLang, currentUser }) => {
 
   const songItemProps = {
     songsView,
-    favSongs,
-    setFavSongs: (favSongs) => dispatch(actions.setFavSongs(favSongs)),
+    setFavSongs,
     defineLang,
   }
 
@@ -71,7 +72,7 @@ const SongFav = ({ defineLang, currentUser }) => {
             <span className='color-0-88'>{defineLang('Bài hát yêu thích', 'Favorite songs')}</span>
           </div>
           <div className='sf-total-number w3-row'>
-            <div className='width-fit-content color-0-5'>{defineLang(`${favSongs.length || 0} bài hát`, `${favSongs.length || 0} songs`)}</div>
+            <div className='width-fit-content color-0-5'>{defineLang(`${favSongs?.length || 0} bài hát`, `${favSongs?.length || 0} songs`)}</div>
           </div>
           <div className='bottom-position'>
             <div className='sf-author w3-row bg-color-0-02'>
@@ -107,9 +108,8 @@ const SongFav = ({ defineLang, currentUser }) => {
               <div className='song-list-title listen-title'>{defineLang('Lượt nghe', 'Listens')}</div>
               <div className='song-list-title duration-title'>{defineLang('Thời gian', 'Duration')}</div>
             </li>
-
             {favSongs?.map((song) => (
-              <SongItem {...song} { ... songItemProps } key={song.key || song.keyId || song.songId} realKey={song.key || song.keyId || song.songId} />
+              <SongItem {...song} {...songItemProps} key={song.key} keyId={song.key} />
             ))}
           </ul>
         </div>

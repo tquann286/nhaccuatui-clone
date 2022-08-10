@@ -50,7 +50,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang, songView, type, d
 
   const handleAddToFav = (e) => {
     e.stopPropagation()
-    handleAddToFavSong({ artists, songId, thumbnail, title, type, duration }, state.favSongs, defineLang)
+    handleAddToFavSong(songId, defineLang)
     toggleShowMore()
   }
 

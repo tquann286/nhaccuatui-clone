@@ -1,5 +1,5 @@
 import { auth, db } from 'config/firebase'
-import { setDoc, updateDoc, arrayUnion, arrayRemove, doc, deleteField } from 'firebase/firestore'
+import { setDoc, updateDoc, arrayUnion, arrayRemove, doc, deleteField, getDoc } from 'firebase/firestore'
 import { DEFAULT_IMAGE } from 'share/constants'
 import { toastNotify } from 'share/toast'
 
@@ -21,25 +21,25 @@ export const addFavSong = (song) => {
   })
 }
 
-export const removeFavItem = (item, cate, defineLang) => {
+export const removeFavItem = (key, cate, defineLang) => {
   const currentUserRef = doc(db, 'users', auth.currentUser.uid)
 
   switch (cate) {
     case 'song':
       updateDoc(currentUserRef, {
-        'favorite.songs': arrayRemove(item),
+        'favorite.songs': arrayRemove(key),
       })
       toastNotify(defineLang('Xóa bài hát khỏi yêu thích thành công', 'Removed song from favorite list successfully'), 'success')
       break
     case 'playlist':
       updateDoc(currentUserRef, {
-        'favorite.playlists': arrayRemove(item),
+        'favorite.playlists': arrayRemove(key),
       })
       toastNotify(defineLang('Xóa danh sách phát khỏi yêu thích thành công', 'Removed playlist from favorite successfully'), 'success')
       break
     case 'video':
       updateDoc(currentUserRef, {
-        'favorite.videos': arrayRemove(item),
+        'favorite.videos': arrayRemove(key),
       })
       toastNotify(defineLang('Xóa video khỏi yêu thích thành công', 'Removed video from favorite successfully'), 'success')
       break
@@ -89,4 +89,13 @@ export const addFavVideo = (video) => {
   updateDoc(currentUserRef, {
     'favorite.videos': arrayUnion(video),
   })
+}
+
+export const getUserDetail = async () => {
+  const currentUserRef = doc(db, 'users', auth.currentUser.uid)
+  const userSnap = await getDoc(currentUserRef)
+
+  if (userSnap.exists()) {
+    return userSnap.data()
+  }
 }

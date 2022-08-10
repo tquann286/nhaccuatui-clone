@@ -40,7 +40,7 @@ const SongRanking = ({ position, defineLang, keyId, artists, duration, thumbnail
   const handleAddToFav = (e) => {
     e.stopPropagation()
     if (type === 'SONG') {
-      handleAddToFavSong({ artists, keyId, thumbnail, title, type, duration }, state.favSongs, defineLang)
+      handleAddToFavSong(keyId, defineLang)
     } else {
 
     }

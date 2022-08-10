@@ -1,19 +1,22 @@
-import { auth } from 'config/firebase'
-import { addFavSong, addFavPlaylist, addFavVideo } from 'services/firebase/firestore'
+import { auth, db } from 'config/firebase'
+import { addFavSong, addFavPlaylist, addFavVideo, getUserDetail } from 'services/firebase/firestore'
 import { toastNotify } from 'share/toast'
 import { isEmpty } from 'lodash'
 
-export const handleAddToFavSong = async (song, favSongs = [], defineLang) => {
+export const handleAddToFavSong = async (songId, defineLang) => {
   if (auth.currentUser) {
-    if (song) {
-      const isDuplicate = favSongs.filter(sg => (sg.key || sg.keyId || sg.songId) === (song.key || song.keyId || song.songId))
-      
-      if (!isEmpty(isDuplicate)) {
-        toastNotify(defineLang('Bài hát đã có trong yêu thích.', 'Song already exists in favorite playlist.'))
-        return null
+    if (songId) {
+      const { favorite } = await getUserDetail()
+      if (favorite.songs) {
+        const isDuplicate = favorite.songs.includes(songId)
+        
+        if (isDuplicate) {
+          toastNotify(defineLang('Bài hát đã có trong yêu thích.', 'Song already exists in favorite playlist.'))
+          return null
+        }
       }
 
-      await addFavSong(song)
+      await addFavSong(songId)
       toastNotify(defineLang('Thêm bài hát vào danh sách yêu thích thành công.', 'Successfully added song to favorite list.'), 'success')
     } else {
       toastNotify(defineLang('Có lỗi khi thêm bài hát vào danh sách yêu thích.', 'Add song to favorite list failed due to an error.'), 'error')
