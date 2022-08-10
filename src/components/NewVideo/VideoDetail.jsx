@@ -44,7 +44,7 @@ const VideoDetail = ({ keyId, artists, duration, thumbnail, title, height, refMa
 
   const onAddToFav = (e) => {
     e.stopPropagation()
-    handleAddToFavVideo({ keyId, artists, duration, refMapping, thumbnail, title, type }, state.favVideos, defineLang)
+    handleAddToFavVideo(keyId, defineLang)
     toggleShowMore()
   }
 

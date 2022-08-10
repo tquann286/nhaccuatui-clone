@@ -49,17 +49,20 @@ export const handleAddToFavPlaylist = async (playlistId, defineLang) => {
   }
 }
 
-export const handleAddToFavVideo = async (video, favVideos = [], defineLang) => {
+export const handleAddToFavVideo = async (videoId, defineLang) => {
   if (auth.currentUser) {
-    if (video) {
-      const isDuplicate = favVideos.filter(vd => (vd.key || vd.keyId) === (video.key || video.keyId))
-      
-      if (!isEmpty(isDuplicate)) {
-        toastNotify(defineLang('Video đã có trong yêu thích.', 'Video already exists in favorite lists.'))
-        return null
+    if (videoId) {
+      const { favorite } = await getUserDetail()
+      if (favorite.videos) {
+        const isDuplicate = favorite.videos.includes(videoId)
+        
+        if (isDuplicate) {
+          toastNotify(defineLang('Video đã có trong yêu thích.', 'Video already exists in favorite playlist.'))
+          return null
+        }
       }
 
-      await addFavVideo(video)
+      await addFavVideo(videoId)
       toastNotify(defineLang('Thêm video vào danh sách yêu thích thành công.', 'Successfully added video to favorite list.'), 'success')
     } else {
       toastNotify(defineLang('Có lỗi khi thêm video vào danh sách yêu thích.', 'Add video to favorite list failed due to an error.'), 'error')

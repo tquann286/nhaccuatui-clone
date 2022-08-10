@@ -7,7 +7,6 @@ import { CommonPlaylist, NotFoundV2 } from 'components'
 
 const PlaylistFav = ({ defineLang, currentUser }) => {
   const [favPlaylists, setFavPlaylists] = useState([])
-  console.log('favPlaylists: ', favPlaylists)
 
   const handlehandleClearAllFav = async () => {
     await handleClearAllFav('playlists', defineLang)
@@ -57,7 +56,7 @@ const PlaylistFav = ({ defineLang, currentUser }) => {
           {favPlaylists
             .slice()
             .reverse()
-            ?.map((playlist) => (
+            ?.map((playlist) => playlist && (
               <Grid item key={playlist.key || playlist.keyId} xs={3} sm={3} md={3} xl={2}>
                 <CommonPlaylist {...playlist} keyId={playlist.key || playlist.keyId} addToFav={false} removeFav handleRemoveFav={() => handleRemoveFav(playlist.key || playlist.keyId)} />
               </Grid>

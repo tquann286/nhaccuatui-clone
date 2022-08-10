@@ -19,7 +19,7 @@ const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title, v
   }
 
   const handleAddToFav = () => {
-    handleAddToFavVideo({ keyId, artists, duration, refMapping, thumbnail, title, type }, state.favVideos, defineLang)
+    handleAddToFavVideo(keyId, defineLang)
   }
 
   const videoOverlayProps = {

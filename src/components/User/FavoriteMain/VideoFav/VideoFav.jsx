@@ -1,36 +1,39 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { getFavVideos } from 'services/User/Favorite'
-import { handleClearAllFav, removeFavItem } from 'services/firebase/firestore'
-import { useStore, actions } from 'store'
+import { getUserDetail, handleClearAllFav, removeFavItem } from 'services/firebase/firestore'
 import { Grid } from '@mui/material'
 import { CommonVideo, NotFoundV2 } from 'components'
 
 const VideoFav = ({ defineLang, currentUser }) => {
-  const [state, dispatch] = useStore()
-  const { favVideos = [] } = state
+  const [favVideos, setFavVideos] = useState([])
 
   const handlehandleClearAllFav = async () => {
     await handleClearAllFav('videos', defineLang)
-    dispatch(actions.setFavVideos([]))
+    setFavVideos([])
   }
 
   const handleRemoveFav = async (keyId) => {
-    const videoToRemove = favVideos.filter((video) => video.keyId === keyId)[0]
+    const { favorite } = await getUserDetail()
+
+    const videoToRemove = favorite.videos.filter((videoId) => videoId === keyId)[0]
 
     await removeFavItem(videoToRemove, 'video', defineLang)
-    dispatch(actions.setFavVideos(favVideos.filter((video) => video.keyId !== keyId)))
+    setFavVideos(favVideos.filter((video) => video.key !== keyId))
   }
 
   useEffect(() => {
     try {
-      const getFavVideosState = async () => {
-        const favVideos = await getFavVideos(defineLang)
+      const getFavVideosData = async () => {
+        const { favorite } = await getUserDetail()
+        if (favorite.videos) {
+          const data = await getFavVideos(favorite.videos)
 
-        dispatch(actions.setFavVideos(favVideos))
+          setFavVideos(data)
+        }
       }
 
-      getFavVideosState()
+      getFavVideosData()
     } catch (error) {
       throw new Error(error)
     }
@@ -46,9 +49,9 @@ const VideoFav = ({ defineLang, currentUser }) => {
       </div>
       <div className='pt2'>
         <Grid container spacing={2}>
-          {favVideos.slice().reverse()?.map((video) => (
-            <Grid item key={video.key || video.keyId} xs={4} sm={4} md={4} xl={3}>
-              <CommonVideo {...video} keyId={video.key || video.keyId} addToFav={false} removeFav handleRemoveFav={() => handleRemoveFav(video.key || video.keyId)} />
+          {favVideos.slice().reverse()?.map((video) => video && (
+            <Grid item key={video.key} xs={4} sm={4} md={4} xl={3}>
+              <CommonVideo {...video} keyId={video.key} addToFav={false} removeFav handleRemoveFav={() => handleRemoveFav(video.key)} />
             </Grid>
           ))}
         </Grid>

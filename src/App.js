@@ -52,16 +52,6 @@ const App = () => {
         dispatch(actions.onSignedOut())
       }
     })
-
-    // Get Favorite lists
-    if (auth.currentUser) {
-      const getFavState = async () => {
-        const favVideos = await getFavVideos(defineLang)
-        dispatch(actions.setFavVideos(favVideos))
-      }
-
-      getFavState()
-    }
   }, [auth.currentUser])
 
   return (
