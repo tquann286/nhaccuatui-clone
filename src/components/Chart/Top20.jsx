@@ -95,6 +95,11 @@ const Top20 = () => {
     categories: weekSubCate,
   }
 
+  const top1Props = {
+    defineLang,
+    isVideo: type === 'video'
+  }
+
   return (
     <div className='top20-container'>
       {curCate === 'week' && (
@@ -121,7 +126,7 @@ const Top20 = () => {
       {isLoading ? (<div className='flexCenter w-full h-[calc(100vh_-_20rem)]'>
         <LoadingV2 />
         </div>) : <div>
-          <Top1 { ... top20[0] } isVideo={type === 'video'} />
+          <Top1 { ... top20[0] } { ... top1Props } />
         </div>}
     </div>
   )
