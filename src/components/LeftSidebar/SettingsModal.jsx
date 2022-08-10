@@ -34,7 +34,7 @@ const SettingsModal = ({ user, theme, lang, dispatch }) => {
 
   const onLogout = () => {
     signOut(auth)
-    toastNotify(lang === 'vi' ? 'Đăng xuất thành công.' : 'Logout successfully.')
+    toastNotify(lang === 'vi' ? 'Đăng xuất thành công.' : 'Logout successfully.', 'success')
   }
 
   return (
