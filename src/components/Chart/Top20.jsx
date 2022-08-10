@@ -14,7 +14,6 @@ const Top20 = () => {
   const [top20, setTop20] = useState({})
   console.log('top20: ', top20)
   const [type, setType] = useState('song')
-  console.log(type)
   const [week, setWeek] = useState(getWeek())
   const [year, setYear] = useState(getYear())
   const [curSubCate, setCurSubCate] = useState(weekSubCate[0].value)

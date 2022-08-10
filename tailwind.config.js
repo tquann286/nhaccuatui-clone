@@ -48,6 +48,11 @@ module.exports = {
         'width': 'width',
         'height': 'height',
         'spacing': 'margin, padding',
+      },
+      zIndex: {
+        '1': '1',
+        '2': '2',
+        '3': '3',
       }
     },
     fontSize: {
