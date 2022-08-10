@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useOutletContext, useSearchParams } from 'react-router-dom'
 
-import { CateBasic, LoadingV2, Top1 } from 'components'
+import { CateBasic, LoadingV2, SongRanking, Top1 } from 'components'
 import { weekSubCate } from 'share/Categories'
 import { getWeek, getYear } from 'services/Chart/Top20'
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
@@ -11,7 +11,7 @@ const Top20 = () => {
   const [defineLang, curCate, navigate] = useOutletContext()
   const [searchParams] = useSearchParams()
 
-  const [top20, setTop20] = useState({})
+  const [top20, setTop20] = useState([])
   console.log('top20: ', top20)
   const [type, setType] = useState('song')
   const [week, setWeek] = useState(getWeek())
@@ -107,7 +107,7 @@ const Top20 = () => {
         </div>
       )}
       <div className='w3-row leading-26px h-26px mt-24px mx-32px color-0-88'>
-        <div className='text-22px font-bold w3-col w-40'>
+        <div className='text-22px font-bold w3-col w-44'>
           {defineLang('Tuần', 'Week')} {week}:
         </div>
         <div className='w-fit h-full rounded-13px useBorder border-0-05 ml-20px w3-col w3-row cursor-pointer color-0-5 text-13px transition-colors'>
@@ -126,6 +126,9 @@ const Top20 = () => {
         <LoadingV2 />
         </div>) : <div>
           <Top1 { ... top20[0] } { ... top1Props } />
+          <div className="mt-16px">
+            {top20.map(item => <SongRanking { ... item } />)}
+          </div>
         </div>}
     </div>
   )

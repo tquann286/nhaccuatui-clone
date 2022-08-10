@@ -54,7 +54,6 @@ export { default as FavoriteMain } from './User/FavoriteMain/FavoriteMain'
 export { default as SongFav } from './User/FavoriteMain/SongFav/SongFav'
 export { default as PlaylistFav } from './User/FavoriteMain/PlaylistFav/PlaylistFav'
 export { default as VideoFav } from './User/FavoriteMain/VideoFav/VideoFav'
-export { default as ShareModal } from './User/FavoriteMain/SongFav/ShareModal'
 export { default as SongItem } from './User/FavoriteMain/SongFav/SongItem'
 
 // Search

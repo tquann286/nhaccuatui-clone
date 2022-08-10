@@ -61,3 +61,6 @@ export const getTop100Detail = (key) => client.post('top100', joinQueryString({ 
 
 // Top 20
 export const getTop20 = (category, type = 'song', week, year, size = 20) => client.post('ranking/top20', joinQueryString({ category, type, size, week, year }))
+
+// Song
+export const getSongDetail = (key) => client.post('playing/song', joinQueryString({ key }))
