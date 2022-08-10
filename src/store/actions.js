@@ -72,9 +72,9 @@ export const setLastPlayedSongId = (songId) => {
 }
 
 // Favorite
-export const setFavSongs = (favSongs) => ({
+export const setFavSongs = (favSongsKey) => ({
   type: SET_FAV_SONGS,
-  favSongs,
+  favSongsKey,
 })
 
 export const setFavPlaylists = (favPlaylists) => ({

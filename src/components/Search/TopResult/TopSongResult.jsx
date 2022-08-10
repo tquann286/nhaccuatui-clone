@@ -24,7 +24,7 @@ const TopSongResult = ({ song, defineLang }) => {
 
   const handleAddToFav = (e) => {
     e.stopPropagation()
-    handleAddToFavSong({ artists, key, thumbnail, title, type, duration }, state.favSongs, defineLang)
+    handleAddToFavSong(key, state.favSongsKey, defineLang)
   }
 
   const imageOverlayProps = {
