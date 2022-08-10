@@ -27,3 +27,13 @@
 .MuiTabs-indicator {
   background-color: $main-text-color !important;
 }
+
+.MuiAvatarGroup-root {
+  -webkit-flex-direction: row !important;
+  -ms-flex-direction: row !important;
+  flex-direction: row !important;
+}
+
+.MuiAvatar-root {
+  border-width: 0.1rem !important;
+}
