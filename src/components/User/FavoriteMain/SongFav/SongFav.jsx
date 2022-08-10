@@ -22,12 +22,11 @@ const SongFav = ({ defineLang, currentUser }) => {
   }
 
   useEffect(() => {
-
     const getFavSongsData = async () => {
       const { favorite } = await getUserDetail()
       if (favorite.songs) {
         const data = await getFavSongs(favorite.songs)
-  
+
         setFavSongs(data)
       }
     }

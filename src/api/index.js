@@ -56,6 +56,8 @@ export const getTopics = () => client.post('topic')
 // Playlist
 export const getCollection = (tags, pageIndex = 1, pageSize = 36) => client.post('tags', joinQueryString({ tags, pageIndex, pageSize }))
 
+export const getPlaylistDetail = (key) => client.post('playing/playlist', joinQueryString({ key }))
+
 // Top 100
 export const getTop100Detail = (key) => client.post('top100', joinQueryString({ key }))
 

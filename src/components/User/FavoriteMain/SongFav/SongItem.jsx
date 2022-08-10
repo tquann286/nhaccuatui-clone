@@ -41,9 +41,9 @@ const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setF
   // Handle Remove Song From Favorite
   const handleRemoveFav = async (e, keyId) => {
     e.stopPropagation()
-    const userDetail = await getUserDetail()
+    const { favorite } = await getUserDetail()
 
-    const songToRemove = userDetail.favorite.songs.filter(songKey => songKey === keyId)[0]
+    const songToRemove = favorite.songs.filter(songKey => songKey === keyId)[0]
 
     await removeFavItem(songToRemove, 'song', defineLang)
     setFavSongs((oldFav) => oldFav.filter(song => song.key !== keyId))

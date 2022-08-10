@@ -22,7 +22,7 @@ const PlaylistResult = ({ playlist, favPlaylists, defineLang }) => {
   }
 
   const handleAddToFav = () => {
-    handleAddToFavPlaylist({ artists, key, thumbnail, title, type }, favPlaylists, defineLang)
+    handleAddToFavPlaylist(key, defineLang)
   }
 
   const imageOverlayProps = {

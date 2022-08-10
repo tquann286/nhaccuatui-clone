@@ -1,7 +1,5 @@
-import { doc, getDoc } from 'firebase/firestore'
-import { auth, db } from 'config/firebase'
 import { toastNotify } from 'share/toast'
-import { getSongDetail } from 'api'
+import { getSongDetail, getPlaylistDetail } from 'api'
 import { getUserDetail } from 'services/firebase/firestore'
 
 export const favCateNav = [
@@ -9,16 +7,6 @@ export const favCateNav = [
   { title: { vi: 'Danh sách phát', en: 'Playlist' }, value: 'playlist' },
   { title: { vi: 'Video', en: 'Video' }, value: 'video' },
 ]
-
-export const getFavPlaylists = async (defineLang) => {
-  const userDetail = await getUserDetail()
-
-  if (userDetail) {
-    return userDetail.favorite.playlists
-  } else {
-    toastNotify(defineLang('Không tìm thấy danh sách yêu thích', 'There is no favorite playlist found'), 'info')
-  }
-}
 
 export const getFavVideos = async (defineLang) => {
   const userDetail = await getUserDetail()
@@ -36,6 +24,20 @@ export const getFavSongs = async (songKeys) => {
       const songDetail = await getSongDetail(key)
 
       return songDetail.song
+    })
+
+    const result = await Promise.all(data) 
+
+    return result
+  }
+}
+
+export const getFavPlaylists = async (playlistKeys) => {
+  if (playlistKeys) {
+    const data = playlistKeys.map(async (key) => {
+      const playlistDetail = await getPlaylistDetail(key)
+
+      return playlistDetail.playlist
     })
 
     const result = await Promise.all(data) 

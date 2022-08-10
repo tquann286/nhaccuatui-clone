@@ -26,17 +26,20 @@ export const handleAddToFavSong = async (songId, defineLang) => {
   }
 }
 
-export const handleAddToFavPlaylist = async (playlist, favPlaylists = [], defineLang) => {
+export const handleAddToFavPlaylist = async (playlistId, defineLang) => {
   if (auth.currentUser) {
-    if (playlist) {
-      const isDuplicate = favPlaylists.filter(pl => (pl.key || pl.keyId) === (playlist.key || playlist.keyId))
-      
-      if (!isEmpty(isDuplicate)) {
-        toastNotify(defineLang('Danh sách phát đã có trong yêu thích.', 'Playlist already exists in favorite lists.'))
-        return null
+    if (playlistId) {
+      const { favorite } = await getUserDetail()
+      if (favorite.playlists) {
+        const isDuplicate = favorite.playlists.includes(playlistId)
+        
+        if (isDuplicate) {
+          toastNotify(defineLang('Danh sách phát đã có trong yêu thích.', 'Playlist already exists in favorite playlist.'))
+          return null
+        }
       }
 
-      await addFavPlaylist(playlist)
+      await addFavPlaylist(playlistId)
       toastNotify(defineLang('Thêm danh sách phát vào danh sách yêu thích thành công.', 'Successfully added playlist to favorite list.'), 'success')
     } else {
       toastNotify(defineLang('Có lỗi khi thêm danh sách phát vào danh sách yêu thích.', 'Add playlist to favorite list failed due to an error.'), 'error')

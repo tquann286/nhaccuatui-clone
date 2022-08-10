@@ -1,36 +1,40 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { getFavPlaylists } from 'services/User/Favorite'
-import { handleClearAllFav, removeFavItem } from 'services/firebase/firestore'
-import { useStore, actions } from 'store'
+import { getUserDetail, handleClearAllFav, removeFavItem } from 'services/firebase/firestore'
 import { Grid } from '@mui/material'
 import { CommonPlaylist, NotFoundV2 } from 'components'
 
 const PlaylistFav = ({ defineLang, currentUser }) => {
-  const [state, dispatch] = useStore()
-  const { favPlaylists = [] } = state
+  const [favPlaylists, setFavPlaylists] = useState([])
+  console.log('favPlaylists: ', favPlaylists)
 
   const handlehandleClearAllFav = async () => {
     await handleClearAllFav('playlists', defineLang)
-    dispatch(actions.setFavPlaylists([]))
+    setFavPlaylists([])
   }
 
   const handleRemoveFav = async (keyId) => {
-    const playlistToRemove = favPlaylists.filter(playlist => playlist.keyId === keyId)[0]
+    const { favorite } = await getUserDetail()
+
+    const playlistToRemove = favorite.playlists.filter((playlistId) => playlistId === keyId)[0]
 
     await removeFavItem(playlistToRemove, 'playlist', defineLang)
-    dispatch(actions.setFavPlaylists(favPlaylists.filter(playlist => playlist.keyId !== keyId)))
+    setFavPlaylists(favPlaylists.filter((playlist) => playlist.key !== keyId))
   }
 
   useEffect(() => {
     try {
-      const getFavPlaylistsState = async () => {
-        const favPlaylists = await getFavPlaylists(defineLang)
+      const getFavPlaylistsData = async () => {
+        const { favorite } = await getUserDetail()
+        if (favorite.playlists) {
+          const data = await getFavPlaylists(favorite.playlists)
 
-        dispatch(actions.setFavPlaylists(favPlaylists))
+          setFavPlaylists(data)
+        }
       }
 
-      getFavPlaylistsState()
+      getFavPlaylistsData()
     } catch (error) {
       throw new Error(error)
     }
@@ -50,15 +54,18 @@ const PlaylistFav = ({ defineLang, currentUser }) => {
       </div>
       <div className='playlist-fav-main pt2'>
         <Grid container spacing={2}>
-          {favPlaylists.slice().reverse()?.map((playlist) => (
-            <Grid item key={playlist.key || playlist.keyId} xs={3} sm={3} md={3} xl={2}>
-              <CommonPlaylist {...playlist} keyId={playlist.key || playlist.keyId} addToFav={false} removeFav handleRemoveFav={() => handleRemoveFav(playlist.key || playlist.keyId)} />
-            </Grid>
-          ))}
+          {favPlaylists
+            .slice()
+            .reverse()
+            ?.map((playlist) => (
+              <Grid item key={playlist.key || playlist.keyId} xs={3} sm={3} md={3} xl={2}>
+                <CommonPlaylist {...playlist} keyId={playlist.key || playlist.keyId} addToFav={false} removeFav handleRemoveFav={() => handleRemoveFav(playlist.key || playlist.keyId)} />
+              </Grid>
+            ))}
         </Grid>
       </div>
       {favPlaylists?.length === 0 && (
-        <div className="no-fav-playlist h100">
+        <div className='no-fav-playlist h100'>
           <NotFoundV2 message={defineLang('Chưa có danh sách yêu thích nào', 'There are no favorite playlist added')} />
         </div>
       )}

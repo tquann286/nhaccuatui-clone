@@ -32,7 +32,7 @@ const SwiperSlider = ({ keyId, title, thumbnail, onNavigatePlaylist, lang, type 
 
   const handleAddToFav = (e) => {
     e.stopPropagation()
-    handleAddToFavPlaylist({ keyId, thumbnail, title, type }, favPlaylists, defineLang)
+    handleAddToFavPlaylist(keyId, defineLang)
     toggleShowMore()
   }
 
