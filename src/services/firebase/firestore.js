@@ -1,5 +1,5 @@
 import { auth, db } from 'config/firebase'
-import { setDoc, updateDoc, arrayUnion, arrayRemove, doc, deleteField } from 'firebase/firestore'
+import { setDoc, updateDoc, arrayUnion, arrayRemove, doc, deleteField, getDoc } from 'firebase/firestore'
 import { DEFAULT_IMAGE } from 'share/constants'
 import { toastNotify } from 'share/toast'
 
@@ -89,4 +89,13 @@ export const addFavVideo = (video) => {
   updateDoc(currentUserRef, {
     'favorite.videos': arrayUnion(video),
   })
+}
+
+export const getUserDetail = async () => {
+  const currentUserRef = doc(db, 'users', auth.currentUser.uid)
+  const userSnap = await getDoc(currentUserRef)
+
+  if (userSnap.exists()) {
+    return userSnap.data()
+  }
 }

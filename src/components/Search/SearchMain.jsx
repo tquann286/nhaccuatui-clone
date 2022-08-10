@@ -65,7 +65,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
 
   const handleAddToFav = (e) => {
     e.stopPropagation()
-    handleAddToFavSong(maybeHit.key, state.favSongsKey, defineLang)
+    handleAddToFavSong(maybeHit.key, defineLang)
     toggleShowMore()
   }
 

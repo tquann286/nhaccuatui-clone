@@ -7,12 +7,12 @@ import { createSongUrl, handleCopySong } from 'share/utilities'
 import { createRandomSongView } from 'services/SongDetail'
 import { IconButton } from '@mui/material'
 import { basicModal } from 'share/animation'
-import { removeFavItem } from 'services/firebase/firestore'
+import { getUserDetail, removeFavItem } from 'services/firebase/firestore'
 
 import { BsHeadphones } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 
-const SongItem = ({ keyId, title, artists, duration, songsView, favSongsKey, setFavSongs, defineLang }) => {
+const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setFavSongs }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
   const navigate = useNavigate()
 
@@ -41,10 +41,12 @@ const SongItem = ({ keyId, title, artists, duration, songsView, favSongsKey, set
   // Handle Remove Song From Favorite
   const handleRemoveFav = async (e, keyId) => {
     e.stopPropagation()
-    const songToRemove = favSongsKey.filter(songKey => songKey === keyId)[0]
+    const userDetail = await getUserDetail()
+
+    const songToRemove = userDetail.favorite.songs.filter(songKey => songKey === keyId)[0]
 
     await removeFavItem(songToRemove, 'song', defineLang)
-    setFavSongs(favSongsKey.filter(songKey => songKey !== keyId))
+    setFavSongs((oldFav) => oldFav.filter(song => song.key !== keyId))
     toggleShowMore()
   }
 

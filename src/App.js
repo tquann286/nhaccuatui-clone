@@ -8,7 +8,7 @@ import { MainHomepage, SongPlaylistVideo, ArtistMain, TopicMain, Collection, Top
 import { useStore, actions } from 'store'
 import { auth } from 'config/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
-import { getFavSongsKey, getFavPlaylists, getFavVideos } from 'services/User/Favorite'
+import { getFavPlaylists, getFavVideos } from 'services/User/Favorite'
 
 const App = () => {
   const [state, dispatch] = useStore()
@@ -56,9 +56,6 @@ const App = () => {
     // Get Favorite lists
     if (auth.currentUser) {
       const getFavState = async () => {
-        const favSongsKey = await getFavSongsKey(defineLang)
-        dispatch(actions.setFavSongs(favSongsKey))
-
         const favPlaylists = await getFavPlaylists(defineLang)
         dispatch(actions.setFavPlaylists(favPlaylists))
 

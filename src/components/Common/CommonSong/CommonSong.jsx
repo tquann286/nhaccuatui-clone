@@ -47,7 +47,7 @@ const CommonSong = ({ artists, keyId, thumbnail, title, songView, type, duration
 
   const handleAddToFav = (e) => {
     e.stopPropagation()
-    handleAddToFavSong(keyId, state.favSongsKey, defineLang)
+    handleAddToFavSong(keyId, defineLang)
     toggleShowMore()
   }
 

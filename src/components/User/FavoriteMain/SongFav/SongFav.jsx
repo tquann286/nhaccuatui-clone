@@ -5,37 +5,32 @@ import initImage from 'images/default/default_personal_playlist.png'
 import initUser from 'images/default/default_user.jpg'
 
 import { ShadowThumb, SongItem, SquareImg } from 'components'
-import { getFavSongs, getFavSongsKey } from 'services/User/Favorite'
+import { getFavSongs } from 'services/User/Favorite'
 import { getSongsView, getListSongsKey } from 'share/utilities'
-import { handleClearAllFav } from 'services/firebase/firestore'
+import { getUserDetail, handleClearAllFav } from 'services/firebase/firestore'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-import { useStore, actions } from 'store'
 
 const SongFav = ({ defineLang, currentUser }) => {
-  const [state, dispatch] = useStore()
-  const { favSongsKey } = state
   const [animationParent] = useAutoAnimate()
 
   const [favSongs, setFavSongs] = useState([])
+  console.log('favSongs: ', favSongs)
   const [songsView, setSongView] = useState({})
 
   const handlehandleClearAllFav = async () => {
     await handleClearAllFav('songs', defineLang)
-    dispatch(actions.setFavSongs([]))
+    setFavSongs([])
   }
 
   useEffect(() => {
-    const getFavSongsState = async () => {
-      const favSongsKey = await getFavSongsKey(defineLang)
-
-      dispatch(actions.setFavSongs(favSongsKey))
-    }
-    getFavSongsState()
 
     const getFavSongsData = async () => {
-      const data = await getFavSongs(favSongsKey)
-
-      setFavSongs(data)
+      const { favorite } = await getUserDetail()
+      if (favorite.songs) {
+        const data = await getFavSongs(favorite.songs)
+  
+        setFavSongs(data)
+      }
     }
 
     getFavSongsData()
@@ -43,18 +38,18 @@ const SongFav = ({ defineLang, currentUser }) => {
 
   useEffect(() => {
     try {
-      if (favSongsKey) {
-        const getSongsViewState = async () => {
+      if (favSongs) {
+        const getSongsViewState = async (favSongsKey) => {
           const songsView = await getSongsView(favSongsKey)
           setSongView(songsView)
         }
 
-        getSongsViewState()
+        getSongsViewState(getListSongsKey(favSongs))
       }
     } catch (error) {
       throw new Error(error)
     }
-  }, [favSongsKey])
+  }, [favSongs])
 
   if (!currentUser) return null
 
@@ -62,8 +57,7 @@ const SongFav = ({ defineLang, currentUser }) => {
 
   const songItemProps = {
     songsView,
-    favSongsKey,
-    setFavSongs: (favSongsKey) => dispatch(actions.setFavSongs(favSongsKey)),
+    setFavSongs,
     defineLang,
   }
 
@@ -79,7 +73,7 @@ const SongFav = ({ defineLang, currentUser }) => {
             <span className='color-0-88'>{defineLang('Bài hát yêu thích', 'Favorite songs')}</span>
           </div>
           <div className='sf-total-number w3-row'>
-            <div className='width-fit-content color-0-5'>{defineLang(`${favSongsKey.length || 0} bài hát`, `${favSongsKey.length || 0} songs`)}</div>
+            <div className='width-fit-content color-0-5'>{defineLang(`${favSongs?.length || 0} bài hát`, `${favSongs?.length || 0} songs`)}</div>
           </div>
           <div className='bottom-position'>
             <div className='sf-author w3-row bg-color-0-02'>
@@ -99,7 +93,7 @@ const SongFav = ({ defineLang, currentUser }) => {
       <div className='sf-main'>
         <div className='song-list common-title color-0-88 alcenter-jcbetween'>
           <div className='sf-title-content'>{defineLang('Danh sách bài hát', 'Song list')}</div>
-          {favSongsKey.length !== 0 && (
+          {favSongs.length !== 0 && (
             <div className='clear-all-song clickable small-common color-0-5' onClick={handlehandleClearAllFav}>
               {defineLang('Xóa tất cả', 'Clear all')}
             </div>

@@ -22,7 +22,7 @@ const SongSquare = ({ keyId, artists, title, thumbnail, duration, type }) => {
 
   const handleAddToFav = (e) => {
     e.stopPropagation()
-    handleAddToFavSong(keyId, state.favSongsKey, defineLang)
+    handleAddToFavSong(keyId, defineLang)
   }
   
   const imageOverlayProps = {
