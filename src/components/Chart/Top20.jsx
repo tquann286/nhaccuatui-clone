@@ -127,7 +127,7 @@ const Top20 = () => {
         </div>) : <div>
           <Top1 { ... top20[0] } { ... top1Props } />
           <div className="mt-16px">
-            {top20.map(item => <SongRanking { ... item } />)}
+            {top20.map(item => <SongRanking key={item.songKey} { ... item } defineLang={defineLang} isVideo={type === 'video'} hasRanking />)}
           </div>
         </div>}
     </div>

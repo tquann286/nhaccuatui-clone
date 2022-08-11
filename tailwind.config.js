@@ -20,6 +20,8 @@ module.exports = {
       },
       margin: {
         unset: 'unset',
+        '2px': '0.2rem',
+        '4px': '0.4rem',
         '6px': '0.6rem',
         '8px': '0.8rem',
         '9px': '0.9rem',
@@ -33,6 +35,7 @@ module.exports = {
       },
       spacing: {
         '8px': '0.8rem',
+        '17px': '1.7rem',
         '20px': '2rem',
         '22px': '2.2rem',
         '24px': '2.4rem',
@@ -41,6 +44,7 @@ module.exports = {
         '48px': '4.8rem',
         '56px': '5.6rem',
         '64px': '6.4rem',
+        '72px': '7.2rem',
       },
       lineHeight: {
         'inherit': 'inherit',

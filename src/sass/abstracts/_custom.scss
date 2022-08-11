@@ -14,4 +14,12 @@
   .rank-title {
     @apply text-13px mt-9px color-0-5 uppercase;
   }
+
+  .rank-tag {
+    @apply flexCenter w-full h-auto;
+  }
+
+  .rank-number {
+    @apply text-xs ml-2px font-normal;
+  }
 }
