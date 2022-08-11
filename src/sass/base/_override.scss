@@ -4,7 +4,7 @@
 }
 
 // MUI
-.list-songs.MuiGrid-spacing-xs-2>.MuiGrid-item {
+.list-songs.MuiGrid-spacing-xs-2 > .MuiGrid-item {
   padding: 2px 8px;
 }
 
@@ -12,7 +12,8 @@
   margin: -8px !important;
 }
 
-.list-playlists.MuiGrid-spacing-xs-2 > .MuiGrid-item, .list-videos.MuiGrid-spacing-xs-2 > .MuiGrid-item {
+.list-playlists.MuiGrid-spacing-xs-2 > .MuiGrid-item,
+.list-videos.MuiGrid-spacing-xs-2 > .MuiGrid-item {
   padding: 8px;
 }
 
@@ -36,4 +37,12 @@
 
 .MuiAvatar-root {
   border-width: 0.1rem !important;
+}
+
+.flex.relative.flex-col.w-full.mb-2px {
+  .MuiTouchRipple-root {
+    .MuiTouchRipple-childLeaving {
+      background-color: rgba(226, 232, 240, 0.5);
+    }
+  }
 }

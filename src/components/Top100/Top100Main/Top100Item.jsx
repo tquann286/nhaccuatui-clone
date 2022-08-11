@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
-import Blur from 'react-blur'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import blur_layer from 'images/blur/blur_layer_v1.png'
 
-import { Footer, LoadingV2, Sharing, SongRanking } from 'components'
+import { BlurImg, Footer, LoadingV2, Sharing, SongRanking } from 'components'
 import { getTop100Item } from 'services/Top100/Top100'
 import { getCurrentPathname, handleCopyProxy } from 'share/utilities'
 import { toastNotify } from 'share/toast'
@@ -71,12 +70,16 @@ const Top100Item = () => {
     hasMore: count !== 120,
   }
 
+  const blurImgProps = {
+    img: top100.songs[0].thumbnail || blur_layer,
+    blurRadius: 100,
+    className: 'relative h-full w-full'
+  }
+
   return (
     <div>
       <div className='relative w-full h-[94px] mt-16 mb-9'>
-        <Blur img={top100.songs[0].thumbnail || blur_layer} blurRadius={100} className='h-full w-full'>
-          <div className='absolute top-0 left-0 h-full w-full bg-black/70'></div>
-        </Blur>
+        <BlurImg { ... blurImgProps } />
         <div className='flex absolute items-center justify-between top-0 left-0 w-full h-full py-12px px-32px text-slate-100/90'>
           <div>
             <h2 className='text-3xl font-bold'>TOP 100</h2>

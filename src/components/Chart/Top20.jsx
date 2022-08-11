@@ -12,7 +12,6 @@ const Top20 = () => {
   const [searchParams] = useSearchParams()
 
   const [top20, setTop20] = useState([])
-  console.log('top20: ', top20)
   const [type, setType] = useState('song')
   const [week, setWeek] = useState(getWeek())
   const [year, setYear] = useState(getYear())
@@ -115,7 +114,7 @@ const Top20 = () => {
             <div className='w3-col w-20px h-full leading-inherit text-center clickable flex items-center justify-center' onClick={() => handleChangeWeek('prev')}>
               <IoIosArrowBack />
             </div>
-            <div className={`w3-col w3-right w-20px h-full leading-inherit text-center hover:text-main flex items-center justify-center ${week === getWeek() && year === getYear() && '!text-disable cursor-default'}`} onClick={() => handleChangeWeek('next')}>
+            <div className={`w3-col w3-right w-20px h-full leading-inherit text-center flex items-center justify-center ${(week === getWeek() && year === getYear()) ? 'color-0-2 cursor-default' : 'hover:text-main'}`} onClick={() => handleChangeWeek('next')}>
               <IoIosArrowForward />
             </div>
           </div>

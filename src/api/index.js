@@ -69,3 +69,6 @@ export const getSongDetail = (key) => client.post('playing/song', joinQueryStrin
 
 // Video
 export const getVideoDetail = (key) => client.post('playing/video', joinQueryString({ key }))
+
+// Realtime
+export const getRealtime = (size) => client.post('ranking/realtime', joinQueryString({ size }))

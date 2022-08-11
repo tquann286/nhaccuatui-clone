@@ -50,7 +50,7 @@ const TrendingArtists = ({ defineLang }) => {
       <div className='artists-trending-title alcenter-jcbetween'>
         <div className='common-header alcenter color-0-5'>
           <div className='common-title color-0-88'>{defineLang('Nghệ Sỹ Trending', 'Trending Artists')}</div>
-          <span className='ml-1-6'>{defineLang(`Cập nhật ngày: ${getCurrentDay()}`, `Updated date: ${getCurrentDay()}`)}</span>
+          <span className='ml-1-6'>{defineLang(`Cập nhật ngày: `, `Updated date: `)}{getCurrentDay()}</span>
         </div>
         <Sharing {...sharingProps} />
       </div>
