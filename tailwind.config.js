@@ -45,6 +45,7 @@ module.exports = {
         '56px': '5.6rem',
         '64px': '6.4rem',
         '72px': '7.2rem',
+        '144px': '14.4rem',
       },
       lineHeight: {
         'inherit': 'inherit',
@@ -63,6 +64,9 @@ module.exports = {
         '1': '1',
         '2': '2',
         '3': '3',
+      },
+      willChange: {
+        'height': 'height',
       }
     },
     fontSize: {
