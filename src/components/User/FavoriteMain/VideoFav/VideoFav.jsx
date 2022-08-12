@@ -45,19 +45,29 @@ const VideoFav = ({ defineLang, currentUser }) => {
     <div className='relative'>
       <div className='flex justify-between items-center mb-6 color-0-88'>
         <div className='text-xl font-semibold'>Video</div>
-        {favVideos?.length !== 0 && <div className='text-xs color-0-6 font-medium transition-colors hover:!text-main cursor-pointer' onClick={handlehandleClearAllFav}>{defineLang('Xóa tất cả', 'Clear all')}</div>}
+        {favVideos?.length !== 0 && (
+          <div className='text-xs color-0-6 font-medium transition-colors hover:!text-main cursor-pointer' onClick={handlehandleClearAllFav}>
+            {defineLang('Xóa tất cả', 'Clear all')}
+          </div>
+        )}
       </div>
       <div className='pt2'>
         <Grid container spacing={2}>
-          {favVideos.slice().reverse()?.map((video) => video && (
-            <Grid item key={video.key} xs={4} sm={4} md={4} xl={3}>
-              <CommonVideo {...video} keyId={video.key} addToFav={false} removeFav handleRemoveFav={() => handleRemoveFav(video.key)} />
-            </Grid>
-          ))}
+          {favVideos
+            .slice()
+            .reverse()
+            ?.map(
+              (video) =>
+                video && (
+                  <Grid item key={video.key} xs={4} sm={4} md={4} xl={3}>
+                    <CommonVideo {...video} keyId={video.key} addToFav={false} removeFav handleRemoveFav={() => handleRemoveFav(video.key)} />
+                  </Grid>
+                )
+            )}
         </Grid>
       </div>
       {favVideos?.length === 0 && (
-        <div className="h100">
+        <div className='h100'>
           <NotFoundV2 message={defineLang('Chưa có video yêu thích nào', 'There are no favorite video added')} />
         </div>
       )}

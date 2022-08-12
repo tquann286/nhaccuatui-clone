@@ -397,15 +397,13 @@ const asiaTop100Cate = [
   { title: { vi: 'Nhạc Nhật', en: 'Japan' }, value: 'aOokfjySrloy', mainCate: 'asia' },
 ]
 
-const noLyricTop100Cate = [
-  { title: { vi: 'Không Lời', en: 'No Lyric' }, value: 'kr9KYNtkzmnA', mainCate: 'no-lyric' },
-]
+const noLyricTop100Cate = [{ title: { vi: 'Không Lời', en: 'No Lyric' }, value: 'kr9KYNtkzmnA', mainCate: 'no-lyric' }]
 
 export const top100Cate = [
-  { title: { vi: 'Việt Nam', en: 'Vietnam' }, value: 'vietnam', subCate: vnTop100Cate},
-  { title: { vi: 'Âu Mỹ', en: 'US-UK' }, value: 'usuk', subCate: usukTop100Cate},
-  { title: { vi: 'Châu Á', en: 'Asia' }, value: 'asia', subCate: asiaTop100Cate},
-  { title: { vi: 'Không Lời', en: 'No Lyric' }, value: 'no-lyric', subCate: noLyricTop100Cate},
+  { title: { vi: 'Việt Nam', en: 'Vietnam' }, value: 'vietnam', subCate: vnTop100Cate },
+  { title: { vi: 'Âu Mỹ', en: 'US-UK' }, value: 'usuk', subCate: usukTop100Cate },
+  { title: { vi: 'Châu Á', en: 'Asia' }, value: 'asia', subCate: asiaTop100Cate },
+  { title: { vi: 'Không Lời', en: 'No Lyric' }, value: 'no-lyric', subCate: noLyricTop100Cate },
 ]
 
 // Chart

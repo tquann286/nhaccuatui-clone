@@ -9,7 +9,7 @@ export const handleAddToFavSong = async (songId, defineLang) => {
       const { favorite } = await getUserDetail()
       if (favorite.songs) {
         const isDuplicate = favorite.songs.includes(songId)
-        
+
         if (isDuplicate) {
           toastNotify(defineLang('Bài hát đã có trong yêu thích.', 'Song already exists in favorite playlist.'))
           return null
@@ -32,7 +32,7 @@ export const handleAddToFavPlaylist = async (playlistId, defineLang) => {
       const { favorite } = await getUserDetail()
       if (favorite.playlists) {
         const isDuplicate = favorite.playlists.includes(playlistId)
-        
+
         if (isDuplicate) {
           toastNotify(defineLang('Danh sách phát đã có trong yêu thích.', 'Playlist already exists in favorite playlist.'))
           return null
@@ -55,7 +55,7 @@ export const handleAddToFavVideo = async (videoId, defineLang) => {
       const { favorite } = await getUserDetail()
       if (favorite.videos) {
         const isDuplicate = favorite.videos.includes(videoId)
-        
+
         if (isDuplicate) {
           toastNotify(defineLang('Video đã có trong yêu thích.', 'Video already exists in favorite playlist.'))
           return null

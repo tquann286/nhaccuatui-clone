@@ -11,5 +11,5 @@ export const toastNotify = (message, status = 'info', hideProgressBar = true) =>
     draggable: true,
     progress: undefined,
     transition: Slide,
-    theme: localStorage.getItem('theme')
+    theme: localStorage.getItem('theme'),
   })
