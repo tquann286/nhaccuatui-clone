@@ -34,7 +34,7 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
     if (!isEmpty(top3)) {
       console.log('conasc')
       setData({
-        labels: top3[0].viewIn24H.filter((time, i) => i % 2 === 0 && time),
+        labels: top3[0].viewIn24H.filter((value, i) => i % 2 === 0).map(value => value.time),
         datasets: top3.map((song, i) => {
           const { title, viewIn24H, songKey } = song
 
@@ -77,8 +77,8 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
               </MuiTooltip>
             </div>
           </div>
-          <div className='px-24px relative flex items-end h-full w-full rounded-4px'>
-          <Line data={data} />
+          <div className='px-24px relative flex items-end h-[calc(100%_-_63px)] w-full rounded-4px'>
+            <Line data={data} />
           </div>
         </div>
       </Grid>

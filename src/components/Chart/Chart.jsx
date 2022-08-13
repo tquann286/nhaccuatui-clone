@@ -37,7 +37,7 @@ const Chart = () => {
   const outletContext = [defineLang, curCate, navigate]
 
   return (
-    <div className='commonMainOutlet'>
+    <div className='commonMainOutlet h-[150vh]'>
       <div className='pt-16px'>
         <CateCommon {...cateCommonProps} />
       </div>
