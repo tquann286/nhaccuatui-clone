@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
-import { Top3Realtime } from 'components'
+import { Top3Realtime, LoadingV2 } from 'components'
 import { getRealtimeData } from 'services/Chart/Realtime'
 
 const Realtime = () => {
   const [defineLang] = useOutletContext()
 
   const [top3, setTop3] = useState([])
-  console.log('top3: ', top3)
   const [top50, setTop50] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [size, setSize] = useState(10)
 
   useEffect(() => {
@@ -36,6 +35,12 @@ const Realtime = () => {
     top3,
     defineLang,
   }
+
+  if (isLoading) return (
+    <div className='flexCenter w-full h-[calc(100vh_-_6.4rem)]'>
+      <LoadingV2 />
+    </div>
+  )
 
   return (
     <div>

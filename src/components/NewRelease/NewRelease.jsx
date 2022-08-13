@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import './NewRelease.scss'
 import backupImg from 'images/default/default_song.png'
+import backupArtist from 'images/default/default_artist.png'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -67,9 +68,15 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
                           {artists.map((artist) => {
                             const { artistId, imageUrl, name, shortLink } = artist
 
+                            const imageProps = {
+                              imageUrl,
+                              alt: name,
+                              backupImg: backupArtist,
+                            }
+
                             return (
                               <Link to={createArtistUrl(name, shortLink)} key={artistId} className='nr-artist-img'>
-                                <img src={imageUrl} />
+                                <Image {...imageProps} />
                               </Link>
                             )
                           })}
