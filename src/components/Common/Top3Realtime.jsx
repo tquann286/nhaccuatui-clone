@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { BlurImg } from 'components'
-import { Grid } from '@mui/material'
+import { Grid, Tooltip } from '@mui/material'
 import { getCurrentDay } from 'share/utilities'
 import { IconButton } from '@mui/material'
 import { BsFillPlayCircleFill } from 'react-icons/bs'
 
-const Top3Realtime = ({ top3, defineLang }) => {
+const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
   if (!top3) return null
 
   const blurImgProps = {
@@ -26,10 +26,15 @@ const Top3Realtime = ({ top3, defineLang }) => {
               <span className='text-white/50'>{getCurrentDay()}</span>
             </div>
             <div className='flex h-full'>
-              <IconButton className='hover:!bg-white/[.08]' aria-label='play-icon'>
-                <BsFillPlayCircleFill className='text-slate-100' />
-              </IconButton>
+              <Tooltip title={defineLang('Phát tất cả', 'Play all')} arrow placement='top'>
+                <IconButton className='hover:!bg-white/[.08]' aria-label='play-icon'>
+                  <BsFillPlayCircleFill className='text-slate-100' />
+                </IconButton>
+              </Tooltip>
             </div>
+          </div>
+          <div className="px-24px relative flex items-end h-full w-full rounded-4px">
+            
           </div>
         </div>
       </Grid>

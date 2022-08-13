@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { useNavigate, Outlet } from 'react-router-dom'
+import { useNavigate, Outlet, useLocation } from 'react-router-dom'
 
 import { CateCommon } from 'components'
 import { useStore } from 'store'
@@ -8,10 +8,15 @@ import { chartCate } from 'share/Categories'
 const Chart = () => {
   const [state] = useStore()
   const defineLang = useCallback((vie, eng) => (state.lang === 'vi' ? vie : eng), [state.lang])
-
+  
+  const location = useLocation()
   const navigate = useNavigate()
 
   const [curCate, setCurCate] = useState(chartCate[0].value)
+
+  useEffect(() => {
+    if (location.pathname.includes('realtime')) setCurCate('realtime')
+  }, [location.pathname])
 
   const handleCateChange = (e, newCate) => {
     setCurCate(newCate)
