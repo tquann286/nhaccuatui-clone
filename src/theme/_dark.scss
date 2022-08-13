@@ -56,11 +56,13 @@ body[data-theme='dark'] {
   }
 
   // Color
-  .Toastify__toast-theme--dark, .color-0-88 {
+  .Toastify__toast-theme--dark,
+  .color-0-88 {
     color: rgba(244, 246, 248, 0.88);
   }
 
-  .git-icon svg:hover, .color-0-6 {
+  .git-icon svg:hover,
+  .color-0-6 {
     color: rgba(244, 246, 248, 0.6);
   }
 
@@ -85,7 +87,8 @@ body[data-theme='dark'] {
     background-color: rgba(244, 246, 248, 0.02);
   }
 
-  .om-main ul li:hover, .bg-color-0-05 {
+  .om-main ul li:hover,
+  .bg-color-0-05 {
     background-color: rgba(244, 246, 248, 0.05);
   }
 
@@ -95,26 +98,27 @@ body[data-theme='dark'] {
       background-color: rgba(244, 246, 248, 0.05);
     }
   }
-  
-  .Toastify__toast-theme--dark, .bg-color-1 {
+
+  .Toastify__toast-theme--dark,
+  .bg-color-1 {
     background-color: rgba(24, 34, 45, 1);
   }
 
-  li:not(.slick-active) .customDots, .bg-color-0-1 {
+  li:not(.slick-active) .customDots,
+  .bg-color-0-1 {
     background-color: rgba(244, 246, 248, 0.1);
   }
 
-
   // Border
   .border-0-2 {
-    border-color:rgba(244, 246, 248, 0.2);
+    border-color: rgba(244, 246, 248, 0.2);
   }
 
   .border-0-1 {
-    border-color:rgba(244, 246, 248, 0.1);
+    border-color: rgba(244, 246, 248, 0.1);
   }
 
   .border-0-05 {
-    border-color:rgba(244, 246, 248, 0.05);
+    border-color: rgba(244, 246, 248, 0.05);
   }
 }

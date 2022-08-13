@@ -114,8 +114,8 @@ const Top20 = () => {
             <div className='w3-col w-20px h-full leading-inherit text-center clickable flex items-center justify-center' onClick={() => handleChangeWeek('prev')}>
               <IoIosArrowBack />
             </div>
-            <div className={`w3-col w3-right w-20px h-full leading-inherit text-center flex items-center justify-center ${(week === getWeek() && year === getYear()) ? 'color-0-2 cursor-default' : 'hover:text-main'}`} onClick={() => handleChangeWeek('next')}>
-              <IoIosArrowForward />
+            <div className='w3-col w3-right w-20px h-full leading-inherit text-center flex items-center justify-center' onClick={() => handleChangeWeek('next')}>
+              <IoIosArrowForward className={(week === getWeek() && year === getYear()) ? 'color-0-2 cursor-default' : 'hover:text-main'} />
             </div>
           </div>
           <div className={`w3-col w3-right w-fit clickable inline-block ${type === 'video' && 'text-main'}`} onClick={() => handleChangeType('video')}>
