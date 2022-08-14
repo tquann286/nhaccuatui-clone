@@ -15,7 +15,11 @@ const Chart = () => {
   const [curCate, setCurCate] = useState(chartCate[0].value)
 
   useEffect(() => {
-    if (location.pathname.includes('realtime')) setCurCate('realtime')
+    if (location.pathname.includes('realtime')) {
+      setCurCate('realtime')
+    } else {
+      setCurCate('week')
+    }
   }, [location.pathname])
 
   const handleCateChange = (e, newCate) => {

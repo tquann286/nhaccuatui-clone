@@ -6,10 +6,7 @@ import { getCurrentDay } from 'share/utilities'
 import { IconButton } from '@mui/material'
 import { BsFillPlayCircleFill } from 'react-icons/bs'
 import { isEmpty } from 'lodash'
-import { top3rtOptions, defineColor } from 'services/Common/Top3Realtime'
-
-import { Chart as ChartJS } from 'chart.js'
-import { Line } from 'react-chartjs-2'
+import { defineColor } from 'services/Common/Top3Realtime'
 
 const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
   console.log('top3: ', top3)
@@ -17,7 +14,7 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
   console.log('data: ', data)
 
   useEffect(() => {
-    // .filter((value, i) => i % 2 === 0)
+    
     if (!isEmpty(top3)) {
       setData({
         labels: top3[0].viewIn24H.map(value => value.time),
@@ -37,18 +34,11 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
   }, [top3])
 
   if (isEmpty(top3)) return null
-  if (isEmpty(data)) return null
 
   const blurImgProps = {
     img: top3[0]?.thumbnail,
     blurRadius: 100,
     className: 'relative h-full w-full',
-  }
-  // <Line data={data} />
-
-  const chartProps = {
-    data,
-    options: top3rtOptions,
   }
 
   return (
@@ -69,9 +59,7 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
               </MuiTooltip>
             </div>
           </div>
-          <div className='px-24px relative flex items-end h-[calc(100%_-_63px)] w-full rounded-4px'>
-            <Line { ... chartProps } />
-          </div>
+          
         </div>
       </Grid>
     </React.Fragment>
@@ -79,3 +67,5 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
 }
 
 export default Top3Realtime
+// <div className='px-24px relative flex items-end h-[calc(100%_-_63px)] w-full rounded-4px'>
+//           </div>

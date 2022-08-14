@@ -10,16 +10,3 @@ export const defineColor = (i) => {
       break
   }
 }
-
-export const top3rtOptions = {
-  plugins: {
-    legend: {
-      display: false,
-    },
-  },
-  elements: {
-    point: {
-      display: false
-    },
-  },
-}

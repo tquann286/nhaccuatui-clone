@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useCallback } from 'react'
 import './LeftSidebar.scss'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 
 import { PopupModal, AuthForm } from 'components'
 import SettingsModal from './SettingsModal'
@@ -26,6 +26,9 @@ import { createTop20Url } from 'share/utilities'
 const LeftSidebar = () => {
   const [state, dispatch] = useStore()
   const { theme, lang, showLogin, showSignUp } = state
+  const { pathname } = useLocation()
+
+  const isActiveNavbar = useCallback((navLink) => pathname.includes(navLink) && 'active', [pathname])
 
   const [showSettingsModal, setShowSettingsModal] = useState(false)
   const [settingsModalPosition, setSettingsModalPosition] = useState({
@@ -140,7 +143,7 @@ const LeftSidebar = () => {
           <div className='ls-navbar'>
             <ul className='nav-menu'>
               <li>
-                <NavLink to='/tim-kiem'>
+                <NavLink className={isActiveNavbar('/tim-kiem')} to='/tim-kiem'>
                   <div className='nav-item bg-color-0-05 nav-search'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content color-0-5'>
@@ -171,25 +174,25 @@ const LeftSidebar = () => {
                   </div>
                 </div>
                 <div className={`${showDiscoveryMenu && 'show-detail'} nav-item-detail discovery-detail`}>
-                  <NavLink to='/bai-hat'>
+                  <NavLink className={isActiveNavbar('/bai-hat')} to='/bai-hat'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
                       <span className='color-0-5'>{lang === 'vi' ? 'bài hát' : 'song'}</span>
                     </div>
                   </NavLink>
-                  <NavLink to='/playlist'>
+                  <NavLink className={isActiveNavbar('/playlist')} to='/playlist'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
                       <span className='color-0-5'>playlist</span>
                     </div>
                   </NavLink>
-                  <NavLink to='/video'>
+                  <NavLink className={isActiveNavbar('/video')} to='/video'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
                       <span className='color-0-5'>video</span>
                     </div>
                   </NavLink>
-                  <NavLink to='/nghe-si'>
+                  <NavLink className={isActiveNavbar('/nghe-si')} to='/nghe-si'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
                       <span className='color-0-5'>{lang === 'vi' ? 'nghệ sỹ' : 'artist'}</span>
@@ -207,19 +210,19 @@ const LeftSidebar = () => {
                   </div>
                 </div>
                 <div className={`${showTodaySelection && 'show-detail'} nav-item-detail today-selection-detail`}>
-                  <NavLink to='/chu-de'>
+                  <NavLink className={isActiveNavbar('/chu-de')} to='/chu-de'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
                       <span className='color-0-5'>{lang === 'vi' ? 'chủ đề' : 'topic'}</span>
                     </div>
                   </NavLink>
-                  <NavLink to='/playlist/tags'>
+                  <NavLink className={isActiveNavbar('/playlist/tags')} to='/playlist/tags'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
                       <span className='color-0-5'>{lang === 'vi' ? 'tuyển tập' : 'collection'}</span>
                     </div>
                   </NavLink>
-                  <NavLink to='/top-100'>
+                  <NavLink className={isActiveNavbar('/top-100')} to='/top-100'>
                     <div className='nav-item-detail-main'>
                       <div className='nav-item-detail-main-hover'></div>
                       <span className='color-0-5'>top 100</span>
@@ -228,7 +231,7 @@ const LeftSidebar = () => {
                 </div>
               </li>
               <li>
-                <NavLink to={createTop20Url('nhac-viet')}>
+                <NavLink className={isActiveNavbar('/bang-xep-hang')} to={createTop20Url('nhac-viet')}>
                   <div className='nav-item bg-color-0-05 nav-chart'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content color-0-5'>
@@ -239,7 +242,7 @@ const LeftSidebar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to='/kham-pha'>
+                <NavLink className={isActiveNavbar('/kham-pha')} to='/kham-pha'>
                   <div className='nav-item bg-color-0-05 nav-music-4u'>
                     <div className='nav-active-item'></div>
                     <div className='nav-content color-0-5'>
@@ -255,7 +258,7 @@ const LeftSidebar = () => {
                 <div className='ls-library color-0-88'>{lang === 'vi' ? 'Thư viện' : 'Library'}</div>
                 <ul className='nav-menu'>
                   <li>
-                    <NavLink to='user/yeu-thich'>
+                    <NavLink className={isActiveNavbar('/user/yeu-thich')} to='user/yeu-thich'>
                       <div className='nav-item bg-color-0-05 nav-favorite'>
                         <div className='nav-active-item'></div>
                         <div className='nav-content color-0-5'>
@@ -265,7 +268,7 @@ const LeftSidebar = () => {
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to='user/history'>
+                    <NavLink className={isActiveNavbar('/user/history')} to='user/history'>
                       <div className='nav-item bg-color-0-05 nav-history'>
                         <div className='nav-active-item'></div>
                         <div className='nav-content color-0-5'>

@@ -41,10 +41,10 @@ const Realtime = () => {
       <LoadingV2 />
     </div>
   )
-  // overflow-hidden
+  
   return (
     <div>
-      <div className='mt-24px ml-32px mr-32px relative z-1 h-[296px] min-w-[600px] rounded-4px'>
+      <div className='mt-24px ml-32px mr-32px relative z-1 h-[296px] min-w-[600px] rounded-4px overflow-hidden'>
         <Top3Realtime {...top3RealtimeProps} />
       </div>
     </div>
