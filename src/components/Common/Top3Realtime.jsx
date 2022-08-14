@@ -6,11 +6,10 @@ import { getCurrentDay } from 'share/utilities'
 import { IconButton } from '@mui/material'
 import { BsFillPlayCircleFill } from 'react-icons/bs'
 import { isEmpty } from 'lodash'
+import { top3rtOptions, defineColor } from 'services/Common/Top3Realtime'
 
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js'
+import { Chart as ChartJS } from 'chart.js'
 import { Line } from 'react-chartjs-2'
-
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
 const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
   console.log('top3: ', top3)
@@ -18,23 +17,10 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
   console.log('data: ', data)
 
   useEffect(() => {
-    const defineColor = (i) => {
-      switch (i) {
-        case 0:
-          return '#2daaed'
-        case 1:
-          return '#FFC40E'
-        case 2:
-          return '#95D96D'
-        default:
-          break
-      }
-    }
-
+    // .filter((value, i) => i % 2 === 0)
     if (!isEmpty(top3)) {
-      console.log('conasc')
       setData({
-        labels: top3[0].viewIn24H.filter((value, i) => i % 2 === 0).map(value => value.time),
+        labels: top3[0].viewIn24H.map(value => value.time),
         datasets: top3.map((song, i) => {
           const { title, viewIn24H, songKey } = song
 
@@ -42,6 +28,7 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
             label: title,
             data: viewIn24H.map((view) => view.view),
             borderColor: defineColor(i),
+            borderWidth: 1.5,
             yAxisID: songKey,
           }
         }),
@@ -58,6 +45,11 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
     className: 'relative h-full w-full',
   }
   // <Line data={data} />
+
+  const chartProps = {
+    data,
+    options: top3rtOptions,
+  }
 
   return (
     <React.Fragment>
@@ -78,7 +70,7 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
             </div>
           </div>
           <div className='px-24px relative flex items-end h-[calc(100%_-_63px)] w-full rounded-4px'>
-            <Line data={data} />
+            <Line { ... chartProps } />
           </div>
         </div>
       </Grid>
