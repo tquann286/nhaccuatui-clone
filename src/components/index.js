@@ -51,6 +51,7 @@ export { default as PopupModal } from './PopupModal/PopupModal'
 export { default as AuthForm } from './AuthForm/AuthForm'
 
 // User
+export { default as UserMain } from './User/UserMain'
 export { default as NoUserFound } from './User/NoUserFound'
 export { default as FavoriteMain } from './User/FavoriteMain/FavoriteMain'
 export { default as SongFav } from './User/FavoriteMain/SongFav/SongFav'

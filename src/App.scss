@@ -1,13 +1,8 @@
-@import 'sass/base/color';
 @import 'sass/base/base';
 @import 'theme/dark';
 @import 'sass/base/override';
 @import 'sass/base/w3';
 @import 'sass/abstracts/custom';
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 .hoverMainColor {
   @include hoverMainColor;
@@ -204,7 +199,7 @@ textarea {
 button,
 input[type='button'] {
   width: auto;
-  overflow: visible;
+  overflow: visible;  
 }
 
 .clickable,
@@ -264,3 +259,9 @@ progress,
 video {
   display: inline-block;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'sass/base/color';

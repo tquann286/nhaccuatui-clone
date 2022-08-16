@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import React from 'react'
+import { useTitle } from 'hooks'
 
 const Title = ({ title }) => {
-  const { pathname } = useLocation()
-	
-	useEffect(() => {
-		document.title = title
-	}, [title, pathname])
+	useTitle(title)
+
 	return <React.Fragment></React.Fragment>
 }
 

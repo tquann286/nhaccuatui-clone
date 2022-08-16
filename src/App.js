@@ -3,12 +3,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.scss'
 
 import { Explore, Homepage, NotFound, Search, User, Favorite, SongPage, Playlist, Video, Artist, Topic } from 'pages'
-import { MainHomepage, SongPlaylistVideo, ArtistMain, TopicMain, Collection, Top100Main, Top100Item, Chart, Realtime, Top20 } from 'components'
+import { MainHomepage, SongPlaylistVideo, ArtistMain, TopicMain, Collection, Top100Main, Top100Item, Chart, Realtime, Top20, UserMain } from 'components'
 
 import { useStore, actions } from 'store'
 import { auth } from 'config/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
-import { getFavVideos } from 'services/User/Favorite'
 
 const App = () => {
   const [state, dispatch] = useStore()
@@ -60,6 +59,7 @@ const App = () => {
         <Route path='/' element={<Homepage />}>
           <Route index element={<MainHomepage />} />
           <Route path='user' element={<User />}>
+            <Route index element={<UserMain />} />
             <Route path='yeu-thich' element={<Favorite />} />
           </Route>
           <Route path='kham-pha' element={<Explore />} />
