@@ -6,30 +6,14 @@ import { getCurrentDay } from 'share/utilities'
 import { IconButton } from '@mui/material'
 import { BsFillPlayCircleFill } from 'react-icons/bs'
 import { isEmpty } from 'lodash'
-import { defineColor } from 'services/Common/Top3Realtime'
+import { defineColor, renderCustomAxisTick } from 'services/Common/Top3Realtime'
+import { LineChart, Line, CartesianGrid, XAxis, Tooltip, ResponsiveContainer, YAxis } from 'recharts'
 
 const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
   console.log('top3: ', top3)
-  const [data, setData] = useState({})
-  console.log('data: ', data)
 
   useEffect(() => {
-    
     if (!isEmpty(top3)) {
-      setData({
-        labels: top3[0].viewIn24H.map(value => value.time),
-        datasets: top3.map((song, i) => {
-          const { title, viewIn24H, songKey } = song
-
-          return {
-            label: title,
-            data: viewIn24H.map((view) => view.view),
-            borderColor: defineColor(i),
-            borderWidth: 1.5,
-            yAxisID: songKey,
-          }
-        }),
-      })
     }
   }, [top3])
 
@@ -39,6 +23,12 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
     img: top3[0]?.thumbnail,
     blurRadius: 100,
     className: 'relative h-full w-full',
+  }
+
+  const lineChartProps = {
+    data: top3.viewIn24H,
+    width: '100%',
+    height: '100%',
   }
 
   return (
@@ -59,7 +49,18 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
               </MuiTooltip>
             </div>
           </div>
-          
+          <div className='px-24px relative flex items-end h-[calc(100%_-_63px)] w-full rounded-4px'>
+          <ResponsiveContainer width='100%' height='100%'>
+            <LineChart {...lineChartProps}>
+              <Tooltip />
+              <XAxis dataKey='time' tick={renderCustomAxisTick} />
+              <YAxis />
+              {top3.map((item, i) => {
+                return <Line key={item.songKey} type='monotone' dataKey='view' stroke={defineColor(i)} />
+              })}
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
         </div>
       </Grid>
     </React.Fragment>
@@ -67,5 +68,3 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
 }
 
 export default Top3Realtime
-// <div className='px-24px relative flex items-end h-[calc(100%_-_63px)] w-full rounded-4px'>
-//           </div>

@@ -10,3 +10,7 @@ export const defineColor = (i) => {
       break
   }
 }
+
+export const renderCustomAxisTick = ({ payload }) => {
+  console.log(payload)
+}

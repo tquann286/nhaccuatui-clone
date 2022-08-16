@@ -34,6 +34,7 @@
     "react-slick": "^0.29.0",
     "react-toastify": "^9.0.5",
     "react-use": "^17.4.0",
+    "recharts": "^2.1.13",
     "slick-carousel": "^1.8.1",
     "swiper": "^8.2.3",
     "web-vitals": "^2.1.4",
