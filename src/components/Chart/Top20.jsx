@@ -12,7 +12,6 @@ const Top20 = () => {
   const [searchParams] = useSearchParams()
 
   const [top20, setTop20] = useState([])
-  console.log('top20: ', top20)
   const [type, setType] = useState('song')
   const [week, setWeek] = useState(getWeek())
   const [year, setYear] = useState(getYear())
