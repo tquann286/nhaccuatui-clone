@@ -25,8 +25,6 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
     className: 'relative h-full w-full',
   }
 
-  console.log(top3[0].viewIn24H.map((value, i) => (i % 2 === 0 ? value.time : null)).filter((value) => value !== null))
-
   const xAxisProps = {
     dataKey: 'time',
     allowDuplicatedCategory: false,
@@ -36,6 +34,10 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
     ticks: top3[0].viewIn24H.map((value, i) => (i % 2 === 0 ? value.time : null)).filter((value) => value !== null),
     tick: { fill: '#f4f6f899', fontSize: 12 },
     interval: 'preserveStartEnd',
+  }
+
+  const renderTooltip = (props) => {
+    console.log(props)
   }
 
   return (
@@ -68,7 +70,7 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
                 <XAxis {...xAxisProps} />
                 <Tooltip />
                 {top3.map((item, i) => (
-                  <Line id={item.songKey} type='monotone' dataKey='view' data={item.viewIn24H} name={item.title} key={item.songKey} stroke={defineColor(i)} dot={false} activeDot={true} />
+                  <Line id={item.songKey} type='monotone' dataKey='view' data={item.viewIn24H} name={item.title} key={item.songKey} stroke={defineColor(i)} dot={false} activeDot={{ strokeWidth: 2, r: 5 }} />
                 ))}
               </LineChart>
             </ResponsiveContainer>
