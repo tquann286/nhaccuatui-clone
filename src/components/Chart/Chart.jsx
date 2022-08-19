@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useNavigate, Outlet, useLocation } from 'react-router-dom'
 
-import { CateCommon } from 'components'
+import { CateCommon, Footer } from 'components'
 import { useStore } from 'store'
 import { chartCate } from 'share/Categories'
 
@@ -46,6 +46,7 @@ const Chart = () => {
         <CateCommon {...cateCommonProps} />
       </div>
       <Outlet context={outletContext} />
+      <Footer />
     </div>
   )
 }

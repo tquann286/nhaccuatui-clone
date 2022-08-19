@@ -10,7 +10,7 @@ import { handleAddToFavSong, handleAddToFavVideo } from 'share/addToFav'
 import { basicModal } from 'share/animation'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
-const SongRanking = ({ songKey, position, defineLang, artists, thumbnail, title, isVideo, hasRanking, highestPosition, oldPosition, totalWeekInRanked }) => {
+const SongRanking = ({ songKey, position, defineLang, artists, thumbnail, title, isVideo, hasRanking, highestPosition, oldPosition, totalWeekInRanked, showDetail }) => {
   const navigate = useNavigate()
   const [showMore, setShowMore] = useState(false)
   const [showRanking, setShowRanking] = useState(false)
@@ -114,9 +114,11 @@ const SongRanking = ({ songKey, position, defineLang, artists, thumbnail, title,
           </div>
           {hasRanking && (
             <React.Fragment>
-              <div className={`w3-col w3-right w-fit h-16 flexCenter mr-2px color-0-5 transition-transform text-lg hoverMainColor ${showRanking && 'rotate-180'}`} onClick={toggleShowRanking}>
-                <MdOutlineKeyboardArrowDown />
-              </div>
+              {showDetail && (
+                <div className={`w3-col w3-right w-fit h-16 flexCenter mr-2px color-0-5 transition-transform text-lg hoverMainColor ${showRanking && 'rotate-180'}`} onClick={toggleShowRanking}>
+                  <MdOutlineKeyboardArrowDown />
+                </div>
+              )}
               <div className='w3-right w3-col flexCenter w-24px h-16 leading-16 text-lg mr-24px color-0-5'>{handleRanking()}</div>
             </React.Fragment>
           )}
@@ -134,7 +136,7 @@ const SongRanking = ({ songKey, position, defineLang, artists, thumbnail, title,
             <CommonArtist artists={artists} styles={artistStyles} />
           </div>
         </div>
-        {showRanking && (
+        {showRanking && showDetail && (
           <div className='pt-4px ml-16px mt-16px'>
             <RankPosition { ... rankPositionProps } />
           </div>

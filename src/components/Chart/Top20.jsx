@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useOutletContext, useSearchParams } from 'react-router-dom'
 
-import { CateBasic, LoadingV2, SongRanking, Top1, Footer, ErrorBoundary } from 'components'
+import { CateBasic, LoadingV2, SongRanking, Top1, ErrorBoundary } from 'components'
 import { weekSubCate } from 'share/Categories'
 import { getWeek, getYear } from 'services/Chart/Top20'
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
@@ -136,14 +136,13 @@ const Top20 = () => {
               <Top1 {...top20[0]} {...top1Props} />
               <div className='mt-16px'>
                 {top20.map((item) => (
-                  <SongRanking key={item.songKey} {...item} defineLang={defineLang} isVideo={type === 'video'} hasRanking />
+                  <SongRanking key={item.songKey} {...item} defineLang={defineLang} isVideo={type === 'video'} hasRanking showDetail />
                 ))}
               </div>
             </div>
           )}
         </div>
       </ErrorBoundary>
-      <Footer />
     </React.Fragment>
   )
 }
