@@ -15,12 +15,10 @@ import { covertTimestamp, createArtistUrl, createSongUrl, handleCopySong } from 
 import { GoCalendar } from 'react-icons/go'
 import { basicModal } from 'share/animation'
 import { handleAddToFavSong } from 'share/addToFav'
-import { useStore } from 'store'
 
 const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHistory, setSearchTerm, isLoading }) => {
-  const [state] = useStore()
   const navigate = useNavigate()
-  
+
   const [maybeHit, setMaybeHit] = useState(null)
   const [showMoreOptions, setShowMoreOptions] = useState(false)
 
@@ -92,7 +90,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
     setSearchHistory([])
     localStorage.removeItem('searchHistory')
   }
-  
+
   const optionModalProps = {
     showModal: showMoreOptions,
     positionRef,
@@ -194,7 +192,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
                         const { artistId, imageUrl, name, shortLink } = artist
 
                         return (
-                          <Link to={`/${createArtistUrl(name, shortLink)}`} key={artistId} className='maybe-hit-artist-img'>
+                          <Link to={createArtistUrl(name, shortLink)} key={artistId} className='maybe-hit-artist-img'>
                             <img src={imageUrl} alt='' />
                           </Link>
                         )

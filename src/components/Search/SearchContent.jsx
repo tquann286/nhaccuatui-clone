@@ -59,6 +59,7 @@ const SearchContent = () => {
 
   useEffect(() => {
     setSearchQuery(searchParams.get('q'))
+    setSearchTerm(searchParams.get('q'))
   }, [searchLocation])
 
   const passedSearchProps = {
