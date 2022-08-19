@@ -1,9 +1,8 @@
-import React, { useState, useRef, useCallback } from 'react'
+import React, { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { convertDuration } from 'share'
 import { CommonArtist, Image, OptionModal, ModalAnimate, ExtendModal } from 'components'
-import { useStore } from 'store'
 
 import { Grid, IconButton } from '@mui/material'
 import { defineColor } from 'services/Common/Top3Realtime'
@@ -13,10 +12,8 @@ import { IoMdMore } from 'react-icons/io'
 import backupImg from 'images/default/default_song.png'
 import { basicModal } from 'share/animation'
 
-const Top3Item = ({ artists, duration, position, songKey, thumbnail, title, i, activeItem, setActiveItem }) => {
+const Top3Item = ({ artists, duration, position, songKey, thumbnail, title, i, activeItem, setActiveItem, defineLang }) => {
   const navigate = useNavigate()
-  const [state] = useStore()
-  const defineLang = useCallback((vie, eng) => (state.lang === 'vi' ? vie : eng), [state.lang])
 
   const [showMore, setShowMore] = useState(false)
 

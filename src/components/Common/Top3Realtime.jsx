@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { isEmpty } from 'lodash'
-import { BlurImg, Image, Top3List } from 'components'
+import { BlurImg, Top3List } from 'components'
 import { LineChart, Line, CartesianGrid, XAxis, Tooltip, ResponsiveContainer } from 'recharts'
 
 import { getCurrentDay } from 'share/utilities'
@@ -10,7 +10,6 @@ import { defineColor } from 'services/Common/Top3Realtime'
 import { BsFillPlayCircleFill } from 'react-icons/bs'
 
 const Top3Realtime = ({ top3, defineLang, showTop3, styles }) => {
-  console.log('top3: ', top3)
   const [activeItem, setActiveItem] = useState(0)
 
   useEffect(() => {
