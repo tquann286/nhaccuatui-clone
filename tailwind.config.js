@@ -36,6 +36,7 @@ module.exports = {
         '40px': '4rem',
       },
       spacing: {
+        '4px': '0.4rem',
         '8px': '0.8rem',
         '17px': '1.7rem',
         '20px': '2rem',
@@ -45,6 +46,7 @@ module.exports = {
         '28px': '2.8rem',
         '32px': '3.2rem',
         '36px': '3.6rem',
+        '42px': '4.2rem',
         '48px': '4.8rem',
         '56px': '5.6rem',
         '64px': '6.4rem',
@@ -52,6 +54,7 @@ module.exports = {
         '120px': '12rem',
         '144px': '14.4rem',
         '160px': '16rem',
+        '240px': '24rem',
       },
       lineHeight: {
         'inherit': 'inherit',
@@ -93,6 +96,7 @@ module.exports = {
       'circle': '9999px',
       '2px': '0.2rem',
       '4px': '0.4rem',
+      '8px': '0.8rem',
       '13px': '1.3rem',
       '16px': '1.6rem',
     }

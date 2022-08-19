@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom'
 import no_artist_img from 'images/default/default_artist.png'
 import { Image } from 'components'
 
-const ArtistCircle = ({ artists }) => {
+const ArtistCircle = ({ artists, styles }) => {
   if (!artists) return null
 
   return (
-    <div className='flex'>
+    <div className={`flex ${styles}`}>
       {artists.map((artist, i) => {
         const { artistId, name, shortLink, imageUrl } = artist
         const imageProps = {
