@@ -39,7 +39,7 @@
   border-width: 0.1rem !important;
 }
 
-.flex.relative.flex-col.w-full.mb-2px {
+.flex.relative.flex-col.w-full.mb-2px, .w36px button.MuiIconButton-sizeMedium {
   .MuiTouchRipple-root {
     .MuiTouchRipple-childLeaving {
       background-color: rgba(226, 232, 240, 0.5);

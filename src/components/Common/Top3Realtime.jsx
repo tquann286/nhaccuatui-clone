@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
 
-import { BlurImg } from 'components'
-import { Grid, Tooltip as MuiTooltip } from '@mui/material'
-import { getCurrentDay } from 'share/utilities'
-import { IconButton } from '@mui/material'
-import { BsFillPlayCircleFill } from 'react-icons/bs'
 import { isEmpty } from 'lodash'
-import { defineColor } from 'services/Common/Top3Realtime'
+import { BlurImg, Image, Top3List } from 'components'
 import { LineChart, Line, CartesianGrid, XAxis, Tooltip, ResponsiveContainer } from 'recharts'
+
+import { getCurrentDay } from 'share/utilities'
+import { Grid, Tooltip as MuiTooltip, IconButton } from '@mui/material'
+import { defineColor } from 'services/Common/Top3Realtime'
+import { BsFillPlayCircleFill } from 'react-icons/bs'
 
 const Top3Realtime = ({ top3, defineLang, showTop3, styles }) => {
   console.log('top3: ', top3)
+  const [activeItem, setActiveItem] = useState(0)
 
   useEffect(() => {
     if (!isEmpty(top3)) {
@@ -20,7 +21,7 @@ const Top3Realtime = ({ top3, defineLang, showTop3, styles }) => {
   if (isEmpty(top3)) return null
 
   const blurImgProps = {
-    img: top3[0]?.thumbnail,
+    img: top3[activeItem]?.thumbnail,
     blurRadius: 100,
     className: 'relative h-full w-full',
   }
@@ -34,6 +35,12 @@ const Top3Realtime = ({ top3, defineLang, showTop3, styles }) => {
     ticks: top3[0].viewIn24H.map((value, i) => (i % 2 === 0 ? value.time : null)).filter((value) => value !== null),
     tick: { fill: '#f4f6f899', fontSize: 12 },
     interval: 'preserveStartEnd',
+  }
+
+  const top3ListProps = {
+    top3,
+    activeItem,
+    setActiveItem,
   }
 
   return (
@@ -72,6 +79,7 @@ const Top3Realtime = ({ top3, defineLang, showTop3, styles }) => {
             </ResponsiveContainer>
           </div>
         </div>
+        {showTop3 && <Top3List {...top3ListProps} />}
       </Grid>
     </div>
   )
