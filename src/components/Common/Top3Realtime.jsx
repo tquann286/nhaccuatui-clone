@@ -44,7 +44,7 @@ const Top3Realtime = ({ top3, defineLang, showTop3, styles }) => {
   }
 
   return (
-    <div className={`bg-[linear-gradient(180deg,#740091,#2d1a4c)] rounded-4px min-w-[600px] z-1 relative ${styles}`}>
+    <div className={`bg-[linear-gradient(180deg,#740091,#2d1a4c)] rounded-4px min-w-[600px] z-1 relative overflow-hidden ${styles}`}>
       <BlurImg {...blurImgProps} />
       <Grid container direction='column' className='absolute top-0'>
         <div className='flex relative flex-col h-[296px] w-full mb-2px'>
