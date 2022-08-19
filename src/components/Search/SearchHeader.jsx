@@ -59,7 +59,7 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
           </div>
           <div className='mask-overlay'></div>
           {searchTerm && (
-            <div className='search-clear-btn' onClick={() => setSearchTerm('')}>
+            <div className='search-clear-btn' onClick={() => navigate('/tim-kiem')}>
               <IoMdClose />
             </div>
           )}

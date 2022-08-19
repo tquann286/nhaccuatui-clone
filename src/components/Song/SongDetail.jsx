@@ -11,10 +11,8 @@ import { createSongUrl, createArtistUrl, handleCopySong } from 'share/utilities'
 import { createRandomSongView } from 'services/SongDetail'
 import { basicModal } from 'share/animation'
 import { handleAddToFavSong } from 'share/addToFav'
-import { useStore } from 'store'
 
-const SongDetail = ({ artists, songId, thumbnail, title, lang, songView, type, duration }) => {
-  const [state] = useStore()
+const SongDetail = ({ artists, songId, thumbnail, title, lang, songView }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
 
   const songContainerRef = useRef(null)

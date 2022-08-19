@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.scss'
 
 import { Explore, Homepage, NotFound, Search, User, Favorite, SongPage, Playlist, Video, Artist, Topic } from 'pages'
-import { MainHomepage, SongPlaylistVideo, ArtistMain, TopicMain, Collection, Top100Main, Top100Item, Chart, Realtime, Top20, UserMain } from 'components'
+import { MainHomepage, SongPlaylistVideo, ArtistMain, TopicMain, Collection, Top100Main, Top100Item, Chart, Realtime, Top20, UserMain, SongPageDetail } from 'components'
 
 import { useStore, actions } from 'store'
 import { auth } from 'config/firebase'
@@ -11,7 +11,6 @@ import { onAuthStateChanged } from 'firebase/auth'
 
 const App = () => {
   const [state, dispatch] = useStore()
-  const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
 
   useEffect(() => {
     // Theme
@@ -66,6 +65,7 @@ const App = () => {
           <Route path='tim-kiem' element={<Search />} />
           <Route path='bai-hat' element={<SongPage />}>
             <Route index element={<SongPlaylistVideo type='song' />} />
+            <Route path=':songKey' element={<SongPageDetail />} />
           </Route>
           <Route path='playlist' element={<Playlist />}>
             <Route index element={<SongPlaylistVideo type='playlist' />} />
