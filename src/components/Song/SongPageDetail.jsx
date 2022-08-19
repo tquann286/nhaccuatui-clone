@@ -19,7 +19,7 @@ const SongPageDetail = () => {
     try {
       setIsLoading(true)
       const getSongDetailState = async () => {
-        const songDetail = await getSongDetailData(query.get(query.get('k')))
+        const songDetail = await getSongDetailData(query.get('k'))
 
         setSongDetail(songDetail)
         setIsLoading(false)
