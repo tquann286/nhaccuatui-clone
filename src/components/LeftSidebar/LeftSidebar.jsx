@@ -21,11 +21,12 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { useGetFixedPosition } from 'hooks'
 
 import { auth } from 'config/firebase'
-import { createTop20Url } from 'share/utilities'
+import { createTop20Url, getCurrentPathname } from 'share/utilities'
 
 const LeftSidebar = () => {
   const [state, dispatch] = useStore()
   const { theme, lang, showLogin, showSignUp } = state
+
   const { pathname } = useLocation()
 
   const isActiveNavbar = useCallback((navLink) => pathname.includes(navLink) && 'active', [pathname])
@@ -165,40 +166,40 @@ const LeftSidebar = () => {
                 </NavLink>
               </li>
               <li>
-                <div className='nav-item bg-color-0-05 nav-discovery' onClick={toggleDiscoveryMenu}>
-                  <div className='nav-active-item'></div>
-                  <div className='nav-content color-0-5'>
-                    <i className='fa-solid fa-compass discovery'></i>
-                    <p className='nav-name color-0-88'>{lang === 'vi' ? 'Khám phá' : 'Discovery'}</p>
-                    <MdOutlineKeyboardArrowDown className={`${showDiscoveryMenu && 'show-detail'}`} />
+                  <div className='nav-item bg-color-0-05 nav-discovery' onClick={toggleDiscoveryMenu}>
+                    <div className='nav-active-item'></div>
+                    <div className='nav-content color-0-5'>
+                      <i className='fa-solid fa-compass discovery'></i>
+                      <p className='nav-name color-0-88'>{lang === 'vi' ? 'Khám phá' : 'Discovery'}</p>
+                      <MdOutlineKeyboardArrowDown className={`${showDiscoveryMenu && 'show-detail'}`} />
+                    </div>
                   </div>
-                </div>
-                <div className={`${showDiscoveryMenu && 'show-detail'} nav-item-detail discovery-detail`}>
-                  <NavLink className={isActiveNavbar('/bai-hat')} to='/bai-hat'>
-                    <div className='nav-item-detail-main'>
-                      <div className='nav-item-detail-main-hover'></div>
-                      <span className='color-0-5'>{lang === 'vi' ? 'bài hát' : 'song'}</span>
-                    </div>
-                  </NavLink>
-                  <NavLink className={isActiveNavbar('/playlist')} to='/playlist'>
-                    <div className='nav-item-detail-main'>
-                      <div className='nav-item-detail-main-hover'></div>
-                      <span className='color-0-5'>playlist</span>
-                    </div>
-                  </NavLink>
-                  <NavLink className={isActiveNavbar('/video')} to='/video'>
-                    <div className='nav-item-detail-main'>
-                      <div className='nav-item-detail-main-hover'></div>
-                      <span className='color-0-5'>video</span>
-                    </div>
-                  </NavLink>
-                  <NavLink className={isActiveNavbar('/nghe-si')} to='/nghe-si'>
-                    <div className='nav-item-detail-main'>
-                      <div className='nav-item-detail-main-hover'></div>
-                      <span className='color-0-5'>{lang === 'vi' ? 'nghệ sỹ' : 'artist'}</span>
-                    </div>
-                  </NavLink>
-                </div>
+                  <div className={`${showDiscoveryMenu && 'show-detail'} nav-item-detail discovery-detail`}>
+                    <NavLink className={isActiveNavbar('/bai-hat')} to='/bai-hat'>
+                      <div className='nav-item-detail-main'>
+                        <div className='nav-item-detail-main-hover'></div>
+                        <span className='color-0-5'>{lang === 'vi' ? 'bài hát' : 'song'}</span>
+                      </div>
+                    </NavLink>
+                    <NavLink className={isActiveNavbar('/playlist')} to='/playlist'>
+                      <div className='nav-item-detail-main'>
+                        <div className='nav-item-detail-main-hover'></div>
+                        <span className='color-0-5'>playlist</span>
+                      </div>
+                    </NavLink>
+                    <NavLink className={isActiveNavbar('/video')} to='/video'>
+                      <div className='nav-item-detail-main'>
+                        <div className='nav-item-detail-main-hover'></div>
+                        <span className='color-0-5'>video</span>
+                      </div>
+                    </NavLink>
+                    <NavLink className={isActiveNavbar('/nghe-si')} to='/nghe-si'>
+                      <div className='nav-item-detail-main'>
+                        <div className='nav-item-detail-main-hover'></div>
+                        <span className='color-0-5'>{lang === 'vi' ? 'nghệ sỹ' : 'artist'}</span>
+                      </div>
+                    </NavLink>
+                  </div>
               </li>
               <li>
                 <div className='nav-item bg-color-0-05 nav-today-selection' onClick={toggleTodaySelection}>

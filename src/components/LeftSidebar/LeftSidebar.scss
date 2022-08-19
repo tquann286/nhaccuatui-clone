@@ -175,9 +175,9 @@ $scale: 5rem;
         li {
           margin-bottom: 0.4rem;
 
-          a.active {
+          .active {
             .nav-active-item {
-              background-size: 0.2rem 100%;
+              background-size: 0.2rem 100% !important;
             }
 
             .nav-item {
