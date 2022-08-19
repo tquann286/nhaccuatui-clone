@@ -37,6 +37,7 @@ export { default as BlurImg } from './Common/BlurImg'
 // Home
 export { default as LoadingV2 } from './Loading/LoadingV2'
 export { default as MainHomepage } from './MainHomepage/MainHomepage'
+export { default as HomeTop3 } from './MainHomepage/HomeTop3'
 export { default as LeftSidebar } from './LeftSidebar/LeftSidebar'
 export { default as RightSidebar } from './RightSidebar/RightSidebar'
 export { default as ShowcaseSlider } from './ShowcaseSlider/ShowcaseSlider'

@@ -34,6 +34,7 @@ const Realtime = () => {
   const top3RealtimeProps = {
     top3,
     defineLang,
+    styles: 'h-[296px]'
   }
 
   if (isLoading) return (

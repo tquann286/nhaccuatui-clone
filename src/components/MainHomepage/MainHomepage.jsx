@@ -4,7 +4,7 @@ import './MainHomepage.scss'
 import { fetchHomeData } from 'services/HomeContent'
 
 import { NotFound } from 'pages'
-import { Loading, ShowcaseSlider, TopicEvent, NewRelease, MusicRanking, NewVideo, Song, HotTopic, Top100, Footer } from 'components'
+import { Loading, ShowcaseSlider, TopicEvent, NewRelease, HomeTop3, MusicRanking, NewVideo, Song, HotTopic, Top100, Footer } from 'components'
 import { toastNotify } from 'share/toast'
 
 import { useStore } from 'store'
@@ -42,13 +42,20 @@ const MainHomepage = () => {
     )
   }
 
-  const { showcase, topicEvent, newRelease, ranking, usukRanking, kpopRanking, video, song, topic, top100 } = homeContent
+  const { showcase, topicEvent, newRelease, top3, ranking, usukRanking, kpopRanking, video, song, topic, top100 } = homeContent
+
+  const top3Props = {
+    top3,
+    defineLang,
+    showTop3: true
+  }
 
   return (
     <div className='hp-main'>
       <ShowcaseSlider showcase={showcase} />
       <TopicEvent topicEvent={topicEvent} />
       <NewRelease newRelease={newRelease} />
+      <HomeTop3 { ... top3Props } />
       <MusicRanking ranking={[ranking, usukRanking, kpopRanking]} />
       <NewVideo videos={video} />
       <Song song={song} />

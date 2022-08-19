@@ -9,7 +9,7 @@ import { isEmpty } from 'lodash'
 import { defineColor } from 'services/Common/Top3Realtime'
 import { LineChart, Line, CartesianGrid, XAxis, Tooltip, ResponsiveContainer } from 'recharts'
 
-const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
+const Top3Realtime = ({ top3, defineLang, showTop3, styles }) => {
   console.log('top3: ', top3)
 
   useEffect(() => {
@@ -36,12 +36,8 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
     interval: 'preserveStartEnd',
   }
 
-  const renderTooltip = (props) => {
-    console.log(props)
-  }
-
   return (
-    <React.Fragment>
+    <div className={`bg-[linear-gradient(180deg,#740091,#2d1a4c)] rounded-4px min-w-[600px] z-1 relative ${styles}`}>
       <BlurImg {...blurImgProps} />
       <Grid container direction='column' className='absolute top-0'>
         <div className='flex relative flex-col h-[296px] w-full mb-2px'>
@@ -77,7 +73,7 @@ const Top3Realtime = ({ top3, defineLang, showTop3 }) => {
           </div>
         </div>
       </Grid>
-    </React.Fragment>
+    </div>
   )
 }
 
