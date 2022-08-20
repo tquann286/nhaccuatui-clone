@@ -66,6 +66,7 @@ export const getTop20 = (category, type = 'song', week, year, size = 20) => clie
 
 // Song
 export const getSongDetail = (key) => client.post('playing/song', joinQueryString({ key }))
+export const getLyric = (key, type) => client.post('lyric', joinQueryString({ key, type }))
 
 // Video
 export const getVideoDetail = (key) => client.post('playing/video', joinQueryString({ key }))

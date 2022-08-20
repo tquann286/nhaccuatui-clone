@@ -4,12 +4,13 @@ import no_img_song from 'images/default/default_song.png'
 import no_img_provider from 'images/default/default_provider.png'
 
 import { useStore } from 'store'
-import { getSongDetailData } from 'services/Song/SongPageDetail'
+import { getSongDetailData } from 'services/Song/Song'
 import { LoadingV2, Image, ArtistCircle, CommonArtist, Sharing } from 'components'
 import { BsBookmarkPlus, BsPlayCircleFill } from 'react-icons/bs'
-import { getCurrentPathname, getSongsView, handleCopyProxy } from 'share/utilities'
+import { getCurrentPathname, getSongsView, getLyricData, handleCopyProxy } from 'share/utilities'
 import { IconButton, Tooltip } from '@mui/material'
 import { toastNotify } from 'share/toast'
+import { handleAddToFavSong } from 'share/addToFav'
 
 const SongPageDetail = () => {
   const [state] = useStore()
@@ -28,6 +29,7 @@ const SongPageDetail = () => {
       const getSongDetailState = async () => {
         const songDetail = await getSongDetailData(query.get('k'))
         songDetail.songView = await getSongsView(songDetail.key)
+        songDetail.lyric = await getLyricData(songDetail.key, 'song')
 
         setSongDetail(songDetail)
         setIsLoading(false)
@@ -118,13 +120,14 @@ const SongPageDetail = () => {
           )}
           <div className='flex items-center'>
             <Tooltip title={defineLang('Thêm vào yêu thích', 'Add to favorite')} placement='top' arrow enterDelay={400}>
-              <IconButton size='large'>
+              <IconButton size='large' onClick={() => handleAddToFavSong(key, defineLang)}>
                 <BsBookmarkPlus />
               </IconButton>
             </Tooltip>
             <Sharing {...sharingProps} />
           </div>
         </div>
+
       </div>
     </div>
   )
