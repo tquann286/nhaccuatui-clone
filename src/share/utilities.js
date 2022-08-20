@@ -1,4 +1,4 @@
-import { removeVietnameseTones, copyToClipboard } from 'share'
+import { removeVietnameseTones, copyToClipboard, convertToPlain } from 'share'
 import { toast } from 'react-toastify'
 import { PROXY } from 'share/constants'
 import { toastNotify } from 'share/toast'
@@ -230,3 +230,11 @@ export const manualPagi = (pageIndex, itemsPerPage = 36) => ({ start: (pageIndex
 export const getCurrentURL = () => window.location.href
 
 export const getCurrentPathname = () => window.location.pathname
+
+// Lyric
+export const handleCopyLyric = (lyric, defineLang) => {
+  if (lyric) {
+    copyToClipboard(convertToPlain(lyric))
+    toastNotify(defineLang('Sao chép lời bài hát thành công.', 'Successfully copied the lyrics.'), 'success')
+  }
+}
