@@ -39,6 +39,7 @@ module.exports = {
         '4px': '0.4rem',
         '8px': '0.8rem',
         '17px': '1.7rem',
+        '18px': '1.8rem',
         '20px': '2rem',
         '22px': '2.2rem',
         '24px': '2.4rem',
@@ -58,6 +59,7 @@ module.exports = {
       },
       lineHeight: {
         'inherit': 'inherit',
+        '18px': '1.8rem',
         '20px': '2rem',
         '22px': '2.2rem',
         '24px': '2.4rem',
@@ -101,5 +103,10 @@ module.exports = {
       '16px': '1.6rem',
     }
   },
-  plugins: [],
+  plugins: [
+    require('@neojp/tailwindcss-line-clamp-utilities')
+],
+variants: {
+  lineClamp: ['responsive']
+}
 }
