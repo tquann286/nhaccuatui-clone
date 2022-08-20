@@ -2,6 +2,9 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
+    fontFamily: {
+      "mons": "'Montserrat', sans-serif"
+    },
     extend: {
       colors: {
         main: '#2daaed',
@@ -15,10 +18,12 @@ module.exports = {
         '6px': '0.6rem',
         '12px': '1.2rem',
         '16px': '1.6rem',
+        '18px': '1.8rem',
         '22px': '2.2rem',
         '24px': '2.4rem',
         '32px': '3.2rem',
         '40px': '4rem',
+        '54px': '5.4rem',
       },
       margin: {
         unset: 'unset',

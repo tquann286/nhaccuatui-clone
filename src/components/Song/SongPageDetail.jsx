@@ -2,15 +2,17 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import no_img_song from 'images/default/default_song.png'
 import no_img_provider from 'images/default/default_provider.png'
+import parse from 'html-react-parser'
 
 import { useStore } from 'store'
 import { getSongDetailData } from 'services/Song/Song'
-import { LoadingV2, Image, ArtistCircle, CommonArtist, Sharing } from 'components'
+import { LoadingV2, Image, ArtistCircle, CommonArtist, Sharing, LineBreak } from 'components'
 import { BsBookmarkPlus, BsPlayCircleFill } from 'react-icons/bs'
 import { getCurrentPathname, getSongsView, getLyricData, handleCopyProxy } from 'share/utilities'
-import { IconButton, Tooltip } from '@mui/material'
+import { Button, IconButton, Tooltip } from '@mui/material'
 import { toastNotify } from 'share/toast'
 import { handleAddToFavSong } from 'share/addToFav'
+import { AiOutlineCopy } from 'react-icons/ai'
 
 const SongPageDetail = () => {
   const [state] = useStore()
@@ -22,6 +24,11 @@ const SongPageDetail = () => {
   const [songDetail, setSongDetail] = useState({})
   console.log(songDetail)
   const [isLoading, setIsLoading] = useState(false)
+  const [showLyric, setShowLyric] = useState(false)
+
+  const toggleShowLyric = () => {
+    setShowLyric(!showLyric)
+  }
 
   useEffect(() => {
     try {
@@ -57,7 +64,7 @@ const SongPageDetail = () => {
       </div>
     )
 
-  const { artists, description, key, thumbnail, title, songView, dateRelease, uploadBy, provider } = songDetail
+  const { artists, description, key, thumbnail, title, songView, dateRelease, uploadBy, provider, lyric } = songDetail
 
   const sharingProps = { defineLang, placement: 'top', handleCopyShare, onShareWindowClose, shareLink: getCurrentPathname(), shareClass: 'ml-8px' }
 
@@ -127,7 +134,27 @@ const SongPageDetail = () => {
             <Sharing {...sharingProps} />
           </div>
         </div>
-
+        <div className='relative w-full rounded-4px bg-color-0-02 mt-4px pt-18px px-24px pb-54px overflow-hidden'>
+          <div className='absolute right-24px'>
+            <Button className='bg-color-0-05 color-0-5 text-13px normal-case' startIcon={<AiOutlineCopy />}>
+              {defineLang('Sao chép', 'Copy')}
+            </Button>
+          </div>
+          <div className='text-sm font-semibold color-0-88'>{defineLang('Lời bài hát', 'Lyrics')}</div>
+          {lyric && (
+            <React.Fragment>
+              <div className='text-13px color-0-5 mt-4'>
+                {defineLang('Lời đăng bởi: ', 'Edited by: ')}
+                {lyric.userNameUpload}
+              </div>
+              <LineBreak styles='mt-16px' />
+              <pre className={`font-mons leading-loose relative mt-24px text-sm color-0-88 transition-height will-change-height ${showLyric ? 'max-h-fit' : 'h-32 line-clamp-4'}`}>{parse(lyric.lyric)}</pre>
+            </React.Fragment>
+          )}
+          <div className='absolute bottom-24px text-13px color-0-5 cursor-pointer' onClick={toggleShowLyric}>
+            {defineLang('Xem thêm', 'Load more')}
+          </div>
+        </div>
       </div>
     </div>
   )
