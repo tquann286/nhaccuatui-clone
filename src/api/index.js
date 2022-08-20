@@ -73,3 +73,6 @@ export const getVideoDetail = (key) => client.post('playing/video', joinQueryStr
 
 // Realtime
 export const getRealtime = (size) => client.post('ranking/realtime', joinQueryString({ size }))
+
+// Recommmend
+export const getRecommend = (key, type, size = 12) => client.post('recommend', joinQueryString({ key, type, size }))

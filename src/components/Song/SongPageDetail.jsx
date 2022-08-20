@@ -105,7 +105,7 @@ const SongPageDetail = () => {
               </div>
             )}
             {uploadBy && (
-              <div className='mt-8 leading-24px text-sm'>
+              <div className='mt-7 leading-24px text-sm'>
                 <span className='color-0-5'>{defineLang('Đăng tải bởi: ', 'Uploaded by: ')}</span>
                 <span className='text-main'>{uploadBy.fullName}</span>
               </div>
@@ -136,8 +136,8 @@ const SongPageDetail = () => {
             <Sharing {...sharingProps} />
           </div>
         </div>
-        <div className='relative w-full rounded-4px bg-color-0-02 mt-4px pt-18px px-24px pb-54px overflow-hidden'>
-          {lyric && (
+        {lyric && lyric.lyric && (
+          <div className='relative w-full rounded-4px bg-color-0-02 mt-4px pt-18px px-24px pb-54px overflow-hidden'>
             <React.Fragment>
               {lyricRef.current && (
                 <div className='absolute right-24px'>
@@ -156,11 +156,12 @@ const SongPageDetail = () => {
                 {parse(lyric.lyric)}
               </pre>
             </React.Fragment>
-          )}
-          <div className='absolute bottom-24px text-13px color-0-5 cursor-pointer' onClick={toggleShowLyric}>
-            {defineLang('Xem thêm', 'Load more')}
+
+            <div className='absolute bottom-24px color-0-5 cursor-pointer clickable' onClick={toggleShowLyric}>
+              {defineLang('Xem thêm', 'Load more')}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   )
