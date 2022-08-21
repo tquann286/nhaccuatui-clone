@@ -1,17 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import no_img_song from 'images/default/default_song.png'
-import parse from 'html-react-parser'
 
 import { useStore } from 'store'
 import { getSongDetailData } from 'services/Song/Song'
 import { LoadingV2, Image, Sharing, LineBreak, Title, TitleCommon, CircleTitleArtist, ViewDate, UploadBy, Description, Provider, LyricDetail } from 'components'
 import { BsBookmarkPlus, BsPlayCircleFill } from 'react-icons/bs'
 import { getCurrentPathname, getSongsView, getLyricData, handleCopyProxy, handleCopyLyric } from 'share/utilities'
-import { Button, IconButton, Tooltip } from '@mui/material'
+import { IconButton, Tooltip } from '@mui/material'
 import { toastNotify } from 'share/toast'
 import { handleAddToFavSong } from 'share/addToFav'
-import { AiOutlineCopy } from 'react-icons/ai'
 
 const SongPageDetail = () => {
   const [state] = useStore()

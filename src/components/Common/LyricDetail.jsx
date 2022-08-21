@@ -19,7 +19,7 @@ const LyricDetail = ({ defineLang, styles = '', lyric = {} }) => {
   if (!lyric.lyric) return null
 
   return (
-    <div className='relative w-full rounded-4px bg-color-0-02 mt-4px pt-18px px-24px pb-54px overflow-hidden'>
+    <div className={`relative w-full rounded-4px bg-color-0-02 mt-4px pt-18px px-24px pb-54px overflow-hidden ${styles}`}>
       <React.Fragment>
         {lyricRef.current && (
           <div className='absolute right-24px'>
