@@ -6,7 +6,7 @@ import parse from 'html-react-parser'
 
 import { useStore } from 'store'
 import { getSongDetailData } from 'services/Song/Song'
-import { LoadingV2, Image, ArtistCircle, CommonArtist, Sharing, LineBreak } from 'components'
+import { LoadingV2, Image, ArtistCircle, CommonArtist, Sharing, LineBreak, Title, TitleCommon } from 'components'
 import { BsBookmarkPlus, BsPlayCircleFill } from 'react-icons/bs'
 import { getCurrentPathname, getSongsView, getLyricData, handleCopyProxy, handleCopyLyric } from 'share/utilities'
 import { Button, IconButton, Tooltip } from '@mui/material'
@@ -66,12 +66,13 @@ const SongPageDetail = () => {
       </div>
     )
 
-  const { artists, description, key, thumbnail, title, songView, dateRelease, uploadBy, provider, lyric } = songDetail
+  const { artists = [], description, key, thumbnail, title, songView, dateRelease, uploadBy, provider, lyric } = songDetail
 
   const sharingProps = { defineLang, placement: 'top', handleCopyShare, onShareWindowClose, shareLink: getCurrentPathname(), shareClass: 'ml-8px' }
 
   return (
     <div className='commonMainOutlet'>
+      {artists.length !== 0 && <Title title={`${title} - ${artists.map((art) => art.name).join(', ')} - NhacCuaTui Clone`} />}
       <div className='relative px-32px pt-24px'>
         <div className='w3-row'>
           <div className='w3-col relative w-240px h-240px border-0-1 useBorder rounded-8px overflow-hidden shadow-xl'>
@@ -81,10 +82,7 @@ const SongPageDetail = () => {
             </div>
           </div>
           <div className='w3-rest pl-24px overflow-hidden'>
-            <div className='leading-24px'>
-              <span className='color-0-5 font-semibold text-sm w-fit'>{defineLang('Bài hát: ', 'Song: ')}</span>
-              <span className='color-0-88 font-bold text-base'>{title}</span>
-            </div>
+          <TitleCommon type='song' defineLang={defineLang} title={title} />
             <div className='w3-row mt-8px h-24px leading-24px'>
               <ArtistCircle artists={artists} styles='float-left' />
               <div className='w3-rest truncate leading-[inherit] flex items-center h-full'>

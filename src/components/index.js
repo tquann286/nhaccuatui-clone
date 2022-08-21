@@ -33,6 +33,7 @@ export { default as SongRanking } from './Common/SongRanking/SongRanking'
 export { default as RankPosition } from './Common/RankPosition'
 export { default as Top3Realtime } from './Common/Top3Realtime'
 export { default as BlurImg } from './Common/BlurImg'
+export { default as TitleCommon } from './Common/TitleCommon'
 
 // Home
 export { default as LoadingV2 } from './Loading/LoadingV2'
