@@ -6,7 +6,7 @@ import parse from 'html-react-parser'
 
 import { useStore } from 'store'
 import { getSongDetailData } from 'services/Song/Song'
-import { LoadingV2, Image, ArtistCircle, CommonArtist, Sharing, LineBreak, Title, TitleCommon } from 'components'
+import { LoadingV2, Image, Sharing, LineBreak, Title, TitleCommon, CircleTitleArtist, ViewDate, UploadBy, Description } from 'components'
 import { BsBookmarkPlus, BsPlayCircleFill } from 'react-icons/bs'
 import { getCurrentPathname, getSongsView, getLyricData, handleCopyProxy, handleCopyLyric } from 'share/utilities'
 import { Button, IconButton, Tooltip } from '@mui/material'
@@ -82,33 +82,11 @@ const SongPageDetail = () => {
             </div>
           </div>
           <div className='w3-rest pl-24px overflow-hidden'>
-          <TitleCommon type='song' defineLang={defineLang} title={title} />
-            <div className='w3-row mt-8px h-24px leading-24px'>
-              <ArtistCircle artists={artists} styles='float-left' />
-              <div className='w3-rest truncate leading-[inherit] flex items-center h-full'>
-                <CommonArtist artists={artists} styles='!mt-unset ml-8px' />
-              </div>
-            </div>
-            {songView && (
-              <div className='w3-row mt-14px flex items-center'>
-                <div className='w3-col text-13px color-0-5 w-fit font-normal'>
-                  {songView[key].toLocaleString('en-US')} {defineLang('Lượt nghe', 'Listens')}
-                </div>
-                {dateRelease && (
-                  <React.Fragment>
-                    <div className='w3-col w-4px h-4px bg-color-0-5 rounded-2px mr-8px ml-14px'></div>
-                    <div className='w3-rest text-13px color-0-5 w-fit'>{new Date(dateRelease).toLocaleDateString()}</div>
-                  </React.Fragment>
-                )}
-              </div>
-            )}
-            {uploadBy && (
-              <div className='mt-7 leading-24px text-sm'>
-                <span className='color-0-5'>{defineLang('Đăng tải bởi: ', 'Uploaded by: ')}</span>
-                <span className='text-main'>{uploadBy.fullName}</span>
-              </div>
-            )}
-            <div className='mt-12px text-sm color-0-5 line-clamp-5 font-normal'>{description}</div>
+            <TitleCommon type='song' defineLang={defineLang} title={title} />
+            <CircleTitleArtist circleStyles='float-left' titleStyles='!mt-unset ml-8px' artists={artists} />
+            {songView && songView[key] && <ViewDate songView={songView[key]} dateRelease={dateRelease} defineLang={defineLang} />}
+            <UploadBy uploadBy={uploadBy} defineLang={defineLang} />
+            <Description description={description} />
           </div>
         </div>
         <div className='w-full h-64px rounded-4px bg-color-0-02 mt-24px px-24px py-12px flex justify-between'>
