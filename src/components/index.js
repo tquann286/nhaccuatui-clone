@@ -38,6 +38,7 @@ export { default as CircleTitleArtist } from './Common/CircleTitleArtist'
 export { default as ViewDate } from './Common/ViewDate'
 export { default as UploadBy } from './Common/UploadBy'
 export { default as Description } from './Common/Description'
+export { default as Provider } from './Common/Provider'
 
 // Home
 export { default as LoadingV2 } from './Loading/LoadingV2'

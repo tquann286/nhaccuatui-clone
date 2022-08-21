@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import no_img_song from 'images/default/default_song.png'
-import no_img_provider from 'images/default/default_provider.png'
 import parse from 'html-react-parser'
 
 import { useStore } from 'store'
 import { getSongDetailData } from 'services/Song/Song'
-import { LoadingV2, Image, Sharing, LineBreak, Title, TitleCommon, CircleTitleArtist, ViewDate, UploadBy, Description } from 'components'
+import { LoadingV2, Image, Sharing, LineBreak, Title, TitleCommon, CircleTitleArtist, ViewDate, UploadBy, Description, Provider } from 'components'
 import { BsBookmarkPlus, BsPlayCircleFill } from 'react-icons/bs'
 import { getCurrentPathname, getSongsView, getLyricData, handleCopyProxy, handleCopyLyric } from 'share/utilities'
 import { Button, IconButton, Tooltip } from '@mui/material'
@@ -90,19 +89,7 @@ const SongPageDetail = () => {
           </div>
         </div>
         <div className='w-full h-64px rounded-4px bg-color-0-02 mt-24px px-24px py-12px flex justify-between'>
-          {provider && (
-            <div className='w3-row'>
-              <div className='w3-col w-16 h-16 rounded-circle useBorder border-0-05 overflow-hidden'>
-                <Image imageUrl={provider.imageUrl} backupImg={no_img_provider} />
-              </div>
-              <div className='w3-col ml-8px w-fit'>
-                <div className='h-18px leading-18px text-13px color-0-5'>{defineLang('Cung cấp bởi:', 'Provided by:')}</div>
-                <div className='mt-2 text-sm font-bold text-main uppercase truncate' title={provider.name}>
-                  {provider.name}
-                </div>
-              </div>
-            </div>
-          )}
+          <Provider provider={provider} defineLang={defineLang} />
           <div className='flex items-center'>
             <Tooltip title={defineLang('Thêm vào yêu thích', 'Add to favorite')} placement='top' arrow enterDelay={400}>
               <IconButton size='large' onClick={() => handleAddToFavSong(key, defineLang)}>
