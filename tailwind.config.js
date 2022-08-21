@@ -3,7 +3,7 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     fontFamily: {
-      "mons": "'Montserrat', sans-serif"
+      mons: "'Montserrat', sans-serif",
     },
     extend: {
       colors: {
@@ -63,7 +63,7 @@ module.exports = {
         '240px': '24rem',
       },
       lineHeight: {
-        'inherit': 'inherit',
+        inherit: 'inherit',
         '18px': '1.8rem',
         '20px': '2rem',
         '22px': '2.2rem',
@@ -72,18 +72,18 @@ module.exports = {
         '32px': '3.2rem',
       },
       transitionProperty: {
-        'width': 'width',
-        'height': 'height',
-        'spacing': 'margin, padding',
+        width: 'width',
+        height: 'height',
+        spacing: 'margin, padding',
       },
       zIndex: {
-        '1': '1',
-        '2': '2',
-        '3': '3',
+        1: '1',
+        2: '2',
+        3: '3',
       },
       willChange: {
-        'height': 'height',
-      }
+        height: 'height',
+      },
     },
     fontSize: {
       '10px': ['1rem', '1.4rem'],
@@ -100,18 +100,16 @@ module.exports = {
     },
     borderRadius: {
       '50%': '50%',
-      'circle': '9999px',
+      circle: '9999px',
       '2px': '0.2rem',
       '4px': '0.4rem',
       '8px': '0.8rem',
       '13px': '1.3rem',
       '16px': '1.6rem',
-    }
+    },
   },
-  plugins: [
-    require('@neojp/tailwindcss-line-clamp-utilities')
-],
-variants: {
-  lineClamp: ['responsive']
-}
+  plugins: [require('@neojp/tailwindcss-line-clamp-utilities')],
+  variants: {
+    lineClamp: ['responsive'],
+  },
 }

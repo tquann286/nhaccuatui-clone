@@ -2,7 +2,7 @@ import { removeVietnameseTones, copyToClipboard, convertToPlain } from 'share'
 import { toast } from 'react-toastify'
 import { PROXY } from 'share/constants'
 import { toastNotify } from 'share/toast'
-import { getLyric, getView } from 'api'
+import { getLyric, getRecommend, getView } from 'api'
 
 export const covertTimestamp = (time) => {
   const date = new Date(time)
@@ -207,6 +207,16 @@ export const getLyricData = async (key, type) => {
     const data = await getLyric(key, type)
 
     return data.lyric
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getMaybeLike = async (key, type, size = 12) => {
+  try {
+    const data = await getRecommend(key, type, size)
+
+    return data.recommend
   } catch (error) {
     console.log(error)
   }

@@ -4,9 +4,9 @@ import no_img_song from 'images/default/default_song.png'
 
 import { useStore } from 'store'
 import { getSongDetailData } from 'services/Song/Song'
-import { LoadingV2, Image, Sharing, LineBreak, Title, TitleCommon, CircleTitleArtist, ViewDate, UploadBy, Description, Provider, LyricDetail } from 'components'
+import { LoadingV2, Image, Sharing, Title, TitleCommon, CircleTitleArtist, ViewDate, UploadBy, Description, Provider, LyricDetail, MaybeLike, Footer } from 'components'
 import { BsBookmarkPlus, BsPlayCircleFill } from 'react-icons/bs'
-import { getCurrentPathname, getSongsView, getLyricData, handleCopyProxy, handleCopyLyric } from 'share/utilities'
+import { getCurrentPathname, getSongsView, getLyricData, handleCopyProxy, getMaybeLike } from 'share/utilities'
 import { IconButton, Tooltip } from '@mui/material'
 import { toastNotify } from 'share/toast'
 import { handleAddToFavSong } from 'share/addToFav'
@@ -19,7 +19,7 @@ const SongPageDetail = () => {
   const query = new URLSearchParams(params.songKey)
 
   const [songDetail, setSongDetail] = useState({})
-  console.log(songDetail)
+  const [maybeLike, setMaybeLike] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
@@ -29,8 +29,10 @@ const SongPageDetail = () => {
         const songDetail = await getSongDetailData(query.get('k'))
         songDetail.songView = await getSongsView(songDetail.key)
         songDetail.lyric = await getLyricData(songDetail.key, 'song')
+        const maybeLike = await getMaybeLike(songDetail.key, 'song')
 
         setSongDetail(songDetail)
+        setMaybeLike(maybeLike)
         setIsLoading(false)
       }
 
@@ -63,7 +65,7 @@ const SongPageDetail = () => {
   return (
     <div className='commonMainOutlet'>
       {artists.length !== 0 && <Title title={`${title} - ${artists.map((art) => art.name).join(', ')} - NhacCuaTui Clone`} />}
-      <div className='relative px-32px pt-24px'>
+      <div className='relative px-32px pt-24px margin-footer'>
         <div className='w3-row'>
           <div className='w3-col relative w-240px h-240px border-0-1 useBorder rounded-8px overflow-hidden shadow-xl'>
             <Image imageUrl={thumbnail} backupImg={no_img_song} title={title} />
@@ -91,7 +93,9 @@ const SongPageDetail = () => {
           </div>
         </div>
         <LyricDetail lyric={lyric} defineLang={defineLang} />
+        <MaybeLike defineLang={defineLang} maybeLike={maybeLike} />
       </div>
+      <Footer />
     </div>
   )
 }
