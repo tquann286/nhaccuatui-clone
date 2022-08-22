@@ -3,12 +3,8 @@ import Grid from '@mui/material/Grid'
 import SongSquare from './SongSquare/SongSquare'
 import CommonPlaylist from './CommonPlaylist/CommonPlaylist'
 
-const MaybeLike = ({ maybeLike, defineLang, titleStyles = '' }) => {
-  console.log(maybeLike)
-
-  if (!maybeLike) return null
-
-  return (
+const MaybeLike = ({ maybeLike, defineLang, titleStyles = '' }) =>
+  maybeLike && (
     <React.Fragment>
       <div className={`mt-16 text-xl color-0-88 font-bold capitalize ${titleStyles}`}>{defineLang('Có thể bạn cũng thích', 'You May Also Like')}</div>
       <div className='mt-16px'>
@@ -26,8 +22,8 @@ const MaybeLike = ({ maybeLike, defineLang, titleStyles = '' }) => {
             <React.Fragment>
               {maybeLike.data.map((playlist) => (
                 <Grid item key={playlist.key} xs={3} sm={3} md={3} xl={2}>
-              <CommonPlaylist {...playlist} keyId={playlist.key} />
-            </Grid>
+                  <CommonPlaylist {...playlist} keyId={playlist.key} />
+                </Grid>
               ))}
             </React.Fragment>
           )}
@@ -35,6 +31,5 @@ const MaybeLike = ({ maybeLike, defineLang, titleStyles = '' }) => {
       </div>
     </React.Fragment>
   )
-}
 
 export default MaybeLike

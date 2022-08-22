@@ -41,6 +41,8 @@ export { default as Description } from './Common/Description'
 export { default as Provider } from './Common/Provider'
 export { default as LyricDetail } from './Common/LyricDetail'
 export { default as MaybeLike } from './Common/MaybeLike'
+export { default as ListTag } from './Common/ListTag'
+export { default as TagLabel } from './Common/TagLabel'
 
 // Home
 export { default as LoadingV2 } from './Loading/LoadingV2'

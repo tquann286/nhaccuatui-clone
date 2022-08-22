@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
+import parse from 'html-react-parser'
 
 import { useStore } from 'store'
-import { CircleTitleArtist, Description, LoadingV2, ShadowThumb, Title, TitleCommon } from 'components'
+import { CircleTitleArtist, Description, ListTag, LoadingV2, ShadowThumb, Title, TitleCommon } from 'components'
 import { getMaybeLike } from 'share/utilities'
 import { getPlaylistDetailData } from 'services/Playlist/Playlist'
 
@@ -44,7 +45,7 @@ useEffect(() => {
       </div>
     )
 
-  const { thumbnail, artists = [], title, dateCreate, description } = playlistDetail
+  const { thumbnail, artists = [], title, dateCreate, description = '', listTag = [] } = playlistDetail
 
   return (
     <div className='commonMainOutlet pt-24px px-32px relative'>
@@ -56,10 +57,13 @@ useEffect(() => {
         <div className="w3-rest pl-24px">
           <TitleCommon type='playlist' defineLang={defineLang} title={title} />
           <CircleTitleArtist circleStyles='float-left' titleStyles='!mt-unset ml-8px' artists={artists} />
-          <div className="w3-col mt-14px">
+          <div className="w3-row mt-4">
             <div className="w3-rest text-13px color-0-5 w-fit">{new Date(dateCreate).toLocaleDateString()}</div>
           </div>
-          <Description description={description} />
+          <div className="mt-8px text-sm color-0-5">
+            {parse(description)}
+          </div>
+          <ListTag listTag={listTag} defineLang={defineLang} />
         </div>
       </div>
     </div>
