@@ -3,9 +3,13 @@ import { useParams } from 'react-router-dom'
 import parse from 'html-react-parser'
 
 import { useStore } from 'store'
-import { CircleTitleArtist, Description, ListTag, LoadingV2, ShadowThumb, Title, TitleCommon } from 'components'
-import { getMaybeLike } from 'share/utilities'
+import { CircleTitleArtist, Description, ListTag, LoadingV2, Provider, ShadowThumb, Sharing, Title, TitleCommon } from 'components'
+import { getCurrentPathname, getMaybeLike, handleCopyProxy } from 'share/utilities'
 import { getPlaylistDetailData } from 'services/Playlist/Playlist'
+import { IconButton, Tooltip } from '@mui/material'
+import { BsBookmarkPlus } from 'react-icons/bs'
+import { toastNotify } from 'share/toast'
+import { handleAddToFavPlaylist } from 'share/addToFav'
 
 const PlaylistDetail = () => {
   const [state] = useStore()
@@ -19,7 +23,7 @@ const PlaylistDetail = () => {
   const [maybeLike, setMaybeLike] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
-useEffect(() => {
+  useEffect(() => {
     try {
       setIsLoading(true)
       const getPlaylistDetailState = async () => {
@@ -45,27 +49,54 @@ useEffect(() => {
       </div>
     )
 
-  const { thumbnail, artists = [], title, dateCreate, description = '', listTag = [] } = playlistDetail
+  const handleCopyShare = () => {
+    handleCopyProxy(defineLang, getCurrentPathname())
+  }
+
+  const onShareWindowClose = () => {
+    toastNotify(defineLang('Chia sẻ lên facebook thành công', 'Share to facebook successfully'), 'success')
+  }
+
+  const { key = '', thumbnail, artists = [], title, dateCreate, description = '', listTag = [], uploadBy = {} } = playlistDetail
+
+  const sharingProps = { defineLang, placement: 'top', handleCopyShare, onShareWindowClose, shareLink: getCurrentPathname(), shareClass: 'ml-8px' }
+
+  const providerProps = {
+    provider: uploadBy,
+    defineLang,
+    avatarUrl: uploadBy.avatarUrl,
+    fullName: uploadBy.fullName,
+  }
 
   return (
     <div className='commonMainOutlet pt-24px px-32px relative'>
-    {artists.length !== 0 && <Title title={`${title} - ${artists.map((art) => art.name).join(', ')} - NhacCuaTui Clone`} />}
-      <div className="w3-row">
-        <div className="w3-col w-240px">
+      {artists.length !== 0 && <Title title={`${title} - ${artists.map((art) => art.name).join(', ')} - NhacCuaTui Clone`} />}
+      <div className='w3-row'>
+        <div className='w3-col w-240px'>
           <ShadowThumb imageUrl={thumbnail} width='24rem' />
         </div>
-        <div className="w3-rest pl-24px">
+        <div className='w3-rest pl-24px'>
           <TitleCommon type='playlist' defineLang={defineLang} title={title} />
           <CircleTitleArtist circleStyles='float-left' titleStyles='!mt-unset ml-8px' artists={artists} />
-          <div className="w3-row mt-4">
-            <div className="w3-rest text-13px color-0-5 w-fit">{new Date(dateCreate).toLocaleDateString()}</div>
+          <div className='w3-row mt-4'>
+            <div className='w3-rest text-13px color-0-5 w-fit'>{new Date(dateCreate).toLocaleDateString()}</div>
           </div>
-          <div className="mt-8px text-sm color-0-5">
-            {parse(description)}
-          </div>
+          <div className='mt-8px text-sm color-0-5'>{parse(description)}</div>
           <ListTag listTag={listTag} defineLang={defineLang} />
         </div>
       </div>
+      <div className='w-full h-64px rounded-4px bg-color-0-02 mt-24px px-24px py-12px flex justify-between'>
+        <Provider { ... providerProps } />
+        <div className='flex items-center'>
+          <Tooltip title={defineLang('Thêm vào yêu thích', 'Add to favorite')} placement='top' arrow enterDelay={400}>
+            <IconButton size='large' onClick={() => handleAddToFavPlaylist(key, defineLang)}>
+              <BsBookmarkPlus />
+            </IconButton>
+          </Tooltip>
+          <Sharing {...sharingProps} />
+        </div>
+      </div>
+      <div className="mt-44px mb-16px text-22px font-bold color-0-88">{defineLang('Danh sách bài hát', 'Song list')}</div>
     </div>
   )
 }
