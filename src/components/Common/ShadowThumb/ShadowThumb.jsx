@@ -1,6 +1,6 @@
 import './ShadowThumb.scss'
 
-const ShadowThumb = ({ width, shadowHeight, imageUrl }) => {
+const ShadowThumb = ({ width, shadowHeight = '0.6rem', imageUrl }) => {
   return (
     <div className='st-container'>
       <div className='shadow1 bg-color-0-05' style={{ height: shadowHeight }}></div>

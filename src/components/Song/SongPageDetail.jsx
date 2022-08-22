@@ -73,7 +73,7 @@ const SongPageDetail = () => {
               <BsPlayCircleFill className='!text-slate-100' />
             </div>
           </div>
-          <div className='w3-rest pl-24px overflow-hidden'>
+          <div className='w3-rest pl-24px'>
             <TitleCommon type='song' defineLang={defineLang} title={title} />
             <CircleTitleArtist circleStyles='float-left' titleStyles='!mt-unset ml-8px' artists={artists} />
             {songView && songView[key] && <ViewDate songView={songView[key]} dateRelease={dateRelease} defineLang={defineLang} />}

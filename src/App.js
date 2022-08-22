@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.scss'
 
 import { Explore, Homepage, NotFound, Search, User, Favorite, SongPage, Playlist, Video, Artist, Topic } from 'pages'
-import { MainHomepage, SongPlaylistVideo, ArtistMain, TopicMain, Collection, Top100Main, Top100Item, Chart, Realtime, Top20, UserMain, SongPageDetail } from 'components'
+import { MainHomepage, SongPlaylistVideo, ArtistMain, TopicMain, Collection, Top100Main, Top100Item, Chart, Realtime, Top20, UserMain, SongPageDetail, PlaylistDetail } from 'components'
 
 import { useStore, actions } from 'store'
 import { auth } from 'config/firebase'
@@ -70,6 +70,7 @@ const App = () => {
           <Route path='playlist' element={<Playlist />}>
             <Route index element={<SongPlaylistVideo type='playlist' />} />
             <Route path='tags' element={<Collection />} />
+            <Route path=':playlistId' element={<PlaylistDetail />} />
           </Route>
           <Route path='video' element={<Video />}>
             <Route index element={<SongPlaylistVideo type='mv' />} />

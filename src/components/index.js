@@ -105,6 +105,7 @@ export { default as Collection } from './Playlist/Collection/Collection'
 export { default as MainColCate } from './Playlist/Collection/CollectionCate/MainColCate'
 export { default as TopicColCate } from './Playlist/Collection/CollectionCate/TopicColCate'
 export { default as FullColCate } from './Playlist/Collection/CollectionCate/FullColCate'
+export { default as PlaylistDetail } from './Playlist/PlaylistDetail'
 
 // Top100
 export { default as Top100 } from './Top100/Top100'
