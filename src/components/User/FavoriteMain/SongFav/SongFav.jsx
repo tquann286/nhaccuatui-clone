@@ -4,15 +4,12 @@ import './SongFav.scss'
 import initImage from 'images/default/default_personal_playlist.png'
 import initUser from 'images/default/default_user.jpg'
 
-import { ShadowThumb, SongItem, SquareImg } from 'components'
+import { ShadowThumb, SongList, SquareImg } from 'components'
 import { getFavSongs } from 'services/User/Favorite'
 import { getSongsView, getListSongsKey } from 'share/utilities'
 import { getUserDetail, handleClearAllFav } from 'services/firebase/firestore'
-import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 const SongFav = ({ defineLang, currentUser }) => {
-  const [animationParent] = useAutoAnimate()
-
   const [favSongs, setFavSongs] = useState([])
   const [songsView, setSongView] = useState({})
 
@@ -53,11 +50,7 @@ const SongFav = ({ defineLang, currentUser }) => {
 
   const { displayName, photoURL } = currentUser
 
-  const songItemProps = {
-    songsView,
-    setFavSongs,
-    defineLang,
-  }
+  const songListProps = { defineLang, listSong: favSongs, removeFav: true, songsView, setFavSongs }
 
   return (
     <div className='song-fav-container'>
@@ -97,21 +90,7 @@ const SongFav = ({ defineLang, currentUser }) => {
             </div>
           )}
         </div>
-        <div className='mt-16px'>
-          <ul ref={animationParent}>
-            <li className='song-list-common song-list-header bg-color-0-02'>
-              <div className='song-list-title-artist'>
-                <div className='song-list-title song-list-title-header color-0-88'>{defineLang('Tiêu đề', 'Title')}</div>
-                <div className='song-list-title song-list-artist-header color-0-88'>{defineLang('Nghệ sỹ', 'Artist')}</div>
-              </div>
-              <div className='song-list-title listen-title'>{defineLang('Lượt nghe', 'Listens')}</div>
-              <div className='song-list-title duration-title'>{defineLang('Thời gian', 'Duration')}</div>
-            </li>
-            {favSongs?.map((song) => song && (
-              <SongItem {...song} {...songItemProps} key={song.key} keyId={song.key} removeFav />
-            ))}
-          </ul>
-        </div>
+        <SongList { ... songListProps } />
       </div>
     </div>
   )
