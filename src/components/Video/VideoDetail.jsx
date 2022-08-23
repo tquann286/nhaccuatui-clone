@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import parse from 'html-react-parser'
 
 import { useStore } from 'store'
-import { LeftSidebar } from 'components'
+import { LeftSidebar, LoadingV2 } from 'components'
 import { IconButton, Tooltip } from '@mui/material'
 import { getVideoDetailData } from 'services/Video/VideoDetail'
 import { BsBookmarkPlus } from 'react-icons/bs'
@@ -23,7 +23,7 @@ const VideoDetail = () => {
   console.log(videoDetail)
 
   const [isLoading, setIsLoading] = useState(false)
-  
+
   useEffect(() => {
     try {
       setIsLoading(true)
@@ -42,13 +42,6 @@ const VideoDetail = () => {
       throw new Error(error)
     }
   }, [params.videoKey, query.get('k')])
-  
-  if (isLoading)
-    return (
-      <div className='commonMainOutlet flexCenter h-full'>
-        <LoadingV2 />
-      </div>
-    )
 
   const handleCopyShare = () => {
     handleCopyProxy(defineLang, getCurrentPathname())
@@ -62,9 +55,17 @@ const VideoDetail = () => {
     <div className='hp-container'>
       <div className='h-full bg-color-0-02'>
         <LeftSidebar />
-        <div className='commonMainOutlet mr-unset'>
-
-        </div>
+        {isLoading ? (
+          <div className='commonMainOutlet flexCenter h-full'>
+            <LoadingV2 />
+          </div>
+        ) : (
+          <React.Fragment>
+            <div className='commonMainOutlet mr-unset'>
+              <div className='common-min-h h-full'></div>
+            </div>
+          </React.Fragment>
+        )}
       </div>
     </div>
   )

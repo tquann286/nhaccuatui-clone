@@ -22,4 +22,8 @@
   .rank-number {
     @apply text-xs ml-2px font-normal;
   }
+
+  .common-min-h {
+    @apply min-h-[calc(100vh_-_34.5rem)];
+  }
 }
