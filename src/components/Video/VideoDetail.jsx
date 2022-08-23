@@ -3,12 +3,9 @@ import { useParams } from 'react-router-dom'
 import parse from 'html-react-parser'
 
 import { useStore } from 'store'
-import { LeftSidebar, LoadingV2 } from 'components'
-import { IconButton, Tooltip } from '@mui/material'
+import { LeftSidebar, LoadingV2, VideoMain } from 'components'
 import { getVideoDetailData } from 'services/Video/VideoDetail'
-import { BsBookmarkPlus } from 'react-icons/bs'
 import { toastNotify } from 'share/toast'
-import { handleAddToFavVideo } from 'share/addToFav'
 import { getCurrentPathname, getMaybeLike, handleCopyProxy } from 'share/utilities'
 
 const VideoDetail = () => {
@@ -51,20 +48,29 @@ const VideoDetail = () => {
     toastNotify(defineLang('Chia sẻ lên facebook thành công', 'Share to facebook successfully'), 'success')
   }
 
+  const videoMainProps = {
+    defineLang,
+    videoDetail,
+  }
+
   return (
     <div className='hp-container'>
       <div className='h-full bg-color-0-02'>
         <LeftSidebar />
         {isLoading ? (
-          <div className='commonMainOutlet flexCenter h-full'>
+          <div className='ml-8 flexCenter h-screen'>
             <LoadingV2 />
           </div>
         ) : (
-          <React.Fragment>
-            <div className='commonMainOutlet mr-unset'>
-              <div className='common-min-h h-full'></div>
+          <div className='commonMainOutlet mr-unset'>
+            <div className='common-min-h h-full'>
+              <div className="ml-32px">
+                <div className="flex pt-24px">
+                  <VideoMain { ... videoMainProps } />
+                </div>
+              </div>
             </div>
-          </React.Fragment>
+          </div>
         )}
       </div>
     </div>

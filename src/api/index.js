@@ -76,3 +76,7 @@ export const getRealtime = (size) => client.post('ranking/realtime', joinQuerySt
 
 // Recommmend
 export const getRecommend = (key, type, size = 12) => client.post('recommend', joinQueryString({ key, type, size }))
+
+// Information
+export const getInfo = (key, type) => client.post('media/info', joinQueryString({ key, type }))
+
