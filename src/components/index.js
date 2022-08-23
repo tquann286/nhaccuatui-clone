@@ -125,3 +125,4 @@ export { default as Top3Item } from './Chart/Top3Item'
 // Song
 export { default as Song } from './Song/Song'
 export { default as SongPageDetail } from './Song/SongPageDetail'
+export { default as SongList } from './Song/SongList'

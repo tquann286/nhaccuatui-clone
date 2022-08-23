@@ -11,8 +11,9 @@ import { getUserDetail, removeFavItem } from 'services/firebase/firestore'
 
 import { BsHeadphones } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
+import { handleAddToFavSong } from 'share/addToFav'
 
-const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setFavSongs }) => {
+const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setFavSongs, removeFav, addToFav }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
   const navigate = useNavigate()
 
@@ -25,6 +26,12 @@ const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setF
 
   const handleMoreOptions = (e) => {
     e.stopPropagation()
+    toggleShowMore()
+  }
+
+  const handleAddToFav = (e) => {
+    e.stopPropagation()
+    handleAddToFavSong(keyId, defineLang)
     toggleShowMore()
   }
 
@@ -64,11 +71,13 @@ const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setF
   }
 
   const extendModalProps = {
+    addToFav,
+    handleAddToFav,
     copyLink: true,
     handleCopyLink: (e) => handleCopyLink(e),
     goToSong: true,
     handleGoToSong: (e) => handleGoToSong(e),
-    removeFav: true,
+    removeFav,
     handleRemoveFav: (e) => handleRemoveFav(e, keyId),
   }
   return (

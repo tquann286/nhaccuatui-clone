@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom'
 import parse from 'html-react-parser'
 
 import { useStore } from 'store'
-import { CircleTitleArtist, Description, ListTag, LoadingV2, Provider, ShadowThumb, Sharing, Title, TitleCommon } from 'components'
-import { getCurrentPathname, getMaybeLike, handleCopyProxy } from 'share/utilities'
+import { CircleTitleArtist, SongList, ListTag, LoadingV2, Provider, ShadowThumb, Sharing, Title, TitleCommon } from 'components'
+import { getCurrentPathname, getListSongsKey, getMaybeLike, getSongsView, handleCopyProxy } from 'share/utilities'
 import { getPlaylistDetailData } from 'services/Playlist/Playlist'
 import { IconButton, Tooltip } from '@mui/material'
 import { BsBookmarkPlus } from 'react-icons/bs'
@@ -21,6 +21,8 @@ const PlaylistDetail = () => {
   const [playlistDetail, setPlaylistDetail] = useState({})
   console.log(playlistDetail)
   const [maybeLike, setMaybeLike] = useState(null)
+  const [songsView, setSongView] = useState({})
+
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
@@ -29,6 +31,13 @@ const PlaylistDetail = () => {
       const getPlaylistDetailState = async () => {
         const playlistDetail = await getPlaylistDetailData(query.get('k'))
         const maybeLike = await getMaybeLike(playlistDetail.key, 'playlist')
+
+        const getSongsViewState = async (favSongsKey) => {
+          const songsView = await getSongsView(favSongsKey)
+          setSongView(songsView)
+        }
+
+        getSongsViewState(getListSongsKey(playlistDetail.songs))
 
         setPlaylistDetail(playlistDetail)
         setMaybeLike(maybeLike)
@@ -57,7 +66,7 @@ const PlaylistDetail = () => {
     toastNotify(defineLang('Chia sẻ lên facebook thành công', 'Share to facebook successfully'), 'success')
   }
 
-  const { key = '', thumbnail, artists = [], title, dateCreate, description = '', listTag = [], uploadBy = {} } = playlistDetail
+  const { key = '', thumbnail, artists = [], title, dateCreate, description = '', listTag = [], uploadBy = {}, songs = [] } = playlistDetail
 
   const sharingProps = { defineLang, placement: 'top', handleCopyShare, onShareWindowClose, shareLink: getCurrentPathname(), shareClass: 'ml-8px' }
 
@@ -97,6 +106,7 @@ const PlaylistDetail = () => {
         </div>
       </div>
       <div className="mt-44px mb-16px text-22px font-bold color-0-88">{defineLang('Danh sách bài hát', 'Song list')}</div>
+      <SongList listSong={songs} defineLang={defineLang} addToFav songsView={songsView} />
     </div>
   )
 }
