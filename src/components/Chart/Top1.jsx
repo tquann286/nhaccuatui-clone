@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ArtistCircle, CommonArtist, LineBreak, RankPosition } from 'components'
+import { CircleTitleArtist, LineBreak, RankPosition } from 'components'
 
 const Top1 = ({ artists, highestPosition, oldPosition, position, songKey, thumbnail, title, totalWeekInRanked, isVideo, defineLang }) => {
   const rankPositionProps = {
@@ -19,10 +19,7 @@ const Top1 = ({ artists, highestPosition, oldPosition, position, songKey, thumbn
             <div className='w3-col w-fit text-13px color-0-5 mr-6px flex items-end font-normal'>{isVideo ? 'Video' : defineLang('Bài hát', 'Song')}</div>
             <div className='w3-rest text-sm font-semibold flex items-end'>{title}</div>
           </div>
-          <div className="w3-row mt-8px h-24px leading-24px flex items-center">
-            <ArtistCircle artists={artists} />
-            <CommonArtist artists={artists} styles='!mt-0 ml-8px' />
-          </div>
+          <CircleTitleArtist circleStyles='float-left' titleStyles='!mt-unset ml-8px' artists={artists} />
           <LineBreak styles='mt-16px' />
           <div className="mt-16px">
             <RankPosition { ... rankPositionProps } />

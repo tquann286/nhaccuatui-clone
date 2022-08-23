@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import parse from 'html-react-parser'
 
 import { useStore } from 'store'
-import { LeftSidebar, LoadingV2, VideoMain, Title, ErrorBoundary } from 'components'
+import { LeftSidebar, LoadingV2, VideoMain, Title } from 'components'
 import { getVideoDetailData, getVideoStreamUrls } from 'services/Video/VideoDetail'
 import { toastNotify } from 'share/toast'
 import { createTitleArtist, getCurrentPathname, getMaybeLike, handleCopyProxy } from 'share/utilities'
@@ -64,17 +64,15 @@ const VideoDetail = () => {
             <LoadingV2 />
           </div>
         ) : (
-          <ErrorBoundary>
-            <div className='commonMainOutlet mr-unset transition-none'>
-              <div className='common-min-h h-full'>
-                <div className='ml-32px'>
-                  <div className='flex pt-24px'>
-                    <VideoMain {...videoMainProps} />
-                  </div>
+          <div className='commonMainOutlet mr-unset transition-none'>
+            <div className='common-min-h h-full'>
+              <div className='ml-32px'>
+                <div className='flex pt-24px'>
+                  <VideoMain {...videoMainProps} />
                 </div>
               </div>
             </div>
-          </ErrorBoundary>
+          </div>
         )}
       </div>
     </div>
