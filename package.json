@@ -34,6 +34,7 @@
     "react-share": "^4.4.0",
     "react-slick": "^0.29.0",
     "react-toastify": "^9.0.5",
+    "react-tuby": "^0.1.24",
     "react-use": "^17.4.0",
     "recharts": "^2.1.13",
     "slick-carousel": "^1.8.1",
