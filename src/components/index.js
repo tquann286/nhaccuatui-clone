@@ -126,3 +126,6 @@ export { default as Top3Item } from './Chart/Top3Item'
 export { default as Song } from './Song/Song'
 export { default as SongPageDetail } from './Song/SongPageDetail'
 export { default as SongList } from './Song/SongList'
+
+// Video
+export { default as VideoDetail } from './Video/VideoDetail'
