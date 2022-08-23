@@ -1,13 +1,13 @@
 import React from 'react'
 
-const ViewDate = ({ defineLang, styles = '', viewStyles = '', dateStyles = '', songView, dateRelease }) => {
-  if (!songView) return null
+const ViewDate = ({ defineLang, styles = '', viewStyles = '', dateStyles = '', view, dateRelease }) => {
+  if (!view) return null
   if (!dateRelease) return null
 
   return (
     <div className={`w3-row mt-14px flex items-center ${styles}`}>
       <div className={`w3-col text-13px color-0-5 w-fit font-normal ${viewStyles}`}>
-        {songView.toLocaleString('en-US')} {defineLang('Lượt nghe', 'Listens')}
+        {view.toLocaleString('en-US')} {defineLang('Lượt nghe', 'Listens')}
       </div>
       {dateRelease && (
         <React.Fragment>

@@ -76,7 +76,7 @@ const SongPageDetail = () => {
           <div className='w3-rest pl-24px'>
             <TitleCommon type='song' defineLang={defineLang} title={title} />
             <CircleTitleArtist circleStyles='float-left' titleStyles='!mt-unset ml-8px' artists={artists} />
-            {songView && songView[key] && <ViewDate songView={songView[key]} dateRelease={dateRelease} defineLang={defineLang} />}
+            {songView && songView[key] && <ViewDate view={songView[key]} dateRelease={dateRelease} defineLang={defineLang} />}
             <UploadBy uploadBy={uploadBy} defineLang={defineLang} />
             <Description description={description} />
           </div>

@@ -29,7 +29,9 @@ const joinQueryString = (obj) =>
     .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`)
     .join('&')
 
+// View
 export const getView = (listSongKeys) => client.post('counter/view', joinQueryString({ listSongKeys }))
+export const getListVideosView = (listVideoKeys) => client.post('counter/view', joinQueryString({ listVideoKeys }))
 
 // Search
 export const getMaybeHit = () => client.post('search/maybehit')

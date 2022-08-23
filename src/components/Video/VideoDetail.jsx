@@ -6,7 +6,7 @@ import { useStore } from 'store'
 import { LeftSidebar, LoadingV2, VideoMain, Title } from 'components'
 import { getVideoDetailData, getVideoStreamUrls } from 'services/Video/VideoDetail'
 import { toastNotify } from 'share/toast'
-import { createTitleArtist, getCurrentPathname, getMaybeLike, handleCopyProxy } from 'share/utilities'
+import { createTitleArtist, getCurrentPathname, getLyricData, getMaybeLike, getSongsView, getVideosView, handleCopyProxy } from 'share/utilities'
 
 const VideoDetail = () => {
   const [state] = useStore()
@@ -26,7 +26,11 @@ const VideoDetail = () => {
       const getVideoDetailState = async () => {
         const videoDetail = await getVideoDetailData(query.get('k'))
         const maybeLike = await getMaybeLike(videoDetail.key, 'video')
+        
+        videoDetail.videoView = await getVideosView(videoDetail.key)
         videoDetail.streamUrls = await getVideoStreamUrls(videoDetail.key)
+        videoDetail.lyric = await getLyricData(videoDetail.key, 'video')
+
         setVideoDetail(videoDetail)
         setMaybeLike(maybeLike)
         setIsLoading(false)
