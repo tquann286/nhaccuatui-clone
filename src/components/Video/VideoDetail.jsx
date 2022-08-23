@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom'
 import parse from 'html-react-parser'
 
 import { useStore } from 'store'
-import { LeftSidebar, LoadingV2, VideoMain, Title } from 'components'
-import { getVideoDetailData } from 'services/Video/VideoDetail'
+import { LeftSidebar, LoadingV2, VideoMain, Title, ErrorBoundary } from 'components'
+import { getVideoDetailData, getVideoStreamUrls } from 'services/Video/VideoDetail'
 import { toastNotify } from 'share/toast'
 import { createTitleArtist, getCurrentPathname, getMaybeLike, handleCopyProxy } from 'share/utilities'
 
@@ -17,7 +17,6 @@ const VideoDetail = () => {
 
   const [videoDetail, setVideoDetail] = useState({})
   const [maybeLike, setMaybeLike] = useState(null)
-  console.log(videoDetail)
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -27,7 +26,7 @@ const VideoDetail = () => {
       const getVideoDetailState = async () => {
         const videoDetail = await getVideoDetailData(query.get('k'))
         const maybeLike = await getMaybeLike(videoDetail.key, 'video')
-
+        videoDetail.streamUrls = await getVideoStreamUrls(videoDetail.key)
         setVideoDetail(videoDetail)
         setMaybeLike(maybeLike)
         setIsLoading(false)
@@ -57,7 +56,7 @@ const VideoDetail = () => {
 
   return (
     <div className='hp-container'>
-    {artists.length !== 0 && <Title title={createTitleArtist(title, artists)} />}
+      {artists.length !== 0 && <Title title={createTitleArtist(title, artists)} />}
       <div className='h-full bg-color-0-02'>
         <LeftSidebar />
         {isLoading ? (
@@ -65,15 +64,17 @@ const VideoDetail = () => {
             <LoadingV2 />
           </div>
         ) : (
-          <div className='commonMainOutlet mr-unset transition-none'>
-            <div className='common-min-h h-full'>
-              <div className="ml-32px">
-                <div className="flex pt-24px">
-                  <VideoMain { ... videoMainProps } />
+          <ErrorBoundary>
+            <div className='commonMainOutlet mr-unset transition-none'>
+              <div className='common-min-h h-full'>
+                <div className='ml-32px'>
+                  <div className='flex pt-24px'>
+                    <VideoMain {...videoMainProps} />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </ErrorBoundary>
         )}
       </div>
     </div>
