@@ -78,6 +78,7 @@ module.exports = {
         width: 'width',
         height: 'height',
         spacing: 'margin, padding',
+        unset: 'unset'
       },
       zIndex: {
         1: '1',

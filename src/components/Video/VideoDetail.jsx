@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom'
 import parse from 'html-react-parser'
 
 import { useStore } from 'store'
-import { LeftSidebar, LoadingV2, VideoMain } from 'components'
+import { LeftSidebar, LoadingV2, VideoMain, Title } from 'components'
 import { getVideoDetailData } from 'services/Video/VideoDetail'
 import { toastNotify } from 'share/toast'
-import { getCurrentPathname, getMaybeLike, handleCopyProxy } from 'share/utilities'
+import { createTitleArtist, getCurrentPathname, getMaybeLike, handleCopyProxy } from 'share/utilities'
 
 const VideoDetail = () => {
   const [state] = useStore()
@@ -53,8 +53,11 @@ const VideoDetail = () => {
     videoDetail,
   }
 
+  const { artists = [], title = '' } = videoDetail
+
   return (
     <div className='hp-container'>
+    {artists.length !== 0 && <Title title={createTitleArtist(title, artists)} />}
       <div className='h-full bg-color-0-02'>
         <LeftSidebar />
         {isLoading ? (
@@ -62,7 +65,7 @@ const VideoDetail = () => {
             <LoadingV2 />
           </div>
         ) : (
-          <div className='commonMainOutlet mr-unset'>
+          <div className='commonMainOutlet mr-unset transition-none'>
             <div className='common-min-h h-full'>
               <div className="ml-32px">
                 <div className="flex pt-24px">

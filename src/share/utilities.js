@@ -237,6 +237,7 @@ export const getCurrentDay = () => new Date().toLocaleDateString()
 
 export const manualPagi = (pageIndex, itemsPerPage = 36) => ({ start: (pageIndex - 1) * itemsPerPage, end: pageIndex * itemsPerPage })
 
+// URL
 export const getCurrentURL = () => window.location.href
 
 export const getCurrentPathname = () => window.location.pathname
@@ -248,3 +249,6 @@ export const handleCopyLyric = (lyric, defineLang) => {
     toastNotify(defineLang('Sao chép lời bài hát thành công.', 'Successfully copied the lyrics.'), 'success')
   }
 }
+
+// Create Title with Artists
+export const createTitleArtist = (title = '', artists = []) => `${title} - ${artists.map((art) => art.name).join(', ')} - NhacCuaTui Clone`

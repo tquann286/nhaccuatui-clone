@@ -4,7 +4,7 @@ import parse from 'html-react-parser'
 
 import { useStore } from 'store'
 import { CircleTitleArtist, SongList, ListTag, LoadingV2, Provider, ShadowThumb, Sharing, Title, TitleCommon, MaybeLike, Footer } from 'components'
-import { getCurrentPathname, getListSongsKey, getMaybeLike, getSongsView, handleCopyProxy } from 'share/utilities'
+import { createTitleArtist, getCurrentPathname, getListSongsKey, getMaybeLike, getSongsView, handleCopyProxy } from 'share/utilities'
 import { getPlaylistDetailData } from 'services/Playlist/Playlist'
 import { IconButton, Tooltip } from '@mui/material'
 import { BsBookmarkPlus } from 'react-icons/bs'
@@ -80,7 +80,7 @@ const PlaylistDetail = () => {
   return (
     <div className='commonMainOutlet'>
       <div className='pt-24px px-32px relative margin-footer'>
-        {artists.length !== 0 && <Title title={`${title} - ${artists.map((art) => art.name).join(', ')} - NhacCuaTui Clone`} />}
+        {artists.length !== 0 && <Title title={createTitleArtist(title, artists)} />}
         <div className='w3-row'>
           <div className='w3-col w-240px'>
             <ShadowThumb imageUrl={thumbnail} width='24rem' />

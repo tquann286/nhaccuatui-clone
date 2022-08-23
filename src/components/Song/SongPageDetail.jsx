@@ -6,7 +6,7 @@ import { useStore } from 'store'
 import { getSongDetailData } from 'services/Song/Song'
 import { LoadingV2, Image, Sharing, Title, TitleCommon, CircleTitleArtist, ViewDate, UploadBy, Description, Provider, LyricDetail, MaybeLike, Footer } from 'components'
 import { BsBookmarkPlus, BsPlayCircleFill } from 'react-icons/bs'
-import { getCurrentPathname, getSongsView, getLyricData, handleCopyProxy, getMaybeLike } from 'share/utilities'
+import { getCurrentPathname, getSongsView, getLyricData, handleCopyProxy, getMaybeLike, createTitleArtist } from 'share/utilities'
 import { IconButton, Tooltip } from '@mui/material'
 import { toastNotify } from 'share/toast'
 import { handleAddToFavSong } from 'share/addToFav'
@@ -64,7 +64,7 @@ const SongPageDetail = () => {
 
   return (
     <div className='commonMainOutlet'>
-      {artists.length !== 0 && <Title title={`${title} - ${artists.map((art) => art.name).join(', ')} - NhacCuaTui Clone`} />}
+      {artists.length !== 0 && <Title title={createTitleArtist(title, artists)} />}
       <div className='relative px-32px pt-24px margin-footer'>
         <div className='w3-row'>
           <div className='w3-col relative w-240px h-240px border-0-1 useBorder rounded-8px overflow-hidden shadow-xl'>
