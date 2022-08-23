@@ -101,7 +101,7 @@ const LeftSidebar = () => {
             </div>
           </div>
         </div>
-        <div className='ls-auth-setting color-0-88'>
+        <div className='ls-auth-setting color-0-88 bg-color-0-02'>
           <div className='ls-auth'>
             {auth.currentUser ? (
               <React.Fragment>

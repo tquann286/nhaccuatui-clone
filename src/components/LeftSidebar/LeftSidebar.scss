@@ -76,7 +76,6 @@ $scale: 5rem;
     @include justify-content(space-between);
     width: inherit;
     height: 5.6rem;
-    background-color: $light-gray-bg-color;
 
     .ls-auth {
       @include display-flex;
