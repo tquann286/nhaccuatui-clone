@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import parse from 'html-react-parser'
 
 import { useStore } from 'store'
-import { CircleTitleArtist, SongList, ListTag, LoadingV2, Provider, ShadowThumb, Sharing, Title, TitleCommon } from 'components'
+import { CircleTitleArtist, SongList, ListTag, LoadingV2, Provider, ShadowThumb, Sharing, Title, TitleCommon, MaybeLike } from 'components'
 import { getCurrentPathname, getListSongsKey, getMaybeLike, getSongsView, handleCopyProxy } from 'share/utilities'
 import { getPlaylistDetailData } from 'services/Playlist/Playlist'
 import { IconButton, Tooltip } from '@mui/material'
@@ -49,7 +49,7 @@ const PlaylistDetail = () => {
       setIsLoading(false)
       throw new Error(error)
     }
-  }, [params.playlistKey])
+  }, [params.playlistKey, query.get('k')])
 
   if (isLoading)
     return (
@@ -107,6 +107,7 @@ const PlaylistDetail = () => {
       </div>
       <div className="mt-44px mb-16px text-22px font-bold color-0-88">{defineLang('Danh sách bài hát', 'Song list')}</div>
       <SongList listSong={songs} defineLang={defineLang} addToFav songsView={songsView} />
+      <MaybeLike defineLang={defineLang} maybeLike={maybeLike} />
     </div>
   )
 }
