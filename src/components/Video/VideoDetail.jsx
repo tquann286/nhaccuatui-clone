@@ -4,8 +4,7 @@ import { useParams } from 'react-router-dom'
 import { useStore } from 'store'
 import { LeftSidebar, LoadingV2, VideoMain, Title, NextVideos } from 'components'
 import { getVideoDetailData, getVideoStreamUrls } from 'services/Video/VideoDetail'
-import { toastNotify } from 'share/toast'
-import { createTitleArtist, getCurrentPathname, getLyricData, getMaybeLike, getSongsView, getVideosView, handleCopyProxy } from 'share/utilities'
+import { createTitleArtist, getLyricData, getMaybeLike, getVideosView } from 'share/utilities'
 
 const VideoDetail = () => {
   const [state] = useStore()
@@ -17,7 +16,6 @@ const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState({})
   const [maybeLike, setMaybeLike] = useState(null)
   const [autoplay, setAutoplay] = useState(false)
-  console.log('autoplay: ', autoplay)
 
   const toggleAutoplay = useCallback(() => setAutoplay(!autoplay), [autoplay])
 
@@ -45,14 +43,6 @@ const VideoDetail = () => {
       throw new Error(error)
     }
   }, [params.videoKey, query.get('k')])
-
-  const handleCopyShare = () => {
-    handleCopyProxy(defineLang, getCurrentPathname())
-  }
-
-  const onShareWindowClose = () => {
-    toastNotify(defineLang('Chia sẻ lên facebook thành công', 'Share to facebook successfully'), 'success')
-  }
 
   const videoProps = {
     defineLang,

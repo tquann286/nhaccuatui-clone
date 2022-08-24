@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './TrendingArtists.scss'
 
 import { Sharing } from 'components'
-import { createArtistUrl, getCurrentDay, handleCopyProxy } from 'share/utilities'
+import { createArtistUrl, getCurrentDay, getCurrentPathname, handleCopyProxy } from 'share/utilities'
 import { toastNotify } from 'share/toast'
 import { getTopArtists } from 'services/Search/SearchContent'
 import { Grid } from '@mui/material'
@@ -26,7 +26,7 @@ const TrendingArtists = ({ defineLang }) => {
   }, [])
 
   const handleCopyShare = () => {
-    handleCopyProxy(defineLang, '/nghe-si')
+    handleCopyProxy(defineLang, getCurrentPathname())
   }
 
   const onShareWindowClose = () => {
