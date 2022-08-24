@@ -1,9 +1,16 @@
 import React from 'react'
 
 import { BallCheckbox } from 'components'
+import Grid from '@mui/material/Grid'
+import { isEmpty } from 'lodash'
 
 const NextVideos = ({ defineLang, videoDetail, autoplay, toggleAutoplay }) => {
 
+  const { maybeLike = {} } = videoDetail
+  const { data: rcmVideos = [] }  = maybeLike
+
+  if (isEmpty(rcmVideos)) return null
+  console.log('rcmVideos: ', rcmVideos)
   
   return (
     <div className='w-[33.6rem] mx-16px '>
@@ -15,6 +22,11 @@ const NextVideos = ({ defineLang, videoDetail, autoplay, toggleAutoplay }) => {
             <BallCheckbox title='autoplay' isActive={autoplay} handleClick={toggleAutoplay} />
           </div>
         </div>
+      </div>
+      <div className="mt-16px">
+        <Grid container spacing={2}>
+          
+        </Grid>
       </div>
     </div>
   )

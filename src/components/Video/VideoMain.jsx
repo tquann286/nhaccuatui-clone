@@ -13,7 +13,6 @@ import { getCurrentPathname, handleCopyProxy } from 'share/utilities'
 import { toastNotify } from 'share/toast'
 
 const VideoMain = ({ defineLang, videoDetail }) => {
-  console.log(videoDetail)
 
   const { key = '', streamUrls = [], thumbnail, title, artists = [], videoView = {}, dateRelease = 0, uploadBy = {}, provider = {}, lyric = {} } = videoDetail
 
@@ -21,6 +20,7 @@ const VideoMain = ({ defineLang, videoDetail }) => {
     src: handleSourceUrl(streamUrls),
     poster: thumbnail || back_up_video_img,
     pictureInPicture: true,
+    autoplay: false
   }
 
   const handleCopyShare = () => {

@@ -28,9 +28,12 @@ const VideoDetail = () => {
         const videoDetail = await getVideoDetailData(query.get('k'))
         const maybeLike = await getMaybeLike(videoDetail.key, 'video')
 
-        videoDetail.videoView = await getVideosView(videoDetail.key)
-        videoDetail.streamUrls = await getVideoStreamUrls(videoDetail.key)
-        videoDetail.lyric = await getLyricData(videoDetail.key, 'video')
+        const { key = '' } = videoDetail
+
+        videoDetail.videoView = await getVideosView(key)
+        videoDetail.streamUrls = await getVideoStreamUrls(key)
+        videoDetail.lyric = await getLyricData(key, 'video')
+        videoDetail.maybeLike = await getMaybeLike(key, 'video')
 
         setVideoDetail(videoDetail)
         setMaybeLike(maybeLike)
