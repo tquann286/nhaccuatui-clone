@@ -12,7 +12,7 @@ const VideoRow = ({ keyId = '', title = '', artists = [], thumbnail = '', durati
       <Link to={createVideoUrl(keyId, title, artists)}>
         <div className='relative w-64 h-36 useBorder border-0-05 w3-col rounded-4px mr-16px'>
           <Image className='absolute top-0 rounded-4px w-full h-full' imageUrl={thumbnail} backupImg={no_video_img} />
-          <div className='absolute right-0 bottom-0 font-medium h-16px pl-14px pr-2px text-10px text-slate-100 bg-[linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,0.6))] rounded-br-4px'>{duration}</div>
+          <div className='absolute right-0 bottom-0 font-medium h-16px pl-14px pr-2px text-10px text-slate-100 bg-duration rounded-br-4px'>{duration}</div>
         </div>
       </Link>
       <div className='w3-rest'>

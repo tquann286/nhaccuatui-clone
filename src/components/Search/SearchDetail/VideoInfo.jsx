@@ -1,7 +1,7 @@
 import { CommonVideo } from 'components'
 import { Grid } from '@mui/material'
 
-const VideoInfo = ({ videos }) => (
+const VideoInfo = ({ videos = [] }) =>  videos.length === 0 || (
   <div className='video-info-container common-section'>
     <div className='video-info-title pt0-lr3-2 common-title color-0-88'>Video</div>
     <div className="video-info-main common-main">

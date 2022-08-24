@@ -6,6 +6,9 @@ module.exports = {
       mons: "'Montserrat', sans-serif",
     },
     extend: {
+      backgroundImage: {
+        'duration': 'linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,0.6))'
+      },
       colors: {
         main: '#2daaed',
         disable: 'rgba(28, 30, 32, 0.2)',

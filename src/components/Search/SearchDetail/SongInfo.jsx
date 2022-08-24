@@ -4,7 +4,7 @@ import { getListSongsKey, getSongsView } from 'share/utilities'
 import { Grid } from '@mui/material'
 import { CommonSong } from 'components'
 
-const SongInfo = ({ songs, defineLang }) => {
+const SongInfo = ({ songs = [], defineLang }) => {
   const [songsView, setSongView] = useState({})
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const SongInfo = ({ songs, defineLang }) => {
     }
   }, [songs])
 
-  if (!songs) return null
+  if (songs.length === 0) return null
 
   return (
     <div className='song-info-container common-section'>
