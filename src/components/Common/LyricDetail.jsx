@@ -17,17 +17,15 @@ const LyricDetail = ({ defineLang, styles = '', lyric = {} }) => {
 
   if (!lyric) return null
   if (!lyric.lyric) return null
-
+  
   return (
     <div className={`relative w-full rounded-4px bg-color-0-02 mt-4px pt-18px px-24px pb-54px overflow-hidden ${styles}`}>
       <React.Fragment>
-        {lyricRef.current && (
-          <div className='absolute right-24px'>
+        <div className='absolute right-24px'>
             <Button className='bg-color-0-05 color-0-5 text-13px normal-case' startIcon={<AiOutlineCopy />} onClick={() => handleCopyLyric(lyricRef.current.innerText, defineLang)}>
               {defineLang('Sao chép', 'Copy')}
             </Button>
           </div>
-        )}
         <div className='text-sm font-semibold color-0-88'>{defineLang('Lời bài hát', 'Lyrics')}</div>
         <div className='text-13px color-0-5 mt-4'>
           {defineLang('Lời đăng bởi: ', 'Edited by: ')}
