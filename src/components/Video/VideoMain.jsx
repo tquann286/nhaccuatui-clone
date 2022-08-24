@@ -1,5 +1,7 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import back_up_video_img from 'images/default/default_video.png'
+
 import { Player } from 'react-tuby'
 import 'react-tuby/css/main.css'
 
@@ -9,18 +11,27 @@ import { IconButton, Tooltip } from '@mui/material'
 import { BsBookmarkPlus } from 'react-icons/bs'
 import { handleAddToFavVideo } from 'share/addToFav'
 import { handleSourceUrl } from 'services/Video/VideoDetail'
-import { getCurrentPathname, handleCopyProxy } from 'share/utilities'
+import { createVideoUrl, getCurrentPathname, handleCopyProxy } from 'share/utilities'
 import { toastNotify } from 'share/toast'
 
-const VideoMain = ({ defineLang, videoDetail }) => {
+const VideoMain = ({ defineLang, videoDetail, autoplay }) => {
+  const navigate = useNavigate()
 
-  const { key = '', streamUrls = [], thumbnail, title, artists = [], videoView = {}, dateRelease = 0, uploadBy = {}, provider = {}, lyric = {} } = videoDetail
+  const { key = '', streamUrls = [], thumbnail, title, artists = [], videoView = {}, dateRelease = 0, uploadBy = {}, provider = {}, lyric = {}, maybeLike = {} } = videoDetail
+
+  const handleNextVideo = () => {
+    if (autoplay && maybeLike.data) {
+      const nextVideo = maybeLike.data[0]
+      const { key = '', title = '', artists = [] } = nextVideo
+
+      navigate(createVideoUrl(key, title, artists))
+    }
+  }
 
   const playerProps = {
     src: handleSourceUrl(streamUrls),
     poster: thumbnail || back_up_video_img,
     pictureInPicture: true,
-    autoplay: false
   }
 
   const handleCopyShare = () => {
@@ -36,7 +47,9 @@ const VideoMain = ({ defineLang, videoDetail }) => {
   return (
     <div className='w-[calc(100%_-_35.2rem)] transition-all duration-300'>
       <div className='relative w-full'>
-        <div className='text-sm bg-color-0-05'>{isEmpty(streamUrls) || <Player {...playerProps} />}</div>
+        <div className='text-sm bg-color-0-05'>{isEmpty(streamUrls) || <Player {...playerProps}>
+          {(ref, props) => <video ref={ref} {...props} onCanPlay={(e) => e.target.play()} onEnded={handleNextVideo} />}
+        </Player>}</div>
         <div>
           <div className='text-md w-fit color-0-88 mt-16px font-semibold' title={title}>
             {title}

@@ -10,7 +10,6 @@ const NextVideos = ({ defineLang, videoDetail, autoplay, toggleAutoplay }) => {
   const { data: rcmVideos = [] }  = maybeLike
 
   if (isEmpty(rcmVideos)) return null
-  console.log('rcmVideos: ', rcmVideos)
   
   return (
     <div className='w-[33.6rem] mx-16px '>

@@ -15,9 +15,12 @@ const VideoDetail = () => {
 
   const [videoDetail, setVideoDetail] = useState({})
   const [maybeLike, setMaybeLike] = useState(null)
-  const [autoplay, setAutoplay] = useState(false)
+  const [autoplay, setAutoplay] = useState(true)
 
-  const toggleAutoplay = useCallback(() => setAutoplay(!autoplay), [autoplay])
+  const toggleAutoplay = useCallback(() => {
+    setAutoplay(!autoplay)
+    localStorage.setItem('autoplay', autoplay)
+  }, [autoplay])
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -47,9 +50,22 @@ const VideoDetail = () => {
     }
   }, [params.videoKey, query.get('k')])
 
+  useEffect(() => {
+    const localAutoplay = localStorage.getItem('autoplay')
+
+    if (localAutoplay === 'true') {
+      setAutoplay(true)
+    } else if (localAutoplay === 'false') {
+      setAutoplay(false)
+    } else {
+      localStorage.setItem('autoplay', false)
+    }
+  }, [])
+
   const videoProps = {
     defineLang,
     videoDetail,
+    autoplay
   }
 
   const { artists = [], title = '' } = videoDetail
@@ -69,7 +85,7 @@ const VideoDetail = () => {
               <div className='ml-32px'>
                 <div className='flex pt-24px'>
                   <VideoMain {...videoProps} />
-                  <NextVideos {...videoProps} autoplay={autoplay} toggleAutoplay={toggleAutoplay} />
+                  <NextVideos {...videoProps} toggleAutoplay={toggleAutoplay} />
                 </div>
               </div>
             </div>
