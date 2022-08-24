@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
-import parse from 'html-react-parser'
 
 import { useStore } from 'store'
 import { LeftSidebar, LoadingV2, VideoMain, Title, NextVideos } from 'components'
@@ -17,6 +16,10 @@ const VideoDetail = () => {
 
   const [videoDetail, setVideoDetail] = useState({})
   const [maybeLike, setMaybeLike] = useState(null)
+  const [autoplay, setAutoplay] = useState(false)
+  console.log('autoplay: ', autoplay)
+
+  const toggleAutoplay = useCallback(() => setAutoplay(!autoplay), [autoplay])
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -73,7 +76,7 @@ const VideoDetail = () => {
               <div className='ml-32px'>
                 <div className='flex pt-24px'>
                   <VideoMain {...videoProps} />
-                  <NextVideos {...videoProps} />
+                  <NextVideos {...videoProps} autoplay={autoplay} toggleAutoplay={toggleAutoplay} />
                 </div>
               </div>
             </div>

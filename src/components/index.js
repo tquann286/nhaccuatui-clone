@@ -43,6 +43,7 @@ export { default as LyricDetail } from './Common/LyricDetail'
 export { default as MaybeLike } from './Common/MaybeLike'
 export { default as ListTag } from './Common/ListTag'
 export { default as TagLabel } from './Common/TagLabel'
+export { default as BallCheckbox } from './Common/BallCheckbox'
 
 // Home
 export { default as LoadingV2 } from './Loading/LoadingV2'
