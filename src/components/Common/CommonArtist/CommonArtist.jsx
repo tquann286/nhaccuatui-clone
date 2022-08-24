@@ -8,24 +8,20 @@ const CommonArtist = ({ artists, styles = '' }) => {
   if (!artists) return null
 
   return (
-    <React.Fragment>
-      {artists && (
-        <div className={`common-artists-container color-0-5 ${styles}`}>
-          {artists.map((artist, index) => {
-            const { artistId, name, shortLink } = artist
+    <div className={`common-artists-container color-0-5 ${styles}`}>
+      {artists.map((artist, index) => {
+        const { artistId, name, shortLink } = artist
 
-            return (
-              <React.Fragment key={artistId}>
-                <Link to={createArtistUrl(name, shortLink)} className='common-artists-name'>
-                  <span>{name}</span>
-                </Link>
-                {index + 1 === artists.length ? '' : ', '}
-              </React.Fragment>
-            )
-          })}
-        </div>
-      )}
-    </React.Fragment>
+        return (
+          <React.Fragment key={artistId}>
+            <Link to={createArtistUrl(name, shortLink)} className='common-artists-name'>
+              <span>{name}</span>
+            </Link>
+            {index + 1 === artists.length ? '' : ', '}
+          </React.Fragment>
+        )
+      })}
+    </div>
   )
 }
 

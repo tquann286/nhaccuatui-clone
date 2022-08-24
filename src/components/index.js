@@ -44,6 +44,7 @@ export { default as MaybeLike } from './Common/MaybeLike'
 export { default as ListTag } from './Common/ListTag'
 export { default as TagLabel } from './Common/TagLabel'
 export { default as BallCheckbox } from './Common/BallCheckbox'
+export { default as VideoRow } from './Common/VideoRow'
 
 // Home
 export { default as LoadingV2 } from './Loading/LoadingV2'

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BallCheckbox } from 'components'
+import { BallCheckbox, VideoRow } from 'components'
 import Grid from '@mui/material/Grid'
 import { isEmpty } from 'lodash'
 
@@ -25,7 +25,11 @@ const NextVideos = ({ defineLang, videoDetail, autoplay, toggleAutoplay }) => {
       </div>
       <div className="mt-16px">
         <Grid container spacing={2}>
-          
+          {rcmVideos.map(video => (
+            <Grid key={video.key} item xs={12} sm={12} md={12} lg={12} xl={12}>
+              <VideoRow { ... video } keyId={video.key} />
+            </Grid>
+          ))}
         </Grid>
       </div>
     </div>
