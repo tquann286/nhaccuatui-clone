@@ -34,7 +34,7 @@ const VideoMain = ({ defineLang, videoDetail }) => {
   const sharingProps = { defineLang, placement: 'top', handleCopyShare, onShareWindowClose, shareLink: getCurrentPathname(), shareClass: 'ml-8px' }
 
   return (
-    <div className='w-[calc(100%_-_35.2rem)] transition-all duration-300 min-h-[150vh]'>
+    <div className='w-[calc(100%_-_35.2rem)] transition-all duration-300'>
       <div className='relative w-full'>
         <div className='text-sm bg-color-0-05'>{isEmpty(streamUrls) || <Player {...playerProps} />}</div>
         <div>

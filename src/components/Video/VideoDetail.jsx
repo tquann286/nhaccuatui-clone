@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import parse from 'html-react-parser'
 
 import { useStore } from 'store'
-import { LeftSidebar, LoadingV2, VideoMain, Title } from 'components'
+import { LeftSidebar, LoadingV2, VideoMain, Title, NextVideos } from 'components'
 import { getVideoDetailData, getVideoStreamUrls } from 'services/Video/VideoDetail'
 import { toastNotify } from 'share/toast'
 import { createTitleArtist, getCurrentPathname, getLyricData, getMaybeLike, getSongsView, getVideosView, handleCopyProxy } from 'share/utilities'
@@ -26,7 +26,7 @@ const VideoDetail = () => {
       const getVideoDetailState = async () => {
         const videoDetail = await getVideoDetailData(query.get('k'))
         const maybeLike = await getMaybeLike(videoDetail.key, 'video')
-        
+
         videoDetail.videoView = await getVideosView(videoDetail.key)
         videoDetail.streamUrls = await getVideoStreamUrls(videoDetail.key)
         videoDetail.lyric = await getLyricData(videoDetail.key, 'video')
@@ -51,7 +51,7 @@ const VideoDetail = () => {
     toastNotify(defineLang('Chia sẻ lên facebook thành công', 'Share to facebook successfully'), 'success')
   }
 
-  const videoMainProps = {
+  const videoProps = {
     defineLang,
     videoDetail,
   }
@@ -72,7 +72,8 @@ const VideoDetail = () => {
             <div className='common-min-h h-full'>
               <div className='ml-32px'>
                 <div className='flex pt-24px'>
-                  <VideoMain {...videoMainProps} />
+                  <VideoMain {...videoProps} />
+                  <NextVideos {...videoProps} />
                 </div>
               </div>
             </div>

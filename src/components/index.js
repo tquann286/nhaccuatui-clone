@@ -130,3 +130,4 @@ export { default as SongList } from './Song/SongList'
 // Video
 export { default as VideoDetail } from './Video/VideoDetail'
 export { default as VideoMain } from './Video/VideoMain'
+export { default as NextVideos } from './Video/NextVideos'
