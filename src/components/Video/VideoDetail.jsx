@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { useStore } from 'store'
-import { LeftSidebar, LoadingV2, VideoMain, Title, NextVideos } from 'components'
+import { LeftSidebar, LoadingV2, VideoMain, Title, NextVideos, Container } from 'components'
 import { getVideoDetailData, getVideoStreamUrls } from 'services/Video/VideoDetail'
 import { createTitleArtist, getLyricData, getMaybeLike, getVideosView } from 'share/utilities'
 
@@ -65,7 +65,7 @@ const VideoDetail = () => {
   const videoProps = {
     defineLang,
     videoDetail,
-    autoplay
+    autoplay,
   }
 
   const { artists = [], title = '' } = videoDetail
@@ -81,14 +81,16 @@ const VideoDetail = () => {
           </div>
         ) : (
           <div className='commonMainOutlet mr-unset transition-none'>
-            <div className='common-min-h h-full'>
-              <div className='ml-32px'>
-                <div className='flex pt-24px'>
-                  <VideoMain {...videoProps} />
-                  <NextVideos {...videoProps} toggleAutoplay={toggleAutoplay} />
+            <Container>
+              <div className='common-min-h h-full'>
+                <div className='ml-32px'>
+                  <div className='flex pt-24px'>
+                    <VideoMain {...videoProps} />
+                    <NextVideos {...videoProps} toggleAutoplay={toggleAutoplay} />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Container>
           </div>
         )}
       </div>

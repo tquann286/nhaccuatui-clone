@@ -1,4 +1,5 @@
 // Common
+export { default as Container } from './Common/Container'
 export { default as Loading } from './Loading/Loading'
 export { default as ErrorBoundary } from './Common/ErrorBoundary'
 export { default as Title } from './Common/Title'
