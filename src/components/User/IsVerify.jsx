@@ -4,15 +4,16 @@ import { toastNotify } from 'share/toast'
 import { sendEmailVerification } from 'firebase/auth'
 
 const IsVerify = ({ defineLang, isVerify, currentUser = {} }) => {
-  console.log('currentUser: ', currentUser)
-  const handleVerify = () => {
-    if (!isVerify) {
-      sendEmailVerification(currentUser).then(() => {
-        toastNotify(defineLang('Đã gửi email xác thực, vui lòng kiểm tra email của bạn', 'Email verification sent! Please check your email'))
-      }).catch((error) => {
-        console.log(error)
-        toastNotify(defineLang('Gửi email xác thực không thành công', 'Failure to verify email, please try later'))
-      })
+  
+  const handleVerify = async () => {
+    try {
+      if (!isVerify) {
+        await sendEmailVerification(currentUser)
+        toastNotify(defineLang('Đã gửi email xác thực, vui lòng kiểm tra hộp thư của bạn kể cả thư spam', 'Email verification sent! Please check your email (Also check your spam emails)'))
+      }
+    } catch (error) {
+      console.log(error)
+      toastNotify(defineLang('Gửi email xác thực không thành công', 'Failure to verify email, please try later'))
     }
   }
 

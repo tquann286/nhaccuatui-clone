@@ -47,6 +47,7 @@ module.exports = {
         '44px': '4.4rem',
       },
       spacing: {
+        'unset': 'unset',
         '4px': '0.4rem',
         '8px': '0.8rem',
         '14px': '1.4rem',

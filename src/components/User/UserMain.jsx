@@ -47,7 +47,6 @@ const UserMain = () => {
             </div>
             <div className='w3-rest pl-24px overflow-hidden'>
               <div className='w-full h-28px text-13px leading-28px color-0-88 font-semibold'>{displayName}</div>
-              {introduce && <div></div>}
               <div className='w3-row mt-24px'>
                 <Button className='w-120px h-32px text-xs mr-8px rounded-4px bg-color-0-05 color-0-5 normal-case'>{defineLang('Cập nhật', 'Update')}</Button>
                 <Button className='w-120px h-32px text-xs mr-8px rounded-4px bg-color-0-05 color-0-5 normal-case'>{defineLang('Đổi mật khẩu', 'Change password')}</Button>
