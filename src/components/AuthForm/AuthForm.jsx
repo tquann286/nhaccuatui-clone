@@ -247,7 +247,7 @@ const AuthForm = () => {
               )}
               {showSignUp && (
                 <div className='term-container color-0-6'>
-                  <label className='container'>
+                  <label className='container w-unset'>
                     {defineLang(`Tôi đã đọc và đồng ý với các `, `I have read and agree to the `)}
                     <input className='color-0-5 bg-color-0-01' type='checkbox' checked={agreeTerm} onChange={() => setAgreeTerm(!agreeTerm)} />
                     <span className='checkmark border-0-2 bg-color-1'></span>

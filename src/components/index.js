@@ -66,6 +66,8 @@ export { default as AuthForm } from './AuthForm/AuthForm'
 // User
 export { default as UserMain } from './User/UserMain'
 export { default as NoUserFound } from './User/NoUserFound'
+export { default as InfoField } from './User/InfoField'
+export { default as IsVerify } from './User/IsVerify'
 export { default as FavoriteMain } from './User/FavoriteMain/FavoriteMain'
 export { default as SongFav } from './User/FavoriteMain/SongFav/SongFav'
 export { default as PlaylistFav } from './User/FavoriteMain/PlaylistFav/PlaylistFav'
