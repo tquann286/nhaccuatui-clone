@@ -263,3 +263,6 @@ export const handleCopyLyric = (lyric, defineLang) => {
 
 // Create Title with Artists
 export const createTitleArtist = (title = '', artists = []) => `${title} - ${artists.map((art) => art.name).join(', ')} - NhacCuaTui Clone`
+
+// Check if an array is valid
+export const isValid = (arr) => arr.every((item) => typeof item !== 'undefined')

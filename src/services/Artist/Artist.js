@@ -1,4 +1,4 @@
-import { getArtists } from 'api'
+import { getArtists, getArtistDetail } from 'api'
 
 export const getArtistsMain = async (nation, gender) => {
   try {
@@ -6,6 +6,16 @@ export const getArtistsMain = async (nation, gender) => {
 
     if (data) return data.artist
   } catch (error) {
-    throw new Error(error)
+    console.log(error)
   }
-} 
+}
+
+export const getArtistDetailData = async (shortLink) => {
+  try {
+    const data = await getArtistDetail(shortLink)
+
+    if (data) return data
+  } catch (error) {
+    console.log(error)
+  }
+}

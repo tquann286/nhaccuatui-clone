@@ -49,7 +49,6 @@ export const getGenre = (type, key, pageIndex = 1, order = 1, pageSize = 36) => 
 
 // Artist
 export const getArtists = (nation, gender) =>  client.post('artist', joinQueryString({ nation, gender }))
-
 export const getArtistDetail = (shortLink, type = 'all', size = 20, index = 1, sort = 0) => client.post('artist/detail', joinQueryString({ shortLink, type, size, index, sort }))
 
 // Topic
