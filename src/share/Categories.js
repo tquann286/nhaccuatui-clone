@@ -157,6 +157,14 @@ export const subArtistCate = [
   { title: { vi: 'Nhóm nhạc', en: 'Band' }, value: '3' },
 ]
 
+export const artistDetailCate = [
+  { title: { vi: 'Trang chủ', en: 'Home' }, value: 'all' },
+  { title: { vi: 'Bài hát', en: 'Song' }, value: 'song' },
+  { title: { vi: 'MV', en: 'MV' }, value: 'video' },
+  { title: { vi: 'Playlist', en: 'Playlist' }, value: 'playlist' },
+  { title: { vi: 'Giới thiệu', en: 'Introduction' }, value: 'description' },
+]
+
 export const charactersCate = [
   { title: { vi: 'All', en: 'All' }, value: '' },
   { title: { vi: 'A', en: 'A' }, value: 'A' },
@@ -417,3 +425,4 @@ export const weekSubCate = [
   { title: { vi: 'Âu Mỹ', en: 'US-UK' }, value: 'au-my' },
   { title: { vi: 'Hàn Quốc', en: 'K-Pop' }, value: 'nhac-han' },
 ]
+

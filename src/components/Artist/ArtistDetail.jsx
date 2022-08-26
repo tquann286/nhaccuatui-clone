@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { ArtistCover, Container, Image, LoadingV2 } from 'components'
+import { ArtistCover, CateCommon, Container, Image, LoadingV2 } from 'components'
 import { getArtistDetailData } from 'services/Artist/Artist'
 
 import { useStore } from 'store'
+import { artistDetailCate } from 'share/Categories'
 
 const ArtistDetail = () => {
   const [state] = useStore()
@@ -14,6 +15,11 @@ const ArtistDetail = () => {
   const [artistDetail, setArtistDetail] = useState({})
   console.log(artistDetail)
   const [isLoading, setIsLoading] = useState(false)
+  const [curCate, setCurCate] = useState(artistDetailCate[0].value)
+
+  const handleCateChange = (e, newCate) => {
+    setCurCate(newCate)
+  }
 
   useEffect(() => {
     try {
@@ -40,12 +46,19 @@ const ArtistDetail = () => {
     )
 
   const { artist = {} } = artistDetail
-  const { coverImageURL = '', id = 0, imageUrl = '', name = '', role = [] } = artist
+  const { coverImageURL = '', imageUrl = '', name = '' } = artist
 
   const artistCoverProps = {
     coverImageURL,
     imageUrl,
     name,
+  }
+
+  const cateCommonProps = {
+    defineLang,
+    curCate,
+    handleCateChange,
+    categories: artistDetailCate,
   }
 
   return (
@@ -56,7 +69,7 @@ const ArtistDetail = () => {
             <ArtistCover { ... artistCoverProps } />
           </div>
           <div className="mt-24px">
-            
+            <CateCommon { ... cateCommonProps } cateStyles='normal-case' />
           </div>
         </div>
       </Container>
