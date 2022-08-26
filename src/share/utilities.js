@@ -1,4 +1,4 @@
-import { removeVietnameseTones, copyToClipboard, convertToPlain } from 'share'
+import { removeVietnameseTones, copyToClipboard, convertToPlain, deepCopy } from 'share'
 import { toast } from 'react-toastify'
 import { PROXY } from 'share/constants'
 import { toastNotify } from 'share/toast'
@@ -266,3 +266,15 @@ export const createTitleArtist = (title = '', artists = []) => `${title} - ${art
 
 // Check if an array is valid
 export const isValid = (arr) => arr.every((item) => typeof item !== 'undefined')
+
+// Get slide video for grid
+export const isBigScreen = () => window.innerWidth > 1536 
+
+export const getSlideVideos = (videos, size) => {
+  if (size === 'big') {
+    return deepCopy(videos).slice(0, isBigScreen() ? 3 : 2)
+  } else if (size === 'small') {
+    
+    return deepCopy(videos).slice(isBigScreen() ? 3 : 2, isBigScreen() ? 9 : 6)
+  }
+}

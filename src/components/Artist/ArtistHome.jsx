@@ -3,13 +3,14 @@ import React, { useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { SlideNextButton, SlidePrevButton } from 'components/CustomNav/CustomNav'
 import 'swiper/scss'
-import { CommonPlaylist, CommonSong, SongSquare } from 'components'
+import { CommonPlaylist, CommonSong, CommonVideo, SongSquare } from 'components'
 import Grid from '@mui/material/Grid'
-import { getListSongsKey, getSongsView } from 'share/utilities'
+import { getListSongsKey, getSlideVideos, getSongsView } from 'share/utilities'
 
-const ArtistHome = ({ defineLang, songNearly = [], artist = {}, song = {}, playlist = {} }) => {
+const ArtistHome = ({ defineLang, songNearly = [], artist = {}, song = {}, playlist = {}, video = {} }) => {
   const { song: songs = [] } = song
   const { playlist: playlists = [] } = playlist
+  const { video: videos = [] } = video
   const [songsView, setSongView] = useState({})
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const ArtistHome = ({ defineLang, songNearly = [], artist = {}, song = {}, playl
       throw new Error(error)
     }
   }, [songs])
-
+  
   return (
     <div className='pt-32px px-32px'>
       <Swiper slidesPerView={4} speed={300} spaceBetween={16} className='flex flex-col-reverse px-32px'>
@@ -62,6 +63,27 @@ const ArtistHome = ({ defineLang, songNearly = [], artist = {}, song = {}, playl
               {playlists.map((playlist) => (
                 <Grid item key={playlist.key} xs={3} sm={3} md={3} xl={2}>
                   <CommonPlaylist {...playlist} keyId={playlist.key} />
+                </Grid>
+              ))}
+            </Grid>
+          </div>
+        </div>
+      )}
+      {videos.length === 0 || (
+        <div className='mt-16'>
+          <div className='mb-24px text-22px font-bold color-0-88'>Video</div>
+          <div className="mt-16px">
+            <Grid container spacing={2}>
+              {getSlideVideos(videos, 'big').map(video => (
+                <Grid key={video.key} item xs={6} sm={6} md={6} lg={6} xl={4}>
+                  <CommonVideo { ... video } keyId={video.key} />
+                </Grid>
+              ))}
+            </Grid>
+            <Grid container spacing={2}>
+              {getSlideVideos(videos, 'small').map(video => (
+                <Grid key={video.key} item xs={3} sm={3} md={3} lg={3} xl={2}>
+                  <CommonVideo { ... video } keyId={video.key} />
                 </Grid>
               ))}
             </Grid>

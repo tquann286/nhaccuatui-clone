@@ -72,7 +72,7 @@ const ArtistDetail = () => {
             <ArtistCover { ... artistCoverProps } />
           </div>
           <div className="mt-24px">
-            <CateCommon { ... cateCommonProps } cateStyles='normal-case' />
+            <CateCommon { ... cateCommonProps } cateStyles='normal-case text-sm' />
             {curCate === 'all' && <ArtistHome defineLang={defineLang} { ... artistDetail } />}
           </div>
         </div>
