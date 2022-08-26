@@ -1,9 +1,12 @@
 import React from 'react'
 
-import { ResultTitle } from 'components'
+import { PagiCommon, ResultTitle, SongSquare, Title } from 'components'
+import Grid from '@mui/material/Grid'
+import { calcPaginationPage } from 'share/utilities'
 
-const ArtistSong = ({ defineLang, pageIndex, setPageIndex, sort, setSort, song = {} }) => {
+const ArtistSong = ({ defineLang, pageIndex, setPageIndex, sort, setSort, song = {}, artist = {} }) => {
   const { song: songs = [], total = 0 } = song
+  const { name = '' } = artist
 
   const resultTitleProps = {
     defineLang,
@@ -11,11 +14,34 @@ const ArtistSong = ({ defineLang, pageIndex, setPageIndex, sort, setSort, song =
     total,
   }
 
+  const pagiCommonProps = { pageIndex, setPageIndex, count: calcPaginationPage(total), defineLang }
+
   return (
     <div className='pt-16 px-32px'>
+      <Title title={name ? `${name} | ${defineLang(`Bài hát hay nhất của ca sĩ ${name}`, `Best songs of ${name} singer`)} - NhacCuaTui Clone` : 'NhacCuaTui Clone'} />
       <div className='flex items-center justify-between'>
         <ResultTitle {...resultTitleProps} />
-        
+        <div className='text-sm color-0-88'>
+          <span className={`cursor-pointer text-13px font-medium ${sort === 1 ? 'text-main' : ''}`} onClick={() => setSort(1)}>
+            New
+          </span>
+          {' | '}
+          <span className={`cursor-pointer text-13px font-medium ${sort === 0 ? 'text-main' : ''}`} onClick={() => setSort(0)}>
+            Hot
+          </span>
+        </div>
+      </div>
+      <div className='mt-24px'>
+        <Grid container spacing={2}>
+          {songs.map((song) => (
+            <Grid item key={song.key} xs={3} sm={3} md={3} xl={2}>
+              <SongSquare {...song} keyId={song.key} backupImg={song.artists?.[0]?.imageUrl} />
+            </Grid>
+          ))}
+        </Grid>
+      </div>
+      <div className="mt-24px px-32px">
+        <PagiCommon {...pagiCommonProps} />
       </div>
     </div>
   )

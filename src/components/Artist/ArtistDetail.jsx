@@ -23,7 +23,11 @@ const ArtistDetail = () => {
   const handleCateChange = (e, newCate) => {
     setCurCate(newCate)
     setPageIndex(1)
-    setSort(0)
+    if (newCate === 'all' || newCate === 'description') {
+      setSort(0)
+    } else {
+      setSort(1)
+    }
   }
 
   useEffect(() => {
@@ -42,7 +46,7 @@ const ArtistDetail = () => {
       setIsLoading(false)
       throw new Error(error)
     }
-  }, [params.artistName, curCate, pageIndex])
+  }, [params.artistName, curCate, pageIndex, sort])
 
   if (isLoading)
     return (
