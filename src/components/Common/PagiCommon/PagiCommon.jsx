@@ -6,6 +6,7 @@ import { usePagination } from '@mui/material'
 import onScrollToTop from 'share/scrollToTop'
 
 const PagiCommon = ({ pageIndex, setPageIndex, count, defineLang }) => {
+
   const handleChangePage = (e, page) => {
     setPageIndex(page)
     onScrollToTop()

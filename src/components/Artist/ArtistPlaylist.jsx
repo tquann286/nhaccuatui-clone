@@ -1,24 +1,24 @@
 import React from 'react'
 
-import { PagiCommon, ResultTitle, SongSquare, Title } from 'components'
+import { PagiCommon, ResultTitle, CommonPlaylist, Title } from 'components'
 import Grid from '@mui/material/Grid'
 import { calcPaginationPage } from 'share/utilities'
 
-const ArtistSong = ({ defineLang, pageIndex, setPageIndex, sort, setSort, song = {}, artist = {} }) => {
-  const { song: songs = [], total = 0 } = song
+const ArtistPlaylist = ({ defineLang, pageIndex, setPageIndex, sort, setSort, playlist = {}, artist = {} }) => {
+  const { playlist: playlists = [], total = 0 } = playlist
   const { name = '' } = artist
 
   const resultTitleProps = {
     defineLang,
-    title: defineLang('Bài hát', 'Song'),
+    title: defineLang('Danh sách phát', 'Playlist'),
     total,
   }
 
   const pagiCommonProps = { pageIndex, setPageIndex, count: calcPaginationPage(total), defineLang }
-  
+
   return (
     <div className='pt-16 px-32px'>
-      <Title title={name ? `${name} | ${defineLang(`Bài hát hay nhất của ca sĩ ${name}`, `Best songs of ${name} singer`)} - NhacCuaTui Clone` : 'NhacCuaTui Clone'} />
+      <Title title={name ? `${name} | ${defineLang(`Danh sách phát nhất của ca sĩ ${name}`, `Best playlists of ${name} singer`)} - NhacCuaTui Clone` : 'NhacCuaTui Clone'} />
       <div className='flex items-center justify-between'>
         <ResultTitle {...resultTitleProps} />
         <div className='text-sm color-0-88'>
@@ -33,9 +33,9 @@ const ArtistSong = ({ defineLang, pageIndex, setPageIndex, sort, setSort, song =
       </div>
       <div className='mt-24px'>
         <Grid container spacing={2}>
-          {songs.map((song) => (
-            <Grid item key={song.key} xs={3} sm={3} md={3} xl={2}>
-              <SongSquare {...song} keyId={song.key} backupImg={song.artists?.[0]?.imageUrl} />
+          {playlists.map((playlist) => (
+            <Grid item key={playlist.key} xs={3} sm={3} md={3} xl={2}>
+              <CommonPlaylist {...playlist} keyId={playlist.key} />
             </Grid>
           ))}
         </Grid>
@@ -49,4 +49,4 @@ const ArtistSong = ({ defineLang, pageIndex, setPageIndex, sort, setSort, song =
   )
 }
 
-export default ArtistSong
+export default ArtistPlaylist
