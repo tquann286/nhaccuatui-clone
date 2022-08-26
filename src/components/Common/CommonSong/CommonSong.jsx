@@ -15,7 +15,7 @@ import { IoMdMore } from 'react-icons/io'
 import { useStore } from 'store'
 import { handleAddToFavSong } from 'share/addToFav'
 
-const CommonSong = ({ artists, keyId, thumbnail, title, songView, type, duration }) => {
+const CommonSong = ({ artists, keyId, thumbnail, title, songView, type, duration, backupImg }) => {
   const [state] = useStore()
   const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
   
@@ -76,7 +76,7 @@ const CommonSong = ({ artists, keyId, thumbnail, title, songView, type, duration
   return (
     <div className={`common-song-container bg-color-0-02 w3-row hover-bg-color-0-05 ${showMoreOptions && 'focus bg-color-0-05'}`} ref={positionRef}>
       <div className='cs-img-container w3-col border-0-05'>
-        <SquareImg imageUrl={thumbnail || no_song_img} title={title} />
+        <SquareImg imageUrl={thumbnail || backupImg || no_song_img} title={title} />
       </div>
       <div className='cs-extend w3-col w3-right'>
         <div className='cs-view-count w3-row'>
