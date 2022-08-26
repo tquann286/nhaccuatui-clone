@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { SlideNextButton, SlidePrevButton } from 'components/CustomNav/CustomNav'
 import 'swiper/scss'
-import { CommonSong, SongSquare } from 'components'
+import { CommonPlaylist, CommonSong, SongSquare } from 'components'
 import Grid from '@mui/material/Grid'
 import { getListSongsKey, getSongsView } from 'share/utilities'
 
-const ArtistHome = ({ defineLang, songNearly = [], artist = {}, song = {} }) => {
+const ArtistHome = ({ defineLang, songNearly = [], artist = {}, song = {}, playlist = {} }) => {
   const { song: songs = [] } = song
+  const { playlist: playlists = [] } = playlist
   const [songsView, setSongView] = useState({})
 
   useEffect(() => {
@@ -40,13 +41,27 @@ const ArtistHome = ({ defineLang, songNearly = [], artist = {}, song = {} }) => 
         ))}
       </Swiper>
       {songs.length === 0 || (
-        <div className="mt-16">
-          <div className="mb-24px text-22px font-bold color-0-88">{defineLang('Bài hát', 'Song')}</div>
-          <div className="mt-16px">
+        <div className='mt-16'>
+          <div className='mb-24px text-22px font-bold color-0-88'>{defineLang('Bài hát', 'Song')}</div>
+          <div className='mt-16px'>
             <Grid container spacing={2}>
-              {songs.map(song => (
+              {songs.map((song) => (
                 <Grid item xs={6} key={song.key} className='!py-2px'>
-                  <CommonSong { ... song } songView={songsView[song.key] || 0} keyId={song.key} backupImg={artist.imageUrl} />
+                  <CommonSong {...song} songView={songsView[song.key] || 0} keyId={song.key} backupImg={artist.imageUrl} />
+                </Grid>
+              ))}
+            </Grid>
+          </div>
+        </div>
+      )}
+      {playlists.length === 0 || (
+        <div className='mt-16'>
+          <div className='mb-24px text-22px font-bold color-0-88'>{defineLang('Danh sách phát', 'Playlist')}</div>
+          <div className='mt-24px'>
+            <Grid container spacing={2}>
+              {playlists.map((playlist) => (
+                <Grid item key={playlist.key} xs={3} sm={3} md={3} xl={2}>
+                  <CommonPlaylist {...playlist} keyId={playlist.key} />
                 </Grid>
               ))}
             </Grid>
