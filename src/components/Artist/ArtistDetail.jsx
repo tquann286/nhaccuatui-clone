@@ -87,7 +87,7 @@ const ArtistDetail = () => {
             <ArtistCover {...artistCoverProps} />
           </div>
           <div className='mt-24px'>
-            <CateCommon {...cateCommonProps} cateStyles='normal-case text-sm' />
+            <CateCommon {...cateCommonProps} cateStyles='normal-case !text-sm' />
             {curCate === 'all' && <ArtistHome {...artistProps} />}
             {curCate === 'song' && <ArtistSong {...artistProps} {...commonProps} />}
           </div>

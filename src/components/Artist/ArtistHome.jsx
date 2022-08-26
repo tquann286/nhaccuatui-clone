@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { SlideNextButton, SlidePrevButton } from 'components/CustomNav/CustomNav'
 import 'swiper/scss'
-import { CommonPlaylist, CommonSong, CommonVideo, SongSquare } from 'components'
+import { CommonPlaylist, CommonSong, CommonVideo, SongSquare, Title } from 'components'
 import Grid from '@mui/material/Grid'
 import { getListSongsKey, getSlideVideos, getSongsView } from 'share/utilities'
 
@@ -27,6 +27,7 @@ const ArtistHome = ({ defineLang, songNearly = [], artist = {}, song = {}, playl
   
   return (
     <div className='pt-32px px-32px'>
+      <Title title={artist.name ? `${artist.name} - NhacCuaTui Clone` : 'NhacCuaTui Clone'} />
       <Swiper slidesPerView={4} speed={300} spaceBetween={16} className='flex flex-col-reverse px-32px'>
         <div className='flex items-center justify-between w-full mb-16px'>
           <div className='w-fit h-12 leading-12 text-22px font-bold color-0-88'>{defineLang('Gần đây', 'Recent')}</div>
