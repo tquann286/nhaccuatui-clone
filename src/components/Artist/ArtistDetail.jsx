@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { ArtistCover, CateCommon, Container, LoadingV2, ArtistHome, ArtistSong, ArtistPlaylist, ArtistVideo } from 'components'
+import { ArtistCover, CateCommon, Container, LoadingV2, ArtistHome, ArtistSong, ArtistPlaylist, ArtistVideo, ArtistIntro } from 'components'
 import { getArtistDetailData } from 'services/Artist/Artist'
 
 import { useStore } from 'store'
@@ -96,6 +96,7 @@ const ArtistDetail = () => {
             {curCate === 'song' && <ArtistSong {...artistProps} {...commonProps} />}
             {curCate === 'playlist' && <ArtistPlaylist {...artistProps} {...commonProps} />}
             {curCate === 'video' && <ArtistVideo {...artistProps} {...commonProps} />}
+            {curCate === 'description' && <ArtistIntro {...artistProps} />}
           </div>
         </div>
       </Container>
