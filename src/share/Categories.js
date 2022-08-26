@@ -158,11 +158,11 @@ export const subArtistCate = [
 ]
 
 export const artistDetailCate = [
-  { title: { vi: 'Trang chủ', en: 'Home' }, value: 'all' },
-  { title: { vi: 'Bài hát', en: 'Song' }, value: 'song' },
-  { title: { vi: 'MV', en: 'MV' }, value: 'video' },
-  { title: { vi: 'Playlist', en: 'Playlist' }, value: 'playlist' },
-  { title: { vi: 'Giới thiệu', en: 'Introduction' }, value: 'description' },
+  { title: { vi: 'Trang chủ', en: 'Home' }, value: 'all', size: 20 },
+  { title: { vi: 'Bài hát', en: 'Song' }, value: 'song', size: 36 },
+  { title: { vi: 'MV', en: 'MV' }, value: 'video', size: 36 },
+  { title: { vi: 'Playlist', en: 'Playlist' }, value: 'playlist', size: 36 },
+  { title: { vi: 'Giới thiệu', en: 'Introduction' }, value: 'description', size: 20 },
 ]
 
 export const charactersCate = [

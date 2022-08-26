@@ -10,9 +10,9 @@ export const getArtistsMain = async (nation, gender) => {
   }
 }
 
-export const getArtistDetailData = async (shortLink) => {
+export const getArtistDetailData = async (shortLink, type, size, index, sort = 0) => {
   try {
-    const data = await getArtistDetail(shortLink)
+    const data = await getArtistDetail(shortLink, type, size, index, sort)
 
     if (data) return data
   } catch (error) {

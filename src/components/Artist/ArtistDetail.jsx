@@ -15,7 +15,9 @@ const ArtistDetail = () => {
   const [artistDetail, setArtistDetail] = useState({})
   console.log(artistDetail)
   const [isLoading, setIsLoading] = useState(false)
+
   const [curCate, setCurCate] = useState(artistDetailCate[0].value)
+  const [pageIndex, setPageIndex] = useState(1)
 
   const handleCateChange = (e, newCate) => {
     setCurCate(newCate)
@@ -25,7 +27,8 @@ const ArtistDetail = () => {
     try {
       setIsLoading(true)
       const getArtistDetailState = async () => {
-        const artistDetail = await getArtistDetailData(params.artistName)
+        const size = artistDetailCate.filter(cate => cate.value === curCate)[0].size
+        const artistDetail = await getArtistDetailData(params.artistName, curCate, size, pageIndex)
 
         setArtistDetail(artistDetail)
         setIsLoading(false)
@@ -36,7 +39,7 @@ const ArtistDetail = () => {
       setIsLoading(false)
       throw new Error(error)
     }
-  }, [params.artistName])
+  }, [params.artistName, curCate, pageIndex])
 
   if (isLoading)
     return (
