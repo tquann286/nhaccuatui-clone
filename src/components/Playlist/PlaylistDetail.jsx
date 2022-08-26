@@ -71,7 +71,7 @@ const PlaylistDetail = () => {
   const sharingProps = { defineLang, placement: 'top', handleCopyShare, onShareWindowClose, shareLink: getCurrentPathname(), shareClass: 'ml-8px' }
 
   const providerProps = {
-    provider: uploadBy,
+    provider: uploadBy || {},
     defineLang,
     avatarUrl: uploadBy.avatarUrl,
     fullName: uploadBy.fullName,

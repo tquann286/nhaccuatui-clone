@@ -58,7 +58,7 @@ const VideoMain = ({ defineLang, videoDetail, autoplay }) => {
           {videoView && videoView[key] && <ViewDate view={videoView[key]} dateRelease={dateRelease} defineLang={defineLang} />}
           <UploadBy uploadBy={uploadBy} defineLang={defineLang} />
           <div className='w-full h-64px rounded-4px bg-color-0-02 mt-24px px-24px py-12px flex justify-between'>
-            <Provider provider={provider} defineLang={defineLang} />
+            <Provider provider={provider || {}} defineLang={defineLang} />
             <div className='flex items-center'>
               <Tooltip title={defineLang('Thêm vào yêu thích', 'Add to favorite')} placement='top' arrow enterDelay={400}>
                 <IconButton size='large' onClick={() => handleAddToFavVideo(key, defineLang)}>

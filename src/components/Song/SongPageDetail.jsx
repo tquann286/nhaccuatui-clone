@@ -58,7 +58,7 @@ const SongPageDetail = () => {
       </div>
     )
 
-  const { artists = [], description, key, thumbnail, title, songView, dateRelease, uploadBy, provider, lyric } = songDetail
+  const { artists = [], description, key, thumbnail, title, songView, dateRelease, uploadBy, provider = {}, lyric } = songDetail
 
   const sharingProps = { defineLang, placement: 'top', handleCopyShare, onShareWindowClose, shareLink: getCurrentPathname(), shareClass: 'ml-8px' }
 
@@ -82,7 +82,7 @@ const SongPageDetail = () => {
           </div>
         </div>
         <div className='w-full h-64px rounded-4px bg-color-0-02 mt-24px px-24px py-12px flex justify-between'>
-          <Provider provider={provider} defineLang={defineLang} />
+          <Provider provider={provider || {}} defineLang={defineLang} />
           <div className='flex items-center'>
             <Tooltip title={defineLang('Thêm vào yêu thích', 'Add to favorite')} placement='top' arrow enterDelay={400}>
               <IconButton size='large' onClick={() => handleAddToFavSong(key, defineLang)}>
