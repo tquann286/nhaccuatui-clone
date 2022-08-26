@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { ExtendModal, ModalAnimate, OptionModal } from 'components'
+import { CircleTitleArtist, ExtendModal, ModalAnimate, OptionModal } from 'components'
 
 import { FaRegTrashAlt } from 'react-icons/fa'
 import { BsPlayCircleFill } from 'react-icons/bs'
@@ -185,35 +185,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
                   <span className='color-0-5'>{defineLang('Bài hát: ', 'Song: ')}</span>
                   <Link to={createSongUrl(maybeHit.title, maybeHit.key)}>{maybeHit.title}</Link>
                 </div>
-                <div className='maybe-hit-artist-container'>
-                  <div className='maybe-hit-artist-main'>
-                    <div className='maybe-hit-artist-img-container'>
-                      {maybeHit.artists.map((artist) => {
-                        const { artistId, imageUrl, name, shortLink } = artist
-
-                        return (
-                          <Link to={createArtistUrl(name, shortLink)} key={artistId} className='maybe-hit-artist-img'>
-                            <img src={imageUrl} alt='' />
-                          </Link>
-                        )
-                      })}
-                    </div>
-                    <div className='maybe-hit-artist-name color-0-5'>
-                      {maybeHit.artists.map((artist, index) => {
-                        const { artistId, name, shortLink } = artist
-
-                        return (
-                          <React.Fragment key={artistId}>
-                            <Link to={`/${createArtistUrl(name, shortLink)}`} key={artistId}>
-                              <span>{name}</span>
-                            </Link>
-                            {index + 1 === maybeHit.artists.length ? '' : ', '}
-                          </React.Fragment>
-                        )
-                      })}
-                    </div>
-                  </div>
-                </div>
+                <CircleTitleArtist circleStyles='float-left' titleStyles='!mt-unset ml-8px' artists={maybeHit.artists} />
                 <div className='maybe-hit-date-release color-0-5'>
                   <GoCalendar />
                   <span>

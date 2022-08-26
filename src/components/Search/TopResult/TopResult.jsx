@@ -8,10 +8,8 @@ import 'swiper/scss'
 import { topResultSwiperProps } from 'services/Search/SearchResult'
 import { PlaylistResult, TopSongResult } from 'components'
 
-const TopResult = ({ playlist, song, defineLang, isLoading, favPlaylists }) => {
-  if (isLoading) return null
-
-  return (
+const TopResult = ({ playlist, song, defineLang, isLoading, favPlaylists }) =>
+  isLoading || (
     <div className='top-result-container'>
       <Swiper className='tr-swiper' {...topResultSwiperProps}>
         <div className='tr-title'>
@@ -42,6 +40,5 @@ const TopResult = ({ playlist, song, defineLang, isLoading, favPlaylists }) => {
       </Swiper>
     </div>
   )
-}
 
 export default TopResult

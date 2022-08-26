@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { ArtistCover, CateCommon, Container, Image, LoadingV2 } from 'components'
+import { ArtistCover, CateCommon, Container, LoadingV2, ArtistHome } from 'components'
 import { getArtistDetailData } from 'services/Artist/Artist'
 
 import { useStore } from 'store'
@@ -73,6 +73,7 @@ const ArtistDetail = () => {
           </div>
           <div className="mt-24px">
             <CateCommon { ... cateCommonProps } cateStyles='normal-case' />
+            {curCate === 'all' && <ArtistHome defineLang={defineLang} { ... artistDetail } />}
           </div>
         </div>
       </Container>

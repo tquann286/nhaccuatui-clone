@@ -104,6 +104,7 @@ export { default as Karaoke } from './Discovery/Karaoke/Karaoke'
 export { default as ArtistMain } from './Artist/ArtistMain'
 export { default as ArtistDetail } from './Artist/ArtistDetail'
 export { default as ArtistCover } from './Artist/ArtistCover'
+export { default as ArtistHome } from './Artist/ArtistHome'
 export { default as TrendingArtists } from './Artist/TrendingArtists/TrendingArtists'
 
 // Topic

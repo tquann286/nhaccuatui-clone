@@ -16,7 +16,7 @@ const Top1 = ({ artists, highestPosition, oldPosition, position, songKey, thumbn
         </div>
         <div className='w3-rest pl-40px'>
           <div className='w3-row mt-16px flex'>
-            <div className='w3-col w-fit text-13px color-0-5 mr-6px flex items-end font-normal'>{isVideo ? 'Video' : defineLang('Bài hát', 'Song')}</div>
+            <div className='w3-col w-fit text-13px color-0-5 mr-6px flex items-end font-normal'>{isVideo ? 'Video:' : defineLang('Bài hát:', 'Song:')}</div>
             <div className='w3-rest text-sm font-semibold flex items-end'>{title}</div>
           </div>
           <CircleTitleArtist circleStyles='float-left' titleStyles='!mt-unset ml-8px' artists={artists} />
