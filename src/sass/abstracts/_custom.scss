@@ -26,4 +26,8 @@
   .common-min-h {
     @apply min-h-[calc(100vh_-_34.5rem)];
   }
+
+  .update-user-field {
+    @apply flex items-center mb-8px;
+  }
 }
