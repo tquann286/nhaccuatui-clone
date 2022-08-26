@@ -7,7 +7,7 @@ import { useStore } from 'store'
 import { createSongUrl, handleCopySong } from 'share/utilities'
 import { handleAddToFavSong } from 'share/addToFav'
 
-const SongSquare = ({ keyId, artists, title, thumbnail, duration, type }) => {
+const SongSquare = ({ keyId, artists, title, thumbnail, backupImg }) => {
   const [state] = useStore()
   const defineLang = (vie, eng) => state.lang === 'vi' ? vie : eng
   const navigate = useNavigate()
@@ -27,7 +27,7 @@ const SongSquare = ({ keyId, artists, title, thumbnail, duration, type }) => {
   
   const imageOverlayProps = {
     keyId,
-    imageUrl: thumbnail || noSongImg,
+    imageUrl: thumbnail || backupImg || noSongImg,
     title,
     handleNavigate: onNavigateSong,
     copyLink: true,
