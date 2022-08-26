@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { getSongResult } from 'services/Search/SearchResult'
-import { SongSquare, PagiCommon, LoadingV2 } from 'components'
+import { SongSquare, PagiCommon, LoadingV2, ResultTitle } from 'components'
 import { Grid } from '@mui/material'
 import { calcPaginationPage } from 'share/utilities'
 
@@ -40,12 +40,16 @@ const SongResult = ({ searchTerm, searchQuery, defineLang }) => {
     defineLang,
   }
 
+  const resultTitleProps = {
+    defineLang,
+    title: defineLang('Bài hát', 'Song'),
+    total,
+    styles: 'mb-24px'
+  }
+
   return (
     <div className='song-result-container common-section common-paddingLR'>
-      <div className='song-result-title color-0-88 common-header'>
-        {defineLang('Bài hát ', 'Song ')}
-        <span className='color-0-5'>{defineLang(`(Có ${total.toLocaleString('en-US')} kết quả)`, `${total > 1 ? `(There are ${total.toLocaleString('en-US')} results)` : `(There is ${total} result)`}`)}</span>
-      </div>
+      <ResultTitle {...resultTitleProps} />
       <div className='song-result-main'>
         <Grid container spacing={2}>
           {songResult?.song.map((song) => (

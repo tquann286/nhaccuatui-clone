@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { getVideoResult } from 'services/Search/SearchResult'
-import { PagiCommon, LoadingV2, CommonVideo } from 'components'
+import { PagiCommon, LoadingV2, CommonVideo, ResultTitle } from 'components'
 import { Grid } from '@mui/material'
 import { calcPaginationPage } from 'share/utilities'
 
@@ -40,12 +40,16 @@ const VideoSearch = ({ searchTerm, searchQuery, defineLang }) => {
     defineLang,
   }
 
+  const resultTitleProps = {
+    defineLang,
+    title: 'Video',
+    total,
+    styles: 'mb-24px'
+  }
+
   return (
     <div className='video-search-container common-section common-paddingLR'>
-      <div className='video-search-title color-0-88 common-header'>
-        {defineLang('Video ', 'Video ')}
-        <span className='color-0-5'>{defineLang(`(Có ${total.toLocaleString('en-US')} kết quả)`, `${total > 1 ? `(There are ${total.toLocaleString('en-US')} results)` : `(There is ${total} result)`}`)}</span>
-      </div>
+      <ResultTitle {...resultTitleProps} />
       <div className='video-search-main'>
         <Grid container spacing={2}>
           {videoSearch?.video.map((video) => (

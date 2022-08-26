@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { getPlaylistResult } from 'services/Search/SearchResult'
-import { PagiCommon, LoadingV2, CommonPlaylist } from 'components'
+import { PagiCommon, LoadingV2, CommonPlaylist, ResultTitle } from 'components'
 import { Grid } from '@mui/material'
 import { calcPaginationPage } from 'share/utilities'
 
@@ -40,12 +40,16 @@ const PlaylistSearch = ({ searchTerm, searchQuery, defineLang }) => {
     defineLang,
   }
 
+  const resultTitleProps = {
+    defineLang,
+    title: defineLang('Danh sách phát', 'Playlist'),
+    total,
+    styles: 'mb-24px'
+  }
+
   return (
     <div className='playlist-search-container common-section common-paddingLR'>
-      <div className='playlist-search-title color-0-88 common-header'>
-        {defineLang('Danh sách phát ', 'Playlist ')}
-        <span className='color-0-5'>{defineLang(`(Có ${total.toLocaleString('en-US')} kết quả)`, `${total > 1 ? `(There are ${total.toLocaleString('en-US')} results)` : `(There is ${total} result)`}`)}</span>
-      </div>
+      <ResultTitle {...resultTitleProps} />
       <div className='playlist-search-main'>
         <Grid container spacing={2}>
           {playlistSearch?.playlist.map((playlist) => (
