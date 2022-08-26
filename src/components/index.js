@@ -46,6 +46,7 @@ export { default as ListTag } from './Common/ListTag'
 export { default as TagLabel } from './Common/TagLabel'
 export { default as BallCheckbox } from './Common/BallCheckbox'
 export { default as VideoRow } from './Common/VideoRow'
+export { default as ResultTitle } from './Common/ResultTitle'
 
 // Home
 export { default as LoadingV2 } from './Loading/LoadingV2'
@@ -105,6 +106,7 @@ export { default as ArtistMain } from './Artist/ArtistMain'
 export { default as ArtistDetail } from './Artist/ArtistDetail'
 export { default as ArtistCover } from './Artist/ArtistCover'
 export { default as ArtistHome } from './Artist/ArtistHome'
+export { default as ArtistSong } from './Artist/ArtistSong'
 export { default as TrendingArtists } from './Artist/TrendingArtists/TrendingArtists'
 
 // Topic
