@@ -19,7 +19,6 @@ const PlaylistDetail = () => {
   const query = new URLSearchParams(params.playlistId)
 
   const [playlistDetail, setPlaylistDetail] = useState({})
-  console.log(playlistDetail)
   const [maybeLike, setMaybeLike] = useState(null)
   const [songsView, setSongView] = useState({})
 

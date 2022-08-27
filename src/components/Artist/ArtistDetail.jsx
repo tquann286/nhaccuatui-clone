@@ -13,7 +13,6 @@ const ArtistDetail = () => {
   const params = useParams()
 
   const [artistDetail, setArtistDetail] = useState({})
-  console.log(artistDetail)
   const [isLoading, setIsLoading] = useState(false)
 
   const [curCate, setCurCate] = useState(artistDetailCate[0].value)
