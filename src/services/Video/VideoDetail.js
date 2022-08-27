@@ -19,11 +19,3 @@ export const getVideoStreamUrls = async (key) => {
     console.log(error)
   }
 }
-
-export const handleSourceUrl = (streamUrls = []) =>
-  streamUrls
-    .filter((stream) => stream.streamUrl)
-    .map((stream) => ({
-      ...stream,
-      url: stream.streamUrl,
-    }))

@@ -6,15 +6,15 @@ import noPlayer from 'images/default/default_player_v2.jpg'
 import { getTrendingSong } from 'services/RightSidebar/NoPlayingSong'
 import { createArtistUrl, createPlaylistUrl, createSongUrl, createTop20Url, createVideoUrl } from 'share/utilities'
 
-const MainContainer = ({ defineSong, children }) => (
+const MainContainer = ({ defineLang, children }) => (
   <div className='rb-container'>
     <div className='rb-suggestion border-0-05'>
       <div className='no-playing-song'>
         <div className='main'>
-          <img src={noPlayer} alt={defineSong('Thưởng thức nhạc thôi nào!', 'Play music and enjoy')} />
-          <p className='title color-0-88'>{defineSong('Thưởng thức những giai điệu theo cách riêng của bạn', 'Enjoy the melody in your own way')}</p>
+          <img src={noPlayer} alt={defineLang('Thưởng thức nhạc thôi nào!', 'Play music and enjoy')} />
+          <p className='title color-0-88'>{defineLang('Thưởng thức những giai điệu theo cách riêng của bạn', 'Enjoy the melody in your own way')}</p>
           <div className='play-now border-0-1 color-0-5'>
-            <Link to={createTop20Url('nhac-viet')}>{defineSong('Nghe nào', 'Play now')}</Link>
+            <Link to={createTop20Url('nhac-viet')}>{defineLang('Nghe nào', 'Play now')}</Link>
           </div>
         </div>
       </div>
@@ -23,7 +23,7 @@ const MainContainer = ({ defineSong, children }) => (
   </div>
 )
 
-const NoPlayingSong = ({ defineSong }) => {
+const NoPlayingSong = ({ defineLang }) => {
   const [trendingSong, setTrendingSong] = useState(null)
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const NoPlayingSong = ({ defineSong }) => {
     }
     
     return (
-      <MainContainer defineSong={defineSong}>
+      <MainContainer defineLang={defineLang}>
         {trendingSong && (
           <div className='suggest-song'>
             <div className='suggest-song-main border-0-1'>
@@ -61,7 +61,7 @@ const NoPlayingSong = ({ defineSong }) => {
                 </Link>
               </div>
               <div className='suggest-trending-info'>
-                <p className='suggest-lead-title color-0-5'>{defineSong('Đang được nghe nhiều nhất', 'Top pick these days')}</p>
+                <p className='suggest-lead-title color-0-5'>{defineLang('Đang được nghe nhiều nhất', 'Top pick these days')}</p>
                 <Link className='suggest-title color-0-88' to={getTrendingLink()}>
                   {title}
                 </Link>
@@ -86,8 +86,6 @@ const NoPlayingSong = ({ defineSong }) => {
       </MainContainer>
     )
   }
-
-  return <MainContainer defineSong={defineSong} />
 }
 
 export default NoPlayingSong

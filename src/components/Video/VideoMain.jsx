@@ -10,8 +10,7 @@ import { isEmpty } from 'lodash'
 import { IconButton, Tooltip } from '@mui/material'
 import { BsBookmarkPlus } from 'react-icons/bs'
 import { handleAddToFavVideo } from 'share/addToFav'
-import { handleSourceUrl } from 'services/Video/VideoDetail'
-import { createVideoUrl, getCurrentPathname, handleCopyProxy } from 'share/utilities'
+import { createVideoUrl, getCurrentPathname, handleCopyProxy, handleSourceUrl } from 'share/utilities'
 import { toastNotify } from 'share/toast'
 
 const VideoMain = ({ defineLang, videoDetail, autoplay }) => {

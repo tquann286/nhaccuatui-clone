@@ -268,13 +268,21 @@ export const createTitleArtist = (title = '', artists = []) => `${title} - ${art
 export const isValid = (arr) => arr.every((item) => typeof item !== 'undefined')
 
 // Get slide video for grid
-export const isBigScreen = () => window.innerWidth > 1536 
+export const isBigScreen = () => window.innerWidth > 1536
 
 export const getSlideVideos = (videos, size) => {
   if (size === 'big') {
     return deepCopy(videos).slice(0, isBigScreen() ? 3 : 2)
   } else if (size === 'small') {
-    
     return deepCopy(videos).slice(isBigScreen() ? 3 : 2, isBigScreen() ? 9 : 6)
   }
 }
+
+// Handle source of video or song
+export const handleSourceUrl = (streamUrls = []) =>
+  streamUrls
+    .filter((stream) => stream.streamUrl)
+    .map((stream) => ({
+      ...stream,
+      url: stream.streamUrl,
+    }))
