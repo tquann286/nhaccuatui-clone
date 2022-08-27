@@ -9,19 +9,21 @@ import { useStore, actions } from 'store'
 
 const RightSidebar = () => {
   const [state, dispatch] = useStore()
-  const { lang, lastPlayedSongId } = state
+  const { lang, playingSongId } = state
 
   const [playingSong, setPlayingSong] = useState(null)
 
   useEffect(() => {
-    if (lastPlayedSongId) {
-      getPlayingSong(lastPlayedSongId).then((res) => {
-        if (res) {
-          setPlayingSong(res)
-        }
-      })
+    if (playingSongId) {
+      const getPlayingSongState = async () => {
+        const playingSong = await getPlayingSong(playingSongId)
+
+        setPlayingSong(playingSong)
+      }
+      
+      getPlayingSongState()
     }
-  }, [lastPlayedSongId])
+  }, [playingSongId])
 
   const defineSong = (vie, eng) => {
     return lang === 'vi' ? vie : eng

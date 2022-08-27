@@ -30,9 +30,9 @@ const App = () => {
     }
 
     // Get last played song
-    const lastPlayedSongId = localStorage.getItem('lastPlayedSongId')
-    if (lastPlayedSongId) {
-      dispatch(actions.setLastPlayedSongId(lastPlayedSongId))
+    const playingSongId = localStorage.getItem('playingSongId')
+    if (playingSongId) {
+      dispatch(actions.setPlayingSongId(playingSongId))
     }
   }, [])
 

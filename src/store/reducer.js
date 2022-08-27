@@ -1,4 +1,4 @@
-import { SET_THEME, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME, SET_LANG, CHANGE_VI_LANG, CHANGE_EN_LANG, TOGGLE_SHOW_LOGIN, TOGGLE_SHOW_SIGN_UP, SIGNED_IN, SIGNED_OUT, SET_LAST_PLAYED_SONG } from 'share/constants'
+import { SET_THEME, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME, SET_LANG, CHANGE_VI_LANG, CHANGE_EN_LANG, TOGGLE_SHOW_LOGIN, TOGGLE_SHOW_SIGN_UP, SIGNED_IN, SIGNED_OUT, SET_PLAYING_SONG } from 'share/constants'
 
 export const initState = {
   showMoreOptions: false,
@@ -7,7 +7,7 @@ export const initState = {
   showLogin: false,
   showSignUp: false,
   isSignedIn: false,
-  lastPlayedSongId: '',
+  playingSongId: '',
 }
 
 const reducer = (state, action) => {
@@ -62,10 +62,10 @@ const reducer = (state, action) => {
         ...state,
         isSignedIn: false,
       }
-    case SET_LAST_PLAYED_SONG:
+    case SET_PLAYING_SONG:
       return {
         ...state,
-        lastPlayedSongId: action.songId,
+        playingSongId: action.songId,
       }
     default:
       throw new Error('Invalid action.')

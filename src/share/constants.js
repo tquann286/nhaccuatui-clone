@@ -37,4 +37,4 @@ export const REGEX_VIETNAMESE = /^(?!.*[àáãạảăắằẳẵặâấầẩ
 export const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 // Play
-export const SET_LAST_PLAYED_SONG = 'set_last_played_song'
+export const SET_PLAYING_SONG = 'set_playing_song'

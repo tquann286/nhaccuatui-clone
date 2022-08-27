@@ -1,4 +1,4 @@
-import { SET_THEME, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME, CHANGE_VI_LANG, CHANGE_EN_LANG, SET_LANG, TOGGLE_SHOW_LOGIN, TOGGLE_SHOW_SIGN_UP, SIGNED_IN, SIGNED_OUT, SET_LAST_PLAYED_SONG } from 'share/constants'
+import { SET_THEME, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME, CHANGE_VI_LANG, CHANGE_EN_LANG, SET_LANG, TOGGLE_SHOW_LOGIN, TOGGLE_SHOW_SIGN_UP, SIGNED_IN, SIGNED_OUT, SET_PLAYING_SONG } from 'share/constants'
 
 // Theme
 export const setTheme = (payload) => ({
@@ -62,11 +62,11 @@ export const onSignedOut = () => ({
 })
 
 // Play
-export const setLastPlayedSongId = (songId) => {
-  localStorage.setItem('lastPlayedSongId', songId)
+export const setPlayingSongId = (songId) => {
+  localStorage.setItem('playingSongId', songId)
 
   return {
-    type: SET_LAST_PLAYED_SONG,
+    type: SET_PLAYING_SONG,
     songId,
   }
 }
