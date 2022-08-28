@@ -114,6 +114,8 @@ export { default as TrendingArtists } from './Artist/TrendingArtists/TrendingArt
 
 // Topic
 export { default as TopicMain } from './Topic/TopicMain'
+export { default as TopicDetail } from './Topic/TopicDetail'
+export { default as TopicDesc } from './Topic/TopicDesc'
 export { default as TopicSlider } from './Topic/TopicSlider/TopicSlider'
 
 // Playlist

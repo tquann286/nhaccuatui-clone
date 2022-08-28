@@ -11,7 +11,7 @@ const RightSidebar = () => {
   const { lang, playingSongId } = state
 
   const [playingSong, setPlayingSong] = useState(null)
-  console.log('playingSong: ', playingSong)
+  // console.log('playingSong: ', playingSong)
 
   useEffect(() => {
     if (playingSongId) {
@@ -25,7 +25,7 @@ const RightSidebar = () => {
     }
   }, [playingSongId])
 
-  const defineLang = useCallback((vie, eng) => (state.lang === 'vi' ? vie : eng), [state.lang])
+  const defineLang = useCallback((vie, eng) => (lang === 'vi' ? vie : eng), [lang])
 
   if (!playingSong) return <NoPlayingSong defineLang={defineLang} />
 
