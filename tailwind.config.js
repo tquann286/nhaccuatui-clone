@@ -65,6 +65,7 @@ module.exports = {
         '36px': '3.6rem',
         '42px': '4.2rem',
         '48px': '4.8rem',
+        '52px': '5.2rem',
         '56px': '5.6rem',
         '64px': '6.4rem',
         '72px': '7.2rem',
@@ -72,6 +73,7 @@ module.exports = {
         '144px': '14.4rem',
         '160px': '16rem',
         '240px': '24rem',
+        '320px': '32rem',
       },
       lineHeight: {
         inherit: 'inherit',
@@ -97,6 +99,9 @@ module.exports = {
       },
       willChange: {
         height: 'height',
+      },
+      boxShadow: {
+        'medium': '0 0.8rem 1.6rem rgba(0, 0, 0, 0.2)'
       },
     },
     fontSize: {

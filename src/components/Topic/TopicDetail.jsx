@@ -14,7 +14,6 @@ const TopicDetail = () => {
   const query = new URLSearchParams(params.topicId)
 
   const [topicDetail, setTopicDetail] = useState({})
-  console.log(topicDetail)
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
