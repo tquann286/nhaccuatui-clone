@@ -2,8 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { useStore } from 'store'
-import { Container, LoadingV2, TopicDesc } from 'components'
+import { CommonPlaylist, Container, LoadingV2, TopicDesc } from 'components'
 import { getTopicDetailData } from 'services/Topic/TopicMain'
+import Grid from '@mui/material/Grid'
 
 const TopicDetail = () => {
   const [state] = useStore()
@@ -40,7 +41,7 @@ const TopicDetail = () => {
       </div>
     )
 
-  const { coverImageURL = '', description = '', key = '', playlist = [], title = '' } = topicDetail
+  const { coverImageURL = '', description = '', key = '', playlist: playlists = [], title = '' } = topicDetail
 
   const topicDescProps = {
     defineLang,
@@ -52,6 +53,16 @@ const TopicDetail = () => {
       <Container>
         <div className='relative w-full pt-[31.25%] bg-color-0-05 bg-no-repeat bg-cover' style={{ backgroundImage: `url(${coverImageURL})` }}></div>
         <TopicDesc {...topicDescProps} />
+        <div className='mt-42px mx-32px mb-24px text-22px font-bold color-0-88 capitalize'>{title}</div>
+        <div className='mx-32px'>
+          <Grid container spacing={2}>
+            {playlists.map((playlist) => (
+              <Grid item key={playlist.key} xs={3} sm={3} md={3} xl={2}>
+                <CommonPlaylist {...playlist} keyId={playlist.key} />
+              </Grid>
+            ))}
+          </Grid>
+        </div>
       </Container>
     </div>
   )
