@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import './RightSidebar.scss'
 
-import { NoPlayingSong, PlayingSongMain } from 'components'
+import { NoPlayingSong, PlayingSongMain, SongController } from 'components'
 import { getPlayingSong } from 'services/RightSidebar/RightSidebar'
 import { useStore } from 'store'
 
@@ -38,11 +38,14 @@ const RightSidebar = () => {
     defineLang,
   }
 
+  const songControllerProps = {
+    defineLang,
+  }
+
   return (
     <div className='rb-container'>
-      <div className='w-320 flex overflow-hidden justify-center h-[calc(100vh_-_20rem)]'>
-        <PlayingSongMain {...playingSongMainProps} />
-      </div>
+      <PlayingSongMain {...playingSongMainProps} />
+      <SongController {...songControllerProps} />
     </div>
   )
 }

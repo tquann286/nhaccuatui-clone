@@ -150,4 +150,5 @@ export { default as NextVideos } from './Video/NextVideos'
 // Right sidebar
 export { default as RightSidebar } from './RightSidebar/RightSidebar'
 export { default as PlayingSongMain } from './RightSidebar/PlayingSongMain'
+export { default as SongController } from './RightSidebar/SongController'
 export { default as NoPlayingSong } from './RightSidebar/NoPlayingSong'
