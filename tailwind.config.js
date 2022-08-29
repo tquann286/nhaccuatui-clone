@@ -7,7 +7,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'duration': 'linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,0.6))'
+        duration: 'linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,0.6))',
       },
       colors: {
         main: '#2daaed',
@@ -26,6 +26,7 @@ module.exports = {
         '22px': '2.2rem',
         '24px': '2.4rem',
         '32px': '3.2rem',
+        '36px': '3.6rem',
         '40px': '4rem',
         '54px': '5.4rem',
       },
@@ -49,9 +50,10 @@ module.exports = {
         '44px': '4.4rem',
       },
       spacing: {
-        'unset': 'unset',
+        unset: 'unset',
         '4px': '0.4rem',
         '8px': '0.8rem',
+        '12px': '1.2rem',
         '14px': '1.4rem',
         '16px': '1.6rem',
         '17px': '1.7rem',
@@ -63,6 +65,7 @@ module.exports = {
         '28px': '2.8rem',
         '32px': '3.2rem',
         '36px': '3.6rem',
+        '38px': '3.8rem',
         '42px': '4.2rem',
         '48px': '4.8rem',
         '52px': '5.2rem',
@@ -88,7 +91,7 @@ module.exports = {
         width: 'width',
         height: 'height',
         spacing: 'margin, padding',
-        unset: 'unset'
+        unset: 'unset',
       },
       zIndex: {
         1: '1',
@@ -96,12 +99,18 @@ module.exports = {
         3: '3',
         4: '4',
         5: '5',
+        6: '6',
+        7: '7',
+        8: '8',
+        9: '9',
+        10: '10',
       },
       willChange: {
         height: 'height',
       },
       boxShadow: {
-        'medium': '0 0.8rem 1.6rem rgba(0, 0, 0, 0.2)'
+        normal: '0 0.2rem 0.4rem rgba(0, 0 ,0 ,0.2)',
+        medium: '0 0.8rem 1.6rem rgba(0, 0, 0, 0.2)',
       },
     },
     fontSize: {
@@ -109,6 +118,7 @@ module.exports = {
       xs: ['1.2rem', '1.6rem'],
       '13px': ['1.3rem', '1.8rem'],
       sm: ['1.4rem', '2rem'],
+      '15px': ['1.5rem', '2.2rem'],
       base: ['1.6rem', '2.4rem'],
       md: ['1.8rem', '2.6rem'],
       lg: ['2rem', '2.8rem'],
@@ -126,19 +136,21 @@ module.exports = {
       '8px': '0.8rem',
       '13px': '1.3rem',
       '16px': '1.6rem',
+      '18px': '1.8rem',
+      '19px': '1.9rem',
       '25px': '2.5rem',
     },
     borderWidth: {
       DEFAULT: '1px',
-      '0': '0',
-      '2': '0.2rem',
-      '3': '0.3rem',
-      '4': '0.4rem',
-      '6': '0.6rem',
-      '8': '0.8rem',
+      0: '0',
+      2: '0.2rem',
+      3: '0.3rem',
+      4: '0.4rem',
+      6: '0.6rem',
+      8: '0.8rem',
       '10px': '1rem',
       '15px': '1.5rem',
-    }
+    },
   },
   plugins: [require('@neojp/tailwindcss-line-clamp-utilities')],
   variants: {

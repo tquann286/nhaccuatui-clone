@@ -10,6 +10,8 @@ const RightSidebar = () => {
   const { lang, playingSongId } = state
 
   const [playingSong, setPlayingSong] = useState(null)
+  const [volumn, setVolumn] = useState(100)
+  console.log('volumn: ', volumn)
   console.log(playingSong)
 
   useEffect(() => {
@@ -40,10 +42,12 @@ const RightSidebar = () => {
 
   const songControllerProps = {
     defineLang,
+    volumn,
+    setVolumn,
   }
 
   return (
-    <div className='rb-container'>
+    <div className='rb-container bg-color-1 useBorder border-0-05'>
       <PlayingSongMain {...playingSongMainProps} />
       <SongController {...songControllerProps} />
     </div>
