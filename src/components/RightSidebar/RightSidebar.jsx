@@ -8,6 +8,7 @@ import { useStore } from 'store'
 const RightSidebar = () => {
   const [state] = useStore()
   const { lang, playingSongId } = state
+  
 
   const [playingSong, setPlayingSong] = useState(null)
   const [volumn, setVolumn] = useState(100)
@@ -44,6 +45,8 @@ const RightSidebar = () => {
     defineLang,
     volumn,
     setVolumn,
+    title,
+    keyId: key
   }
 
   return (

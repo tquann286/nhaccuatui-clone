@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import no_song_img from 'images/default/default_song.png'
 
 import { CommonArtist, ExtendModal, Image, ModalAnimate, OptionModal, RankPosition } from 'components'
-import { IconButton } from '@mui/material'
+import IconButton from '@mui/material/IconButton'
 import { IoMdArrowDropdown, IoMdArrowDropup, IoMdMore } from 'react-icons/io'
 import { createSongUrl, handleCopySong } from 'share/utilities'
 import { handleAddToFavSong, handleAddToFavVideo } from 'share/addToFav'

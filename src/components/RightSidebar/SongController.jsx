@@ -1,19 +1,70 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
-import { handleRenderSpeakerIcon, volumnSlider } from 'services/RightSidebar/SongController'
 
-const SongController = ({ volumn, setVolumn }) => {
+import { handleRenderSpeakerIcon, volumnSlider } from 'services/RightSidebar/SongController'
+import { basicModal } from 'share/animation'
+import IconButton from '@mui/material/IconButton'
+import { IoMdMore } from 'react-icons/io'
+import { createSongUrl, handleCopySong } from 'share/utilities'
+import { handleAddToFavSong } from 'share/addToFav'
+
+const SongController = ({ defineLang, volumn, setVolumn, title = '', keyId = '' }) => {
+  const navigate = useNavigate()
+  const [showMore, setShowMore] = useState(false)
+
+  const moreDivRef = useRef(null)
+
+  const toggleShowMore = () => {
+    setShowMore(!showMore)
+  }
+
+  const handleMoreOptions = (e) => {
+    e.stopPropagation()
+    toggleShowMore()
+  }
+
+  const onCopyLink = (e) => {
+    handleCopySong(e, defineLang, title, keyId)
+    toggleShowMore()
+  }
+
+  const handleGoToSong = (e) => {
+    e.stopPropagation()
+    navigate(createSongUrl(title, keyId))
+  }
+
+  const handleAddToFav = (e) => {
+    e.stopPropagation()
+    handleAddToFavSong(keyId, defineLang)
+    toggleShowMore()
+  }
+
+  const modalAnimateProps = {
+    animateProps: basicModal,
+    isVisible: showMore,
+    keyId,
+  }
+
+  const extendModalProps = {
+    copyLink: true,
+    handleCopyLink: (e) => onCopyLink(e),
+    goToSong: true,
+    handleGoToSong: (e) => handleGoToSong(e),
+    addToFav: true,
+    handleAddToFav: (e) => handleAddToFav(e),
+  }
 
   const handleChangeVolumn = (value) => {
     setVolumn(value)
   }
 
   const sliderProps = {
-    ... volumnSlider,
+    ...volumnSlider,
     value: volumn,
-    onChange: handleChangeVolumn
+    onChange: handleChangeVolumn,
   }
 
   const handleClickSpeaker = () => {
@@ -32,8 +83,18 @@ const SongController = ({ volumn, setVolumn }) => {
             <i class={`fa-solid fa-volume-${handleRenderSpeakerIcon(volumn)} color-0-5 w-38px h-38px absolute z-10 bottom-0 rounded-bl-19px rounded-br-19px text-15px p-4`} />
           </div>
           <div className='absolute bottom-0 z-9 left-0 w-full pt-18px pb-36px bg-color-1 rounded-18px origin-bottom opacity-100 scale-0 bg-color-1 transition-all duration-300 invisible shadow-normal select-none group-hover:scale-100 group-hover:visible'>
-            <Slider { ... sliderProps } />
+            <Slider {...sliderProps} />
           </div>
+        </div>
+        <div className='w-168px h-38px cursor-pointer rounded-19px bg-color-0-02'>
+          <div className='color-0-5 text-13px text-center mt-4 select-none font-medium'>{defineLang('Danh sách phát', 'Song list')}</div>
+        </div>
+        <div>
+          <IconButton className='flex h-16 w-16 color-0-5' size='medium' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
+            <div className='flex rounded-4px text-xl'>
+              <IoMdMore />
+            </div>
+          </IconButton>
         </div>
       </div>
     </div>

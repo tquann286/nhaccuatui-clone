@@ -5,7 +5,7 @@ import './CommonSong.scss'
 import { createSongUrl, handleCopySong } from 'share/utilities'
 import { basicModal } from 'share/animation'
 import { CommonArtist, ExtendModal, ModalAnimate, OptionModal, SquareImg } from 'components'
-import { IconButton } from '@mui/material'
+import IconButton from '@mui/material/IconButton'
 import no_song_img from 'images/default/default_song.png'
 
 import { BsHeadphones } from 'react-icons/bs'
