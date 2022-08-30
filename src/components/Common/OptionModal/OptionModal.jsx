@@ -5,7 +5,7 @@ import './OptionModal.scss'
 import { useGetPosition, useOnClickOutside } from 'hooks'
 
 
-const OptionModal = ({ showModal, positionRef, parentRef, children, toggleModal }) => {
+const OptionModal = ({ showModal, positionRef, parentRef, children, toggleModal, styles = {} }) => {
   const modalRef = useRef(null)
   const [position, setPosition] = useState({})
 
@@ -19,7 +19,7 @@ const OptionModal = ({ showModal, positionRef, parentRef, children, toggleModal 
   if (!showModal) return null
 
   return position && createPortal(
-    <div ref={modalRef} className='om-container' style={{ ... position }} initial={{ opacity: 0.5, scale: 0.5 }}>
+    <div ref={modalRef} className='om-container' style={{ ... position, ... styles }} initial={{ opacity: 0.5, scale: 0.5 }}>
       {children}
     </div>,
     document.body

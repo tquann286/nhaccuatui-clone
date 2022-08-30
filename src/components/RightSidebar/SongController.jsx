@@ -3,10 +3,11 @@ import { useNavigate } from 'react-router-dom'
 
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
+import IconButton from '@mui/material/IconButton'
 
+import { OptionModal, ModalAnimate, ExtendModal } from 'components'
 import { handleRenderSpeakerIcon, volumnSlider } from 'services/RightSidebar/SongController'
 import { basicModal } from 'share/animation'
-import IconButton from '@mui/material/IconButton'
 import { IoMdMore } from 'react-icons/io'
 import { createSongUrl, handleCopySong } from 'share/utilities'
 import { handleAddToFavSong } from 'share/addToFav'
@@ -15,6 +16,7 @@ const SongController = ({ defineLang, volumn, setVolumn, title = '', keyId = '' 
   const navigate = useNavigate()
   const [showMore, setShowMore] = useState(false)
 
+  const parentRef = useRef(null)
   const moreDivRef = useRef(null)
 
   const toggleShowMore = () => {
@@ -40,6 +42,16 @@ const SongController = ({ defineLang, volumn, setVolumn, title = '', keyId = '' 
     e.stopPropagation()
     handleAddToFavSong(keyId, defineLang)
     toggleShowMore()
+  }
+
+  const optionModalProps = {
+    showModal: showMore,
+    positionRef: moreDivRef,
+    parentRef,
+    toggleModal: toggleShowMore,
+    styles: {
+      transform: `translate(${defineLang('45%', '70%')}, -105%)`
+    }
   }
 
   const modalAnimateProps = {
@@ -78,7 +90,7 @@ const SongController = ({ defineLang, volumn, setVolumn, title = '', keyId = '' 
   return (
     <div className='w-[27.2rem] m-auto pt-8'>
       <div className='flex justify-between'>
-        <div className='group relative w-38px rounded-bl-19px rounded-br-19px cursor-pointer'>
+        <div className='group relative w-38px rounded-bl-19px rounded-br-19px cursor-pointer' ref={moreDivRef}>
           <div className='z-8' onClick={handleClickSpeaker}>
             <i class={`fa-solid fa-volume-${handleRenderSpeakerIcon(volumn)} color-0-5 w-38px h-38px absolute z-10 bottom-0 rounded-bl-19px rounded-br-19px text-15px p-4`} />
           </div>
@@ -90,11 +102,16 @@ const SongController = ({ defineLang, volumn, setVolumn, title = '', keyId = '' 
           <div className='color-0-5 text-13px text-center mt-4 select-none font-medium'>{defineLang('Danh sách phát', 'Song list')}</div>
         </div>
         <div>
-          <IconButton className='flex h-16 w-16 color-0-5' size='medium' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
+          <IconButton className='flex h-16 w-16 color-0-5' size='medium' onClick={(e) => handleMoreOptions(e)} ref={parentRef}>
             <div className='flex rounded-4px text-xl'>
               <IoMdMore />
             </div>
           </IconButton>
+          <OptionModal {...optionModalProps}>
+            <ModalAnimate {...modalAnimateProps}>
+              <ExtendModal {...extendModalProps} />
+            </ModalAnimate>
+          </OptionModal>
         </div>
       </div>
     </div>
