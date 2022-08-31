@@ -35,6 +35,10 @@ const RightSidebar = () => {
     setCurrentTime(Math.floor(audioRef.current.currentTime))
   }
 
+  const handleSongEnded = () => {
+    setIsPlaying(false)
+  }
+
   useEffect(() => {
     if (playingSongId) {
       const getPlayingSongState = async () => {
@@ -73,19 +77,22 @@ const RightSidebar = () => {
     random,
     toggleRandom,
     isPlaying,
+    setIsPlaying,
     handlePlaying,
     isLoop,
     toggleLoop,
+
   }
 
   const audioProps = {
     className: '',
     preload: 'metadata',
     controls: false,
-    currentTime,
     ref: audioRef,
     src: streamUrls[0]?.streamUrl,
-    onTimeUpdate: handleUpdateTime
+    onTimeUpdate: handleUpdateTime,
+    onEnded: handleSongEnded,
+    loop: isLoop
   }
 
   return (

@@ -16,7 +16,7 @@ import { useStore } from 'store'
 import { Tooltip, IconButton } from '@mui/material'
 import { FiRepeat } from 'react-icons/fi'
 
-const SongController = ({ defineLang, title = '', keyId = '', volumn, setVolumn, currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, handlePlaying, toggleLoop,
+const SongController = ({ defineLang, title = '', keyId = '', volumn, setVolumn, currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, setIsPlaying, handlePlaying, toggleLoop,
 isLoop, }) => {
   const [state] = useStore()
 
@@ -83,7 +83,14 @@ isLoop, }) => {
 
   const handleChangeTime = (value) => {
     setCurrentTime(value)
+    audioPlayer.pause()
     audioPlayer.currentTime = value
+  }
+
+  const handleAfterChangeTime = (value) => {
+    setCurrentTime(value)
+    setIsPlaying(true)
+    audioPlayer.play()
   }
 
   const volumnSliderProps = {
@@ -102,7 +109,8 @@ isLoop, }) => {
     },
     value: audioPlayer.currentTime || 0,
     max: audioPlayer.duration || 0,
-    onChange: handleChangeTime
+    onChange: handleChangeTime,
+    onAfterChange: handleAfterChangeTime
   }
 
   const handleClickSpeaker = () => {
