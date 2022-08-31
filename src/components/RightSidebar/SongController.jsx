@@ -12,8 +12,12 @@ import { IoMdMore } from 'react-icons/io'
 import { createSongUrl, handleCopySong } from 'share/utilities'
 import { handleAddToFavSong } from 'share/addToFav'
 import { convertDuration } from 'share'
+import { BsShuffle } from 'react-icons/bs'
+import { useStore } from 'store'
 
-const SongController = ({ defineLang, title = '', keyId = '', volumn, setVolumn, currentTime, setCurrentTime }) => {
+const SongController = ({ defineLang, title = '', keyId = '', volumn, setVolumn, currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom }) => {
+  const [state] = useStore()
+
   const navigate = useNavigate()
   const [showMore, setShowMore] = useState(false)
 
@@ -82,7 +86,26 @@ const SongController = ({ defineLang, title = '', keyId = '', volumn, setVolumn,
 
   const timeSliderProps = {
     className: '!w-184px !h-14px',
-    value: currentTime,
+    // value: currentTime,
+    railStyle: {
+      height: '0.2rem',
+      maxWidth: '100%',
+      backgroundColor: state.theme === 'light' ? 'rgba(28,30,32,0.1)' : 'rgba(244, 246, 248, 0.1)',
+      borderRadius: '1rem',
+    },
+    trackStyle: {
+      height: '0.2rem',
+      borderRadius: '1rem',
+      background: 'linear-gradient( to right, rgba(47,128,237,1) 0%, rgba(0,174,239,1) 100% ) no-repeat',
+    },
+    handleStyle: {
+      cursor: 'pointer',
+      width: '1.4rem',
+      height: '1.4rem',
+      backgroundColor: '#fafafa',
+      opacity: 1,
+      border: '0.1rem solid #2daaed',
+    },
   }
 
   const handleClickSpeaker = () => {
@@ -120,9 +143,17 @@ const SongController = ({ defineLang, title = '', keyId = '', volumn, setVolumn,
           </OptionModal>
         </div>
       </div>
-      <div className='flex justify-between mt-24px'>
+      <div className='time-slider flex justify-between mt-24px'>
         <div className='text-left w-44px text-10px color-0-88'>{convertDuration(currentTime)}</div>
         <Slider {...timeSliderProps} />
+        <div className='text-right w-44px text-10-px color-0-88'>{convertDuration(audioPlayer.duration || 0)}</div>
+      </div>
+      <div className='mt-16px h-36px flex items-center justify-between'>
+        <div className='p-2 rounded-circle cursor-pointer' onClick={toggleRandom}>
+          <IconButton aria-label='ramdom-song' size='medium'>
+            <BsShuffle className={`${random && 'text-main'} transition-colors`} />
+          </IconButton>
+        </div>
       </div>
     </div>
   )

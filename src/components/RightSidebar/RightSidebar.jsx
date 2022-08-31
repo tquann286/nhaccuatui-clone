@@ -9,11 +9,15 @@ const RightSidebar = () => {
   const [state] = useStore()
   const { lang, playingSongId } = state
 
-  const audioRef = useRef({})
   const [playingSong, setPlayingSong] = useState(null)
   const [currentTime, setCurrentTime] = useState(0)
   const [volumn, setVolumn] = useState(100)
+  const [random, setRamdom] = useState(false)
   console.log(playingSong)
+
+  const toggleRandom = () => setRamdom(!random)
+
+  const audioRef = useRef({})
 
   useEffect(() => {
     if (playingSongId) {
@@ -24,10 +28,6 @@ const RightSidebar = () => {
       }
 
       getPlayingSongState()
-    }
-
-    if (audioRef.current) {
-      console.log(audioRef)
     }
   }, [playingSongId, audioRef.current])
 
@@ -53,23 +53,26 @@ const RightSidebar = () => {
     keyId: key,
     currentTime,
     setCurrentTime,
+    audioPlayer: audioRef.current,
+    random,
+    toggleRandom,
   }
 
   const audioProps = {
-    className: 'hidden',
+    className: '',
     autoplay: true,
     preload: 'auto',
     controls: false,
     currentTime,
     ref: audioRef,
-    src: streamUrls[0]?.streamUrl
+    src: streamUrls[0]?.streamUrl,
   }
 
   return (
     <div className='rb-container bg-color-1 useBorder border-0-05'>
       <PlayingSongMain {...playingSongMainProps} />
       <SongController {...songControllerProps} />
-      <audio { ... audioProps } />
+      <audio {...audioProps} />
     </div>
   )
 }
