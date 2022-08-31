@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
-import IconButton from '@mui/material/IconButton'
 
 import { OptionModal, ModalAnimate, ExtendModal } from 'components'
 import { handleRenderSpeakerIcon, volumnSlider } from 'services/RightSidebar/SongController'
@@ -12,10 +11,13 @@ import { IoMdMore } from 'react-icons/io'
 import { createSongUrl, handleCopySong } from 'share/utilities'
 import { handleAddToFavSong } from 'share/addToFav'
 import { convertDuration } from 'share'
-import { BsShuffle } from 'react-icons/bs'
+import { BsFillPlayFill, BsPauseFill, BsShuffle, BsSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs'
 import { useStore } from 'store'
+import { Tooltip, IconButton } from '@mui/material'
+import { FiRepeat } from 'react-icons/fi'
 
-const SongController = ({ defineLang, title = '', keyId = '', volumn, setVolumn, currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom }) => {
+const SongController = ({ defineLang, title = '', keyId = '', volumn, setVolumn, currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, togglePlaying, toggleLoop,
+isLoop, }) => {
   const [state] = useStore()
 
   const navigate = useNavigate()
@@ -149,10 +151,40 @@ const SongController = ({ defineLang, title = '', keyId = '', volumn, setVolumn,
         <div className='text-right w-44px text-10-px color-0-88'>{convertDuration(audioPlayer.duration || 0)}</div>
       </div>
       <div className='mt-16px h-36px flex items-center justify-between'>
-        <div className='p-2 rounded-circle cursor-pointer' onClick={toggleRandom}>
-          <IconButton aria-label='ramdom-song' size='medium'>
-            <BsShuffle className={`${random && 'text-main'} transition-colors`} />
-          </IconButton>
+        <div className='w-38px h-38px rounded-circle cursor-pointer' onClick={toggleRandom}>
+          <Tooltip title={defineLang('Ngẫu nhiên', 'Random')} placement='bottom' enterDelay={400}>
+            <IconButton className='w-full h-full' aria-label='ramdom-song' size='medium'>
+              <BsShuffle className={`${random && 'text-main'} transition-colors`} />
+            </IconButton>
+          </Tooltip>
+        </div>
+        <div className='w-38px h-38px relative cursor-pointer rounded-circle'>
+          <Tooltip title={defineLang('Bài trước', 'Previous')} placement='bottom' enterDelay={400}>
+            <IconButton className='w-full h-full' aria-label='previous-song' size='medium'>
+              <BsSkipBackwardFill />
+            </IconButton>
+          </Tooltip>
+        </div>
+        <div className='w-20 h-20 relative cursor-pointer rounded-circle' onClick={togglePlaying}>
+          <Tooltip placement='bottom' title={isPlaying ? defineLang('Tạm dừng', 'Pause') : defineLang('Phát', 'Play')} enterDelay={400}>
+            <IconButton className='w-full h-full text-3xl' aria-label='play-pause-song' size='medium'>
+              {isPlaying ? <BsPauseFill className='scale-150' /> : <BsFillPlayFill className='scale-150' />}
+            </IconButton>
+          </Tooltip>
+        </div>
+        <div className='w-38px h-38px relative cursor-pointer rounded-circle'>
+          <Tooltip title={defineLang('Tiếp theo', 'Next')} placement='bottom' enterDelay={400}>
+            <IconButton className='w-full h-full' aria-label='next-song' size='medium'>
+              <BsFillSkipForwardFill />
+            </IconButton>
+          </Tooltip>
+        </div>
+        <div className='w-38px h-38px rounded-circle cursor-pointer' onClick={toggleLoop}>
+          <Tooltip title={defineLang('Lặp lại', 'Repeat')} placement='bottom' enterDelay={400}>
+            <IconButton className='w-full h-full' aria-label='repeat-song' size='medium'>
+              <FiRepeat className={`${isLoop && 'text-main'} transition-colors`} />
+            </IconButton>
+          </Tooltip>
         </div>
       </div>
     </div>

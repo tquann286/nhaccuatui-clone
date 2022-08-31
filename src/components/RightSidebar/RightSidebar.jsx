@@ -13,9 +13,13 @@ const RightSidebar = () => {
   const [currentTime, setCurrentTime] = useState(0)
   const [volumn, setVolumn] = useState(100)
   const [random, setRamdom] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [isLoop, setIsLoop] = useState(false)
   console.log(playingSong)
 
   const toggleRandom = () => setRamdom(!random)
+  const togglePlaying = () => setIsPlaying(!isPlaying)
+  const toggleLoop = () => setIsLoop(!isLoop)
 
   const audioRef = useRef({})
 
@@ -56,6 +60,10 @@ const RightSidebar = () => {
     audioPlayer: audioRef.current,
     random,
     toggleRandom,
+    isPlaying,
+    togglePlaying,
+    isLoop,
+    toggleLoop,
   }
 
   const audioProps = {
