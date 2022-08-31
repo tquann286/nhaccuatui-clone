@@ -11,8 +11,9 @@ import { basicModal } from 'share/animation'
 import { IoMdMore } from 'react-icons/io'
 import { createSongUrl, handleCopySong } from 'share/utilities'
 import { handleAddToFavSong } from 'share/addToFav'
+import { convertDuration } from 'share'
 
-const SongController = ({ defineLang, volumn, setVolumn, title = '', keyId = '' }) => {
+const SongController = ({ defineLang, title = '', keyId = '', volumn, setVolumn, currentTime, setCurrentTime }) => {
   const navigate = useNavigate()
   const [showMore, setShowMore] = useState(false)
 
@@ -50,8 +51,8 @@ const SongController = ({ defineLang, volumn, setVolumn, title = '', keyId = '' 
     parentRef,
     toggleModal: toggleShowMore,
     styles: {
-      transform: `translate(${defineLang('45%', '70%')}, -105%)`
-    }
+      transform: `translate(${defineLang('45%', '70%')}, -105%)`,
+    },
   }
 
   const modalAnimateProps = {
@@ -73,10 +74,15 @@ const SongController = ({ defineLang, volumn, setVolumn, title = '', keyId = '' 
     setVolumn(value)
   }
 
-  const sliderProps = {
+  const volumnSliderProps = {
     ...volumnSlider,
     value: volumn,
     onChange: handleChangeVolumn,
+  }
+
+  const timeSliderProps = {
+    className: '!w-184px !h-14px',
+    value: currentTime,
   }
 
   const handleClickSpeaker = () => {
@@ -95,10 +101,10 @@ const SongController = ({ defineLang, volumn, setVolumn, title = '', keyId = '' 
             <i class={`fa-solid fa-volume-${handleRenderSpeakerIcon(volumn)} color-0-5 w-38px h-38px absolute z-10 bottom-0 rounded-bl-19px rounded-br-19px text-15px p-4`} />
           </div>
           <div className='absolute bottom-0 z-9 left-0 w-full pt-18px pb-36px bg-color-1 rounded-18px origin-bottom opacity-100 scale-0 bg-color-1 transition-all duration-300 invisible shadow-normal select-none group-hover:scale-100 group-hover:visible'>
-            <Slider {...sliderProps} />
+            <Slider {...volumnSliderProps} />
           </div>
         </div>
-        <div className='w-168px h-38px cursor-pointer rounded-19px bg-color-0-02'>
+        <div className='w-168px h-38px cursor-pointer rounded-19px bg-color-0-02 hover:shadow-sm'>
           <div className='color-0-5 text-13px text-center mt-4 select-none font-medium'>{defineLang('Danh sách phát', 'Song list')}</div>
         </div>
         <div>
@@ -113,6 +119,10 @@ const SongController = ({ defineLang, volumn, setVolumn, title = '', keyId = '' 
             </ModalAnimate>
           </OptionModal>
         </div>
+      </div>
+      <div className='flex justify-between mt-24px'>
+        <div className='text-left w-44px text-10px color-0-88'>{convertDuration(currentTime)}</div>
+        <Slider {...timeSliderProps} />
       </div>
     </div>
   )
