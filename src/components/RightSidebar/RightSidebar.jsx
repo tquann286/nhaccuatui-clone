@@ -15,13 +15,25 @@ const RightSidebar = () => {
   const [random, setRamdom] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isLoop, setIsLoop] = useState(false)
-  console.log(playingSong)
 
   const toggleRandom = () => setRamdom(!random)
-  const togglePlaying = () => setIsPlaying(!isPlaying)
   const toggleLoop = () => setIsLoop(!isLoop)
 
   const audioRef = useRef({})
+
+  const handlePlaying = () => {
+    const prevValue = isPlaying
+    setIsPlaying(!prevValue)
+    if (!prevValue) {
+      audioRef.current.play()
+    } else {
+      audioRef.current.pause()
+    }
+  }
+
+  const handleUpdateTime = () => {
+    setCurrentTime(Math.floor(audioRef.current.currentTime))
+  }
 
   useEffect(() => {
     if (playingSongId) {
@@ -61,19 +73,19 @@ const RightSidebar = () => {
     random,
     toggleRandom,
     isPlaying,
-    togglePlaying,
+    handlePlaying,
     isLoop,
     toggleLoop,
   }
 
   const audioProps = {
     className: '',
-    autoplay: true,
-    preload: 'auto',
+    preload: 'metadata',
     controls: false,
     currentTime,
     ref: audioRef,
     src: streamUrls[0]?.streamUrl,
+    onTimeUpdate: handleUpdateTime
   }
 
   return (

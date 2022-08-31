@@ -14,7 +14,6 @@ const VideoDetail = () => {
   const query = new URLSearchParams(params.videoId)
 
   const [videoDetail, setVideoDetail] = useState({})
-  const [maybeLike, setMaybeLike] = useState(null)
   const [autoplay, setAutoplay] = useState(true)
 
   const toggleAutoplay = useCallback(() => {
@@ -29,7 +28,6 @@ const VideoDetail = () => {
       setIsLoading(true)
       const getVideoDetailState = async () => {
         const videoDetail = await getVideoDetailData(query.get('k'))
-        const maybeLike = await getMaybeLike(videoDetail.key, 'video')
 
         const { key = '' } = videoDetail
 
@@ -39,7 +37,6 @@ const VideoDetail = () => {
         videoDetail.maybeLike = await getMaybeLike(key, 'video')
 
         setVideoDetail(videoDetail)
-        setMaybeLike(maybeLike)
         setIsLoading(false)
       }
 

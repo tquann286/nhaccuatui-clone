@@ -20,6 +20,23 @@ export const volumnSlider = {
   },
 }
 
+export const timeSlider = {
+  className: '!w-184px !h-14px',
+  trackStyle: {
+    height: '0.2rem',
+    borderRadius: '1rem',
+    background: 'linear-gradient( to right, rgba(47,128,237,1) 0%, rgba(0,174,239,1) 100% ) no-repeat',
+  },
+  handleStyle: {
+    cursor: 'pointer',
+    width: '1.4rem',
+    height: '1.4rem',
+    backgroundColor: '#fafafa',
+    opacity: 1,
+    border: '0.1rem solid #2daaed',
+  },
+}
+
 export const handleRenderSpeakerIcon = (volumn) => {
   if (volumn > 50) {
     return 'high'

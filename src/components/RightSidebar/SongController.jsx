@@ -5,7 +5,7 @@ import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 
 import { OptionModal, ModalAnimate, ExtendModal } from 'components'
-import { handleRenderSpeakerIcon, volumnSlider } from 'services/RightSidebar/SongController'
+import { handleRenderSpeakerIcon, volumnSlider, timeSlider } from 'services/RightSidebar/SongController'
 import { basicModal } from 'share/animation'
 import { IoMdMore } from 'react-icons/io'
 import { createSongUrl, handleCopySong } from 'share/utilities'
@@ -16,7 +16,7 @@ import { useStore } from 'store'
 import { Tooltip, IconButton } from '@mui/material'
 import { FiRepeat } from 'react-icons/fi'
 
-const SongController = ({ defineLang, title = '', keyId = '', volumn, setVolumn, currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, togglePlaying, toggleLoop,
+const SongController = ({ defineLang, title = '', keyId = '', volumn, setVolumn, currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, handlePlaying, toggleLoop,
 isLoop, }) => {
   const [state] = useStore()
 
@@ -78,6 +78,12 @@ isLoop, }) => {
 
   const handleChangeVolumn = (value) => {
     setVolumn(value)
+    audioPlayer.volume = value / 100
+  }
+
+  const handleChangeTime = (value) => {
+    setCurrentTime(value)
+    audioPlayer.currentTime = value
   }
 
   const volumnSliderProps = {
@@ -87,34 +93,25 @@ isLoop, }) => {
   }
 
   const timeSliderProps = {
-    className: '!w-184px !h-14px',
-    // value: currentTime,
+    ... timeSlider,
     railStyle: {
       height: '0.2rem',
       maxWidth: '100%',
       backgroundColor: state.theme === 'light' ? 'rgba(28,30,32,0.1)' : 'rgba(244, 246, 248, 0.1)',
       borderRadius: '1rem',
     },
-    trackStyle: {
-      height: '0.2rem',
-      borderRadius: '1rem',
-      background: 'linear-gradient( to right, rgba(47,128,237,1) 0%, rgba(0,174,239,1) 100% ) no-repeat',
-    },
-    handleStyle: {
-      cursor: 'pointer',
-      width: '1.4rem',
-      height: '1.4rem',
-      backgroundColor: '#fafafa',
-      opacity: 1,
-      border: '0.1rem solid #2daaed',
-    },
+    value: audioPlayer.currentTime || 0,
+    max: audioPlayer.duration || 0,
+    onChange: handleChangeTime
   }
 
   const handleClickSpeaker = () => {
     if (volumn === 0) {
       setVolumn(100)
+      audioPlayer.volume = 1
     } else {
       setVolumn(0)
+      audioPlayer.volume = 0
     }
   }
 
@@ -165,7 +162,7 @@ isLoop, }) => {
             </IconButton>
           </Tooltip>
         </div>
-        <div className='w-20 h-20 relative cursor-pointer rounded-circle' onClick={togglePlaying}>
+        <div className='w-20 h-20 relative cursor-pointer rounded-circle' onClick={handlePlaying}>
           <Tooltip placement='bottom' title={isPlaying ? defineLang('Tạm dừng', 'Pause') : defineLang('Phát', 'Play')} enterDelay={400}>
             <IconButton className='w-full h-full text-3xl' aria-label='play-pause-song' size='medium'>
               {isPlaying ? <BsPauseFill className='scale-150' /> : <BsFillPlayFill className='scale-150' />}
