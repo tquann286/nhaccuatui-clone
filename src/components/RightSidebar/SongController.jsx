@@ -16,12 +16,12 @@ import { useStore } from 'store'
 import { Tooltip, IconButton } from '@mui/material'
 import { FiRepeat } from 'react-icons/fi'
 
-const SongController = ({ defineLang, title = '', keyId = '', volumn, setVolumn, currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, setIsPlaying, handlePlaying, toggleLoop,
-isLoop, }) => {
+const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, setIsPlaying, handlePlaying, toggleLoop, isLoop, showPlaylist, toggleShowPlaylist }) => {
   const [state] = useStore()
 
   const navigate = useNavigate()
   const [showMore, setShowMore] = useState(false)
+  const [volumn, setVolumn] = useState(100)
 
   const parentRef = useRef(null)
   const moreDivRef = useRef(null)
@@ -99,9 +99,23 @@ isLoop, }) => {
     onChange: handleChangeVolumn,
   }
 
+  const getSeekableAudio = () => {
+    if (audioPlayer.seekable) {
+      const seekableEnd = audioPlayer?.seekable?.end(audioPlayer.seekable.length - 1)
+      if (seekableEnd) {
+        return `${(seekableEnd / audioPlayer.duration) * 100}%`
+      } else {
+        return 0
+      }
+    } else {
+      return 0
+    }
+  }
+
   const timeSliderProps = {
-    ... timeSlider,
+    ...timeSlider,
     railStyle: {
+      width: getSeekableAudio(),
       height: '0.2rem',
       maxWidth: '100%',
       backgroundColor: state.theme === 'light' ? 'rgba(28,30,32,0.1)' : 'rgba(244, 246, 248, 0.1)',
@@ -110,7 +124,7 @@ isLoop, }) => {
     value: audioPlayer.currentTime || 0,
     max: audioPlayer.duration || 0,
     onChange: handleChangeTime,
-    onAfterChange: handleAfterChangeTime
+    onAfterChange: handleAfterChangeTime,
   }
 
   const handleClickSpeaker = () => {
@@ -134,8 +148,8 @@ isLoop, }) => {
             <Slider {...volumnSliderProps} />
           </div>
         </div>
-        <div className='w-168px h-38px cursor-pointer rounded-19px bg-color-0-02 hover:shadow-sm'>
-          <div className='color-0-5 text-13px text-center mt-4 select-none font-medium'>{defineLang('Danh sách phát', 'Song list')}</div>
+        <div className='w-168px h-38px cursor-pointer rounded-19px bg-color-0-02 hover:shadow-sm' onClick={toggleShowPlaylist}>
+          <div className='color-0-5 text-13px text-center mt-4 select-none font-medium'>{showPlaylist ? defineLang('Đang phát', 'Now playing') : defineLang('Danh sách phát', 'Song list')}</div>
         </div>
         <div>
           <IconButton className='flex h-16 w-16 color-0-5' size='medium' onClick={(e) => handleMoreOptions(e)} ref={parentRef}>

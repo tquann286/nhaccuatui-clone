@@ -11,13 +11,14 @@ const RightSidebar = () => {
 
   const [playingSong, setPlayingSong] = useState(null)
   const [currentTime, setCurrentTime] = useState(0)
-  const [volumn, setVolumn] = useState(100)
   const [random, setRamdom] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isLoop, setIsLoop] = useState(false)
+  const [showPlaylist, setShowPlaylist] = useState(false)
 
   const toggleRandom = () => setRamdom(!random)
   const toggleLoop = () => setIsLoop(!isLoop)
+  const toggleShowPlaylist = () => setShowPlaylist(!showPlaylist)
 
   const audioRef = useRef({})
 
@@ -63,12 +64,11 @@ const RightSidebar = () => {
     title,
     key,
     defineLang,
+    showPlaylist,
   }
 
   const songControllerProps = {
     defineLang,
-    volumn,
-    setVolumn,
     title,
     keyId: key,
     currentTime,
@@ -81,7 +81,8 @@ const RightSidebar = () => {
     handlePlaying,
     isLoop,
     toggleLoop,
-
+    showPlaylist,
+    toggleShowPlaylist,
   }
 
   const audioProps = {
@@ -92,7 +93,7 @@ const RightSidebar = () => {
     src: streamUrls[0]?.streamUrl,
     onTimeUpdate: handleUpdateTime,
     onEnded: handleSongEnded,
-    loop: isLoop
+    loop: isLoop,
   }
 
   return (
