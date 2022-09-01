@@ -8,7 +8,7 @@ import { OptionModal, ModalAnimate, ExtendModal } from 'components'
 import { handleRenderSpeakerIcon, volumnSlider, timeSlider } from 'services/RightSidebar/SongController'
 import { basicModal } from 'share/animation'
 import { IoMdMore } from 'react-icons/io'
-import { createSongUrl, handleCopySong } from 'share/utilities'
+import { createSongUrl, handleCopySong, handlePlayNewSong } from 'share/utilities'
 import { handleAddToFavSong } from 'share/addToFav'
 import { convertDuration } from 'share'
 import { BsFillPlayFill, BsPauseFill, BsShuffle, BsSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs'
@@ -16,7 +16,7 @@ import { useStore } from 'store'
 import { Tooltip, IconButton } from '@mui/material'
 import { FiRepeat } from 'react-icons/fi'
 
-const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, setIsPlaying, handlePlaying, toggleLoop, isLoop, showPlaylist, toggleShowPlaylist, duration, songDuration }) => {
+const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, setIsPlaying, handlePlaying, toggleLoop, isLoop, showPlaylist, toggleShowPlaylist, duration, songDuration, curPlaylist = [], actions, dispatch }) => {
   const [state] = useStore()
 
   const navigate = useNavigate()
@@ -137,6 +137,19 @@ const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCu
     }
   }
 
+  const handleNextSong = () => {
+    let playingSongIndex
+    curPlaylist.forEach((song, index) => {
+      if (song.key === keyId) playingSongIndex = index
+    })
+
+    if ((playingSongIndex && playingSongIndex !== curPlaylist.length - 1) || playingSongIndex === 0) {
+      handlePlayNewSong(curPlaylist[playingSongIndex + 1].key, dispatch, actions, curPlaylist, false, defineLang)
+    } else {
+      handlePlayNewSong(curPlaylist[0].key, dispatch, actions, curPlaylist, false, defineLang)
+    }
+  }
+
   return (
     <div className='w-[27.2rem] m-auto pt-8'>
       <div className='flex justify-between'>
@@ -191,7 +204,7 @@ const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCu
             </IconButton>
           </Tooltip>
         </div>
-        <div className='w-38px h-38px relative cursor-pointer rounded-circle'>
+        <div className='w-38px h-38px relative cursor-pointer rounded-circle' onClick={handleNextSong}>
           <Tooltip title={defineLang('Tiếp theo', 'Next')} placement='bottom' enterDelay={400}>
             <IconButton className='w-full h-full' aria-label='next-song' size='medium'>
               <BsFillSkipForwardFill />

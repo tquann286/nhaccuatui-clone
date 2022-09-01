@@ -112,17 +112,16 @@ const RightSidebar = () => {
     keyId: key,
     showPlaylist,
     toggleShowPlaylist,
-    songDuration
+    curPlaylist,
+    actions,
+    dispatch,
   }
 
   const playingSongMainProps = {
     thumbnail,
     artists,
     songView,
-    curPlaylist,
     songsView,
-    actions,
-    dispatch,
   }
 
   const songControllerProps = {
@@ -134,6 +133,7 @@ const RightSidebar = () => {
     isLoop,
     toggleLoop,
     duration,
+    songDuration,
     audioPlayer: audioRef.current || {},
     setIsPlaying,
     setCurrentTime,
