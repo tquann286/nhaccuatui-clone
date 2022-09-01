@@ -16,7 +16,7 @@ import { useStore } from 'store'
 import { Tooltip, IconButton } from '@mui/material'
 import { FiRepeat } from 'react-icons/fi'
 
-const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, setIsPlaying, handlePlaying, toggleLoop, isLoop, showPlaylist, toggleShowPlaylist, duration }) => {
+const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, setIsPlaying, handlePlaying, toggleLoop, isLoop, showPlaylist, toggleShowPlaylist, duration, songDuration }) => {
   const [state] = useStore()
 
   const navigate = useNavigate()
@@ -167,7 +167,7 @@ const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCu
       <div className='time-slider flex justify-between mt-24px'>
         <div className='text-left w-44px text-10px color-0-88'>{convertDuration(currentTime)}</div>
         <Slider {...timeSliderProps} />
-        <div className='text-right w-44px text-10-px color-0-88'>{convertDuration(duration || 0)}</div>
+        <div className='text-right w-44px text-10-px color-0-88'>{songDuration || convertDuration(duration || 0)}</div>
       </div>
       <div className='mt-16px h-36px flex items-center justify-between'>
         <div className='w-38px h-38px rounded-circle cursor-pointer' onClick={toggleRandom}>

@@ -104,7 +104,7 @@ const RightSidebar = () => {
 
   if (!playingSong) return <NoPlayingSong defineLang={defineLang} />
 
-  const { thumbnail = '', title = '', key = '', artists = [], streamUrls = [], songView = 0 } = playingSong
+  const { thumbnail = '', title = '', key = '', artists = [], streamUrls = [], songView = 0, duration: songDuration = '' } = playingSong
 
   const commmonProps = {
     defineLang,
@@ -112,6 +112,7 @@ const RightSidebar = () => {
     keyId: key,
     showPlaylist,
     toggleShowPlaylist,
+    songDuration
   }
 
   const playingSongMainProps = {
