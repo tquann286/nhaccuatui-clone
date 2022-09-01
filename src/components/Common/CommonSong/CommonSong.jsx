@@ -15,7 +15,7 @@ import { IoMdMore } from 'react-icons/io'
 import { useStore } from 'store'
 import { handleAddToFavSong } from 'share/addToFav'
 
-const CommonSong = ({ artists, keyId, thumbnail, title, songView, backupImg }) => {
+const CommonSong = ({ artists, keyId, thumbnail, title, songView, backupImg, optionModalStyles = {} }) => {
   const [state] = useStore()
   const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
   
@@ -56,6 +56,7 @@ const CommonSong = ({ artists, keyId, thumbnail, title, songView, backupImg }) =
     positionRef,
     parentRef: moreDivRef,
     toggleModal: toggleShowMore,
+    styles: optionModalStyles
   }
 
   const modalAnimateProps = {

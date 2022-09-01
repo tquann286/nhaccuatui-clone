@@ -80,6 +80,7 @@ module.exports = {
         '240px': '24rem',
         '320px': '32rem',
         '2/5': '40%',
+        '2/1': '200%',
       },
       lineHeight: {
         inherit: 'inherit',
@@ -155,7 +156,7 @@ module.exports = {
       '15px': '1.5rem',
     },
   },
-  plugins: [require('@neojp/tailwindcss-line-clamp-utilities')],
+  plugins: [require('@neojp/tailwindcss-line-clamp-utilities'), require('tailwind-scrollbar-hide')],
   variants: {
     lineClamp: ['responsive'],
   },

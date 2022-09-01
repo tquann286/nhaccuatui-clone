@@ -4,16 +4,15 @@ import './RightSidebar.scss'
 import { LoadingV2, NoPlayingSong, PlayingSongMain, SongController } from 'components'
 import { getPlayingSong } from 'services/RightSidebar/RightSidebar'
 import { useStore } from 'store'
-import { getMaybeLike, getSongsView } from 'share/utilities'
+import { getListSongsKey, getMaybeLike, getSongsView } from 'share/utilities'
 
 const RightSidebar = () => {
   const [state] = useStore()
   const { lang, playingSongId } = state
 
   const [playingSong, setPlayingSong] = useState(null)
-  console.log('playingSong: ', playingSong)
   const [curPlaylist, setCurPlaylist] = useState([])
-  // console.log('curPlaylist: ', curPlaylist)
+  const [songsView, setSongView] = useState({})
   const [isLoading, setIsLoading] = useState(false)
 
   const [duration, setDuration] = useState(0)
@@ -58,6 +57,8 @@ const RightSidebar = () => {
           playingSong.songView = (await getSongsView(playingSongId))[playingSongId]
 
           const curPlaylist = await getMaybeLike(playingSongId, 'song')
+          const songsView = await getSongsView(getListSongsKey(curPlaylist?.data))
+          setSongView(songsView)
 
           setPlayingSong(playingSong)
           setCurPlaylist(curPlaylist?.data)
@@ -86,7 +87,7 @@ const RightSidebar = () => {
       </div>
     )
 
-  const { thumbnail = '', title = '', key = '', artists = [], streamUrls = [] } = playingSong
+  const { thumbnail = '', title = '', key = '', artists = [], streamUrls = [], songView = 0 } = playingSong
 
   const playingSongMainProps = {
     thumbnail,
@@ -96,6 +97,9 @@ const RightSidebar = () => {
     defineLang,
     showPlaylist,
     toggleShowPlaylist,
+    songView,
+    curPlaylist,
+    songsView,
   }
 
   const songControllerProps = {
