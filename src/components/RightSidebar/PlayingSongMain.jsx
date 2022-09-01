@@ -6,8 +6,9 @@ import { createSongUrl } from 'share/utilities'
 import { Link, useNavigate } from 'react-router-dom'
 import { GiMicrophone } from 'react-icons/gi'
 import Tooltip from '@mui/material/Tooltip'
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
-const PlayingSongMain = ({ defineLang, title = '', key = '', thumbnail = '', artists = [], showPlaylist }) => {
+const PlayingSongMain = ({ defineLang, title = '', key = '', thumbnail = '', artists = [], showPlaylist, toggleShowPlaylist }) => {
   const navigate = useNavigate()
 
   const imageProps = {
@@ -18,10 +19,16 @@ const PlayingSongMain = ({ defineLang, title = '', key = '', thumbnail = '', art
   }
 
   return (
-    <div className='w-320 flex overflow-hidden justify-center h-[calc(100vh_-_20rem)]'>
+    <div className='w-320px flex overflow-hidden justify-center h-[calc(100vh_-_20rem)]'>
       {showPlaylist ? (
-        <div>
-          <div className="w-full h-[calc(100vh_-_20.2rem)] overflow-x-hidden overflow-y-auto overscroll-contain"></div>
+        <div className='w-full'>
+          <div className="w-full h-[calc(100vh_-_20.2rem)] overflow-x-hidden overflow-y-auto overscroll-contain">
+            <div className="pt-26px px-24px flex items-center justify-between color-0-5">
+              <div className='inline-block text-sm font-medium'>{defineLang('Đang phát', 'Now playing')}</div>
+              <MdOutlineKeyboardArrowDown onClick={toggleShowPlaylist} className='text-md cursor-pointer hoverMainColor' />
+            </div>
+
+          </div>
         </div>
       ) : (
         <div className='w-[27.2rem] mx-auto my-0 h-[calc(100vh_-_20rem)] overflow-hidden'>

@@ -16,7 +16,7 @@ import { useStore } from 'store'
 import { Tooltip, IconButton } from '@mui/material'
 import { FiRepeat } from 'react-icons/fi'
 
-const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, setIsPlaying, handlePlaying, toggleLoop, isLoop, showPlaylist, toggleShowPlaylist }) => {
+const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, setIsPlaying, handlePlaying, toggleLoop, isLoop, showPlaylist, toggleShowPlaylist, duration }) => {
   const [state] = useStore()
 
   const navigate = useNavigate()
@@ -100,10 +100,10 @@ const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCu
   }
 
   const getSeekableAudio = () => {
-    if (audioPlayer.seekable) {
-      const seekableEnd = audioPlayer?.seekable?.end(audioPlayer.seekable.length - 1)
+    if (audioPlayer && audioPlayer.readyState) {
+      const seekableEnd = audioPlayer?.seekable?.end(0)
       if (seekableEnd) {
-        return `${(seekableEnd / audioPlayer.duration) * 100}%`
+        return `${(seekableEnd / duration) * 100}%`
       } else {
         return 0
       }
@@ -122,7 +122,7 @@ const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCu
       borderRadius: '1rem',
     },
     value: audioPlayer.currentTime || 0,
-    max: audioPlayer.duration || 0,
+    max: duration || 0,
     onChange: handleChangeTime,
     onAfterChange: handleAfterChangeTime,
   }
@@ -167,7 +167,7 @@ const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCu
       <div className='time-slider flex justify-between mt-24px'>
         <div className='text-left w-44px text-10px color-0-88'>{convertDuration(currentTime)}</div>
         <Slider {...timeSliderProps} />
-        <div className='text-right w-44px text-10-px color-0-88'>{convertDuration(audioPlayer.duration || 0)}</div>
+        <div className='text-right w-44px text-10-px color-0-88'>{convertDuration(duration || 0)}</div>
       </div>
       <div className='mt-16px h-36px flex items-center justify-between'>
         <div className='w-38px h-38px rounded-circle cursor-pointer' onClick={toggleRandom}>
