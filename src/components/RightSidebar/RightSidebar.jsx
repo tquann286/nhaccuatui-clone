@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react'
 import './RightSidebar.scss'
 
 import { NoPlayingSong, PlayingSongMain, SongController } from 'components'
-import { getPlayingSong } from 'share/utilities'
+import { getPlayingSong, handlePlayNewSong } from 'share/utilities'
 import { useStore, actions } from 'store'
 import { getListSongsKey, getMaybeLike, getSongsView } from 'share/utilities'
 
@@ -42,8 +42,25 @@ const RightSidebar = () => {
     setCurrentTime(Math.floor(audioRef.current.currentTime))
   }
 
+  const handleNextSong = () => {
+    let playingSongIndex
+    curPlaylist.forEach((song, index) => {
+      if (song.key === playingSongId) playingSongIndex = index
+    })
+
+    if ((playingSongIndex && playingSongIndex !== curPlaylist.length - 1) || playingSongIndex === 0) {
+      handlePlayNewSong(curPlaylist[playingSongIndex + 1].key, dispatch, actions, curPlaylist, false, defineLang)
+    } else {
+      handlePlayNewSong(curPlaylist[0].key, dispatch, actions, curPlaylist, false, defineLang)
+    }
+  }
+
   const handleSongEnded = () => {
     setIsPlaying(false)
+    if (isPlaying) {
+      handleNextSong()
+      setIsPlaying(true)
+    }
   }
 
   const handleSongCanplay = () => {
@@ -137,6 +154,7 @@ const RightSidebar = () => {
     audioPlayer: audioRef.current || {},
     setIsPlaying,
     setCurrentTime,
+    handleNextSong
   }
 
   const audioProps = {

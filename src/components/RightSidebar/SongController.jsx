@@ -16,7 +16,7 @@ import { useStore } from 'store'
 import { Tooltip, IconButton } from '@mui/material'
 import { FiRepeat } from 'react-icons/fi'
 
-const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, setIsPlaying, handlePlaying, toggleLoop, isLoop, showPlaylist, toggleShowPlaylist, duration, songDuration, curPlaylist = [], actions, dispatch }) => {
+const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, setIsPlaying, handlePlaying, toggleLoop, isLoop, showPlaylist, toggleShowPlaylist, duration, songDuration, curPlaylist = [], actions, dispatch, handleNextSong }) => {
   const [state] = useStore()
 
   const navigate = useNavigate()
@@ -137,16 +137,16 @@ const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCu
     }
   }
 
-  const handleNextSong = () => {
+  const handlePreviousSong = () => {
     let playingSongIndex
     curPlaylist.forEach((song, index) => {
       if (song.key === keyId) playingSongIndex = index
     })
 
-    if ((playingSongIndex && playingSongIndex !== curPlaylist.length - 1) || playingSongIndex === 0) {
-      handlePlayNewSong(curPlaylist[playingSongIndex + 1].key, dispatch, actions, curPlaylist, false, defineLang)
+    if (playingSongIndex) {
+      handlePlayNewSong(curPlaylist[playingSongIndex - 1].key, dispatch, actions, curPlaylist, false, defineLang)
     } else {
-      handlePlayNewSong(curPlaylist[0].key, dispatch, actions, curPlaylist, false, defineLang)
+      handlePlayNewSong(curPlaylist[curPlaylist.length - 1].key, dispatch, actions, curPlaylist, false, defineLang)
     }
   }
 
@@ -190,7 +190,7 @@ const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCu
             </IconButton>
           </Tooltip>
         </div>
-        <div className='w-38px h-38px relative cursor-pointer rounded-circle'>
+        <div className='w-38px h-38px relative cursor-pointer rounded-circle' onClick={handlePreviousSong}>
           <Tooltip title={defineLang('Bài trước', 'Previous')} placement='bottom' enterDelay={400}>
             <IconButton className='w-full h-full' aria-label='previous-song' size='medium'>
               <BsSkipBackwardFill />
