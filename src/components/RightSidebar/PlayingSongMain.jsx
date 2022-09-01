@@ -8,14 +8,14 @@ import { GiMicrophone } from 'react-icons/gi'
 import Tooltip from '@mui/material/Tooltip'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
-const PlayingSongMain = ({ defineLang, title = '', key = '', thumbnail = '', artists = [], showPlaylist, toggleShowPlaylist }) => {
+const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', artists = [], showPlaylist, toggleShowPlaylist }) => {
   const navigate = useNavigate()
 
   const imageProps = {
     imageUrl: thumbnail,
     backupImg: no_img_url,
     className: 'align-middle w-full h-auto rounded-4px',
-    onClick: () => navigate(createSongUrl(title, key)),
+    onClick: () => navigate(createSongUrl(title, keyId)),
   }
 
   return (
@@ -27,7 +27,9 @@ const PlayingSongMain = ({ defineLang, title = '', key = '', thumbnail = '', art
               <div className='inline-block text-sm font-medium'>{defineLang('Đang phát', 'Now playing')}</div>
               <MdOutlineKeyboardArrowDown onClick={toggleShowPlaylist} className='text-md cursor-pointer hoverMainColor' />
             </div>
-
+            <div className="py-16px px-24px">
+            
+            </div>
           </div>
         </div>
       ) : (
@@ -43,7 +45,7 @@ const PlayingSongMain = ({ defineLang, title = '', key = '', thumbnail = '', art
             <div className='w3-row mx-16px mt-12px'>
               <div className='w3-col w-[calc(100%_-_5.2rem)] pr-8px'>
                 <div className='relative'>
-                  <Link to={createSongUrl(title, key)} className='block w-full text-sm font-semibold color-0-88 overflow-hidden hoverMainColor truncate transition-colors'>
+                  <Link to={createSongUrl(title, keyId)} className='block w-full text-sm font-semibold color-0-88 overflow-hidden hoverMainColor truncate transition-colors'>
                     {title}
                   </Link>
                 </div>

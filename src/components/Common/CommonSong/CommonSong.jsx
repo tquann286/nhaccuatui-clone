@@ -15,7 +15,7 @@ import { IoMdMore } from 'react-icons/io'
 import { useStore } from 'store'
 import { handleAddToFavSong } from 'share/addToFav'
 
-const CommonSong = ({ artists, keyId, thumbnail, title, songView, type, duration, backupImg }) => {
+const CommonSong = ({ artists, keyId, thumbnail, title, songView, backupImg }) => {
   const [state] = useStore()
   const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
   

@@ -48,7 +48,7 @@ export const getSearchVideo = (key, pageIndex = 1, pageSize = 36) => client.post
 export const getGenre = (type, key, pageIndex = 1, order = 1, pageSize = 36) => client.post('genre', joinQueryString({ type, key, order, pageIndex, pageSize }))
 
 // Artist
-export const getArtists = (nation, gender) =>  client.post('artist', joinQueryString({ nation, gender }))
+export const getArtists = (nation, gender) => client.post('artist', joinQueryString({ nation, gender }))
 export const getArtistDetail = (shortLink, type = 'all', size = 20, index = 1, sort = 0) => client.post('artist/detail', joinQueryString({ shortLink, type, size, index, sort }))
 
 // Topic
@@ -81,4 +81,3 @@ export const getRecommend = (key, type, size = 12) => client.post('recommend', j
 
 // Information
 export const getInfo = (key, type) => client.post('media/info', joinQueryString({ key, type }))
-

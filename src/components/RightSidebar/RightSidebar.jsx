@@ -4,15 +4,16 @@ import './RightSidebar.scss'
 import { LoadingV2, NoPlayingSong, PlayingSongMain, SongController } from 'components'
 import { getPlayingSong } from 'services/RightSidebar/RightSidebar'
 import { useStore } from 'store'
-import { getMaybeLike } from 'share/utilities'
+import { getMaybeLike, getSongsView } from 'share/utilities'
 
 const RightSidebar = () => {
   const [state] = useStore()
   const { lang, playingSongId } = state
 
   const [playingSong, setPlayingSong] = useState(null)
+  console.log('playingSong: ', playingSong)
   const [curPlaylist, setCurPlaylist] = useState([])
-  console.log('curPlaylist: ', curPlaylist)
+  // console.log('curPlaylist: ', curPlaylist)
   const [isLoading, setIsLoading] = useState(false)
 
   const [duration, setDuration] = useState(0)
@@ -54,6 +55,8 @@ const RightSidebar = () => {
         setIsLoading(true)
         const getPlayingSongState = async () => {
           const playingSong = await getPlayingSong(playingSongId)
+          playingSong.songView = (await getSongsView(playingSongId))[playingSongId]
+
           const curPlaylist = await getMaybeLike(playingSongId, 'song')
 
           setPlayingSong(playingSong)
@@ -89,7 +92,7 @@ const RightSidebar = () => {
     thumbnail,
     artists,
     title,
-    key,
+    keyId: key,
     defineLang,
     showPlaylist,
     toggleShowPlaylist,
