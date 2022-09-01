@@ -298,7 +298,7 @@ export const handleSourceUrl = (streamUrls = []) =>
     }))
 
 // Handle play new song
-export const handlePlayNewSong = async (songId, dispatch, actions, defineLang) => {
+export const handlePlayNewSong = async (songId, dispatch, actions, curPlaylist, defineLang) => {
   if (songId) {
     const tempSong = await getPlayingSong(songId)
 
@@ -306,6 +306,7 @@ export const handlePlayNewSong = async (songId, dispatch, actions, defineLang) =
       dispatch(actions.setPlayingSongId(songId))
     } else {
       toastNotify(defineLang('Bài hát hiện không có sẵn, vui lòng thử lại sau.', 'The song is currently not available, please try again later.'))
+      dispatch(actions.setCurPlaylist(curPlaylist.filter(song => song.key !== songId)))
     }
   }
 }

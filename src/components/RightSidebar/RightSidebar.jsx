@@ -8,12 +8,9 @@ import { getListSongsKey, getMaybeLike, getSongsView } from 'share/utilities'
 
 const RightSidebar = () => {
   const [state, dispatch] = useStore()
-  const { lang, playingSongId } = state
-  console.log('playingSongId: ', playingSongId)
+  const { lang, playingSongId, curPlaylist = [] } = state
 
   const [playingSong, setPlayingSong] = useState(null)
-  const [curPlaylist, setCurPlaylist] = useState([])
-  console.log('curPlaylist: ', curPlaylist)
   const [songsView, setSongView] = useState({})
 
   const [duration, setDuration] = useState(0)
@@ -50,7 +47,7 @@ const RightSidebar = () => {
   }
 
   const handleSongCanplay = () => {
-    if (audioRef.current?.readyState) {
+    if (audioRef.current?.readyState && isPlaying) {
       audioRef.current.play()
     }
   }
@@ -65,6 +62,7 @@ const RightSidebar = () => {
           if (isPlaying) {
             setDuration(audioRef.current?.duration)
             setCurrentTime(0)
+            setIsPlaying(true)
             audioRef.current.currentTime = 0
           }
 
@@ -78,14 +76,16 @@ const RightSidebar = () => {
     }
   }, [playingSongId])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     try {
       const getCurrentPlaylistState = async () => {
-        if (playingSongId) {
-          const curPlaylist = await getMaybeLike(playingSongId, 'song')
+        const localSongId = localStorage.getItem('playingSongId')
+
+        if (localSongId) {
+          const curPlaylist = await getMaybeLike(localSongId, 'song')
           const songsView = await getSongsView(getListSongsKey(curPlaylist?.data))
   
-          setCurPlaylist(curPlaylist?.data)
+          dispatch(actions.setCurPlaylist(curPlaylist?.data))
           setSongView(songsView)
         }
       }
@@ -119,7 +119,6 @@ const RightSidebar = () => {
     artists,
     songView,
     curPlaylist,
-    setCurPlaylist,
     songsView,
     actions,
     dispatch,

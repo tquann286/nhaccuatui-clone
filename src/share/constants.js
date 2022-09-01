@@ -38,3 +38,4 @@ export const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|
 
 // Play
 export const SET_PLAYING_SONG = 'set_playing_song'
+export const SET_CURRENT_PLAYLIST = 'set_current_playlist'

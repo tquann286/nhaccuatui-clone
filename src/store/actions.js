@@ -1,4 +1,4 @@
-import { SET_THEME, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME, CHANGE_VI_LANG, CHANGE_EN_LANG, SET_LANG, TOGGLE_SHOW_LOGIN, TOGGLE_SHOW_SIGN_UP, SIGNED_IN, SIGNED_OUT, SET_PLAYING_SONG } from 'share/constants'
+import { SET_THEME, CHANGE_LIGHT_THEME, CHANGE_DARK_THEME, CHANGE_VI_LANG, CHANGE_EN_LANG, SET_LANG, TOGGLE_SHOW_LOGIN, TOGGLE_SHOW_SIGN_UP, SIGNED_IN, SIGNED_OUT, SET_PLAYING_SONG, SET_CURRENT_PLAYLIST } from 'share/constants'
 import { addSongHistory } from 'services/firebase/firestore'
 
 // Theme
@@ -72,3 +72,8 @@ export const setPlayingSongId = (songId) => {
     songId,
   }
 }
+
+export const setCurPlaylist = (playlist) => ({
+  type: SET_CURRENT_PLAYLIST,
+  playlist,
+})

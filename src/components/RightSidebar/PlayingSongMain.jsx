@@ -3,15 +3,14 @@ import no_img_url from 'images/default/nowplaying_default.png'
 
 import Tooltip from '@mui/material/Tooltip'
 import { CommonArtist, Image, LineBreak } from 'components'
-import { createSongUrl, getPlayingSong, handlePlayNewSong } from 'share/utilities'
+import { createSongUrl, handlePlayNewSong } from 'share/utilities'
 import { Link, useNavigate } from 'react-router-dom'
 import { GiMicrophone } from 'react-icons/gi'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { BsHeadphones } from 'react-icons/bs'
 import { formatNumber } from 'share'
-import { toastNotify } from 'share/toast'
 
-const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', artists = [], showPlaylist, toggleShowPlaylist, songView = 0, curPlaylist = [], setCurPlaylist, songsView = {}, actions, dispatch }) => {
+const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', artists = [], showPlaylist, toggleShowPlaylist, songView = 0, curPlaylist = [], songsView = {}, actions, dispatch }) => {
   const navigate = useNavigate()
 
   const imageProps = {
@@ -19,18 +18,6 @@ const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', a
     backupImg: no_img_url,
     className: 'align-middle w-full h-auto rounded-4px',
     onClick: () => navigate(createSongUrl(title, keyId)),
-  }
-
-  const handlePlaySong = async (songId) => {
-    if (songId) {
-      const tempSong = await getPlayingSong(songId)
-
-      if (tempSong.streamUrls.length !== 0) {
-        dispatch(actions.setPlayingSongId(songId))
-      } else {
-        toastNotify(defineLang('Bài hát hiện không có sẵn, vui lòng thử lại sau.', 'The song is currently not available, please try again later.'))
-      }
-    }
   }
 
   return (
@@ -71,7 +58,7 @@ const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', a
                 <LineBreak />
               </div>
               {curPlaylist.map((song) => (
-                <div key={song.key} className='px-16px py-8px cursor-pointer hover-bg-color-0-05 transition-colors'>
+                <div key={song.key} className={`px-16px py-8px cursor-pointer hover-bg-color-0-05 transition-colors ${keyId === song.key ? 'bg-color-0-05' : ''}`}>
                   <div className='h-42px w3-row'>
                     <div className='w3-col w3-right text-13px w-fit h-full flex items-end color-0-5'>
                       <div className='w-fit'>
@@ -81,7 +68,7 @@ const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', a
                         </div>
                       </div>
                     </div>
-                    <div className='w3-rest pr-8px' onClick={() => handlePlayNewSong(song.key, dispatch, actions, defineLang)}>
+                    <div className='w3-rest pr-8px' onClick={() => handlePlayNewSong(song.key, dispatch, actions, curPlaylist, defineLang)}>
                       <div className='w-fit max-w-full text-sm font-semibold color-0-88 truncate transition-colors hoverMainColor' title={song.title}>
                         <Link to={createSongUrl(song.title, song.key)}>{song.title}</Link>
                       </div>
