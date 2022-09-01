@@ -2,7 +2,7 @@ import { removeVietnameseTones, copyToClipboard, convertToPlain, deepCopy } from
 import { toast } from 'react-toastify'
 import { PROXY } from 'share/constants'
 import { toastNotify } from 'share/toast'
-import { getListVideosView, getLyric, getRecommend, getView } from 'api'
+import { getInfo, getListVideosView, getLyric, getRecommend, getView } from 'api'
 
 export const covertTimestamp = (time) => {
   const date = new Date(time)
@@ -233,6 +233,16 @@ export const getMaybeLike = async (key, type, size = 12) => {
   }
 }
 
+export const getPlayingSong = async (songId) => {
+  try {
+    const songDetail = await getInfo(songId, 'song')
+    
+    if (songDetail) return songDetail.song
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const isFetchingFail = (status, defineLang) => {
   if (status === 'error') {
     toastNotify(defineLang('Có lỗi khi lấy dữ liệu từ server.', 'A server error occurred while retrieving data.'), 'error')
@@ -286,3 +296,16 @@ export const handleSourceUrl = (streamUrls = []) =>
       ...stream,
       url: stream.streamUrl,
     }))
+
+// Handle play new song
+export const handlePlayNewSong = async (songId, dispatch, actions, defineLang) => {
+  if (songId) {
+    const tempSong = await getPlayingSong(songId)
+
+    if (tempSong.streamUrls.length !== 0) {
+      dispatch(actions.setPlayingSongId(songId))
+    } else {
+      toastNotify(defineLang('Bài hát hiện không có sẵn, vui lòng thử lại sau.', 'The song is currently not available, please try again later.'))
+    }
+  }
+}

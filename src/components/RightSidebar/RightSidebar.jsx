@@ -1,19 +1,20 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import './RightSidebar.scss'
 
-import { LoadingV2, NoPlayingSong, PlayingSongMain, SongController } from 'components'
-import { getPlayingSong } from 'services/RightSidebar/RightSidebar'
-import { useStore } from 'store'
+import { NoPlayingSong, PlayingSongMain, SongController } from 'components'
+import { getPlayingSong } from 'share/utilities'
+import { useStore, actions } from 'store'
 import { getListSongsKey, getMaybeLike, getSongsView } from 'share/utilities'
 
 const RightSidebar = () => {
-  const [state] = useStore()
+  const [state, dispatch] = useStore()
   const { lang, playingSongId } = state
+  console.log('playingSongId: ', playingSongId)
 
   const [playingSong, setPlayingSong] = useState(null)
   const [curPlaylist, setCurPlaylist] = useState([])
+  console.log('curPlaylist: ', curPlaylist)
   const [songsView, setSongView] = useState({})
-  const [isLoading, setIsLoading] = useState(false)
 
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
@@ -48,21 +49,26 @@ const RightSidebar = () => {
     setIsPlaying(false)
   }
 
+  const handleSongCanplay = () => {
+    if (audioRef.current?.readyState) {
+      audioRef.current.play()
+    }
+  }
+
   useEffect(() => {
     try {
       if (playingSongId) {
-        setIsLoading(true)
         const getPlayingSongState = async () => {
           const playingSong = await getPlayingSong(playingSongId)
           playingSong.songView = (await getSongsView(playingSongId))[playingSongId]
 
-          const curPlaylist = await getMaybeLike(playingSongId, 'song')
-          const songsView = await getSongsView(getListSongsKey(curPlaylist?.data))
-          setSongView(songsView)
+          if (isPlaying) {
+            setDuration(audioRef.current?.duration)
+            setCurrentTime(0)
+            audioRef.current.currentTime = 0
+          }
 
           setPlayingSong(playingSong)
-          setCurPlaylist(curPlaylist?.data)
-          setIsLoading(false)
         }
 
         getPlayingSongState()
@@ -72,6 +78,24 @@ const RightSidebar = () => {
     }
   }, [playingSongId])
 
+  useLayoutEffect(() => {
+    try {
+      const getCurrentPlaylistState = async () => {
+        if (playingSongId) {
+          const curPlaylist = await getMaybeLike(playingSongId, 'song')
+          const songsView = await getSongsView(getListSongsKey(curPlaylist?.data))
+  
+          setCurPlaylist(curPlaylist?.data)
+          setSongView(songsView)
+        }
+      }
+  
+      getCurrentPlaylistState()
+    } catch (error) {
+      throw new Error(error)
+    }
+  }, [])
+
   useEffect(() => {
     setDuration(audioRef.current?.duration)
   }, [audioRef?.current?.loadedmetadata, audioRef?.current?.readyState])
@@ -80,49 +104,42 @@ const RightSidebar = () => {
 
   if (!playingSong) return <NoPlayingSong defineLang={defineLang} />
 
-  if (isLoading)
-    return (
-      <div className='rb-container bg-color-1 useBorder border-0-05 flexCenter'>
-        <LoadingV2 />
-      </div>
-    )
-
   const { thumbnail = '', title = '', key = '', artists = [], streamUrls = [], songView = 0 } = playingSong
+
+  const commmonProps = {
+    defineLang,
+    title,
+    keyId: key,
+    showPlaylist,
+    toggleShowPlaylist,
+  }
 
   const playingSongMainProps = {
     thumbnail,
     artists,
-    title,
-    keyId: key,
-    defineLang,
-    showPlaylist,
-    toggleShowPlaylist,
     songView,
     curPlaylist,
+    setCurPlaylist,
     songsView,
+    actions,
+    dispatch,
   }
 
   const songControllerProps = {
-    defineLang,
-    title,
-    keyId: key,
     currentTime,
-    setCurrentTime,
-    audioPlayer: audioRef.current || {},
     random,
     toggleRandom,
     isPlaying,
-    setIsPlaying,
     handlePlaying,
     isLoop,
     toggleLoop,
-    showPlaylist,
-    toggleShowPlaylist,
     duration,
+    audioPlayer: audioRef.current || {},
+    setIsPlaying,
+    setCurrentTime,
   }
 
   const audioProps = {
-    className: '',
     preload: 'metadata',
     controls: false,
     ref: audioRef,
@@ -130,12 +147,13 @@ const RightSidebar = () => {
     onTimeUpdate: handleUpdateTime,
     onEnded: handleSongEnded,
     loop: isLoop,
+    onCanPlay: handleSongCanplay,
   }
 
   return (
     <div className='rb-container bg-color-1 useBorder border-0-05'>
-      <PlayingSongMain {...playingSongMainProps} />
-      <SongController {...songControllerProps} />
+      <PlayingSongMain {...commmonProps} {...playingSongMainProps} />
+      <SongController {...commmonProps} {...songControllerProps} />
       <audio {...audioProps} />
     </div>
   )

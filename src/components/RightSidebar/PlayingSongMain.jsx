@@ -1,17 +1,17 @@
 import React from 'react'
 import no_img_url from 'images/default/nowplaying_default.png'
 
-import { CommonArtist, CommonSong, Image, LineBreak } from 'components'
-import { createSongUrl } from 'share/utilities'
+import Tooltip from '@mui/material/Tooltip'
+import { CommonArtist, Image, LineBreak } from 'components'
+import { createSongUrl, getPlayingSong, handlePlayNewSong } from 'share/utilities'
 import { Link, useNavigate } from 'react-router-dom'
 import { GiMicrophone } from 'react-icons/gi'
-import Tooltip from '@mui/material/Tooltip'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { BsHeadphones } from 'react-icons/bs'
 import { formatNumber } from 'share'
-import { Grid } from '@mui/material'
+import { toastNotify } from 'share/toast'
 
-const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', artists = [], showPlaylist, toggleShowPlaylist, songView = 0, curPlaylist = [], songsView = {} }) => {
+const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', artists = [], showPlaylist, toggleShowPlaylist, songView = 0, curPlaylist = [], setCurPlaylist, songsView = {}, actions, dispatch }) => {
   const navigate = useNavigate()
 
   const imageProps = {
@@ -19,6 +19,18 @@ const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', a
     backupImg: no_img_url,
     className: 'align-middle w-full h-auto rounded-4px',
     onClick: () => navigate(createSongUrl(title, keyId)),
+  }
+
+  const handlePlaySong = async (songId) => {
+    if (songId) {
+      const tempSong = await getPlayingSong(songId)
+
+      if (tempSong.streamUrls.length !== 0) {
+        dispatch(actions.setPlayingSongId(songId))
+      } else {
+        toastNotify(defineLang('Bài hát hiện không có sẵn, vui lòng thử lại sau.', 'The song is currently not available, please try again later.'))
+      }
+    }
   }
 
   return (
@@ -59,20 +71,22 @@ const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', a
                 <LineBreak />
               </div>
               {curPlaylist.map((song) => (
-                <div key={song.key} className='h-16 w3-row my-4px px-8px'>
-                  <div className='w3-col w3-right text-13px w-fit h-full flex items-end pb-4px color-0-5'>
-                    <div className='w-fit'>
-                      <div className='flex h-fit items-center'>
-                        <BsHeadphones className='mr-1' />
-                        <span>{formatNumber(songsView[song.key] || 0)}</span>
+                <div key={song.key} className='px-16px py-8px cursor-pointer hover-bg-color-0-05 transition-colors'>
+                  <div className='h-42px w3-row'>
+                    <div className='w3-col w3-right text-13px w-fit h-full flex items-end color-0-5'>
+                      <div className='w-fit'>
+                        <div className='flex h-fit items-center'>
+                          <BsHeadphones className='mr-1' />
+                          <span>{formatNumber(songsView[song.key] || 0)}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className='w3-rest pr-8px'>
-                    <div className='w-fit max-w-full text-sm font-semibold color-0-88 truncate' title={song.title}>
-                      {song.title}
+                    <div className='w3-rest pr-8px' onClick={() => handlePlayNewSong(song.key, dispatch, actions, defineLang)}>
+                      <div className='w-fit max-w-full text-sm font-semibold color-0-88 truncate transition-colors hoverMainColor' title={song.title}>
+                        <Link to={createSongUrl(song.title, song.key)}>{song.title}</Link>
+                      </div>
+                      <CommonArtist artists={song.artists} />
                     </div>
-                    <CommonArtist artists={song.artists} />
                   </div>
                 </div>
               ))}

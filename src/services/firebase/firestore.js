@@ -13,11 +13,11 @@ export const addUser = (docRef, username, email, photoUrl, userId) =>
     userId,
   })
 
-export const addFavSong = (song) => {
+export const addFavSong = (songId) => {
   const currentUserRef = doc(db, 'users', auth.currentUser.uid)
 
   updateDoc(currentUserRef, {
-    'favorite.songs': arrayUnion(song),
+    'favorite.songs': arrayUnion(songId),
   })
 }
 
@@ -97,5 +97,15 @@ export const getUserDetail = async () => {
 
   if (userSnap.exists()) {
     return userSnap.data()
+  }
+}
+
+export const addSongHistory = async (songId) => {
+  if (auth.currentUser) {
+    const currentUserRef = doc(db, 'users', auth.currentUser.uid)
+  
+    updateDoc(currentUserRef, {
+      'history.songs': arrayUnion(songId),
+    })
   }
 }
