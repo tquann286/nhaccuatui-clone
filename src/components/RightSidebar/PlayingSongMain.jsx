@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import no_img_url from 'images/default/nowplaying_default.png'
 
 import Tooltip from '@mui/material/Tooltip'
@@ -10,7 +10,7 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { BsHeadphones } from 'react-icons/bs'
 import { formatNumber } from 'share'
 
-const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', artists = [], showPlaylist, toggleShowPlaylist, songView = 0, curPlaylist = [], songsView = {}, actions, dispatch }) => {
+const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', artists = [], showPlaylist, toggleShowPlaylist, songView = {}, curPlaylist = [], songsView = {}, actions, dispatch }) => {
   const navigate = useNavigate()
 
   const imageProps = {
@@ -40,7 +40,7 @@ const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', a
                   <div className='w-fit'>
                     <div className='flex h-fit items-center'>
                       <BsHeadphones className='mr-1' />
-                      <span className=''>{formatNumber(songView)}</span>
+                      <span className=''>{formatNumber(songView[keyId])}</span>
                     </div>
                   </div>
                 </div>
@@ -64,7 +64,7 @@ const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', a
                       <div className='w-fit'>
                         <div className='flex h-fit items-center'>
                           <BsHeadphones className='mr-1' />
-                          <span>{formatNumber(songsView[song.key] || 0)}</span>
+                          <span>{formatNumber(songsView[song.key] || song.songView || 0)}</span>
                         </div>
                       </div>
                     </div>

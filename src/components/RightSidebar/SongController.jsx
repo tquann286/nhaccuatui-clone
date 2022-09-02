@@ -16,7 +16,7 @@ import { useStore } from 'store'
 import { Tooltip, IconButton } from '@mui/material'
 import { FiRepeat } from 'react-icons/fi'
 
-const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, setIsPlaying, handlePlaying, toggleLoop, isLoop, showPlaylist, toggleShowPlaylist, duration, songDuration, curPlaylist = [], actions, dispatch, handleNextSong }) => {
+const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCurrentTime, audioPlayer = {}, random, toggleRandom, isPlaying, setIsPlaying, handlePlaying, toggleLoop, isLoop, showPlaylist, toggleShowPlaylist, duration, songDuration, handleNextSong, handlePreviousSong }) => {
   const [state] = useStore()
 
   const navigate = useNavigate()
@@ -134,19 +134,6 @@ const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCu
     } else {
       setVolumn(0)
       audioPlayer.volume = 0
-    }
-  }
-
-  const handlePreviousSong = () => {
-    let playingSongIndex
-    curPlaylist.forEach((song, index) => {
-      if (song.key === keyId) playingSongIndex = index
-    })
-
-    if (playingSongIndex) {
-      handlePlayNewSong(curPlaylist[playingSongIndex - 1].key, dispatch, actions, curPlaylist, false, defineLang)
-    } else {
-      handlePlayNewSong(curPlaylist[curPlaylist.length - 1].key, dispatch, actions, curPlaylist, false, defineLang)
     }
   }
 

@@ -11,7 +11,7 @@ const RightSidebar = () => {
   const { lang, playingSongId, curPlaylist = [] } = state
 
   const [playingSong, setPlayingSong] = useState(null)
-  const [songsView, setSongView] = useState({})
+  const [songsView, setSongsView] = useState({})
 
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
@@ -55,6 +55,19 @@ const RightSidebar = () => {
     }
   }
 
+  const handlePreviousSong = () => {
+    let playingSongIndex
+    curPlaylist.forEach((song, index) => {
+      if (song.key === keyId) playingSongIndex = index
+    })
+
+    if (playingSongIndex) {
+      handlePlayNewSong(curPlaylist[playingSongIndex - 1].key, dispatch, actions, curPlaylist, false, defineLang)
+    } else {
+      handlePlayNewSong(curPlaylist[curPlaylist.length - 1].key, dispatch, actions, curPlaylist, false, defineLang)
+    }
+  }
+
   const handleSongEnded = () => {
     setIsPlaying(false)
     if (isPlaying) {
@@ -74,7 +87,7 @@ const RightSidebar = () => {
       if (playingSongId) {
         const getPlayingSongState = async () => {
           const playingSong = await getPlayingSong(playingSongId)
-          playingSong.songView = (await getSongsView(playingSongId))[playingSongId]
+          playingSong.songView = await getSongsView(playingSongId)
 
           if (isPlaying) {
             setDuration(audioRef.current?.duration)
@@ -113,13 +126,15 @@ const RightSidebar = () => {
 
   useEffect(() => {
     try {
-      const getSongsViewState = async () => {
-        const songsView = await getSongsView(getListSongsKey(curPlaylist))
+      if (curPlaylist.length !== 0) {
+        const getSongsViewState = async () => {
+          const songsView = await getSongsView(getListSongsKey(curPlaylist))
+    
+          setSongsView(songsView)
+        }
   
-        setSongView(songsView)
+        getSongsViewState()
       }
-
-      getSongsViewState()
     } catch (error) {
       throw new Error(error)
     }
@@ -141,9 +156,6 @@ const RightSidebar = () => {
     keyId: key,
     showPlaylist,
     toggleShowPlaylist,
-    curPlaylist,
-    actions,
-    dispatch,
   }
 
   const playingSongMainProps = {
@@ -151,6 +163,9 @@ const RightSidebar = () => {
     artists,
     songView,
     songsView,
+    curPlaylist,
+    actions,
+    dispatch,
   }
 
   const songControllerProps = {
@@ -167,6 +182,7 @@ const RightSidebar = () => {
     setIsPlaying,
     setCurrentTime,
     handleNextSong,
+    handlePreviousSong,
   }
 
   const audioProps = {
