@@ -425,4 +425,3 @@ export const weekSubCate = [
   { title: { vi: 'Âu Mỹ', en: 'US-UK' }, value: 'au-my' },
   { title: { vi: 'Hàn Quốc', en: 'K-Pop' }, value: 'nhac-han' },
 ]
-

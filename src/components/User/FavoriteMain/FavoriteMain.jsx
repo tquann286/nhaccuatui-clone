@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import './FavoriteMain.scss'
 
-import { CateCommon, Footer, SongFav, ErrorBoundary, PlaylistFav, VideoFav, Container } from 'components'
+import { CateCommon, SongFav, ErrorBoundary, PlaylistFav, VideoFav, Container } from 'components'
 import { favCateNav } from 'services/User/Favorite'
 
 import { useStore } from 'store'

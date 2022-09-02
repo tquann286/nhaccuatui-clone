@@ -1,6 +1,4 @@
-import { toastNotify } from 'share/toast'
 import { getSongDetail, getPlaylistDetail, getVideoDetail } from 'api'
-import { getUserDetail } from 'services/firebase/firestore'
 
 export const favCateNav = [
   { title: { vi: 'Bài hát', en: 'Song' }, value: 'song' },
