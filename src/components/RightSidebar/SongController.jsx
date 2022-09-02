@@ -28,13 +28,15 @@ const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCu
   const moreDivRef = useRef(null)
 
   useEffect(() => {
-    const localVolumn = localStorage.getItem('audioVolumn')
-
-    if (localVolumn) {
-      setVolumn(parseInt(localVolumn))
-      audioPlayer.volume = parseInt(localVolumn) / 100
+    if (audioPlayer.readyState) {
+      const localVolumn = localStorage.getItem('audioVolumn')
+  
+      if (localVolumn) {
+        setVolumn(parseInt(localVolumn))
+        audioPlayer.volume = parseInt(localVolumn) / 100
+      }
     }
-  }, [])
+  }, [audioPlayer.readyState])
 
   const toggleShowMore = () => {
     setShowMore(!showMore)
