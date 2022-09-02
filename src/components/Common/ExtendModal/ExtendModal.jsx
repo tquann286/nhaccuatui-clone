@@ -9,7 +9,7 @@ import { useStore } from 'store'
 import { auth } from 'config/firebase'
 import { isEmpty } from 'lodash'
 
-const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong, refMapping, handleRefMapping, removeFav, handleRemoveFav }) => {
+const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong, refMapping, handleRefMapping, removeFav, handleRemoveFav, removeHistory, handleRemoveHistory }) => {
   const [state] = useStore()
   const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
 
@@ -21,6 +21,10 @@ const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToS
     handleRemoveFav(e)
   }
 
+  const onRemoveHistory = (e) => {
+    handleRemoveHistory(e)
+  }
+
   const onCopyLink = (e) => {
     handleCopyLink(e)
   }
@@ -29,9 +33,19 @@ const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToS
     handleGoToSong(e)
   }
 
+  const onHandleRefMapping = (e) => {
+    handleRefMapping(e)
+  }
+
   return (
     <div className='extend-modal-main color-0-6 bg-color-1'>
       <ul>
+        {removeHistory && (
+          <li className='hover-bg-color-0-05' onClick={(e) => onRemoveHistory(e)}>
+            <FaRegTrashAlt />
+            <span>{defineLang('Xóa', 'Remove')}</span>
+          </li>
+        )}
         {removeFav && (
           <li className='hover-bg-color-0-05' onClick={(e) => onRemoveFav(e)}>
             <FaRegTrashAlt />
@@ -39,12 +53,12 @@ const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToS
           </li>
         )}
         {isEmpty(refMapping) || (
-          <li className='hover-bg-color-0-05'>
+          <li className='hover-bg-color-0-05' onClick={(e) => onHandleRefMapping(e)}>
             <SiAudiomack />
             <span>{defineLang('Nghe audio', 'Play audio')}</span>
           </li>
         )}
-        {(auth.currentUser && addToFav) && (
+        {auth.currentUser && addToFav && (
           <li className='hover-bg-color-0-05' onClick={(e) => onAddToFav(e)}>
             <SiYoutubemusic />
             <span>{defineLang('Thêm vào yêu thích', 'Add to favorite')}</span>

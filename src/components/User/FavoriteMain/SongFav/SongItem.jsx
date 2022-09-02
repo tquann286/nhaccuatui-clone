@@ -7,14 +7,14 @@ import { createSongUrl, handleCopySong, handlePlayNewSong } from 'share/utilitie
 import { createRandomSongView } from 'services/SongDetail'
 import { IconButton } from '@mui/material'
 import { basicModal } from 'share/animation'
-import { getUserDetail, removeFavItem } from 'services/firebase/firestore'
+import { getUserDetail, removeFavItem, removeHistoryItem } from 'services/firebase/firestore'
 
 import { BsHeadphones } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { handleAddToFavSong } from 'share/addToFav'
 import { useStore, actions } from 'store'
 
-const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setFavSongs, removeFav, addToFav }) => {
+const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setFavSongs, removeFav, addToFav, removeHistory, setHistorySongs }) => {
   const [state, dispatch] = useStore()
   const [showMoreOptions, setShowMoreOptions] = useState(false)
   const navigate = useNavigate()
@@ -58,6 +58,18 @@ const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setF
     setFavSongs((oldFav) => oldFav.filter(song => song.key !== keyId))
     toggleShowMore()
   }
+  
+  // Handle Remove Song From History
+  const handleRemoveHistory = async (e, keyId) => {
+    e.stopPropagation()
+    const { history } = await getUserDetail()
+
+    const songToRemove = history.songs.filter(songKey => songKey === keyId)[0]
+
+    await removeHistoryItem(songToRemove, 'song', defineLang)
+    setHistorySongs((oldHistory) => oldHistory.filter(song => song.key !== keyId))
+    toggleShowMore()
+  }
 
   const optionModalProps = {
     showModal: showMoreOptions,
@@ -81,6 +93,8 @@ const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setF
     handleGoToSong: (e) => handleGoToSong(e),
     removeFav,
     handleRemoveFav: (e) => handleRemoveFav(e, keyId),
+    removeHistory,
+    handleRemoveHistory: (e) => handleRemoveHistory(e, keyId)
   }
   return (
     <li key={keyId} className='song-list-common bg-color-0-02 li-list-item-common color-0-6 hover-bg-color-0-05 hover-visible' onClick={() => handlePlayNewSong(keyId, dispatch, actions, state.curPlaylist, true, defineLang)}>

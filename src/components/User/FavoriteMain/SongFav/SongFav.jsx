@@ -9,11 +9,11 @@ import { getUserSongs } from 'services/User/User'
 import { getSongsView, getListSongsKey } from 'share/utilities'
 import { getUserDetail, handleClearAllFav } from 'services/firebase/firestore'
 
-const SongFav = ({ defineLang, currentUser }) => {
+const SongFav = ({ defineLang, currentUser = {} }) => {
   const [favSongs, setFavSongs] = useState([])
   const [songsView, setSongView] = useState({})
 
-  const handlehandleClearAllFav = async () => {
+  const onHandleClearAllFav = async () => {
     await handleClearAllFav('songs', defineLang)
     setFavSongs([])
   }
@@ -48,7 +48,7 @@ const SongFav = ({ defineLang, currentUser }) => {
 
   if (!currentUser) return null
 
-  const { displayName, photoURL } = currentUser
+  const { displayName = '', photoURL = '' } = currentUser
 
   const songListProps = { defineLang, listSong: favSongs, removeFav: true, songsView, setFavSongs }
 
@@ -85,7 +85,7 @@ const SongFav = ({ defineLang, currentUser }) => {
         <div className='song-list common-title color-0-88 alcenter-jcbetween'>
           <div className='sf-title-content'>{defineLang('Danh sách bài hát', 'Song list')}</div>
           {favSongs.length !== 0 && (
-            <div className='clear-all-song clickable small-common color-0-5' onClick={handlehandleClearAllFav}>
+            <div className='clear-all-song clickable small-common color-0-5' onClick={onHandleClearAllFav}>
               {defineLang('Xóa tất cả', 'Clear all')}
             </div>
           )}

@@ -4,7 +4,7 @@ import './SongList.scss'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { SongItem } from 'components'
 
-const SongList = ({ defineLang, listSong = [], removeFav, addToFav, songsView, setFavSongs }) => {
+const SongList = ({ defineLang, listSong = [], removeFav, addToFav, songsView, setFavSongs, removeHistory, setHistorySongs }) => {
   const [animationParent] = useAutoAnimate()
 
   const songItemProps = {
@@ -12,7 +12,9 @@ const SongList = ({ defineLang, listSong = [], removeFav, addToFav, songsView, s
     setFavSongs,
     defineLang,
     removeFav,
-    addToFav
+    addToFav,
+    removeHistory,
+    setHistorySongs
   }
 
   return (

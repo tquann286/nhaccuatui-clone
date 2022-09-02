@@ -48,6 +48,33 @@ export const removeFavItem = (key, cate, defineLang) => {
   }
 }
 
+export const removeHistoryItem = (key, cate, defineLang) => {
+  const currentUserRef = doc(db, 'users', auth.currentUser.uid)
+
+  switch (cate) {
+    case 'song':
+      updateDoc(currentUserRef, {
+        'history.songs': arrayRemove(key),
+      })
+      toastNotify(defineLang('Xóa bài hát khỏi lịch sử thành công', 'Removed song from history list successfully'), 'success')
+      break
+    case 'playlist':
+      updateDoc(currentUserRef, {
+        'history.playlists': arrayRemove(key),
+      })
+      toastNotify(defineLang('Xóa danh sách phát khỏi lịch sử thành công', 'Removed playlist from history successfully'), 'success')
+      break
+    case 'video':
+      updateDoc(currentUserRef, {
+        'history.videos': arrayRemove(key),
+      })
+      toastNotify(defineLang('Xóa video khỏi lịch sử thành công', 'Removed video from history successfully'), 'success')
+      break
+    default:
+      break
+  }
+}
+
 export const handleClearAllFav = (cate, defineLang) => {
   const currentUserRef = doc(db, 'users', auth.currentUser.uid)
 
@@ -69,6 +96,33 @@ export const handleClearAllFav = (cate, defineLang) => {
         'favorite.videos': deleteField(),
       })
       toastNotify(defineLang('Xóa tất cả video khỏi yêu thích thành công', 'Removed all videos from favorite list successfully'), 'success')
+      break
+    default:
+      break
+  }
+}
+
+export const handleClearAllHistory = (cate, defineLang) => {
+  const currentUserRef = doc(db, 'users', auth.currentUser.uid)
+
+  switch (cate) {
+    case 'songs':
+      updateDoc(currentUserRef, {
+        'history.songs': deleteField(),
+      })
+      toastNotify(defineLang('Xóa tất cả bài hát khỏi lịch sử thành công', 'Removed all songs from history successfully'), 'success')
+      break
+    case 'playlists':
+      updateDoc(currentUserRef, {
+        'history.playlists': deleteField(),
+      })
+      toastNotify(defineLang('Xóa tất cả danh sách phát khỏi lịch sử thành công', 'Removed all playlists from history successfully'), 'success')
+      break
+    case 'videos':
+      updateDoc(currentUserRef, {
+        'history.videos': deleteField(),
+      })
+      toastNotify(defineLang('Xóa tất cả video khỏi lịch sử thành công', 'Removed all videos from history successfully'), 'success')
       break
     default:
       break
