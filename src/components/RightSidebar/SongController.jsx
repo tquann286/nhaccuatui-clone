@@ -22,7 +22,6 @@ const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCu
   const navigate = useNavigate()
   const [showMore, setShowMore] = useState(false)
   const [volumn, setVolumn] = useState(parseInt(localStorage.getItem('audioVolumn')) || 100)
-  console.log('volumn: ', volumn)
 
   const parentRef = useRef(null)
   const moreDivRef = useRef(null)

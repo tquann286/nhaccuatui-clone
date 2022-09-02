@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import './FavoriteMain.scss'
 
-import { CateCommon, Footer, SongFav, ErrorBoundary, PlaylistFav, VideoFav } from 'components'
+import { CateCommon, Footer, SongFav, ErrorBoundary, PlaylistFav, VideoFav, Container } from 'components'
 import { favCateNav } from 'services/User/Favorite'
 
 import { useStore } from 'store'
@@ -10,7 +10,7 @@ import { auth } from 'config/firebase'
 const FavoriteMain = () => {
   const [state] = useStore()
   const defineLang = useCallback((vie, eng) => (state.lang === 'vi' ? vie : eng), [state.lang])
-  
+
   const [curCate, setCurCate] = useState(favCateNav[0].value)
 
   const handleCateChange = (e, newCate) => {
@@ -32,15 +32,16 @@ const FavoriteMain = () => {
   return (
     <div className='favorite-main'>
       <ErrorBoundary>
-        <div className='fm-container'>
-          <CateCommon {...cateCommonProps} />
-          <div className='fm-content'>
-            {curCate === 'song' && <SongFav {...cateFavProps} />}
-            {curCate === 'playlist' && <PlaylistFav {...cateFavProps} />}
-            {curCate === 'video' && <VideoFav {...cateFavProps} />}
+        <Container>
+          <div className='fm-container'>
+            <CateCommon {...cateCommonProps} />
+            <div className='fm-content'>
+              {curCate === 'song' && <SongFav {...cateFavProps} />}
+              {curCate === 'playlist' && <PlaylistFav {...cateFavProps} />}
+              {curCate === 'video' && <VideoFav {...cateFavProps} />}
+            </div>
           </div>
-        </div>
-        <Footer />
+        </Container>
       </ErrorBoundary>
     </div>
   )
