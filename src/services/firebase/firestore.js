@@ -163,3 +163,23 @@ export const addSongHistory = async (songId) => {
     })
   }
 }
+
+export const addPlaylistHistory = async (playlistId) => {
+  if (auth.currentUser) {
+    const currentUserRef = doc(db, 'users', auth.currentUser.uid)
+  
+    updateDoc(currentUserRef, {
+      'history.playlists': arrayUnion(playlistId),
+    })
+  }
+}
+
+export const addVideoHistory = async (videoId) => {
+  if (auth.currentUser) {
+    const currentUserRef = doc(db, 'users', auth.currentUser.uid)
+  
+    updateDoc(currentUserRef, {
+      'history.videos': arrayUnion(videoId),
+    })
+  }
+}

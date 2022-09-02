@@ -8,8 +8,9 @@ import { isValid } from 'share/utilities'
 
 const PlaylistHistory = ({ defineLang, currentUser }) => {
   const [historyPlaylists, setHistoryPlaylists] = useState([])
+  console.log('historyPlaylists: ', historyPlaylists)
 
-  const handlehandleClearAllHistory = async () => {
+  const onHandleClearAllHistory = async () => {
     await handleClearAllHistory('playlists', defineLang)
     setHistoryPlaylists([])
   }
@@ -43,7 +44,33 @@ const PlaylistHistory = ({ defineLang, currentUser }) => {
   if (!currentUser) return null
 
   return (
-    <div>PlaylistHistory</div>
+    <div className='playlist-fav-container'>
+      <div className='playlist-fav-title alcenter-jcbetween'>
+        <div className='playlist-fav-title-content common-title color-0-88'>{defineLang('Danh sách phát', 'Playlist')}</div>
+        {historyPlaylists.length !== 0 && isValid(historyPlaylists) && (
+          <div className='clear-all clickable small-common color-0-6' onClick={onHandleClearAllHistory}>
+            {defineLang('Xóa tất cả', 'Clear all')}
+          </div>
+        )}
+      </div>
+      <div className='playlist-fav-main pt2'>
+        <Grid container spacing={2}>
+          {historyPlaylists
+            .slice()
+            .reverse()
+            .map((playlist) => playlist && (
+              <Grid item key={playlist.key} xs={3} sm={3} md={3} xl={2}>
+                <CommonPlaylist {...playlist} keyId={playlist.key} addToFav={false} removeHistory handleRemoveHistory={() => handleRemoveHistory(playlist.key)} />
+              </Grid>
+            ))}
+        </Grid>
+      </div>
+      {historyPlaylists.length === 0 && (
+        <div className='no-fav-playlist h100'>
+          <NotFoundV2 message={defineLang('Chưa có danh sách yêu thích nào', 'There are no favorite playlist added')} />
+        </div>
+      )}
+    </div>
   )
 }
 

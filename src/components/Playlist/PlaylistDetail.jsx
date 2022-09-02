@@ -10,6 +10,7 @@ import { IconButton, Tooltip } from '@mui/material'
 import { BsBookmarkPlus } from 'react-icons/bs'
 import { toastNotify } from 'share/toast'
 import { handleAddToFavPlaylist } from 'share/addToFav'
+import { addPlaylistHistory } from 'services/firebase/firestore'
 
 const PlaylistDetail = () => {
   const [state] = useStore()
@@ -44,6 +45,7 @@ const PlaylistDetail = () => {
       }
 
       getPlaylistDetailState()
+      addPlaylistHistory(query.get('k'))
     } catch (error) {
       setIsLoading(false)
       throw new Error(error)

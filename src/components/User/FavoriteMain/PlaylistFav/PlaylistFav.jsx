@@ -46,7 +46,7 @@ const PlaylistFav = ({ defineLang, currentUser }) => {
     <div className='playlist-fav-container'>
       <div className='playlist-fav-title alcenter-jcbetween'>
         <div className='playlist-fav-title-content common-title color-0-88'>{defineLang('Danh sách phát', 'Playlist')}</div>
-        {favPlaylists?.length !== 0 && isValid(favPlaylists) && (
+        {favPlaylists.length !== 0 && isValid(favPlaylists) && (
           <div className='clear-all clickable small-common color-0-6' onClick={onHandleClearAllFav}>
             {defineLang('Xóa tất cả', 'Clear all')}
           </div>
@@ -57,14 +57,14 @@ const PlaylistFav = ({ defineLang, currentUser }) => {
           {favPlaylists
             .slice()
             .reverse()
-            ?.map((playlist) => playlist && (
-              <Grid item key={playlist.key || playlist.keyId} xs={3} sm={3} md={3} xl={2}>
-                <CommonPlaylist {...playlist} keyId={playlist.key || playlist.keyId} addToFav={false} removeFav handleRemoveFav={() => handleRemoveFav(playlist.key || playlist.keyId)} />
+            .map((playlist) => playlist && (
+              <Grid item key={playlist.key} xs={3} sm={3} md={3} xl={2}>
+                <CommonPlaylist {...playlist} keyId={playlist.key} addToFav={false} removeFav handleRemoveFav={() => handleRemoveFav(playlist.key)} />
               </Grid>
             ))}
         </Grid>
       </div>
-      {favPlaylists?.length === 0 && (
+      {favPlaylists.length === 0 && (
         <div className='no-fav-playlist h100'>
           <NotFoundV2 message={defineLang('Chưa có danh sách yêu thích nào', 'There are no favorite playlist added')} />
         </div>

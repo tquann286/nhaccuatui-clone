@@ -8,7 +8,7 @@ import { BsPlayCircleFill } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { basicModal } from 'share/animation'
 
-const ImageOverlay = ({ keyId, imageUrl, title, backupImg, handleNavigate, addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong, removeFav, handleRemoveFav }) => {
+const ImageOverlay = ({ keyId, imageUrl, title, backupImg, handleNavigate, addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong, removeFav, handleRemoveFav, removeHistory, handleRemoveHistory }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
 
   const positionRef = useRef(null)
@@ -40,6 +40,12 @@ const ImageOverlay = ({ keyId, imageUrl, title, backupImg, handleNavigate, addTo
     toggleShowMore()
   }
 
+  const onRemoveHistory = (e) => {
+    e.stopPropagation()
+    handleRemoveHistory()
+    toggleShowMore()
+  }
+
   const optionModalProps = {
     showModal: showMoreOptions,
     positionRef,
@@ -61,7 +67,9 @@ const ImageOverlay = ({ keyId, imageUrl, title, backupImg, handleNavigate, addTo
     goToSong,
     handleGoToSong: (e) => handleGoToSong(e),
     removeFav,
-    handleRemoveFav: (e) => onRemoveFav(e),
+    handleRemoveFav: (e) => onRemoveFav(e), 
+    removeHistory, 
+    handleRemoveHistory: (e) => onRemoveHistory(e),
   }
 
   const imageProps = {
@@ -74,7 +82,7 @@ const ImageOverlay = ({ keyId, imageUrl, title, backupImg, handleNavigate, addTo
 
   return (
     <div className='img-overlay-container' onClick={handleNavigate}>
-      <Image { ... imageProps } />
+      <Image {...imageProps} />
       <OptionModal {...optionModalProps}>
         <ModalAnimate {...modalAnimateProps}>
           <ExtendModal {...extendModalProps} />

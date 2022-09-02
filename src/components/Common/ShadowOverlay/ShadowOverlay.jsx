@@ -3,7 +3,7 @@ import './ShadowOverlay.scss'
 
 import { ImageOverlay } from 'components'
 
-const ShadowOverlay = ({ width, shadowHeight, imageUrl, keyId, title, backupImg, handleNavigate, addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong, removeFav, handleRemoveFav }) => {
+const ShadowOverlay = ({ width, shadowHeight, imageUrl, keyId, title, backupImg, handleNavigate, addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong, removeFav, handleRemoveFav, removeHistory, handleRemoveHistory }) => {
   const imageOverlayProps = {
     keyId,
     imageUrl,
@@ -17,7 +17,9 @@ const ShadowOverlay = ({ width, shadowHeight, imageUrl, keyId, title, backupImg,
     handleGoToSong,
     removeFav,
     handleRemoveFav,
-    backupImg
+    backupImg,
+    removeHistory,
+    handleRemoveHistory,
   }
 
   return (
