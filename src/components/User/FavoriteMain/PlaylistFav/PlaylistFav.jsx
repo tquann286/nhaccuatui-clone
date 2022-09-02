@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
 
+import Grid from '@mui/material/Grid'
 import { getUserPlaylists } from 'services/User/User'
 import { getUserDetail, handleClearAllFav, removeFavItem } from 'services/firebase/firestore'
-import Grid from '@mui/material/Grid'
 import { CommonPlaylist, NotFoundV2 } from 'components'
 import { isValid } from 'share/utilities'
 
 const PlaylistFav = ({ defineLang, currentUser }) => {
   const [favPlaylists, setFavPlaylists] = useState([])
 
-  const handlehandleClearAllFav = async () => {
+  const onHandleClearAllFav = async () => {
     await handleClearAllFav('playlists', defineLang)
     setFavPlaylists([])
   }
@@ -47,7 +47,7 @@ const PlaylistFav = ({ defineLang, currentUser }) => {
       <div className='playlist-fav-title alcenter-jcbetween'>
         <div className='playlist-fav-title-content common-title color-0-88'>{defineLang('Danh sách phát', 'Playlist')}</div>
         {favPlaylists?.length !== 0 && isValid(favPlaylists) && (
-          <div className='clear-all clickable small-common color-0-6' onClick={handlehandleClearAllFav}>
+          <div className='clear-all clickable small-common color-0-6' onClick={onHandleClearAllFav}>
             {defineLang('Xóa tất cả', 'Clear all')}
           </div>
         )}

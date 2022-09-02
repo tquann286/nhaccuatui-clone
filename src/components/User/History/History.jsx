@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 
-import { CateCommon, Container, SongHistory, PlaylistHistory, VideoHistory } from 'components'
+import { CateCommon, Container, SongHistory, PlaylistHistory, VideoHistory, Title } from 'components'
 import { useStore } from 'store'
 import { auth } from 'config/firebase'
 import { userCateNav } from 'services/User/User'
@@ -30,6 +30,7 @@ const History = () => {
   return (
     <div className='commonMainOutlet'>
       <Container>
+        <Title title={`${auth.currentUser.displayName} | ${defineLang('Lịch sử nghe nhạc', 'Song History')} | NhacCuaTui Clone`} />
         <CateCommon {...cateCommonProps} />
         <div className='pt-44px px-32px'>
           {curCate === 'song' && <SongHistory {...cateHistoryProps} />}

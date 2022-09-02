@@ -45,7 +45,7 @@ const SongHistory = ({ defineLang, currentUser = {} }) => {
 
   if (!currentUser) return null
 
-  const songListProps = { defineLang, listSong: historySongs, removeHistory: true, setHistorySongs, songsView, setHistorySongs }
+  const songListProps = { defineLang, listSong: historySongs.slice().reverse(), removeHistory: true, setHistorySongs, songsView, setHistorySongs }
 
   return (
     <div className='sf-main'>

@@ -50,7 +50,7 @@ const SongFav = ({ defineLang, currentUser = {} }) => {
 
   const { displayName = '', photoURL = '' } = currentUser
 
-  const songListProps = { defineLang, listSong: favSongs, removeFav: true, songsView, setFavSongs }
+  const songListProps = { defineLang, listSong: favSongs.slice().reverse(), removeFav: true, songsView, setFavSongs }
 
   return (
     <div className='song-fav-container'>
@@ -90,7 +90,7 @@ const SongFav = ({ defineLang, currentUser = {} }) => {
             </div>
           )}
         </div>
-        <SongList { ... songListProps } />
+        <SongList {...songListProps} />
       </div>
     </div>
   )
