@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Slider from 'rc-slider'
@@ -21,10 +21,20 @@ const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCu
 
   const navigate = useNavigate()
   const [showMore, setShowMore] = useState(false)
-  const [volumn, setVolumn] = useState(100)
+  const [volumn, setVolumn] = useState(parseInt(localStorage.getItem('audioVolumn')) || 100)
+  console.log('volumn: ', volumn)
 
   const parentRef = useRef(null)
   const moreDivRef = useRef(null)
+
+  useEffect(() => {
+    const localVolumn = localStorage.getItem('audioVolumn')
+
+    if (localVolumn) {
+      setVolumn(parseInt(localVolumn))
+      audioPlayer.volume = parseInt(localVolumn) / 100
+    }
+  }, [])
 
   const toggleShowMore = () => {
     setShowMore(!showMore)
@@ -79,6 +89,7 @@ const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCu
   const handleChangeVolumn = (value) => {
     setVolumn(value)
     audioPlayer.volume = value / 100
+    localStorage.setItem('audioVolumn', value)
   }
 
   const handleChangeTime = (value) => {
