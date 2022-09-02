@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './CommonSong.scss'
 
-import { createSongUrl, handleCopySong } from 'share/utilities'
+import { createSongUrl, handleCopySong, handlePlayNewSong } from 'share/utilities'
 import { basicModal } from 'share/animation'
 import { CommonArtist, ExtendModal, ModalAnimate, OptionModal, SquareImg } from 'components'
 import IconButton from '@mui/material/IconButton'
@@ -12,11 +12,11 @@ import { BsHeadphones } from 'react-icons/bs'
 import { formatNumber } from 'share'
 import { IoMdMore } from 'react-icons/io'
 
-import { useStore } from 'store'
+import { useStore, actions } from 'store'
 import { handleAddToFavSong } from 'share/addToFav'
 
 const CommonSong = ({ artists, keyId, thumbnail, title, songView, backupImg, optionModalStyles = {} }) => {
-  const [state] = useStore()
+  const [state, dispatch] = useStore()
   const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
   
   const navigate = useNavigate()
@@ -75,7 +75,7 @@ const CommonSong = ({ artists, keyId, thumbnail, title, songView, backupImg, opt
   }
   
   return (
-    <div className={`common-song-container bg-color-0-02 w3-row hover-bg-color-0-05 ${showMoreOptions && 'focus bg-color-0-05'}`} ref={positionRef}>
+    <div className={`common-song-container bg-color-0-02 w3-row hover-bg-color-0-05 ${showMoreOptions && 'focus bg-color-0-05'}`} ref={positionRef} onClick={() => handlePlayNewSong(keyId, dispatch, actions, state.curPlaylist, true, defineLang)}>
       <div className='cs-img-container w3-col border-0-05'>
         <SquareImg imageUrl={thumbnail || backupImg || no_song_img} title={title} />
       </div>

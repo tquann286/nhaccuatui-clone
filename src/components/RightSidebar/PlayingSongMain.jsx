@@ -99,11 +99,11 @@ const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', a
                 </div>
                 <CommonArtist artists={artists} />
               </div>
-              <div className='w3-col w-52px mt-2px flex items-center justify-end'>
-                <Tooltip title='Karaoke'>
+              <Tooltip title='Karaoke'>
+                <div className='w3-col w-52px mt-2px flex items-center justify-end'>
                   <GiMicrophone className='text-base color-0-5 cursor-pointer hoverMainColor' />
-                </Tooltip>
-              </div>
+                </div>
+              </Tooltip>
             </div>
           </div>
           <div className='clickable mt-16px mb-8px color-0-5 flex justify-center font-medium'>

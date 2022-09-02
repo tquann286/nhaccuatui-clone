@@ -2,17 +2,17 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import no_img_song from 'images/default/default_song.png'
 
-import { useStore } from 'store'
+import { useStore, actions } from 'store'
 import { getSongDetailData } from 'services/Song/Song'
 import { LoadingV2, Image, Sharing, Title, TitleCommon, CircleTitleArtist, ViewDate, UploadBy, Description, Provider, LyricDetail, MaybeLike, Footer } from 'components'
 import { BsBookmarkPlus, BsPlayCircleFill } from 'react-icons/bs'
-import { getCurrentPathname, getSongsView, getLyricData, handleCopyProxy, getMaybeLike, createTitleArtist } from 'share/utilities'
+import { getCurrentPathname, getSongsView, getLyricData, handleCopyProxy, getMaybeLike, createTitleArtist, handlePlayNewSong } from 'share/utilities'
 import { IconButton, Tooltip } from '@mui/material'
 import { toastNotify } from 'share/toast'
 import { handleAddToFavSong } from 'share/addToFav'
 
 const SongPageDetail = () => {
-  const [state] = useStore()
+  const [state, dispatch] = useStore()
   const defineLang = useCallback((vie, eng) => (state.lang === 'vi' ? vie : eng), [state.lang])
 
   const params = useParams()
@@ -69,7 +69,7 @@ const SongPageDetail = () => {
         <div className='w3-row'>
           <div className='w3-col relative w-240px h-240px border-0-1 useBorder rounded-8px overflow-hidden shadow-xl'>
             <Image imageUrl={thumbnail} backupImg={no_img_song} title={title} />
-            <div className='absolute right-4 bottom-4 text-xl w-42px h-42px flexCenter rounded-circle cursor-pointer'>
+            <div className='absolute right-4 bottom-4 text-xl w-42px h-42px flexCenter rounded-circle cursor-pointer' onClick={() => handlePlayNewSong(key, dispatch, actions, state.curPlaylist, true, defineLang)}>
               <BsPlayCircleFill className='!text-slate-100' />
             </div>
           </div>

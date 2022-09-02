@@ -11,12 +11,12 @@ import { Loading } from 'components'
 import { createSearchUrl } from 'services/Search/SearchHeader'
 import { handleNavSearch } from 'services/Search/Search'
 import { getMaybeHit } from 'services/Search/SearchMain'
-import { covertTimestamp, createArtistUrl, createSongUrl, handleCopySong } from 'share/utilities'
+import { covertTimestamp, createArtistUrl, createSongUrl, handleCopySong, handlePlayNewSong } from 'share/utilities'
 import { GoCalendar } from 'react-icons/go'
 import { basicModal } from 'share/animation'
 import { handleAddToFavSong } from 'share/addToFav'
 
-const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHistory, setSearchTerm, isLoading }) => {
+const SearchMain = ({ defineLang, trendingKeywords = [], searchHistory, setSearchHistory, setSearchTerm, isLoading, actions, dispatch, curPlaylist }) => {
   const navigate = useNavigate()
 
   const [maybeHit, setMaybeHit] = useState(null)
@@ -117,23 +117,26 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
 
   return (
     <div className='smain-container'>
-      <div className='trend-keywords-container'>
-        <h1 className='tk-title common-title color-0-88'>{defineLang('Top từ khóa', 'Top Keyword')}</h1>
-        <div className='tk-main'>
-          {trendingKeywords.map((keyword) => {
-            const { order, title } = keyword
+      {trendingKeywords.length !== 0 && (
+        <div className='trend-keywords-container'>
+          <h1 className='tk-title common-title color-0-88'>{defineLang('Top từ khóa', 'Top Keyword')}</h1>
+          <div className='tk-main'>
+            {trendingKeywords.map((keyword) => {
+              const { order, title } = keyword
 
-            return (
-              <div key={order} className='tk-content bg-color-0-05 color-0-5' onClick={() => onNavSearch(title)}>
-                <p className='tk-content-title color-0-5'>
-                  <span className='tk-position'>#{order}</span>
-                  {title}
-                </p>
-              </div>
-            )
-          })}
+              return (
+                <div key={order} className='tk-content bg-color-0-05 color-0-5' onClick={() => onNavSearch(title)}>
+                  <p className='tk-content-title color-0-5'>
+                    <span className='tk-position'>#{order}</span>
+                    {title}
+                  </p>
+                </div>
+              )
+            })}
+          </div>
         </div>
-      </div>
+      )}
+
       {searchHistory.length === 0 || (
         <div className='search-history-container'>
           <h1 className='search-history-title common-title color-0-88'>{defineLang('Lịch sử tìm kiếm', 'Search History')}</h1>
@@ -169,7 +172,7 @@ const SearchMain = ({ defineLang, trendingKeywords, searchHistory, setSearchHist
                         <ExtendModal {...extendModalProps} />
                       </ModalAnimate>
                     </OptionModal>
-                    <div className='maybe-hit-img-overlay' ref={positionRef}>
+                    <div className='maybe-hit-img-overlay' ref={positionRef} onClick={() => handlePlayNewSong(maybeHit.key, dispatch, actions, curPlaylist, true, defineLang)}>
                       <div className='maybe-hit-icon'>
                         <BsPlayCircleFill />
                       </div>

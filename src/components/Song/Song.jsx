@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import './Song.scss'
 import { Link } from 'react-router-dom'
-import SongDetail from './SongDetail'
 
 import { getSongsView, getListSongsKey } from 'share/utilities'
 
 import { useStore, actions } from 'store'
+import { Grid } from '@mui/material'
+import { CommonSong } from 'components'
 
-const Song = ({ song: songList }) => {
+const Song = ({ song: songList = [] }) => {
   const [state, dispatch] = useStore()
   const { lang, curPlaylist } = state
-  const defineLang = useCallback((vie, eng) => (lang === 'vi' ? vie : eng), lang)
+  const defineLang = useCallback((vie, eng) => (lang === 'vi' ? vie : eng), [lang])
 
   const [songsView, setSongView] = useState({})
 
@@ -29,13 +30,13 @@ const Song = ({ song: songList }) => {
     }
   }, [songList])
 
-	if (!songList) return null
+  if (!songList) return null
 
   const songDetailProps = {
     actions,
     dispatch,
     curPlaylist,
-    defineLang
+    defineLang,
   }
 
   return (
@@ -44,18 +45,23 @@ const Song = ({ song: songList }) => {
         <Link to='kham-pha/moi-hot'>{defineLang('Bài hát', 'Song')}</Link>
       </div>
       <div
-        style={{
-          margin: '1.6rem 3.2rem 0',
-        }}
+        className='mt-16px mx-32px'
       >
-        <div className='so-main'>
+        <Grid container spacing={2}>
           {songList.map((song) => (
-						<SongDetail { ... songDetailProps } {...song} songId={song.key} songView={songsView ? songsView[song.key] : 0} />
-					))}
-        </div>
+            <Grid item xs={6} key={song.key} className='!py-2px'>
+              <CommonSong {...song} songView={songsView[song.key] || 0} keyId={song.key} />
+            </Grid>
+          ))}
+        </Grid>
       </div>
     </div>
   )
 }
 
+// <div className='so-main'>
+// {songList.map((song) => (
+//   <SongDetail { ... songDetailProps } {...song} songId={song.key} songView={songsView ? songsView[song.key] : 0} />
+// ))}
+// </div>
 export default Song

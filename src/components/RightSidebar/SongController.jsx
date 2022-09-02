@@ -122,7 +122,7 @@ const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCu
       borderRadius: '1rem',
     },
     value: audioPlayer.currentTime || 0,
-    max: duration || 0,
+    max: Math.floor(duration) || 0,
     onChange: handleChangeTime,
     onAfterChange: handleAfterChangeTime,
   }
@@ -155,7 +155,7 @@ const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCu
       <div className='flex justify-between'>
         <div className='group relative w-38px rounded-bl-19px rounded-br-19px cursor-pointer' ref={moreDivRef}>
           <div className='z-8' onClick={handleClickSpeaker}>
-            <i class={`fa-solid fa-volume-${handleRenderSpeakerIcon(volumn)} color-0-5 w-38px h-38px absolute z-10 bottom-0 rounded-bl-19px rounded-br-19px text-15px p-4`} />
+            <i className={`fa-solid fa-volume-${handleRenderSpeakerIcon(volumn)} color-0-5 w-38px h-38px absolute z-10 bottom-0 rounded-bl-19px rounded-br-19px text-15px p-4`} />
           </div>
           <div className='absolute bottom-0 z-9 left-0 w-full pt-18px pb-36px bg-color-1 rounded-18px origin-bottom opacity-100 scale-0 bg-color-1 transition-all duration-300 invisible shadow-normal select-none group-hover:scale-100 group-hover:visible'>
             <Slider {...volumnSliderProps} />
@@ -198,11 +198,9 @@ const SongController = ({ defineLang, title = '', keyId = '', currentTime, setCu
           </Tooltip>
         </div>
         <div className='w-20 h-20 relative cursor-pointer rounded-circle' onClick={handlePlaying}>
-          <Tooltip placement='bottom' title={isPlaying ? defineLang('Tạm dừng', 'Pause') : defineLang('Phát', 'Play')} enterDelay={400}>
-            <IconButton className='w-full h-full text-3xl' aria-label='play-pause-song' size='medium'>
-              {isPlaying ? <BsPauseFill className='scale-150' /> : <BsFillPlayFill className='scale-150' />}
-            </IconButton>
-          </Tooltip>
+          <IconButton className='w-full h-full text-3xl' aria-label='play-pause-song' size='medium'>
+            {isPlaying ? <BsPauseFill className='scale-150' /> : <BsFillPlayFill className='scale-150' />}
+          </IconButton>
         </div>
         <div className='w-38px h-38px relative cursor-pointer rounded-circle' onClick={handleNextSong}>
           <Tooltip title={defineLang('Tiếp theo', 'Next')} placement='bottom' enterDelay={400}>

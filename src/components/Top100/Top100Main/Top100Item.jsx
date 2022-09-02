@@ -103,7 +103,7 @@ const Top100Item = () => {
         <ul>
           <InfiniteScroll {...infiniteSrcollProps}>
             {renderSongs.map((item, i) => (
-              <SongRanking key={item.key} {...item} position={i + 1} keyId={item.key} defineLang={defineLang} />
+              <SongRanking {...item} position={i + 1} songKey={item.key} defineLang={defineLang} />
             ))}
           </InfiniteScroll>
         </ul>

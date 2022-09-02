@@ -75,7 +75,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, defineLang, songView, a
 
   return (
     <React.Fragment>
-      <div className='sd-container' ref={songContainerRef}  onClick={() => handlePlayNewSong(songId, dispatch, actions, curPlaylist, true, defineLang)}>
+      <div className='sd-container' ref={songContainerRef} onClick={() => handlePlayNewSong(songId, dispatch, actions, curPlaylist, true, defineLang)}>
         <div className={`sd-main bg-color-0-02 hover-bg-color-0-05 ${showMoreOptions && 'focus bg-color-0-05'}`}>
           <div className='sd-thumbnail border-0-05' title={title}>
             <div className='sd-thumb-img' style={{ backgroundImage: `url(${thumbnail})` }}></div>

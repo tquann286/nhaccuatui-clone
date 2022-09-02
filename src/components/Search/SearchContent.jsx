@@ -6,11 +6,11 @@ import { SearchHeader, SearchMain, SearchResult, Footer } from 'components'
 import { getTopArtists, getTrendingKeyword } from 'services/Search/SearchContent'
 import { ErrorBoundary } from 'components'
 
-import { useStore } from 'store'
+import { useStore, actions } from 'store'
 
 const SearchContent = () => {
-  const [state] = useStore()
-  const { lang, favPlaylists } = state
+  const [state, dispatch] = useStore()
+  const { lang, favPlaylists, curPlaylist } = state
 
   const { search: searchLocation } = useLocation()
   const [searchParams] = useSearchParams()
@@ -53,7 +53,7 @@ const SearchContent = () => {
     } catch (error) {
       console.log(error)
     }
-    
+
     getSearchContent()
   }, [defineLang])
 
@@ -70,14 +70,21 @@ const SearchContent = () => {
     setSearchTerm,
     isLoading,
     setIsLoading,
-    favPlaylists
+    favPlaylists,
+  }
+
+  const searchMainProps = {
+    trendingKeywords,
+    actions,
+    dispatch,
+    curPlaylist,
   }
 
   return (
     <ErrorBoundary>
       <div className='search-container'>
         <SearchHeader topArtists={topArtists} {...passedSearchProps} />
-        {searchQuery ? <SearchResult searchQuery={searchQuery} {...passedSearchProps} /> : <SearchMain trendingKeywords={trendingKeywords} {...passedSearchProps} />}
+        {searchQuery ? <SearchResult searchQuery={searchQuery} {...passedSearchProps} /> : <SearchMain {...searchMainProps} {...passedSearchProps} />}
         <Footer />
       </div>
     </ErrorBoundary>

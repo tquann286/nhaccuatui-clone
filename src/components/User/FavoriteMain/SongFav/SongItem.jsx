@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { CommonArtist, ExtendModal, ModalAnimate, OptionModal } from 'components'
 import { formatNumber } from 'share'
-import { createSongUrl, handleCopySong } from 'share/utilities'
+import { createSongUrl, handleCopySong, handlePlayNewSong } from 'share/utilities'
 import { createRandomSongView } from 'services/SongDetail'
 import { IconButton } from '@mui/material'
 import { basicModal } from 'share/animation'
@@ -12,8 +12,10 @@ import { getUserDetail, removeFavItem } from 'services/firebase/firestore'
 import { BsHeadphones } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { handleAddToFavSong } from 'share/addToFav'
+import { useStore, actions } from 'store'
 
 const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setFavSongs, removeFav, addToFav }) => {
+  const [state, dispatch] = useStore()
   const [showMoreOptions, setShowMoreOptions] = useState(false)
   const navigate = useNavigate()
 
@@ -81,7 +83,7 @@ const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setF
     handleRemoveFav: (e) => handleRemoveFav(e, keyId),
   }
   return (
-    <li key={keyId} className='song-list-common bg-color-0-02 li-list-item-common color-0-6 hover-bg-color-0-05 hover-visible'>
+    <li key={keyId} className='song-list-common bg-color-0-02 li-list-item-common color-0-6 hover-bg-color-0-05 hover-visible' onClick={() => handlePlayNewSong(keyId, dispatch, actions, state.curPlaylist, true, defineLang)}>
       <div className='song-list-title-artist'>
         <div className='song-list-title song-list-title-real'>
           <div className='alcenter-jcbetween'>
