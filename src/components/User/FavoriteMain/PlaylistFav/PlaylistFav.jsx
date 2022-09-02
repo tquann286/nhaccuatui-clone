@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { getFavPlaylists } from 'services/User/Favorite'
+import { getUserPlaylists } from 'services/User/User'
 import { getUserDetail, handleClearAllFav, removeFavItem } from 'services/firebase/firestore'
 import Grid from '@mui/material/Grid'
 import { CommonPlaylist, NotFoundV2 } from 'components'
@@ -28,7 +28,7 @@ const PlaylistFav = ({ defineLang, currentUser }) => {
       const getFavPlaylistsData = async () => {
         const { favorite } = await getUserDetail()
         if (favorite.playlists) {
-          const data = await getFavPlaylists(favorite.playlists)
+          const data = await getUserPlaylists(favorite.playlists)
 
           setFavPlaylists(data)
         }

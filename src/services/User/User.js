@@ -1,12 +1,12 @@
 import { getSongDetail, getPlaylistDetail, getVideoDetail } from 'api'
 
-export const favCateNav = [
+export const userCateNav = [
   { title: { vi: 'Bài hát', en: 'Song' }, value: 'song' },
   { title: { vi: 'Danh sách phát', en: 'Playlist' }, value: 'playlist' },
   { title: { vi: 'Video', en: 'Video' }, value: 'video' },
 ]
 
-export const getFavSongs = async (songKeys) => {
+export const getUserSongs = async (songKeys) => {
   if (songKeys) {
     const data = songKeys.map(async (key) => {
       const songDetail = await getSongDetail(key)
@@ -20,7 +20,7 @@ export const getFavSongs = async (songKeys) => {
   }
 }
 
-export const getFavPlaylists = async (playlistKeys) => {
+export const getUserPlaylists = async (playlistKeys) => {
   if (playlistKeys) {
     const data = playlistKeys.map(async (key) => {
       const playlistDetail = await getPlaylistDetail(key)
@@ -34,7 +34,7 @@ export const getFavPlaylists = async (playlistKeys) => {
   }
 }
 
-export const getFavVideos = async (videoKeys) => {
+export const getUserVideos = async (videoKeys) => {
   if (videoKeys) {
     const data = videoKeys.map(async (key) => {
       const videoDetail = await getVideoDetail(key)

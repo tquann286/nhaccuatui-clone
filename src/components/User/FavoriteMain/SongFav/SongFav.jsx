@@ -5,7 +5,7 @@ import initImage from 'images/default/default_personal_playlist.png'
 import initUser from 'images/default/default_user.jpg'
 
 import { ShadowThumb, SongList, SquareImg } from 'components'
-import { getFavSongs } from 'services/User/Favorite'
+import { getUserSongs } from 'services/User/User'
 import { getSongsView, getListSongsKey } from 'share/utilities'
 import { getUserDetail, handleClearAllFav } from 'services/firebase/firestore'
 
@@ -22,7 +22,7 @@ const SongFav = ({ defineLang, currentUser }) => {
     const getFavSongsData = async () => {
       const { favorite } = await getUserDetail()
       if (favorite.songs) {
-        const data = await getFavSongs(favorite.songs)
+        const data = await getUserSongs(favorite.songs)
 
         setFavSongs(data)
       }

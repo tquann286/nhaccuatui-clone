@@ -3,13 +3,13 @@ import React, { useState, useCallback } from 'react'
 import { CateCommon, Container, SongHistory, PlaylistHistory, VideoHistory } from 'components'
 import { useStore } from 'store'
 import { auth } from 'config/firebase'
-import { historyCate } from 'services/User/History'
+import { userCateNav } from 'services/User/User'
 
 const History = () => {
   const [state] = useStore()
   const defineLang = useCallback((vie, eng) => (state.lang === 'vi' ? vie : eng), [state.lang])
 
-  const [curCate, setCurCate] = useState(historyCate[0].value)
+  const [curCate, setCurCate] = useState(userCateNav[0].value)
 
   const handleCateChange = (e, newCate) => {
     setCurCate(newCate)
@@ -19,7 +19,7 @@ const History = () => {
     defineLang,
     curCate,
     handleCateChange,
-    categories: historyCate,
+    categories: userCateNav,
   }
 
   const cateHistoryProps = {

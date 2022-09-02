@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { getFavVideos } from 'services/User/Favorite'
+import { getUserVideos } from 'services/User/User'
 import { getUserDetail, handleClearAllFav, removeFavItem } from 'services/firebase/firestore'
 import { Grid } from '@mui/material'
 import { CommonVideo, NotFoundV2 } from 'components'
@@ -28,7 +28,7 @@ const VideoFav = ({ defineLang, currentUser }) => {
       const getFavVideosData = async () => {
         const { favorite } = await getUserDetail()
         if (favorite.videos) {
-          const data = await getFavVideos(favorite.videos)
+          const data = await getUserVideos(favorite.videos)
 
           setFavVideos(data)
         }

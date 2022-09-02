@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react'
 import './FavoriteMain.scss'
 
 import { CateCommon, SongFav, ErrorBoundary, PlaylistFav, VideoFav, Container } from 'components'
-import { favCateNav } from 'services/User/Favorite'
+import { userCateNav } from 'services/User/User'
 
 import { useStore } from 'store'
 import { auth } from 'config/firebase'
@@ -11,7 +11,7 @@ const FavoriteMain = () => {
   const [state] = useStore()
   const defineLang = useCallback((vie, eng) => (state.lang === 'vi' ? vie : eng), [state.lang])
 
-  const [curCate, setCurCate] = useState(favCateNav[0].value)
+  const [curCate, setCurCate] = useState(userCateNav[0].value)
 
   const handleCateChange = (e, newCate) => {
     setCurCate(newCate)
@@ -21,7 +21,7 @@ const FavoriteMain = () => {
     defineLang,
     curCate,
     handleCateChange,
-    categories: favCateNav,
+    categories: userCateNav,
   }
 
   const cateFavProps = {
