@@ -19,7 +19,7 @@ const RightSidebar = () => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isLoop, setIsLoop] = useState(false)
   const [showPlaylist, setShowPlaylist] = useState(false)
-
+  
   const toggleRandom = () => setRamdom(!random)
   const toggleLoop = () => setIsLoop(!isLoop)
   const toggleShowPlaylist = () => setShowPlaylist(!showPlaylist)
@@ -100,18 +100,30 @@ const RightSidebar = () => {
 
         if (localSongId) {
           const curPlaylist = await getMaybeLike(localSongId, 'song')
-          const songsView = await getSongsView(getListSongsKey(curPlaylist?.data))
-  
+
           dispatch(actions.setCurPlaylist(curPlaylist?.data))
-          setSongView(songsView)
         }
       }
-  
+
       getCurrentPlaylistState()
     } catch (error) {
       throw new Error(error)
     }
   }, [])
+
+  useEffect(() => {
+    try {
+      const getSongsViewState = async () => {
+        const songsView = await getSongsView(getListSongsKey(curPlaylist))
+  
+        setSongView(songsView)
+      }
+
+      getSongsViewState()
+    } catch (error) {
+      throw new Error(error)
+    }
+  }, [curPlaylist])
 
   useEffect(() => {
     setDuration(audioRef.current?.duration)
@@ -154,7 +166,7 @@ const RightSidebar = () => {
     audioPlayer: audioRef.current || {},
     setIsPlaying,
     setCurrentTime,
-    handleNextSong
+    handleNextSong,
   }
 
   const audioProps = {

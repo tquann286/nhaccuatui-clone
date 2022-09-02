@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import './Song.scss'
 import { Link } from 'react-router-dom'
 import SongDetail from './SongDetail'
 
 import { getSongsView, getListSongsKey } from 'share/utilities'
 
-import { useStore } from 'store'
+import { useStore, actions } from 'store'
 
 const Song = ({ song: songList }) => {
-  const [state] = useStore()
-  const { lang } = state
+  const [state, dispatch] = useStore()
+  const { lang, curPlaylist } = state
+  const defineLang = useCallback((vie, eng) => (lang === 'vi' ? vie : eng), lang)
 
   const [songsView, setSongView] = useState({})
 
@@ -30,10 +31,17 @@ const Song = ({ song: songList }) => {
 
 	if (!songList) return null
 
+  const songDetailProps = {
+    actions,
+    dispatch,
+    curPlaylist,
+    defineLang
+  }
+
   return (
     <div className='so-container'>
       <div className='so-title'>
-        <Link to='kham-pha/moi-hot'>{lang === 'vi' ? 'Bài hát' : 'Song'}</Link>
+        <Link to='kham-pha/moi-hot'>{defineLang('Bài hát', 'Song')}</Link>
       </div>
       <div
         style={{
@@ -42,7 +50,7 @@ const Song = ({ song: songList }) => {
       >
         <div className='so-main'>
           {songList.map((song) => (
-						<SongDetail {...song} songId={song.key} lang={lang} songView={songsView ? songsView[song.key] : 0} />
+						<SongDetail { ... songDetailProps } {...song} songId={song.key} songView={songsView ? songsView[song.key] : 0} />
 					))}
         </div>
       </div>

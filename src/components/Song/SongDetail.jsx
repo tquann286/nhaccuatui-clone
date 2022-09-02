@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { ExtendModal, ModalAnimate, OptionModal } from 'components'
@@ -7,19 +7,18 @@ import { BsHeadphones } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 
 import { formatNumber } from 'share'
-import { createSongUrl, createArtistUrl, handleCopySong } from 'share/utilities'
+import { createSongUrl, createArtistUrl, handleCopySong, handlePlayNewSong } from 'share/utilities'
 import { createRandomSongView } from 'services/SongDetail'
 import { basicModal } from 'share/animation'
 import { handleAddToFavSong } from 'share/addToFav'
 
-const SongDetail = ({ artists, songId, thumbnail, title, lang, songView }) => {
+const SongDetail = ({ artists, songId, thumbnail, title, defineLang, songView, actions, dispatch, curPlaylist }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
 
   const songContainerRef = useRef(null)
   const moreDivRef = useRef(null)
 
   const navigate = useNavigate()
-  const defineLang = (vie, eng) => (lang === 'vi' ? vie : eng)
 
   useEffect(() => {
     if (!songView) {
@@ -76,11 +75,11 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang, songView }) => {
 
   return (
     <React.Fragment>
-      <div className='sd-container' ref={songContainerRef}>
+      <div className='sd-container' ref={songContainerRef}  onClick={() => handlePlayNewSong(songId, dispatch, actions, curPlaylist, true, defineLang)}>
         <div className={`sd-main bg-color-0-02 hover-bg-color-0-05 ${showMoreOptions && 'focus bg-color-0-05'}`}>
-          <Link to={createSongUrl(title, songId)} className='sd-thumbnail border-0-05' title={title}>
+          <div className='sd-thumbnail border-0-05' title={title}>
             <div className='sd-thumb-img' style={{ backgroundImage: `url(${thumbnail})` }}></div>
-          </Link>
+          </div>
           <div className='sd-more'>
             <div className='sd-view-count'>
               <BsHeadphones />
@@ -94,7 +93,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang, songView }) => {
           </div>
           <div className='sd-song-details'>
             <div className='sd-song-title'>
-              <Link to={createSongUrl(title, songId)}>{title}</Link>
+              <div>{title}</div>
             </div>
             <div className='sd-artists color-0-5'>
               {artists.map((artist, i) => {
@@ -102,7 +101,7 @@ const SongDetail = ({ artists, songId, thumbnail, title, lang, songView }) => {
 
                 return (
                   <React.Fragment key={artistId}>
-                    <Link to={createArtistUrl(name, shortLink)}>
+                    <Link to={createArtistUrl(name, shortLink)} onClick={(e) => e.stopPropagation()}>
                       <span>{name}</span>
                     </Link>
                     {i + 1 === artists.length ? '' : ', '}
