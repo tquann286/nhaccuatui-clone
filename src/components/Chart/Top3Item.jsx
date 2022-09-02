@@ -6,13 +6,15 @@ import { CommonArtist, Image, OptionModal, ModalAnimate, ExtendModal } from 'com
 
 import { Grid, IconButton } from '@mui/material'
 import { defineColor } from 'services/Common/Top3Realtime'
-import { createSongUrl, handleCopySong } from 'share/utilities'
+import { createSongUrl, handleCopySong, handlePlayNewSong } from 'share/utilities'
 import { handleAddToFavSong } from 'share/addToFav'
 import { IoMdMore } from 'react-icons/io'
 import backupImg from 'images/default/default_song.png'
 import { basicModal } from 'share/animation'
+import { useStore, actions } from 'store'
 
 const Top3Item = ({ artists, duration, position, songKey, thumbnail, title, i, activeItem, setActiveItem, defineLang }) => {
+  const [state, dispatch] = useStore()
   const navigate = useNavigate()
 
   const [showMore, setShowMore] = useState(false)
@@ -67,7 +69,7 @@ const Top3Item = ({ artists, duration, position, songKey, thumbnail, title, i, a
   }
 
   return (
-    <Grid container className={`my-2px py-4px pr-12px pl-8px rounded-4px ${activeItem === i ? 'bg-white/[.05]' : 'bg-white/[.02]'}`} onMouseEnter={() => setActiveItem(i)}>
+    <Grid container className={`my-2px py-4px pr-12px pl-8px rounded-4px cursor-pointer ${activeItem === i ? 'bg-white/[.05]' : 'bg-white/[.02]'}`} onMouseEnter={() => setActiveItem(i)} onClick={() => handlePlayNewSong(songKey, dispatch, actions, state.curPlaylist, true, defineLang)}>
       <Grid item xs={true}>
         <Grid container className='items-center flex h-full'>
           <Grid item xs={6}>
@@ -82,7 +84,7 @@ const Top3Item = ({ artists, duration, position, songKey, thumbnail, title, i, a
             </Grid>
           </Grid>
           <Grid item xs={6}>
-            <CommonArtist artists={artists} styles='!text-white/50' />
+            <CommonArtist artists={artists} styles='!text-white/50 !mt-0' />
           </Grid>
         </Grid>
       </Grid>

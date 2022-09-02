@@ -62,6 +62,7 @@ $card-border-radius: 0.4rem 0.4rem 0 0;
 					border-radius: 0.4rem;
 					background-repeat: no-repeat;
 					background-size: cover;
+					cursor: pointer;
 
 					&:not(:first-child) {
 						margin-left: -3.5rem;
