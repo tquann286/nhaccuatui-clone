@@ -12,6 +12,8 @@ const RightSidebar = () => {
 
   const [playingSong, setPlayingSong] = useState(null)
   const [songsView, setSongsView] = useState({})
+  const [tempPlayedSongs, setTempPlayedSongs] = useState([])
+  console.log('tempPlayedSongs: ', tempPlayedSongs)
 
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
@@ -19,7 +21,7 @@ const RightSidebar = () => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isLoop, setIsLoop] = useState(false)
   const [showPlaylist, setShowPlaylist] = useState(false)
-  
+
   const toggleRandom = () => setRamdom(!random)
   const toggleLoop = () => setIsLoop(!isLoop)
   const toggleShowPlaylist = () => setShowPlaylist(!showPlaylist)
@@ -42,36 +44,60 @@ const RightSidebar = () => {
     setCurrentTime(Math.floor(audioRef.current.currentTime))
   }
 
-  const handleNextSong = () => {
-    let playingSongIndex
-    curPlaylist.forEach((song, index) => {
-      if (song.key === playingSongId) playingSongIndex = index
-    })
+  const handleRandomSong = () => {
+    const randomSongIndex = Math.floor(Math.random() * curPlaylist.length)
 
-    if ((playingSongIndex && playingSongIndex !== curPlaylist.length - 1) || playingSongIndex === 0) {
-      handlePlayNewSong(curPlaylist[playingSongIndex + 1].key, dispatch, actions, curPlaylist, false, defineLang)
+    if (tempPlayedSongs.length === curPlaylist.length) setTempPlayedSongs([])
+
+    if (tempPlayedSongs.includes(curPlaylist[randomSongIndex].key)) {
+      handleRandomSong()
     } else {
-      handlePlayNewSong(curPlaylist[0].key, dispatch, actions, curPlaylist, false, defineLang)
+      handlePlayNewSong(curPlaylist[randomSongIndex].key, dispatch, actions, curPlaylist, false, defineLang)
+    }
+  }
+
+  const handleNextSong = () => {
+    if (random) {
+      handleRandomSong()
+    } else {
+      let playingSongIndex
+      curPlaylist.forEach((song, index) => {
+        if (song.key === playingSongId) playingSongIndex = index
+      })
+
+      if ((playingSongIndex && playingSongIndex !== curPlaylist.length - 1) || playingSongIndex === 0) {
+        handlePlayNewSong(curPlaylist[playingSongIndex + 1].key, dispatch, actions, curPlaylist, false, defineLang)
+      } else {
+        handlePlayNewSong(curPlaylist[0].key, dispatch, actions, curPlaylist, false, defineLang)
+      }
     }
   }
 
   const handlePreviousSong = () => {
-    let playingSongIndex
-    curPlaylist.forEach((song, index) => {
-      if (song.key === keyId) playingSongIndex = index
-    })
-
-    if (playingSongIndex) {
-      handlePlayNewSong(curPlaylist[playingSongIndex - 1].key, dispatch, actions, curPlaylist, false, defineLang)
+    if (random) {
+      handleRandomSong()
     } else {
-      handlePlayNewSong(curPlaylist[curPlaylist.length - 1].key, dispatch, actions, curPlaylist, false, defineLang)
+      let playingSongIndex
+      curPlaylist.forEach((song, index) => {
+        if (song.key === playingSongId) playingSongIndex = index
+      })
+
+      if (playingSongIndex) {
+        handlePlayNewSong(curPlaylist[playingSongIndex - 1].key, dispatch, actions, curPlaylist, false, defineLang)
+      } else {
+        handlePlayNewSong(curPlaylist[curPlaylist.length - 1].key, dispatch, actions, curPlaylist, false, defineLang)
+      }
     }
   }
 
   const handleSongEnded = () => {
     setIsPlaying(false)
     if (isPlaying) {
-      handleNextSong()
+      if (random) {
+        handleRandomSong()
+      } else {
+        handleNextSong()
+      }
       setIsPlaying(true)
     }
   }
@@ -95,6 +121,8 @@ const RightSidebar = () => {
             setIsPlaying(true)
             audioRef.current.currentTime = 0
           }
+
+          if (!tempPlayedSongs.includes(playingSong.key)) setTempPlayedSongs((prevSongs) => [...prevSongs, playingSong.key])
 
           setPlayingSong(playingSong)
         }
@@ -129,10 +157,10 @@ const RightSidebar = () => {
       if (curPlaylist.length !== 0) {
         const getSongsViewState = async () => {
           const songsView = await getSongsView(getListSongsKey(curPlaylist))
-    
+
           setSongsView(songsView)
         }
-  
+
         getSongsViewState()
       }
     } catch (error) {
