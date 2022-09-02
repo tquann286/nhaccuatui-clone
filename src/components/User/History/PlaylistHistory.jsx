@@ -8,7 +8,6 @@ import { isValid } from 'share/utilities'
 
 const PlaylistHistory = ({ defineLang, currentUser }) => {
   const [historyPlaylists, setHistoryPlaylists] = useState([])
-  console.log('historyPlaylists: ', historyPlaylists)
 
   const onHandleClearAllHistory = async () => {
     await handleClearAllHistory('playlists', defineLang)
@@ -67,7 +66,7 @@ const PlaylistHistory = ({ defineLang, currentUser }) => {
       </div>
       {historyPlaylists.length === 0 && (
         <div className='no-fav-playlist h100'>
-          <NotFoundV2 message={defineLang('Chưa có danh sách yêu thích nào', 'There are no favorite playlist added')} />
+          <NotFoundV2 message={defineLang('Bạn chưa xem danh sách phát nào.', "You haven't watched any playlists yet.")} />
         </div>
       )}
     </div>

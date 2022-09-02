@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import './../FavoriteMain/SongFav/SongFav.scss'
 
 import { getUserDetail, handleClearAllHistory } from 'services/firebase/firestore'
 import { SongList } from 'components'

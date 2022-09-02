@@ -8,7 +8,7 @@ import { createVideoUrl } from 'share/utilities'
 import { useStore } from 'store'
 import { handleAddToFavVideo } from 'share/addToFav'
 
-const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title, videoHeight, type, addToFav, removeFav, handleRemoveFav }) => {
+const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title, videoHeight, type, addToFav, removeFav, handleRemoveFav, removeHistory, handleRemoveHistory }) => {
   const navigate = useNavigate()
 
   const [state] = useStore()
@@ -35,6 +35,8 @@ const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title, v
     addToFav,
     removeFav,
     handleRemoveFav,
+    removeHistory,
+    handleRemoveHistory,
   }
 
   return (

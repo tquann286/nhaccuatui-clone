@@ -259,7 +259,7 @@ const LeftSidebar = () => {
                 <div className='ls-library color-0-88'>{lang === 'vi' ? 'Thư viện' : 'Library'}</div>
                 <ul className='nav-menu'>
                   <li>
-                    <NavLink className={isActiveNavbar('/user/yeu-thich')} to='user/yeu-thich'>
+                    <NavLink className={isActiveNavbar('/user/yeu-thich')} to='/user/yeu-thich'>
                       <div className='nav-item bg-color-0-05 nav-favorite'>
                         <div className='nav-active-item'></div>
                         <div className='nav-content color-0-5'>
@@ -269,7 +269,7 @@ const LeftSidebar = () => {
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink className={isActiveNavbar('/user/history')} to='user/history'>
+                    <NavLink className={isActiveNavbar('/user/history')} to='/user/history'>
                       <div className='nav-item bg-color-0-05 nav-history'>
                         <div className='nav-active-item'></div>
                         <div className='nav-content color-0-5'>

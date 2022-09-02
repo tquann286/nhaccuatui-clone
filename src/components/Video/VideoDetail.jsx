@@ -5,6 +5,7 @@ import { useStore } from 'store'
 import { LeftSidebar, LoadingV2, VideoMain, Title, NextVideos, Container } from 'components'
 import { getVideoDetailData, getVideoStreamUrls } from 'services/Video/VideoDetail'
 import { createTitleArtist, getLyricData, getMaybeLike, getVideosView } from 'share/utilities'
+import { addVideoHistory } from 'services/firebase/firestore'
 
 const VideoDetail = () => {
   const [state] = useStore()
@@ -41,6 +42,7 @@ const VideoDetail = () => {
       }
 
       getVideoDetailState()
+      addVideoHistory(query.get('k'))
     } catch (error) {
       setIsLoading(false)
       throw new Error(error)
