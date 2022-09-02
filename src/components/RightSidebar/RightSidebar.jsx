@@ -13,7 +13,6 @@ const RightSidebar = () => {
   const [playingSong, setPlayingSong] = useState(null)
   const [songsView, setSongsView] = useState({})
   const [tempPlayedSongs, setTempPlayedSongs] = useState([])
-  console.log('tempPlayedSongs: ', tempPlayedSongs)
 
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
@@ -115,16 +114,16 @@ const RightSidebar = () => {
           const playingSong = await getPlayingSong(playingSongId)
           playingSong.songView = await getSongsView(playingSongId)
 
-          if (isPlaying) {
+          if (!tempPlayedSongs.includes(playingSong.key)) setTempPlayedSongs((prevSongs) => [...prevSongs, playingSong.key])
+
+          setPlayingSong(playingSong)
+
+          if (audioRef.current?.readyState) {
             setDuration(audioRef.current?.duration)
             setCurrentTime(0)
             setIsPlaying(true)
             audioRef.current.currentTime = 0
           }
-
-          if (!tempPlayedSongs.includes(playingSong.key)) setTempPlayedSongs((prevSongs) => [...prevSongs, playingSong.key])
-
-          setPlayingSong(playingSong)
         }
 
         getPlayingSongState()
@@ -161,6 +160,7 @@ const RightSidebar = () => {
           setSongsView(songsView)
         }
 
+        setTempPlayedSongs([])
         getSongsViewState()
       }
     } catch (error) {

@@ -3,10 +3,12 @@ import { useOutletContext } from 'react-router-dom'
 
 import { Top3Realtime, LoadingV2, Sharing, SongRanking } from 'components'
 import { getRealtimeData } from 'services/Chart/Realtime'
-import { getCurrentPathname, handleCopyProxy } from 'share/utilities'
+import { getCurrentPathname, handleCopyProxy, handlePlayNewSong } from 'share/utilities'
 import { toastNotify } from 'share/toast'
+import { useStore, actions } from 'store'
 
 const Realtime = () => {
+  const [state, dispatch] = useStore()
   const [defineLang] = useOutletContext()
 
   const [top3, setTop3] = useState([])
@@ -37,6 +39,9 @@ const Realtime = () => {
     top3,
     defineLang,
     styles: 'h-[296px]',
+    actions,
+    state,
+    dispatch,
   }
 
   const handleCopyShare = () => {
@@ -62,7 +67,9 @@ const Realtime = () => {
         <Top3Realtime {...top3RealtimeProps} />
       </div>
       <div className='mt-24px mx-32px h-64px rounded-4px bg-color-0-02 w3-row'>
-        <div className='w3-col w-64 h-32px mt-16px ml-24px useBorder border-0-1 flexCenter text-13px font-normal rounded-16px color-0-5 hover:!border-main hoverMainColor cursor-pointer'>{defineLang('Phát tất cả', 'Play all')}</div>
+        <div className='w3-col w-64 h-32px mt-16px ml-24px useBorder border-0-1 flexCenter text-13px font-normal rounded-16px color-0-5 hover:!border-main hoverMainColor cursor-pointer' onClick={() => handlePlayNewSong(top50[0]?.songKey, dispatch, actions, state.curPlaylist, true, defineLang)}>
+          {defineLang('Phát tất cả', 'Play all')}
+        </div>
         <div className='w3-col w3-right w-fit mt-12px mr-14px'>
           <Sharing {...sharingProps} />
         </div>

@@ -4,12 +4,12 @@ import { isEmpty } from 'lodash'
 import { BlurImg, Top3List } from 'components'
 import { LineChart, Line, CartesianGrid, XAxis, Tooltip, ResponsiveContainer } from 'recharts'
 
-import { getCurrentDay } from 'share/utilities'
+import { getCurrentDay, handlePlayNewSong } from 'share/utilities'
 import { Grid, Tooltip as MuiTooltip, IconButton } from '@mui/material'
 import { defineColor } from 'services/Common/Top3Realtime'
 import { BsFillPlayCircleFill } from 'react-icons/bs'
 
-const Top3Realtime = ({ top3, defineLang, showTop3, styles }) => {
+const Top3Realtime = ({ top3, defineLang, showTop3, styles, actions, state, dispatch }) => {
   const [activeItem, setActiveItem] = useState(0)
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const Top3Realtime = ({ top3, defineLang, showTop3, styles }) => {
               <span className='text-slate-100 font-semibold mr-8px'>#NCTChart</span>
               <span className='text-white/50'>{getCurrentDay()}</span>
             </div>
-            <div className='flex h-full'>
+            <div className='flex h-full' onClick={() => handlePlayNewSong(top3[0]?.songKey, dispatch, actions, state.curPlaylist, true, defineLang)}>
               <MuiTooltip title={defineLang('Phát tất cả', 'Play all')} arrow placement='top'>
                 <IconButton className='hover:!bg-white/[.08]' aria-label='play-icon'>
                   <BsFillPlayCircleFill className='text-slate-100' />
