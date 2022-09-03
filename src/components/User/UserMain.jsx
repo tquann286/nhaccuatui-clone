@@ -44,8 +44,6 @@ const UserMain = () => {
     ...userDetail,
   }
 
-  console.log('updateUserProps: ', updateUserProps)
-
   return (
     <div className='commonMainOutlet'>
       <Container>

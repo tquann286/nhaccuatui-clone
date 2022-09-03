@@ -8,7 +8,6 @@ import { isValid } from 'share/utilities'
 
 const VideoHistory = ({ defineLang, currentUser }) => {
   const [historyVideos, setHistoryVideos] = useState([])
-  console.log('historyVideos: ', historyVideos)
 
   const onHandleClearAllHistory = async () => {
     await handleClearAllHistory('videos', defineLang)

@@ -46,8 +46,7 @@ const SearchResult = ({ searchQuery, searchTerm, defineLang, isLoading, setIsLoa
 
   if (searchResult) {
     const { recommend = {}, search = {} } = searchResult
-    console.log('searchResult: ', searchResult)
-console.log(isEmptyObject(recommend))
+    
     return (
       <div className='search-result-container'>
         <Navbar { ... navbarProps } />
