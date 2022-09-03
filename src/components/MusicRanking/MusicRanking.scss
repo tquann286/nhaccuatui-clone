@@ -111,25 +111,6 @@ $card-border-radius: 0.4rem 0.4rem 0 0;
 				}
 			}
 
-			.ma-active-artists {
-				@include transition-effect(0.1s);
-				@include fitContentWidth;
-				@include threeDotContent;
-				max-width: 100%;
-				margin-top: 0.6rem;
-				padding: 0 2.4rem;
-				font-size: 1.3rem;
-				line-height: 1.8rem;
-				position: relative;
-				z-index: 1;
-				a.ma-active-artist-name {
-					span {
-						@include transition-effect(0.1s);
-						@include hoverMainColor;
-					}
-				}
-			}
-
 			.ma-active-position {
 				position: absolute;
 				top: 19.2rem;

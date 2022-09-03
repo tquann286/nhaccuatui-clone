@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react'
 
 import { CommonPlaylist, Footer, LoadingV2, MainColCate, NotFoundV2, PagiCommon, Title } from 'components'
 import { useStore } from 'store'
-import { isEmpty } from 'lodash'
 import { IoIosCloseCircle } from 'react-icons/io'
 import { getCollectionRes } from 'services/Playlist/Collection'
 import { Grid } from '@mui/material'
@@ -69,7 +68,7 @@ const Collection = () => {
       <div className='pt-10 common-paddingLR relative'>
         <MainColCate {...mainColCateProps} />
         <div className='mt-16 font-bold color-0-88 text-md flex items-center'>
-          {isEmpty(colCate) ? defineLang('Tất cả tuyển tập', 'All Collections') : 'Tags: '}
+          {colCate.length === 0 ? defineLang('Tất cả tuyển tập', 'All Collections') : 'Tags: '}
           {colCate.map((cate) => {
             const { value } = cate
 

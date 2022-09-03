@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-import { isEmpty } from 'lodash'
 import { BlurImg, Top3List } from 'components'
 import { LineChart, Line, CartesianGrid, XAxis, Tooltip, ResponsiveContainer } from 'recharts'
 
@@ -9,15 +8,10 @@ import { Grid, Tooltip as MuiTooltip, IconButton } from '@mui/material'
 import { defineColor } from 'services/Common/Top3Realtime'
 import { BsFillPlayCircleFill } from 'react-icons/bs'
 
-const Top3Realtime = ({ top3, defineLang, showTop3, styles, actions, state, dispatch }) => {
+const Top3Realtime = ({ top3 = [], defineLang, showTop3, styles, actions, state, dispatch }) => {
   const [activeItem, setActiveItem] = useState(0)
 
-  useEffect(() => {
-    if (!isEmpty(top3)) {
-    }
-  }, [top3])
-
-  if (isEmpty(top3)) return null
+  if (top3.length === 0) return null
 
   const blurImgProps = {
     img: top3[activeItem]?.thumbnail,

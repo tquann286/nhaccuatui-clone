@@ -1,7 +1,6 @@
-import { auth, db } from 'config/firebase'
+import { auth } from 'config/firebase'
 import { addFavSong, addFavPlaylist, addFavVideo, getUserDetail } from 'services/firebase/firestore'
 import { toastNotify } from 'share/toast'
-import { isEmpty } from 'lodash'
 
 export const handleAddToFavSong = async (songId, defineLang) => {
   if (auth.currentUser) {

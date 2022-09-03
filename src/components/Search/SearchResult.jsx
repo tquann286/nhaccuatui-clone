@@ -4,12 +4,12 @@ import { NotFound } from 'pages'
 import notfoundImg from 'images/not_found.png'
 
 import { getSearchResult, searchResultNavbar } from 'services/Search/SearchResult'
-import { isEmpty } from 'lodash'
+import { isEmptyObject } from 'share'
 
 const SearchResult = ({ searchQuery, searchTerm, defineLang, isLoading, setIsLoading, favPlaylists }) => {
   const [searchResult, setSearchResult] = useState(null)
   const [currentCate, setCurrentCate] = useState('all')
-
+  
   const handleCateChange = (value) => {
     setCurrentCate(value)
   }
@@ -30,8 +30,6 @@ const SearchResult = ({ searchQuery, searchTerm, defineLang, isLoading, setIsLoa
     getSearchResultState()
   }, [searchQuery])
 
-  const isActiveCate = (cate) => currentCate === cate
-
   if (isLoading) return <Loading />
 
   if (searchResult) searchResult.status === 'error' && <NotFound />
@@ -47,13 +45,14 @@ const SearchResult = ({ searchQuery, searchTerm, defineLang, isLoading, setIsLoa
   }
 
   if (searchResult) {
-    const { recommend, search } = searchResult
-
+    const { recommend = {}, search = {} } = searchResult
+    console.log('searchResult: ', searchResult)
+console.log(isEmptyObject(recommend))
     return (
       <div className='search-result-container'>
         <Navbar { ... navbarProps } />
         <div className='sr-main'>
-          {isEmpty(recommend) && isEmpty(search.song.song) && isEmpty(search.playlist.playlist) && isEmpty(search.video.video) ? (
+          {isEmptyObject(recommend) && search.song?.song?.length !== 0 && search.playlist?.playlist?.length !== 0  && search.video?.video?.length !== 0 ? (
             <div className='search-not-found'>
               <img src={notfoundImg} alt='Page not found' />
               <p className='notfound-title color-0-6'>{defineLang(`Không có kết quả nào cho ${searchTerm || searchQuery}. Hãy kiểm tra lại chính tả của từ khoá`, `No results for ${searchTerm || searchQuery}. Please check the spelling of keyword`)}</p>
@@ -62,8 +61,8 @@ const SearchResult = ({ searchQuery, searchTerm, defineLang, isLoading, setIsLoa
             <React.Fragment>
               {currentCate === 'all' && (
                 <React.Fragment>
-                  {isEmpty(recommend) || <TopResult {...recommend} defineLang={defineLang} favPlaylists={favPlaylists} />}
-                  {isEmpty(search) || <SearchDetail {...search} defineLang={defineLang} />}
+                  {isEmptyObject(recommend) || <TopResult {...recommend} defineLang={defineLang} favPlaylists={favPlaylists} />}
+                  {isEmptyObject(search) || <SearchDetail {...search} defineLang={defineLang} />}
                 </React.Fragment>
               )}
               {currentCate === 'song' && <SongResult {...commonProps} />}

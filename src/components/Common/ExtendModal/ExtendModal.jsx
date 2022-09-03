@@ -7,9 +7,8 @@ import { FaRegTrashAlt } from 'react-icons/fa'
 
 import { useStore } from 'store'
 import { auth } from 'config/firebase'
-import { isEmpty } from 'lodash'
 
-const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong, refMapping, handleRefMapping, removeFav, handleRemoveFav, removeHistory, handleRemoveHistory }) => {
+const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToSong, handleGoToSong, refMapping = [], handleRefMapping, removeFav, handleRemoveFav, removeHistory, handleRemoveHistory }) => {
   const [state] = useStore()
   const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
 
@@ -52,7 +51,7 @@ const ExtendModal = ({ addToFav, handleAddToFav, copyLink, handleCopyLink, goToS
             <span>{defineLang('Bỏ thích', 'Remove favorite')}</span>
           </li>
         )}
-        {isEmpty(refMapping) || (
+        {refMapping.length === 0 || (
           <li className='hover-bg-color-0-05' onClick={(e) => onHandleRefMapping(e)}>
             <SiAudiomack />
             <span>{defineLang('Nghe audio', 'Play audio')}</span>

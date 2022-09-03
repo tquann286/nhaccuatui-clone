@@ -6,7 +6,6 @@ import { Player } from 'react-tuby'
 import 'react-tuby/css/main.css'
 
 import { CircleTitleArtist, LyricDetail, Provider, Sharing, UploadBy, ViewDate } from 'components'
-import { isEmpty } from 'lodash'
 import { IconButton, Tooltip } from '@mui/material'
 import { BsBookmarkPlus } from 'react-icons/bs'
 import { handleAddToFavVideo } from 'share/addToFav'
@@ -46,7 +45,7 @@ const VideoMain = ({ defineLang, videoDetail, autoplay }) => {
   return (
     <div className='w-[calc(100%_-_35.2rem)] transition-all duration-300'>
       <div className='relative w-full'>
-        <div className='text-sm bg-color-0-05'>{isEmpty(streamUrls) || <Player {...playerProps}>
+        <div className='text-sm bg-color-0-05'>{streamUrls.length === 0 || <Player {...playerProps}>
           {(ref, props) => <video ref={ref} {...props} autoPlay onCanPlay={(e) => e.target.play()} onEnded={handleNextVideo} />}
         </Player>}</div>
         <div>

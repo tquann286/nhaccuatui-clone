@@ -2,14 +2,13 @@ import React from 'react'
 
 import { BallCheckbox, VideoRow } from 'components'
 import Grid from '@mui/material/Grid'
-import { isEmpty } from 'lodash'
 
 const NextVideos = ({ defineLang, videoDetail, autoplay, toggleAutoplay }) => {
 
   const { maybeLike = {} } = videoDetail
   const { data: rcmVideos = [] }  = maybeLike
 
-  if (isEmpty(rcmVideos)) return null
+  if (rcmVideos.length === 0) return null
   
   return (
     <div className='w-[33.6rem] mx-16px '>

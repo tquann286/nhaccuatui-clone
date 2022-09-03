@@ -1,12 +1,13 @@
 import React, { useState, useEffect, memo } from 'react'
 import { Link } from 'react-router-dom'
-import { cloneDeep } from 'lodash'
 import { BsPlayCircleFill } from 'react-icons/bs'
 
 import { detectZ } from 'services/MusicCard'
-import { createSongUrl, createArtistUrl, createTop20Url, handlePlayNewSong } from 'share/utilities'
+import { createSongUrl, createTop20Url, handlePlayNewSong } from 'share/utilities'
+import { CommonArtist } from 'components'
+import { deepCopy } from 'share'
 
-const MusicCard = ({ keyId, region, song, bgImage, category, defineLang, actions, dispatch, curPlaylist }) => {
+const MusicCard = ({ region, song, bgImage, category, defineLang, actions, dispatch, curPlaylist }) => {
   const [topThreeSong, setTopThreeSong] = useState([])
   const [activeSong, setActiveSong] = useState({})
 
@@ -14,7 +15,7 @@ const MusicCard = ({ keyId, region, song, bgImage, category, defineLang, actions
 
   useEffect(() => {
     if (song) {
-      const topSong = cloneDeep(song)
+      const topSong = deepCopy(song)
       setTopThreeSong(topSong.slice(0, 3))
       setActiveSong(topSong[0])
     }
@@ -58,23 +59,7 @@ const MusicCard = ({ keyId, region, song, bgImage, category, defineLang, actions
       <div className='ma-active-title'>
         <Link to={createSongUrl(title, songKey)}>{title}</Link>
       </div>
-
-      {artists && (
-        <div className='ma-active-artists color-0-5'>
-          {artists.map((artist, index) => {
-            const { artistId, name, shortLink } = artist
-
-            return (
-              <React.Fragment key={artistId}>
-                <Link to={createArtistUrl(name, shortLink)} className='ma-active-artist-name'>
-                  <span>{name}</span>
-                </Link>
-                {index + 1 === artists.length ? '' : ', '}
-              </React.Fragment>
-            )
-          })}
-        </div>
-      )}
+      <CommonArtist styles='px-24px' artists={artists} />
       <div className='ma-watch-all border-0-1 color-0-5'>
         <Link to={createTop20Url(category)}>{defineLang('Xem tất cả', 'Full Chart')}</Link>
       </div>

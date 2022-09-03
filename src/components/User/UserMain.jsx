@@ -6,7 +6,7 @@ import { useStore } from 'store'
 import { auth } from 'config/firebase'
 import { getUserDetail } from 'services/firebase/firestore'
 import { Button } from '@mui/material'
-import { isEmpty } from 'lodash'
+import { isEmptyObject } from 'share'
 
 const UserMain = () => {
   const [state] = useStore()
@@ -71,7 +71,7 @@ const UserMain = () => {
               <InfoField title={defineLang('Tên đăng nhập', 'User name')} value={displayName} styles='mt-16px' />
               <InfoField title='Email' value={email} extraComp={<IsVerify {...isVerifyProps} />} />
               <InfoField title={defineLang('Sinh nhật', 'Birthday')} value={birthday ? new Date(birthday).toLocaleDateString() : defineLang('Chưa cập nhật', 'Not Update')} />
-              <InfoField title={defineLang('Giới tính', 'Gender')} value={isEmpty(gender) ? defineLang('Chưa cập nhật', 'Not Update') : defineLang(gender.vi, gender.en)} />
+              <InfoField title={defineLang('Giới tính', 'Gender')} value={isEmptyObject(gender) ? defineLang('Chưa cập nhật', 'Not Update') : defineLang(gender.vi, gender.en)} />
               <InfoField title={defineLang('Địa chỉ', 'Address')} value={address || defineLang('Chưa cập nhật', 'Not Update')} />
               <InfoField title={defineLang('Địa chỉ', 'Address')} value={address || defineLang('Chưa cập nhật', 'Not Update')} />
               <InfoField title={defineLang('Thành phố', 'City')} value={city || defineLang('Chưa cập nhật', 'Not Update')} />
