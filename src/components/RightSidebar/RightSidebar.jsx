@@ -2,13 +2,13 @@ import React, { useState, useEffect, useCallback, useRef } from 'react'
 import './RightSidebar.scss'
 
 import { NoPlayingSong, PlayingSongMain, SongController } from 'components'
-import { getPlayingSong, handlePlayNewSong } from 'share/utilities'
+import { getPlayingSong, getPlayingSongIndex, handlePlayNewSong } from 'share/utilities'
 import { useStore, actions } from 'store'
 import { getListSongsKey, getMaybeLike, getSongsView } from 'share/utilities'
 
 const RightSidebar = () => {
   const [state, dispatch] = useStore()
-  const { lang, playingSongId, curPlaylist = [] } = state
+  const { lang, playingSongId = '', curPlaylist = [] } = state
 
   const [playingSong, setPlayingSong] = useState(null)
   const [songsView, setSongsView] = useState({})
@@ -59,10 +59,7 @@ const RightSidebar = () => {
     if (random) {
       handleRandomSong()
     } else {
-      let playingSongIndex
-      curPlaylist.forEach((song, index) => {
-        if (song.key === playingSongId) playingSongIndex = index
-      })
+      const playingSongIndex = getPlayingSongIndex(playingSongId, curPlaylist)
 
       if ((playingSongIndex && playingSongIndex !== curPlaylist.length - 1) || playingSongIndex === 0) {
         handlePlayNewSong(curPlaylist[playingSongIndex + 1].key, dispatch, actions, curPlaylist, false, defineLang)
@@ -76,10 +73,7 @@ const RightSidebar = () => {
     if (random) {
       handleRandomSong()
     } else {
-      let playingSongIndex
-      curPlaylist.forEach((song, index) => {
-        if (song.key === playingSongId) playingSongIndex = index
-      })
+      const playingSongIndex = getPlayingSongIndex(playingSongId, curPlaylist)
 
       if (playingSongIndex) {
         handlePlayNewSong(curPlaylist[playingSongIndex - 1].key, dispatch, actions, curPlaylist, false, defineLang)

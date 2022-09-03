@@ -70,7 +70,7 @@ const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', a
                     </div>
                     <div className='w3-rest pr-8px' onClick={() => handlePlayNewSong(song.key, dispatch, actions, curPlaylist, false, defineLang)}>
                       <div className='w-fit max-w-full text-sm font-semibold color-0-88 truncate transition-colors hoverMainColor' title={song.title}>
-                        <Link to={createSongUrl(song.title, song.key)}>{song.title}</Link>
+                        <Link to={createSongUrl(song.title, song.key)} onClick={(e) => e.stopPropagation()}>{song.title}</Link>
                       </div>
                       <CommonArtist artists={song.artists} />
                     </div>

@@ -236,7 +236,7 @@ export const getMaybeLike = async (key, type, size = 12) => {
 export const getPlayingSong = async (songId) => {
   try {
     const songDetail = await getInfo(songId, 'song')
-    
+
     if (songDetail) return songDetail.song
   } catch (error) {
     console.log(error)
@@ -297,6 +297,16 @@ export const handleSourceUrl = (streamUrls = []) =>
       url: stream.streamUrl,
     }))
 
+// Get playing song index
+export const getPlayingSongIndex = (playingSongId = '', curPlaylist = []) => {
+  let playingSongIndex
+  curPlaylist.forEach((song, index) => {
+    if (song.key === playingSongId) playingSongIndex = index
+  })
+
+  return playingSongIndex
+}
+
 // Handle play new song
 export const handlePlayNewSong = async (songId, dispatch, actions, curPlaylist, getNewPlaylist, defineLang) => {
   if (songId) {
@@ -311,7 +321,10 @@ export const handlePlayNewSong = async (songId, dispatch, actions, curPlaylist, 
       }
     } else {
       toastNotify(defineLang('Bài hát hiện không có sẵn, vui lòng thử lại sau.', 'The song is currently not available, please try again later.'))
-      dispatch(actions.setCurPlaylist(curPlaylist.filter(song => song.key !== songId)))
+      dispatch(actions.setCurPlaylist(curPlaylist.filter((song) => song.key !== songId)))
+      if (!getNewPlaylist) {
+        handlePlayNewSong(curPlaylist[getPlayingSongIndex(songId, curPlaylist) + 1].key, dispatch, actions, curPlaylist, false, defineLang)
+      }
     }
   }
 }
