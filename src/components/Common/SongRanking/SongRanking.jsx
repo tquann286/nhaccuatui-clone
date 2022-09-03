@@ -5,13 +5,13 @@ import no_song_img from 'images/default/default_song.png'
 import { CommonArtist, ExtendModal, Image, ModalAnimate, OptionModal, RankPosition } from 'components'
 import IconButton from '@mui/material/IconButton'
 import { IoMdArrowDropdown, IoMdArrowDropup, IoMdMore } from 'react-icons/io'
-import { createSongUrl, handleCopySong, handlePlayNewSong } from 'share/utilities'
+import { createSongUrl, createVideoUrl, handleCopySong, handlePlayNewSong } from 'share/utilities'
 import { handleAddToFavSong, handleAddToFavVideo } from 'share/addToFav'
 import { basicModal } from 'share/animation'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import { useStore, actions } from 'store'
 
-const SongRanking = ({ songKey, position, defineLang, artists, thumbnail, title, isVideo, hasRanking, highestPosition, oldPosition, totalWeekInRanked, showDetail }) => {
+const SongRanking = ({ songKey = '', position = 0, defineLang, artists = [], thumbnail = '', title = '', isVideo, hasRanking, highestPosition = 0, oldPosition = 0, totalWeekInRanked = 0, showDetail }) => {
   const [state, dispatch] = useStore()
   const navigate = useNavigate()
   const [showMore, setShowMore] = useState(false)
@@ -68,7 +68,7 @@ const SongRanking = ({ songKey, position, defineLang, artists, thumbnail, title,
   const extendModalProps = {
     copyLink: true,
     handleCopyLink: (e) => onCopyLink(e),
-    goToSong: true,
+    goToSong: true && !isVideo,
     handleGoToSong: (e) => handleGoToSong(e),
     addToFav: true,
     handleAddToFav: (e) => handleAddToFav(e),
@@ -106,12 +106,24 @@ const SongRanking = ({ songKey, position, defineLang, artists, thumbnail, title,
 
   const rankPositionProps = { highestPosition, oldPosition, totalWeekInRanked, defineLang }
 
+  const handleClickNewSong = () => {
+    if (!isVideo) {
+      handlePlayNewSong(songKey, dispatch, actions, state.curPlaylist, true, defineLang)
+    }
+  }
+
+  const handleClickNavigate = () => {
+    if (isVideo) {
+      navigate(createVideoUrl(songKey, title, artists))
+    }
+  }
+
   return (
     <div className={`h-56px mx-32px mb-1 w3-row transition-height will-change-height ${showRanking && 'h-144px'}`}>
       <div className='w3-col w-32px h-32px bg-color-0-02 text-center mt-12px mr-8px text-13px color-0-5 rounded-circle leading-32px'>{position}</div>
-      <div className='w3-rest h-full bg-color-0-02 hover-bg-color-0-05 rounded-4px transition-colors cursor-pointer group' onClick={() => handlePlayNewSong(songKey, dispatch, actions, state.curPlaylist, true, defineLang)}>
+      <div className='w3-rest h-full bg-color-0-02 hover-bg-color-0-05 rounded-4px transition-colors cursor-pointer group' onClick={handleClickNewSong}>
         <div className='h-16 mt-8px mr-24px mb-16px ml-16px w3-row'>
-          <div className={`w3-col h16 w-16 useBorder border-0-1 rounded mr-16px ${isVideo ? 'w-72px' : ''}`}>
+          <div className={`w3-col h16 w-16 useBorder border-0-1 rounded mr-16px ${isVideo ? 'w-72px' : ''}`} onClick={handleClickNavigate}>
             <Image className='w-full h-full rounded-2px' {...imageProps} />
           </div>
           {hasRanking && (
@@ -132,7 +144,7 @@ const SongRanking = ({ songKey, position, defineLang, artists, thumbnail, title,
             </IconButton>
           </div>
           <div className='w3-rest overflow-hidden'>
-            <div className='w-fit h-20px leading-20px max-w-full text-13px font-semibold truncate color-0-88 hover:!text-main transition-colors' title={title}>
+            <div className='w-fit h-20px leading-20px max-w-full text-13px font-semibold truncate color-0-88 hover:!text-main transition-colors' title={title} onClick={handleClickNavigate}>
               {title}
             </div>
             <CommonArtist artists={artists} styles={artistStyles} />

@@ -29,7 +29,7 @@ const SongHistory = ({ defineLang, currentUser = {} }) => {
 
   useEffect(() => {
     try {
-      if (historySongs) {
+      if (historySongs.length !== 0) {
         const getSongsViewState = async (historySongsKey) => {
           const songsView = await getSongsView(historySongsKey)
           setSongsView(songsView)

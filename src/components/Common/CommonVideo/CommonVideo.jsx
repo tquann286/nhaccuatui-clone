@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './CommonVideo.scss'
 
 import { CommonArtist, VideoOverlay } from 'components'
-import { createVideoUrl } from 'share/utilities'
+import { createVideoUrl, handlePlayNewSong } from 'share/utilities'
 
-import { useStore } from 'store'
+import { useStore, actions } from 'store'
 import { handleAddToFavVideo } from 'share/addToFav'
 
-const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title, videoHeight, addToFav, removeFav, handleRemoveFav, removeHistory, handleRemoveHistory }) => {
+const CommonVideo = ({ keyId = '', artists = [], duration, refMapping = [], thumbnail = '', title = '', videoHeight, addToFav, removeFav, handleRemoveFav, removeHistory, handleRemoveHistory }) => {
   const navigate = useNavigate()
 
-  const [state] = useStore()
-  const defineLang = (vie, eng) => (state.lang === 'vi' ? vie : eng)
+  const [state, dispatch] = useStore()
+  const defineLang = useCallback((vie, eng) => (state.lang === 'vi' ? vie : eng), [state.lang])
 
   const onNavigateVideo = () => {
     navigate(createVideoUrl(keyId, title, artists))
@@ -20,6 +20,12 @@ const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title, v
 
   const handleAddToFav = () => {
     handleAddToFavVideo(keyId, defineLang)
+  }
+
+  const handleRefMapping = () => {
+    if (refMapping.length !== 0) {
+      handlePlayNewSong(refMapping[0].refKey, dispatch, actions, state.curPlaylist, true, defineLang)
+    }
   }
 
   const videoOverlayProps = {
@@ -31,6 +37,7 @@ const CommonVideo = ({ keyId, artists, duration, refMapping, thumbnail, title, v
     artists,
     defineLang,
     refMapping,
+    handleRefMapping,
     handleAddToFav,
     addToFav,
     removeFav,

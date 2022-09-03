@@ -33,7 +33,7 @@ const SongFav = ({ defineLang, currentUser = {} }) => {
 
   useEffect(() => {
     try {
-      if (favSongs) {
+      if (favSongs.length !== 0) {
         const getSongsViewState = async (favSongsKey) => {
           const songsView = await getSongsView(favSongsKey)
           setSongView(songsView)

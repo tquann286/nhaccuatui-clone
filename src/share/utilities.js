@@ -308,7 +308,7 @@ export const getPlayingSongIndex = (playingSongId = '', curPlaylist = []) => {
 }
 
 // Handle play new song
-export const handlePlayNewSong = async (songId, dispatch, actions, curPlaylist, getNewPlaylist, defineLang) => {
+export const handlePlayNewSong = async (songId = '', dispatch, actions, curPlaylist = [], getNewPlaylist, defineLang) => {
   if (songId) {
     const tempSong = await getPlayingSong(songId)
 
@@ -323,7 +323,13 @@ export const handlePlayNewSong = async (songId, dispatch, actions, curPlaylist, 
       toastNotify(defineLang('Bài hát hiện không có sẵn, vui lòng thử lại sau.', 'The song is currently not available, please try again later.'))
       dispatch(actions.setCurPlaylist(curPlaylist.filter((song) => song.key !== songId)))
       if (!getNewPlaylist) {
-        handlePlayNewSong(curPlaylist[getPlayingSongIndex(songId, curPlaylist) + 1].key, dispatch, actions, curPlaylist, false, defineLang)
+        const nextSongIndex = getPlayingSongIndex(songId, curPlaylist)
+
+        if (nextSongIndex === curPlaylist.length - 1) {
+          handlePlayNewSong(curPlaylist[0].key, dispatch, actions, curPlaylist, false, defineLang)
+        } else {
+          handlePlayNewSong(curPlaylist[nextSongIndex + 1].key, dispatch, actions, curPlaylist, false, defineLang)
+        }
       }
     }
   }

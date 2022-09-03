@@ -9,7 +9,7 @@ import { BsPlayCircleFill } from 'react-icons/bs'
 import { IoMdMore } from 'react-icons/io'
 import { handleCopyVideo } from 'share/utilities'
 
-const VideoOverlay = ({ imageUrl, title, duration, artists, keyId, handleNagivate, handleAddToFav, defineLang, refMapping, addToFav, removeFav, handleRemoveFav, removeHistory, handleRemoveHistory }) => {
+const VideoOverlay = ({ imageUrl = '', title = '', duration = '', artists = [], keyId = '', handleNagivate, handleAddToFav, defineLang, refMapping = [], handleRefMapping, addToFav, removeFav, handleRemoveFav, removeHistory, handleRemoveHistory }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
 
   const positionRef = useRef(null)
@@ -47,6 +47,12 @@ const VideoOverlay = ({ imageUrl, title, duration, artists, keyId, handleNagivat
     toggleShowMore()
   }
 
+  const onHandleRefMapping = (e) => {
+    e.stopPropagation()
+    handleRefMapping()
+    toggleShowMore()
+  }
+
   const optionModalProps = {
     showModal: showMoreOptions,
     positionRef,
@@ -62,10 +68,11 @@ const VideoOverlay = ({ imageUrl, title, duration, artists, keyId, handleNagivat
 
   const extendModalProps = {
     copyLink: true,
-    handleCopyLink: (e) => onCopyVideo(e),
+    handleCopyLink: onCopyVideo,
     refMapping,
+    handleRefMapping: onHandleRefMapping,
     addToFav: addToFav === false ? false : true,
-    handleAddToFav: (e) => onAddToFav(e),
+    handleAddToFav: onAddToFav,
     removeFav,
     handleRemoveFav: onRemoveFav,
     removeHistory,
