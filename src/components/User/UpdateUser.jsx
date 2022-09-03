@@ -6,9 +6,14 @@ import { storage } from 'config/firebase'
 import { ref } from 'firebase/storage'
 import { toastNotify } from 'share/toast'
 
-const UpdateUser = ({ defineLang, photoURL = '', displayName = '' }) => {
+const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', address = '', phoneNumber = '', introduce = '' }) => {
   const [tempAvatar, setTempAvatar] = useState(photoURL)
   const [tempUsername, setTempUsername] = useState(displayName)
+  const [tempAddress, setTempAddress] = useState(address)
+  const [tempPhoneNumber, setTempPhoneNumber] = useState(phoneNumber)
+
+  const [tempIntroduce, setTempIntroduce] = useState(introduce)
+  const [isFocusIntro, setIsFocusIntro] = useState(false)
 
   const handleTempImage = (e) => {
     if (e.target.files[0]) {
@@ -27,7 +32,38 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '' }) => {
     label: defineLang('Tên tài khoản', 'Username'),
     value: tempUsername,
     setValue: setTempUsername,
-    placeholder: defineLang('Tên tài khoản', 'Username'),
+  }
+
+  const emailInputProps = {
+    label: 'Email',
+    value: email,
+    extInputProps: {
+      disabled: true,
+    },
+  }
+
+  const addressInputProps = {
+    label: defineLang('Địa chỉ', 'Address'),
+    value: tempAddress,
+    setValue: setTempAddress,
+  }
+
+  const phoneInputProps = {
+    label: defineLang('Số điện thoại', 'Phone number'),
+    value: tempPhoneNumber,
+    setValue: setTempPhoneNumber,
+  }
+
+  const introTextareaProps = {
+    className: `text-13px bg-color-0-02 font-medium w-full h-full color-0-88 pl-4 outline-0 p-16px rounded-4px useBorder resize-none ${isFocusIntro && '!border-main'}`,
+    onFocus: () => setIsFocusIntro(true),
+    onBlur: () => setIsFocusIntro(false),
+    label: defineLang('Giới thiệu', 'Introduce'),
+    value: tempIntroduce,
+    onChange: (e) => setTempIntroduce(e.target.value),
+    placeholder: defineLang('Giới thiệu', 'Introduce'),
+    rows: 3,
+    spellcheck: false,
   }
 
   return (
@@ -46,7 +82,18 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '' }) => {
             </label>
           </div>
         </div>
-        <InputField { ... usernameInputProps } />
+        <InputField {...usernameInputProps} />
+        <InputField {...emailInputProps} />
+        <InputField {...addressInputProps} />
+        <InputField {...phoneInputProps} />
+        <div className='update-user-field'>
+          <p className='update-user-label'>{defineLang('Giới thiệu', 'Introduce')}:</p>
+          <div className='update-user-input'>
+            <div className='w-360px h-32'>
+              <textarea { ... introTextareaProps } />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

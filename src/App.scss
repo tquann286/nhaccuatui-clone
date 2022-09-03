@@ -238,6 +238,10 @@ textarea {
   margin: 0;
 }
 
+textarea {
+  overflow: hidden;
+}
+
 input,
 select {
   vertical-align: middle;
