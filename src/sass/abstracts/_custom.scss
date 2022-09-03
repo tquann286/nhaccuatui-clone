@@ -30,4 +30,8 @@
   .update-user-field {
     @apply flex items-center mb-8px;
   }
+
+  .main-title {
+    @apply text-xl font-bold color-0-88 hoverMainColor capitalize transition-colors inline-block;
+  }
 }

@@ -1,26 +1,29 @@
+import Grid from '@mui/material/Grid'
+import { CommonVideo } from 'components'
 import { Link } from 'react-router-dom'
-import './NewVideo.scss'
+import { getSlideVideos } from 'share/utilities'
 
-import VideoDetail from './VideoDetail'
-
-const NewVideo = ({ videos }) => {
-
+const NewVideo = ({ videos = [] }) => {
   return (
-    <div className="nv-container">
-      <div className="nv-title">
-        <Link to='video-hot'>Hot video</Link>
+    <div className='nv-container'>
+      <div className='mt-16 ml-32px main-title'>
+        <Link to='/video'>Hot video</Link>
       </div>
-      <div className="nv-main">
-        <div className="nv-large-videos">
-          {videos.slice(0, 2).map(video => (
-            <VideoDetail { ... video } keyId={video.key} height={210} />
+      <div className='mt-16px mx-32px'>
+        <Grid container spacing={2}>
+          {getSlideVideos(videos, 'big').map((video) => (
+            <Grid key={video.key} item xs={6} sm={6} md={6} lg={6} xl={4}>
+              <CommonVideo {...video} keyId={video.key} />
+            </Grid>
           ))}
-        </div>
-        <div className="nv-small-videos">
-        {videos.slice(2, 6).map(video => (
-          <VideoDetail { ... video } keyId={video.key} height={120} />
-        ))}
-        </div>
+        </Grid>
+        <Grid container spacing={2}>
+          {getSlideVideos(videos, 'small').map((video) => (
+            <Grid key={video.key} item xs={3} sm={3} md={3} lg={3} xl={2}>
+              <CommonVideo {...video} keyId={video.key} />
+            </Grid>
+          ))}
+        </Grid>
       </div>
     </div>
   )

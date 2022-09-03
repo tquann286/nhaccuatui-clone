@@ -38,7 +38,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 
   return (
     <div className='nr-container'>
-      <Link to='/' className='nr-title'>
+      <Link to='/bai-hat' className='nr-title'>
         {lang === 'vi' ? 'Mới phát hành' : 'New Releases'}
       </Link>
       <div className='nr-main'>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import './Song.scss'
 import { Link } from 'react-router-dom'
 
 import { getSongsView, getListSongsKey } from 'share/utilities'
@@ -41,8 +40,8 @@ const Song = ({ song: songList = [] }) => {
 
   return (
     <div className='so-container'>
-      <div className='so-title'>
-        <Link to='kham-pha/moi-hot'>{defineLang('Bài hát', 'Song')}</Link>
+      <div className='mt-16 ml-32px main-title'>
+        <Link to='/kham-pha/moi-hot'>{defineLang('Bài hát', 'Song')}</Link>
       </div>
       <div
         className='mt-16px mx-32px'
@@ -59,9 +58,4 @@ const Song = ({ song: songList = [] }) => {
   )
 }
 
-// <div className='so-main'>
-// {songList.map((song) => (
-//   <SongDetail { ... songDetailProps } {...song} songId={song.key} songView={songsView ? songsView[song.key] : 0} />
-// ))}
-// </div>
 export default Song
