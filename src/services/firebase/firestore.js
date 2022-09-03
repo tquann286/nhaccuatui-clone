@@ -1,5 +1,6 @@
-import { auth, db } from 'config/firebase'
+import { auth, db, storage } from 'config/firebase'
 import { setDoc, updateDoc, arrayUnion, arrayRemove, doc, deleteField, getDoc } from 'firebase/firestore'
+
 import { DEFAULT_IMAGE } from 'share/constants'
 import { toastNotify } from 'share/toast'
 
@@ -157,7 +158,7 @@ export const getUserDetail = async () => {
 export const addSongHistory = async (songId) => {
   if (auth.currentUser) {
     const currentUserRef = doc(db, 'users', auth.currentUser.uid)
-  
+
     updateDoc(currentUserRef, {
       'history.songs': arrayUnion(songId),
     })
@@ -167,7 +168,7 @@ export const addSongHistory = async (songId) => {
 export const addPlaylistHistory = async (playlistId) => {
   if (auth.currentUser) {
     const currentUserRef = doc(db, 'users', auth.currentUser.uid)
-  
+
     updateDoc(currentUserRef, {
       'history.playlists': arrayUnion(playlistId),
     })
@@ -177,7 +178,7 @@ export const addPlaylistHistory = async (playlistId) => {
 export const addVideoHistory = async (videoId) => {
   if (auth.currentUser) {
     const currentUserRef = doc(db, 'users', auth.currentUser.uid)
-  
+
     updateDoc(currentUserRef, {
       'history.videos': arrayUnion(videoId),
     })
