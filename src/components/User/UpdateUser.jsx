@@ -51,7 +51,11 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
   const phoneInputProps = {
     label: defineLang('Số điện thoại', 'Phone number'),
     value: tempPhoneNumber,
-    setValue: setTempPhoneNumber,
+    extInputProps: {
+      type: 'number',
+      max: 11,
+      onChange: (e) => e.target.value.length < 12 && setTempPhoneNumber(e.target.value)
+    }
   }
 
   const introTextareaProps = {
