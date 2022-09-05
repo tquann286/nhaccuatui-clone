@@ -3,6 +3,7 @@ import { setDoc, updateDoc, arrayUnion, arrayRemove, doc, deleteField, getDoc } 
 
 import { DEFAULT_IMAGE } from 'share/constants'
 import { toastNotify } from 'share/toast'
+import { updateProfile } from 'firebase/auth'
 
 export const addUser = (docRef, username, email, photoUrl, userId) =>
   setDoc(docRef, {
@@ -182,5 +183,25 @@ export const addVideoHistory = async (videoId) => {
     updateDoc(currentUserRef, {
       'history.videos': arrayUnion(videoId),
     })
+  }
+}
+
+export const updateUserInfo = async (field, data, isUpdateProfile) => {
+  try {
+    if (auth.currentUser) {
+      const currentUserRef = doc(db, 'users', auth.currentUser.uid)
+  
+      if (isUpdateProfile) {
+        updateProfile(auth.currentUser, {
+          [field]: data
+        })
+      } else {
+        updateDoc(currentUserRef, {
+          [field]: data,
+        })
+      }
+    }
+  } catch (error) {
+    console.log(error)
   }
 }

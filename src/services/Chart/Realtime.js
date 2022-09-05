@@ -4,7 +4,7 @@ export const getRealtimeData = async (size) => {
   try {
     const data = await getRealtime(size)
 
-    return data.ranking
+    return data.ranking || []
   } catch (error) {
     console.log(error)
   }

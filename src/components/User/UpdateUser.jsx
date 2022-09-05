@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 
-import { Image, InputField, DropDown, Checkbox } from 'components'
 import no_user_img from 'images/default/default_user.jpg'
+import { Image, InputField, DropDown, Checkbox } from 'components'
 import { dayArr, genderArr, monthArr, yearArr } from 'services/User/UpdateUser'
-import { storage } from 'config/firebase'
-import { ref } from 'firebase/storage'
+import { updateUserInfo } from 'services/firebase/firestore'
 import { toastNotify } from 'share/toast'
 import vnCityProv from 'share/vnCityProv'
 import Button from '@mui/material/Button'
@@ -66,6 +65,18 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
       max: 11,
       onChange: (e) => e.target.value.length < 12 && setTempPhoneNumber(e.target.value),
     },
+  }
+
+  const handleUpdateUser = () => {
+    if (tempAvatar !== photoURL) {
+      // Handle update avatar
+    }
+
+    if (tempUsername !== displayName) {
+      updateUserInfo('displayName', tempUsername, true)
+    }
+
+    setIsUpdateUser(false)
   }
 
   const introTextareaProps = {
@@ -141,7 +152,9 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
             <Button className='w-120px min-w-120px h-16 text-xs mr-8px rounded-4px bg-color-0-05 color-0-5 normal-case hover-bg-color-0-08 font-medium' onClick={() => setIsUpdateUser(false)}>
               {defineLang('Hủy', 'Cancel')}
             </Button>
-            <Button className='w-120px min-w-120px h-16 text-xs ml-28px rounded-4px bg-mainV2 text-slate-100 normal-case font-medium'>{defineLang('Cập nhật', 'Update')}</Button>
+            <Button className='w-120px min-w-120px h-16 text-xs ml-28px rounded-4px bg-mainV2 text-slate-100 normal-case font-medium' onClick={handleUpdateUser}>
+              {defineLang('Cập nhật', 'Update')}
+            </Button>
           </div>
         </div>
       </div>

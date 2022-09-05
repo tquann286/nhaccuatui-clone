@@ -14,7 +14,6 @@ const Realtime = () => {
   const [top3, setTop3] = useState([])
   const [top50, setTop50] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [size, setSize] = useState(10)
 
   useEffect(() => {
     try {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import Grid from '@mui/material/Grid'
 import { getUserVideos } from 'services/User/User'
-import { addVideoHistory, getUserDetail, handleClearAllFav, removeFavItem } from 'services/firebase/firestore'
+import { getUserDetail, handleClearAllFav, removeFavItem } from 'services/firebase/firestore'
 import { CommonVideo, NotFoundV2 } from 'components'
 import { isValid } from 'share/utilities'
 
