@@ -1,7 +1,7 @@
 import React from 'react'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
-const DropDown = ({ value, setValue, array }) => {
+const DropDown = ({ value, setValue, array, styles = '' }) => {
 
   const selectProps = {
     className: 'appearance-none bg-color-0-02 color-0-88 text-13px font-medium px-4 w-full h-full outline-0 useBorder border-0-05 cursor-pointer rounded-4px',
@@ -10,7 +10,7 @@ const DropDown = ({ value, setValue, array }) => {
   }
 
   return (
-    <div className='w-[11.2rem] rounded-4px h-42px ml-12px first:ml-0'>
+    <div className={styles} >
       <div className='relative h-full z-0'>
         <select { ... selectProps }>
           {array.map((option) => (

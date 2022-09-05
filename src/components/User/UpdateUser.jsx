@@ -1,20 +1,26 @@
 import React, { useState } from 'react'
 
-import { Image, InputField, DropDown } from 'components'
+import { Image, InputField, DropDown, Checkbox } from 'components'
 import no_user_img from 'images/default/default_user.jpg'
-import { dayArr, monthArr, yearArr } from 'services/User/UpdateUser'
+import { dayArr, genderArr, monthArr, yearArr } from 'services/User/UpdateUser'
 import { storage } from 'config/firebase'
 import { ref } from 'firebase/storage'
 import { toastNotify } from 'share/toast'
+import vnCityProv from 'share/vnCityProv'
+import Button from '@mui/material/Button'
 
-const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', address = '', phoneNumber = '', introduce = '' }) => {
+const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', address = '', phoneNumber = '', introduce = '', birthday = {}, gender = {}, city = '', setIsUpdateUser }) => {
+  const { day = '', month = '', year = '' } = birthday
+
   const [tempAvatar, setTempAvatar] = useState(photoURL)
   const [tempUsername, setTempUsername] = useState(displayName)
   const [tempAddress, setTempAddress] = useState(address)
   const [tempPhoneNumber, setTempPhoneNumber] = useState(phoneNumber)
-  const [day, setDay] = useState(dayArr[0])
-  const [month, setMonth] = useState(monthArr[0])
-  const [year, setYear] = useState(yearArr[0])
+  const [tempDay, setTempDay] = useState(day || dayArr[0])
+  const [tempMonth, setTempMonth] = useState(month || monthArr[0])
+  const [tempYear, setTempYear] = useState(year || yearArr[0])
+  const [tempCity, setTempCity] = useState(city || vnCityProv[0])
+  const [tempGender, setTempGender] = useState(defineLang(gender.vi, gender.en))
 
   const [tempIntroduce, setTempIntroduce] = useState(introduce)
   const [isFocusIntro, setIsFocusIntro] = useState(false)
@@ -96,21 +102,31 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
           <p className='update-user-label'>{defineLang('Sinh nhật', 'Birthday')}:</p>
           <div className='update-user-input'>
             <div className='w-360px h-16 flex'>
-              <DropDown value={day} setValue={setDay} array={dayArr} />
-              <DropDown value={month} setValue={setMonth} array={monthArr} />
-              <DropDown value={year} setValue={setYear} array={yearArr} />
+              <DropDown value={tempDay} setValue={setTempDay} array={dayArr} styles='w-[11.2rem] rounded-4px h-42px ml-12px first:ml-0' />
+              <DropDown value={tempMonth} setValue={setTempMonth} array={monthArr} styles='w-[11.2rem] rounded-4px h-42px ml-12px first:ml-0' />
+              <DropDown value={tempYear} setValue={setTempYear} array={yearArr} styles='w-[11.2rem] rounded-4px h-42px ml-12px first:ml-0' />
             </div>
           </div>
         </div>
         <div className='update-user-field'>
           <p className='update-user-label'>{defineLang('Giới tính', 'Gender')}:</p>
           <div className='update-user-input'>
-            <div className='w-360px h-16'>
-
+            <div className='w-360px h-16 flex'>
+              {genderArr.map((sex) => (
+                <Checkbox defineLang={defineLang} tempGender={tempGender} value={sex} setValue={setTempGender} />
+              ))}
             </div>
           </div>
         </div>
         <InputField {...addressInputProps} />
+        <div className='update-user-field'>
+          <p className='update-user-label'>{defineLang('Tỉnh/Thành phố', 'Province/City')}:</p>
+          <div className='update-user-input'>
+            <div className='w-360px h-16 flex'>
+              <DropDown value={tempCity} setValue={setTempCity} array={vnCityProv} styles='w-full h-full' />
+            </div>
+          </div>
+        </div>
         <InputField {...phoneInputProps} />
         <div className='update-user-field'>
           <p className='update-user-label'>{defineLang('Giới thiệu', 'Introduce')}:</p>
@@ -118,6 +134,14 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
             <div className='w-360px h-32'>
               <textarea {...introTextareaProps} />
             </div>
+          </div>
+        </div>
+        <div className='update-user-field'>
+          <div className='flex items-center justify-end w-[46.8rem] h-16'>
+            <Button className='w-120px min-w-120px h-16 text-xs mr-8px rounded-4px bg-color-0-05 color-0-5 normal-case hover-bg-color-0-08 font-medium' onClick={() => setIsUpdateUser(false)}>
+              {defineLang('Hủy', 'Cancel')}
+            </Button>
+            <Button className='w-120px min-w-120px h-16 text-xs ml-28px rounded-4px bg-mainV2 text-slate-100 normal-case font-medium'>{defineLang('Cập nhật', 'Update')}</Button>
           </div>
         </div>
       </div>

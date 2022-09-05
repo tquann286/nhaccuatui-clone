@@ -8,6 +8,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         duration: 'linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,0.6))',
+        main: 'linear-gradient(to right,rgb(47,128,237),rgb(0,174,239))',
+        mainV2: 'linear-gradient(90deg,rgba(45,107,237),rgba(0,174,239,0.6))',
       },
       colors: {
         main: '#2daaed',
@@ -51,6 +53,7 @@ module.exports = {
       },
       spacing: {
         unset: 'unset',
+        '3px': '0.3rem',
         '4px': '0.4rem',
         '8px': '0.8rem',
         '12px': '1.2rem',
@@ -81,6 +84,7 @@ module.exports = {
         '240px': '24rem',
         '320px': '32rem',
         '360px': '36rem',
+        '460px': '46rem',
         '2/5': '40%',
         '2/1': '200%',
       },

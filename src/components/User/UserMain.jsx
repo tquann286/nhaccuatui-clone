@@ -16,7 +16,7 @@ const UserMain = () => {
   const { displayName = '', email = '', emailVerified = false, photoURL = '', uid = '' } = currentUser
 
   const [userDetail, setUserDetail] = useState({})
-  const { introduce = '', phoneNumber = '', birthday = 0, gender = {}, address = '', city = '' } = userDetail
+  const { introduce = '', phoneNumber = '', birthday = {}, gender = {}, address = '', city = '' } = userDetail
 
   useEffect(() => {
     const getUserDetailData = async () => {
@@ -40,10 +40,11 @@ const UserMain = () => {
 
   const updateUserProps = {
     defineLang,
+    setIsUpdateUser,
     ...currentUser,
     ...userDetail,
   }
-
+  
   return (
     <div className='commonMainOutlet'>
       <Container>
@@ -68,7 +69,7 @@ const UserMain = () => {
               <div className='mt-28px text-22px font-bold color-0-88'>{defineLang('Thông tin cá nhân', 'Profile')}</div>
               <InfoField title={defineLang('Tên tài khoản', 'Username')} value={displayName} styles='mt-16px' />
               <InfoField title='Email' value={email} extraComp={<IsVerify {...isVerifyProps} />} />
-              <InfoField title={defineLang('Sinh nhật', 'Birthday')} value={birthday ? new Date(birthday).toLocaleDateString() : defineLang('Chưa cập nhật', 'Not Update')} />
+              <InfoField title={defineLang('Sinh nhật', 'Birthday')} value={isEmptyObject(birthday) ? new Date(birthday).toLocaleDateString() : defineLang('Chưa cập nhật', 'Not Update')} />
               <InfoField title={defineLang('Giới tính', 'Gender')} value={isEmptyObject(gender) ? defineLang('Chưa cập nhật', 'Not Update') : defineLang(gender.vi, gender.en)} />
               <InfoField title={defineLang('Địa chỉ', 'Address')} value={address || defineLang('Chưa cập nhật', 'Not Update')} />
               <InfoField title={defineLang('Thành phố', 'City')} value={city || defineLang('Chưa cập nhật', 'Not Update')} />

@@ -16,5 +16,7 @@ const yearArr = arrOfInt(1960, new Date().getFullYear())
 export { dayArr, monthArr, yearArr }
 
 export const genderArr = [
-  'Nam', 'Nữ', 'Khác'
+  { vi: 'Nam', en: 'Male' },
+  { vi: 'Nữ', en: 'Female' },
+  { vi: 'Khác', en: 'Other' },
 ]
