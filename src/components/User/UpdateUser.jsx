@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 
-import { Image, InputField } from 'components'
+import { Image, InputField, DropDown } from 'components'
 import no_user_img from 'images/default/default_user.jpg'
+import { dayArr, monthArr, yearArr } from 'services/User/UpdateUser'
 import { storage } from 'config/firebase'
 import { ref } from 'firebase/storage'
 import { toastNotify } from 'share/toast'
@@ -11,6 +12,9 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
   const [tempUsername, setTempUsername] = useState(displayName)
   const [tempAddress, setTempAddress] = useState(address)
   const [tempPhoneNumber, setTempPhoneNumber] = useState(phoneNumber)
+  const [day, setDay] = useState(dayArr[0])
+  const [month, setMonth] = useState(monthArr[0])
+  const [year, setYear] = useState(yearArr[0])
 
   const [tempIntroduce, setTempIntroduce] = useState(introduce)
   const [isFocusIntro, setIsFocusIntro] = useState(false)
@@ -54,12 +58,12 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
     extInputProps: {
       type: 'number',
       max: 11,
-      onChange: (e) => e.target.value.length < 12 && setTempPhoneNumber(e.target.value)
-    }
+      onChange: (e) => e.target.value.length < 12 && setTempPhoneNumber(e.target.value),
+    },
   }
 
   const introTextareaProps = {
-    className: `text-13px bg-color-0-02 font-medium w-full h-full color-0-88 pl-4 outline-0 p-16px rounded-4px useBorder resize-none ${isFocusIntro && '!border-main'}`,
+    className: `text-13px bg-color-0-02 font-medium w-full h-full color-0-88 pl-4 outline-0 p-16px rounded-4px useBorder border-0-05 resize-none ${isFocusIntro && '!border-main'}`,
     onFocus: () => setIsFocusIntro(true),
     onBlur: () => setIsFocusIntro(false),
     label: defineLang('Giới thiệu', 'Introduce'),
@@ -67,7 +71,7 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
     onChange: (e) => setTempIntroduce(e.target.value),
     placeholder: defineLang('Giới thiệu', 'Introduce'),
     rows: 3,
-    spellcheck: false,
+    spellCheck: false,
   }
 
   return (
@@ -88,13 +92,31 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
         </div>
         <InputField {...usernameInputProps} />
         <InputField {...emailInputProps} />
+        <div className='update-user-field'>
+          <p className='update-user-label'>{defineLang('Sinh nhật', 'Birthday')}:</p>
+          <div className='update-user-input'>
+            <div className='w-360px h-16 flex'>
+              <DropDown value={day} setValue={setDay} array={dayArr} />
+              <DropDown value={month} setValue={setMonth} array={monthArr} />
+              <DropDown value={year} setValue={setYear} array={yearArr} />
+            </div>
+          </div>
+        </div>
+        <div className='update-user-field'>
+          <p className='update-user-label'>{defineLang('Giới tính', 'Gender')}:</p>
+          <div className='update-user-input'>
+            <div className='w-360px h-16'>
+
+            </div>
+          </div>
+        </div>
         <InputField {...addressInputProps} />
         <InputField {...phoneInputProps} />
         <div className='update-user-field'>
           <p className='update-user-label'>{defineLang('Giới thiệu', 'Introduce')}:</p>
           <div className='update-user-input'>
             <div className='w-360px h-32'>
-              <textarea { ... introTextareaProps } />
+              <textarea {...introTextareaProps} />
             </div>
           </div>
         </div>
