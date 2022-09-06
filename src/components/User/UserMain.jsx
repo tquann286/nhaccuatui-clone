@@ -12,30 +12,26 @@ const UserMain = () => {
   const [state] = useStore()
   const defineLang = useCallback((vie, en) => (state.lang === 'vi' ? vie : en), [state.lang])
 
-  const { currentUser } = auth
-  console.log('currentUser: ', currentUser)
-  const { displayName = '', email = '', emailVerified = false, photoURL = '' } = currentUser
-
   const [userDetail, setUserDetail] = useState({})
   console.log('userDetail: ', userDetail)
-  const { introduce = '', phoneNumber = '', birthday = {}, gender = {}, address = '', city = '' } = userDetail
+  const { introduce = '', phoneNumber = '', birthday = {}, gender = {}, address = '', city = '', displayName = '', email = '', emailVerified = false, photoURL = '' } = userDetail
 
   useEffect(() => {
     const getUserDetailData = async () => {
       const userDetail = await getUserDetail()
 
-      setUserDetail(userDetail)
+      setUserDetail({ ... userDetail, ...auth.currentUser})
     }
 
     getUserDetailData()
-  }, [])
+  }, [auth.currentUser])
 
   useTitle(defineLang(`${displayName} | Thông tin cá nhân - NhacCuaTui Clone`, `${displayName} | Personal Information - NhacCuaTui Clone`))
 
   const isVerifyProps = {
     defineLang,
     isVerify: emailVerified,
-    currentUser,
+    currentUser: auth.currentUser,
   }
 
   const [isUpdateUser, setIsUpdateUser] = useState(false)
@@ -43,16 +39,15 @@ const UserMain = () => {
   const updateUserProps = {
     defineLang,
     setIsUpdateUser,
-    ...currentUser,
     ...userDetail,
   }
-  
+
   return (
     <div className='commonMainOutlet'>
       <Container>
         <div className='relative pt-24px px-32px'>
           {isUpdateUser ? (
-            <UpdateUser { ... updateUserProps } />
+            <UpdateUser {...updateUserProps} />
           ) : (
             <div>
               <div className='w3-row h-160px w-full'>
@@ -62,7 +57,9 @@ const UserMain = () => {
                 <div className='w3-rest pl-24px overflow-hidden'>
                   <div className='w-full h-28px text-13px leading-28px color-0-88 font-semibold'>{displayName}</div>
                   <div className='w3-row mt-24px'>
-                    <Button className='w-120px h-32px text-xs mr-8px rounded-4px bg-color-0-05 color-0-5 normal-case' onClick={() => setIsUpdateUser(true)}>{defineLang('Cập nhật', 'Update')}</Button>
+                    <Button className='w-120px h-32px text-xs mr-8px rounded-4px bg-color-0-05 color-0-5 normal-case' onClick={() => setIsUpdateUser(true)}>
+                      {defineLang('Cập nhật', 'Update')}
+                    </Button>
                     <Button className='w-120px h-32px text-xs mr-8px rounded-4px bg-color-0-05 color-0-5 normal-case'>{defineLang('Đổi mật khẩu', 'Change password')}</Button>
                   </div>
                 </div>

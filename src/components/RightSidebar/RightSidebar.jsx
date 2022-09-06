@@ -46,7 +46,7 @@ const RightSidebar = () => {
   const handleRandomSong = () => {
     const randomSongIndex = Math.floor(Math.random() * curPlaylist.length)
 
-    if (tempPlayedSongs.length === curPlaylist.length) setTempPlayedSongs([])
+    if (tempPlayedSongs.length >= curPlaylist.length) setTempPlayedSongs([])
 
     if (tempPlayedSongs.includes(curPlaylist[randomSongIndex].key)) {
       handleRandomSong()
