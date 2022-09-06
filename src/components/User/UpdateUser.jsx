@@ -7,19 +7,20 @@ import { updateUserInfo } from 'services/firebase/firestore'
 import { toastNotify } from 'share/toast'
 import vnCityProv from 'share/vnCityProv'
 import Button from '@mui/material/Button'
+import isEmptyObject from 'share/isEmptyObject'
 
-const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', address = '', phoneNumber = '', introduce = '', birthday = {}, gender = {}, city = '', setIsUpdateUser }) => {
+const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', address = '', phone = '', introduce = '', birthday = {}, gender = {}, city = '', setIsUpdateUser, setCurrentUser, setUserDetail }) => {
   const { day = '', month = '', year = '' } = birthday
 
   const [tempAvatar, setTempAvatar] = useState(photoURL)
   const [tempUsername, setTempUsername] = useState(displayName)
   const [tempAddress, setTempAddress] = useState(address)
-  const [tempPhoneNumber, setTempPhoneNumber] = useState(phoneNumber)
+  const [tempPhone, setTempPhone] = useState(phone)
   const [tempDay, setTempDay] = useState(day || dayArr[0])
   const [tempMonth, setTempMonth] = useState(month || monthArr[0])
   const [tempYear, setTempYear] = useState(year || yearArr[0])
   const [tempCity, setTempCity] = useState(city || vnCityProv[0])
-  const [tempGender, setTempGender] = useState(defineLang(gender.vi, gender.en))
+  const [tempGender, setTempGender] = useState(isEmptyObject(gender) ? genderArr[0] : gender)
 
   const [tempIntroduce, setTempIntroduce] = useState(introduce)
   const [isFocusIntro, setIsFocusIntro] = useState(false)
@@ -59,11 +60,11 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
 
   const phoneInputProps = {
     label: defineLang('Số điện thoại', 'Phone number'),
-    value: tempPhoneNumber,
+    value: tempPhone,
     extInputProps: {
       type: 'number',
       max: 11,
-      onChange: (e) => e.target.value.length < 12 && setTempPhoneNumber(e.target.value),
+      onChange: (e) => e.target.value.length < 12 && setTempPhone(e.target.value),
     },
   }
 
@@ -74,11 +75,42 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
 
     if (tempUsername !== displayName) {
       updateUserInfo('displayName', tempUsername, true)
+      setCurrentUser((prevUser) => ({ ...prevUser, displayName: tempUsername }))
     }
 
+    if (tempDay !== day || tempMonth !== month || tempYear !== year) {
+      updateUserInfo('birthday', { day: tempDay, month: tempMonth, year: tempYear })
+      setUserDetail((prevUser) => ({ ...prevUser, birthday: { day: tempDay, month: tempMonth, year: tempYear } }))
+    }
+
+    if (tempGender !== gender) {
+      updateUserInfo('gender', tempGender)
+      setUserDetail((prevUser) => ({ ...prevUser, gender: tempGender }))
+    }
+
+    if (tempAddress !== address) {
+      updateUserInfo('address', tempAddress)
+      setUserDetail((prevUser) => ({ ...prevUser, address: tempAddress }))
+    }
+
+    if (tempCity !== city) {
+      updateUserInfo('city', tempCity)
+      setUserDetail((prevUser) => ({ ...prevUser, city: tempCity }))
+    }
+
+    if (tempPhone !== phone) {
+      updateUserInfo('phone', tempPhone)
+      setUserDetail((prevUser) => ({ ...prevUser, phone: tempPhone }))
+    }
+
+    if (tempIntroduce !== introduce) {
+      updateUserInfo('introduce', tempIntroduce.trim())
+      setUserDetail((prevUser) => ({ ...prevUser, introduce: tempIntroduce.trim() }))
+    }
+    
     setIsUpdateUser(false)
   }
-
+  
   const introTextareaProps = {
     className: `text-13px bg-color-0-02 font-medium w-full h-full color-0-88 pl-4 outline-0 p-16px rounded-4px useBorder border-0-05 resize-none ${isFocusIntro && '!border-main'}`,
     onFocus: () => setIsFocusIntro(true),

@@ -14,13 +14,16 @@ const UserMain = () => {
 
   const [userDetail, setUserDetail] = useState({})
   console.log('userDetail: ', userDetail)
-  const { introduce = '', phoneNumber = '', birthday = {}, gender = {}, address = '', city = '', displayName = '', email = '', emailVerified = false, photoURL = '' } = userDetail
+  const [currentUser, setCurrentUser] = useState(auth.currentUser || {})
+  console.log('currentUser: ', currentUser)
+  const { introduce = '', phone = '', birthday = {}, gender = {}, address = '', city = '' } = userDetail
+  const { displayName = '', email = '', emailVerified = false, photoURL = ''} = currentUser
 
   useEffect(() => {
     const getUserDetailData = async () => {
       const userDetail = await getUserDetail()
 
-      setUserDetail({ ... userDetail, ...auth.currentUser})
+      setUserDetail(userDetail)
     }
 
     getUserDetailData()
@@ -31,7 +34,7 @@ const UserMain = () => {
   const isVerifyProps = {
     defineLang,
     isVerify: emailVerified,
-    currentUser: auth.currentUser,
+    currentUser,
   }
 
   const [isUpdateUser, setIsUpdateUser] = useState(false)
@@ -40,6 +43,9 @@ const UserMain = () => {
     defineLang,
     setIsUpdateUser,
     ...userDetail,
+    ...currentUser,
+    setCurrentUser,
+    setUserDetail,
   }
 
   return (
@@ -68,12 +74,12 @@ const UserMain = () => {
               <div className='mt-28px text-22px font-bold color-0-88'>{defineLang('Thông tin cá nhân', 'Profile')}</div>
               <InfoField title={defineLang('Tên tài khoản', 'Username')} value={displayName} styles='mt-16px' />
               <InfoField title='Email' value={email} extraComp={<IsVerify {...isVerifyProps} />} />
-              <InfoField title={defineLang('Sinh nhật', 'Birthday')} value={isEmptyObject(birthday) ? new Date(birthday).toLocaleDateString() : defineLang('Chưa cập nhật', 'Not Update')} />
+              <InfoField title={defineLang('Sinh nhật', 'Birthday')} value={isEmptyObject(birthday) ? defineLang('Chưa cập nhật', 'Not Update') : `${birthday.day}/${birthday.month}/${birthday.year}`} />
               <InfoField title={defineLang('Giới tính', 'Gender')} value={isEmptyObject(gender) ? defineLang('Chưa cập nhật', 'Not Update') : defineLang(gender.vi, gender.en)} />
               <InfoField title={defineLang('Địa chỉ', 'Address')} value={address || defineLang('Chưa cập nhật', 'Not Update')} />
               <InfoField title={defineLang('Thành phố', 'City')} value={city || defineLang('Chưa cập nhật', 'Not Update')} />
-              <InfoField title={defineLang('Số điện thoại', 'Phone number')} value={phoneNumber || defineLang('Chưa cập nhật', 'Not Update')} />
-              <InfoField title={defineLang('Giới thiệu', 'Introduce')} value={introduce || defineLang('Chưa cập nhật', 'Not Update')} />
+              <InfoField title={defineLang('Số điện thoại', 'Phone number')} value={phone || defineLang('Chưa cập nhật', 'Not Update')} />
+              <InfoField title={defineLang('Giới thiệu', 'Introduce')} value={introduce || defineLang('Chưa cập nhật', 'Not Update')} valueStyles='break-words' />
             </div>
           )}
         </div>

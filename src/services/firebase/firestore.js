@@ -186,7 +186,7 @@ export const addVideoHistory = async (videoId) => {
   }
 }
 
-export const updateUserInfo = async (field, data, isUpdateProfile) => {
+export const updateUserInfo = async (field, data, isUpdateProfile = false) => {
   try {
     if (auth.currentUser) {
       const currentUserRef = doc(db, 'users', auth.currentUser.uid)
