@@ -13,9 +13,7 @@ const UserMain = () => {
   const defineLang = useCallback((vie, en) => (state.lang === 'vi' ? vie : en), [state.lang])
 
   const [userDetail, setUserDetail] = useState({})
-  console.log('userDetail: ', userDetail)
   const [currentUser, setCurrentUser] = useState(auth.currentUser || {})
-  console.log('currentUser: ', currentUser)
   const { introduce = '', phone = '', birthday = {}, gender = {}, address = '', city = '' } = userDetail
   const { displayName = '', email = '', emailVerified = false, photoURL = ''} = currentUser
 

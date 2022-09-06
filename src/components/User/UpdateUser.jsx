@@ -1,18 +1,23 @@
 import React, { useState } from 'react'
 
+import vnCityProv from 'share/vnCityProv'
+import Button from '@mui/material/Button'
+import isEmptyObject from 'share/isEmptyObject'
 import no_user_img from 'images/default/default_user.jpg'
 import { Image, InputField, DropDown, Checkbox } from 'components'
 import { dayArr, genderArr, monthArr, yearArr } from 'services/User/UpdateUser'
 import { updateUserInfo } from 'services/firebase/firestore'
 import { toastNotify } from 'share/toast'
-import vnCityProv from 'share/vnCityProv'
-import Button from '@mui/material/Button'
-import isEmptyObject from 'share/isEmptyObject'
+import { storage } from 'config/firebase'
+import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage'
+import { randomId } from 'share'
 
 const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', address = '', phone = '', introduce = '', birthday = {}, gender = {}, city = '', setIsUpdateUser, setCurrentUser, setUserDetail }) => {
   const { day = '', month = '', year = '' } = birthday
 
   const [tempAvatar, setTempAvatar] = useState(photoURL)
+  const [avatarFile, setAvatarFile] = useState(null)
+
   const [tempUsername, setTempUsername] = useState(displayName)
   const [tempAddress, setTempAddress] = useState(address)
   const [tempPhone, setTempPhone] = useState(phone)
@@ -27,6 +32,7 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
 
   const handleTempImage = (e) => {
     if (e.target.files[0]) {
+      setAvatarFile(e.target.files[0])
       const reader = new FileReader()
       reader.onload = () => {
         if (reader.readyState === 2) {
@@ -69,48 +75,44 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
   }
 
   const handleUpdateUser = () => {
-    if (tempAvatar !== photoURL) {
-      // Handle update avatar
+    if (tempAvatar !== photoURL && avatarFile) {
+      const userImageRef = ref(storage, `user/images/${avatarFile.name}`)
+      uploadBytes(userImageRef, avatarFile).then((snapshot) => {
+        getDownloadURL(snapshot.ref).then((url) => updateUserInfo('photoURL', url, setCurrentUser, true))
+      })
     }
 
     if (tempUsername !== displayName) {
-      updateUserInfo('displayName', tempUsername, true)
-      setCurrentUser((prevUser) => ({ ...prevUser, displayName: tempUsername }))
+      updateUserInfo('displayName', tempUsername, setCurrentUser, true)
     }
 
     if (tempDay !== day || tempMonth !== month || tempYear !== year) {
-      updateUserInfo('birthday', { day: tempDay, month: tempMonth, year: tempYear })
-      setUserDetail((prevUser) => ({ ...prevUser, birthday: { day: tempDay, month: tempMonth, year: tempYear } }))
+      updateUserInfo('birthday', { day: tempDay, month: tempMonth, year: tempYear }, setUserDetail)
     }
 
     if (tempGender !== gender) {
-      updateUserInfo('gender', tempGender)
-      setUserDetail((prevUser) => ({ ...prevUser, gender: tempGender }))
+      updateUserInfo('gender', tempGender, setUserDetail)
     }
 
     if (tempAddress !== address) {
-      updateUserInfo('address', tempAddress)
-      setUserDetail((prevUser) => ({ ...prevUser, address: tempAddress }))
+      updateUserInfo('address', tempAddress, setUserDetail)
     }
 
     if (tempCity !== city) {
-      updateUserInfo('city', tempCity)
-      setUserDetail((prevUser) => ({ ...prevUser, city: tempCity }))
+      updateUserInfo('city', tempCity, setUserDetail)
     }
 
     if (tempPhone !== phone) {
-      updateUserInfo('phone', tempPhone)
-      setUserDetail((prevUser) => ({ ...prevUser, phone: tempPhone }))
+      updateUserInfo('phone', tempPhone, setUserDetail)
     }
 
     if (tempIntroduce !== introduce) {
-      updateUserInfo('introduce', tempIntroduce.trim())
-      setUserDetail((prevUser) => ({ ...prevUser, introduce: tempIntroduce.trim() }))
+      updateUserInfo('introduce', tempIntroduce.trim(), setUserDetail)
     }
-    
+
     setIsUpdateUser(false)
   }
-  
+
   const introTextareaProps = {
     className: `text-13px bg-color-0-02 font-medium w-full h-full color-0-88 pl-4 outline-0 p-16px rounded-4px useBorder border-0-05 resize-none ${isFocusIntro && '!border-main'}`,
     onFocus: () => setIsFocusIntro(true),

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import './AuthForm.scss'
 import { LoadingV2 } from 'components'
 
@@ -34,7 +34,7 @@ const AuthForm = () => {
   const [agreeTerm, setAgreeTerm] = useState(false || showLogin)
   const [isVerifying, setIsVerifying] = useState(false)
 
-  const defineLang = (vie, eng) => lang === 'vi' ? vie : eng
+  const defineLang = useCallback((vie, eng) => lang === 'vi' ? vie : eng, [lang])
 
   const handleAuthFunc = (loginFunc, signUpFunc) => {
     return (showLogin && loginFunc) || (showSignUp && signUpFunc)
@@ -148,7 +148,7 @@ const AuthForm = () => {
       toastNotify(defineLang('Đăng nhập không thành công.', 'Sign in unsuccessful.'), 'error')
     }
   }
-
+  
   return (
     <div className='af-container' onClick={(e) => e.stopPropagation()}>
       <div className='af-main bg-color-1'>
@@ -257,7 +257,7 @@ const AuthForm = () => {
                   </a>
                 </div>
               )}
-              <button type='submit' className={`submit-btn ${showSignUp && 'sign-up'} ${agreeTerm || 'disabled'} ${isVerifying && 'disabled'}`} disabled={!agreeTerm || isVerifying}>
+              <button type='submit' className={`submit-btn ${showSignUp && 'sign-up'} ${showLogin ? '' : agreeTerm || 'disabled'} ${isVerifying && 'disabled'}`} disabled={showLogin ? false : (!agreeTerm|| isVerifying)}>
                 {isVerifying ? <LoadingV2 /> : handleAuthFunc(defineLang('Đăng nhập', 'Sign in'), defineLang('Đăng ký', 'Sign up'))}
               </button>
             </form>

@@ -1,4 +1,4 @@
-import { auth, db, storage } from 'config/firebase'
+import { auth, db } from 'config/firebase'
 import { setDoc, updateDoc, arrayUnion, arrayRemove, doc, deleteField, getDoc } from 'firebase/firestore'
 
 import { DEFAULT_IMAGE } from 'share/constants'
@@ -186,7 +186,7 @@ export const addVideoHistory = async (videoId) => {
   }
 }
 
-export const updateUserInfo = async (field, data, isUpdateProfile = false) => {
+export const updateUserInfo = async (field, data, setData, isUpdateProfile = false) => {
   try {
     if (auth.currentUser) {
       const currentUserRef = doc(db, 'users', auth.currentUser.uid)
@@ -200,6 +200,8 @@ export const updateUserInfo = async (field, data, isUpdateProfile = false) => {
           [field]: data,
         })
       }
+
+      setData(oldData => ({ ...oldData, [field]: data }))
     }
   } catch (error) {
     console.log(error)
