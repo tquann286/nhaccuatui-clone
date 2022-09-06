@@ -74,6 +74,7 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
 
     if (tempUsername !== displayName) {
       updateUserInfo('displayName', tempUsername, true)
+      setTempUsername(displayName)
     }
 
     setIsUpdateUser(false)

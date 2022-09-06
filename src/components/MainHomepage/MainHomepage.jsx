@@ -42,7 +42,7 @@ const MainHomepage = () => {
     )
   }
 
-  const { showcase, topicEvent, newRelease, top3, ranking, usukRanking, kpopRanking, video, song, topic, top100 } = homeContent
+  const { showcase = [], topicEvent, newRelease, top3, ranking, usukRanking, kpopRanking, video, song, topic, top100 } = homeContent
 
   const top3Props = {
     top3,

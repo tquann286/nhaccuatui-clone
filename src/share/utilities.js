@@ -195,7 +195,8 @@ export const getSongsView = async (listSongKeys) => {
   try {
     if (listSongKeys) {
       const data = await getView(listSongKeys)
-      if (data) return data.song
+      
+      if (data) return data.song || {}
     }
   } catch (error) {
     throw new Error(error)

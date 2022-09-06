@@ -36,6 +36,7 @@ export const fetchHomeData = async () => {
       kpopRanking.bgImage = bg_3
       kpopRanking.category = 'nhac-han'
     }
+
     return { ...homeData, usukRanking, kpopRanking }
   } catch (error) {
     console.log(error)
