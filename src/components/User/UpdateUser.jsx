@@ -9,7 +9,7 @@ import { dayArr, genderArr, monthArr, yearArr } from 'services/User/UpdateUser'
 import { updateUserInfo } from 'services/firebase/firestore'
 import { toastNotify } from 'share/toast'
 import { storage } from 'config/firebase'
-import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage'
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { randomId } from 'share'
 
 const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', address = '', phone = '', introduce = '', birthday = {}, gender = {}, city = '', setIsUpdateUser, setCurrentUser, setUserDetail }) => {
@@ -76,7 +76,7 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
 
   const handleUpdateUser = () => {
     if (tempAvatar !== photoURL && avatarFile) {
-      const userImageRef = ref(storage, `user/images/${avatarFile.name}`)
+      const userImageRef = ref(storage, `user/images/${avatarFile.name}-${tempUsername}-${randomId(6)}`)
       uploadBytes(userImageRef, avatarFile).then((snapshot) => {
         getDownloadURL(snapshot.ref).then((url) => updateUserInfo('photoURL', url, setCurrentUser, true))
       })

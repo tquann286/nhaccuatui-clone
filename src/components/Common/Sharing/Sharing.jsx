@@ -48,12 +48,12 @@ const Sharing = ({ defineLang, placement, handleCopyShare, onShareWindowClose, s
         <div className='sharing-modal-container'>
           <FacebookShareButton {...fbShareProps}>
             <div className='sharing-item fb'>
-              <FaFacebookF />
+              <FaFacebookF className='text-slate-100' />
               <span>Facebook</span>
             </div>
           </FacebookShareButton>
           <div className='sharing-item copy-link' onClick={onCopyShare}>
-            <BsLink45Deg />
+            <BsLink45Deg className='text-slate-100' />
             <span>{defineLang('Sao chép link', 'Copy link')}</span>
           </div>
         </div>

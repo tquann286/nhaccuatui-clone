@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react'
 
-import { LineBreak, SquareImg, InfoField, IsVerify, Container, UpdateUser } from 'components'
+import { LineBreak, SquareImg, InfoField, IsVerify, Container, UpdateUser, ChangePassword } from 'components'
 import { useTitle } from 'hooks'
 import { useStore } from 'store'
 import { auth } from 'config/firebase'
@@ -15,7 +15,10 @@ const UserMain = () => {
   const [userDetail, setUserDetail] = useState({})
   const [currentUser, setCurrentUser] = useState(auth.currentUser || {})
   const { introduce = '', phone = '', birthday = {}, gender = {}, address = '', city = '' } = userDetail
-  const { displayName = '', email = '', emailVerified = false, photoURL = ''} = currentUser
+  const { displayName = '', email = '', emailVerified = false, photoURL = '' } = currentUser
+  const [isChangePass, setIsChangePass] = useState(false)
+
+  const toggleIsChangePass = () => setIsChangePass(!isChangePass)
 
   useEffect(() => {
     const getUserDetailData = async () => {
@@ -46,6 +49,8 @@ const UserMain = () => {
     setUserDetail,
   }
 
+  const changePasswordProps = { defineLang, isChangePass, toggleIsChangePass }
+
   return (
     <div className='commonMainOutlet'>
       <Container>
@@ -64,7 +69,8 @@ const UserMain = () => {
                     <Button className='w-120px h-32px text-xs mr-8px rounded-4px bg-color-0-05 color-0-5 normal-case' onClick={() => setIsUpdateUser(true)}>
                       {defineLang('Cập nhật', 'Update')}
                     </Button>
-                    <Button className='w-120px h-32px text-xs mr-8px rounded-4px bg-color-0-05 color-0-5 normal-case'>{defineLang('Đổi mật khẩu', 'Change password')}</Button>
+                    <Button className='w-120px h-32px text-xs mr-8px rounded-4px bg-color-0-05 color-0-5 normal-case' onClick={toggleIsChangePass}>{defineLang('Đổi mật khẩu', 'Change password')}</Button>
+                    <ChangePassword { ... changePasswordProps } />
                   </div>
                 </div>
               </div>
