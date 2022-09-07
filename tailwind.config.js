@@ -89,6 +89,7 @@ module.exports = {
         '460px': '46rem',
         '2/5': '40%',
         '2/1': '200%',
+        '100vh': '100vh',
       },
       lineHeight: {
         inherit: 'inherit',

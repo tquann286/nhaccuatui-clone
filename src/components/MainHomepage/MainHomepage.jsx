@@ -35,7 +35,7 @@ const MainHomepage = () => {
   
   if (isLoading) {
     return (
-      <div className='hp-main'>
+      <div className='commonMainOutlet'>
         <Loading />
       </div>
     )

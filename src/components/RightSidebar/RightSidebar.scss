@@ -1,14 +1,6 @@
 @import 'settings';
 
 .rb-container {
-  @include transition-effect(0.75s);
-  height: 100vh;
-  width: $right-sidebar-width;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 1;
-
   .rb-suggestion {
     @include display-flex;
     @include align-items(center);

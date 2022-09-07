@@ -10,6 +10,8 @@ const RightSidebar = () => {
   const [state, dispatch] = useStore()
   const { lang, playingSongId = '', curPlaylist = [] } = state
 
+  const [showRightSidebar, setShowRightSidebar] = useState(true) 
+
   const [playingSong, setPlayingSong] = useState(null)
   const [songsView, setSongsView] = useState({})
   const [tempPlayedSongs, setTempPlayedSongs] = useState([])
@@ -219,7 +221,7 @@ const RightSidebar = () => {
   }
 
   return (
-    <div className='rb-container bg-color-1 useBorder border-0-05'>
+    <div className='rb-container bg-color-1 h-screen w-320px fixed top-0 sm:-right-100vh xl:right-0 z-9 transition-all duration-300 useBorder border-0-05'>
       <PlayingSongMain {...commmonProps} {...playingSongMainProps} />
       <SongController {...commmonProps} {...songControllerProps} />
       <audio {...audioProps} />

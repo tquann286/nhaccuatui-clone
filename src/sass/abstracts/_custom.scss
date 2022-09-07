@@ -1,6 +1,6 @@
 @layer components {
   .commonMainOutlet {
-    @apply transition-all duration-700 pb-8px min-h-screen ml-200px mr-320px;
+    @apply transition-all duration-700 pb-8px min-h-screen ml-200px xl:mr-320px lg:mr-0;
   }
 
   .collection-cate {
@@ -44,6 +44,10 @@
   }
 
   .main-title {
-    @apply text-xl font-bold color-0-88 hoverMainColor capitalize transition-colors inline-block;
+    @apply text-xl font-bold color-0-88 hoverMainColor capitalize transition-colors inline-block xl:mt-0 sm:mt-16;
+  }
+
+  .main-title-scss {
+    @include main-title-scss;
   }
 }

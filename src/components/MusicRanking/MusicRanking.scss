@@ -14,19 +14,13 @@
 $card-border-radius: 0.4rem 0.4rem 0 0;
 
 .mr-container {
-	.mr-title {
-		@include main-title-scss;
-	}
-
 	.mr-main {
 		display: flex;
 		margin: 1.6rem 3.2rem 0 3.2rem;
 
 		.ma-container {
 			position: relative;
-			width: 33.3333333%;
 			height: 32rem;
-			background-color: rgba(28, 30, 32, 0.02);
 			&:not(:last-child) {
 				padding-right: 1.6rem;
 			}

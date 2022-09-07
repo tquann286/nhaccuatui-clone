@@ -32,10 +32,10 @@ const TopicEvent = ({ topicEvent = [] }) => {
 				return (
 					<div key={vieTitle} className='tp-container'>
 						<div className='tp-header'>
-							<div className='tp-title'>{lang === 'vi' ? vieTitle : enTitle}</div>
+							<div className='tp-title xl:mt-0 sm:mt-16'>{lang === 'vi' ? vieTitle : enTitle}</div>
 						</div>
 						<div className='tp-main'>
-							<Swiper slidesPerView={4} spaceBetween={8}>
+							<Swiper slidesPerView={4} spaceBetween={10}>
 								<div className='tp-nav color-0-5'>
 									<SlidePrevButton />
 									<SlideNextButton />
