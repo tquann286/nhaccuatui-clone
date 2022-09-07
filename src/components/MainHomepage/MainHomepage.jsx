@@ -50,7 +50,7 @@ const MainHomepage = () => {
   }
 
   return (
-    <div className='hp-main commonMainOutlet'>
+    <div className='hp-main commonMainOutlet relative'>
       <ShowcaseSlider showcase={showcase} />
       <TopicEvent topicEvent={topicEvent} />
       <NewRelease newRelease={newRelease} />

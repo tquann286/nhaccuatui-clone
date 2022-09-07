@@ -123,7 +123,8 @@ module.exports = {
       },
       boxShadow: {
         normal: '0 0.2rem 0.4rem rgba(0, 0 ,0 ,0.2)',
-        medium: '0 0.8rem 1.6rem rgba(0, 0, 0, 0.2)',
+        medium: '0 0.4rem 0.8rem rgba(0, 0, 0, 0.2)',
+        large: '0 0.8rem 1.6rem rgba(0, 0, 0, 0.2)',
       },
     },
     fontSize: {
