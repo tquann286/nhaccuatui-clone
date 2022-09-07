@@ -1,3 +1,6 @@
+import * as Yup from 'yup'
+import { toastNotify } from 'share/toast'
+
 const arrOfInt = (first, last) => {
   const list = []
   for (let i = first; i <= last; i++) {
@@ -20,3 +23,11 @@ export const genderArr = [
   { vi: 'Nữ', en: 'Female' },
   { vi: 'Khác', en: 'Other' },
 ]
+
+export const changePassSchema = (defineLang) => {
+  
+
+
+
+  
+}

@@ -158,7 +158,7 @@ const AuthForm = () => {
             <IoMdClose />
           </button>
         </div>
-        <div className='af-content' style={showLogin ? { marginTop: '3.6rem' } : {}}>
+        <div className={`af-content ${showLogin && 'mt-36px'}`}>
           <div className='form-container'>
             <form onSubmit={handleSubmit(handleAuthFunc(onLoginSubmit, onSignUpSubmit))}>
               {showSignUp && (
