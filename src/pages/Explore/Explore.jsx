@@ -15,7 +15,7 @@ const Explore = () => {
   const defineLang = useCallback((vie, eng) => lang === 'vi' ? vie : eng, [lang])
 
   return (
-    <div className='explore-container'>
+    <div className='explore-container commonMainOutlet'>
       <Title title={defineLang('Giai điệu âm nhạc dành riêng cho bạn - NhacCuaTui', 'Music melody just for you - NhacCuaTui')} />
       <div className='explore-wrapper'>
         <div className='explore-content'>

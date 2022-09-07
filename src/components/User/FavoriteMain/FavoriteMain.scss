@@ -1,7 +1,6 @@
 @import 'settings';
 
 .favorite-main {
-  @include commonMainOutlet;
   position: relative;
 
   .fm-container {

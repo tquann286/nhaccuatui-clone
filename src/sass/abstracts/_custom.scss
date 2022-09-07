@@ -1,4 +1,8 @@
 @layer components {
+  .commonMainOutlet {
+    @apply transition-all duration-700 pb-8px min-h-screen ml-200px mr-320px;
+  }
+
   .collection-cate {
     @apply w3-row relative h-10 mt-1.5 ml-16px w-full color-0-5 transition-colors hoverMainColor flex items-center text-sm cursor-pointer capitalize;
   }

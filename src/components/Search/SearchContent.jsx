@@ -82,7 +82,7 @@ const SearchContent = () => {
 
   return (
     <ErrorBoundary>
-      <div className='search-container'>
+      <div className='search-container commonMainOutlet'>
         <SearchHeader topArtists={topArtists} {...passedSearchProps} />
         {searchQuery ? <SearchResult searchQuery={searchQuery} {...passedSearchProps} /> : <SearchMain {...searchMainProps} {...passedSearchProps} />}
         <Footer />

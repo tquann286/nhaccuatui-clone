@@ -50,6 +50,8 @@ module.exports = {
         '40px': '4rem',
         '42px': '4.2rem',
         '44px': '4.4rem',
+        '200px': '20rem',
+        '320px': '32rem',
       },
       spacing: {
         unset: 'unset',

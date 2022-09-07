@@ -30,7 +30,7 @@ const FavoriteMain = () => {
   }
 
   return (
-    <div className='favorite-main'>
+    <div className='favorite-main commonMainOutlet'>
       <ErrorBoundary>
         <Container>
           <div className='fm-container'>

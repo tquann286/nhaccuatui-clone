@@ -30,7 +30,7 @@ const SongPlaylistVideo = ({ type }) => {
   }
 
   return (
-    <div className='song-playlist-video-container'>
+    <div className='song-playlist-video-container commonMainOutlet'>
       <div style={{ paddingTop: '1.2rem' }}>
         <CateCommon {...cateCommonProps} />
       </div>

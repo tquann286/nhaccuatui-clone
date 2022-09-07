@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import './MainHomepage.scss'
 
 import { fetchHomeData } from 'services/HomeContent'
 
@@ -51,7 +50,7 @@ const MainHomepage = () => {
   }
 
   return (
-    <div className='hp-main'>
+    <div className='hp-main commonMainOutlet'>
       <ShowcaseSlider showcase={showcase} />
       <TopicEvent topicEvent={topicEvent} />
       <NewRelease newRelease={newRelease} />

@@ -1,7 +1,6 @@
 @import 'settings';
 
 .explore-container {
-  @include commonMainOutlet;
 
   .explore-wrapper {
     min-height: calc(100vh - #{$footer-height} - 1rem);
