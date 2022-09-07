@@ -5,7 +5,8 @@ import { NoPlayingSong, PlayingSongMain, SongController } from 'components'
 import { getPlayingSong, getPlayingSongIndex, handlePlayNewSong } from 'share/utilities'
 import { useStore, actions } from 'store'
 import { getListSongsKey, getMaybeLike, getSongsView } from 'share/utilities'
-import useWindowSize from './../../hooks/useWindowSize'
+import { useWindowSize, useOnClickOutside } from 'hooks'
+import { TbArrowBarToLeft } from 'react-icons/tb'
 
 const RightSidebar = () => {
   const [state, dispatch] = useStore()
@@ -13,10 +14,15 @@ const RightSidebar = () => {
   const size = useWindowSize()
 
   const [showRightSidebar, setShowRightSidebar] = useState(size.width > 1280)
+  const rightSidebarRef = useRef(null)
 
   useEffect(() => {
     setShowRightSidebar(size.width > 1280)
   }, [size.width])
+
+  useOnClickOutside(rightSidebarRef, rightSidebarRef, () => {
+    if (showRightSidebar) setShowRightSidebar(false)
+  })
 
   const [playingSong, setPlayingSong] = useState(null)
   const [songsView, setSongsView] = useState({})
@@ -228,13 +234,13 @@ const RightSidebar = () => {
 
   return (
     <React.Fragment>
-    <div className='rb-container bg-color-1 h-screen w-320px fixed top-0 sm:-right-100vh xl:right-0 z-9 transition-all duration-300 useBorder border-0-05'>
+    <div className={`rb-container bg-color-1 h-screen w-320px fixed top-0 sm:-right-100vh xl:right-0 z-9 transition-all duration-300 useBorder border-0-05 ${showRightSidebar && '!right-0'}`} ref={rightSidebarRef}>
       <PlayingSongMain {...commmonProps} {...playingSongMainProps} />
       <SongController {...commmonProps} {...songControllerProps} />
       <audio {...audioProps} />
     </div>
-    <div className={`fixed w-6 h-6 bg-color-1 z-8 shadow-medium right-16px xl:-bottom-4 ${!showRightSidebar && 'sm: bottom-16px' }`}>
-
+    <div className={`fixed flexCenter w-16 rounded-tl-4px cursor-pointer rounded-bl-4px h-16 bg-color-0-2 z-8 shadow-medium right-0 xl:-bottom-4 ${!showRightSidebar && 'sm: bottom-16px' }`} onClick={() => setShowRightSidebar(true)}>
+      <TbArrowBarToLeft className='text-xl font-medium color-0-6' />
     </div>
     </React.Fragment>
   )
