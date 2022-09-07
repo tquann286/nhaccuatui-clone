@@ -1,23 +1,34 @@
 import React, { useState } from 'react'
-import { CenterModal } from 'components'
 
+import LoadingV2 from './../Loading/LoadingV2'
+import CenterModal from './../Common/CenterModal/CenterModal'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { toastNotify } from 'share/toast'
 import { handleFocusInput, handleBlurInput } from 'share/utilities'
-import { useStore, actions } from 'store'
 import { BsKeyboard, BsInfoCircle } from 'react-icons/bs'
 import { IoWarningOutline } from 'react-icons/io5'
-import { changePassSchema } from 'services/User/UpdateUser'
-import LoadingV2 from './../Loading/LoadingV2'
+import { handleLoginError, changePassSchema } from 'services/AuthForm'
+import { auth } from 'config/firebase'
+import { signInWithEmailAndPassword, updatePassword } from 'firebase/auth'
 
 const ChangePassword = ({ defineLang, isChangePass, toggleIsChangePass }) => {
   const [isVerifying, setIsVerifying] = useState(false)
 
-  const onChangePassword = async ({ oldPassword, newPassword, confirmNewPassword }) => {
-    console.log('oldPassword: ', oldPassword)
-    console.log('newPassword: ', newPassword)
-    console.log('confirmNewPassword: ', confirmNewPassword)
+  const onChangePassword = async ({ oldPassword, newPassword }) => {
+    try {
+      setIsVerifying(true)
+
+      await signInWithEmailAndPassword(auth, auth.currentUser.email, oldPassword)
+      await updatePassword(auth.currentUser, newPassword)
+
+      toastNotify(defineLang('Đổi mật khẩu thành công.', 'Change password successfully.'), 'success')
+      toggleIsChangePass()
+      setIsVerifying(false)
+    } catch (error) {
+      handleLoginError(error.code, defineLang)
+      setIsVerifying(false)
+    }
   }
 
   const {

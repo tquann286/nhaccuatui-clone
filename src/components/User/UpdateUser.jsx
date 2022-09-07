@@ -158,7 +158,7 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
           <div className='update-user-input'>
             <div className='w-360px h-16 flex'>
               {genderArr.map((sex) => (
-                <Checkbox defineLang={defineLang} tempGender={tempGender} value={sex} setValue={setTempGender} />
+                <Checkbox key={sex.en} defineLang={defineLang} tempGender={tempGender} value={sex} setValue={setTempGender} />
               ))}
             </div>
           </div>
