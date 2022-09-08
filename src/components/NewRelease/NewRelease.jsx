@@ -15,7 +15,7 @@ import { covertTimestamp, createArtistUrl, createSongUrl } from 'share/utilities
 import { activeSlideSettings, thumbSlideSettings } from 'services/NewRelease'
 
 import { useStore } from 'store'
-import { Image } from 'components'
+import { CircleTitleArtist, Image } from 'components'
 
 const NewRelease = ({ newRelease: { song: newSong } }) => {
   const [state] = useStore()
@@ -42,7 +42,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
         {lang === 'vi' ? 'Mới phát hành' : 'New Releases'}
       </Link>
       <div className='nr-main'>
-        <div className='nr-active-slide bg-color-0-02'>
+        <div className='nr-active-slide md:h-200px sm:h-160px ip5:140px bg-color-0-02'>
           <Slider {...activeSlideSettings} asNavFor={slide.thumbSlide} ref={activeSlideRef}>
             {newSong.map((song) => {
               const { key, artists, dateRelease, thumbnail, title } = song
@@ -55,50 +55,15 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 
               return (
                 <div key={key} className='nr-active-container'>
-                  <Link to={createSongUrl(title, key)} className='nr-active-img sm:mr-16 ip5:mr-8' title={title}>
+                  <Link to={createSongUrl(title, key)} className='nr-active-img md:w-160px md:h-160px sm:w-140px sm:h-140px ip5:w-120px ip5:h-120px  sm:mr-16 ip5:mr-8' title={title}>
                     <Image {...imageProps} />
                   </Link>
                   <div className='nr-active-detail'>
                     <Link to={createSongUrl(title, key)}>
-                      <h4 className='color-0-88'>{title}</h4>
+                      <h4 className='color-0-88 sm:text-sm ip5:text-13px'>{title}</h4>
                     </Link>
-                    <div className='nr-artist-container'>
-                      <div className='nr-artist-main'>
-                        <div className='nr-artist-img-container'>
-                          {artists.map((artist) => {
-                            const { artistId, imageUrl, name, shortLink } = artist
-
-                            const imageProps = {
-                              imageUrl,
-                              alt: name,
-                              backupImg: backupArtist,
-                            }
-
-                            return (
-                              <Link to={createArtistUrl(name, shortLink)} key={artistId} className='nr-artist-img'>
-                                <Image {...imageProps} />
-                              </Link>
-                            )
-                          })}
-                        </div>
-
-                        <div className='nr-artist-name color-0-5'>
-                          {artists.map((artist, index) => {
-                            const { artistId, name, shortLink } = artist
-
-                            return (
-                              <React.Fragment key={artistId}>
-                                <Link to={createArtistUrl(name, shortLink)} key={artistId}>
-                                  <span>{name}</span>
-                                </Link>
-                                {index + 1 === artists.length ? '' : ', '}
-                              </React.Fragment>
-                            )
-                          })}
-                        </div>
-                      </div>
-                    </div>
-                    <div className='nr-date-release color-0-5'>
+                    <CircleTitleArtist artists={artists} titleStyles='sm:ml-8px ip5:ml-4px' />
+                    <div className='nr-date-release sm:text-sm ip5:text-13px color-0-5'>
                       <GoCalendar />
                       <span>
                         {lang === 'vi' ? 'Ngày phát hành' : 'Released date'}: {covertTimestamp(dateRelease)}

@@ -12,7 +12,6 @@ $active-img-width: 16rem;
 
 		.nr-active-slide {
 			position: relative;
-			height: 20rem;
 			padding: 2rem 4rem;
 			margin-bottom: 2.4rem;
 
@@ -29,8 +28,6 @@ $active-img-width: 16rem;
 				.nr-active-img {
 					position: relative;
 					overflow: hidden;
-					width: $active-img-width;
-					height: $active-img-width;
 					border-radius: 0.4rem;
 
 					img {
@@ -42,59 +39,13 @@ $active-img-width: 16rem;
 				}
 
 				.nr-active-detail {
-					width: calc(100% - #{$active-img-width});
-
 					h4 {
 						@include transition-effect(0.1s);
 						@include hoverMainColor;
-						font-size: 1.4rem;
-						line-height: 1.8rem;
 						white-space: nowrap;
 						overflow: hidden;
 						text-overflow: ellipsis;
 						vertical-align: text-bottom;
-					}
-
-					.nr-artist-container {
-						.nr-artist-main {
-							@include display-flex;
-							@include align-items(center);
-
-							margin-top: 1rem;
-							.nr-artist-img-container {
-								display: inline-block;
-								.nr-artist-img {
-									display: inline-block;
-									width: 2.4rem;
-									height: 2.4rem;
-									border: 0.1rem solid rgba(255, 255, 255, 1);
-									border-radius: 50%;
-									background-repeat: no-repeat;
-									background-size: cover;
-									margin-right: -0.8rem;
-
-									img {
-										width: 100%;
-										border-radius: 50%;
-									}
-								}
-							}
-
-							.nr-artist-name {
-								line-height: inherit;
-								white-space: nowrap;
-								text-overflow: ellipsis;
-								overflow: hidden;
-								font-size: 1.3rem;
-								margin-left: 1.2rem;
-								a {
-									span {
-										@include transition-effect(0.1s);
-										@include hoverMainColor;
-									}
-								}
-							}
-						}
 					}
 
 					.nr-date-release {
@@ -102,7 +53,6 @@ $active-img-width: 16rem;
 						@include align-items(center);
 
 						margin-top: 0.5rem;
-						font-size: 1.4rem;
 						user-select: text;
 						svg {
 							margin-right: 0.4rem;

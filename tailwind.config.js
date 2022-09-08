@@ -83,8 +83,10 @@ module.exports = {
         '144px': '14.4rem',
         '160px': '16rem',
         '168px': '16.8rem',
+        '180px': '18rem',
         '184px': '18.4rem',
         '200px': '20rem',
+        '220px': '22rem',
         '240px': '24rem',
         '260px': '26rem',
         '280px': '28rem',
@@ -136,6 +138,7 @@ module.exports = {
     },
     fontSize: {
       '10px': ['1rem', '1.4rem'],
+      xs: ['1.1rem', '1.5rem'],
       xs: ['1.2rem', '1.6rem'],
       '13px': ['1.3rem', '1.8rem'],
       sm: ['1.4rem', '2rem'],

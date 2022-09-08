@@ -26,7 +26,7 @@ const MusicCard = ({ region, song, bgImage, category, defineLang, actions, dispa
   }
 
   return (
-    <div className='ma-container ip5:w-full sm:w-1/3 sm:pr-16px sm:last:pr-0 sm:mt-0 ip5:mt-6'>
+    <div className='ma-container ip5:w-full sm:w-1/3 sm:pr-16px sm:last:pr-0 sm:mt-0 ip5:mt-6 ip5:h-360px sm:h-340px'>
       <div className='bg-color-0-02 relative w-full h-full rounded-4px'>
         <div className='ma-bg-img' style={{ backgroundImage: `url(${bgImage})` }}></div>
         <div className='ma-title'>{defineLang(region.vi, region.en)}</div>

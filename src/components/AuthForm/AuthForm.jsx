@@ -280,7 +280,7 @@ const AuthForm = () => {
             </div>
           </div>
           {showLogin && (
-            <div className='signup-now'>
+            <div className='signup-now mb-22px'>
               <p className='color-0-88'>
                 {defineLang('Bạn chưa có tài khoản NCT ID?', "Don't have NCT ID account?")}
                 <span onClick={changeAuthForm}>{defineLang(` Đăng ký ngay`, ` Sign up now`)}</span>
