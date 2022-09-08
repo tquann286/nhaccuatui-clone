@@ -51,7 +51,7 @@ const TopicEvent = ({ topicEvent = [] }) => {
 				return (
 					<div key={vieTitle} className='tp-container'>
 						<div className='tp-header'>
-							<div className='tp-title xl:mt-0 ip5:mt-16'>{lang === 'vi' ? vieTitle : enTitle}</div>
+							<div className='tp-title mt-32px'>{lang === 'vi' ? vieTitle : enTitle}</div>
 						</div>
 						<div className='tp-main'>
 							<Swiper { ... swiperProps }>

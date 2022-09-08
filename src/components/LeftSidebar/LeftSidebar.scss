@@ -9,7 +9,7 @@ $scale: 5rem;
   @include transition-effect(0.75s);
   overflow: hidden auto;
   overscroll-behavior-y: contain;
-  border-right: $border-light;
+  background-color: #f6f6f6;
 
   .ls-logo-theme {
     @include display-flex;

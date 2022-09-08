@@ -16,7 +16,6 @@
   .sharing-item {
     @include display-flex;
     @include align-items(center);
-    width: 16rem;
     height: 4rem;
     border-radius: 2rem;
     color: #fafafa;

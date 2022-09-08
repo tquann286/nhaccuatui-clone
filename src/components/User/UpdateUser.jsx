@@ -183,10 +183,10 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
         </div>
         <div className='update-user-field'>
           <div className='flex items-center justify-end w-[46.8rem] h-16'>
-            <Button className='w-120px min-w-120px h-16 text-xs mr-8px rounded-4px bg-color-0-05 color-0-5 normal-case hover-bg-color-0-08 font-medium' onClick={() => setIsUpdateUser(false)}>
+            <Button className='sm:w-120px ip5:w-120px sm:h-16 ip5:h-14 text-xs mr-8px rounded-4px bg-color-0-05 color-0-5 normal-case hover-bg-color-0-08 font-medium' onClick={() => setIsUpdateUser(false)}>
               {defineLang('Hủy', 'Cancel')}
             </Button>
-            <Button className='w-120px min-w-120px h-16 text-xs ml-28px rounded-4px bg-mainV2 text-slate-100 normal-case font-medium' onClick={handleUpdateUser}>
+            <Button className='sm:w-120px ip5:w-120px sm:h-16 ip5:h-14 text-xs sm:ml-28px ip5:ml-8px rounded-4px bg-mainV2 text-slate-100 normal-case font-medium' onClick={handleUpdateUser}>
               {defineLang('Cập nhật', 'Update')}
             </Button>
           </div>

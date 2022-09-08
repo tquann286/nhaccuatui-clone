@@ -99,7 +99,7 @@ const LeftSidebar = () => {
       <div className={`fixed flexCenter w-16 rounded-tr-4px cursor-pointer rounded-br-4px h-16 bg-color-0-2 z-8 shadow-medium smpc:-left-16 top-16px ${!showLeftSidebar && 'left-0'}`} onClick={() => setShowLeftSidebar(true)}>
         <TbArrowBarToRight className='text-xl font-medium color-0-6' />
       </div>
-      <div className={`left-sidebar h-screen w-200px bg-color-1 fixed top-0 z-9 border-l border-solid border-0-05 smpc:left-px ip5:-left-200vh ${showLeftSidebar && '!left-px'}`} ref={leftSidebarRef}>
+      <div className={`left-sidebar h-screen w-200px bg-color-1 fixed top-0 z-9 border-r border-solid border-0-05 smpc:left-px ip5:-left-200vh ${showLeftSidebar && '!left-px'}`} ref={leftSidebarRef}>
         <Scrollbars {...scrollBarStyles}>
           <div className='ls-logo-theme'>
             <Link className='ls-logo' to='/'>

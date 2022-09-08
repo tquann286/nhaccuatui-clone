@@ -150,7 +150,7 @@ const AuthForm = () => {
   }
   
   return (
-    <div className='af-container' onClick={(e) => e.stopPropagation()}>
+    <div className='af-container sm:w-460px ip5:w-380px' onClick={(e) => e.stopPropagation()}>
       <div className='af-main bg-color-1'>
         <div className='af-header border-0-05 color-0-88'>
           <h4>{lang === 'vi' ? handleAuthFunc('Đăng nhập', 'Đăng ký') : handleAuthFunc('Sign in', 'Sign up')}</h4>
