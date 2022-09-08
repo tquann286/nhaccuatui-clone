@@ -62,7 +62,7 @@ const Realtime = () => {
 
   return (
     <div className='margin-footer'>
-      <div className='mt-24px ml-32px mr-32px relative z-1 h-[296px] min-w-[600px] rounded-4px overflow-hidden'>
+      <div className='mt-24px ml-32px mr-32px relative z-1 h-[296px] rounded-4px overflow-hidden'>
         <Top3Realtime {...top3RealtimeProps} />
       </div>
       <div className='mt-24px mx-32px h-64px rounded-4px bg-color-0-02 w3-row'>

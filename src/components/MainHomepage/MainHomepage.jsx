@@ -7,12 +7,14 @@ import { Loading, ShowcaseSlider, TopicEvent, NewRelease, HomeTop3, MusicRanking
 import { toastNotify } from 'share/toast'
 
 import { useStore } from 'store'
+import { useWindowSize } from 'hooks'
 
 const MainHomepage = () => {
   const [homeContent, setHomeContent] = useState({})
   const [isLoading, setIsLoading] = useState(true)
   const [isFetchingFail, setIsFetchingFail] = useState(false)
 
+  const size = useWindowSize()
   const [state] = useStore()
   const defineLang = useCallback((vie, eng) => (state.lang === 'vi' ? vie : eng), [state.lang])
 
@@ -46,7 +48,7 @@ const MainHomepage = () => {
   const top3Props = {
     top3,
     defineLang,
-    showTop3: true
+    showTop3: size.width > 600,
   }
 
   return (

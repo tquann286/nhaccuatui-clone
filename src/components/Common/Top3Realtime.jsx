@@ -7,8 +7,10 @@ import { getCurrentDay, handlePlayNewSong } from 'share/utilities'
 import { Grid, Tooltip as MuiTooltip, IconButton } from '@mui/material'
 import { defineColor } from 'services/Common/Top3Realtime'
 import { BsFillPlayCircleFill } from 'react-icons/bs'
+import { useStore, actions } from 'store'
 
-const Top3Realtime = ({ top3 = [], defineLang, showTop3, styles, actions, state, dispatch }) => {
+const Top3Realtime = ({ top3 = [], defineLang, showTop3, styles }) => {
+  const [state, dispatch] = useStore()
   const [activeItem, setActiveItem] = useState(0)
 
   if (top3.length === 0) return null
@@ -37,7 +39,7 @@ const Top3Realtime = ({ top3 = [], defineLang, showTop3, styles, actions, state,
   }
 
   return (
-    <div className={`bg-[linear-gradient(180deg,#740091,#2d1a4c)] rounded-4px min-w-[600px] z-1 relative overflow-hidden ${styles}`}>
+    <div className={`bg-[linear-gradient(180deg,#740091,#2d1a4c)] rounded-4px z-1 relative overflow-hidden ${showTop3 ? 'h-[508px]' : 'h-[296px]'} ${styles}`}>
       <BlurImg {...blurImgProps} />
       <Grid container direction='column' className='absolute top-0'>
         <div className='flex relative flex-col h-[296px] w-full mb-2px'>

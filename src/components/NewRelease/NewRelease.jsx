@@ -112,7 +112,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
           </Slider>
         </div>
       </div>
-      <div className='nr-thumb-slider'>
+      <div className='nr-thumb-slider ip5:px-8 sm:px-0'>
         <Slider {...thumbSlideSettings} asNavFor={slide.activeSlide} ref={thumbSlideRef}>
           {newSong.map((song) => {
             const { key, thumbnail, title } = song
