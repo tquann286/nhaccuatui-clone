@@ -19,7 +19,7 @@ const MusicRanking = ({ ranking }) => {
   }
 
   return (
-    <div className='mr-container '>
+    <div className='mr-container'>
       <div className='mr-title main-title-scss'>
         <Link to={createTop20Url('nhac-viet')}>{defineLang('BXH bài hát', 'NCT Song Chart')}</Link>
       </div>

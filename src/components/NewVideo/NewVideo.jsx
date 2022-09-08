@@ -18,7 +18,7 @@ const NewVideo = ({ videos = [] }) => (
       </Grid>
       <Grid container spacing={2}>
         {getSlideVideos(videos, 'small').map((video) => (
-          <Grid key={video.key} item xs={3} sm={3} md={3} lg={3} xl={2}>
+          <Grid key={video.key} item xs={6} sm={6} md={3} lg={3} xl={2}>
             <CommonVideo {...video} keyId={video.key} />
           </Grid>
         ))}

@@ -9,13 +9,32 @@ import { SlidePrevButton, SlideNextButton } from 'components/CustomNav/CustomNav
 
 const Top100 = ({ top100List }) => {
 
+	const swiperProps = {
+		slidesPerView: 4,
+		spaceBetween: 8,
+		breakpoints: {
+    320: {
+      slidesPerView: 2,
+      spaceBetween: 4
+    },
+    480: {
+      slidesPerView: 3,
+      spaceBetween: 6
+    },
+    640: {
+      slidesPerView: 4,
+      spaceBetween: 8
+    }
+		}
+	}
+
   return (
     <div className="t1-container">
       <div className="t1-title">
         <Link to={createTop100Url(top100List[0].title, top100List[0].key)}>Top 100</Link>
       </div>
       <div className="t1-main">
-      <Swiper slidesPerView={4} spaceBetween={8}>
+      <Swiper { ... swiperProps }>
 								<div className='t1-nav color-0-5'>
 									<SlidePrevButton />
 									<SlideNextButton />

@@ -21,9 +21,6 @@ $card-border-radius: 0.4rem 0.4rem 0 0;
 		.ma-container {
 			position: relative;
 			height: 32rem;
-			&:not(:last-child) {
-				padding-right: 1.6rem;
-			}
 			border-radius: $card-border-radius;
 
 			.ma-bg-img {
@@ -51,8 +48,6 @@ $card-border-radius: 0.4rem 0.4rem 0 0;
 
 				.ma-thumb-container {
 					position: relative;
-					width: 8rem;
-					height: 8rem;
 					border-radius: 0.4rem;
 					background-repeat: no-repeat;
 					background-size: cover;

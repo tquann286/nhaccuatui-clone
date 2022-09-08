@@ -26,7 +26,7 @@ const MusicCard = ({ region, song, bgImage, category, defineLang, actions, dispa
   }
 
   return (
-    <div className='ma-container w3-third'>
+    <div className='ma-container sm:w-1/3 ip5:w-full sm:pr-16px sm:last:pr-0'>
       <div className='bg-color-0-02 relative w-full h-full rounded-4px'>
         <div className='ma-bg-img' style={{ backgroundImage: `url(${bgImage})` }}></div>
         <div className='ma-title'>{defineLang(region.vi, region.en)}</div>
@@ -37,7 +37,7 @@ const MusicCard = ({ region, song, bgImage, category, defineLang, actions, dispa
             return (
               <div
                 key={songKey}
-                className='ma-thumb-container'
+                className='ma-thumb-container md:w-32 md:h-32 sm:w-28 sm:h-28 ip5:w-24 ip5:h-24 '
                 style={{
                   backgroundImage: `url(${thumbnail})`,
                   zIndex: detectZ(index),
