@@ -62,7 +62,7 @@ const ArtistHome = ({ defineLang, songNearly = [], artist = {}, song = {}, playl
           <div className='mt-24px'>
             <Grid container spacing={2}>
               {playlists.map((playlist) => (
-                <Grid item key={playlist.key} xs={3} sm={3} md={3} xl={2}>
+                <Grid item key={playlist.key} xs={6} sm={4} md={4} lg={3} xl={2}>
                   <CommonPlaylist {...playlist} keyId={playlist.key} />
                 </Grid>
               ))}
@@ -83,7 +83,7 @@ const ArtistHome = ({ defineLang, songNearly = [], artist = {}, song = {}, playl
             </Grid>
             <Grid container spacing={2}>
               {getSlideVideos(videos, 'small').map((video) => (
-                <Grid key={video.key} item xs={3} sm={3} md={3} lg={3} xl={2}>
+                <Grid key={video.key} item xs={6} sm={4} md={4} lg={3} xl={2}>
                   <CommonVideo {...video} keyId={video.key} />
                 </Grid>
               ))}

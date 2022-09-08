@@ -76,7 +76,7 @@ const Karaoke = ({ defineLang, type }) => {
         <div className='kara-main'>
           <Grid container spacing={2}>
             {data?.map((content) => (
-              <Grid item key={content.key} xs={3} sm={3} md={3} xl={2}>
+              <Grid item key={content.key} xs={6} sm={4} md={4} lg={3} xl={2}>
                 <CommonVideo {...content} keyId={content.key} />
               </Grid>
             ))}

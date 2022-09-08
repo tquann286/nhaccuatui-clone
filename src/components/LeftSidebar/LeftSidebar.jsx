@@ -23,18 +23,18 @@ import { useGetFixedPosition } from 'hooks'
 import { auth } from 'config/firebase'
 import { createTop20Url } from 'share/utilities'
 import { useWindowSize, useOnClickOutside } from 'hooks'
-import { TbArrowBarToLeft, TbArrowBarToRight } from 'react-icons/tb'
+import { TbArrowBarToRight } from 'react-icons/tb'
 
 const LeftSidebar = () => {
   const [state, dispatch] = useStore()
   const { theme, lang, showLogin, showSignUp } = state
   const size = useWindowSize()
 
-  const [showLeftSidebar, setShowLeftSidebar] = useState(size.width > 768)
+  const [showLeftSidebar, setShowLeftSidebar] = useState(size.width > 840)
   const leftSidebarRef = useRef(null)
 
   useEffect(() => {
-    setShowLeftSidebar(size.width > 768)
+    setShowLeftSidebar(size.width > 840)
   }, [size.width])
 
   useOnClickOutside(leftSidebarRef, leftSidebarRef, () => {
@@ -96,10 +96,10 @@ const LeftSidebar = () => {
 
   return (
     <React.Fragment>
-      <div className={`fixed flexCenter w-16 rounded-tr-4px cursor-pointer rounded-br-4px h-16 bg-color-0-2 z-8 shadow-medium ip5:-left-20 top-16px ${!showLeftSidebar && 'ip5:left-0'}`} onClick={() => setShowLeftSidebar(true)}>
+      <div className={`fixed flexCenter w-16 rounded-tr-4px cursor-pointer rounded-br-4px h-16 bg-color-0-2 z-8 shadow-medium smpc:-left-16 top-16px ${!showLeftSidebar && 'left-0'}`} onClick={() => setShowLeftSidebar(true)}>
         <TbArrowBarToRight className='text-xl font-medium color-0-6' />
       </div>
-      <div className={`left-sidebar h-screens w-200px fixed top-0 left-px z-1 border-l border-solid border-0-05`} ref={leftSidebarRef}>
+      <div className={`left-sidebar h-screen w-200px bg-color-1 fixed top-0 z-9 border-l border-solid border-0-05 smpc:left-px ip5:-left-200vh ${showLeftSidebar && '!left-px'}`} ref={leftSidebarRef}>
         <Scrollbars {...scrollBarStyles}>
           <div className='ls-logo-theme'>
             <Link className='ls-logo' to='/'>

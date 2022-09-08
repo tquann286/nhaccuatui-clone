@@ -83,6 +83,7 @@ module.exports = {
         '160px': '16rem',
         '168px': '16.8rem',
         '184px': '18.4rem',
+        '200px': '20rem',
         '240px': '24rem',
         '320px': '32rem',
         '360px': '36rem',
@@ -90,6 +91,7 @@ module.exports = {
         '2/5': '40%',
         '2/1': '200%',
         '100vh': '100vh',
+        '200vh': '200vh',
       },
       lineHeight: {
         inherit: 'inherit',
@@ -167,8 +169,10 @@ module.exports = {
     },
     screens: {
       'ip5': '320px',
+      'ip6': '480px',
       'sm': '640px',
       'md': '768px',
+      'smpc': '840px',
       'lg': '1024px',
       'xl': '1280px',
       '2xl': '1536px',

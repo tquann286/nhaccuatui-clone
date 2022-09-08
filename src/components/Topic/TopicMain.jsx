@@ -52,7 +52,7 @@ const TopicMain = () => {
         <div className="topic-main-content common-marginTLR">
           <Grid container spacing={2}>
             {topicContent?.topic?.map(topic => (
-              <Grid key={topic.key} item xs={3} sm={3} md={3} xl={2}>
+              <Grid key={topic.key} item xs={6} sm={4} md={4} lg={3} xl={2}>
                 <TopicItem { ... topic } keyId={topic.key} />
               </Grid>
             ))}

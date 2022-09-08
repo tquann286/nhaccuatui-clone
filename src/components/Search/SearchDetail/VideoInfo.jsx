@@ -7,7 +7,7 @@ const VideoInfo = ({ videos = [] }) =>  videos.length === 0 || (
     <div className="video-info-main common-main">
       <Grid className='list-videos' container spacing={2}>
         {videos.map(video => (
-          <Grid item key={video.key} xs={3} sm={3} md={3} lg={3} xl={3}>
+          <Grid item key={video.key} xs={4} sm={4} md={3} lg={3} xl={3}>
             <CommonVideo { ... video } keyId={video.key} />
           </Grid>
         ))}

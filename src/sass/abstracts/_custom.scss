@@ -1,6 +1,6 @@
 @layer components {
   .commonMainOutlet {
-    @apply transition-all duration-700 pb-8px min-h-screen ml-200px xl:mr-320px lg:mr-0;
+    @apply transition-all duration-700 pb-8px min-h-screen smpc:ml-200px ip5:ml-0 xl:mr-320px lg:mr-0;
   }
 
   .collection-cate {

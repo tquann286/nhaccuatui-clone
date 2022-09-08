@@ -109,7 +109,7 @@ const ArtistMain = () => {
           ) : (
             <Grid container spacing={2}>
               {renderArtists?.map((artist) => (
-                <Grid key={artist.artistId} item xs={3} sm={3} md={3} xl={2}>
+                <Grid key={artist.artistId} item xs={6} sm={4} md={4} lg={3} xl={2}>
                   <CircleArtist {...artist} />
                 </Grid>
               ))}

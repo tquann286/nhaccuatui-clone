@@ -47,7 +47,7 @@ const NewHot = ({ defineLang, type }) => {
       <div className='new-hot-main'>
         <Grid container spacing={2}>
           {data?.map((content) => (
-            <Grid item key={content.key} xs={3} sm={3} md={3} xl={2}>
+            <Grid item key={content.key} xs={6} sm={4} md={4} lg={3} xl={2}>
               {type === 'song' && <SongSquare {...content} keyId={content.key} />}
               {type === 'playlist' && <CommonPlaylist {...content} keyId={content.key} />}
               {type === 'mv' && <CommonVideo {...content} keyId={content.key} />}

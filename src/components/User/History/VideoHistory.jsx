@@ -60,7 +60,7 @@ const VideoHistory = ({ defineLang, currentUser }) => {
             .map(
               (video) =>
                 video && (
-                  <Grid item key={video.key} xs={4} sm={4} md={4} xl={3}>
+                  <Grid item key={video.key} xs={6} sm={4} md={4} lg={4} xl={3}>
                     <CommonVideo {...video} keyId={video.key} addToFav={false} removeHistory handleRemoveHistory={() => handleRemoveHistory(video.key)} />
                   </Grid>
                 )

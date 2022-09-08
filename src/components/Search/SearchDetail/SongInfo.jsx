@@ -27,7 +27,7 @@ const SongInfo = ({ songs = [], defineLang }) => {
       <div className='song-info-main common-main'>
         <Grid className='list-songs' container spacing={2}>
           {songs.map((song) => (
-            <Grid key={song.key} item xs={6}>
+            <Grid key={song.key} item xs={12} sm={6} md={6} lg={6} xl={4}>
               <CommonSong {...song} songView={songsView[song.key] || 0} keyId={song.key} />
             </Grid>
           ))}

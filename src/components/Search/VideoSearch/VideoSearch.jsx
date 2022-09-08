@@ -53,7 +53,7 @@ const VideoSearch = ({ searchTerm, searchQuery, defineLang }) => {
       <div className='video-search-main'>
         <Grid container spacing={2}>
           {videoSearch?.video.map((video) => (
-            <Grid item key={video.key} xs={4} sm={4} md={4} xl={3}>
+            <Grid item key={video.key} xs={6} sm={4} md={4} lg={4} xl={3}>
               <CommonVideo {...video} keyId={video.key} />
             </Grid>
           ))}

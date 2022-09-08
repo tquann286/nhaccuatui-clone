@@ -234,7 +234,7 @@ const RightSidebar = () => {
 
   return (
     <React.Fragment>
-    <div className={`rb-container bg-color-1 h-screen w-320px fixed top-0 ip5:-right-100vh xl:right-0 z-9 transition-all duration-300 border-r border-solid border-0-05 ${showRightSidebar && '!right-0'}`} ref={rightSidebarRef}>
+    <div className={`rb-container bg-color-1 h-screen w-320px fixed top-0 ip5:-right-200vh xl:right-0 z-9 transition-all duration-300 border-r border-solid border-0-05 ${showRightSidebar && '!right-0'}`} ref={rightSidebarRef}>
       <PlayingSongMain {...commmonProps} {...playingSongMainProps} />
       <SongController {...commmonProps} {...songControllerProps} />
       <audio {...audioProps} />
