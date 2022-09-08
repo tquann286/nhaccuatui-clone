@@ -43,9 +43,9 @@ const PlaylistResult = ({ playlist, favPlaylists, defineLang }) => {
           <ImageOverlay { ... imageOverlayProps } />
         </div>
       </div>
-      <div className='tr-description sm:ml-16 ip5:ml-8'>
+      <div className='tr-description sm:ml-16 ip5:ml-4'>
         <div className='tr-decoration'>#1</div>
-        <div className='tr-main-title color-0-88'>
+        <div className='tr-main-title sm:text-sm ip5:text-13px'>
           <Link to={createPlaylistUrl(title, key)}>{title}</Link>
         </div>
         <CommonArtist artists={artists} />

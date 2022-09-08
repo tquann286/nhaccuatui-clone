@@ -41,7 +41,7 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
   const onEnterSearch = (e) => e.keyCode === 13 && onNavSearch(searchTerm)
 
   return (
-    <div className='sh-container sm:px-32px ip5:px-22px border-0-1'>
+    <div className='sh-container sm:px-32px ip5:px-16px xs:px-22px border-0-1'>
       <div className={`search-input-container border-0-05 bg-color-0-02 ${isFocusSearchInput && 'focus'}`}>
         <div className='search-btn-container' onClick={() => onNavSearch(searchTerm)}>
           <FiSearch />

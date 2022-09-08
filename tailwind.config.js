@@ -137,9 +137,10 @@ module.exports = {
       },
     },
     fontSize: {
+      '8px': ['0.8rem', '1.2rem'],
       '9px': ['0.9rem', '1.3rem'],
       '10px': ['1rem', '1.4rem'],
-      xs: ['1.1rem', '1.5rem'],
+      '11px': ['1.1rem', '1.5rem'],
       xs: ['1.2rem', '1.6rem'],
       '13px': ['1.3rem', '1.8rem'],
       sm: ['1.4rem', '2rem'],
@@ -179,6 +180,7 @@ module.exports = {
     screens: {
       ip5: '320px',
       ip6: '480px',
+      xs: '560px',
       sm: '640px',
       md: '768px',
       smpc: '840px',

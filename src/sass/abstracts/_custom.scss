@@ -50,4 +50,20 @@
   .main-title-scss {
     @include main-title-scss;
   }
+
+  .fz-10px {
+    @apply sm:text-10px ip6:text-9px ip5:text-8px; 
+  }
+
+  .fz-12px {
+    @apply sm:text-xs ip6:text-11px ip5:text-10px; 
+  }
+
+  .fz-13px {
+    @apply sm:text-13px ip6:text-xs ip5:text-11px; 
+  }
+
+  .fz-14px {
+    @apply sm:text-sm ip6:text-13px ip5:text-xs; 
+  }
 }
