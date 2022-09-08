@@ -17,7 +17,7 @@ const Homepage = () => {
 	}, [location])
 
   return (
-    <div className='hp-container selection:bg-main selection:text-slate-100'>
+    <div className='hp-container bg-color-1 selection:bg-main selection:text-slate-100'>
       <Title title={useLang('NhacCuaTui Clone - Nghe nhạc Mới, tải nhạc Hot chất lượng cao', 'NhacCuaTui Clone - Music for everyone')} />
       <LeftSidebar />
         <Outlet />

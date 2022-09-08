@@ -165,6 +165,14 @@ module.exports = {
       '10px': '1rem',
       '15px': '1.5rem',
     },
+    screens: {
+      'ip5': '320px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    }
   },
   plugins: [require('@neojp/tailwindcss-line-clamp-utilities'), require('tailwind-scrollbar-hide')],
   variants: {

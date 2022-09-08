@@ -78,7 +78,7 @@ const Top3Item = ({ artists, duration, position, songKey, thumbnail, title, i, a
                 {position}
               </span>
               <Image imageUrl={thumbnail} backupImg={backupImg} className='w-36px h-36px rounded-2px' />
-              <span className='ml-12px truncate text-white/[.88] clickable font-semibold' title={title}>
+              <span className='ml-12px truncate text-white/[.88] clickable font-semibold w-[calc(100%_-_10.2rem)]' title={title}>
                 {title}
               </span>
             </Grid>

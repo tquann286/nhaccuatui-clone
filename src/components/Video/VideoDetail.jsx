@@ -70,7 +70,7 @@ const VideoDetail = () => {
   const { artists = [], title = '' } = videoDetail
 
   return (
-    <div className='hp-container'>
+    <div className='hp-container bg-color-1'>
       {artists.length !== 0 && <Title title={createTitleArtist(title, artists)} />}
       <div className='h-full bg-color-0-02'>
         <LeftSidebar />

@@ -7,15 +7,9 @@ $scale: 5rem;
 
 .left-sidebar {
   @include transition-effect(0.75s);
-  height: 100vh;
-  width: $left-sidebar-width;
-  position: fixed;
-  top: 0;
-  left: 0.1rem;
   overflow: hidden auto;
   overscroll-behavior-y: contain;
   border-right: $border-light;
-  z-index: 1;
 
   .ls-logo-theme {
     @include display-flex;
