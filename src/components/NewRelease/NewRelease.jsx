@@ -55,7 +55,7 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
 
               return (
                 <div key={key} className='nr-active-container'>
-                  <Link to={createSongUrl(title, key)} className='nr-active-img' title={title}>
+                  <Link to={createSongUrl(title, key)} className='nr-active-img sm:mr-16 ip5:mr-8' title={title}>
                     <Image {...imageProps} />
                   </Link>
                   <div className='nr-active-detail'>

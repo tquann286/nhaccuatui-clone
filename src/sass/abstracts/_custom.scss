@@ -36,7 +36,7 @@
   }
 
   .update-user-label {
-    @apply text-13px color-0-5 w-44 font-medium;
+    @apply text-13px color-0-5 sm:w-44 ip5:w-36 font-medium;
   }
 
   .update-user-input {

@@ -146,7 +146,7 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
         <div className='update-user-field'>
           <p className='update-user-label'>{defineLang('Sinh nhật', 'Birthday')}:</p>
           <div className='update-user-input'>
-            <div className='w-360px h-16 flex'>
+            <div className='sm:w-360px h-16 ip5:w-240px flex'>
               <DropDown value={tempDay} setValue={setTempDay} array={dayArr} styles='w-[11.2rem] rounded-4px h-42px ml-12px first:ml-0' />
               <DropDown value={tempMonth} setValue={setTempMonth} array={monthArr} styles='w-[11.2rem] rounded-4px h-42px ml-12px first:ml-0' />
               <DropDown value={tempYear} setValue={setTempYear} array={yearArr} styles='w-[11.2rem] rounded-4px h-42px ml-12px first:ml-0' />
@@ -156,7 +156,7 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
         <div className='update-user-field'>
           <p className='update-user-label'>{defineLang('Giới tính', 'Gender')}:</p>
           <div className='update-user-input'>
-            <div className='w-360px h-16 flex'>
+            <div className='sm:w-360px h-16 ip5:w-240px flex'>
               {genderArr.map((sex) => (
                 <Checkbox key={sex.en} defineLang={defineLang} tempGender={tempGender} value={sex} setValue={setTempGender} />
               ))}
@@ -167,7 +167,7 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
         <div className='update-user-field'>
           <p className='update-user-label'>{defineLang('Tỉnh/Thành phố', 'Province/City')}:</p>
           <div className='update-user-input'>
-            <div className='w-360px h-16 flex'>
+            <div className='sm:w-360px h-16 ip5:w-240px flex'>
               <DropDown value={tempCity} setValue={setTempCity} array={vnCityProv} styles='w-full h-full' />
             </div>
           </div>
@@ -176,7 +176,7 @@ const UpdateUser = ({ defineLang, photoURL = '', displayName = '', email = '', a
         <div className='update-user-field'>
           <p className='update-user-label'>{defineLang('Giới thiệu', 'Introduce')}:</p>
           <div className='update-user-input'>
-            <div className='w-360px h-32'>
+            <div className='sm:w-360px ip5:w-240px h-32'>
               <textarea {...introTextareaProps} />
             </div>
           </div>

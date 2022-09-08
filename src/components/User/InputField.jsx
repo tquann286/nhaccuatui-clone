@@ -17,7 +17,7 @@ const InputField = ({ label = '', value, setValue, placeholder = '', extInputPro
     <div className={`update-user-field ${styles}`}>
       <p className='update-user-label'>{label}:</p>
       <div className='update-user-input'>
-        <div className='w-360px h-16'>
+        <div className='sm:w-360px ip5:w-240px h-16'>
           <div className={`flex items-center w-full h-full transition-colors useBorder border-0-05 rounded-4px bg-color-0-02 ${isFocus && '!border-main'}`}>
             <input {...inputProps} {...extInputProps} />
           </div>

@@ -23,7 +23,7 @@ const MusicRanking = ({ ranking }) => {
       <div className='mr-title main-title-scss'>
         <Link to={createTop20Url('nhac-viet')}>{defineLang('BXH bài hát', 'NCT Song Chart')}</Link>
       </div>
-      <div className='mr-main'>{ranking.map((rankItem) => rankItem && <MusicCard {...rankItem} keyId={rankItem.key} {...musicCardProps} />)}</div>
+      <div className='mr-main sm:flex-row ip5:flex-col'>{ranking.map((rankItem) => rankItem && <MusicCard {...rankItem} keyId={rankItem.key} {...musicCardProps} />)}</div>
     </div>
   )
 }
