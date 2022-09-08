@@ -9,7 +9,6 @@
     @include justify-content(space-between);
     width: 100%;
     height: $search-header-height;
-    padding: 0 3.2rem;
     border-width: 0 0 0.1rem 0;
     border-style: solid;
 
@@ -120,7 +119,6 @@
 
         .ta-wrapper {
           position: relative;
-          width: 18rem;
           height: 100%;
 
           .ta-active-artists {
@@ -128,7 +126,6 @@
             position: relative;
             overflow: hidden;
             height: $search-content-height;
-            width: 18rem;
             border-width: 0.1rem;
             border-style: solid;
             border-radius: 2rem;
@@ -168,7 +165,6 @@
             opacity: 0;
             .ta-full-artists-content {
               position: relative;
-              width: 18rem;
               height: 100%;
               padding-bottom: 0.4rem;
               border-radius: 0.4rem;
@@ -191,13 +187,11 @@
                 padding: 0.5rem 0.8rem;
                 font-size: 1.3rem;
                 position: relative;
-                width: 18rem;
                 height: 100%;
                 cursor: pointer;
                 
                 p.ta-full-artists-name {
                   @include threeDotContent;
-                  font-size: 1.3rem;
                   width: 85%;
                   span.ta-full-artists-position {
                     margin-right: 0.8rem;
@@ -215,7 +209,6 @@
           }
 
           .ta-new-label {
-            width: 2.2rem;
             &-main {
               @include flexCenter;
               width: 100%;
@@ -223,7 +216,6 @@
 
               p.ta-new-label-content {
                 color: #ffc100;
-                font-size: 1rem;
                 margin-left: 0.2rem;
                 font-weight: 400;
               }
@@ -360,10 +352,8 @@
         .maybe-hit-main {
           @include display-flex;
           @include align-items(center);
-          height: 16.6rem;
 
           .maybe-hit-thumb {
-            @include fitContentHeight;
             @include display-flex;
             @include align-items(flex-end);
             position: relative;
@@ -384,12 +374,9 @@
             }
 
             .maybe-hit-img-wrapper {
-              width: 16rem;
-              height: 16rem;
               .maybe-hit-img-main {
                 cursor: pointer;
                 position: relative;
-                width: 100%;
                 border: $border-light;
                 border-radius: 0.4rem;
                 overflow: hidden;
@@ -455,7 +442,6 @@
             }
           }
           .maybe-hit-description {
-            width: calc(100% - 20.2rem);
             margin-left: 4rem;
             font-weight: 500;
 

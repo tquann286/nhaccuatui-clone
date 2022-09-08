@@ -161,11 +161,11 @@ const SearchMain = ({ defineLang, trendingKeywords = [], searchHistory, setSearc
             <div className='maybe-hit-lead common-title color-0-88'>{defineLang('Có thể hot', 'Maybe Hit')}</div>
           </div>
           <div className='maybe-hit-wrapper bg-color-0-02'>
-            <div className='maybe-hit-main'>
-              <div className='maybe-hit-thumb'>
-                <div className='speacial-tag'>{defineLang('Đặc biệt', 'Special')}</div>
-                <div className='maybe-hit-img-wrapper'>
-                  <div className='maybe-hit-img-main'>
+            <div className='maybe-hit-main sm:h-160px ip5:h-140px'>
+              <div className='maybe-hit-thumb sm:h-160px ip5:h-140px'>
+                <div className='speacial-tag sm:text-10px ip5:text-9px'>{defineLang('Đặc biệt', 'Special')}</div>
+                <div className='maybe-hit-img-wrapper sm:h-160px ip5:h-140px sm:w-160px ip5:w-140px '>
+                  <div className='maybe-hit-img-main sm:h-160px ip5:h-140px sm:w-160px ip5:w-140px'>
                     <img src={maybeHit.thumbnail} alt={maybeHit.title} title={maybeHit.title} />
                     <OptionModal {...optionModalProps}>
                       <ModalAnimate {...modalAnimateProps}>
@@ -183,7 +183,7 @@ const SearchMain = ({ defineLang, trendingKeywords = [], searchHistory, setSearc
                   </div>
                 </div>
               </div>
-              <div className='maybe-hit-description'>
+              <div className='maybe-hit-description sm:ml-14 md:ml-16 ip5:ml-18px'>
                 <div className='maybe-hit-desc-title color-0-88'>
                   <span className='color-0-5'>{defineLang('Bài hát: ', 'Song: ')}</span>
                   <Link to={createSongUrl(maybeHit.title, maybeHit.key)}>{maybeHit.title}</Link>

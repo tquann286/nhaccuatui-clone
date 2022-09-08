@@ -39,11 +39,11 @@ const PlaylistResult = ({ playlist, favPlaylists, defineLang }) => {
   return (
     <div className='tr-slider'>
       <div className='tr-thumb-container'>
-        <div className='tr-thumb-main'>
+        <div className='tr-thumb-main sm:w-150px sm:h-150px md:w-160px md:h-160px ip5:w-140px ip5:h-140px'>
           <ImageOverlay { ... imageOverlayProps } />
         </div>
       </div>
-      <div className='tr-description'>
+      <div className='tr-description sm:ml-16 ip5:ml-8'>
         <div className='tr-decoration'>#1</div>
         <div className='tr-main-title color-0-88'>
           <Link to={createPlaylistUrl(title, key)}>{title}</Link>
