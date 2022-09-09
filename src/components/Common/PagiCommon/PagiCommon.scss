@@ -18,8 +18,6 @@
         @include flexCenter;
         @include transition-effect(0.15s);
         @include userSelect(none);
-        width: 4rem;
-        height: 4rem;
         font-size: 1.4rem;
         outline: none;
         border-bottom: 0.1rem solid transparent;
