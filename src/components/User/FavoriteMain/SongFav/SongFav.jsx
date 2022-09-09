@@ -56,7 +56,7 @@ const SongFav = ({ defineLang, currentUser = {} }) => {
     <div className='song-fav-container'>
       <div className='sf-header w3-row'>
         <div className='sf-thumb-img w3-col'>
-          <ShadowThumb width='16rem' shadowHeight='0.6rem' imageUrl={initImage} />
+          <ShadowThumb styles='sm:w-160px ip5:w-120px ip6:140px' shadowHeight='0.6rem' imageUrl={initImage} />
         </div>
         <div className='sf-info w3-rest'>
           <div className='common-sub-title color-0-5'>

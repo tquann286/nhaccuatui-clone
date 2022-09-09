@@ -84,7 +84,7 @@ const PlaylistDetail = () => {
         {artists.length !== 0 && <Title title={createTitleArtist(title, artists)} />}
         <div className='w3-row'>
           <div className='w3-col w-240px'>
-            <ShadowThumb imageUrl={thumbnail} width='24rem' />
+            <ShadowThumb imageUrl={thumbnail} styles='sm:w-240px ip5:w-180px ip6:220px' />
           </div>
           <div className='w3-rest pl-24px'>
             <TitleCommon type='playlist' defineLang={defineLang} title={title} />

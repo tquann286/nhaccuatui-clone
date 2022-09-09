@@ -47,14 +47,14 @@ const Sharing = ({ defineLang, placement, handleCopyShare, onShareWindowClose, s
       <CenterModal {...centerModalProps}>
         <div className='sharing-modal-container'>
           <FacebookShareButton {...fbShareProps}>
-            <div className='sharing-item sm:w-64 ip5:w-40 fb'>
+            <div className='sharing-item sm:pl-16px ip5:pl-6px sm:w-64 ip5:w-40 fb font-semibold'>
               <FaFacebookF className='text-slate-100' />
-              <span>Facebook</span>
+              <span className='fz-14px sm:ml-16px ip5:ml-4'>Facebook</span>
             </div>
           </FacebookShareButton>
-          <div className='sharing-item sm:w-64 ip5:w-40 copy-link' onClick={onCopyShare}>
+          <div className='sharing-item sm:pl-16px ip5:pl-6px sm:w-64 ip5:w-40 copy-link font-semibold' onClick={onCopyShare}>
             <BsLink45Deg className='text-slate-100' />
-            <span>{defineLang('Sao chép link', 'Copy link')}</span>
+            <span className='fz-14px sm:ml-16px ip5:ml-4'>{defineLang('Sao chép link', 'Copy link')}</span>
           </div>
         </div>
       </CenterModal>

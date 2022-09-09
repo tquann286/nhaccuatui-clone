@@ -69,6 +69,10 @@
     @apply sm:text-sm ip6:text-13px ip5:text-xs; 
   }
 
+  .fz-16px {
+    @apply sm:text-base ip6:text-15px ip5:text-sm; 
+  }
+
   // Width
   .width-48 {
     @apply md:w-48 sm:w-44 ip5:w-40;
@@ -76,6 +80,14 @@
 
   .width-80px {
     @apply md:w-80px sm:w-28 ip5:w-24;
+  }
+
+  .width-24px {
+    @apply sm:w-24px ip5:w-18px ip6:w-8;
+  }
+
+  .width-160px {
+    @apply sm:w-160px ip5:w-120px ip6:w-130px;
   }
 
   // Height

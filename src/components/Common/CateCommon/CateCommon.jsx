@@ -5,7 +5,7 @@ import Tab from '@mui/material/Tab'
 const CateCommon = ({ categories, curCate, handleCateChange, defineLang, styles = '', cateStyles = '' }) => (
   <Box sx={{ width: '100%' }} className={styles}>
     <Tabs
-      className='flex flex-wrap min-height-40px height-40px border-b border-solid border-0-05'
+      className='flex flex-wrap border-b border-solid border-0-05'
       value={curCate}
       onChange={handleCateChange}
       centered

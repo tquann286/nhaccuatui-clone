@@ -122,7 +122,7 @@ const SongRanking = ({ songKey = '', position = 0, defineLang, artists = [], thu
     <div className={`h-56px mx-32px mb-1 w3-row transition-height will-change-height ${showRanking && 'h-144px'}`}>
       <div className='w3-col w-32px h-32px bg-color-0-02 text-center mt-12px mr-8px text-13px color-0-5 rounded-circle leading-32px'>{position}</div>
       <div className='w3-rest h-full bg-color-0-02 hover-bg-color-0-05 rounded-4px transition-colors cursor-pointer group' onClick={handleClickNewSong}>
-        <div className='h-16 mt-8px mr-24px mb-16px ml-16px w3-row'>
+        <div className='h-16 mt-8px sm:mr-24px ip5:mr-8px mb-16px sm:ml-8px ip5:ml-4px w3-row'>
           <div className={`w3-col h16 w-16 useBorder border-0-1 rounded mr-16px ${isVideo ? 'w-72px' : ''}`} onClick={handleClickNavigate}>
             <Image className='w-full h-full rounded-2px' {...imageProps} />
           </div>
@@ -133,7 +133,7 @@ const SongRanking = ({ songKey = '', position = 0, defineLang, artists = [], thu
                   <MdOutlineKeyboardArrowDown />
                 </div>
               )}
-              <div className='w3-right w3-col flexCenter w-24px h-16 leading-16 text-lg mr-24px color-0-5'>{handleRanking()}</div>
+              <div className='w3-right w3-col flexCenter width-24px h-16 leading-16 text-lg sm:mr-24px ip5:mr-8px ip6:mr-12px color-0-5'>{handleRanking()}</div>
             </React.Fragment>
           )}
           <div className='w3-right mr-14px w-fit invisible group-hover:visible'>

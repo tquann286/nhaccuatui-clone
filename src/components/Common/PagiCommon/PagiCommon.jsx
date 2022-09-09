@@ -16,7 +16,7 @@ const PagiCommon = ({ pageIndex, setPageIndex, count, defineLang }) => {
 
   const { items } = usePagination({
     count,
-    siblingCount: useWindowSize > 650 ? 2 : 1,
+    siblingCount: size.width > 650 ? 2 : 1,
     onChange: handleChangePage,
     page: pageIndex,
   })
