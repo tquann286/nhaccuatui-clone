@@ -22,9 +22,7 @@ const CenterModal = ({ modalName, showModal, toggleModal, children }) => {
               <IoMdClose className='color-0-5' />
             </button>
           </div>
-          <div className="center-modal-main">
-            {children}
-          </div>
+          <div className='center-modal-main'>{children}</div>
         </div>
       </div>
     </PopupModal>
