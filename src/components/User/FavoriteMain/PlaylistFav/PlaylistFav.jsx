@@ -44,7 +44,7 @@ const PlaylistFav = ({ defineLang, currentUser }) => {
 
   return (
     <div className='playlist-fav-container'>
-      <div className='playlist-fav-title alcenter-jcbetween'>
+      <div className='playlist-fav-title alcenter-jcbetween mt-12px'>
         <div className='playlist-fav-title-content common-title color-0-88'>{defineLang('Danh sách phát', 'Playlist')}</div>
         {favPlaylists.length !== 0 && isValid(favPlaylists) && (
           <div className='clear-all clickable small-common color-0-6' onClick={onHandleClearAllFav}>

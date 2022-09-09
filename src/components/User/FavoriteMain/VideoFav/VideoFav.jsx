@@ -44,7 +44,7 @@ const VideoFav = ({ defineLang, currentUser }) => {
 
   return (
     <div className='relative'>
-      <div className='flex justify-between items-center mb-6 color-0-88'>
+      <div className='flex justify-between items-center mb-6 color-0-88 mt-12px'>
         <div className='text-xl font-semibold'>Video</div>
         {favVideos.length !== 0 && isValid(favVideos) && (
           <div className='text-xs color-0-6 font-medium transition-colors hover:!text-main cursor-pointer' onClick={onHandleClearAllFav}>
