@@ -6,8 +6,10 @@ import { LeftSidebar, LoadingV2, VideoMain, Title, NextVideos, Container } from 
 import { getVideoDetailData, getVideoStreamUrls } from 'services/Video/VideoDetail'
 import { createTitleArtist, getLyricData, getMaybeLike, getVideosView } from 'share/utilities'
 import { addVideoHistory } from 'services/firebase/firestore'
+import useWindowSize from 'hooks/useWindowSize'
 
 const VideoDetail = () => {
+  const size = useWindowSize()
   const [state] = useStore()
   const defineLang = useCallback((vie, eng) => (state.lang === 'vi' ? vie : eng), [state.lang])
 
@@ -65,6 +67,7 @@ const VideoDetail = () => {
     defineLang,
     videoDetail,
     autoplay,
+    windowWidth: size.width
   }
 
   const { artists = [], title = '' } = videoDetail
@@ -82,7 +85,7 @@ const VideoDetail = () => {
           <div className='commonMainOutlet mr-unset transition-none'>
             <Container>
               <div className='common-min-h h-full'>
-                <div className='ml-32px'>
+                <div className={`${size.width > 600 ? 'ml-32px' : 'ml-12px mr-12px'} `}>
                   <div className='flex pt-24px'>
                     <VideoMain {...videoProps} />
                     <NextVideos {...videoProps} toggleAutoplay={toggleAutoplay} />

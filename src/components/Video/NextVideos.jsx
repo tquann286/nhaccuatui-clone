@@ -3,12 +3,12 @@ import React from 'react'
 import { BallCheckbox, VideoRow } from 'components'
 import Grid from '@mui/material/Grid'
 
-const NextVideos = ({ defineLang, videoDetail, autoplay, toggleAutoplay }) => {
+const NextVideos = ({ defineLang, videoDetail, autoplay, toggleAutoplay, windowWidth }) => {
 
   const { maybeLike = {} } = videoDetail
   const { data: rcmVideos = [] }  = maybeLike
 
-  if (rcmVideos.length === 0) return null
+  if (rcmVideos.length === 0 || windowWidth < 600) return null
   
   return (
     <div className='w-[33.6rem] mx-16px '>

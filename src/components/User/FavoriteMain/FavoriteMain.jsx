@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react'
-import './FavoriteMain.scss'
 
 import { CateCommon, SongFav, ErrorBoundary, PlaylistFav, VideoFav, Container } from 'components'
 import { userCateNav } from 'services/User/User'
@@ -30,10 +29,10 @@ const FavoriteMain = () => {
   }
 
   return (
-    <div className='favorite-main commonMainOutlet'>
+    <div className='favorite-main relative commonMainOutlet'>
       <ErrorBoundary>
         <Container>
-          <div className='fm-container'>
+          <div className='fm-container sm:pt-16px ip5:pt-12px sm:px-32px ip5:px-16px'>
             <CateCommon {...cateCommonProps} />
             <div className='fm-content'>
               {curCate === 'song' && <SongFav {...cateFavProps} />}
