@@ -51,7 +51,7 @@ const PlaylistSearch = ({ searchTerm, searchQuery, defineLang }) => {
     <div className='playlist-search-container common-section common-paddingLR'>
       <ResultTitle {...resultTitleProps} />
       <div className='playlist-search-main'>
-        <Grid container spacing={2}>
+        <Grid container spacing={{ xs: 1, sm: 2 }}>
           {playlistSearch?.playlist.map((playlist) => (
             <Grid item key={playlist.key} xs={6} sm={4} md={4} lg={3} xl={2}>
               <CommonPlaylist {...playlist} keyId={playlist.key} />

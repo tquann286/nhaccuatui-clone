@@ -67,7 +67,7 @@ const ArtistHome = ({ defineLang, songNearly = [], artist = {}, song = {}, playl
         <div className='mt-16'>
           <div className='mb-24px text-22px font-bold color-0-88'>{defineLang('Bài hát', 'Song')}</div>
           <div className='mt-16px'>
-            <Grid container spacing={2}>
+            <Grid container spacing={{ xs: 1, sm: 2 }}>
               {songs.map((song) => (
                 <Grid item xs={12} sm={6} key={song.key} className='!py-2px'>
                   <CommonSong {...song} songView={songsView[song.key] || 0} keyId={song.key} backupImg={artist.imageUrl} />
@@ -81,7 +81,7 @@ const ArtistHome = ({ defineLang, songNearly = [], artist = {}, song = {}, playl
         <div className='mt-16'>
           <div className='mb-24px text-22px font-bold color-0-88'>{defineLang('Danh sách phát', 'Playlist')}</div>
           <div className='mt-24px'>
-            <Grid container spacing={2}>
+            <Grid container spacing={{ xs: 1, sm: 2 }}>
               {playlists.map((playlist) => (
                 <Grid item key={playlist.key} xs={6} sm={4} md={4} lg={3} xl={2}>
                   <CommonPlaylist {...playlist} keyId={playlist.key} />
@@ -95,14 +95,14 @@ const ArtistHome = ({ defineLang, songNearly = [], artist = {}, song = {}, playl
         <div className='mt-16'>
           <div className='mb-24px text-22px font-bold color-0-88'>Video</div>
           <div className='mt-16px'>
-            <Grid container spacing={2}>
+            <Grid container spacing={{ xs: 1, sm: 2 }}>
               {getSlideVideos(videos, 'big').map((video) => (
                 <Grid key={video.key} item xs={6} sm={6} md={6} lg={6} xl={4}>
                   <CommonVideo {...video} keyId={video.key} />
                 </Grid>
               ))}
             </Grid>
-            <Grid container spacing={2}>
+            <Grid container spacing={{ xs: 1, sm: 2 }}>
               {getSlideVideos(videos, 'small').map((video) => (
                 <Grid key={video.key} item xs={6} sm={6} md={3} lg={3} xl={2}>
                   <CommonVideo {...video} keyId={video.key} />

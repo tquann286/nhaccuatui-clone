@@ -1,8 +1,6 @@
 @import 'settings';
 
 .cate-basic-container {
-  @include flexCenter;
-
   .cate-basic-item {
     @include transition-effect(0.1s);
     @include hoverMainColor;

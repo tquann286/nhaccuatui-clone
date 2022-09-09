@@ -237,6 +237,7 @@ export const getMaybeLike = async (key, type, size = 12) => {
 export const getPlayingSong = async (songId) => {
   try {
     const songDetail = await getInfo(songId, 'song')
+    console.log('songDetail: ', songDetail)
 
     if (songDetail) return songDetail.song
   } catch (error) {

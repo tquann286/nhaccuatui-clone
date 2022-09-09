@@ -107,7 +107,7 @@ const ArtistMain = () => {
               <LoadingV2 />
             </div>
           ) : (
-            <Grid container spacing={2}>
+            <Grid container spacing={{ xs: 1, sm: 2 }}>
               {renderArtists?.map((artist) => (
                 <Grid key={artist.artistId} item xs={6} sm={4} md={4} lg={3} xl={2}>
                   <CircleArtist {...artist} />

@@ -182,7 +182,13 @@ const RightSidebar = () => {
 
   const defineLang = useCallback((vie, eng) => (lang === 'vi' ? vie : eng), [lang])
 
-  if (!playingSong) return <NoPlayingSong defineLang={defineLang} />
+  const noPlayingSongProps = {
+    defineLang,
+    showRightSidebar,
+    rightSidebarRef,
+  }
+
+  if (!playingSong) return <NoPlayingSong {...noPlayingSongProps} />
 
   const { thumbnail = '', title = '', key = '', artists = [], streamUrls = [], songView = 0, duration: songDuration = '' } = playingSong
 
@@ -234,14 +240,14 @@ const RightSidebar = () => {
 
   return (
     <React.Fragment>
-    <div className={`rb-container bg-color-1 h-screen w-320px fixed top-0 ip5:-right-200vh xl:right-0 z-9 transition-all duration-300 border-l border-solid border-0-05 ${showRightSidebar && '!right-0'}`} ref={rightSidebarRef}>
-      <PlayingSongMain {...commmonProps} {...playingSongMainProps} />
-      <SongController {...commmonProps} {...songControllerProps} />
-      <audio {...audioProps} />
-    </div>
-    <div className={`fixed flexCenter w-16 rounded-tl-4px cursor-pointer rounded-bl-4px h-16 bg-color-0-2 z-8 shadow-medium right-0 xl:-bottom-4 ${!showRightSidebar && 'ip5: bottom-16px' }`} onClick={() => setShowRightSidebar(true)}>
-      <TbArrowBarToLeft className='text-xl font-medium color-0-6' />
-    </div>
+      <div className={`rb-container bg-color-1 h-screen w-320px fixed top-0 ip5:-right-200vh xl:right-0 z-9 transition-all duration-300 border-l border-solid border-0-05 ${showRightSidebar && '!right-0'}`} ref={rightSidebarRef}>
+        <PlayingSongMain {...commmonProps} {...playingSongMainProps} />
+        <SongController {...commmonProps} {...songControllerProps} />
+        <audio {...audioProps} />
+      </div>
+      <div className={`fixed flexCenter w-16 rounded-tl-4px cursor-pointer rounded-bl-4px h-16 bg-color-0-2 z-8 shadow-medium right-0 xl:-bottom-4 ${!showRightSidebar && 'ip5: bottom-16px'}`} onClick={() => setShowRightSidebar(true)}>
+        <TbArrowBarToLeft className='text-xl font-medium color-0-6' />
+      </div>
     </React.Fragment>
   )
 }

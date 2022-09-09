@@ -73,15 +73,18 @@ $active-img-width: 16rem;
 		@include flexCenter;
     margin-bottom: 4rem;
 
+		& > .slick-active {
+			width: unset;
+		}
+
 		.nr-thumb-img {
 			position: relative;
 			border-radius: 0.4rem;
-			margin: 0 0.6rem;
 			width: unset !important;
+			
 			img {
 				vertical-align: middle;
 				border-radius: 0.4rem;
-				width: 8rem;
 			}
 
 			.blur-layer {
@@ -89,7 +92,6 @@ $active-img-width: 16rem;
 				@include transition-effect(0.2s);
 				position: absolute;
 				top: 0;
-				width: 100%;
 				height: 100%;
 				background-color: rgba(0, 0, 0, 0.3);
 				color: #fafafa;

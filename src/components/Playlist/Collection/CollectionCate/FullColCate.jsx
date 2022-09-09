@@ -7,7 +7,7 @@ import { BsCheck } from 'react-icons/bs'
 const FullColCate = ({ subCate, defineLang, colCate, onChangeColCate, isActiveCate }, ref) => {
   return (
     <div className='absolute bg-color-1 z-10 p-16px rounded-md shadow-lg w-[540px]' ref={ref}>
-      <Grid container spacing={2}>
+      <Grid container spacing={{ xs: 1, sm: 2 }}>
         {subCate.map((cate) => {
           const { title, value } = cate
 

@@ -86,11 +86,12 @@ const NewRelease = ({ newRelease: { song: newSong } }) => {
               imageUrl: thumbnail,
               alt: title,
               backupImg,
+              className: 'ip5:w-20 sm:w-80px',
             }
             return (
-              <Link key={key} to={createSongUrl(title, key)} className='nr-thumb-img' title={title}>
+              <Link key={key} to={createSongUrl(title, key)} className='nr-thumb-img ip6:px-6px ip5:px-2px' title={title}>
                 <Image {...imageProps} />
-                <div className='blur-layer'>
+                <div className='blur-layer ip5:w-20 sm:w-80px'>
                   <BsPlayCircleFill />
                 </div>
               </Link>

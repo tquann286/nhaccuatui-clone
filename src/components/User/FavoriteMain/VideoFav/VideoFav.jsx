@@ -53,7 +53,7 @@ const VideoFav = ({ defineLang, currentUser }) => {
         )}
       </div>
       <div className='pt2'>
-        <Grid container spacing={2}>
+        <Grid container spacing={{ xs: 1, sm: 2 }}>
           {favVideos
             .slice()
             .reverse()

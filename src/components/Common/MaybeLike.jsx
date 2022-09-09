@@ -8,7 +8,7 @@ const MaybeLike = ({ maybeLike, defineLang, titleStyles = '' }) =>
     <React.Fragment>
       <div className={`mt-16 text-xl color-0-88 font-bold capitalize ${titleStyles}`}>{defineLang('Có thể bạn cũng thích', 'You May Also Like')}</div>
       <div className='mt-16px'>
-        <Grid container spacing={2}>
+        <Grid container spacing={{ xs: 1, sm: 2 }}>
           {maybeLike.type === 'song' && (
             <React.Fragment>
               {maybeLike.data.map((song) => (

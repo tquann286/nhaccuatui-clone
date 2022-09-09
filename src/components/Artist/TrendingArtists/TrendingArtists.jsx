@@ -61,7 +61,7 @@ const TrendingArtists = ({ defineLang }) => {
           </Link>
         </div>
         <div className='list-artist'>
-          <Grid container spacing={2}>
+          <Grid container spacing={{ xs: 1, sm: 2 }}>
             {trendArtists.map((artist) => {
               const { name, position, shortLink } = artist
 
