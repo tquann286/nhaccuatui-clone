@@ -11,16 +11,6 @@ $ball-color-dark: #404040;
 
 body[data-theme='dark'] {
   color: $darkmode-text-color;
-
-  .hp-container {
-    background-color: $main-bg-color-dark;
-  }
-
-  .left-sidebar,
-  .right-sidebar {
-    border-color: $border-dark;
-  }
-
   // Special
   .disabled {
     color: rgba(244, 246, 248, 0.2) !important;

@@ -15,7 +15,7 @@ const CenterModal = ({ modalName, showModal, toggleModal, children }) => {
   return (
     <PopupModal {...popupModalProps}>
       <div onClick={(e) => e.stopPropagation()}>
-        <div className='center-modal-container bg-color-1'>
+        <div className='center-modal-container bg-color-1 sm:w-460px ip5:w-380px'>
           <div className='center-modal-header color-0-5 border-0-05'>
             <h4 className='color-0-88'>{modalName}</h4>
             <button className='close-btn' onClick={toggleModal}>

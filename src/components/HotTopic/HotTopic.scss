@@ -12,8 +12,6 @@
 
     .swiper {
       position: unset;
-      width: calc(100% + 1.6rem );
-      margin: -0.8rem;
 
       .ht-nav {
         @include display-flex;
@@ -29,8 +27,6 @@
     }
 
     .ht-container {
-      padding: 0 0.8rem;
-
       .ht-img-container {
         @include useBorder;
         position: relative;

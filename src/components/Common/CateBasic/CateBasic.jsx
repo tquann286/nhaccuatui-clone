@@ -2,7 +2,7 @@ import React from 'react'
 import './CateBasic.scss'
 
 const CateBasic = ({ defineLang, curCate, handleCateChange, categories }) => (
-  <div className='cate-basic-container'>
+  <div className='cate-basic-container flexCenter flex-wrap'>
   {categories.map(cate => {
     const { title, value } = cate
 

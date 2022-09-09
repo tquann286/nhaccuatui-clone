@@ -92,7 +92,7 @@ const Top100Item = () => {
             </p>
           </div>
           <div className='flex items-center'>
-            <div className='flex justify-center items-center w-64 h-32px rounded-16px useBorder border-white/10 font-semibold cursor-pointer text-13px text-white/50 hover:border-main hover:text-main transition-colors'>{defineLang('Phát tất cả', 'Play all')}</div>
+            <div className='flex justify-center items-center sm:w-64 ip5:w-40 h-32px rounded-16px useBorder border-white/10 font-semibold cursor-pointer fz-13px text-white/50 hover:border-main hover:text-main transition-colors'>{defineLang('Phát tất cả', 'Play all')}</div>
             <div className='ml-14px'>
               <Sharing {...sharingProps} />
             </div>

@@ -4,8 +4,10 @@ import './PagiCommon.scss'
 import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/md'
 import { usePagination } from '@mui/material'
 import onScrollToTop from 'share/scrollToTop'
+import useWindowSize from 'hooks/useWindowSize'
 
 const PagiCommon = ({ pageIndex, setPageIndex, count, defineLang }) => {
+  const size = useWindowSize()
 
   const handleChangePage = (e, page) => {
     setPageIndex(page)
@@ -14,7 +16,7 @@ const PagiCommon = ({ pageIndex, setPageIndex, count, defineLang }) => {
 
   const { items } = usePagination({
     count,
-    siblingCount: 2,
+    siblingCount: size.width > 650 ? 2 : 1,
     onChange: handleChangePage,
     page: pageIndex,
   })
@@ -33,24 +35,24 @@ const PagiCommon = ({ pageIndex, setPageIndex, count, defineLang }) => {
   const defineChildren = ({ page, type, selected, disabled, ...item }) => {
     switch (type) {
       case 'start-ellipsis':
-        return <div className='pagi-btn start-ellipsis ellipsis'>...</div>
+        return <div className='pagi-btn md:w-16 md:h-16 ip6:w-14 ip6:h-14 ip5:w-8 ip5:h-8 start-ellipsis ellipsis'>...</div>
       case 'end-ellipsis':
-        return <div className='pagi-btn end-ellipsis ellipsis'>...</div>
+        return <div className='pagi-btn md:w-16 md:h-16 ip6:w-14 ip6:h-14 ip5:w-8 ip5:h-8 end-ellipsis ellipsis'>...</div>
       case 'previous':
         return (
-          <div className={`pagi-btn previous-btn border-0-05 nav-btn ${disabled && 'disabled color-0-2'}`} {...item}>
+          <div className={`pagi-btn md:w-16 md:h-16 ip6:w-14 ip6:h-14 ip5:w-8 ip5:h-8 previous-btn border-0-05 nav-btn ${disabled && 'disabled color-0-2'}`} {...item}>
             <MdOutlineArrowBackIosNew />
           </div>
         )
       case 'next':
         return (
-          <div className={`pagi-btn next-btn border-0-05 nav-btn ${disabled && 'disabled color-0-2'}`} {...item}>
+          <div className={`pagi-btn md:w-16 md:h-16 ip6:w-14 ip6:h-14 ip5:w-8 ip5:h-8 next-btn border-0-05 nav-btn ${disabled && 'disabled color-0-2'}`} {...item}>
             <MdOutlineArrowForwardIos />
           </div>
         )
       case 'page':
         return (
-          <div className={`pagi-btn page-btn page-common ${selected && 'selected'}`} {...item}>
+          <div className={`pagi-btn md:w-16 md:h-16 ip6:w-14 ip6:h-14 ip5:w-8 ip5:h-8 page-btn page-common ${selected && 'selected'}`} {...item}>
             {page}
           </div>
         )

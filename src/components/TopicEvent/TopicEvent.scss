@@ -3,14 +3,11 @@
 $tp-title-height: 3rem;
 
 .te-container {
-	width: 101%;
-	height: 85.5rem;
 	padding: 0 3.2rem;
 	margin-top: 2.8rem;
 
 	.tp-container {
 		position: relative;
-		height: 28.5rem;
 
 		.tp-header {
 			.tp-title {
@@ -42,7 +39,6 @@ $tp-title-height: 3rem;
 			}
 
 			.pl-container {
-				padding: 0 0.8rem;
 				user-select: none;
 
 				.pl-img-container {

@@ -14,7 +14,7 @@ const CommonArtist = ({ artists, styles = '' }) => {
 
         return (
           <React.Fragment key={artistId}>
-            <Link to={createArtistUrl(name, shortLink)} className='common-artists-name' onClick={(e) => e.stopPropagation()}>
+            <Link to={createArtistUrl(name, shortLink)} className='common-artists-name fz-13px' onClick={(e) => e.stopPropagation()}>
               <span>{name}</span>
             </Link>
             {index + 1 === artists.length ? '' : ', '}

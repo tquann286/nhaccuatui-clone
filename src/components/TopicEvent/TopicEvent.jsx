@@ -23,6 +23,25 @@ const TopicEvent = ({ topicEvent = [] }) => {
 		navigate(createPlaylistUrl(title, keyId))
 	}
 
+	const swiperProps = {
+		slidesPerView: 4,
+		spaceBetween: 10,
+		breakpoints: {
+    320: {
+      slidesPerView: 2,
+      spaceBetween: 6
+    },
+    480: {
+      slidesPerView: 3,
+      spaceBetween: 8
+    },
+    640: {
+      slidesPerView: 4,
+      spaceBetween: 10
+    }
+		}
+	}
+
 	return (
 		<div className='te-container'>
 			{topicEvent.map((topic) => {
@@ -32,10 +51,10 @@ const TopicEvent = ({ topicEvent = [] }) => {
 				return (
 					<div key={vieTitle} className='tp-container'>
 						<div className='tp-header'>
-							<div className='tp-title'>{lang === 'vi' ? vieTitle : enTitle}</div>
+							<div className='tp-title mt-32px'>{lang === 'vi' ? vieTitle : enTitle}</div>
 						</div>
 						<div className='tp-main'>
-							<Swiper slidesPerView={4} spaceBetween={8}>
+							<Swiper { ... swiperProps }>
 								<div className='tp-nav color-0-5'>
 									<SlidePrevButton />
 									<SlideNextButton />

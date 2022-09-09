@@ -46,9 +46,9 @@ const Song = ({ song: songList = [] }) => {
       <div
         className='mt-16px mx-32px'
       >
-        <Grid container spacing={2}>
+        <Grid container spacing={{ xs: 1, sm: 2 }}>
           {songList.map((song) => (
-            <Grid item xs={6} key={song.key} className='!py-2px'>
+            <Grid item xs={12} sm={6} md={6} lg={6} xl={6} key={song.key} className='!py-2px'>
               <CommonSong {...song} songView={songsView[song.key] || 0} keyId={song.key} />
             </Grid>
           ))}

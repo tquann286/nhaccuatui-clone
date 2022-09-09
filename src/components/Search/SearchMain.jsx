@@ -118,7 +118,7 @@ const SearchMain = ({ defineLang, trendingKeywords = [], searchHistory, setSearc
   return (
     <div className='smain-container'>
       {trendingKeywords.length !== 0 && (
-        <div className='trend-keywords-container'>
+        <div className='trend-keywords-container relative sm:pt-16 ip6:pt-14 sm:px-32px ip6:px-28px ip5:pt-12 ip5:px-24px'>
           <h1 className='tk-title common-title color-0-88'>{defineLang('Top từ khóa', 'Top Keyword')}</h1>
           <div className='tk-main'>
             {trendingKeywords.map((keyword) => {
@@ -138,7 +138,7 @@ const SearchMain = ({ defineLang, trendingKeywords = [], searchHistory, setSearc
       )}
 
       {searchHistory.length === 0 || (
-        <div className='search-history-container'>
+        <div className='search-history-container relative sm:pt-16 ip6:pt-14 sm:px-32px ip6:px-28px ip5:pt-12 ip5:px-24px'>
           <h1 className='search-history-title common-title color-0-88'>{defineLang('Lịch sử tìm kiếm', 'Search History')}</h1>
           <div className='sh-main-list'>
             {searchHistory.map((search, i) => (
@@ -157,15 +157,15 @@ const SearchMain = ({ defineLang, trendingKeywords = [], searchHistory, setSearc
       )}
       {maybeHit && (
         <div className='maybe-hit-container'>
-          <div className='maybe-hit-title'>
+          <div className='maybe-hit-title ip6:pt-14 sm:px-32px ip6:px-28px ip5:pt-12 ip5:px-24px'>
             <div className='maybe-hit-lead common-title color-0-88'>{defineLang('Có thể hot', 'Maybe Hit')}</div>
           </div>
-          <div className='maybe-hit-wrapper bg-color-0-02'>
-            <div className='maybe-hit-main'>
-              <div className='maybe-hit-thumb'>
-                <div className='speacial-tag'>{defineLang('Đặc biệt', 'Special')}</div>
-                <div className='maybe-hit-img-wrapper'>
-                  <div className='maybe-hit-img-main'>
+          <div className='maybe-hit-wrapper bg-color-0-02  sm:pb-18px ip5:py-12px sm:px-32px ip5:px-24px'>
+            <div className='maybe-hit-main sm:h-160px ip5:h-120px ip6:h-140px'>
+              <div className='maybe-hit-thumb sm:h-160px ip5:h-120px ip6:h-140px'>
+                <div className='speacial-tag fz-10px'>{defineLang('Đặc biệt', 'Special')}</div>
+                <div className='maybe-hit-img-wrapper sm:h-160px ip6:h-140px sm:w-160px ip5:h-120px ip5:w-120px ip6:w-140px '>
+                  <div className='maybe-hit-img-main sm:h-160px ip5:w-120px ip6:h-140px sm:w-160px ip5:h-120px ip5: ip6:w-140px'>
                     <img src={maybeHit.thumbnail} alt={maybeHit.title} title={maybeHit.title} />
                     <OptionModal {...optionModalProps}>
                       <ModalAnimate {...modalAnimateProps}>
@@ -183,13 +183,13 @@ const SearchMain = ({ defineLang, trendingKeywords = [], searchHistory, setSearc
                   </div>
                 </div>
               </div>
-              <div className='maybe-hit-description'>
-                <div className='maybe-hit-desc-title color-0-88'>
-                  <span className='color-0-5'>{defineLang('Bài hát: ', 'Song: ')}</span>
+              <div className='maybe-hit-description sm:ml-14 md:ml-16 ip6:ml-18px ip5:ml-8px sm:max-w-[calc(100%_-_16rem)] ip6:max-w-[calc(100%_-_14rem)] ip5:max-w-[calc(100%_-_14rem)]'>
+                <div className='maybe-hit-desc-title fz-14px color-0-88'>
+                  <span className='color-0-5 fz-13px'>{defineLang('Bài hát: ', 'Song: ')}</span>
                   <Link to={createSongUrl(maybeHit.title, maybeHit.key)}>{maybeHit.title}</Link>
                 </div>
                 <CircleTitleArtist circleStyles='float-left' titleStyles='!mt-unset ml-8px' artists={maybeHit.artists} />
-                <div className='maybe-hit-date-release color-0-5'>
+                <div className='maybe-hit-date-release fz-14px color-0-5'>
                   <GoCalendar />
                   <span>
                     {defineLang('Ngày phát hành', 'Released date')}: {covertTimestamp(maybeHit.dateRelease)}

@@ -54,11 +54,11 @@ const SongFav = ({ defineLang, currentUser = {} }) => {
 
   return (
     <div className='song-fav-container'>
-      <div className='sf-header w3-row'>
-        <div className='sf-thumb-img w3-col'>
-          <ShadowThumb width='16rem' shadowHeight='0.6rem' imageUrl={initImage} />
+      <div className='sf-header mt-16px w3-row'>
+        <div className='sf-thumb-img sm:w-160px ip5:w-120px ip6:w-140px w3-col sm:ml-24px ip5:ml-16px ip6:ml-18px'>
+          <ShadowThumb styles='sm:w-160px ip5:w-120px ip6:140px' shadowHeight='0.6rem' imageUrl={initImage} />
         </div>
-        <div className='sf-info w3-rest'>
+        <div className='sf-info sm:pl-24px ip5:pl-12px w3-rest'>
           <div className='common-sub-title color-0-5'>
             Playlist:
             <span className='color-0-88'>{defineLang('Bài hát yêu thích', 'Favorite songs')}</span>
@@ -67,8 +67,8 @@ const SongFav = ({ defineLang, currentUser = {} }) => {
             <div className='width-fit-content color-0-5'>{defineLang(`${favSongs?.length || 0} bài hát`, `${favSongs?.length || 0} songs`)}</div>
           </div>
           <div className='bottom-position'>
-            <div className='sf-author w3-row bg-color-0-02'>
-              <div className='sf-author-main w3-rest w3-row'>
+            <div className='sf-author sm:mt-24px ip5:mt-8px w3-row bg-color-0-02'>
+              <div className='sf-author-main my-12px sm:mx-24px ip5:mx-12px w3-rest w3-row'>
                 <div className='sf-author-img border-0-05 w3-col'>
                   <SquareImg imageUrl={photoURL || initUser} title={displayName} />
                 </div>

@@ -12,7 +12,7 @@ import { handleAddToFavVideo } from 'share/addToFav'
 import { createVideoUrl, getCurrentPathname, handleCopyProxy, handleSourceUrl } from 'share/utilities'
 import { toastNotify } from 'share/toast'
 
-const VideoMain = ({ defineLang, videoDetail, autoplay }) => {
+const VideoMain = ({ defineLang, videoDetail, autoplay, windowWidth }) => {
   const navigate = useNavigate()
 
   const { key = '', streamUrls = [], thumbnail, title, artists = [], videoView = {}, dateRelease = 0, uploadBy = {}, provider = {}, lyric = {}, maybeLike = {} } = videoDetail
@@ -43,7 +43,7 @@ const VideoMain = ({ defineLang, videoDetail, autoplay }) => {
   const sharingProps = { defineLang, placement: 'top', handleCopyShare, onShareWindowClose, shareLink: getCurrentPathname(), shareClass: 'ml-8px' }
 
   return (
-    <div className='w-[calc(100%_-_35.2rem)] transition-all duration-300'>
+    <div className={`${windowWidth > 600 ? 'w-[calc(100%_-_35.2rem)]' : 'w-full'} transition-all duration-300`}>
       <div className='relative w-full'>
         <div className='text-sm bg-color-0-05'>{streamUrls.length === 0 || <Player {...playerProps}>
           {(ref, props) => <video ref={ref} {...props} autoPlay onCanPlay={(e) => e.target.play()} onEnded={handleNextVideo} />}

@@ -32,9 +32,9 @@ const ArtistPlaylist = ({ defineLang, pageIndex, setPageIndex, sort, setSort, pl
         </div>
       </div>
       <div className='mt-24px'>
-        <Grid container spacing={2}>
+        <Grid container spacing={{ xs: 1, sm: 2 }}>
           {playlists.map((playlist) => (
-            <Grid item key={playlist.key} xs={3} sm={3} md={3} xl={2}>
+            <Grid item key={playlist.key} xs={6} sm={4} md={4} lg={3} xl={2}>
               <CommonPlaylist {...playlist} keyId={playlist.key} />
             </Grid>
           ))}

@@ -12,8 +12,6 @@ $login-header-hight: 6rem;
       @include animation(scaleAndFadeIn, 0.1s, linear, forwards);
       position: relative;
       border-radius: 0.4rem;
-      width: 46rem;
-      height: 50rem;
 
       .af-header {
         @include flexCenter;

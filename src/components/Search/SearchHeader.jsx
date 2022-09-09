@@ -41,7 +41,7 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
   const onEnterSearch = (e) => e.keyCode === 13 && onNavSearch(searchTerm)
 
   return (
-    <div className='sh-container border-0-1'>
+    <div className='sh-container sm:px-32px ip5:px-16px xs:px-22px border-0-1'>
       <div className={`search-input-container border-0-05 bg-color-0-02 ${isFocusSearchInput && 'focus'}`}>
         <div className='search-btn-container' onClick={() => onNavSearch(searchTerm)}>
           <FiSearch />
@@ -68,8 +68,8 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
       {topArtists && (
         <div className='trending-artists-container'>
           <div className='ta-main'>
-            <div className='ta-wrapper'>
-              <div className='ta-active-artists border-0-05'>
+            <div className='ta-wrapper sm:w-180px ip5:w-140px'>
+              <div className='ta-active-artists sm:w-180px ip5:w-140px border-0-05'>
                 <Swiper {...trendArtSwiperProps}>
                   {topArtists.map((artist, i) => {
                     const { name, position } = artist
@@ -93,20 +93,20 @@ const SearchHeader = ({ topArtists, defineLang, searchHistory, setSearchHistory,
                 </Swiper>
               </div>
               <div className='ta-full-artists-main'>
-                <div className='ta-full-artists-content bg-color-1'>
+                <div className='ta-full-artists-content sm:w-180px ip5:w-140px bg-color-1'>
                   <p className='ta-lead-title bg-color-0-02 color-0-5'>{defineLang('Nghệ sỹ Trending', 'Trending Artists')}</p>
                   {topArtists.map((artist, i) => {
                     const { name, position } = artist
 
                     return (
-                      <div key={i} className='ta-full-artists-item hover-bg-color-0-05' onClick={() => onNavSearch(name)}>
-                        <p className='ta-full-artists-name color-0-5'>
+                      <div key={i} className='ta-full-artists-item sm:px-32px ip5:px-22px hover-bg-color-0-05' onClick={() => onNavSearch(name)}>
+                        <p className='ta-full-artists-name sm:text-13px ip5:text-xs color-0-5'>
                           <span className='ta-full-artists-position'>{position}.</span>
                           {name}
                         </p>
-                        <div className='ta-new-label'>
+                        <div className='ta-new-label sm:w-22px ip5:w-18px'>
                           <div className='ta-new-label-main'>
-                            <p className='ta-new-label-content'>New</p>
+                            <p className='ta-new-label-content sm:text-10px ip5:text-9px'>New</p>
                           </div>
                         </div>
                       </div>

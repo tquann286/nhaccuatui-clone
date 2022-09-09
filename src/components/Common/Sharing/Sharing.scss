@@ -16,12 +16,10 @@
   .sharing-item {
     @include display-flex;
     @include align-items(center);
-    width: 16rem;
     height: 4rem;
     border-radius: 2rem;
     color: #fafafa;
     cursor: pointer;
-    padding-left: 1.6rem;
 
     &.fb {
       background-image: linear-gradient(75deg, #2f80ed, #00aeef);
@@ -34,12 +32,6 @@
 
     svg {
       font-size: 1.8rem;
-    }
-
-    span {
-      font-size: 1.4rem;
-      font-weight: 600;
-      margin-left: 1.6rem;
     }
   }
 }

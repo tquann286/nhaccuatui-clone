@@ -53,14 +53,14 @@ const VideoHistory = ({ defineLang, currentUser }) => {
         )}
       </div>
       <div className='pt2'>
-        <Grid container spacing={2}>
+        <Grid container spacing={{ xs: 1, sm: 2 }}>
           {historyVideos
             .slice()
             .reverse()
             .map(
               (video) =>
                 video && (
-                  <Grid item key={video.key} xs={4} sm={4} md={4} xl={3}>
+                  <Grid item key={video.key} xs={6} sm={4} md={4} lg={4} xl={3}>
                     <CommonVideo {...video} keyId={video.key} addToFav={false} removeHistory handleRemoveHistory={() => handleRemoveHistory(video.key)} />
                   </Grid>
                 )

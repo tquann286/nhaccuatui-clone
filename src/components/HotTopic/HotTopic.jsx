@@ -16,13 +16,32 @@ const HotTopic = ({ hotTopic }) => {
   const [state] = useStore()
   const { lang } = state
 
+	const swiperProps = {
+		slidesPerView: 4,
+		spaceBetween: 8,
+		breakpoints: {
+    320: {
+      slidesPerView: 2,
+      spaceBetween: 4
+    },
+    480: {
+      slidesPerView: 3,
+      spaceBetween: 6
+    },
+    640: {
+      slidesPerView: 4,
+      spaceBetween: 8
+    }
+		}
+	}
+
 	return (
 		<div className='ht-container'>
 			<div className='ht-title'>
 				<Link to='/chu-de'>{lang === 'vi' ? 'Chủ đề hot' : 'Hot topic'}</Link>
 			</div>
 			<div className='ht-main'>
-				<Swiper slidesPerView={4} spaceBetween={8}>
+				<Swiper {...swiperProps}>
 					<div className='ht-nav color-0-5'>
 						<SlidePrevButton />
 						<SlideNextButton />

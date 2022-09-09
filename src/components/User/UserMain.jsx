@@ -60,7 +60,7 @@ const UserMain = () => {
           ) : (
             <div>
               <div className='w3-row h-160px w-full'>
-                <div className='w3-col rounded-circle w-160px h160px'>
+                <div className='w3-col rounded-circle sm:w-160px sm:h160px ip5:w-120px ip5:h-120px xs:w-140px xs:h-140px'>
                   <SquareImg imageUrl={photoURL} title={displayName} />
                 </div>
                 <div className='w3-rest pl-24px overflow-hidden'>
@@ -69,7 +69,7 @@ const UserMain = () => {
                     <Button className='w-120px h-32px text-xs mr-8px rounded-4px bg-color-0-05 color-0-5 normal-case' onClick={() => setIsUpdateUser(true)}>
                       {defineLang('Cập nhật', 'Update')}
                     </Button>
-                    <Button className='w-120px h-32px text-xs mr-8px rounded-4px bg-color-0-05 color-0-5 normal-case' onClick={toggleIsChangePass}>{defineLang('Đổi mật khẩu', 'Change password')}</Button>
+                    <Button className='w-120px h-32px text-xs mr-8px rounded-4px bg-color-0-05 color-0-5 normal-case ip5:mt-8px sm:mt-0' onClick={toggleIsChangePass}>{defineLang('Đổi mật khẩu', 'Change password')}</Button>
                     <ChangePassword { ... changePasswordProps } />
                   </div>
                 </div>

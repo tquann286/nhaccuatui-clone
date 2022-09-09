@@ -67,7 +67,7 @@ const SongPageDetail = () => {
       {artists.length !== 0 && <Title title={createTitleArtist(title, artists)} />}
       <div className='relative px-32px pt-24px margin-footer'>
         <div className='w3-row'>
-          <div className='w3-col relative w-240px h-240px border-0-1 useBorder rounded-8px overflow-hidden shadow-xl'>
+          <div className='w3-col relative sm:w-240px sm:h-240px ip5:w-160px ip5:h-160px border-0-1 useBorder rounded-8px overflow-hidden shadow-xl'>
             <Image imageUrl={thumbnail} backupImg={no_img_song} title={title} />
             <div className='absolute right-4 bottom-4 text-xl w-42px h-42px flexCenter rounded-circle cursor-pointer' onClick={() => handlePlayNewSong(key, dispatch, actions, state.curPlaylist, true, defineLang)}>
               <BsPlayCircleFill className='!text-slate-100' />

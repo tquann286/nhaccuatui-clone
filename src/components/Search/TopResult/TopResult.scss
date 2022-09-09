@@ -33,19 +33,7 @@
       margin-top: 1.6rem;
       width: 100%;
 
-      .tr-thumb-container {
-        max-width: calc(100% - 20.2rem);
-
-        .tr-thumb-main {
-          width: 16rem;
-          height: 16rem;
-        }
-      }
-
       .tr-description {
-        margin-left: 4.2rem;
-        max-width: calc(100% - 20.2rem);
-
         & > *:not(:first-child) {
           margin-top: 0.8rem;
         }
@@ -62,8 +50,6 @@
           @include hoverMainColor;
           font-weight: 600;
           min-width: 3rem;
-          font-size: 1.4rem;
-          line-height: 2rem;
           vertical-align: text-bottom;
         }
 

@@ -6,8 +6,8 @@ import noPlayer from 'images/default/default_player_v2.jpg'
 import { getTrendingSong } from 'services/RightSidebar/NoPlayingSong'
 import { createArtistUrl, createPlaylistUrl, createSongUrl, createTop20Url, createVideoUrl } from 'share/utilities'
 
-const MainContainer = ({ defineLang, children }) => (
-  <div className='rb-container'>
+const MainContainer = ({ defineLang, children, showRightSidebar, rightSidebarRef }) => (
+  <div className={`rb-container bg-color-1 h-screen w-320px fixed top-0 ip5:-right-200vh xl:right-0 z-9 transition-all duration-300 border-l border-solid border-0-05 ${showRightSidebar && '!right-0'}`} ref={rightSidebarRef}>
     <div className='rb-suggestion border-0-05'>
       <div className='no-playing-song'>
         <div className='main'>
@@ -49,7 +49,7 @@ const NoPlayingSong = ({ defineLang }) => {
           break
       }
     }
-    
+
     return (
       <MainContainer defineLang={defineLang}>
         {trendingSong && (

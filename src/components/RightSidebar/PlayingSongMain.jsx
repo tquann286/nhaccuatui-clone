@@ -85,7 +85,7 @@ const PlayingSongMain = ({ defineLang, title = '', keyId = '', thumbnail = '', a
           <div className='mt-16px py-12px rounded-4px bg-color-0-02'>
             <div>
               <div className='relative w-240px h-240px mx-auto z-1'>
-                <div className='cursor-pointer w-240px h-240px relative overflow-hidden rounded-4px shadow-medium'>
+                <div className='cursor-pointer w-240px h-240px relative overflow-hidden rounded-4px shadow-large'>
                   <Image {...imageProps} />
                 </div>
               </div>

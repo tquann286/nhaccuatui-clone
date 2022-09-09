@@ -18,7 +18,7 @@ const ArtistCircle = ({ artists, styles }) => {
         }
 
         return (
-          <Link key={artistId} to={createArtistUrl(name, shortLink)} className={`relative w-24px h-24px useBorder border-slate-50 rounded-circle ${i !== 0 ? '-ml-8px' : ''}`} style={{ zIndex: artists.length - i }}>
+          <Link key={artistId} to={createArtistUrl(name, shortLink)} className={`relative sm:w-24px ip5:w-22px sm:h-24px ip5:h-22px useBorder border-slate-50 rounded-circle ${i !== 0 ? '-ml-8px' : ''}`} style={{ zIndex: artists.length - i }}>
             <Image {...imageProps} className='rounded-circle' />
           </Link>
         )
