@@ -6,7 +6,6 @@ import { SongItem } from 'components'
 import { getValidArr } from 'share/utilities'
 
 const SongList = ({ defineLang, listSong = [], removeFav, addToFav, songsView, setFavSongs, removeHistory, setHistorySongs }) => {
-  console.log('listSong: ', getValidArr(listSong))
   const [animationParent] = useAutoAnimate()
 
   const songItemProps = {
