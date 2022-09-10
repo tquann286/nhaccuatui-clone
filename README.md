@@ -22,6 +22,7 @@
 - Discovery: With 5 main categories like New & Hot, Vietnam, US-UK, Asia, and Others. And a bunch of small categories inside each main category.
 - Today Selection: Various topics and collections, top 100 songs with beautiful design and high user experiment
 - NCT Chart: Get weekly charts and real-time song ranking with visualize chart.
+- Fully Responsive for almost devices (Recommend to use on > 1024px width devices for the best experiment)
 
 ![](https://i.imgur.com/waxVImv.png)
 
