@@ -8,7 +8,7 @@ const NewVideo = ({ videos = [] }) => (
     <div className='mt-16 ml-32px main-title'>
       <Link to='/video'>Hot video</Link>
     </div>
-    <div className='mt-16px mx-32px'>
+    <div className='mt-16px ip5:mx-32px xl:mx-16'>
       <Grid container spacing={{ xs: 1, sm: 2 }}>
         {getSlideVideos(videos, 'big').map((video) => (
           <Grid key={video.key} item xs={6} sm={6} md={6} lg={6} xl={4}>

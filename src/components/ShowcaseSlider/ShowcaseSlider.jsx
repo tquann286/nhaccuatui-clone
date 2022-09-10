@@ -18,7 +18,7 @@ const ShowcaseSlider = ({ showcase = [] }) => {
 				{showcase?.map((sc) => {
 					return (
 						<Link to={getNavigateUrl(sc.url)} key={sc.key} title={sc.title} className='sc-img-container'>
-							<img className='sc-img-slider sm:h-[316.8px] ip5:h-200px' src={sc.imageUrl} alt={sc.title} />
+							<img className='sc-img-slider sm:h-[316.8px] ip5:h-200px xl:h-[calc(calc(100vw_-_60rem)_*_2_/_5_+_3.8rem)]' src={sc.imageUrl} alt={sc.title} />
 						</Link>
 					)
 				})}
