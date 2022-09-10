@@ -1,14 +1,13 @@
 <h1 align="center" style="font-size: 58px">NhacCuaTui Clone</h1>
 <p align="center"><strong>Music for Everyone</strong></p>
 
-![](https://i.imgur.com/waxVImv.png)
 
-# [Live Demo](https://tquann286-nhaccuatui-clone.netlify.app/): https://tquann286-nhaccuatui-clone.netlify.app/
+# [Live Demo](https://tquann286-nhaccuatui-clone.netlify.app/)
 
 ## Original Website: [NhacCuaTui](https://beta.nhaccuatui.com/)
 ## API from: https://github.com/napthedev/nhaccuatui-api-full
 
-![](https://i.imgur.com/waxVImv.png)
+
 
 ## Features
 - Listen to various songs that are constantly updated.
@@ -32,8 +31,6 @@
 - [MUI](https://mui.com/): Fully-loaded component library, bring your own design system to numerous production-ready components.
 - [SASS](https://sass-lang.com/): Help you to write CSS code in an easy and simple way.
 - [TailwindCSS](https://tailwindcss.com/): Build the interface just by declaring the class in the HTML file, with dark mode supporting and easy to responsive for various devices.
-
-![](https://i.imgur.com/waxVImv.png)
 
 ## Other libraries/Powerful NPM Packages
 - [Axios](https://axios-http.com/): Help us perform manipulations with websites or APIs to help build more powerful flexible front-end applications.
