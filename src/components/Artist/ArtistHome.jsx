@@ -42,6 +42,10 @@ const ArtistHome = ({ defineLang, songNearly = [], artist = {}, song = {}, playl
     640: {
       slidesPerView: 4,
       spaceBetween: 10
+    },
+    1536: {
+      slidesPerView: 6,
+      spaceBetween: 12
     }
 		}
 	}

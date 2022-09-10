@@ -31,6 +31,10 @@ const HotTopic = ({ hotTopic }) => {
     640: {
       slidesPerView: 4,
       spaceBetween: 8
+    },
+    1536: {
+      slidesPerView: 6,
+      spaceBetween: 10
     }
 		}
 	}

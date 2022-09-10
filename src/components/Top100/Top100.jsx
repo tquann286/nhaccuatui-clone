@@ -24,6 +24,10 @@ const Top100 = ({ top100List }) => {
     640: {
       slidesPerView: 4,
       spaceBetween: 8
+    },
+    1536: {
+      slidesPerView: 6,
+      spaceBetween: 12
     }
 		}
 	}
