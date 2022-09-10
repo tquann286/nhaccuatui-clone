@@ -6,7 +6,7 @@ import blur_layer from 'images/blur/blur_layer_v1.png'
 
 import { BlurImg, Footer, LoadingV2, Sharing, SongRanking } from 'components'
 import { getTop100Item } from 'services/Top100/Top100'
-import { getCurrentPathname, handleCopyProxy } from 'share/utilities'
+import { getCurrentPathname, handleCopyProxy, handlePlayNewSong } from 'share/utilities'
 import { toastNotify } from 'share/toast'
 import { useStore, actions } from 'store'
 
