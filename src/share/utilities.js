@@ -94,7 +94,7 @@ export const createTop20Url = (category) => {
   }
 }
 
-export const getListSongsKey = (songs) => songs.map((song) => song.key || song.songId || song.keyId)
+export const getListSongsKey = (songs = []) => songs.map((song = {}) => song.key || song.songId || song.keyId)
 
 export const getNavigateUrl = (url) => {
   const linkStartIndex = url.indexOf('nhaccuatui.com/') + 15
@@ -276,7 +276,8 @@ export const handleCopyLyric = (lyric, defineLang) => {
 export const createTitleArtist = (title = '', artists = []) => `${title} - ${artists.map((art) => art.name).join(', ')} - NhacCuaTui Clone`
 
 // Check if an array is valid
-export const isValid = (arr) => arr.every((item) => typeof item !== 'undefined')
+export const isValid = (arr = []) => arr.every((item) => typeof item !== 'undefined')
+export const getValidArr = (arr = []) => arr.filter(item => typeof item !== 'undefined')
 
 // Get slide video for grid
 export const isBigScreen = () => window.innerWidth > 1536

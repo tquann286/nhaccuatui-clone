@@ -127,7 +127,7 @@ const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setF
       <div className='song-list-title listen-title-real'>
         <div className='view-count'>
           <BsHeadphones />
-          <span className='view-count-content color-0-5'>{formatNumber(songsView ? songsView[keyId] : createRandomSongView())}</span>
+          <span className='view-count-content color-0-5'>{formatNumber(songsView ? (songsView[keyId] || 0) : createRandomSongView())}</span>
         </div>
       </div>
       <div className='song-list-title duration-title-real'>{duration}</div>

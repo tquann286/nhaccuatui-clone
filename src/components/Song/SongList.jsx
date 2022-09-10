@@ -3,8 +3,10 @@ import './SongList.scss'
 
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { SongItem } from 'components'
+import { getValidArr } from 'share/utilities'
 
 const SongList = ({ defineLang, listSong = [], removeFav, addToFav, songsView, setFavSongs, removeHistory, setHistorySongs }) => {
+  console.log('listSong: ', getValidArr(listSong))
   const [animationParent] = useAutoAnimate()
 
   const songItemProps = {
@@ -28,7 +30,7 @@ const SongList = ({ defineLang, listSong = [], removeFav, addToFav, songsView, s
           <div className='song-list-title listen-title'>{defineLang('Lượt nghe', 'Listens')}</div>
           <div className='song-list-title duration-title'>{defineLang('Thời gian', 'Duration')}</div>
         </li>
-        {listSong.map((song) => song && <SongItem {...song} {...songItemProps} key={song.key} keyId={song.key} />)}
+        {getValidArr(listSong).map((song) => song.key && <SongItem {...song} {...songItemProps} key={song.key} keyId={song.key} />)}
       </ul>
     </div>
   )
