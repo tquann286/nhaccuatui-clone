@@ -137,7 +137,7 @@ module.exports = {
         '2/1': '200%',
         '100vh': '100vh',
         '200vh': '200vh',
-        'update-user-input': 'calc(100%_-_10rem)',
+        'update-user-input': 'calc(100% - 10rem)',
       },
     },
     fontSize: {
