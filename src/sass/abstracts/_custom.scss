@@ -29,7 +29,7 @@
   }
 
   .common-min-h {
-    @apply min-h-[calc(100vh_-_34.5rem)];
+    @apply min-h-common-min-height;
   }
 
   .update-user-field {
@@ -41,7 +41,7 @@
   }
 
   .update-user-input {
-    @apply w-[calc(100%_-_10rem)] h-full rounded-4px;
+    @apply w-update-user-input h-full rounded-4px;
   }
 
   .main-title {
@@ -101,7 +101,7 @@
 
   // Min-height
   .min-height-40px {
-    @apply md:min-h-[4rem] sm:min-h-36px ip5:min-h-32px;
+    @apply md:min-h-40px sm:min-h-36px ip5:min-h-32px;
   }
 
 }

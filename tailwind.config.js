@@ -137,6 +137,7 @@ module.exports = {
         '2/1': '200%',
         '100vh': '100vh',
         '200vh': '200vh',
+        'update-user-input': 'calc(100%_-_10rem)',
       },
     },
     fontSize: {
@@ -173,8 +174,10 @@ module.exports = {
       '32px': '3.2rem',
       '36px': '3.6rem',
       '38px': '3.8rem',
+      '40px': '4rem',
       '42px': '4.2rem',
       '44px': '4.4rem',
+      'common-min-height': 'calc(100vh_-_34.5rem)',
     },
     borderRadius: {
       '50%': '50%',
