@@ -10,11 +10,11 @@ export const covertTimestamp = (time) => {
   return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
 }
 
-export const createSlug = (name) => {
+export const createSlug = (name = '') => {
   if (name) return `${replaceDashUrl(removeVietnameseTones(name.trim()))}`
 }
 
-export const getPlaylistKeyId = (url) => {
+export const getPlaylistKeyId = (url = '') => {
   const startIndex = url.indexOf('va.') + 3
   const keyIdLength = 12
 
@@ -25,11 +25,11 @@ export const getPlaylistKeyId = (url) => {
   }
 }
 
-export const replaceDashUrl = (url) => {
+export const replaceDashUrl = (url = '') => {
   return url.replaceAll(' ', '-').replaceAll('/', '-')
 }
 
-export const createPlaylistUrl = (title, keyId) => {
+export const createPlaylistUrl = (title = '', keyId = '') => {
   if (title && keyId) {
     const playlistTitle = replaceDashUrl(title)
 
@@ -39,7 +39,7 @@ export const createPlaylistUrl = (title, keyId) => {
   }
 }
 
-export const createSongUrl = (title, keyId) => {
+export const createSongUrl = (title = '', keyId = '') => {
   if (title && keyId) {
     return `/bai-hat/${createSlug(title)}&k=${keyId}`
   } else {
@@ -47,7 +47,7 @@ export const createSongUrl = (title, keyId) => {
   }
 }
 
-export const createArtistUrl = (name, shortLink) => {
+export const createArtistUrl = (name = '', shortLink = '') => {
   if (name && shortLink) {
     return `/nghe-si/${shortLink}`
   } else {
@@ -55,7 +55,7 @@ export const createArtistUrl = (name, shortLink) => {
   }
 }
 
-export const createTopicUrl = (title, keyId) => {
+export const createTopicUrl = (title = '', keyId = '') => {
   if (title && keyId) {
     return `/chu-de/${createSlug(title)}&k=${keyId}`
   } else {
@@ -63,7 +63,7 @@ export const createTopicUrl = (title, keyId) => {
   }
 }
 
-export const createTop100Url = (title, keyId) => {
+export const createTop100Url = (title = '', keyId = '') => {
   if (title && keyId) {
     return `/top-100/${createSlug(title)}&k=${keyId}`
   } else {
@@ -71,7 +71,7 @@ export const createTop100Url = (title, keyId) => {
   }
 }
 
-export const createVideoUrl = (keyId, title, artists) => {
+export const createVideoUrl = (keyId = '', title = '', artists = []) => {
   const artistLink = artists.reduce((acc, cur, i) => {
     if (!cur.shortLink) {
       return `${acc}${i > 0 ? '-ft-' : ''}${replaceDashUrl(removeVietnameseTones(cur.name))}`
@@ -86,7 +86,7 @@ export const createVideoUrl = (keyId, title, artists) => {
   return videoLink
 }
 
-export const createTop20Url = (category) => {
+export const createTop20Url = (category = '') => {
   if (category) {
     return `/bang-xep-hang/top-20?q=${category}`
   } else {
@@ -96,7 +96,7 @@ export const createTop20Url = (category) => {
 
 export const getListSongsKey = (songs = []) => songs.map((song = {}) => song.key || song.songId || song.keyId)
 
-export const getNavigateUrl = (url) => {
+export const getNavigateUrl = (url = '') => {
   const linkStartIndex = url.indexOf('nhaccuatui.com/') + 15
   const keyStartIndex = url.indexOf('.html') - 12
   const keyEndIndex = url.indexOf('.html')
@@ -140,7 +140,7 @@ export const handleBlurInput = (e) => {
   e.target.parentElement.classList.remove('focus')
 }
 
-export const handleCopySong = (event, defineLang, title, songId) => {
+export const handleCopySong = (event, defineLang, title = '', songId = '') => {
   event.stopPropagation()
   if (title && songId && defineLang) {
     const songLink = `${PROXY}${createSongUrl(title, songId)}`
@@ -152,7 +152,7 @@ export const handleCopySong = (event, defineLang, title, songId) => {
   }
 }
 
-export const handleCopyPlaylist = (event, title, keyId, defineLang) => {
+export const handleCopyPlaylist = (event, title = '', keyId = '', defineLang) => {
   event.stopPropagation()
   if (title && keyId && defineLang) {
     const playlistLink = `${PROXY}${createPlaylistUrl(title, keyId)}`
