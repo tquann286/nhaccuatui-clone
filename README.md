@@ -4,8 +4,8 @@
 
 # [Live Demo](https://tquann286-nhaccuatui-clone.netlify.app/)
 
-## Original Website: [NhacCuaTui](https://beta.nhaccuatui.com/)
-## API from: https://github.com/napthedev/nhaccuatui-api-full
+## Original Website: [Beta NhacCuaTui](https://beta.nhaccuatui.com/)
+## [API Source](https://github.com/napthedev/nhaccuatui-api-full)
 
 
 
@@ -13,7 +13,8 @@
 - Listen to various songs that are constantly updated.
 - Watch videos of high quality and memorize user settings.
 - Log in/Sign up with email and password or quickly log in with Google and Facebook.
-- Change user information and upload user avatar.
+- Share song/artist/playlist/video to facebook with one click.
+- Change user information, upload user avatar, verify email account.
 - Dark/Light mode.
 - English and Vietnamese language support.
 - Favorite and history song/playlist/video for logged users.
@@ -73,3 +74,12 @@
 5. Don't forget to leave a star for my project
 
 # 100% Front-end of this project is built by me. :D
+### Preview
+![homepage](https://user-images.githubusercontent.com/88314050/189509172-7cab682b-fdd3-41dc-a48f-dc77819781e7.png)
+![searchpage](https://user-images.githubusercontent.com/88314050/189509184-fddd99f4-de72-4c7f-ab55-98a4e01a9e18.png)
+![discovery](https://user-images.githubusercontent.com/88314050/189509188-1816422a-e25f-418d-a174-2a1cfc6d82b3.png)
+![artistpage](https://user-images.githubusercontent.com/88314050/189509189-99204a40-92ae-4f32-8b52-75f136b5cc53.png)
+
+
+
+
