@@ -14,7 +14,7 @@
 - Watch videos of high quality and memorize user settings.
 - Log in/Sign up with email and password or quickly log in with Google and Facebook.
 - Share song/artist/playlist/video to facebook with one click.
-- Change user information and upload user avatar.
+- Change user information, upload user avatar, verify email account.
 - Dark/Light mode.
 - English and Vietnamese language support.
 - Favorite and history song/playlist/video for logged users.
