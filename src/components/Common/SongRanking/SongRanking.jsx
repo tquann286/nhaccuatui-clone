@@ -23,7 +23,8 @@ const SongRanking = ({ songKey = '', position = 0, defineLang, artists = [], thu
     setShowMore(!showMore)
   }
 
-  const toggleShowRanking = () => {
+  const toggleShowRanking = (e) => {
+    e.stopPropagation()
     setShowRanking(!showRanking)
   }
 
