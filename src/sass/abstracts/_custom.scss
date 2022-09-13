@@ -73,6 +73,10 @@
     @apply sm:text-base ip6:text-15px ip5:text-sm; 
   }
 
+  .fz-22px {
+    @apply sm:text-22px ip6:text-md ip5:text-base; 
+  }
+
   // Width
   .width-48 {
     @apply md:w-48 sm:w-44 ip5:w-40;

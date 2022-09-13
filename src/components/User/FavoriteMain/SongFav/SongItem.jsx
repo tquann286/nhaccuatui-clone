@@ -98,7 +98,7 @@ const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setF
   }
   return (
     <li key={keyId} className='song-list-common bg-color-0-02 li-list-item-common color-0-6 hover-bg-color-0-05 hover-visible' onClick={() => handlePlayNewSong(keyId, dispatch, actions, state.curPlaylist, true, defineLang)}>
-      <div className='song-list-title-artist sm:w-[calc(100%_-_18.4rem)] ip5:w-[calc(100%_-_13.7rem)]'>
+      <div className='song-list-title-artist sm:w-[calc(100%_-_18.4rem)] ip5:w-[calc(100%_-15.5rem)]'>
         <div className='song-list-title fz-13px song-list-title-real sm:pl-16px ip5:pl-6px'>
           <div className='alcenter-jcbetween'>
             <div className='alcenter' style={{ overflow: 'hidden' }}>
@@ -108,7 +108,7 @@ const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setF
             </div>
             <div className='alcenter fit-width' ref={positionRef}>
               <div className='vi-hidden'>
-                <IconButton className='more-btn' aria-label='more' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
+                <IconButton className='more-btn fz-22px sm:p-4px ip5:p-2px' aria-label='more' ref={moreDivRef} onClick={(e) => handleMoreOptions(e)}>
                   <IoMdMore className='color-0-5' />
                 </IconButton>
               </div>
