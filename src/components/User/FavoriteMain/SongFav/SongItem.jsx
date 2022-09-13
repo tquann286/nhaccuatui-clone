@@ -124,13 +124,13 @@ const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setF
           <CommonArtist artists={artists} />
         </div>
       </div>
-      <div className='song-list-title fz-13px listen-title-real sm:mr-22px ip5:mr-12px'>
+      <div className='song-list-title fz-13px listen-title-real sm:w-[82px] ip5:w-28 sm:mr-22px ip5:mr-12px'>
         <div className='view-count'>
           <BsHeadphones />
           <span className='view-count-content color-0-5'>{formatNumber(songsView ? (songsView[keyId] || 0) : createRandomSongView())}</span>
         </div>
       </div>
-      <div className='song-list-title fz-13px duration-title-real'>{duration}</div>
+      <div className='song-list-title fz-13px duration-title-real sm:w-32 ip5:w-64px'>{duration}</div>
     </li>
   )
 }

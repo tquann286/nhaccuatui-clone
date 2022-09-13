@@ -13,11 +13,11 @@
   }
   
   .rank-position-number {
-    @apply text-22px font-bold;
+    @apply sm:text-22px ip5:text-md ip6:text-lg font-bold;
   }
 
   .rank-title {
-    @apply text-13px mt-9px color-0-5 uppercase;
+    @apply sm:text-13px ip6:text-xs ip5:text-11px mt-9px color-0-5 uppercase;
   }
 
   .rank-tag {

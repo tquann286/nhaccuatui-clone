@@ -46,15 +46,12 @@ ul {
 
     .song-list-title-artist {
       @include display-flex;
-      width: calc(100% - 18.4rem);
       .listen-title {
-        width: 8.2rem;
         margin-right: 2.2rem;
         font-weight: 600;
       }
       .duration-title {
         @include justify-content(center);
-        width: 8rem;
         font-weight: 600;
       }
     }
@@ -99,7 +96,6 @@ ul {
       }
 
       &.listen-title-real {
-        width: 8.2rem;
         margin-right: 2.2rem;
 
         .view-count {
@@ -115,7 +111,6 @@ ul {
 
       &.duration-title-real {
         @include justify-content(center);
-        width: 8rem;
       }
     }
   }

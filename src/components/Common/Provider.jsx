@@ -8,8 +8,8 @@ const Provider = ({ styles = '', imgStyles = '', imgProps = {}, provideStyles = 
       <Image imageUrl={avatarUrl || provider.imageUrl || no_img_provider} backupImg={no_img_provider} {...imgProps} />
     </div>
     <div className={`w3-col ml-8px w-fit ${provideStyles}`}>
-      <div className={`h-18px leading-18px text-13px color-0-5 ${providedByStyles}`}>{defineLang('Cung cấp bởi:', 'Provided by:')}</div>
-      <div className={`mt-4px text-sm font-bold text-main uppercase truncate ${nameStyles}`} title={fullName || provider.name || defineLang('Đang cập nhật', 'Updating')}>
+      <div className={`h-18px leading-18px fz-13px color-0-5 ${providedByStyles}`}>{defineLang('Cung cấp bởi:', 'Provided by:')}</div>
+      <div className={`mt-4px fz-14px font-bold text-main uppercase truncate ${nameStyles}`} title={fullName || provider.name || defineLang('Đang cập nhật', 'Updating')}>
         {fullName || provider.name || defineLang('Đang cập nhật', 'Updating')}
       </div>
     </div>
