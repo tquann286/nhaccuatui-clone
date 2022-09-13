@@ -99,7 +99,7 @@ const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setF
   return (
     <li key={keyId} className='song-list-common bg-color-0-02 li-list-item-common color-0-6 hover-bg-color-0-05 hover-visible' onClick={() => handlePlayNewSong(keyId, dispatch, actions, state.curPlaylist, true, defineLang)}>
       <div className='song-list-title-artist'>
-        <div className='song-list-title song-list-title-real'>
+        <div className='song-list-title fz-13px song-list-title-real sm:pl-16px ip5:pl-6px'>
           <div className='alcenter-jcbetween'>
             <div className='alcenter' style={{ overflow: 'hidden' }}>
               <div className='song-list-title-scss color-0-88' title={title}>
@@ -120,17 +120,17 @@ const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setF
             </OptionModal>
           </div>
         </div>
-        <div className='song-list-title song-list-artist-real'>
+        <div className='song-list-title fz-13px song-list-artist-real sm:px-12px ip5:px-4px'>
           <CommonArtist artists={artists} />
         </div>
       </div>
-      <div className='song-list-title listen-title-real'>
+      <div className='song-list-title fz-13px listen-title-real sm:mr-22px ip5:mr-12px'>
         <div className='view-count'>
           <BsHeadphones />
           <span className='view-count-content color-0-5'>{formatNumber(songsView ? (songsView[keyId] || 0) : createRandomSongView())}</span>
         </div>
       </div>
-      <div className='song-list-title duration-title-real'>{duration}</div>
+      <div className='song-list-title fz-13px duration-title-real'>{duration}</div>
     </li>
   )
 }

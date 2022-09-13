@@ -83,10 +83,10 @@ const PlaylistDetail = () => {
       <div className='pt-24px px-32px relative margin-footer'>
         {artists.length !== 0 && <Title title={createTitleArtist(title, artists)} />}
         <div className='w3-row'>
-          <div className='w3-col w-240px'>
+          <div className='w3-col sm:w-240px ip5:w-180px'>
             <ShadowThumb imageUrl={thumbnail} styles='sm:w-240px ip5:w-180px ip6:220px' />
           </div>
-          <div className='w3-rest pl-24px'>
+          <div className='w3-rest sm:pl-24px ip5:pl-8px'>
             <TitleCommon type='playlist' defineLang={defineLang} title={title} />
             <CircleTitleArtist circleStyles='float-left' titleStyles='!mt-unset ml-8px' artists={artists} />
             <div className='w3-row mt-4'>
