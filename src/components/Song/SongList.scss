@@ -62,7 +62,6 @@ ul {
     .song-list-title {
       @include display-flex;
       @include align-items(center);
-      font-size: 1.3rem;
       font-weight: 600;
 
       &.song-list-title-real {
@@ -78,8 +77,6 @@ ul {
           margin-top: 0;
           margin-right: 0.8rem;
           min-width: 2.8rem;
-          font-size: 1.3rem;
-          line-height: 2rem;
           vertical-align: text-bottom;
         }
 

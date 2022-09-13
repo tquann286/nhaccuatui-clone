@@ -102,7 +102,7 @@ const SongItem = ({ keyId, title, artists, duration, songsView, defineLang, setF
         <div className='song-list-title fz-13px song-list-title-real sm:pl-16px ip5:pl-6px'>
           <div className='alcenter-jcbetween'>
             <div className='alcenter' style={{ overflow: 'hidden' }}>
-              <div className='song-list-title-scss color-0-88' title={title}>
+              <div className='song-list-title-scss fz-13px color-0-88' title={title}>
                 {title}
               </div>
             </div>
