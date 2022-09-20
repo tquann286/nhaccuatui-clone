@@ -101,7 +101,7 @@ const ArtistHome = ({ defineLang, songNearly = [], artist = {}, song = {}, playl
       {videos.length === 0 || (
         <div className='mt-16'>
           <div className='mb-24px text-22px font-bold color-0-88'>Video</div>
-          <div className='mt-16px ip5:mx-32px xl:mx-16'>
+          <div className='mt-16px lg:mx-12px '>
             <Grid container spacing={{ xs: 1, sm: 2 }}>
               {getSlideVideos(videos, 'big').map((video) => (
                 <Grid key={video.key} item xs={6} sm={6} md={6} lg={6} xl={4}>
