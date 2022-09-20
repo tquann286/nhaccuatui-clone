@@ -23,7 +23,7 @@ const TopicSlider = ({ defineLang, topicCover }) => {
     <div>
       <Link to={createTopicUrl(title, key)}>
         <div
-          className='relative w-full pt-[31.25%] transition-all duration-300'
+          className='relative w-full pt-[31.25%] transition-all duration-300 bg-no-repeat bg-cover'
           style={{
             backgroundImage: `url(${coverImageURL})`,
           }}

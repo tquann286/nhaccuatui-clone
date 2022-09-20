@@ -41,7 +41,7 @@ const Song = ({ song: songList = [] }) => {
   return (
     <div className='so-container'>
       <div className='mt-16 ml-32px main-title'>
-        <Link to='/kham-pha/moi-hot'>{defineLang('Bài hát', 'Song')}</Link>
+        <Link to='/kham-pha/bai-hat'>{defineLang('Bài hát', 'Song')}</Link>
       </div>
       <div
         className='mt-16px mx-32px'
