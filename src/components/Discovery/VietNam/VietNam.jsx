@@ -47,7 +47,7 @@ const VietNam = ({ defineLang, type }) => {
   if (isLoading)
     return (
       <div className='viet-nam-container common-marginTLR'>
-        <div className='vn-cate pb-1-2'>
+        <div className='vn-cate pb-18px'>
           <CateBasic {...cateBasicProps} />
         </div>
         <div className='loading-container'>
@@ -69,7 +69,7 @@ const VietNam = ({ defineLang, type }) => {
 
   return (
     <div className='viet-nam-container common-marginTLR'>
-      <div className='vn-cate pb-1-2'>
+      <div className='vn-cate pb-18px'>
         <CateBasic {...cateBasicProps} />
       </div>
       <ErrorBoundary>

@@ -47,7 +47,7 @@ const UsUk = ({ defineLang, type }) => {
   if (isLoading)
     return (
       <div className='usuk-container common-marginTLR'>
-        <div className='usuk-cate pb-1-2'>
+        <div className='usuk-cate pb-18px'>
           <CateBasic {...cateBasicProps} />
         </div>
         <div className='loading-container'>
@@ -69,7 +69,7 @@ const UsUk = ({ defineLang, type }) => {
 
   return (
     <div className='usuk-container common-marginTLR'>
-      <div className='usuk-cate pb-1-2'>
+      <div className='usuk-cate pb-18px'>
         <CateBasic {...cateBasicProps} />
       </div>
       <ErrorBoundary>

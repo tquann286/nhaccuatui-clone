@@ -47,7 +47,7 @@ const Others = ({ defineLang, type }) => {
   if (isLoading)
     return (
       <div className='others-container common-marginTLR'>
-        <div className='others-cate pb-1-2'>
+        <div className='others-cate pb-18px'>
           <CateBasic {...cateBasicProps} />
         </div>
         <div className='loading-container'>
@@ -69,7 +69,7 @@ const Others = ({ defineLang, type }) => {
 
   return (
     <div className='others-container common-marginTLR'>
-      <div className='others-cate pb-1-2'>
+      <div className='others-cate pb-18px'>
         <CateBasic {...cateBasicProps} />
       </div>
       <ErrorBoundary>

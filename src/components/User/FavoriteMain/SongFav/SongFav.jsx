@@ -11,7 +11,6 @@ import { getUserDetail, handleClearAllFav } from 'services/firebase/firestore'
 
 const SongFav = ({ defineLang, currentUser = {} }) => {
   const [favSongs, setFavSongs] = useState([])
-  console.log('favSongs: ', favSongs)
   const [songsView, setSongView] = useState({})
   
   const onHandleClearAllFav = async () => {

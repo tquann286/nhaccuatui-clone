@@ -47,7 +47,7 @@ const Karaoke = ({ defineLang, type }) => {
   if (isLoading)
     return (
       <div className='kara-container common-marginTLR'>
-        <div className='kara-cate pb-1-2'>
+        <div className='kara-cate pb-18px'>
           <CateBasic {...cateBasicProps} />
         </div>
         <div className='loading-container'>
@@ -69,7 +69,7 @@ const Karaoke = ({ defineLang, type }) => {
 
   return (
     <div className='kara-container common-marginTLR'>
-      <div className='kara-cate pb-1-2'>
+      <div className='kara-cate pb-18px'>
         <CateBasic {...cateBasicProps} />
       </div>
       <ErrorBoundary>

@@ -43,7 +43,7 @@ const NewHot = ({ defineLang, type }) => {
 
   return (
     <div className='new-hot-container common-section common-marginTLR' style={{ paddingTop: '2rem' }}>
-      <div className='new-hot-title color-0-88 common-title pb-1-2'>{defineLang('Mới & Hot', 'New & Hot')}</div>
+      <div className='new-hot-title color-0-88 common-title pb-18px'>{defineLang('Mới & Hot', 'New & Hot')}</div>
       <div className='new-hot-main'>
         <Grid container spacing={{ xs: 1, sm: 2 }}>
           {data?.map((content) => (

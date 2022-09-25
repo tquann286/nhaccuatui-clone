@@ -47,7 +47,7 @@ const Asia = ({ defineLang, type }) => {
   if (isLoading)
     return (
       <div className='asia-container common-marginTLR'>
-        <div className='asia-cate pb-1-2'>
+        <div className='asia-cate pb-18px'>
           <CateBasic {...cateBasicProps} />
         </div>
         <div className='loading-container'>
@@ -69,7 +69,7 @@ const Asia = ({ defineLang, type }) => {
 
   return (
     <div className='asia-container common-marginTLR'>
-      <div className='asia-cate pb-1-2'>
+      <div className='asia-cate pb-18px'>
         <CateBasic {...cateBasicProps} />
       </div>
       <ErrorBoundary>
