@@ -79,6 +79,8 @@
 ![searchpage](https://user-images.githubusercontent.com/88314050/189509184-fddd99f4-de72-4c7f-ab55-98a4e01a9e18.png)
 ![discovery](https://user-images.githubusercontent.com/88314050/189509188-1816422a-e25f-418d-a174-2a1cfc6d82b3.png)
 ![artistpage](https://user-images.githubusercontent.com/88314050/189509189-99204a40-92ae-4f32-8b52-75f136b5cc53.png)
+![screencapture-tquann286-nhaccuatui-clone-netlify-app-bang-xep-hang-top20-2022-10-03-10_59_01](https://user-images.githubusercontent.com/88314050/193499590-505e5a4b-d35a-4c35-bc29-aec4c444a17a.png)![screencapture-tquann286-nhaccuatui-clone-netlify-app-top-100-Pop-k-zE23R7bc8e9X-2022-10-03-10_58_39](https://user-images.githubusercontent.com/88314050/193499599-7384db49-6c16-43db-8d69-93b6b7f231ca.png)
+
 
 
 
