@@ -280,7 +280,7 @@ export const isValid = (arr = []) => arr.every((item) => typeof item !== 'undefi
 export const getValidArr = (arr = []) => arr.filter(item => typeof item !== 'undefined')
 
 // Get slide video for grid
-export const isBigScreen = () => window.innerWidth > 1536
+export const isBigScreen = () => window.innerWidth > 1530
 
 export const getSlideVideos = (videos, size) => {
   if (size === 'big') {
