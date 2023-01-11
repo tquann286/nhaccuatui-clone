@@ -35,7 +35,7 @@ const Top100 = ({ top100List }) => {
   return (
     <div className="t1-container">
       <div className="t1-title">
-        <Link to={createTop100Url(top100List[0].title, top100List[0].key)}>Top 100</Link>
+        <Link to={createTop100Url(top100List[0]?.title, top100List[0]?.key)}>Top 100</Link>
       </div>
       <div className="t1-main">
       <Swiper { ... swiperProps }>
@@ -44,7 +44,7 @@ const Top100 = ({ top100List }) => {
 									<SlideNextButton />
 								</div>
 								{top100List.map((playlist) => {
-									const { key, thumbnail, title } = playlist
+									const { key, thumbnail, title } = playlist || {}
 
 									return (
 										<SwiperSlide key={key}>

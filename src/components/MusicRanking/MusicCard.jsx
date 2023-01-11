@@ -11,7 +11,7 @@ const MusicCard = ({ region, song, bgImage, category, defineLang, actions, dispa
   const [topThreeSong, setTopThreeSong] = useState([])
   const [activeSong, setActiveSong] = useState({})
 
-  const { position, title, songKey, artists } = activeSong
+  const { position, title, songKey, artists } = activeSong || {}
 
   useEffect(() => {
     if (song) {
