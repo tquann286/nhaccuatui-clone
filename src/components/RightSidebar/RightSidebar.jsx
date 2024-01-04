@@ -7,6 +7,7 @@ import { useStore, actions } from 'store'
 import { getListSongsKey, getMaybeLike, getSongsView } from 'share/utilities'
 import { useWindowSize, useOnClickOutside } from 'hooks'
 import { TbArrowBarToLeft } from 'react-icons/tb'
+import { getSongStreamData } from 'services/Song/Song'
 
 const RightSidebar = () => {
   const [state, dispatch] = useStore()
@@ -25,6 +26,7 @@ const RightSidebar = () => {
   })
 
   const [playingSong, setPlayingSong] = useState(null)
+  const [songStream, setSongStream] = useState(null)
   const [songsView, setSongsView] = useState({})
   const [tempPlayedSongs, setTempPlayedSongs] = useState([])
 
@@ -39,10 +41,12 @@ const RightSidebar = () => {
   const toggleLoop = () => setIsLoop(!isLoop)
   const toggleShowPlaylist = () => setShowPlaylist(!showPlaylist)
 
+  const [loadingStream, setLoadingStream] = useState(false)
+
   const audioRef = useRef({})
 
   const handlePlaying = () => {
-    if (audioRef.current?.readyState) {
+    if (audioRef.current?.readyState && !loadingStream) {
       const prevValue = isPlaying
       setIsPlaying(!prevValue)
       if (!prevValue) {
@@ -139,7 +143,7 @@ const RightSidebar = () => {
     } catch (error) {
       throw new Error(error)
     }
-  }, [playingSongId])
+  }, [playingSongId, tempPlayedSongs])
 
   useEffect(() => {
     try {
@@ -188,9 +192,27 @@ const RightSidebar = () => {
     rightSidebarRef,
   }
 
-  if (!playingSong) return <NoPlayingSong {...noPlayingSongProps} />
+  const { thumbnail = '', title = '', key = '', artists = [], streamUrls = [], songView = 0, duration: songDuration = '' } = playingSong || {}
 
-  const { thumbnail = '', title = '', key = '', artists = [], streamUrls = [], songView = 0, duration: songDuration = '' } = playingSong
+  useEffect(() => {
+    if (streamUrls?.[0]?.streamUrl) {
+      setLoadingStream(true)
+      try {
+        const getSongStreamState = async () => {
+          const songStream = await getSongStreamData(streamUrls?.[0]?.streamUrl)
+          if (songStream) {
+            setSongStream(songStream)
+          }
+          setLoadingStream(false)
+        }
+        getSongStreamState()
+      } catch (error) {
+        setLoadingStream(false)
+      }
+    }
+  }, [streamUrls, playingSongId])
+
+  if (!playingSong) return <NoPlayingSong {...noPlayingSongProps} />
 
   const commmonProps = {
     defineLang,
@@ -231,7 +253,7 @@ const RightSidebar = () => {
     preload: 'metadata',
     controls: false,
     ref: audioRef,
-    src: streamUrls[0]?.streamUrl,
+    src: songStream,
     onTimeUpdate: handleUpdateTime,
     onEnded: handleSongEnded,
     loop: isLoop,

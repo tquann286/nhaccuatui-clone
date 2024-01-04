@@ -19,6 +19,7 @@ const SongPageDetail = () => {
   const query = new URLSearchParams(params.songKey)
 
   const [songDetail, setSongDetail] = useState({})
+  const [songStream, setSongStream] = useState({})
   const [maybeLike, setMaybeLike] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 

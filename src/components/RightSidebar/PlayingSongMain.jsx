@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import no_img_url from 'images/default/nowplaying_default.png'
 
 import Tooltip from '@mui/material/Tooltip'
