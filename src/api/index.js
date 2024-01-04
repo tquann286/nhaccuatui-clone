@@ -19,6 +19,11 @@ client.interceptors.request.use((config) => {
   const hash = sha512.hmac(SECRET_KEY, now)
   config.params.t = now
   config.params.s = hash
+  config.headers = {
+    ...config.headers,
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
+    'Content-Type': 'application/x-www-form-urlencoded',
+  }
   return config
 })
 
@@ -68,6 +73,11 @@ export const getTop20 = (category, type = 'song', week, year, size = 20) => clie
 
 // Song
 export const getSongDetail = (key) => client.post('playing/song', joinQueryString({ key }))
+export const getSongStream = (steamUrl) => {
+  return client.get({
+    baseURL: `http://localhost:8080/feed/api/song/${steamUrl}`,
+  })
+}
 export const getLyric = (key, type) => client.post('lyric', joinQueryString({ key, type }))
 
 // Video

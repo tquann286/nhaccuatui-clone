@@ -18,7 +18,7 @@
     "js-sha512": "^0.8.0",
     "moment": "^2.29.4",
     "nhaccuatui-api-full": "^1.1.0",
-    "node-sass": "^8.0.0",
+    "node-sass": "^9.0.0",
     "rc-slider": "^10.0.1",
     "react": "^18.1.0",
     "react-blur": "^1.1.1",
@@ -44,6 +44,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
