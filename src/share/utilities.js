@@ -227,7 +227,6 @@ export const getLyricData = async (key, type) => {
 export const getMaybeLike = async (key, type, size = 12) => {
   try {
     const data = await getRecommend(key, type, size)
-    console.log('data: ', data)
 
     return data.recommend
   } catch (error) {

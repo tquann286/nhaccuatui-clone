@@ -1,4 +1,4 @@
-import { getSongDetail, getSongStream } from 'api'
+import { getSongDetail } from 'api'
 
 export const getSongDetailData = async (key) => {
   try {
@@ -12,7 +12,7 @@ export const getSongDetailData = async (key) => {
 
 export const getSongStreamData = async (streamUrl) => {
   try {
-    const response = await fetch(`http://localhost:8080/feed/api/${encodeURIComponent(streamUrl)}`)
+    const response = await fetch(`https://nhaccuatui-be.onrender.com/api/streamUrl/${encodeURIComponent(streamUrl)}`)
     const contentType = response.headers.get('Content-Type')
     const audioData = await response.arrayBuffer()
 
